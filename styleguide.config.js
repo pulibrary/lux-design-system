@@ -1,4 +1,4 @@
-// const path = require("path");
+const path = require("path");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const vueLoader = require("vue-loader");
 
@@ -13,12 +13,12 @@ module.exports = {
       components: "src/components/**/[A-Z]*.vue",
     },
   ],
-  // require: [
-  //   // Components style
-  //   path.join(__dirname, "./src/assets/scss/variables.scss"),
-  //   // // Custom doc style
-  //   // path.join(__dirname, 'src-style/stylesheets/app.scss')
-  // ],
+  require: [
+    // Components style
+    path.join(__dirname, "./src/styles/styles.scss"),
+    // // Custom doc style
+    // path.join(__dirname, 'src-style/stylesheets/app.scss')
+  ],
   webpackConfig: {
     module: {
       rules: [
@@ -41,16 +41,16 @@ module.exports = {
         //   use: [MiniCssExtractPlugin.loader, "css-loader"],
         // },
         {
-          test: /\.vue$/,
-          loader: "vue-loader",
-        },
-        {
           test: /\.scss$/,
           use: ["vue-style-loader", "css-loader", "sass-loader"],
         },
+        {
+          test: /\.vue$/,
+          loader: "vue-loader",
+        },
       ],
     },
-    plugins: [new vueLoader.VueLoaderPlugin(), new MiniCssExtractPlugin()],
+    plugins: [new MiniCssExtractPlugin(), new vueLoader.VueLoaderPlugin()],
   },
   // webpackConfig: {
   //   module: {
