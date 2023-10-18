@@ -1,3 +1,4 @@
+const path = require("path");
 module.exports = {
   // set your styleguidist configuration here
   title: "Default Style Guide",
@@ -9,8 +10,21 @@ module.exports = {
       components: "src/components/**/[A-Z]*.vue",
     },
   ],
-  // webpackConfig: {
-  //   // custom config goes here
-  // },
+  require: [
+    // Components style
+    path.join(__dirname, "src/assets/variables.scss"),
+    // // Custom doc style
+    // path.join(__dirname, 'src-style/stylesheets/app.scss')
+  ],
+  webpackConfig: {
+    module: {
+      rules: [
+        {
+          test: /\.scss$/,
+          use: ["style-loader", "sass-loader", "css-loader"],
+        },
+      ],
+    },
+  },
   exampleMode: "expand",
 };
