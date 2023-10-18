@@ -87,17 +87,17 @@ export default {
 
 <style lang="scss" scoped>
 .lux-media-image {
-  // @include reset;
+  /* @include reset;
   // @include stack-space($space-base);
   // font-family: $font-family-text;
   // line-height: $line-height-base;
-  // color: $color-rich-black;
+  // color: $color-rich-black; */
   overflow: hidden;
   position: relative;
   height: auto;
 
   img {
-    //background-color: $color-grayscale-lighter;
+    /*background-color: $color-grayscale-lighter; */
     height: auto;
     max-width: 100%;
     vertical-align: middle;
@@ -116,7 +116,7 @@ export default {
   }
 
   &.lux-default-thumbnail {
-    // background: $color-grayscale;
+    /* background: $color-grayscale; */
     display: flex;
     align-items: center;
 

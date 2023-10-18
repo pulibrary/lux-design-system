@@ -41,14 +41,13 @@ export default {
 </script>
 
 <style lang="scss">
-// Design Tokens with local scope
 $positive-text: #7cb518;
 
 .lux-text-style {
-  // @include reset;
-  // @include stack-space($space-small);
+  /* @include reset;
+  // @include stack-space($space-small); */
   color: $color-rich-black;
-  // font-family: $font-family-text;
+  /* font-family: $font-family-text;
   // font-weight: $font-weight-regular;
   // font-size: $font-size-base;
   // line-height: $line-height-base;
@@ -76,7 +75,7 @@ $positive-text: #7cb518;
   // }
   // &.uppercase {
   //   text-transform: uppercase;
-  // }
+  // }*/
 }
 </style>
 
