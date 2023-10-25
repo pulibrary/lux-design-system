@@ -25,7 +25,7 @@ export default {
     },
     /**
      * Style variation to give additional meaning.
-     * `default, disabled, strong, positive, negative`
+     * `default, disabled, strong, positive, negative,small,uppercase`
      */
     variation: {
       type: String,
@@ -41,42 +41,41 @@ export default {
 </script>
 
 <style lang="scss">
-// Design Tokens with local scope
-$positive-text: #7cb518;
+@import "../assets/styles/variables.css";
 
 .lux-text-style {
   // @include reset;
   // @include stack-space($space-small);
-  // color: $color-rich-black;
-  // font-family: $font-family-text;
-  // font-weight: $font-weight-regular;
-  // font-size: $font-size-base;
-  // line-height: $line-height-base;
-  // @media #{$media-query-large} {
-  //   // This is how you’d use design tokens with media queries
-  // }
-  // &.disabled {
-  //   color: tint($color-rich-black, 40%);
-  //   text-decoration: line-through;
-  // }
-  // &.strong {
-  //   font-weight: $font-weight-semi-bold;
-  // }
-  // &.emphasis {
-  //   font-style: italic;
-  // }
-  // &.positive {
-  //   color: shade($positive-text, 20%);
-  // }
-  // &.negative {
-  //   color: $color-red;
-  // }
-  // &.small {
-  //   font-size: $font-size-x-small;
-  // }
-  // &.uppercase {
-  //   text-transform: uppercase;
-  // }
+  color: var(--color-rich-black);
+  font-family: var(--font-family-text);
+  font-weight: var(--font-weight-regular);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-base);
+  @media (min-width: 900px) {
+    // This is how you’d use design tokens with media queries
+  }
+  &.disabled {
+    color: tint(var(--color-rich-black), 40%);
+    text-decoration: line-through;
+  }
+  &.strong {
+    font-weight: var(--font-weight-semi-bold);
+  }
+  &.emphasis {
+    font-style: italic;
+  }
+  &.positive {
+    color: shade(var(--positive-text), 20%);
+  }
+  &.negative {
+    color: var(--color-red);
+  }
+  &.small {
+    font-size: var(--font-size-x-small);
+  }
+  &.uppercase {
+    text-transform: uppercase;
+  }
 }
 </style>
 
