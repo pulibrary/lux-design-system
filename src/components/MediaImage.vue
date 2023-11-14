@@ -86,18 +86,21 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import "../assets/styles/mixins.scss";
+@import "../assets/styles/spacing.scss";
+
 .lux-media-image {
-  // @include reset;
-  // @include stack-space($space-base);
-  // font-family: $font-family-text;
-  // line-height: $line-height-base;
-  // color: $color-rich-black;
+  @include reset;
+  @include stack-space(var(--space-base));
+  font-family: var(--font-family-text);
+  line-height: var(--line-height-base);
+  color: var(--color-rich-black);
   overflow: hidden;
   position: relative;
   height: auto;
 
   img {
-    //background-color: $color-grayscale-lighter;
+    background-color: var(--color-grayscale-lighter);
     height: auto;
     max-width: 100%;
     vertical-align: middle;
@@ -116,7 +119,7 @@ export default {
   }
 
   &.lux-default-thumbnail {
-    // background: $color-grayscale;
+    background: var(--color-grayscale);
     display: flex;
     align-items: center;
 
