@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MediaImage.vue has the expected html structure 1`] = `
+<div
+  class="lux-media-image medium lux-default-thumbnail"
+>
+  <lux-icon-base
+    height="50"
+    icon-color="rgb(225,225,225)"
+    icon-hide="true"
+    icon-name="file"
+    width="50"
+  >
+    <lux-icon-file />
+  </lux-icon-base>
+</div>
+`;

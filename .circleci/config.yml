@@ -1,0 +1,16 @@
+version: 2.1
+orbs:
+  node: circleci/node@5.0.2
+
+workflows:
+  test_my_app:
+    jobs:
+      - node/test:
+          test-results-for: jest
+          matrix:
+            parameters:
+              version:
+                - 21.2.0
+                - 20.9.0
+                - 18.18.2
+                - 16.20.2
