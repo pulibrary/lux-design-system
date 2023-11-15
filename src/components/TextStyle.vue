@@ -42,10 +42,12 @@ export default {
 
 <style lang="scss">
 @import "../assets/styles/variables.css";
+@import "../assets/styles/spacing.scss";
+@import "../assets/styles/mixins.scss";
 
 .lux-text-style {
-  // @include reset;
-  // @include stack-space($space-small);
+  @include reset;
+  @include stack-space(var(--color-rich-black));
   color: var(--color-rich-black);
   font-family: var(--font-family-text);
   font-weight: var(--font-weight-regular);
