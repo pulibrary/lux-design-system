@@ -157,7 +157,7 @@ export default {
 </style>
 
 <docs>
-  ```jsx
+  ```
   <div>
     <media-image src="https://picsum.photos/400/300/?random" height="medium"></media-image>
   </div>
