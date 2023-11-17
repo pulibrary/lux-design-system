@@ -82,7 +82,7 @@ export default {
 </style>
 
 <docs>
-  ```jsx
+  ```
   <div>
     <text-style variation="default">Design isn’t just about the look and feel. Design is how it works.</text-style>
     <text-style variation="disabled">Design isn’t just about the look and feel.</text-style>
