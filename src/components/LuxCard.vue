@@ -205,10 +205,10 @@ export default {
       <!-- Card without sections -->
       <lux-card id="a">
         <media-image src="https://picsum.photos/600/300/?random" height="medium" cover></media-image>
-        <heading level="h2">Title</heading>
+        <lux-heading level="h2">Title</lux-heading>
         <text-style variation="default">Design isn't just about the look and feel. Design is how it works.</text-style>
       </lux-card>
-  
+
       <!-- Card with sections -->
       <lux-card id="b" size="full-width">
         <card-media>
@@ -218,7 +218,7 @@ export default {
         </card-media>
         <card-header>
           <!-- Hyperlink is the text screen readers would read, we don't want to wrap the entire card -->
-          <heading level="h2" size="h3"><hyperlink href="#">Code4Lib - Trip ID 1234</hyperlink></heading>
+          <lux-heading level="h2" size="h3"><hyperlink href="#">Code4Lib - Trip ID 1234</hyperlink></lux-heading>
           <text-style>Jan 9, 2019 to Jan 16, 2019</text-style>
         </card-header>
         <card-content>

@@ -17,40 +17,40 @@
     $responsive-unitless: $responsive / ($responsive - $responsive + 1);
     $dimension: if(unit($responsive) == "vh", "height", "width");
     $min-breakpoint: $min / $responsive-unitless * 100;
-  
+
     @media (max-#{$dimension}: #{$min-breakpoint}) {
       font-size: $min;
     }
-  
+
     @if $max {
       $max-breakpoint: $max / $responsive-unitless * 100;
-  
+
       @media (min-#{$dimension}: #{$max-breakpoint}) {
         font-size: $max;
       }
     }
-  
+
     @if $fallback {
       font-size: $fallback;
     }
-  
+
     font-size: $responsive;
   }
-  
+
   // Reset
   @mixin reset {
     box-sizing: border-box;
     padding: 0;
     margin: 0;
   }
-  
+
   // Used to prevent text selection on an element
   @mixin prevent-user-select {
     -webkit-user-select: none;
     -moz-user-select: none;
     user-select: none;
   }
-  
+
   /// Used to hide an element visually, but keeping it accessible for
   /// accessibility tools.
   @mixin visually-hidden {
@@ -64,7 +64,7 @@
     padding: 0 !important;
     border: 0 !important;
   }
-  
+
   /// To be used on flex items. Resolves some common layout issues, such as
   /// text truncation not respecting padding or breaking out of container.
   /// https://css-tricks.com/flexbox-truncated-text/
@@ -72,14 +72,13 @@
     min-width: 0;
     max-width: 100%;
   }
-  
+
   // Box shadow for input elements
   @mixin box-shadow-inputs {
     box-shadow: inset 0 1px 0 0 rgba($color-rich-black, 0.07), 0 0 0 1px tint($color-rich-black, 80%);
   }
-  
+
   // Hover state of box shadow for input elements
   @mixin box-shadow-inputs-hover {
     box-shadow: 0 1px 5px 0 rgba($color-rich-black, 0.07), 0 0 0 1px tint($color-rich-black, 60%);
   }
-  
