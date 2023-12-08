@@ -86,10 +86,10 @@ export default {
   },
   methods: {
     select: function (event) {
-      this.$emit("card-click", event);
+      this.$emit("card-click", event)
     },
   },
-};
+}
 </script>
 
 <style lang="scss" scoped>

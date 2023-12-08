@@ -1,9 +1,5 @@
 <template>
-  <component
-    :is="level"
-    class="lux-heading"
-    :class="[{ 'lux-hidden': hidden }, size]"
-  >
+  <component :is="level" class="lux-heading" :class="[{ 'lux-hidden': hidden }, size]">
     <slot />
   </component>
 </template>
@@ -27,8 +23,8 @@ export default {
     level: {
       type: String,
       default: "h1",
-      validator: (value) => {
-        return value.match(/(h1|h2|h3|h4|h5|h6)/);
+      validator: value => {
+        return value.match(/(h1|h2|h3|h4|h5|h6)/)
       },
     },
     /**
@@ -38,8 +34,8 @@ export default {
     size: {
       type: String,
       default: "h1",
-      validator: (value) => {
-        return value.match(/(h1|h2|h3|h4|h5|h6)/);
+      validator: value => {
+        return value.match(/(h1|h2|h3|h4|h5|h6)/)
       },
     },
     /**
@@ -51,7 +47,7 @@ export default {
       default: false,
     },
   },
-};
+}
 </script>
 
 <style lang="scss">

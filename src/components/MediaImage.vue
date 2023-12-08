@@ -1,8 +1,5 @@
 <template>
-  <div
-    class="lux-media-image"
-    :class="[height, { 'lux-default-thumbnail': !source }]"
-  >
+  <div class="lux-media-image" :class="[height, { 'lux-default-thumbnail': !source }]">
     <img
       v-if="source"
       @error="source = null"
@@ -34,7 +31,7 @@ export default {
   data: function () {
     return {
       source: this.src,
-    };
+    }
   },
   props: {
     /**
@@ -73,7 +70,7 @@ export default {
       default: false,
     },
   },
-};
+}
 </script>
 
 <style lang="scss" scoped>

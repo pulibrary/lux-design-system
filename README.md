@@ -15,7 +15,7 @@ npm run styleguide
 1. This repo uses CSS variables, rather than SCSS token variables.  If the component
 includes tokens:
     1. Add `@import "../assets/styles/variables.css";` to the `<style>` section.
-    1. Replace any token references to use the CSS variable instead.  For example, 
+    1. Replace any token references to use the CSS variable instead.  For example,
       `$font-family-text` can be changed to `var(--font-family-text)`.
 1. If the component includes SCSS mixins, add `@import "../assets/styles/mixins.scss";`
 to the `<style>` section.  You may also need `../assets/styles/spacing.scss` if the
@@ -46,6 +46,8 @@ you will need to refactor it back into a regular template.
         1. Refer to the [vue-test-utils migration guide](https://test-utils.vuejs.org/migration/) for other breaking changes.
     1. Running the tests will produce a snapshot file.  Compare it to the original snapshot file.  If there are no substantial changes, commit it.  If there are substantial changes, make any necessary changes.
 
+### Linting
+We are using the eslint_plugin-prettier to lint our files. To adjust the lint format settings, please use the `.prettierrc` file. Code linting rules should be set in `eslintrc.js`. 
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).

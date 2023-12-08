@@ -10,4 +10,4 @@ module.exports = {
     },
   ],
   exampleMode: "expand",
-};
+}
