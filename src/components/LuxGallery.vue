@@ -1,7 +1,7 @@
 <template>
-  <draggable class="lux-gallery" v-model="items" tag="div" @click.native="deselect($event)">
+  <draggable class="lux-gallery" v-model="items" tag="div" @click="deselect($event)">
     <card
-      v-for="(item, index) in items"
+      v-for="item in items"
       :id="item.id"
       :key="item.id"
       class="lux-galleryCard"
@@ -44,7 +44,7 @@ export default {
       },
     },
     ...mapState({
-      gallery: state => store.state.gallery,
+      gallery: state => store.gallery.state,
     }),
   },
   props: {
@@ -166,11 +166,11 @@ export default {
 <docs>
   ```jsx
   <div>
-    <gallery :gallery-items='[
+    <lux-gallery :gallery-items='[
       {"id":"8ffd7a03-ec0e-46c1-a347-e4b19cb7839f","title":"example.tif","caption":"FileSet : 8ffd7a03-ec0e-46c1-a347-e4b19cb7839f","mediaUrl":"https://picsum.photos/600/300/?random"},
       {"id":"8f0a0908-317f-414e-a78a-c38a4a3b28e3","title":"example.tif","caption":"FileSet : 8f0a0908-317f-414e-a78a-c38a4a3b28e3","mediaUrl":"https://picsum.photos/600/300/?random"},
       {"id":"ea01019e-f644-4416-b99c-1b44bf49d060","title":"example.tif","caption":"FileSet : ea01019e-f644-4416-b99c-1b44bf49d060","mediaUrl":"https://picsum.photos/600/300/?random"}
-    ]'></gallery>
+    ]'></lux-gallery>
   </div>
   ```
 </docs>
