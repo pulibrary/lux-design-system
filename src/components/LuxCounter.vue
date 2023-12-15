@@ -7,38 +7,27 @@
 
 <script>
 import store from "../store"
-// import { mapState, mapGetters } from "vuex"
+// import { mapState } from "vuex"
 /*
- * Gallery is a grid of images with captions.
+ * Counter is a proof-of-concept example component for working vuex modules.
  */
 export default {
   name: "LuxCounter",
   status: "ready",
   release: "1.0.0",
   type: "Pattern",
-  // data() {
-  //   return {
-  //     count: this.num,
-  //   }
-  // },
-  // props: {
-  //   /**
-  //    * Sets the id to reference this card with.
-  //    */
-  //   num: {
-  //     type: Number,
-  //     default: 0,
-  //   },
-  // },
   methods: {
     increment() {
       store.commit("increment")
-      // this.count++
     },
   },
   computed: {
+    // mapState does not seem to work
+    // ...mapState({
+    //   counter: state => store.counter.state,
+    // }),
     count() {
-      return store.state.count
+      return store.state.counter.count
     },
   },
 }

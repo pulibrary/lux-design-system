@@ -110,7 +110,8 @@ export default {
   }
   &:focus,
   &-selected {
-    box-shadow: var(--box-shadow-selected);
+    // box-shadow: var(--box-shadow-selected);
+    box-shadow: 0px 0px 5px 3px #e77500;
   }
   &-edited {
     background: var(--color-princeton-orange-on-white);

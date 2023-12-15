@@ -1,27 +1,28 @@
 <template>
-  <draggable class="lux-gallery" v-model="items" tag="div" @click="deselect($event)">
-    <card
-      v-for="item in items"
-      :id="item.id"
-      :key="item.id"
-      class="lux-galleryCard"
-      :cardPixelWidth="cardPixelWidth"
-      size="medium"
-      :selected="isSelected(item)"
-      :disabled="isDisabled(item)"
-      :edited="hasChanged(item.id)"
-      @click.capture="select(item.id, $event)"
-    >
-      <media-image :src="item.mediaUrl"></media-image>
-      <heading level="h2">{{ item.title }}</heading>
-      <text-style variation="default">{{ item.caption }}</text-style>
-    </card>
+  <draggable class="lux-gallery" v-model="items" item-key="id" tag="div" @click="deselect($event)">
+    <template #item="{ element }">
+      <card
+        :id="element.id"
+        :key="element.id"
+        class="lux-galleryCard"
+        :cardPixelWidth="cardPixelWidth"
+        size="medium"
+        :selected="isSelected(element)"
+        :disabled="isDisabled(element)"
+        :edited="hasChanged(element.id)"
+        @click.capture="select(element.id, $event)"
+      >
+        <media-image :src="element.mediaUrl"></media-image>
+        <heading level="h2">{{ element.title }}</heading>
+        <text-style variation="default">{{ element.caption }}</text-style>
+      </card>
+    </template>
   </draggable>
 </template>
 
 <script>
 import store from "../store"
-import { mapState, mapGetters } from "vuex"
+// import { mapState, mapGetters } from "vuex"
 import draggable from "vuedraggable"
 /*
  * Gallery is a grid of images with captions.
@@ -34,18 +35,34 @@ export default {
   components: {
     draggable,
   },
+  // computed: mapState([
+  //   // map this.count to store.state.count
+  //   'gallery'
+  // ]),
   computed: {
     items: {
       get() {
-        return this.gallery.items
+        return store.state.gallery.items
       },
       set(value) {
         store.commit("SORT_ITEMS", value)
       },
     },
-    ...mapState({
-      gallery: state => store.gallery.state,
-    }),
+    // ...mapState({
+    //   gallery: state => store.gallery.state,
+    // }),
+    selected() {
+      return store.state.gallery.selected
+    },
+    cut() {
+      return store.state.gallery.cut
+    },
+    changeList() {
+      return store.state.gallery.changeList
+    },
+    ogItems() {
+      return store.state.gallery.ogItems
+    },
   },
   props: {
     /**
@@ -88,14 +105,14 @@ export default {
     },
     hasChanged: function (id) {
       //console.log(this.gallery.changeList.indexOf(id) > -1)
-      return this.gallery.changeList.indexOf(id) > -1
+      return this.changeList.indexOf(id) > -1
     },
     isDisabled: function (item) {
-      return this.gallery.cut.indexOf(item) > -1
+      return this.cut.indexOf(item) > -1
     },
     isSelected: function (item) {
       //console.log(this.gallery.selected.indexOf(item) > -1)
-      return this.gallery.selected.indexOf(item) > -1
+      return this.selected.indexOf(item) > -1
     },
     select: function (id, event) {
       this.$emit("card-clicked", event)
@@ -103,12 +120,12 @@ export default {
         // can't select disabled item
         let selected = []
         if (event.metaKey) {
-          selected = this.gallery.selected
+          selected = this.selected
           selected.push(this.getItemById(id))
           store.commit("SELECT", selected)
         } else {
-          if (this.gallery.selected.length === 1 && event.shiftKey) {
-            var first = this.getItemIndexById(this.gallery.selected[0].id)
+          if (this.selected.length === 1 && event.shiftKey) {
+            var first = this.getItemIndexById(this.selected[0].id)
             var second = this.getItemIndexById(id)
             var min = Math.min(first, second)
             var max = Math.max(first, second)
