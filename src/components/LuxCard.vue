@@ -92,7 +92,7 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 @import "../assets/styles/variables.css";
 @import "../assets/styles/mixins.scss";
 @import "../assets/styles/spacing.scss";
@@ -104,6 +104,7 @@ export default {
   box-shadow: var(--box-shadow-small);
   color: var(--color-rich-black);
   position: relative;
+  margin-bottom: 1rem;
 
   &:active {
     cursor: move;
@@ -205,9 +206,9 @@ export default {
     <div>
       <!-- Card without sections -->
       <lux-card id="a">
-        <media-image src="https://picsum.photos/600/300/?random" height="medium" cover></media-image>
+        <lux-media-image src="https://picsum.photos/600/300/?random" height="medium" cover></lux-media-image>
         <lux-heading level="h2">Title</lux-heading>
-        <text-style variation="default">Design isn't just about the look and feel. Design is how it works.</text-style>
+        <lux-text-style variation="default">Design isn't just about the look and feel. Design is how it works.</lux-text-style>
       </lux-card>
 
       <!-- Card with sections -->
