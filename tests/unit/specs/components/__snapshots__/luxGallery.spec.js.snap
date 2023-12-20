@@ -1,0 +1,80 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LuxGallery.vue has the expected html structure 1`] = `
+<div
+  class="lux-gallery"
+>
+  <card
+    cardpixelwidth="300"
+    class="lux-galleryCard"
+    data-draggable="true"
+    disabled="false"
+    edited="false"
+    id="1"
+    selected="false"
+    size="medium"
+  >
+    <media-image
+      src="https://picsum.photos/600/300/?random"
+    />
+    <heading
+      level="h2"
+    >
+      First
+    </heading>
+    <text-style
+      variation="default"
+    >
+      one
+    </text-style>
+  </card>
+  <card
+    cardpixelwidth="300"
+    class="lux-galleryCard"
+    data-draggable="true"
+    disabled="false"
+    edited="false"
+    id="2"
+    selected="false"
+    size="medium"
+  >
+    <media-image
+      src="https://picsum.photos/600/300/?random"
+    />
+    <heading
+      level="h2"
+    >
+      Second
+    </heading>
+    <text-style
+      variation="default"
+    >
+      two
+    </text-style>
+  </card>
+  <card
+    cardpixelwidth="300"
+    class="lux-galleryCard"
+    data-draggable="true"
+    disabled="false"
+    edited="false"
+    id="3"
+    selected="false"
+    size="medium"
+  >
+    <media-image
+      src="https://foo/bar"
+    />
+    <heading
+      level="h2"
+    >
+      Third
+    </heading>
+    <text-style
+      variation="default"
+    >
+      three
+    </text-style>
+  </card>
+</div>
+`;
