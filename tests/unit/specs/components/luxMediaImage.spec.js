@@ -1,12 +1,12 @@
 import { mount } from "@vue/test-utils"
-import MediaImage from "@/components/MediaImage.vue"
+import LuxMediaImage from "@/components/LuxMediaImage.vue"
 import { nextTick } from "vue"
 
 let wrapper
 
-describe("MediaImage.vue", () => {
+describe("LuxMediaImage.vue", () => {
   beforeEach(() => {
-    wrapper = mount(MediaImage, {
+    wrapper = mount(LuxMediaImage, {
       propsData: {
         src: "",
         height: "medium",
@@ -29,7 +29,7 @@ describe("MediaImage.vue", () => {
   })
 
   it("displays image when src exists", () => {
-    const wrapper2 = mount(MediaImage, {
+    const wrapper2 = mount(LuxMediaImage, {
       propsData: {
         src: "https://picsum.photos/400/300/?random",
         height: "medium",

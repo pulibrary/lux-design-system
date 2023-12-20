@@ -92,7 +92,7 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 @import "../assets/styles/variables.css";
 @import "../assets/styles/mixins.scss";
 @import "../assets/styles/spacing.scss";
@@ -104,6 +104,7 @@ export default {
   box-shadow: var(--box-shadow-small);
   color: var(--color-rich-black);
   position: relative;
+  margin-bottom: 1rem;
 
   &:active {
     cursor: move;
@@ -205,31 +206,31 @@ export default {
     <div>
       <!-- Card without sections -->
       <lux-card id="a">
-        <media-image src="https://picsum.photos/600/300/?random" height="medium" cover></media-image>
+        <lux-media-image src="https://picsum.photos/600/300/?random" height="medium" cover></lux-media-image>
         <lux-heading level="h2">Title</lux-heading>
-        <text-style variation="default">Design isn't just about the look and feel. Design is how it works.</text-style>
+        <lux-text-style variation="default">Design isn't just about the look and feel. Design is how it works.</lux-text-style>
       </lux-card>
 
       <!-- Card with sections -->
       <lux-card id="b" size="full-width">
-        <card-media>
+        <lux-card-media>
           <lux-icon-base width="50" height="50" icon-hide="true">
             <lux-icon-globe></lux-icon-globe>
           </lux-icon-base>
-        </card-media>
-        <card-header>
+        </lux-card-media>
+        <lux-card-header>
           <!-- Hyperlink is the text screen readers would read, we don't want to wrap the entire card -->
           <lux-heading level="h2" size="h3"><hyperlink href="#">Code4Lib - Trip ID 1234</hyperlink></lux-heading>
-          <text-style>Jan 9, 2019 to Jan 16, 2019</text-style>
-        </card-header>
-        <card-content>
+          <lux-text-style>Jan 9, 2019 to Jan 16, 2019</lux-text-style>
+        </lux-card-header>
+        <lux-card-content>
           <tag type="tag" :tag-items="[
             {name: 'Pending', color: 'yellow', style: 'pill'}
             ]"
             horizontal="end"
             size="small"/>
-          <text-style type="span" variation="small">Last Updated on Dec 15, 2018</text-style>
-        </card-content>
+          <lux-text-style type="span" variation="small">Last Updated on Dec 15, 2018</lux-text-style>
+        </lux-card-content>
       </lux-card>
     </div>
   ```

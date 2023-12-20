@@ -11,7 +11,7 @@
  * styles only for aesthetic effect.
  */
 export default {
-  name: "TextStyle",
+  name: "LuxTextStyle",
   status: "ready",
   release: "1.0.0",
   type: "Element",
@@ -82,10 +82,10 @@ export default {
 <docs>
   ```
   <div>
-    <text-style variation="default">Design isn’t just about the look and feel. Design is how it works.</text-style>
-    <text-style variation="disabled">Design isn’t just about the look and feel.</text-style>
-    <text-style variation="strong">Design isn’t just about look and feel.</text-style>
-    <text-style variation="emphasis">Design is how it works.</text-style>
+    <lux-text-style variation="default">Design isn’t just about the look and feel. Design is how it works.</lux-text-style>
+    <lux-text-style variation="disabled">Design isn’t just about the look and feel.</lux-text-style>
+    <lux-text-style variation="strong">Design isn’t just about look and feel.</lux-text-style>
+    <lux-text-style variation="emphasis">Design is how it works.</lux-text-style>
   </div>
   ```
 </docs>

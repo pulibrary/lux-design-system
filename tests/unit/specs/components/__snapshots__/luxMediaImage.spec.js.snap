@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`MediaImage.vue has the expected html structure 1`] = `
+exports[`LuxMediaImage.vue has the expected html structure 1`] = `
 <div
   class="lux-media-image medium lux-default-thumbnail"
 >

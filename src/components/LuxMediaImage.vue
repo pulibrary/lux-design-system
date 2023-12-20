@@ -21,10 +21,11 @@
 
 <script>
 /**
- * Cards are used to apply a container around a related grouping of information.
+ * Media-Image is a component that is used to display an image,
+ * or an icon if the image can't be resolved.
  */
 export default {
-  name: "MediaImage",
+  name: "LuxMediaImage",
   status: "ready",
   release: "1.0.0",
   type: "Element",
@@ -156,7 +157,7 @@ export default {
 <docs>
   ```
   <div>
-    <media-image src="https://picsum.photos/400/300/?random" height="medium"></media-image>
+    <lux-media-image src="https://picsum.photos/400/300/?random" height="medium"></lux-media-image>
   </div>
   ```
 </docs>

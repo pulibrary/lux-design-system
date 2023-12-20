@@ -12,9 +12,9 @@
         :edited="hasChanged(element.id)"
         @click.capture="select(element.id, $event)"
       >
-        <media-image :src="element.mediaUrl"></media-image>
-        <heading level="h2">{{ element.title }}</heading>
-        <text-style variation="default">{{ element.caption }}</text-style>
+        <lux-media-image :src="element.mediaUrl"></lux-media-image>
+        <lux-heading level="h2">{{ element.title }}</lux-heading>
+        <lux-text-style variation="default">{{ element.caption }}</lux-text-style>
       </lux-card>
     </template>
   </draggable>
