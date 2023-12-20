@@ -14,19 +14,19 @@ exports[`LuxGallery.vue has the expected html structure 1`] = `
     selected="false"
     size="medium"
   >
-    <media-image
+    <lux-media-image
       src="https://picsum.photos/600/300/?random"
     />
-    <heading
+    <lux-heading
       level="h2"
     >
       First
-    </heading>
-    <text-style
+    </lux-heading>
+    <lux-text-style
       variation="default"
     >
       one
-    </text-style>
+    </lux-text-style>
   </lux-card>
   <lux-card
     cardpixelwidth="300"
@@ -38,19 +38,19 @@ exports[`LuxGallery.vue has the expected html structure 1`] = `
     selected="false"
     size="medium"
   >
-    <media-image
+    <lux-media-image
       src="https://picsum.photos/600/300/?random"
     />
-    <heading
+    <lux-heading
       level="h2"
     >
       Second
-    </heading>
-    <text-style
+    </lux-heading>
+    <lux-text-style
       variation="default"
     >
       two
-    </text-style>
+    </lux-text-style>
   </lux-card>
   <lux-card
     cardpixelwidth="300"
@@ -62,19 +62,19 @@ exports[`LuxGallery.vue has the expected html structure 1`] = `
     selected="false"
     size="medium"
   >
-    <media-image
+    <lux-media-image
       src="https://foo/bar"
     />
-    <heading
+    <lux-heading
       level="h2"
     >
       Third
-    </heading>
-    <text-style
+    </lux-heading>
+    <lux-text-style
       variation="default"
     >
       three
-    </text-style>
+    </lux-text-style>
   </lux-card>
 </div>
 `;

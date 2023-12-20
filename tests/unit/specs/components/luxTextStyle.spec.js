@@ -1,11 +1,11 @@
 import { mount } from "@vue/test-utils"
-import TextStyle from "@/components/TextStyle.vue"
+import LuxTextStyle from "@/components/LuxTextStyle.vue"
 
-describe("TextStyle.vue", () => {
+describe("LuxTextStyle.vue", () => {
   let wrapper
 
   beforeEach(() => {
-    wrapper = mount(TextStyle, {
+    wrapper = mount(LuxTextStyle, {
       slots: {
         default: "foo",
       },
@@ -16,7 +16,7 @@ describe("TextStyle.vue", () => {
     expect(wrapper.find("p").exists()).toBe(true)
     expect(wrapper.find("span").exists()).toBe(false)
     // can't setProps here because the component must be regenerated to change its wrapper
-    const wrapper2 = mount(TextStyle, {
+    const wrapper2 = mount(LuxTextStyle, {
       slots: {
         default: "foo",
       },
