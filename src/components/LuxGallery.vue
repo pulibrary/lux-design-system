@@ -1,7 +1,7 @@
 <template>
   <draggable class="lux-gallery" v-model="items" item-key="id" tag="div" @click="deselect($event)">
     <template #item="{ element }">
-      <card
+      <lux-card
         :id="element.id"
         :key="element.id"
         class="lux-galleryCard"
@@ -15,7 +15,7 @@
         <media-image :src="element.mediaUrl"></media-image>
         <heading level="h2">{{ element.title }}</heading>
         <text-style variation="default">{{ element.caption }}</text-style>
-      </card>
+      </lux-card>
     </template>
   </draggable>
 </template>

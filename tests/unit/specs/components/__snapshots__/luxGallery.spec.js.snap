@@ -4,7 +4,7 @@ exports[`LuxGallery.vue has the expected html structure 1`] = `
 <div
   class="lux-gallery"
 >
-  <card
+  <lux-card
     cardpixelwidth="300"
     class="lux-galleryCard"
     data-draggable="true"
@@ -27,8 +27,8 @@ exports[`LuxGallery.vue has the expected html structure 1`] = `
     >
       one
     </text-style>
-  </card>
-  <card
+  </lux-card>
+  <lux-card
     cardpixelwidth="300"
     class="lux-galleryCard"
     data-draggable="true"
@@ -51,8 +51,8 @@ exports[`LuxGallery.vue has the expected html structure 1`] = `
     >
       two
     </text-style>
-  </card>
-  <card
+  </lux-card>
+  <lux-card
     cardpixelwidth="300"
     class="lux-galleryCard"
     data-draggable="true"
@@ -75,6 +75,6 @@ exports[`LuxGallery.vue has the expected html structure 1`] = `
     >
       three
     </text-style>
-  </card>
+  </lux-card>
 </div>
 `;
