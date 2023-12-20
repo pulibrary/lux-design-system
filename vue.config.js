@@ -1,7 +1,7 @@
-const { defineConfig } = require("@vue/cli-service");
+const { defineConfig } = require("@vue/cli-service")
 module.exports = defineConfig({
   transpileDependencies: true,
-});
+})
 
 // Helpful for sass loader config
 // https://cli.vuejs.org/guide/css.html#automatic-imports

@@ -30,14 +30,12 @@ export default {
     variation: {
       type: String,
       default: "default",
-      validator: (value) => {
-        return value.match(
-          /(default|disabled|strong|emphasis|positive|negative|small|uppercase)/
-        );
+      validator: value => {
+        return value.match(/(default|disabled|strong|emphasis|positive|negative|small|uppercase)/)
       },
     },
   },
-};
+}
 </script>
 
 <style lang="scss">

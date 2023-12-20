@@ -86,10 +86,10 @@ export default {
   },
   methods: {
     select: function (event) {
-      this.$emit("card-click", event);
+      this.$emit("card-click", event)
     },
   },
-};
+}
 </script>
 
 <style lang="scss" scoped>
@@ -110,7 +110,8 @@ export default {
   }
   &:focus,
   &-selected {
-    box-shadow: var(--box-shadow-selected);
+    // box-shadow: var(--box-shadow-selected);
+    box-shadow: 0px 0px 5px 3px #e77500;
   }
   &-edited {
     background: var(--color-princeton-orange-on-white);

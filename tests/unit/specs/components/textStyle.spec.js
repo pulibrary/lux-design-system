@@ -1,20 +1,20 @@
-import { mount } from "@vue/test-utils";
-import TextStyle from "@/components/TextStyle.vue";
+import { mount } from "@vue/test-utils"
+import TextStyle from "@/components/TextStyle.vue"
 
 describe("TextStyle.vue", () => {
-  let wrapper;
+  let wrapper
 
   beforeEach(() => {
     wrapper = mount(TextStyle, {
       slots: {
         default: "foo",
       },
-    });
-  });
+    })
+  })
 
   it("should be of the element type that is passed in as a prop", async () => {
-    expect(wrapper.find("p").exists()).toBe(true);
-    expect(wrapper.find("span").exists()).toBe(false);
+    expect(wrapper.find("p").exists()).toBe(true)
+    expect(wrapper.find("span").exists()).toBe(false)
     // can't setProps here because the component must be regenerated to change its wrapper
     const wrapper2 = mount(TextStyle, {
       slots: {
@@ -23,17 +23,17 @@ describe("TextStyle.vue", () => {
       props: {
         type: "span",
       },
-    });
-    expect(wrapper2.find("p").exists()).toBe(false);
-    expect(wrapper2.find("span").exists()).toBe(true);
-  });
+    })
+    expect(wrapper2.find("p").exists()).toBe(false)
+    expect(wrapper2.find("span").exists()).toBe(true)
+  })
 
   it("should render slotted text", () => {
-    const text = wrapper.find("p");
-    expect(text.text()).toBe("foo");
-  });
+    const text = wrapper.find("p")
+    expect(text.text()).toBe("foo")
+  })
 
   it("has the expected html structure", () => {
-    expect(wrapper.element).toMatchSnapshot();
-  });
-});
+    expect(wrapper.element).toMatchSnapshot()
+  })
+})
