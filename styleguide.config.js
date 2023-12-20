@@ -3,10 +3,15 @@ module.exports = {
   title: "LUX Style Guide",
   components: "src/components/**/[A-Z]*.vue",
   defaultExample: true,
+  pagePerSection: true,
   sections: [
     {
-      name: "First Section",
-      components: "src/components/**/[A-Z]*.vue",
+      name: "Components",
+      components: "src/components/[A-Z]*.vue",
+    },
+    {
+      name: "Icons",
+      components: "src/components/icons/[A-Z]*.vue",
     },
   ],
   exampleMode: "expand",
