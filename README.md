@@ -10,6 +10,14 @@ npm install
 npm run styleguide
 ```
 
+### Deploy the styleguide to GitHub Pages
+```
+npm run deploy
+```
+This will update the docs at [https://pulibrary.github.io/lux-styleguidist/](https://pulibrary.github.io/lux-styleguidist/).
+Please note: For informational purposes only. Don't do this outside of a release!
+
+
 ## Copying Vue 2 components from lux
 1. Copy a component from the lux repository into src/components
 1. This repo uses CSS variables, rather than SCSS token variables.  If the component
@@ -47,7 +55,7 @@ you will need to refactor it back into a regular template.
     1. Running the tests will produce a snapshot file.  Compare it to the original snapshot file.  If there are no substantial changes, commit it.  If there are substantial changes, make any necessary changes.
 
 ### Linting
-We are using the eslint_plugin-prettier to lint our files. To adjust the lint format settings, please use the `.prettierrc` file. Code linting rules should be set in `eslintrc.js`. 
+We are using the eslint_plugin-prettier to lint our files. To adjust the lint format settings, please use the `.prettierrc` file. Code linting rules should be set in `eslintrc.js`.
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
