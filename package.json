@@ -18,7 +18,7 @@
     "test": "jest",
     "lint": "vue-cli-service lint",
     "deploy": "npm run build; npm run styleguide:build; push-dir --dir=styleguide --branch=gh-pages --cleanup",
-    "release": "np && npm run deploy",
+    "release": "np --no-2fa && npm run deploy",
     "styleguide": "vue-cli-service styleguidist",
     "styleguide:build": "vue-cli-service styleguidist:build"
   },
