@@ -12,7 +12,6 @@
     }
   },
   "version": "5.0.0-alpha.4",
-  "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vite build",
