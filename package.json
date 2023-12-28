@@ -1,5 +1,5 @@
 {
-  "name": "lux-styleguidist",
+  "name": "lux-design-system",
   "files": ["dist"],
   "main": "./dist/lux-styleguidist.umd.cjs",
   "module": "./dist/lux-styleguidist.js",
@@ -9,7 +9,7 @@
       "require": "./dist/lux-styleguidist.umd.cjs"
     }
   },
-  "version": "0.1.0",
+  "version": "5.0.0-alpha",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
@@ -17,6 +17,7 @@
     "test": "jest",
     "lint": "vue-cli-service lint",
     "deploy": "npm run styleguide:build; push-dir --dir=styleguide --branch=gh-pages --cleanup",
+    "release": "np && npm run deploy",
     "styleguide": "vue-cli-service styleguidist",
     "styleguide:build": "vue-cli-service styleguidist:build"
   },
@@ -48,6 +49,7 @@
     "jest": "^27.0.5",
     "jest-junit": "^16.0.0",
     "lint-staged": "^11.1.2",
+    "np": "^9.2.0",
     "push-dir": "^0.4.1",
     "prettier": "^2.4.1",
     "rollup": "^4.9.1",
