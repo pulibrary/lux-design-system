@@ -11,7 +11,7 @@
       "require": "./dist/lux-styleguidist.umd.cjs"
     }
   },
-  "version": "5.0.0-alpha.5",
+  "version": "5.0.0-alpha.6",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vite build",
