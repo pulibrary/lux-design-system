@@ -32,14 +32,14 @@ export default {
 }
 
 .lux-card-header {
-  padding: $space-small;
+  padding: var(--space-small);
 
-  @media #{$media-query-large} {
-    padding: $space-base;
+  @media (min-width: 900px) {
+    padding: var(--space-base);
   }
 
   .lux-heading + .lux-text-style {
-    padding-top: $space-xx-small;
+    padding-top: var(--space-xx-small);
   }
 }
 </style>
