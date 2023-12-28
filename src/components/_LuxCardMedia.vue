@@ -28,10 +28,10 @@ export default {
 <style lang="scss" scoped>
 @import "../assets/styles/spacing.scss";
 .lux-card-media .lux-icon {
-  padding: $space-small;
+  padding: var(--space-small);
 
-  @media #{$media-query-large} {
-    padding: $space-base;
+  @media (min-width: 900px) {
+    padding: var(--space-base);
   }
 }
 </style>

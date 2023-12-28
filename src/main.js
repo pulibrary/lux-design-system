@@ -4,3 +4,5 @@ import "./registerServiceWorker"
 import store from "./store"
 
 createApp(App).use(store).mount("#app")
+
+import LuxCard from "./components/LuxCard.vue"
