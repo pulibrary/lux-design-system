@@ -10,6 +10,17 @@ npm install
 npm run styleguide
 ```
 
+### Release a new version
+
+This requires you to have an account on npm with 2fa enabled.  You will also
+need to be part of the PULibrary organization on npm.
+
+```
+npm login
+npm install --global np # don't add this as a devDependency, otherwise you won't be able to push to npm
+npm run release
+```
+
 ### Deploy the styleguide to GitHub Pages
 ```
 npm run deploy
