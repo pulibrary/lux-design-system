@@ -9,6 +9,10 @@
     ".": {
       "import": "./dist/lux-styleguidist.mjs",
       "require": "./dist/lux-styleguidist.umd.js"
+    },
+    "./dist/style.css": {
+      "import": "./dist/style.css",
+      "require": "./dist/style.css"
     }
   },
   "version": "5.0.0-alpha.8",
