@@ -3,12 +3,12 @@
   "files": [
     "dist"
   ],
-  "main": "./dist/lux-styleguidist.umd.cjs",
-  "module": "./dist/lux-styleguidist.js",
+  "main": "./dist/lux-styleguidist.umd.js",
+  "module": "./dist/lux-styleguidist.mjs",
   "exports": {
     ".": {
-      "import": "./dist/lux-styleguidist.js",
-      "require": "./dist/lux-styleguidist.umd.cjs"
+      "import": "./dist/lux-styleguidist.mjs",
+      "require": "./dist/lux-styleguidist.umd.js"
     }
   },
   "version": "5.0.0-alpha.7",
