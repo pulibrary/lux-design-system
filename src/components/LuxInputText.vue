@@ -272,9 +272,10 @@ export default {
 @import "../assets/styles/variables.css";
 @import "../assets/styles/spacing.scss";
 @import "../assets/styles/mixins.scss";
+@import "../assets/styles/system.scss";
 
 // Design Tokens with local scope
-$color-placeholder: tint(var(--color-grayscale), 50%);
+$color-placeholder: tint(rgb(149, 156, 167), 50%);
 
 .lux-input {
   @include stack-space(var(--space-small));
@@ -287,7 +288,7 @@ $color-placeholder: tint(var(--color-grayscale), 50%);
   label {
     display: block;
     font-size: var(--font-size-base);
-    color: tint(var(--color-rich-black), 20%);
+    color: tint($color-rich-black, 20%);
     @include stack-space(var(--space-x-small));
 
     &.lux-hidden {
@@ -324,27 +325,27 @@ $color-placeholder: tint(var(--color-grayscale), 50%);
     input,
     textarea {
       @include reset;
-      @include inset-squish-space(var(--space-small));
+      @include inset-squish-space(16px);
       transition: all 0.2s ease;
       -webkit-appearance: none;
       appearance: none;
       font-family: var(--font-family-text);
       background: var(--color-white);
       border-radius: var(--border-radius-default);
-      color: set-text-color(var(--color-rich-black), var(--color-white));
+      color: set-text-color($color-rich-black, var(--color-white));
       margin: 0;
       border: 0;
       width: 100%;
 
       &::-webkit-input-placeholder {
         -webkit-font-smoothing: antialiased;
-        color: var(--color-placeholder);
+        color: $color-placeholder;
       }
       &:-ms-input-placeholder {
-        color: var(--color-placeholder);
+        color: $color-placeholder;
       }
       &::-moz-placeholder {
-        color: var(--color-placeholder);
+        color: $color-placeholder;
         -moz-osx-font-smoothing: grayscale;
         opacity: 1;
       }
@@ -366,9 +367,9 @@ $color-placeholder: tint(var(--color-grayscale), 50%);
     }
     &[disabled],
     &.disabled {
-      box-shadow: inset 0 1px 0 0 rgba(var(--color-rich-black), 0.07),
-        0 0 0 1px tint(var(--color-rich-black), 80%);
-      background: lighten(var(--color-placeholder), 42%);
+      box-shadow: inset 0 1px 0 0 rgba($color-rich-black, 0.07),
+        0 0 0 1px tint($color-rich-black, 80%);
+      background: lighten($color-placeholder, 42%);
       cursor: not-allowed;
       opacity: 0.5;
 

@@ -55,7 +55,7 @@ export default {
     // This is how you’d use design tokens with media queries
   }
   &.disabled {
-    color: tint(var(--color-rich-black), 40%);
+    color: tint($color-rich-black, 40%);
     text-decoration: line-through;
   }
   &.strong {
