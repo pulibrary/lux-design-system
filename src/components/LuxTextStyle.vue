@@ -42,10 +42,12 @@ export default {
 @import "../assets/styles/variables.css";
 @import "../assets/styles/spacing.scss";
 @import "../assets/styles/mixins.scss";
+@import "../assets/styles/system.scss";
+$positive-text: #7cb518;
 
 .lux-text-style {
   @include reset;
-  @include stack-space(var(--color-rich-black));
+  @include stack-space($color-rich-black);
   color: var(--color-rich-black);
   font-family: var(--font-family-text);
   font-weight: var(--font-weight-regular);
@@ -55,7 +57,7 @@ export default {
     // This is how you’d use design tokens with media queries
   }
   &.disabled {
-    color: tint(var(--color-rich-black), 40%);
+    color: tint($color-rich-black, 40%);
     text-decoration: line-through;
   }
   &.strong {
@@ -65,7 +67,7 @@ export default {
     font-style: italic;
   }
   &.positive {
-    color: shade(var(--positive-text), 20%);
+    color: shade($positive-text, 20%);
   }
   &.negative {
     color: var(--color-red);
