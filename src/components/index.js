@@ -2,6 +2,7 @@ import LuxIconAdd from "./icons/LuxIconAdd.vue"
 import LuxIconBase from "./icons/LuxIconBase.vue"
 import LuxIconFile from "./icons/LuxIconFile.vue"
 import LuxIconGlobe from "./icons/LuxIconGlobe.vue"
+import LuxInputText from "./LuxInputText.vue"
 import _LuxCardContent from "./_LuxCardContent.vue"
 import _LuxCardHeader from "./_LuxCardHeader.vue"
 import _LuxCardMedia from "./_LuxCardMedia.vue"
@@ -18,6 +19,7 @@ export {
   LuxIconBase,
   LuxIconFile,
   LuxIconGlobe,
+  LuxInputText,
   _LuxCardContent,
   _LuxCardHeader,
   _LuxCardMedia,
