@@ -72,7 +72,7 @@
  * formats including numbers. For longer input, use the `FormTextarea` element.
  */
 export default {
-  name: "InputText",
+  name: "LuxInputText",
   status: "ready",
   release: "1.0.0",
   type: "Element",
@@ -332,7 +332,7 @@ $color-placeholder: tint(rgb(149, 156, 167), 50%);
       font-family: var(--font-family-text);
       background: var(--color-white);
       border-radius: var(--border-radius-default);
-      color: set-text-color($color-rich-black, var(--color-white));
+      color: set-text-color($color-rich-black, $color-white);
       margin: 0;
       border: 0;
       width: 100%;
