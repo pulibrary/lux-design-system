@@ -10,6 +10,7 @@ import LuxCard from "./LuxCard.vue"
 import LuxCounter from "./LuxCounter.vue"
 import LuxGallery from "./LuxGallery.vue"
 import LuxHeading from "./LuxHeading.vue"
+import LuxLibraryHeader from "./LuxLibraryHeader.vue"
 import LuxMediaImage from "./LuxMediaImage.vue"
 import LuxTextStyle from "./LuxTextStyle.vue"
 import sizeMixin from "./sizeMixin"
@@ -27,6 +28,7 @@ export {
   LuxCounter,
   LuxGallery,
   LuxHeading,
+  LuxLibraryHeader,
   LuxMediaImage,
   LuxTextStyle,
   sizeMixin,
