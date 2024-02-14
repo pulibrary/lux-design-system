@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LuxInputSelect.vue has the expected html structure 1`] = `
+<div
+  class="lux-select"
+>
+  <!--v-if-->
+  <select
+    class="lux-select medium"
+    errormessage=""
+    id="foo"
+    name="foo"
+  >
+    
+    <option
+      value="one"
+    />
+    <option
+      value="two"
+    />
+    
+  </select>
+  <!--v-if-->
+</div>
+`;
