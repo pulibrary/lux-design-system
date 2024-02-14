@@ -1,11 +1,11 @@
 import * as components from "./components"
 
-const Lux = {
-  install(app) {
+export default {
+  // Vue plugins must expose an install() method, see
+  // https://vuejs.org/guide/reusability/plugins.html
+  install(app, options) {
     for (const componentKey in components) {
-      app.use(components[componentKey])
+      app.component(components[componentKey].name, components[componentKey])
     }
   },
 }
-
-export default Lux
