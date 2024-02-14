@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LuxInputButton.vue has the expected html structure 1`] = `
+<button
+  class="lux-button text medium"
+  type="submit"
+>
+  <!--v-if-->
+  
+  Apply Changes.
+  
+  <!--v-if-->
+</button>
+`;
