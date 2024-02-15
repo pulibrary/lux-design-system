@@ -56,8 +56,6 @@
     "lint-staged": "^11.1.2",
     "push-dir": "^0.4.1",
     "prettier": "^2.4.1",
-    "rollup": "^4.9.1",
-    "rollup-plugin-vue": "^6.0.0",
     "sass": "^1.69.3",
     "sass-loader": "^13.3.2",
     "vue-cli-plugin-styleguidist": "~4.72.4"
