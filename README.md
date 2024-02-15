@@ -31,6 +31,7 @@ Please note: For informational purposes only. Don't do this outside of a release
 
 ## Copying Vue 2 components from lux
 1. Copy a component from the lux repository into src/components
+1. Run `npm run lint --fix` to make sure the component has our formatting rules applied.
 1. This repo uses CSS variables, rather than SCSS token variables.  If the component
 includes tokens:
     1. Add `@import "../assets/styles/variables.css";` to the `<style>` section.
@@ -38,9 +39,11 @@ includes tokens:
       `$font-family-text` can be changed to `var(--font-family-text)`.
 1. If the component includes SCSS mixins, add `@import "../assets/styles/mixins.scss";`
 to the `<style>` section.  You may also need `../assets/styles/spacing.scss` if the
-component uses spacing mixins.
+component uses spacing mixins.  Media queries can't be included in CSS variables, so if you need those, include `../assets/styles/media_queries.scss` and use SCSS variables.
 1. Vue 3 no longer supports functional templates.  If the component includes `<template functional>`,
 you will need to refactor it back into a regular template.
+1. Run `npm run styleguide` and make sure it compiles and looks good.
+1. Add the component to src/components/index.js so it is added to the lux Vue plugin and can be used in other projects.
 1. Copy the test for the component from the lux test/unit/specs/components directory.
     1. Revert any changes to the test that were needed for functional templates.
     1. Modify the import for the test to point to the component's new path.

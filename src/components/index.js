@@ -13,6 +13,7 @@ import LuxGallery from "./LuxGallery.vue"
 import LuxHeading from "./LuxHeading.vue"
 import LuxLibraryHeader from "./LuxLibraryHeader.vue"
 import LuxMediaImage from "./LuxMediaImage.vue"
+import LuxMenuBar from "./LuxMenuBar.vue"
 import LuxTextStyle from "./LuxTextStyle.vue"
 
 export {
@@ -31,5 +32,6 @@ export {
   LuxHeading,
   LuxLibraryHeader,
   LuxMediaImage,
+  LuxMenuBar,
   LuxTextStyle,
 }
