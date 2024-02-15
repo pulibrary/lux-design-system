@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MenuBar.vue has the expected html structure 1`] = `
+<nav
+  class="lux-nav"
+>
+  <ul>
+    
+    <li>
+      
+      <a
+        aria-haspopup="true"
+        class="lux-has-children lux-nav-item"
+        href="/example/"
+        title="Foo"
+      >
+        Foo
+      </a>
+      <ul
+        aria-label="submenu"
+        class="lux-nav-children"
+      >
+        
+        <li>
+          <a
+            class="lux-nav-item"
+            href="/example/"
+            title="Baz"
+          >
+            Baz
+          </a>
+        </li>
+        
+      </ul>
+      
+    </li>
+    <li>
+      <a
+        class="lux-nav-item"
+        href="/example/"
+        title="Bar"
+      >
+        Bar
+      </a>
+    </li>
+    
+  </ul>
+</nav>
+`;

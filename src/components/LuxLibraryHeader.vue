@@ -272,16 +272,16 @@ export default {
 <docs>
   ```jsx
     <div>
-      <library-header app-name="Leave and Travel Requests" abbr-name="LTR" app-url="https://catalog.princeton.edu" theme="dark">
-        <menu-bar type="main-menu" :menu-items="[
+      <lux-library-header app-name="Leave and Travel Requests" abbr-name="LTR" app-url="https://catalog.princeton.edu" theme="dark">
+        <lux-menu-bar type="main-menu" :menu-items="[
             {name: 'Help', component: 'Help', href: '/help/'},
             {name: 'Feedback', component: 'Feedback', href: '/feedback/'},
             {name: 'Your Account', component: 'Account', href: '/account/', children: [
               {name: 'Logout', component: 'Logout', href: '/account/'}
             ]}
           ]"
-        ></menu-bar>
-      </library-header>
+        ></lux-menu-bar>
+      </lux-library-header>
     </div>
   ```
   
@@ -289,7 +289,7 @@ export default {
     <div class="dos-n-donts">
       <div class="do">
         <div class="do-dont-example">
-          <library-header></library-header>
+          <lux-library-header></lux-library-header>
           <noscript>Place fallback header here.</noscript>
         </div>
         <p>Make sure users with JavaScript disabled can see important parts of the page by using &lt;noscript&gt; tags.</p>
