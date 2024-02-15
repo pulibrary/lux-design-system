@@ -14,7 +14,6 @@ import LuxHeading from "./LuxHeading.vue"
 import LuxLibraryHeader from "./LuxLibraryHeader.vue"
 import LuxMediaImage from "./LuxMediaImage.vue"
 import LuxTextStyle from "./LuxTextStyle.vue"
-import sizeMixin from "./sizeMixin"
 
 export {
   LuxIconAdd,
@@ -33,5 +32,4 @@ export {
   LuxLibraryHeader,
   LuxMediaImage,
   LuxTextStyle,
-  sizeMixin,
 }
