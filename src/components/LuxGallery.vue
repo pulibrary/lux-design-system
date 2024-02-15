@@ -1,9 +1,8 @@
 <template>
-  <draggable class="lux-gallery" v-model="items" item-key="id" tag="div" @click="deselect($event)">
-    <template #item="{ element }">
+  <VueDraggable class="lux-gallery" v-model="items" tag="div" @click="deselect($event)" ref="el">
+    <template v-for="element in items" :key="element.id">
       <lux-card
         :id="element.id"
-        :key="element.id"
         class="lux-galleryCard"
         :cardPixelWidth="cardPixelWidth"
         size="medium"
@@ -17,13 +16,12 @@
         <lux-text-style variation="default">{{ element.caption }}</lux-text-style>
       </lux-card>
     </template>
-  </draggable>
+  </VueDraggable>
 </template>
 
 <script>
 import store from "../store"
-// import { mapState, mapGetters } from "vuex"
-import draggable from "vuedraggable"
+import { VueDraggable } from "vue-draggable-plus"
 /*
  * Gallery is a grid of images with captions.
  */
@@ -33,7 +31,7 @@ export default {
   release: "1.0.0",
   type: "Pattern",
   components: {
-    draggable,
+    VueDraggable,
   },
   // computed: mapState([
   //   // map this.count to store.state.count
