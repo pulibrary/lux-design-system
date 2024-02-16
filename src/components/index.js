@@ -19,6 +19,7 @@ import LuxMediaImage from "./LuxMediaImage.vue"
 import LuxMenuBar from "./LuxMenuBar.vue"
 import LuxTextStyle from "./LuxTextStyle.vue"
 import LuxWrapper from "./LuxWrapper.vue"
+import LuxLibraryLogo from "./LuxLibraryLogo.vue"
 
 export {
   LuxIconAdd,

@@ -49,7 +49,7 @@ includes tokens:
       `$font-family-text` can be changed to `var(--font-family-text)`.
 1. If the component includes SCSS mixins, add `@import "../assets/styles/mixins.scss";`
 to the `<style>` section.  You may also need `../assets/styles/spacing.scss` if the
-component uses spacing mixins.  Media queries can't be included in CSS variables, so if you need those, import `../assets/styles/media_queries.scss` and use SCSS variables.
+component uses spacing mixins.  Media queries can't be included in CSS variables, so if you need those, import `../assets/styles/media_queries.scss` and use SCSS variables. There are functions that use SCSS variables and cannot take CSS variables as a parameter; In this case add `@import ../assets/styles/system.scss`.
 1. Vue 3 no longer supports functional templates.  If the component includes `<template functional>`,
 you will need to refactor it back into a regular template.
 1. Run `npm run styleguide` and make sure it compiles and looks good.
