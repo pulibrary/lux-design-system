@@ -10,6 +10,12 @@ npm install
 npm run styleguide
 ```
 
+### Running tests
+
+* Run all tests with `npm run test`
+* Run a single test file with `npx jest tests/unit/specs/components/luxGridItem.spec.js`
+* Run a single test with the name of the test from the `it()` call: `npx jest -t "should have the appropriate class to define the columns"`
+
 ### Release a new version
 
 This requires you to have an account on npm with 2fa enabled.  You will also
@@ -43,7 +49,7 @@ includes tokens:
       `$font-family-text` can be changed to `var(--font-family-text)`.
 1. If the component includes SCSS mixins, add `@import "../assets/styles/mixins.scss";`
 to the `<style>` section.  You may also need `../assets/styles/spacing.scss` if the
-component uses spacing mixins.  Media queries can't be included in CSS variables, so if you need those, include `../assets/styles/media_queries.scss` and use SCSS variables.
+component uses spacing mixins.  Media queries can't be included in CSS variables, so if you need those, import `../assets/styles/media_queries.scss` and use SCSS variables.
 1. Vue 3 no longer supports functional templates.  If the component includes `<template functional>`,
 you will need to refactor it back into a regular template.
 1. Run `npm run styleguide` and make sure it compiles and looks good.

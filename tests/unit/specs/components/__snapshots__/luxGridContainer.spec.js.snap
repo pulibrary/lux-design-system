@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`GridItem.vue has the expected html structure 1`] = `
+<div
+  class="lux-flex-container center"
+>
+  
+  
+</div>
+`;
