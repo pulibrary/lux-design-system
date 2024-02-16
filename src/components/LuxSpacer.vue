@@ -34,9 +34,9 @@ export default {
 </style>
 
 <docs>
-    ```jsx
+```jsx
     <div>
-      <lux-spacer></lux-spacer>
+        <lux-spacer></lux-spacer>
     </div>
-    ```
-  </docs>
+```
+</docs>
