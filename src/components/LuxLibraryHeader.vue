@@ -1,6 +1,6 @@
 <template>
   <component :is="type" :class="['lux-library-header', theme]">
-    <wrapper class="lux-header-content" :maxWidth="maxWidth">
+    <lux-wrapper class="lux-header-content" :maxWidth="maxWidth">
       <library-logo :theme="value(theme)"></library-logo>
       <a class="lux-app-name" :href="appUrl" :title="appName" aria-labelledby="appName">
         <span id="appName" class="full-name">{{ appName }}</span>
@@ -8,7 +8,7 @@
       </a>
       <spacer></spacer>
       <slot />
-    </wrapper>
+    </lux-wrapper>
   </component>
 </template>
 
