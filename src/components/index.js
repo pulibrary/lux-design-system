@@ -23,6 +23,7 @@ import LuxLibraryLogo from "./LuxLibraryLogo.vue"
 import LuxSpacer from "./LuxSpacer.vue"
 import LuxLogoLibrary from "./logos/LuxLogoLibrary.vue"
 import LuxLogoLibraryIcon from "./logos/LuxLogoLibraryIcon.vue"
+import LuxSearchBox from "./LuxSearchBox.vue"
 
 export {
   LuxIconAdd,
@@ -50,4 +51,5 @@ export {
   LuxSpacer,
   LuxLogoLibrary,
   LuxLogoLibraryIcon,
+  LuxSearchBox,
 }
