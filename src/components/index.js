@@ -11,6 +11,7 @@ import LuxCard from "./LuxCard.vue"
 import LuxCounter from "./LuxCounter.vue"
 import LuxGallery from "./LuxGallery.vue"
 import LuxHeading from "./LuxHeading.vue"
+import LuxHyperlink from "./LuxHyperlink.vue"
 import LuxLibraryHeader from "./LuxLibraryHeader.vue"
 import LuxMediaImage from "./LuxMediaImage.vue"
 import LuxMenuBar from "./LuxMenuBar.vue"
@@ -30,6 +31,7 @@ export {
   LuxCounter,
   LuxGallery,
   LuxHeading,
+  LuxHyperlink,
   LuxLibraryHeader,
   LuxMediaImage,
   LuxMenuBar,
