@@ -20,6 +20,9 @@ import LuxMenuBar from "./LuxMenuBar.vue"
 import LuxTextStyle from "./LuxTextStyle.vue"
 import LuxWrapper from "./LuxWrapper.vue"
 import LuxLibraryLogo from "./LuxLibraryLogo.vue"
+import LuxSpacer from "./LuxSpacer.vue"
+import LuxLogoLibrary from "./logos/LuxLogoLibrary.vue"
+import LuxLogoLibraryIcon from "./logos/LuxLogoLibraryIcon.vue"
 
 export {
   LuxIconAdd,
@@ -43,4 +46,8 @@ export {
   LuxMenuBar,
   LuxTextStyle,
   LuxWrapper,
+  LuxLibraryLogo,
+  LuxSpacer,
+  LuxLogoLibrary,
+  LuxLogoLibraryIcon,
 }
