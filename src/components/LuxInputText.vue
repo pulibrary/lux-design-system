@@ -24,6 +24,7 @@
         :class="['lux-input', { 'lux-input-error': hasError }]"
         v-on:input="$emit('input', $event.target.value)"
         @blur="inputblur($event)"
+        @focus="$emit('focus')"
       />
 
       <textarea
