@@ -1,3 +1,5 @@
+const path = require("path")
+
 module.exports = {
   // set your styleguidist configuration here
   title: "LUX Style Guide",
@@ -15,4 +17,5 @@ module.exports = {
     },
   ],
   exampleMode: "expand",
+  enhancePreviewApp: path.join(__dirname, "styleguide_vue_app.js"),
 }
