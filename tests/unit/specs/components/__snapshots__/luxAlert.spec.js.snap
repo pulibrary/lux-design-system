@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LuxAlert.vue has the expected html structure 1`] = `
+<transition-stub
+  appear="false"
+  css="true"
+  name="fade"
+  persisted="false"
+>
+  <div
+    class="lux-alert lux-alert-info"
+    role="alert"
+  >
+    <span>
+      
+      Here's some info for you.
+      
+    </span>
+    <!--v-if-->
+  </div>
+</transition-stub>
+`;
