@@ -2,7 +2,6 @@ import { mount } from "@vue/test-utils"
 import LuxDatePicker from "@/components/LuxDatePicker.vue"
 import ResizeObserver from "resize-observer-polyfill"
 import { nextTick } from "vue"
-import { log } from "console"
 
 global.ResizeObserver = ResizeObserver
 

@@ -8,7 +8,7 @@ describe("LuxWrapper.vue", () => {
   it("can accept an arbitrary number of pixels in the maxWidth prop", () => {
     wrapper = mount(LuxWrapper, {
       props: {
-        maxWidth: "123",
+        maxWidth: 123,
       },
     })
     expect(wrapper.find("div").attributes("style")).toEqual("max-width: 123px;")

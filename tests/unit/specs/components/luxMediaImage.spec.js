@@ -14,7 +14,12 @@ describe("LuxMediaImage.vue", () => {
         cover: true,
         contain: false,
       },
-      stubs: ["lux-icon-base", "lux-icon-file"],
+      global: {
+        stubs: {
+          "lux-icon-base": true,
+          "lux-icon-file": true,
+        },
+      },
     })
   })
 
