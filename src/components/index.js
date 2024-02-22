@@ -1,7 +1,15 @@
 import LuxIconAdd from "./icons/LuxIconAdd.vue"
+import LuxIconAlert from "./icons/LuxIconAlert.vue"
+import LuxIconApproved from "./icons/LuxIconApproved.vue"
+import LuxIconAscending from "./icons/LuxIconAscending.vue"
 import LuxIconBase from "./icons/LuxIconBase.vue"
+import LuxIconDenied from "./icons/LuxIconDenied.vue"
+import LuxIconDescending from "./icons/LuxIconDescending.vue"
 import LuxIconFile from "./icons/LuxIconFile.vue"
 import LuxIconGlobe from "./icons/LuxIconGlobe.vue"
+import LuxIconSearch from "./icons/LuxIconSearch.vue"
+import LuxIconUnsorted from "./icons/LuxIconUnsorted.vue"
+import LuxInputButton from "./LuxInputButton.vue"
 import LuxInputSelect from "./LuxInputSelect.vue"
 import LuxInputText from "./LuxInputText.vue"
 import _LuxCardContent from "./_LuxCardContent.vue"
@@ -30,9 +38,17 @@ import LuxAlert from "./LuxAlert.vue"
 
 export {
   LuxIconAdd,
+  LuxIconAlert,
+  LuxIconApproved,
+  LuxIconAscending,
   LuxIconBase,
+  LuxIconDenied,
+  LuxIconDescending,
   LuxIconFile,
   LuxIconGlobe,
+  LuxIconSearch,
+  LuxIconUnsorted,
+  LuxInputButton,
   LuxInputSelect,
   LuxInputText,
   _LuxCardContent,

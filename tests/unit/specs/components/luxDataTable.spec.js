@@ -1,20 +1,30 @@
 import { mount } from "@vue/test-utils"
 import LuxDataTable from "@/components/LuxDataTable.vue"
 import { nextTick } from "vue"
+import {
+  LuxInputButton,
+  LuxIconBase,
+  LuxHyperlink,
+  LuxIconUnsorted,
+  LuxIconAscending,
+  LuxIconDescending,
+} from "@/components"
 
 describe("LuxDataTable.vue", () => {
   let wrapper
 
   beforeEach(() => {
     wrapper = mount(LuxDataTable, {
-      stubs: [
-        "input-button",
-        "lux-icon-base",
-        "lux-icon-unsorted",
-        "lux-icon-ascending",
-        "lux-icon-descending",
-        "hyperlink",
-      ],
+      global: {
+        components: {
+          "input-button": LuxInputButton,
+          "lux-hyperlink": LuxHyperlink,
+          "lux-icon-base": LuxIconBase,
+          "lux-icon-ascending": LuxIconAscending,
+          "lux-icon-descending": LuxIconDescending,
+          "lux-icon-unsorted": LuxIconUnsorted,
+        },
+      },
       propsData: {
         caption: "This is a caption.",
         columns: [
@@ -48,9 +58,9 @@ describe("LuxDataTable.vue", () => {
 
   it("should render the Display Name", () => {
     const th = wrapper.findAll("th").at(2)
-    expect(th.text()).toBe("Email Address")
+    expect(th.text()).toContain("Email Address")
     const th2 = wrapper.findAll("th").at(1)
-    expect(th2.text()).toBe("name")
+    expect(th2.text()).toContain("name")
   })
 
   it("should render a checkbox when checkbox is true", () => {

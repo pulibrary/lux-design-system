@@ -6,17 +6,34 @@ exports[`LuxDatePicker.vue has the expected html structure 1`] = `
 >
   
   
-  <lux-input-text
-    helper=""
-    id="startDate"
-    label="Start Date"
-    name="start"
-    placeholder=""
-    required="false"
-    size="medium"
-    value=""
-    width="auto"
-  />
+  <div
+    class="lux-input"
+  >
+    <label
+      class=""
+      for="startDate"
+    >
+      Start Date
+    </label>
+    <div
+      class="lux-input-field medium"
+    >
+      <input
+        autocomplete="off"
+        class="lux-input"
+        errormessage=""
+        hover="false"
+        id="startDate"
+        maxlength="256"
+        name="start"
+        placeholder=""
+        type="text"
+      />
+      <!--v-if-->
+    </div>
+    <!--v-if-->
+    <!--v-if-->
+  </div>
   
   <div
     class="vc-popover-content-wrapper is-interactive"

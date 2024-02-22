@@ -9,7 +9,7 @@
       :aria-hidden="iconHide"
       role="img"
     >
-      <title v-if="iconName" :id="piconName" lang="en">{{ iconName }}</title>
+      <title v-if="iconName" :id="iconName" lang="en">{{ iconName }}</title>
       <g :fill="iconColor">
         <slot></slot>
       </g>

@@ -2,6 +2,13 @@ import { mount } from "@vue/test-utils"
 import LuxDatePicker from "@/components/LuxDatePicker.vue"
 import ResizeObserver from "resize-observer-polyfill"
 import { nextTick } from "vue"
+import {
+  LuxIconAlert,
+  LuxIconApproved,
+  LuxIconBase,
+  LuxIconDenied,
+  LuxInputText,
+} from "@/components"
 
 global.ResizeObserver = ResizeObserver
 
@@ -21,6 +28,15 @@ describe("LuxDatePicker.vue", () => {
         id: "startDate",
         label: "Start Date",
         name: "start",
+      },
+      global: {
+        components: {
+          "lux-icon-alert": LuxIconAlert,
+          "lux-icon-approved": LuxIconApproved,
+          "lux-icon-base": LuxIconBase,
+          "lux-icon-denied": LuxIconDenied,
+          "lux-input-text": LuxInputText,
+        },
       },
     })
   })
