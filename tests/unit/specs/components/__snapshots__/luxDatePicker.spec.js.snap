@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LuxDatePicker.vue has the expected html structure 1`] = `
+<div
+  class="lux-date-picker medium"
+>
+  
+  
+  <lux-input-text
+    helper=""
+    id="startDate"
+    label="Start Date"
+    name="start"
+    placeholder=""
+    required="false"
+    size="medium"
+    value=""
+    width="auto"
+  />
+  
+  <div
+    class="vc-popover-content-wrapper is-interactive"
+  >
+    <transition-stub
+      appear="true"
+      css="true"
+      name="vc-slide-fade"
+      persisted="false"
+    >
+      <!---->
+    </transition-stub>
+  </div>
+  
+  <!--v-if-->
+</div>
+`;
