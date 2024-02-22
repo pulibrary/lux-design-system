@@ -9,6 +9,7 @@ import _LuxCardHeader from "./_LuxCardHeader.vue"
 import _LuxCardMedia from "./_LuxCardMedia.vue"
 import LuxCard from "./LuxCard.vue"
 import LuxCounter from "./LuxCounter.vue"
+import LuxDataTable from "./LuxDataTable.vue"
 import LuxDatePicker from "./LuxDatePicker.vue"
 import LuxGallery from "./LuxGallery.vue"
 import LuxGridContainer from "./LuxGridContainer.vue"
@@ -39,6 +40,7 @@ export {
   _LuxCardMedia,
   LuxCard,
   LuxCounter,
+  LuxDataTable,
   LuxDatePicker,
   LuxGallery,
   LuxGridContainer,
