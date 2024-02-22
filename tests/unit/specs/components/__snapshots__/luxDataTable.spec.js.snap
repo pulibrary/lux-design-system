@@ -1,0 +1,313 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LuxDataTable.vue has the expected html structure 1`] = `
+<table
+  border="1px"
+  class="lux-data-table"
+>
+  <caption>
+    This is a caption.
+  </caption>
+  <thead>
+    <tr>
+      
+      <th
+        nowrap=""
+        scope="col"
+      >
+        <span>
+          Select Items
+        </span>
+      </th>
+      <th
+        nowrap=""
+        scope="col"
+      >
+        <span>
+          name
+        </span>
+      </th>
+      <th
+        nowrap=""
+        scope="col"
+      >
+        <input-button
+          type="button"
+          variation="text"
+        >
+          <lux-icon-base
+            height="16"
+            icon-name="unsorted"
+            width="16"
+          >
+            <!--v-if-->
+            <!--v-if-->
+            <lux-icon-unsorted />
+          </lux-icon-base>
+           Email Address
+        </input-button>
+      </th>
+      <th
+        nowrap=""
+        scope="col"
+      >
+        <input-button
+          type="button"
+          variation="text"
+        >
+          <lux-icon-base
+            height="16"
+            icon-name="unsorted"
+            width="16"
+          >
+            <!--v-if-->
+            <!--v-if-->
+            <lux-icon-unsorted />
+          </lux-icon-base>
+           age
+        </input-button>
+      </th>
+      <th
+        nowrap=""
+        scope="col"
+      >
+        <input-button
+          type="button"
+          variation="text"
+        >
+          <lux-icon-base
+            height="16"
+            icon-name="unsorted"
+            width="16"
+          >
+            <!--v-if-->
+            <!--v-if-->
+            <lux-icon-unsorted />
+          </lux-icon-base>
+           birthday
+        </input-button>
+      </th>
+      
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr
+      class="row"
+    >
+      
+      <td
+        class="lux-data-table-center"
+      >
+        <input
+          aria-label="id: 1, name: foo, email: foo@xxx.xxx, age: 42, birthday: May 5, 2000"
+          id="1"
+          name="id"
+          type="checkbox"
+          value="1"
+        />
+      </td>
+      <td
+        class=""
+      >
+        <span>
+          <lux-hyperlink
+            href="https://example.com"
+          >
+            foo
+          </lux-hyperlink>
+        </span>
+      </td>
+      <td
+        class="lux-data-table-center"
+      >
+        <span>
+          <span>
+            foo@xxx.xxx
+          </span>
+        </span>
+      </td>
+      <td
+        class="lux-data-table-number"
+      >
+        <span>
+          <span>
+            42
+          </span>
+        </span>
+      </td>
+      <td
+        class=""
+      >
+        <span>
+          <span>
+            May 5, 2000
+          </span>
+        </span>
+      </td>
+      
+    </tr>
+    <tr
+      class="row"
+    >
+      
+      <td
+        class="lux-data-table-center"
+      >
+        <input
+          aria-label="id: 2, name: bar, email: bar@xxx.xxx, age: 23, birthday: April 5, 2000"
+          id="2"
+          name="id"
+          type="checkbox"
+          value="2"
+        />
+      </td>
+      <td
+        class=""
+      >
+        <span>
+          <span>
+            bar
+          </span>
+        </span>
+      </td>
+      <td
+        class="lux-data-table-center"
+      >
+        <span>
+          <span>
+            bar@xxx.xxx
+          </span>
+        </span>
+      </td>
+      <td
+        class="lux-data-table-number"
+      >
+        <span>
+          <span>
+            23
+          </span>
+        </span>
+      </td>
+      <td
+        class=""
+      >
+        <span>
+          <span>
+            April 5, 2000
+          </span>
+        </span>
+      </td>
+      
+    </tr>
+    <tr
+      class="row"
+    >
+      
+      <td
+        class="lux-data-table-center"
+      >
+        <input
+          aria-label="id: 3, name: fez, email: fez@xxx.xxx, age: 34, birthday: January 5, 2000"
+          id="3"
+          name="id"
+          type="checkbox"
+          value="3"
+        />
+      </td>
+      <td
+        class=""
+      >
+        <span>
+          <span>
+            fez
+          </span>
+        </span>
+      </td>
+      <td
+        class="lux-data-table-center"
+      >
+        <span>
+          <span>
+            fez@xxx.xxx
+          </span>
+        </span>
+      </td>
+      <td
+        class="lux-data-table-number"
+      >
+        <span>
+          <span>
+            34
+          </span>
+        </span>
+      </td>
+      <td
+        class=""
+      >
+        <span>
+          <span>
+            January 5, 2000
+          </span>
+        </span>
+      </td>
+      
+    </tr>
+    <tr
+      class="row"
+    >
+      
+      <td
+        class="lux-data-table-center"
+      >
+        <input
+          aria-label="id: 4, name: hey, email: hey@xxx.xxx, age: 4, birthday: March 5, 2000"
+          id="4"
+          name="id"
+          type="checkbox"
+          value="4"
+        />
+      </td>
+      <td
+        class=""
+      >
+        <span>
+          <span>
+            hey
+          </span>
+        </span>
+      </td>
+      <td
+        class="lux-data-table-center"
+      >
+        <span>
+          <span>
+            hey@xxx.xxx
+          </span>
+        </span>
+      </td>
+      <td
+        class="lux-data-table-number"
+      >
+        <span>
+          <span>
+            4
+          </span>
+        </span>
+      </td>
+      <td
+        class=""
+      >
+        <span>
+          <span>
+            March 5, 2000
+          </span>
+        </span>
+      </td>
+      
+    </tr>
+    
+  </tbody>
+  <!--v-if-->
+</table>
+`;
