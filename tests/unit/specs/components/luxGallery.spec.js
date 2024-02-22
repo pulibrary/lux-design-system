@@ -44,7 +44,14 @@ describe("LuxGallery.vue", () => {
       propsData: {
         galleryItems: items,
       },
-      stubs: ["lux-card", "lux-heading", "lux-text-style", "lux-media-image"],
+      global: {
+        stubs: {
+          "lux-card": true,
+          "lux-heading": true,
+          "lux-text-style": true,
+          "lux-media-image": true,
+        },
+      },
     })
   })
 
