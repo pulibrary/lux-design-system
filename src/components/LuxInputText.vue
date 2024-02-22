@@ -24,7 +24,7 @@
         :class="['lux-input', { 'lux-input-error': hasError }]"
         v-on:input="$emit('input', $event.target.value)"
         @blur="inputblur($event)"
-        @focus="$emit('focus')"
+        @focus="inputfocus($event)"
       />
 
       <textarea
@@ -50,6 +50,7 @@
         ]"
         v-on:input="$emit('input', $event.target.value)"
         @blur="inputblur($event)"
+        @focus="inputfocus($event)"
       />
 
       <div v-if="icon" class="append-icon">
@@ -250,6 +251,9 @@ export default {
   methods: {
     inputblur(value) {
       this.$emit("inputblur", value)
+    },
+    inputfocus(value) {
+      this.$emit("inputfocus", value)
     },
   },
   mounted: function () {

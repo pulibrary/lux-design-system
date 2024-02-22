@@ -19,6 +19,6 @@ describe("LuxInputText.vue", () => {
       },
     })
     wrapper.find("input").trigger("focus")
-    expect(wrapper.emitted().focus.length).toBe(1)
+    expect(wrapper.emitted().inputfocus.length).toBe(1)
   })
 })
