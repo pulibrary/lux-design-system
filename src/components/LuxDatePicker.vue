@@ -27,11 +27,10 @@
     </DatePicker>
     <DatePicker
       v-if="mode == 'range'"
-      mode="range"
       :disabled-dates="disabledDates"
       :update-on-input="true"
       :attributes="attributes"
-      v-model="range"
+      v-model.range="range"
       @popover-did-disappear="calendarClosedRange($event)"
     >
       <template #default="{ togglePopover }">
@@ -183,7 +182,7 @@ const props = defineProps({
 const emit = defineEmits(["updateInput"])
 
 const date = ref(props.defaultDate)
-const range = ref(props.defaultDate)
+const range = ref(props.defaultDates)
 const attributes = ref([
   {
     bar: {
@@ -251,7 +250,10 @@ function updateRangeInput(value) {
       if (!range.value) {
         range.value = {}
       }
-      range.value.start = parseDate(r[0])
+      range.value = {
+        start: parseDate(r[0]),
+        end: parseDate(r[1]),
+      }
       range.value.end = parseDate(r[1])
       emit("updateInput", value)
     }
