@@ -63,7 +63,7 @@ describe("LuxDatePicker.vue", () => {
 
   // This test encounters an error, and it is probably related to why the range is not working.
   // The original lux had this comment: "This function works in the app, but for some reason the range.start value is not getting updated in the test"
-  it.skip("should update the date range value when a new date range is input", async () => {
+  it("should update the date range value when a new date range is input", async () => {
     wrapper.setProps({ mode: "range" })
     await nextTick()
     expect(wrapper.vm.range).toBe(null)
