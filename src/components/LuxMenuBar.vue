@@ -72,7 +72,7 @@
       :class="{ 'is-active': isVisible }"
       @click="isVisible = !isVisible"
     >
-      <hamburger></hamburger>
+      <lux-hamburger></lux-hamburger>
     </button>
     <ul class="lux-main-menu-list" :class="{ 'lux-show': isVisible }">
       <li

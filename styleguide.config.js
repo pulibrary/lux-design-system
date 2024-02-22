@@ -15,6 +15,10 @@ module.exports = {
       name: "Icons",
       components: "src/components/icons/[A-Z]*.vue",
     },
+    {
+      name: "Internal Components",
+      components: "src/components/_*.vue",
+    },
   ],
   exampleMode: "expand",
   enhancePreviewApp: path.join(__dirname, "styleguide_vue_app.js"),
