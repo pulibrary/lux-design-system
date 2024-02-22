@@ -1,10 +1,11 @@
 import { mount } from "@vue/test-utils"
 import LuxMenuBar from "@/components/LuxMenuBar.vue"
 import { nextTick } from "vue"
+import _LuxHamburger from "@/components/_LuxHamburger.vue"
 
 let wrapper
 
-describe("MenuBar.vue", () => {
+describe("LuxMenuBar.vue", () => {
   beforeEach(() => {
     wrapper = mount(LuxMenuBar, {
       propsData: {
@@ -18,6 +19,11 @@ describe("MenuBar.vue", () => {
           },
           { name: "Bar", component: "Bar", href: "/example/" },
         ],
+      },
+      global: {
+        components: {
+          "lux-hamburger": _LuxHamburger,
+        },
       },
     })
   })
