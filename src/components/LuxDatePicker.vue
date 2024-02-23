@@ -9,7 +9,7 @@
       v-model="date"
       @popover-did-disappear="calendarClosedSingle($event)"
     >
-      <template #default="{ togglePopover }">
+      <template #default="{ inputEvents }">
         <lux-input-text
           :id="id"
           :label="label"
@@ -19,7 +19,7 @@
           :size="size"
           :value="!date ? '' : date.toLocaleDateString('en-US')"
           @input="updateInput($event)"
-          @focus="togglePopover"
+          v-on="inputEvents"
           :placeholder="placeholder"
           :helper="helper"
         ></lux-input-text>
@@ -33,7 +33,7 @@
       v-model.range="range"
       @popover-did-disappear="calendarClosedRange($event)"
     >
-      <template #default="{ togglePopover }">
+      <template #default="{ inputEvents }">
         <lux-input-text
           :id="id"
           :label="label"
@@ -43,7 +43,7 @@
           :required="required"
           :value="!range ? '' : formatStart() + ' - ' + formatEnd()"
           @input="updateRangeInput($event)"
-          @focus="() => togglePopover()"
+          v-on="inputEvents"
           :placeholder="placeholder"
           :helper="helper"
         ></lux-input-text>
