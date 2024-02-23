@@ -80,10 +80,10 @@ export default {
 <docs>
 ```jsx
     <div>
-    <search-box>
-        <input-text id="foo" name="value" label="Search" :hide-label="true" placeholder="Find all the things" size="large"></input-text>
-        <input-button type="button" variation="icon" size="medium" icon="search"></input-button>
-    </search-box>
+    <lux-search-box>
+        <lux-input-text id="foo" name="value" label="Search" :hide-label="true" placeholder="Find all the things" size="large"></lux-input-text>
+        <lux-input-button type="button" variation="icon" size="medium" icon="search"></lux-input-button>
+    </lux-search-box>
     </div>
 ```
   </docs>
