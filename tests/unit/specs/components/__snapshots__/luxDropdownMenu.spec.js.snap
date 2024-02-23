@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LuxDropdownMenu.vue has the expected html structure 1`] = `
+<div
+  class="lux-dropdown-menu medium"
+>
+  <lux-input-button
+    class="lux-dropdown-button"
+    size="medium"
+    variation="dropdown"
+  >
+    Dropdown
+  </lux-input-button>
+  <lux-menu-bar
+    active="All"
+    class=""
+    menu-items="[object Object],[object Object],[object Object],[object Object]"
+    type="buttons"
+  />
+</div>
+`;

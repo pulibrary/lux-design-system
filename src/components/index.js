@@ -35,6 +35,7 @@ import LuxLogoLibrary from "./logos/LuxLogoLibrary.vue"
 import LuxLogoLibraryIcon from "./logos/LuxLogoLibraryIcon.vue"
 import LuxSearchBox from "./LuxSearchBox.vue"
 import LuxAlert from "./LuxAlert.vue"
+import LuxDropdownMenu from "./LuxDropdownMenu.vue"
 
 export {
   LuxIconAdd,
@@ -74,4 +75,5 @@ export {
   LuxLogoLibraryIcon,
   LuxSearchBox,
   LuxAlert,
+  LuxDropdownMenu,
 }
