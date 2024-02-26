@@ -21,7 +21,7 @@ describe("LuxCard.vue", () => {
     expect(card.classes("lux-card-selected")).toBe(true)
   })
 
-  it("should have the appropriate class when editied", async () => {
+  it("should have the appropriate class when edited", async () => {
     wrapper.setProps({ edited: true })
     await nextTick()
     const card = wrapper.find(".lux-card")
