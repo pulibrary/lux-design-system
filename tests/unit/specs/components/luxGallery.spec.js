@@ -1,5 +1,5 @@
 import Vuex from "vuex"
-import { mount, shallowMount } from "@vue/test-utils"
+import { mount } from "@vue/test-utils"
 import { nextTick } from "vue"
 import LuxGallery from "@/components/LuxGallery.vue"
 import LuxCard from "@/components/LuxCard.vue"
