@@ -36,6 +36,7 @@ import LuxLogoLibraryIcon from "./logos/LuxLogoLibraryIcon.vue"
 import LuxSearchBox from "./LuxSearchBox.vue"
 import LuxAlert from "./LuxAlert.vue"
 import LuxDropdownMenu from "./LuxDropdownMenu.vue"
+import LuxAutocompleteInput from "./LuxAutocompleteInput.vue"
 
 export {
   LuxIconAdd,
@@ -76,4 +77,5 @@ export {
   LuxSearchBox,
   LuxAlert,
   LuxDropdownMenu,
+  LuxAutocompleteInput,
 }
