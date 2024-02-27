@@ -19,6 +19,8 @@ export default {
   },
 }
 
+export * from "./components"
+
 function installThirdPartyPlugins(app) {
   app.use(VCalendar, {})
 }
