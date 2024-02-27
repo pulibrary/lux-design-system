@@ -15,7 +15,7 @@
       "require": "./dist/style.css"
     }
   },
-  "version": "5.0.0-alpha.12",
+  "version": "5.0.0-alpha.13",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vite build",
