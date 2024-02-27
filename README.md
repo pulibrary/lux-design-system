@@ -29,7 +29,8 @@ npm run release
 
 #### Tips
 * If you have a passphrase on your ssh key, run ssh-add ~/.ssh/id_ed25519 (or wherever your key is located).
-* If you use a security key, rather than an authenticator app, for two-factor authentication in npmjs.com, make sure that "Require two-factor authentication for write actions" is not checked in your account 2FA settings. If it is checked, np will ask you for an OTP from your phone, and won't allow you to push without it.
+* If you use a security key, rather than an authenticator app, for two-factor authentication in npmjs.com, make sure that "Require two-factor authentication for write actions" is not checked in your account 2FA settings.
+    * Go to:Account -> Manage Two-Factor Authentication -> Uncheck 'Additional Options' -> Update Preferences. If it is checked, np will ask you for an OTP from your phone, and won't allow you to push without it.
 
 ### Deploy the styleguide to GitHub Pages
 ```
