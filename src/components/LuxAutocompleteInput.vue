@@ -205,15 +205,6 @@ export default {
       }
     },
   },
-  mounted() {
-    let vm = this
-
-    vm.$nextTick(function () {
-      if (vm.focused) {
-        this.$refs.autoComplete.focus()
-      }
-    })
-  },
   watch: {
     // Once the items content changes, it means the parent component
     // provided the needed data
