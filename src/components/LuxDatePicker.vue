@@ -61,6 +61,7 @@
 import { DatePicker } from "v-calendar"
 import { ref } from "vue"
 
+defineOptions({ name: "LuxDatePicker" })
 const props = defineProps({
   /**
    * Allows for a single date or a date range to be selected. Possible values are: `single, range`.
