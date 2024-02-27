@@ -19,14 +19,14 @@ describe("InputAutocomplete.vue", () => {
         ],
         focused: true,
       },
+      attachTo: document.body,
     })
   })
 
-  //TODO: https://github.com/pulibrary/lux-styleguidist/issues/91
-  // it("should be focused when the focused property is set to true", () => {
-  //   const input = wrapper.find("#displayInput").element
-  //   expect(input).toBe(document.activeElement)
-  // })
+  it("should be focused when the focused property is set to true", () => {
+    const input = wrapper.find("#displayInput").element
+    expect(input).toBe(document.activeElement)
+  })
 
   it("should populate the inputValue with an id when defaultValue is passed and found in items", () => {
     expect(wrapper.vm.inputValue).toBe(2)
