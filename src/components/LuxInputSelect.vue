@@ -12,10 +12,10 @@
       ]"
       :disabled="disabled"
       :required="required"
-      :focus="focus"
       :multiple="multiple"
       :errormessage="errormessage"
       :value="value"
+      ref="select"
       :name="name"
       @change="change($event)"
       @blur="inputblur($event.target)"
@@ -164,14 +164,6 @@ export default {
       type: Boolean,
       default: false,
     },
-    /**
-     * Manually trigger input field’s focus state.
-     * `true, false`
-     */
-    focus: {
-      type: Boolean,
-      default: false,
-    },
   },
   methods: {
     change(event) {
@@ -179,6 +171,12 @@ export default {
     },
     inputblur(value) {
       this.$emit("inputblur", value)
+    },
+    focusSelect() {
+      this.$nextTick(() => {
+        const selectRef = this.$refs.select
+        selectRef.focus()
+      })
     },
   },
 }

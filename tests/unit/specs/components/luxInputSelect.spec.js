@@ -24,6 +24,7 @@ describe("LuxInputSelect.vue", () => {
           },
         ],
       },
+      attachTo: document.body,
     })
   })
 
@@ -66,5 +67,17 @@ describe("LuxInputSelect.vue", () => {
 
   it("has the expected html structure", () => {
     expect(wrapper.element).toMatchSnapshot()
+  })
+
+  describe("focusSelect()", () => {
+    it("focuses the select", async () => {
+      const select = wrapper.find("select").element
+      expect(select).not.toBe(document.activeElement)
+
+      wrapper.vm.focusSelect()
+      await nextTick()
+
+      expect(select).toBe(document.activeElement)
+    })
   })
 })
