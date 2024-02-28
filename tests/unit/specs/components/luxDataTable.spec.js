@@ -17,7 +17,7 @@ describe("LuxDataTable.vue", () => {
     wrapper = mount(LuxDataTable, {
       global: {
         components: {
-          "input-button": LuxInputButton,
+          "lux-input-button": LuxInputButton,
           "lux-hyperlink": LuxHyperlink,
           "lux-icon-base": LuxIconBase,
           "lux-icon-ascending": LuxIconAscending,

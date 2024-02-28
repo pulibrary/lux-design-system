@@ -224,7 +224,7 @@ export default {
           <lux-text-style>Jan 9, 2019 to Jan 16, 2019</lux-text-style>
         </lux-card-header>
         <lux-card-content>
-          <tag type="tag" :tag-items="[
+          <lux-tag type="tag" :tag-items="[
             {name: 'Pending', color: 'yellow', style: 'pill'}
             ]"
             horizontal="end"

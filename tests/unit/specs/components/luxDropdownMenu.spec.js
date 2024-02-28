@@ -20,7 +20,7 @@ describe("LuxDropdownMenu.vue", () => {
           { name: "Inverse", component: "Inverse" },
         ],
       },
-      stubs: ["input-button", "menu-bar"],
+      stubs: ["lux-input-button", "menu-bar"],
     })
   })
 
