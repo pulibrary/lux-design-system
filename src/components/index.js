@@ -15,6 +15,7 @@ import LuxInputText from "./LuxInputText.vue"
 import _LuxCardContent from "./_LuxCardContent.vue"
 import _LuxCardHeader from "./_LuxCardHeader.vue"
 import _LuxCardMedia from "./_LuxCardMedia.vue"
+import _LuxHamburger from "./_LuxHamburger.vue"
 import LuxCard from "./LuxCard.vue"
 import LuxCounter from "./LuxCounter.vue"
 import LuxDataTable from "./LuxDataTable.vue"
@@ -37,6 +38,7 @@ import LuxSearchBox from "./LuxSearchBox.vue"
 import LuxAlert from "./LuxAlert.vue"
 import LuxDropdownMenu from "./LuxDropdownMenu.vue"
 import LuxAutocompleteInput from "./LuxAutocompleteInput.vue"
+import LuxTag from "./LuxTag.vue"
 
 export {
   LuxIconAdd,
@@ -56,6 +58,7 @@ export {
   _LuxCardContent,
   _LuxCardHeader,
   _LuxCardMedia,
+  _LuxHamburger,
   LuxCard,
   LuxCounter,
   LuxDataTable,
@@ -78,4 +81,5 @@ export {
   LuxAlert,
   LuxDropdownMenu,
   LuxAutocompleteInput,
+  LuxTag,
 }

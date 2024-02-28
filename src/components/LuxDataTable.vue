@@ -8,7 +8,7 @@
     <thead>
       <tr>
         <th v-for="(col, index) in parsedColumns" scope="col" v-bind:key="index" nowrap>
-          <input-button
+          <lux-input-button
             v-if="col.sortable"
             type="button"
             v-on:button-clicked="sortTable(col)"
@@ -24,7 +24,7 @@
               <lux-icon-descending v-if="col.ascending === false"></lux-icon-descending>
               <lux-icon-unsorted v-if="col.ascending === null"></lux-icon-unsorted>
             </lux-icon-base>
-            {{ displayName(col) }}</input-button
+            {{ displayName(col) }}</lux-input-button
           >
           <span v-else>{{ displayName(col) }}</span>
         </th>
