@@ -42,7 +42,7 @@
           :size="size"
           :required="required"
           :value="!range ? '' : formatStart() + ' - ' + formatEnd()"
-          @input="updateRangeInput($event)"
+          @input="updateRangeInput()"
           v-on="inputEvents"
           :placeholder="placeholder"
           :helper="helper"
@@ -245,18 +245,20 @@ function updateInput(value) {
   }
 }
 function updateRangeInput(value) {
-  if (value.includes(" - ")) {
-    let r = value.split(" - ")
-    if (isValidFormat(r[0]) && isValidFormat(r[1])) {
-      if (!range.value) {
-        range.value = {}
+  if (typeof value == "string" && isValidFormat(value)) {
+    if (value.includes("-")) {
+      let r = value.split("-")
+      if (isValidFormat(r[0]) && isValidFormat(r[1])) {
+        if (!range.value) {
+          range.value = {}
+        }
+        range.value = {
+          start: parseDate(r[0]),
+          end: parseDate(r[1]),
+        }
+        range.value.end = parseDate(r[1])
+        emit("updateInput", value)
       }
-      range.value = {
-        start: parseDate(r[0]),
-        end: parseDate(r[1]),
-      }
-      range.value.end = parseDate(r[1])
-      emit("updateInput", value)
     }
   }
 }
