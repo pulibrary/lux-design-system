@@ -166,14 +166,14 @@ $grid-columns: 12;
         <lux-grid-item columns="lg-9 sm-6">Grid items can be used to layout a page using a 12 column grid.</lux-grid-item>
         <!-- passing "auto" as a value in columns will size the grid item based on width and height of the item with space between each grid item -->
         <lux-grid-item columns="lg-3 sm-6 auto" :offset="true">
-          <dropdown-menu type="links" button-label="Select Options" :menu-items="[
+          <lux-dropdown-menu type="links" button-label="Select Options" :menu-items="[
             {name: 'Vegetable', component: 'Vegetable', disabled: true},
             {name: 'Fruit', component: 'Fruit'},
             {name: 'Apple', component: 'Apple', parent: 'Fruit'},
             {name: 'Lettuce', component: 'Lettuce', parent: 'Vegetable'},
             {name: 'Carrot', component: 'Carrot', parent: 'Vegetable'},
             {name: 'Pear', component: 'Pear', parent: 'Fruit'},
-          ]"></dropdown-menu>
+          ]"></lux-dropdown-menu>
         </lux-grid-item>
       </lux-grid-container>
   
