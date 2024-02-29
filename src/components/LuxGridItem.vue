@@ -99,8 +99,8 @@ $grid-columns: 12;
 }
 
 @function round-width($i) {
-  $width: calc(floor(calc(100 * $i * 100 / $grid-columns)) / 100);
-  @return $width#{"%"};
+  $width: #{calc(floor(calc(100 * $i * 100 / $grid-columns)) / 100) + "%"};
+  @return $width;
 }
 
 @for $i from 1 through $grid-columns {
