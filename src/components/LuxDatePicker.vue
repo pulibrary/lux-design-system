@@ -245,7 +245,7 @@ function updateInput(value) {
   }
 }
 function updateRangeInput(value) {
-  if (value.includes(" - ")) {
+  if (stringSeemsLikeDateRange(value)) {
     let r = value.split(" - ")
     if (isValidFormat(r[0]) && isValidFormat(r[1])) {
       if (!range.value) {
@@ -267,6 +267,10 @@ function isValidFormat(d) {
   }
   let date_regex = /^\d{1,2}\/\d{1,2}\/\d{4}$/
   return date_regex.test(d)
+}
+
+function stringSeemsLikeDateRange(possibleRange) {
+  return possibleRange.includes(" - ") && !possibleRange.endsWith(" - ")
 }
 </script>
 

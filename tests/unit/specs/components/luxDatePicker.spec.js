@@ -79,6 +79,18 @@ describe("LuxDatePicker.vue", () => {
     expect(wrapper.vm.range).toBe(null)
   })
 
+  it("should not update the date range value when the input is a partial date range", async () => {
+    wrapper.setProps({ mode: "range" })
+    await nextTick()
+    expect(wrapper.vm.range).toBe(null)
+
+    wrapper.get("input").setValue("10/22/2023 - ")
+
+    await nextTick()
+    expect(wrapper.vm.range).toBe(null)
+    expect(wrapper.get("input").element.value).toEqual("10/22/2023 - ")
+  })
+
   it("has the expected html structure", () => {
     expect(wrapper.element).toMatchSnapshot()
   })
