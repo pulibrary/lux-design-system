@@ -3,10 +3,13 @@ import LuxIconAlert from "./icons/LuxIconAlert.vue"
 import LuxIconApproved from "./icons/LuxIconApproved.vue"
 import LuxIconAscending from "./icons/LuxIconAscending.vue"
 import LuxIconBase from "./icons/LuxIconBase.vue"
+import LuxIconClock from "./icons/LuxIconClock.vue"
 import LuxIconDenied from "./icons/LuxIconDenied.vue"
 import LuxIconDescending from "./icons/LuxIconDescending.vue"
 import LuxIconFile from "./icons/LuxIconFile.vue"
 import LuxIconGlobe from "./icons/LuxIconGlobe.vue"
+import LuxIconRefresh from "./icons/LuxIconRefresh.vue"
+import LuxIconReported from "./icons/LuxIconReported.vue"
 import LuxIconSearch from "./icons/LuxIconSearch.vue"
 import LuxIconUnsorted from "./icons/LuxIconUnsorted.vue"
 import LuxInputButton from "./LuxInputButton.vue"
@@ -46,10 +49,13 @@ export {
   LuxIconApproved,
   LuxIconAscending,
   LuxIconBase,
+  LuxIconClock,
   LuxIconDenied,
   LuxIconDescending,
   LuxIconFile,
   LuxIconGlobe,
+  LuxIconRefresh,
+  LuxIconReported,
   LuxIconSearch,
   LuxIconUnsorted,
   LuxInputButton,
