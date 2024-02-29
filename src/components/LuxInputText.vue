@@ -21,7 +21,7 @@
         :placeholder="placeholder"
         :errormessage="errormessage"
         :class="['lux-input', { 'lux-input-error': hasError }]"
-        v-on:input="$emit('input', $event.target.value)"
+        @input="inputvaluechange($event.target.value)"
         @blur="inputblur($event)"
         @focus="inputfocus($event)"
       />
@@ -46,7 +46,7 @@
           { 'lux-input-error': hasError },
           { 'lux-input-expand': width === 'expand' },
         ]"
-        v-on:input="$emit('input', $event.target.value)"
+        @input="inputvaluechange($event.target.value)"
         @blur="inputblur($event)"
         @focus="inputfocus($event)"
       />
@@ -247,6 +247,9 @@ export default {
     },
   },
   methods: {
+    inputvaluechange(value) {
+      this.$emit("inputvaluechange", value)
+    },
     inputblur(value) {
       this.$emit("inputblur", value)
     },
