@@ -43,7 +43,7 @@
           :required="required"
           :value="!range ? '' : formatStart() + ' - ' + formatEnd()"
           @inputvaluechange="updateRangeInput($event)"
-          v-on="inputEvents"
+          v-on="inputEvents.start"
           :placeholder="placeholder"
           :helper="helper"
         ></lux-input-text>
