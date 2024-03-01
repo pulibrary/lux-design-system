@@ -50,6 +50,7 @@ export default {
       return this.errormessage.length
     },
   },
+  emits: ["change", "inputblur"],
   props: {
     /**
      * Sets the value of the selected option.
