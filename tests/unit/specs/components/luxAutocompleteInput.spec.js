@@ -84,6 +84,14 @@ describe("InputAutocomplete.vue", () => {
     expect(input.element.id).toBe("foo")
   })
 
+  it("emits an input event when the user changes the text", async () => {
+    const input = wrapper.find("#displayInput")
+    input.setValue("Code4lib 2025")
+
+    expect(wrapper.emitted().input.length).toEqual(1)
+    expect(wrapper.emitted().input[0]).toEqual(["Code4lib 2025"])
+  })
+
   it("has the expected html structure", () => {
     expect(wrapper.element).toMatchSnapshot()
   })
