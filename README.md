@@ -53,6 +53,7 @@ to the `<style>` section.  You may also need `../assets/styles/spacing.scss` if 
 component uses spacing mixins.  Media queries can't be included in CSS variables, so if you need those, import `../assets/styles/media_queries.scss` and use SCSS variables. There are functions that use SCSS variables and cannot take CSS variables as a parameter; In this case add `@import ../assets/styles/system.scss`.
 1. Vue 3 no longer supports functional templates.  If the component includes `<template functional>`,
 you will need to refactor it back into a regular template.
+1. If the component emits events, [declare the emits in the `emits` option](https://v3-migration.vuejs.org/breaking-changes/emits-option.html).
 1. Run `npm run styleguide` and make sure it compiles and looks good.
 1. Add the component to src/components/index.js so it is added to the lux Vue plugin and can be used in other projects.
 1. Copy the test for the component from the lux test/unit/specs/components directory.
