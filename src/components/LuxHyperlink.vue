@@ -53,6 +53,7 @@ export default {
 @import "../assets/styles/spacing.scss";
 
 .lux-link {
+  pointer-events: auto;
   color: var(--color-bleu-de-france-dark);
   font-family: var(--font-family-text);
   text-decoration: none;
