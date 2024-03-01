@@ -32,7 +32,7 @@ describe("LuxInputSelect.vue", () => {
     const select = wrapper.find("select")
     select.trigger("change")
     const emitted = wrapper.emitted()
-    expect(Object.prototype.hasOwnProperty.call(emitted, "change")).toBe(true)
+    expect(emitted.change.length).toBe(1)
     expect(emitted.change[0]).toEqual(["two"])
   })
 
