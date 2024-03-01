@@ -53,12 +53,12 @@ export default {
 @import "../assets/styles/spacing.scss";
 
 .lux-link {
-  color: --var(color-bleu-de-france-dark);
-  font-family: --var(font-family-text);
+  color: var(--color-bleu-de-france-dark);
+  font-family: var(--font-family-text);
   text-decoration: none;
 
   &:visited {
-    color: --var(color-bleu-de-france-dark);
+    color: var(--color-bleu-de-france-dark);
   }
 
   &:focus,
@@ -101,7 +101,7 @@ export default {
 
     &.outline {
       background: transparent;
-      color: --var(color-bleu-de-france-dark);
+      color: var(--color-bleu-de-france-dark);
       border: 2px solid var(--color-bleu-de-france);
       &:hover,
       &:focus {
