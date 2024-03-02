@@ -33,19 +33,30 @@ describe("LuxInputButton.vue", () => {
   })
 
   describe("Icon", () => {
-    // Note: We need to add an icon prop to this - it does not actually show an icon
-    // Also need to add a better assertion that indicates that a user actually sees an icon on the screen
     it("displays an icon", () => {
       wrapper = mount(LuxInputButton, {
         props: {
           variation: "icon",
+          icon: "search",
         },
         global: {
           components: { LuxIconBase },
         },
       })
       expect(wrapper.get("button").classes()).toContain("icon")
+      const icon = wrapper.find("lux-icon-search")
+      expect(icon).toBe
     })
-    it.todo("does not display an icon")
+    it("does not display an icon", () => {
+      wrapper = mount(LuxInputButton, {
+        props: {
+          variation: "solid",
+        },
+        global: {
+          components: { LuxIconBase },
+        },
+      })
+      expect(wrapper.get("button").classes()).not.toContain("icon")
+    })
   })
 })
