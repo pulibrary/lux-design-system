@@ -41,7 +41,7 @@ export default {
      */
     variation: {
       type: String,
-      default: "button",
+      default: "solid",
       validator: value => {
         return value.match(/(solid|outline|text|dropdown|icon)/)
       },
@@ -51,7 +51,7 @@ export default {
      */
     type: {
       type: String,
-      default: "",
+      default: "button",
       validator: value => {
         return value.match(/(|button|submit)/)
       },
@@ -119,6 +119,7 @@ export default {
       return "lux-icon-" + this.icon
     },
   },
+  emits: ["button-clicked", "system-alert"],
   methods: {
     buttonClicked(value) {
       if (this.customAlertEvent) {
