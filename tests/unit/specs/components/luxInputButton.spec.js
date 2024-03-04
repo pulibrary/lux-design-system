@@ -79,4 +79,10 @@ describe("LuxInputButton.vue", () => {
       expect(Object.prototype.hasOwnProperty.call(emitted2, "system-alert")).toBe(true)
     })
   })
+  describe("Button click", () => {
+    it("emits a button-clicked event when the user presses the button", async () => {
+      await wrapper.find(".lux-button").trigger("click")
+      expect(wrapper.emitted()["button-clicked"].length).toEqual(1)
+    })
+  })
 })
