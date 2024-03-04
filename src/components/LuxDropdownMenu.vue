@@ -28,6 +28,7 @@ export default {
   status: "ready",
   release: "1.0.0",
   type: "Pattern",
+  emits: ["button-clicked", "menu-item-clicked"],
   data: function () {
     return {
       isVisible: false,

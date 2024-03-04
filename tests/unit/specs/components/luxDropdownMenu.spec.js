@@ -20,7 +20,7 @@ describe("LuxDropdownMenu.vue", () => {
           { name: "Inverse", component: "Inverse" },
         ],
       },
-      stubs: ["lux-input-button", "menu-bar"],
+      global: { stubs: ["lux-menu-bar"], components: { "lux-input-button": LuxInputButton } },
     })
   })
 
@@ -39,7 +39,7 @@ describe("LuxDropdownMenu.vue", () => {
           { name: "Inverse", component: "Inverse" },
         ],
       },
-      stubs: ["lux-input-button", "lux-menu-bar"],
+      global: { stubs: ["lux-input-button", "lux-menu-bar"] },
     })
     expect(wrapper2.find("div").exists()).toBe(false)
     expect(wrapper2.find("form").exists()).toBe(true)
@@ -60,5 +60,11 @@ describe("LuxDropdownMenu.vue", () => {
 
   it("has the expected html structure", () => {
     expect(wrapper.element).toMatchSnapshot()
+  })
+
+  it("emits a button-clicked event when the user presses the button", async () => {
+    await wrapper.find(".lux-dropdown-button").trigger("click")
+
+    expect(wrapper.emitted()["button-clicked"].length).toEqual(1)
   })
 })

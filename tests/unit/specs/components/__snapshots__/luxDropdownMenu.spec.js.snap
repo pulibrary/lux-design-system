@@ -4,14 +4,17 @@ exports[`LuxDropdownMenu.vue has the expected html structure 1`] = `
 <div
   class="lux-dropdown-menu medium"
 >
-  <lux-input-button
-    class="lux-dropdown-button"
-    size="medium"
-    variation="dropdown"
+  <button
+    class="lux-button dropdown medium lux-dropdown-button"
+    type="button"
   >
+    <!--v-if-->
+    
     Dropdown
-  </lux-input-button>
-  <lux-menu-bar
+    
+    <!--v-if-->
+  </button>
+  <lux-menu-bar-stub
     active="All"
     class=""
     menu-items="[object Object],[object Object],[object Object],[object Object]"
