@@ -206,7 +206,7 @@ export default {
     visibility: visible;
   }
 
-  :depp(.lux-nav) {
+  :deep(.lux-nav) {
     background: $color-white;
     box-shadow: $box-shadow-small;
 
