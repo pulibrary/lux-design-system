@@ -93,3 +93,6 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 You should see a note that it's published in store  
 3. In the application where lux-styleguidist is installed,    
 run: `yarn exec yalc add lux-design-system`
+4. Sometimes, your application's vite will have cached the old version.
+If you are not seeing your changes, in your application directory run:
+`bundle exec vite clobber`.
