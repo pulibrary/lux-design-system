@@ -47,7 +47,7 @@ $positive-text: #7cb518;
 
 .lux-text-style {
   @include reset;
-  @include stack-space($color-rich-black);
+  @include stack-space($space-small);
   color: var(--color-rich-black);
   font-family: var(--font-family-text);
   font-weight: var(--font-weight-regular);
