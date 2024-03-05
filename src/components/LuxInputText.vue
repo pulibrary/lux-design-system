@@ -394,7 +394,7 @@ $color-placeholder: tint(rgb(149, 156, 167), 50%);
 
   .medium input,
   .medium textarea {
-    @include inset-space(var(--space-small));
+    @include inset-space($space-small);
     font-size: var(--font-size-base);
   }
 
