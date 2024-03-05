@@ -146,6 +146,7 @@ export default {
 
 <style lang="scss" scoped>
 @import "../assets/styles/system.scss";
+@import "../assets/styles/spacing.scss";
 @import "../assets/styles/mixins.scss";
 .lux-button {
   @include inset-space($space-small);

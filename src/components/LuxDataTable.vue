@@ -323,7 +323,7 @@ export default {
     border-left: none;
     border-right: none;
     border-top: 1px solid darken($color-grayscale-lighter, 10%);
-    @include inset-space(var(--space-base));
+    @include inset-space($space-base);
     overflow: hidden;
   }
 

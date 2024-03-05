@@ -131,6 +131,7 @@ export default {
 <style lang="scss" scoped>
 @import "../assets/styles/variables.css";
 @import "../assets/styles/system.scss";
+@import "../assets/styles/spacing.scss";
 @import "../assets/styles/mixins.scss";
 
 .lux-dropdown-menu {
