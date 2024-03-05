@@ -27,7 +27,7 @@ export default {
 
 <style lang="scss" scoped>
 @import "../assets/styles/spacing.scss";
-.lux-card-media .lux-icon {
+:slotted(.lux-card-media .lux-icon) {
   padding: var(--space-small);
 
   @media (min-width: 900px) {
