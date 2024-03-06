@@ -11,6 +11,7 @@ import LuxIconFile from "./LuxIconFile.vue"
 import LuxIconFlower from "./LuxIconFlower.vue"
 import LuxIconGlobe from "./LuxIconGlobe.vue"
 import LuxIconHospital from "./LuxIconHospital.vue"
+import LuxIconNote from "./LuxIconNote.vue"
 import LuxIconRefresh from "./LuxIconRefresh.vue"
 import LuxIconRelax from "./LuxIconRelax.vue"
 import LuxIconReported from "./LuxIconReported.vue"
@@ -34,6 +35,7 @@ export {
   LuxIconFlower,
   LuxIconGlobe,
   LuxIconHospital,
+  LuxIconNote,
   LuxIconRefresh,
   LuxIconRelax,
   LuxIconReported,
