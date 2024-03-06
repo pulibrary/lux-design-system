@@ -6,7 +6,7 @@
         <span id="appName" class="full-name">{{ appName }}</span>
         <span class="abbr-name">{{ abbrName }}</span>
       </a>
-      <spacer></spacer>
+      <lux-spacer></lux-spacer>
       <slot />
     </lux-wrapper>
   </component>
