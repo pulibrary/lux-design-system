@@ -329,7 +329,7 @@ $color-placeholder: tint(rgb(149, 156, 167), 50%);
       width: 100%;
     }
 
-    input,
+    :slotted(input),
     textarea {
       @include reset;
       @include inset-squish-space(16px);
