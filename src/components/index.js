@@ -6,6 +6,7 @@ import _LuxCardContent from "./_LuxCardContent.vue"
 import _LuxCardHeader from "./_LuxCardHeader.vue"
 import _LuxCardMedia from "./_LuxCardMedia.vue"
 import _LuxHamburger from "./_LuxHamburger.vue"
+import LuxBanner from "./LuxBanner.vue"
 import LuxCard from "./LuxCard.vue"
 import LuxCounter from "./LuxCounter.vue"
 import LuxDataTable from "./LuxDataTable.vue"
@@ -38,6 +39,7 @@ export {
   _LuxCardHeader,
   _LuxCardMedia,
   _LuxHamburger,
+  LuxBanner,
   LuxCard,
   LuxCounter,
   LuxDataTable,
