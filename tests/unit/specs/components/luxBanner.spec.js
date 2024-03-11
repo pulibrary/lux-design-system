@@ -8,7 +8,7 @@ describe("LuxBanner.vue", () => {
   beforeEach(() => {
     wrapper = mount(LuxBanner, {
       slots: {
-        default: "Here's some info for you.",
+        default: "<p>Here's some info for you.</p>",
       },
       stubs: ["wrapper"],
     })
@@ -24,16 +24,19 @@ describe("LuxBanner.vue", () => {
     await nextTick()
     const button = wrapper.find("button")
     expect(wrapper.vm.dismissible).toBe(true)
-    expect(button.is("button")).toBe(true)
+    expect(button.exists()).toBe(true)
   })
 
   it("should be dismissible on click", async () => {
     wrapper.setProps({ dismissible: true })
+    const slot_text = wrapper.find("p")
+    expect(slot_text.exists()).toBe(true)
     await nextTick()
     const button = wrapper.find("button")
     button.trigger("click")
     await nextTick()
-    expect(wrapper.isEmpty()).toBe(true)
+    const p = wrapper.find("p")
+    expect(p.exists()).toBe(false)
   })
 
   it("should hide banner when hideBanner() is called", () => {
