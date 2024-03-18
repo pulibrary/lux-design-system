@@ -111,8 +111,7 @@ export default {
   }
   &:focus,
   &-selected {
-    // box-shadow: var(--box-shadow-selected);
-    box-shadow: 0px 0px 5px 3px #e77500;
+    box-shadow: 0px 0px 0px 1px #e77500;
   }
   &-edited {
     background: var(--color-princeton-orange-on-white);
@@ -134,25 +133,22 @@ export default {
 
   .lux-heading,
   .lux-text-style {
-    padding: 0 1rem;
+    padding: 0;
+    margin: 0;
   }
   .lux-heading,
   .lux-text-style,
   .lux-media-image {
     pointer-events: none;
   }
-  .lux-text-style {
-    padding-bottom: 1rem;
-  }
   :deep(.lux-tag-item) {
     border-radius: var(--border-radius-pill);
     font-weight: 400;
   }
-  .full-width {
+  &.full-width {
     width: 100%;
     display: flex;
     align-items: flex-start;
-    flex-flow: row wrap;
     .lux-card-media + .lux-card-header {
       padding-left: 0;
     }
@@ -172,7 +168,7 @@ export default {
       }
     }
   }
-  .lux-card :deep(.lux-link) {
+  a.lux-link {
     color: var(--color-rich-black);
     outline: 0;
     &::after {
@@ -190,7 +186,7 @@ export default {
     &:focus {
       box-shadow: none;
       &::after {
-        box-shadow: var(--box-shadow-selected);
+        box-shadow: 0px 0px 0px 1px #e77500;
         transition: box-shadow 0.2s ease;
       }
     }
