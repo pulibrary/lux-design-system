@@ -104,15 +104,13 @@ export default {
   box-shadow: var(--box-shadow-small);
   color: var(--color-rich-black);
   position: relative;
-  margin-bottom: 1rem;
 
   &:active {
     cursor: move;
   }
   &:focus,
   &-selected {
-    // box-shadow: var(--box-shadow-selected);
-    box-shadow: 0px 0px 5px 3px #e77500;
+    box-shadow: var(--box-shadow-selected);
   }
   &-edited {
     background: var(--color-princeton-orange-on-white);
@@ -132,71 +130,80 @@ export default {
     width: 400px;
   }
 
-  .lux-heading,
   .lux-text-style {
+    padding: 0 1rem 1rem 1rem;
+  }
+
+  .lux-heading {
     padding: 0 1rem;
   }
+
   .lux-heading,
   .lux-text-style,
   .lux-media-image {
     pointer-events: none;
   }
+}
+
+.full-width {
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  flex-flow: row wrap;
+
+  .lux-card-media + .lux-card-header {
+    padding-left: 0;
+  }
+  .lux-card-media + .lux-card-content,
+  .lux-card-content:only-child {
+    flex: 1;
+  }
+
+  .lux-heading,
   .lux-text-style {
-    padding-bottom: 1rem;
+    padding: 0;
   }
-  :deep(.lux-tag-item) {
-    border-radius: var(--border-radius-pill);
-    font-weight: 400;
-  }
-  .full-width {
-    width: 100%;
-    display: flex;
-    align-items: flex-start;
-    flex-flow: row wrap;
-    .lux-card-media + .lux-card-header {
-      padding-left: 0;
+  :deep(.lux-card-content) {
+    padding: 1rem;
+    @media (min-width: 900px) {
+      padding: var(--space-base);
     }
-    .lux-card-media + .lux-card-content,
-    .lux-card-content:only-child {
+  }
+
+  @media (min-width: 600px) {
+    .lux-card-header {
       flex: 1;
     }
-    :deep(.lux-card-content) {
-      padding: 1rem;
-      @media (min-width: 900px) {
-        padding: var(--space-base);
-      }
-    }
-    @media (min-width: 600px) {
-      .lux-card-header {
-        flex: 1;
-      }
+  }
+}
+
+.lux-card a.lux-link {
+  color: var(--color-rich-black);
+  outline: 0;
+  &::after {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+    pointer-events: auto;
+    content: "";
+    background-color: rgba(0, 0, 0, 0);
+  }
+
+  &:hover,
+  &:focus {
+    box-shadow: none;
+
+    &::after {
+      box-shadow: var(--box-shadow-selected);
+      transition: box-shadow 0.2s ease;
     }
   }
-  .lux-card :deep(.lux-link) {
+
+  &:visited {
     color: var(--color-rich-black);
-    outline: 0;
-    &::after {
-      position: absolute;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      left: 0;
-      z-index: 1;
-      pointer-events: auto;
-      content: "";
-      background-color: rgba(0, 0, 0, 0);
-    }
-    &:hover,
-    &:focus {
-      box-shadow: none;
-      &::after {
-        box-shadow: var(--box-shadow-selected);
-        transition: box-shadow 0.2s ease;
-      }
-    }
-    &:visited {
-      color: var(--color-rich-black);
-    }
   }
 }
 </style>
