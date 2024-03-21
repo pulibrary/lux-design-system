@@ -288,13 +288,13 @@ $color-placeholder: tint($color-grayscale, 50%);
 
     &::-webkit-input-placeholder {
       -webkit-font-smoothing: antialiased;
-      color: var(--color-placeholder);
+      color: $color-placeholder;
     }
     &:-ms-input-placeholder {
-      color: var(--color-placeholder);
+      color: $color-placeholder;
     }
     &::-moz-placeholder {
-      color: var(--color-placeholder);
+      color: $color-placeholder;
       -moz-osx-font-smoothing: grayscale;
       opacity: 1;
     }
