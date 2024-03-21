@@ -369,7 +369,7 @@ $color-placeholder: tint(rgb(149, 156, 167), 50%);
     &:focus,
     &[focus] {
       transition: box-shadow 0.2s ease;
-      box-shadow: inset 0 0 0 1px var(--color-bleu-de-france), 0 0 0 1px var(--color-bleu-de-france);
+      box-shadow: inset 0 0 0 1px $color-bleu-de-france, 0 0 0 1px $color-bleu-de-france;
       outline: 0;
     }
     &[disabled],
