@@ -180,7 +180,7 @@ const props = defineProps({
   },
 })
 
-const emit = defineEmits(["updateInput"])
+const emit = defineEmits(["updateInput", "updateRangeInput"])
 
 const date = ref(props.defaultDate)
 const range = ref(props.defaultDates)
@@ -211,7 +211,7 @@ function calendarClosedRange(value) {
     isValidFormat(range.value.end.toLocaleDateString("en-US"))
   ) {
     var rangeAsText = formatStart() + " - " + formatEnd()
-    emit("updateInput", rangeAsText)
+    emit("updateRangeInput", rangeAsText)
   }
 }
 
@@ -256,7 +256,7 @@ function updateRangeInput(value) {
         end: parseDate(r[1]),
       }
       range.value.end = parseDate(r[1])
-      emit("updateInput", value)
+      emit("updateRangeInput", value)
     }
   }
 }
