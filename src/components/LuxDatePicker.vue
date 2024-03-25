@@ -199,7 +199,7 @@ const attributes = ref([
 
 function calendarClosedSingle(value) {
   if (date.value && isValidFormat(date.value.toLocaleDateString("en-US"))) {
-    var dateAsText = date.value.toLocaleDateString("en-US")
+    let dateAsText = date.value.toLocaleDateString("en-US")
     emit("updateInput", dateAsText)
   }
 }
@@ -210,7 +210,7 @@ function calendarClosedRange(value) {
     isValidFormat(range.value.start.toLocaleDateString("en-US")) &&
     isValidFormat(range.value.end.toLocaleDateString("en-US"))
   ) {
-    var rangeAsText = formatStart() + " - " + formatEnd()
+    let rangeAsText = formatStart() + " - " + formatEnd()
     emit("updateRangeInput", rangeAsText)
   }
 }
