@@ -104,7 +104,7 @@ export default {
   },
   directives: {
     "click-outside": {
-      bind: function (el, binding, vNode) {
+      beforeMount: function (el, binding) {
         // Define Handler and cache it on the element
         const bubble = binding.modifiers.bubble
         const handler = e => {
@@ -118,7 +118,7 @@ export default {
         document.addEventListener("click", handler)
       },
 
-      unbind: function (el, binding) {
+      unmounted: function (el, binding) {
         // Remove Event Listeners
         document.removeEventListener("click", el.__vueClickOutside__)
         el.__vueClickOutside__ = null
