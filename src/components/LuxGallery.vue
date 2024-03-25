@@ -91,7 +91,7 @@ export default {
       store.commit("SELECT", [])
     },
     getItemById: function (id) {
-      var elementPos = this.getItemIndexById(id)
+      let elementPos = this.getItemIndexById(id)
       return this.items[elementPos]
     },
     getItemIndexById: function (id) {
@@ -123,11 +123,11 @@ export default {
           store.commit("SELECT", selected)
         } else {
           if (this.selected.length === 1 && event.shiftKey) {
-            var first = this.getItemIndexById(this.selected[0].id)
-            var second = this.getItemIndexById(id)
-            var min = Math.min(first, second)
-            var max = Math.max(first, second)
-            for (var i = min; i <= max; i++) {
+            let first = this.getItemIndexById(this.selected[0].id)
+            let second = this.getItemIndexById(id)
+            let min = Math.min(first, second)
+            let max = Math.max(first, second)
+            for (let i = min; i <= max; i++) {
               selected.push(this.items[i])
             }
             store.commit("SELECT", selected)

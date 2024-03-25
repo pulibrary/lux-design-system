@@ -166,7 +166,7 @@ export default {
     let rowNum = this.jsonData.length
     for (let i = 0; i < rowNum; i++) {
       // console.log(this.jsonData[i].name)
-      for (var key in this.jsonData[i]) {
+      for (let key in this.jsonData[i]) {
         if (this.jsonData[i].hasOwnProperty(key)) {
           if (!this.isObject(this.jsonData[i][key])) {
             // eslint-disable-next-line vue/no-mutating-props
@@ -216,8 +216,8 @@ export default {
           this.rows.sort((a, b) => new Date(a[col.name].value) - new Date(b[col.name].value))
         } else {
           this.rows.sort(function (a, b) {
-            var textA = a[col.name.toLowerCase()].value.toString().toLowerCase()
-            var textB = b[col.name.toLowerCase()].value.toString().toLowerCase()
+            let textA = a[col.name.toLowerCase()].value.toString().toLowerCase()
+            let textB = b[col.name.toLowerCase()].value.toString().toLowerCase()
             return textA < textB ? -1 : textA > textB ? 1 : 0
           })
         }
@@ -228,8 +228,8 @@ export default {
           this.rows.sort((a, b) => new Date(b[col.name].value) - new Date(a[col.name].value))
         } else {
           this.rows.sort(function (a, b) {
-            var textA = a[col.name.toLowerCase()].value.toString().toLowerCase()
-            var textB = b[col.name.toLowerCase()].value.toString().toLowerCase()
+            let textA = a[col.name.toLowerCase()].value.toString().toLowerCase()
+            let textB = b[col.name.toLowerCase()].value.toString().toLowerCase()
             return textA < textB ? 1 : textA > textB ? -1 : 0
           })
         }
