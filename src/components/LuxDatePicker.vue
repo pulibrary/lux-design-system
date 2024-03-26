@@ -59,7 +59,7 @@
  * existing vCalendar functionality.
  */
 import { DatePicker } from "v-calendar"
-import { ref } from "vue"
+import { ref, watchEffect } from "vue"
 
 defineOptions({ name: "LuxDatePicker" })
 const props = defineProps({
@@ -245,20 +245,22 @@ function updateInput(value) {
   }
 }
 function updateRangeInput(value) {
-  if (stringSeemsLikeDateRange(value)) {
-    let r = value.split(" - ")
-    if (isValidFormat(r[0]) && isValidFormat(r[1])) {
-      if (!range.value) {
-        range.value = {}
+  watchEffect(() => {
+    if (stringSeemsLikeDateRange(value)) {
+      let r = value.split(" - ")
+      if (isValidFormat(r[0]) && isValidFormat(r[1])) {
+        if (!range.value) {
+          range.value = {}
+        }
+        range.value = {
+          start: parseDate(r[0]),
+          end: parseDate(r[1]),
+        }
+        range.value.end = parseDate(r[1])
+        emit("updateRangeInput", value)
       }
-      range.value = {
-        start: parseDate(r[0]),
-        end: parseDate(r[1]),
-      }
-      range.value.end = parseDate(r[1])
-      emit("updateRangeInput", value)
     }
-  }
+  })
 }
 
 function isValidFormat(d) {
