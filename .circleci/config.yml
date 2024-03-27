@@ -2,6 +2,31 @@ version: 2.1
 orbs:
   node: circleci/node@5.0.2
 
+jobs:
+  styleguide:
+    working_directory: ~/project
+    docker:
+      - image: cimg/node:20.11.0
+    steps:
+      - checkout
+      - node/install:
+          node-version: '20.11.1'
+      - node/install-packages
+      - run:
+          command: npm run styleguide:build
+          name: Confirm that we can build the styleguide
+  package:
+    working_directory: ~/project
+    docker:
+      - image: cimg/node:20.11.0
+    steps:
+      - checkout
+      - node/install:
+          node-version: '20.11.1'
+      - node/install-packages
+      - run:
+          command: npm run build
+          name: Confirm that we can build the package for NPM
 workflows:
   test_my_app:
     jobs:
@@ -10,7 +35,8 @@ workflows:
           matrix:
             parameters:
               version:
-                - 21.2.0
-                - 20.9.0
-                - 18.18.2
-                - 16.20.2
+                - 21.7.1
+                - 20.12.0
+                - 18.20.0
+      - styleguide
+      - package
