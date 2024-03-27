@@ -16,6 +16,10 @@ module.exports = {
       components: "src/components/icons/[A-Z]*.vue",
     },
     {
+      name: "Logos",
+      components: "src/components/logos/[A-Z]*.vue",
+    },
+    {
       name: "Internal Components",
       components: "src/components/_*.vue",
     },
