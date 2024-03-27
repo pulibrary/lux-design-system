@@ -124,8 +124,8 @@ export default {
 @import "../assets/styles/mixins.scss";
 
 .lux-alert-fullscreen {
-  position: fixed;
-  top: 5vh;
+  position: fixed !important;
+  top: 2em;
   left: 50%; /* move the left edge to the center … */
   margin-left: -25vw !important; /* … and move it to the left half the box’ width. */
   z-index: 9999;
