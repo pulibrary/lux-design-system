@@ -1,6 +1,7 @@
 import { mount } from "@vue/test-utils"
 import { nextTick } from "vue"
 import LuxBanner from "@/components/LuxBanner.vue"
+import LuxWrapper from "@/components/LuxWrapper.vue"
 
 describe("LuxBanner.vue", () => {
   let wrapper
@@ -10,7 +11,11 @@ describe("LuxBanner.vue", () => {
       slots: {
         default: "<p>Here's some info for you.</p>",
       },
-      stubs: ["wrapper"],
+      global: {
+        components: {
+          "lux-wrapper": LuxWrapper,
+        },
+      },
     })
   })
 
