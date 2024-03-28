@@ -34,7 +34,9 @@
 
 <script>
 /**
- * Official Princeton University Library Logo.
+ * Official Princeton University Library Brandmark and Wordmark combination Logo.
+ * Please, note that the white type on the first example below is not visible due
+ * to the white background color of the preview box.
  */
 export default {
   name: "LuxLogoLibrary",
@@ -77,10 +79,10 @@ export default {
 </style>
 
 <docs>
-    ```jsx
-    <div>
-      <lux-logo-library></lux-logo-library>
-      <lux-logo-library color="#000"></lux-logo-library>
-    </div>
-    ```
-  </docs>
+  ```jsx
+  <div>
+    <lux-logo-library></lux-logo-library>
+    <lux-logo-library color="#000"></lux-logo-library>
+  </div>
+  ```
+</docs>

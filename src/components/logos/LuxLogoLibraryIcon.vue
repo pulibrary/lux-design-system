@@ -28,7 +28,7 @@
 
 <script>
 /**
- * Official Princeton University Library Logo.
+ * Official Princeton University Library Brandmark Logo.
  */
 export default {
   name: "LuxLogoLibraryIcon",
@@ -61,9 +61,9 @@ export default {
 </style>
 
 <docs>
-    ```jsx
-    <div>
-      <lux-logo-library-icon></lux-logo-library-icon>
-    </div>
-    ```
-  </docs>
+  ```jsx
+  <div>
+    <lux-logo-library-icon></lux-logo-library-icon>
+  </div>
+  ```
+</docs>
