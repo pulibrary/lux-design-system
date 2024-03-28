@@ -1,5 +1,6 @@
 export * from "./icons"
 import LuxInputButton from "./LuxInputButton.vue"
+import LuxInputCheckbox from "./LuxInputCheckbox.vue"
 import LuxInputSelect from "./LuxInputSelect.vue"
 import LuxInputText from "./LuxInputText.vue"
 import _LuxCardContent from "./_LuxCardContent.vue"
@@ -16,6 +17,7 @@ import LuxGridContainer from "./LuxGridContainer.vue"
 import LuxGridItem from "./LuxGridItem.vue"
 import LuxHeading from "./LuxHeading.vue"
 import LuxHyperlink from "./LuxHyperlink.vue"
+import LuxLoader from "./LuxLoader.vue"
 import LuxLibraryHeader from "./LuxLibraryHeader.vue"
 import LuxMediaImage from "./LuxMediaImage.vue"
 import LuxMenuBar from "./LuxMenuBar.vue"
@@ -33,6 +35,7 @@ import LuxTag from "./LuxTag.vue"
 
 export {
   LuxInputButton,
+  LuxInputCheckbox,
   LuxInputSelect,
   LuxInputText,
   _LuxCardContent,
@@ -49,6 +52,7 @@ export {
   LuxGridItem,
   LuxHeading,
   LuxHyperlink,
+  LuxLoader,
   LuxLibraryHeader,
   LuxMediaImage,
   LuxMenuBar,

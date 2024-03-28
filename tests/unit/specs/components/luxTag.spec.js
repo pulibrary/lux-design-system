@@ -14,6 +14,17 @@ describe("LuxTag.vue", () => {
           { name: "Baz", href: "/example/" },
         ],
       },
+      global: {
+        stubs: {
+          "lux-icon-base": true,
+          "lux-icon-reported": true,
+          "lux-icon-refresh": true,
+          "lux-icon-clock": true,
+          "lux-icon-denied": true,
+          "lux-icon-alert": true,
+          "lux-icon-approved": true,
+        },
+      },
     })
   })
 
