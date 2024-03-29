@@ -66,7 +66,7 @@ export default {
      * Hides decorative icon from screen readers
      */
     iconHide: {
-      type: Boolean,
+      type: [String, Boolean],
       default: false,
     },
   },

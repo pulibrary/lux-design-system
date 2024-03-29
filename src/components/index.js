@@ -1,6 +1,7 @@
 export * from "./icons"
 import LuxInputButton from "./LuxInputButton.vue"
 import LuxInputCheckbox from "./LuxInputCheckbox.vue"
+import LuxInputMultiselect from "./LuxInputMultiselect.vue"
 import LuxInputRadio from "./LuxInputRadio.vue"
 import LuxInputSelect from "./LuxInputSelect.vue"
 import LuxInputText from "./LuxInputText.vue"
@@ -8,6 +9,9 @@ import _LuxCardContent from "./_LuxCardContent.vue"
 import _LuxCardHeader from "./_LuxCardHeader.vue"
 import _LuxCardMedia from "./_LuxCardMedia.vue"
 import _LuxHamburger from "./_LuxHamburger.vue"
+import _LuxUniversityAccessibility from "./_LuxUniversityAccessibility.vue"
+import _LuxLibraryContactInfo from "./_LuxLibraryContactInfo.vue"
+import _LuxUniversityCopyright from "./_LuxUniversityCopyright.vue"
 import LuxBanner from "./LuxBanner.vue"
 import LuxCard from "./LuxCard.vue"
 import LuxCounter from "./LuxCounter.vue"
@@ -37,6 +41,7 @@ import LuxTag from "./LuxTag.vue"
 export {
   LuxInputButton,
   LuxInputCheckbox,
+  LuxInputMultiselect,
   LuxInputRadio,
   LuxInputSelect,
   LuxInputText,
@@ -44,6 +49,9 @@ export {
   _LuxCardHeader,
   _LuxCardMedia,
   _LuxHamburger,
+  _LuxUniversityAccessibility,
+  _LuxLibraryContactInfo,
+  _LuxUniversityCopyright,
   LuxBanner,
   LuxCard,
   LuxCounter,

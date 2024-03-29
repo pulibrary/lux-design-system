@@ -6,8 +6,7 @@
 
 <script>
 /**
- * Used to show Library's contact information, including address and phone, is
- * clear and in the footer.
+ * Used in conjunction with LuxMenuBar to display a menu on narrow screens.
  */
 export default {
   name: "LuxHamburger",
