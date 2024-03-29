@@ -63,7 +63,7 @@ export default {
      */
     color: {
       type: String,
-      default: "#fff",
+      default: "#ffffff",
     },
   },
 }
@@ -80,9 +80,9 @@ export default {
 
 <docs>
   ```jsx
-  <div>
-    <lux-logo-library></lux-logo-library>
-    <lux-logo-library color="#000"></lux-logo-library>
-  </div>
+    <div>
+      <lux-logo-library></lux-logo-library>
+      <lux-logo-library color="#000000"></lux-logo-library>
+    </div>
   ```
 </docs>
