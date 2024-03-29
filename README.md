@@ -76,7 +76,7 @@ you will need to refactor it back into a regular template.
         1. If a value is not updating correctly after a `wrapper.setProps` call, follow these steps to add a `nextTick()`, which will cause Vue to update the value:
             1. If it's not already imported, add `import { nextTick } from "vue"`
             2. Add `async` to the test arrow function.
-            3. Add `await nextTick()` between the `setProps` and the assertion.  
+            3. Add `await nextTick()` between the `setProps` and the assertion, or simply prepend the setProps command with `await`. (Example: `await wrapper.setProps({ show: true })`)  
         1. Refer to the [vue-test-utils migration guide](https://test-utils.vuejs.org/migration/) for other breaking changes.
     1. Running the tests will produce a snapshot file.  Compare it to the original snapshot file.  If there are no substantial changes, commit it.  If there are substantial changes, make any necessary changes.
 
