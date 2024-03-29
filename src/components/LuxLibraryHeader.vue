@@ -284,7 +284,7 @@ export default {
       </lux-library-header>
     </div>
   ```
-  
+
   ```jsx noeditor
     <div class="dos-n-donts">
       <div class="do">
@@ -294,12 +294,12 @@ export default {
         </div>
         <p>Make sure users with JavaScript disabled can see important parts of the page by using &lt;noscript&gt; tags.</p>
       </div>
-  
+
       <div class="dont">
         <div class="do-dont-example">
-          <spacer></spacer>
+          <lux-spacer></lux-spacer>
           <p>? ? ? </p>
-          <spacer></spacer>
+          <lux-spacer></lux-spacer>
         </div>
         <p>JavaScript-disabled browsers won't see any branding and may be missing important functionality.</p>
       </div>

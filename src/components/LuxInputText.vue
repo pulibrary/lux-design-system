@@ -443,7 +443,8 @@ $color-placeholder: tint(rgb(149, 156, 167), 50%);
     <lux-input-text id="foo" name="value" label="Input" :hide-label="true" placeholder="Write your text" helper="This is helper text to help the user fill out this field" size="small"></lux-input-text>
 
     <lux-input-text id="bar" name="value" label=":hover" hover placeholder="Write your text"></lux-input-text>
-    <lux-input-text id="fee" name="value" label=":focused" focused placeholder="Write your text"></lux-input-text>
+    <!-- use :focused sparingly and only when necessary to set the focus; uncomment below to test in preview above  -->
+    <!--<lux-input-text id="fee" name="value" label=":focused" focused placeholder="Write your text"></lux-input-text>-->
     <lux-input-text id="foe" name="value" label="[disabled]" disabled placeholder="Disabled input"></lux-input-text>
     <lux-input-text id="foe" name="value" label="Textarea" type="textarea"></lux-input-text>
 

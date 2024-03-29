@@ -30,14 +30,14 @@ export default {
      * The maximum width of the wrapper. Default is set to 1170.
      */
     maxWidth: {
-      type: Number,
+      type: [String, Number],
       default: 1170,
     },
     /**
      * Determines whether the wrapper takes up 100% of the parent container.
      */
     fullWidth: {
-      type: Boolean,
+      type: [String, Boolean],
       default: false,
     },
     /**
