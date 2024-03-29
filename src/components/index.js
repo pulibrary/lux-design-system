@@ -1,6 +1,7 @@
 export * from "./icons"
 import LuxInputButton from "./LuxInputButton.vue"
 import LuxInputCheckbox from "./LuxInputCheckbox.vue"
+import LuxInputRadio from "./LuxInputRadio.vue"
 import LuxInputSelect from "./LuxInputSelect.vue"
 import LuxInputText from "./LuxInputText.vue"
 import _LuxCardContent from "./_LuxCardContent.vue"
@@ -36,6 +37,7 @@ import LuxTag from "./LuxTag.vue"
 export {
   LuxInputButton,
   LuxInputCheckbox,
+  LuxInputRadio,
   LuxInputSelect,
   LuxInputText,
   _LuxCardContent,
