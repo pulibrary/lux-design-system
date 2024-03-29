@@ -85,6 +85,7 @@ export default {
 
   li {
     display: inline;
+    padding-right: 5px;
   }
 }
 </style>
