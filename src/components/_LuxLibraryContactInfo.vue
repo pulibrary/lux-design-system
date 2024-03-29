@@ -11,10 +11,10 @@
     </div>
     <ul class="icons">
       <li>
-        <a href="http://www.facebook.com/PULibrary"><lux-logo-facebook /></a>
+        <a href="http://www.facebook.com/PULibrary"><lux-logo-facebook width="24" height="24" /></a>
       </li>
       <li>
-        <a href="http://twitter.com/PULibrary"><lux-logo-twitter /></a>
+        <a href="http://twitter.com/PULibrary"><lux-logo-twitter width="24" height="24" /></a>
       </li>
       <li>
         <a href="https://libguides.princeton.edu/usgovdocs"
