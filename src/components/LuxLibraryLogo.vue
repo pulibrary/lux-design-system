@@ -2,7 +2,7 @@
   <component :is="type" :theme="theme" class="lux-library-logo">
     <a href="https://library.princeton.edu">
       <lux-logo-library width="155px" height="34px" v-if="theme === 'dark'" class="full-logo" />
-      <lux-logo-library width="155px" height="34px" v-else color="#000" class="full-logo" />
+      <lux-logo-library width="155px" height="34px" v-else color="#000000" class="full-logo" />
       <lux-logo-library-icon width="34px" height="34px" class="icon-only" />
     </a>
   </component>
