@@ -42,7 +42,7 @@ export default {
 @import "../assets/styles/media_queries.scss";
 
 .lux-library-logo {
-  margin: var(--space-x-small 0);
+  margin: var(--space-x-small) 0;
 }
 
 .full-logo {
