@@ -24,6 +24,7 @@ import LuxHeading from "./LuxHeading.vue"
 import LuxHyperlink from "./LuxHyperlink.vue"
 import LuxLoader from "./LuxLoader.vue"
 import LuxLibraryHeader from "./LuxLibraryHeader.vue"
+import LuxLibraryFooter from "./LuxLibraryFooter.vue"
 import LuxMediaImage from "./LuxMediaImage.vue"
 import LuxMenuBar from "./LuxMenuBar.vue"
 import LuxTextStyle from "./LuxTextStyle.vue"
@@ -64,6 +65,7 @@ export {
   LuxHyperlink,
   LuxLoader,
   LuxLibraryHeader,
+  LuxLibraryFooter,
   LuxMediaImage,
   LuxMenuBar,
   LuxTextStyle,
