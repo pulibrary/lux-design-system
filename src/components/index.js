@@ -31,8 +31,13 @@ import LuxTextStyle from "./LuxTextStyle.vue"
 import LuxWrapper from "./LuxWrapper.vue"
 import LuxLibraryLogo from "./LuxLibraryLogo.vue"
 import LuxSpacer from "./LuxSpacer.vue"
+import LuxLogoFacebook from "./logos/LuxLogoFacebook.vue"
+import LuxLogoFriends from "./logos/LuxLogoFriends.vue"
+import LuxLogoGovDocs from "./logos/LuxLogoGovDocs.vue"
 import LuxLogoLibrary from "./logos/LuxLogoLibrary.vue"
 import LuxLogoLibraryIcon from "./logos/LuxLogoLibraryIcon.vue"
+import LuxLogoTwitter from "./logos/LuxLogoTwitter.vue"
+import LuxLogoUniversity from "./logos/LuxLogoUniversity.vue"
 import LuxSearchBox from "./LuxSearchBox.vue"
 import LuxAlert from "./LuxAlert.vue"
 import LuxDropdownMenu from "./LuxDropdownMenu.vue"
@@ -72,8 +77,13 @@ export {
   LuxWrapper,
   LuxLibraryLogo,
   LuxSpacer,
+  LuxLogoFacebook,
+  LuxLogoFriends,
+  LuxLogoGovDocs,
   LuxLogoLibrary,
   LuxLogoLibraryIcon,
+  LuxLogoTwitter,
+  LuxLogoUniversity,
   LuxSearchBox,
   LuxAlert,
   LuxDropdownMenu,
