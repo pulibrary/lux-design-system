@@ -17,7 +17,6 @@
     Add: `import {createApp} from "vue";`   
          `import lux from "lux-design-system";`   
          `import "lux-design-system/dist/style.css";`   
-         `import "lux-design-system/dist/system/tokens/tokens.scss";`   
 
     Create: a factory function that will create vue apps:  
           `const app = createApp({});`  
