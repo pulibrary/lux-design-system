@@ -96,3 +96,7 @@ run: `yarn exec yalc add lux-design-system`
 4. Sometimes, your application's vite will have cached the old version.
 If you are not seeing your changes, in your application directory run:
 `bundle exec vite clobber`.
+
+## Upgrade Instructions
+
+1. [Upgrade from lux 4 to lux 5](UpgradeInstructions.md)
