@@ -1,4 +1,4 @@
-# lux-styleguidist
+# Lux Design System
 
 ## Project setup
 ```
