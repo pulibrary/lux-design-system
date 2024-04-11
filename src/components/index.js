@@ -25,6 +25,7 @@ import LuxHyperlink from "./LuxHyperlink.vue"
 import LuxLoader from "./LuxLoader.vue"
 import LuxLibraryHeader from "./LuxLibraryHeader.vue"
 import LuxLibraryFooter from "./LuxLibraryFooter.vue"
+import LuxSpecialCollectionsFooter from "./LuxSpecialCollectionsFooter.vue"
 import LuxMediaImage from "./LuxMediaImage.vue"
 import LuxMenuBar from "./LuxMenuBar.vue"
 import LuxTextStyle from "./LuxTextStyle.vue"
@@ -71,6 +72,7 @@ export {
   LuxLoader,
   LuxLibraryHeader,
   LuxLibraryFooter,
+  LuxSpecialCollectionsFooter,
   LuxMediaImage,
   LuxMenuBar,
   LuxTextStyle,
