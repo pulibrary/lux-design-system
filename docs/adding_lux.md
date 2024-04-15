@@ -1,0 +1,116 @@
+### Adding Lux to your project
+
+#### Adding lux to a vue+vite application
+
+[An example Vue+Vite application](https://github.com/pulibrary/vue-app-with-lux)
+that demonstrates [tree-shaking](https://developer.mozilla.org/en-US/docs/Glossary/Tree_shaking).
+
+1. Add lux-design-system to your dependencies in package.json
+1. In your main.js, import the LUX css:
+    ```
+    import 'lux-design-system/dist/style.css'
+    ```
+1. You can now import individual lux components into
+your application's components.
+
+The nice thing about this approach is that Vite will
+tree-shake lux.  This way, your application bundle
+will only include the lux components that you 
+actually use, which means faster download times for the user.
+
+#### Adding lux to a vite+rails project
+
+Some examples of this approach include [approvals](https://github.com/pulibrary/approvals) and
+[DSS](https://github.com/pulibrary/DSS).
+
+1. In your entrypoints/application.js file, add the import statements for lux and vue:
+   ```
+   import { createApp } from "vue";
+   import "lux-design-system/dist/style.css";
+
+   // Option 1: import the default export from
+   // lux to import all of lux into your project
+   import lux from "lux-design-system";
+
+   // Option 2: import only the components you
+   // need from lux, to enable tree-shaking and
+   // a smaller bundle size
+   import { LuxLibraryFooter, LuxLibraryHeader, LuxMenuBar, LuxLogoUniversity, LuxLogoLibraryIcon, LuxLibraryLogo, LuxLogoLibrary, LuxWrapper, LuxSpacer } from "lux-design-system";
+   ```
+1. In your entrypoints/application.js, create a factory function
+for creating vue apps:
+    ```
+    const app = createApp({});
+    const createMyApp = () => createApp(app);
+    ```
+1. In your entrypoints/application.js, use the lux plugin (if you chose option 1 above) or add the specific components your
+Rails app uses (if you chose option 2 above).  Then mount the
+Vue app to the appropriate element(s) in the DOM.
+    ```
+    document.addEventListener('DOMContentLoaded', () => {
+        const elements = document.getElementsByClassName('lux')
+        for (let i = 0; i < elements.length; i++) {
+            // Option 1: use all of lux
+            createMyApp()
+                .use(lux)
+                .mount(elements[i]);
+
+            // OR option 2: use specific lux components
+            createMyApp()
+                .component("lux-library-footer", LuxLibraryFooter)
+                .component("lux-library-header", LuxLibraryHeader)
+                .component("lux-menu-bar", LuxMenuBar)
+                .component("lux-logo-university", LuxLogoUniversity)
+                .component("lux-logo-library-icon", LuxLogoLibraryIcon)
+                .component("lux-library-logo", LuxLibraryLogo)
+                .component("lux-logo-library", LuxLogoLibrary)
+                .component("lux-wrapper", LuxWrapper)
+                .component("lux-spacer", LuxSpacer)
+                .mount(elements[i]);
+        }
+    })
+    ```
+1. Add lux components as needed in your views or ViewComponents.
+1. Add classes or CSS variables from lux to your styling.
+
+
+#### Adding lux to a static HTML page
+
+Importmaps are a nice way to add vue and
+lux to a static site.  An example of this
+approach is the [Pulibrary github blog](https://github.com/pulibrary/pulibrary.github.io).
+
+This approach is simple, but there is a drawback.
+The user has to download all of lux, rather than
+just the components you need (i.e. there is no
+tree shaking).
+
+1. In your HTML, import Vue and lux from a
+CDN, like so:
+    ```
+    <script type="importmap">
+      {
+        "imports": {
+          "vue": "https://unpkg.com/vue@3.2.47/dist/vue.esm-browser.prod.js",
+          "lux-design-system": "https://unpkg.com/lux-design-system@5.0.2/dist/lux-styleguidist.mjs"
+        }
+      }
+    </script>
+    ```
+1. Add some javascript that creates and mounts a
+Vue application and installs lux as a vue plugin.
+    ```
+    import { createApp } from 'vue';
+    import lux from 'lux-design-system';
+
+    const app = createApp({});
+    app.use(lux)
+    .mount('#app');
+    ```
+1. Import the CSS as from a CDN.
+    ```
+    <link rel="stylesheet" href="https://unpkg.com/lux-design-system@5.0.2/dist/style.css">
+    ```
+1. Add lux components as needed in your HTML.
+1. Add classes or CSS variables from lux to your styling.
+

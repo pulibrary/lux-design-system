@@ -1,5 +1,9 @@
 # Lux Design System
 
+## Adding Lux to an application or website
+
+[Instructions for adding lux](docs/adding_lux.md)
+
 ## Project setup
 ```
 npm install
