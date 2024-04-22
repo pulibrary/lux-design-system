@@ -1,5 +1,7 @@
 # Lux Design System
 
+## [View the Design System](https://pulibrary.github.io/lux-design-system/)
+
 ## Adding Lux to an application or website
 
 [Instructions for adding lux](docs/adding_lux.md)
@@ -40,7 +42,7 @@ npm run release
 ```
 npm run deploy
 ```
-This will update the docs at [https://pulibrary.github.io/lux-styleguidist/](https://pulibrary.github.io/lux-styleguidist/).
+This will update the docs at [https://pulibrary.github.io/lux-design-system/](https://pulibrary.github.io/lux-design-system/).
 Please note: For informational purposes only. Don't do this outside of a release!
 
 
