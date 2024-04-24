@@ -121,13 +121,13 @@ export default {
     cursor: not-allowed;
   }
   &.small {
-    width: 200px;
+    width: var(--card-width-small);
   }
   &.medium {
-    width: 300px;
+    width: var(--card-width-medium);
   }
   &.large {
-    width: 400px;
+    width: var(--card-width-large);
   }
 
   .lux-text-style {

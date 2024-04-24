@@ -17,6 +17,7 @@ import LuxCard from "./LuxCard.vue"
 import LuxCounter from "./LuxCounter.vue"
 import LuxDataTable from "./LuxDataTable.vue"
 import LuxDatePicker from "./LuxDatePicker.vue"
+import LuxDisclosure from "./LuxDisclosure.vue"
 import LuxGallery from "./LuxGallery.vue"
 import LuxGridContainer from "./LuxGridContainer.vue"
 import LuxGridItem from "./LuxGridItem.vue"
@@ -64,6 +65,7 @@ export {
   LuxCounter,
   LuxDataTable,
   LuxDatePicker,
+  LuxDisclosure,
   LuxGallery,
   LuxGridContainer,
   LuxGridItem,
