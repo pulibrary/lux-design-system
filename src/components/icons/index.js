@@ -3,6 +3,7 @@ import LuxIconAlert from "./LuxIconAlert.vue"
 import LuxIconApproved from "./LuxIconApproved.vue"
 import LuxIconArrowDown from "./LuxIconArrowDown.vue"
 import LuxIconArrowRight from "./LuxIconArrowRight.vue"
+import LuxIconArrowUp from "./LuxIconArrowUp.vue"
 import LuxIconAscending from "./LuxIconAscending.vue"
 import LuxIconBase from "./LuxIconBase.vue"
 import LuxIconClock from "./LuxIconClock.vue"
@@ -49,6 +50,7 @@ export {
   LuxIconApproved,
   LuxIconArrowDown,
   LuxIconArrowRight,
+  LuxIconArrowUp,
   LuxIconAscending,
   LuxIconBase,
   LuxIconClock,

@@ -29,6 +29,8 @@
   --color-tan-darker: rgb(121, 87, 47);
   --color-princeton-salmon: rgb(255, 201, 148);
   --color-princeton-orange-on-black: rgb(245, 128, 37);
+  --color-princeton-orange-50: #E77500;
+  --color-princeton-orange-10: #FCF1E5;
   --font-size-large-min: 1.125em;
   --font-size-base-max: 1.125em;
   --font-size-x-large: 36px;
@@ -72,6 +74,9 @@
   --box-shadow-small-inset: inset 0 0 0 1px rgba(0,0,0,.05);
   --box-shadow-selected: 0px 0px 5px 3px #e77500;
   --box-shadow-large: 0 10px 30px 0 rgba(0, 0, 0, 0.1);
+  --card-width-small: 200px;
+  --card-width-medium: 300px;
+  --card-width-large: 400px;
   --letter-spacing-x-large: 2px;
   --letter-spacing-large: 1px;
   --letter-spacing-base: 0;
