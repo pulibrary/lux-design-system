@@ -5,8 +5,9 @@
       :aria-controls="contentId"
       :aria-expanded="open.toString()"
       :class="{ 'lux-disclosure-open-button': open }"
+      :style="{ fontSize: fontSize }"
     >
-      {{ open ? hideLabel : showLabel }}
+      <span>{{ open ? hideLabel : showLabel }}</span>
       <lux-icon-base width="12" height="12">
         <lux-icon-arrow-up v-if="open"></lux-icon-arrow-up>
         <lux-icon-arrow-down v-else></lux-icon-arrow-down>
@@ -18,6 +19,7 @@
       ref="contentContainer"
       class="lux-disclosure-content"
       tabindex="-1"
+      :style="{ fontSize: fontSize }"
     >
       <slot></slot>
     </div>
@@ -45,6 +47,10 @@ const props = defineProps({
     type: String,
     default: "var(--card-width-medium)",
   },
+  fontSize: {
+    type: String,
+    default: "var(--font-size-base)",
+  },
 })
 const open = ref(false)
 const contentContainer = ref()
@@ -64,27 +70,32 @@ function toggleTheDisclosure() {
 }
 </script>
 <style>
-.lux-disclosure {
-  font-family: var(--font-family-text);
-  background-color: var(--color-princeton-orange-10);
-  border-radius: var(--border-radius-default);
-}
-
 .lux-disclosure button {
+  font-family: var(--font-family-text);
   background-color: transparent;
   width: 100%;
   display: flex;
-  justify-content: space-between;
-  border: 0px;
-  padding: var(--space-x-small);
+  align-items: flex-start;
+  gap: var(--space-xx-small);
+  border: 0;
+  padding: 0;
 }
 
-.lux-disclosure button.lux-disclosure-open-button {
-  border-bottom: 2px solid var(--color-princeton-orange-on-white);
+.lux-disclosure button .lux-icon {
+  border: 1px solid black;
+  padding: var(--space-xx-small);
+  border-radius: var(--border-radius-default);
+}
+
+.lux-disclosure button:hover .lux-icon,
+.lux-disclosure button:focus .lux-icon {
+  background-color: var(--color-princeton-orange-50);
 }
 
 .lux-disclosure-content {
+  font-family: var(--font-family-text);
   padding: var(--space-small);
+  border-bottom: 2px solid var(--color-princeton-orange-on-white);
 }
 </style>
 <docs>
