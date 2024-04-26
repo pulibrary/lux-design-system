@@ -101,7 +101,8 @@ You should see a note that it's published in store
 run: `yarn exec yalc add lux-design-system`
 4. Sometimes, your application's vite will have cached the old version.
 If you are not seeing your changes, in your application directory run:
-`bundle exec vite clobber`.
+* `bundle exec vite clobber` for ruby projects
+* `yarn dev --force` for Vue projects
 
 ## Upgrade Instructions
 
