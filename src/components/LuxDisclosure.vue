@@ -63,7 +63,6 @@ function toggleTheDisclosure() {
     // to load the content into memory, then
     // set focus on the new content
     setTimeout(() => {
-      console.log(contentContainer.value, "is my content container")
       contentContainer.value.focus()
     }, 500)
   }
