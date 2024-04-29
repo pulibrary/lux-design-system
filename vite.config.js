@@ -21,6 +21,10 @@ export default defineConfig({
       targets: [{ src: "src/assets/styles/", dest: "dist/" }],
       hook: "writeBundle",
     }),
+    copy({
+      targets: [{ src: "src/lux-design-system.d.ts", dest: "dist/" }],
+      hook: "writeBundle",
+    }),
   ],
   build: {
     lib: {

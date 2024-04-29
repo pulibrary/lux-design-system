@@ -5,6 +5,7 @@
   ],
   "main": "./dist/lux-styleguidist.umd.js",
   "module": "./dist/lux-styleguidist.mjs",
+  "types": "./dist/lux-design-system.d.ts",
   "exports": {
     ".": {
       "import": "./dist/lux-styleguidist.mjs",
