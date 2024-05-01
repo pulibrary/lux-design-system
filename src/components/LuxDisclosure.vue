@@ -8,7 +8,7 @@
       :style="{ fontSize: fontSize }"
     >
       <span>{{ open ? hideLabel : showLabel }}</span>
-      <lux-icon-base width="12" height="12">
+      <lux-icon-base width="12" height="12" iconHide="true">
         <lux-icon-arrow-up v-if="open"></lux-icon-arrow-up>
         <lux-icon-arrow-down v-else></lux-icon-arrow-down>
       </lux-icon-base>
