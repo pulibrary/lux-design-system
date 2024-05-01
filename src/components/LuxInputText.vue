@@ -76,7 +76,7 @@ export default {
   status: "ready",
   release: "1.0.0",
   type: "Element",
-  emits: ["inputvaluechange", "inputblur", "inputfocus"],
+  emits: ["inputvaluechange", "inputblur", "inputfocus", "update:value"],
   computed: {
     hasError() {
       return this.errormessage.length
@@ -249,7 +249,7 @@ export default {
   },
   methods: {
     inputvaluechange(value) {
-      this.$emit("inputvaluechange", value)
+      this.$emit("update:value", value)
     },
     inputblur(value) {
       this.$emit("inputblur", value)
