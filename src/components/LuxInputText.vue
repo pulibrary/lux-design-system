@@ -249,7 +249,7 @@ export default {
   },
   methods: {
     inputvaluechange(value) {
-      this.$emit("inputvaluechange", value)
+      this.$emit("update:value", value)
     },
     inputblur(value) {
       this.$emit("inputblur", value)
