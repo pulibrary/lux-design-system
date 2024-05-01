@@ -114,3 +114,13 @@ Vue application and installs lux as a vue plugin.
 1. Add lux components as needed in your HTML.
 1. Add classes or CSS variables from lux to your styling.
 
+#### Adding only the Lux CSS
+
+You can just bring in the lux CSS (including all the CSS variables) from a CDN.
+An example of this approach is the [DACS handbook](https://github.com/pulibrary/dacs_handbook).
+
+To do this, add the CSS from a CDN to your HTML:
+
+```
+    <link rel="stylesheet" href="https://unpkg.com/lux-design-system@5.1.1/dist/style.css">
+```
