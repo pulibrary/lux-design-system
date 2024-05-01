@@ -30,7 +30,7 @@ describe("LuxInputText.vue", () => {
 
     await input.setValue("I am writing in this input")
 
-    expect(wrapper.emitted().inputvaluechange.length).toEqual(1)
-    expect(wrapper.emitted().inputvaluechange[0]).toEqual(["I am writing in this input"])
+    expect(wrapper.emitted()["update:value"].length).toEqual(1)
+    expect(wrapper.emitted()["update:value"][0]).toEqual(["I am writing in this input"])
   })
 })

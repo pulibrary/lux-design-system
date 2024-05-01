@@ -76,7 +76,7 @@ export default {
   status: "ready",
   release: "1.0.0",
   type: "Element",
-  emits: ["inputvaluechange", "inputblur", "inputfocus"],
+  emits: ["inputvaluechange", "inputblur", "inputfocus", "update:value"],
   computed: {
     hasError() {
       return this.errormessage.length

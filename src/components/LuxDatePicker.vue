@@ -18,7 +18,7 @@
           :width="width"
           :size="size"
           :value="!date ? '' : date.toLocaleDateString('en-US')"
-          @inputvaluechange="updateInput($event)"
+          @update:value="updateInput($event)"
           v-on="inputEvents"
           :placeholder="placeholder"
           :helper="helper"
@@ -41,8 +41,7 @@
           :width="width"
           :size="size"
           :required="required"
-          :value="!range ? '' : formatStart() + ' - ' + formatEnd()"
-          @inputvaluechange="updateRangeInput($event)"
+          v-model:value="formattedRange"
           v-on="inputEvents.start"
           :placeholder="placeholder"
           :helper="helper"
@@ -59,7 +58,7 @@
  * existing vCalendar functionality.
  */
 import { DatePicker } from "v-calendar"
-import { ref, watchEffect } from "vue"
+import { ref, watchEffect, computed } from "vue"
 
 defineOptions({ name: "LuxDatePicker" })
 const props = defineProps({
@@ -196,6 +195,15 @@ const attributes = ref([
     },
   },
 ])
+
+const formattedRange = computed({
+  get() {
+    return !range.value ? "" : `${formatStart()} - ${formatEnd()}`
+  },
+  set(newValue) {
+    updateRangeInput(newValue)
+  },
+})
 
 function calendarClosedSingle(value) {
   if (date.value && isValidFormat(date.value.toLocaleDateString("en-US"))) {
