@@ -9,7 +9,7 @@
       v-model="date"
       @popover-did-disappear="calendarClosedSingle($event)"
     >
-      <template #default="{ inputEvents }">
+      <template #default="{ inputValue, inputEvents }">
         <lux-input-text
           :id="id"
           :label="label"
@@ -17,9 +17,8 @@
           :required="required"
           :width="width"
           :size="size"
-          :value="!date ? '' : date.toLocaleDateString('en-US')"
-          @update:value="updateInput($event)"
           v-on="inputEvents"
+          :value="inputValue"
           :placeholder="placeholder"
           :helper="helper"
         ></lux-input-text>
@@ -41,8 +40,8 @@
           :width="width"
           :size="size"
           :required="required"
-          v-model:value="formattedRange"
           v-on="inputEvents.start"
+          v-model:value="formattedRange"
           :placeholder="placeholder"
           :helper="helper"
         ></lux-input-text>
@@ -253,22 +252,20 @@ function updateInput(value) {
   }
 }
 function updateRangeInput(value) {
-  watchEffect(() => {
-    if (stringSeemsLikeDateRange(value)) {
-      let r = value.split(" - ")
-      if (isValidFormat(r[0]) && isValidFormat(r[1])) {
-        if (!range.value) {
-          range.value = {}
-        }
-        range.value = {
-          start: parseDate(r[0]),
-          end: parseDate(r[1]),
-        }
-        range.value.end = parseDate(r[1])
-        emit("updateRangeInput", value)
+  if (stringSeemsLikeDateRange(value)) {
+    let r = value.split(" - ")
+    if (isValidFormat(r[0]) && isValidFormat(r[1])) {
+      if (!range.value) {
+        range.value = {}
       }
+      range.value = {
+        start: parseDate(r[0]),
+        end: parseDate(r[1]),
+      }
+      range.value.end = parseDate(r[1])
+      emit("updateRangeInput", value)
     }
-  })
+  }
 }
 
 function isValidFormat(d) {

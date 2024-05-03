@@ -21,9 +21,11 @@
         :placeholder="placeholder"
         :errormessage="errormessage"
         :class="['lux-input', { 'lux-input-error': hasError }]"
-        @input="inputvaluechange($event.target.value)"
-        @blur="inputblur($event)"
-        @focus="inputfocus($event)"
+        @input="event => inputFired(event)"
+        @change="(...args) => $emit('change', ...args)"
+        @keyup="(...args) => $emit('keyup', ...args)"
+        @blur="(...args) => $emit('blur', ...args)"
+        @focus="event => focusFired(event)"
       />
 
       <textarea
@@ -76,7 +78,17 @@ export default {
   status: "ready",
   release: "1.0.0",
   type: "Element",
-  emits: ["inputvaluechange", "inputblur", "inputfocus", "update:value"],
+  emits: [
+    "inputvaluechange",
+    "inputblur",
+    "inputfocus",
+    "update:value",
+    "input",
+    "keyup",
+    "change",
+    "blur",
+    "focus",
+  ],
   computed: {
     hasError() {
       return this.errormessage.length
@@ -248,11 +260,19 @@ export default {
     },
   },
   methods: {
+    inputFired(event) {
+      this.$emit("input", event)
+      this.inputvaluechange(event.target.value)
+    },
     inputvaluechange(value) {
       this.$emit("update:value", value)
     },
     inputblur(value) {
       this.$emit("inputblur", value)
+    },
+    focusFired(event) {
+      this.$emit("focus", event)
+      this.inputfocus(event.target.value)
     },
     inputfocus(value) {
       this.$emit("inputfocus", value)
