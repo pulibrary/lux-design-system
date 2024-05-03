@@ -24,7 +24,7 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vite build",
-    "test": "jest",
+    "test": "TZ=UTC jest",
     "lint": "vue-cli-service lint",
     "deploy": "npm run build; npm run styleguide:build; push-dir --dir=styleguide --branch=gh-pages --cleanup",
     "release": "npm run build && np && npm run deploy",

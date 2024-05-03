@@ -4,6 +4,7 @@
       v-if="mode == 'single'"
       mode="single"
       :disabled-dates="disabledDates"
+      :update-on-input="true"
       :attributes="attributes"
       v-model="date"
       @popover-did-disappear="calendarClosedSingle($event)"
@@ -39,8 +40,8 @@
           :width="width"
           :size="size"
           :required="required"
-          v-model:value="formattedRange"
           v-on="inputEvents.start"
+          v-model:value="formattedRange"
           :placeholder="placeholder"
           :helper="helper"
         ></lux-input-text>
@@ -203,15 +204,6 @@ const formattedRange = computed({
   },
 })
 
-const formattedDate = computed({
-  get() {
-    return !date.value ? "" : date.value.toLocaleDateString("en-US")
-  },
-  set(newValue) {
-    updateInput(newValue)
-  },
-})
-
 function calendarClosedSingle(value) {
   if (date.value && isValidFormat(date.value.toLocaleDateString("en-US"))) {
     let dateAsText = date.value.toLocaleDateString("en-US")
@@ -260,22 +252,20 @@ function updateInput(value) {
   }
 }
 function updateRangeInput(value) {
-  watchEffect(() => {
-    if (stringSeemsLikeDateRange(value)) {
-      let r = value.split(" - ")
-      if (isValidFormat(r[0]) && isValidFormat(r[1])) {
-        if (!range.value) {
-          range.value = {}
-        }
-        range.value = {
-          start: parseDate(r[0]),
-          end: parseDate(r[1]),
-        }
-        range.value.end = parseDate(r[1])
-        emit("updateRangeInput", value)
+  if (stringSeemsLikeDateRange(value)) {
+    let r = value.split(" - ")
+    if (isValidFormat(r[0]) && isValidFormat(r[1])) {
+      if (!range.value) {
+        range.value = {}
       }
+      range.value = {
+        start: parseDate(r[0]),
+        end: parseDate(r[1]),
+      }
+      range.value.end = parseDate(r[1])
+      emit("updateRangeInput", value)
     }
-  })
+  }
 }
 
 function isValidFormat(d) {
