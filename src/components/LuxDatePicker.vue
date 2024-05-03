@@ -4,12 +4,11 @@
       v-if="mode == 'single'"
       mode="single"
       :disabled-dates="disabledDates"
-      :update-on-input="true"
       :attributes="attributes"
       v-model="date"
       @popover-did-disappear="calendarClosedSingle($event)"
     >
-      <template #default="{ inputEvents }">
+      <template #default="{ inputValue, inputEvents }">
         <lux-input-text
           :id="id"
           :label="label"
@@ -17,9 +16,8 @@
           :required="required"
           :width="width"
           :size="size"
-          :value="!date ? '' : date.toLocaleDateString('en-US')"
-          @update:value="updateInput($event)"
           v-on="inputEvents"
+          :value="inputValue"
           :placeholder="placeholder"
           :helper="helper"
         ></lux-input-text>
@@ -202,6 +200,15 @@ const formattedRange = computed({
   },
   set(newValue) {
     updateRangeInput(newValue)
+  },
+})
+
+const formattedDate = computed({
+  get() {
+    return !date.value ? "" : date.value.toLocaleDateString("en-US")
+  },
+  set(newValue) {
+    updateInput(newValue)
   },
 })
 

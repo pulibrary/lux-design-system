@@ -21,9 +21,11 @@
         :placeholder="placeholder"
         :errormessage="errormessage"
         :class="['lux-input', { 'lux-input-error': hasError }]"
-        @input="inputvaluechange($event.target.value)"
-        @blur="inputblur($event)"
-        @focus="inputfocus($event)"
+        @input="(...args) => $emit('input', ...args)"
+        @change="(...args) => $emit('change', ...args)"
+        @keyup="(...args) => $emit('keyup', ...args)"
+        @blur="(...args) => $emit('blur', ...args)"
+        @focus="(...args) => $emit('focus', ...args)"
       />
 
       <textarea
@@ -76,7 +78,17 @@ export default {
   status: "ready",
   release: "1.0.0",
   type: "Element",
-  emits: ["inputvaluechange", "inputblur", "inputfocus", "update:value"],
+  emits: [
+    "inputvaluechange",
+    "inputblur",
+    "inputfocus",
+    "update:value",
+    "input",
+    "keyup",
+    "change",
+    "blur",
+    "focus",
+  ],
   computed: {
     hasError() {
       return this.errormessage.length
