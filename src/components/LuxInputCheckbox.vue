@@ -39,6 +39,7 @@ export default {
     prop: "checked",
     event: "change",
   },
+  emits: ["change", "inputblur"],
   data: function () {
     return {
       wrapper: this.groupLabel.length ? "fieldset" : "div",
