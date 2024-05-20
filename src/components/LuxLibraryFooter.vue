@@ -97,6 +97,8 @@
 import LuxLibraryContactInfo from "./_LuxLibraryContactInfo.vue"
 import LuxUniversityCopyright from "./_LuxUniversityCopyright.vue"
 import LuxUniversityAccessibility from "./_LuxUniversityAccessibility.vue"
+import LuxWrapper from "./LuxWrapper.vue"
+import LuxLogoUniversity from "./logos/LuxLogoUniversity.vue"
 /**
  * LibraryFooter is the preferred Footer styling/behavior for PUL websites.
  * Don't forget to create a fallback for this component by providing the HTML
@@ -111,6 +113,8 @@ export default {
     LuxLibraryContactInfo,
     LuxUniversityCopyright,
     LuxUniversityAccessibility,
+    LuxWrapper,
+    LuxLogoUniversity,
   },
   props: {
     /**
