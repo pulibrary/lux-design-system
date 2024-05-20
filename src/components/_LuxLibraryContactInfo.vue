@@ -33,11 +33,22 @@
  * Used to show Library's contact information, including address and phone, is
  * clear and in the footer.
  */
+import LuxLogoFacebook from "./logos/LuxLogoFacebook.vue"
+import LuxLogoTwitter from "./logos/LuxLogoTwitter.vue"
+import LuxLogoGovDocs from "./logos/LuxLogoGovDocs.vue"
+import LuxLogoFriends from "./logos/LuxLogoFriends.vue"
+
 export default {
   name: "LibraryContactInfo",
   status: "ready",
   release: "1.0.0",
   type: "Element",
+  components: {
+    LuxLogoFacebook,
+    LuxLogoTwitter,
+    LuxLogoGovDocs,
+    LuxLogoFriends,
+  },
   props: {
     /**
      * The html element name used for the wrapper.
