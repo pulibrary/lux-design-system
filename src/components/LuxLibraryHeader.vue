@@ -13,6 +13,10 @@
 </template>
 
 <script>
+import LuxLibraryLogo from "./LuxLibraryLogo.vue"
+import LuxSpacer from "./LuxSpacer.vue"
+import LuxWrapper from "./LuxWrapper.vue"
+
 /**
  * LibraryHeader is the preferred Header styling/behavior for PUL websites.
  * Don't forget to create a fallback for this component by also providing the HTML
@@ -71,6 +75,11 @@ export default {
     value: function (theme) {
       return theme == "light" ? "light" : "dark"
     },
+  },
+  components: {
+    LuxSpacer,
+    LuxWrapper,
+    LuxLibraryLogo,
   },
 }
 </script>

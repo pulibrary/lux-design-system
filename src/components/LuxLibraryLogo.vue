@@ -9,6 +9,9 @@
 </template>
 
 <script>
+import LuxLogoLibrary from "./logos/LuxLogoLibrary.vue"
+import LuxLogoLibraryIcon from "./logos/LuxLogoLibraryIcon.vue"
+
 /**
  * Used to identify that the site is a Princeton University site in the footer
  * and links to princeton.edu.
@@ -33,6 +36,10 @@ export default {
       type: String,
       default: "dark",
     },
+  },
+  components: {
+    LuxLogoLibrary,
+    LuxLogoLibraryIcon,
   },
 }
 </script>
