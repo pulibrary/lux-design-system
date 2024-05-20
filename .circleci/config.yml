@@ -35,7 +35,7 @@ workflows:
           matrix:
             parameters:
               version:
-                - 21.7.1
+                - 22.2.0
                 - 20.12.0
                 - 18.20.0
       - styleguide
