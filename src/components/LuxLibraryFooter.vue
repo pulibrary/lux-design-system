@@ -148,7 +148,9 @@ export default {
   line-height: var(--line-height-heading);
   color: var(--color-rich-black);
   background: var(--color-grayscale-lighter);
+  padding-top: 1em;
   padding-bottom: 1em;
+  margin-top: 3em;
 }
 
 .lux-footer-content {
