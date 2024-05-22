@@ -1,5 +1,5 @@
 <template>
-  <nav v-if="type === 'links'" class="lux-nav">
+  <nav v-if="type === 'links'" :class="['lux-nav', theme]">
     <ul>
       <li v-for="(item, index) in menuItems" :key="index">
         <template v-if="item.children">
@@ -38,7 +38,7 @@
     </ul>
   </nav>
 
-  <div v-else-if="type === 'buttons'" class="lux-menu">
+  <div v-else-if="type === 'buttons'" :class="['lux-menu', theme]">
     <ul>
       <li v-for="(item, index) in menuItems" v-bind:key="item">
         <button
@@ -60,7 +60,7 @@
 
   <nav
     v-else-if="type === 'main-menu'"
-    class="lux-main-menu"
+    :class="['lux-main-menu', theme]"
     aria-label="Main Navigation"
     v-click-outside="hide"
   >
@@ -167,6 +167,16 @@ export default {
     menuItems: {
       required: true,
       type: Array,
+    },
+    /**
+     * Whether the header is dark, shade, or light. Default is set to dark.
+     */
+    theme: {
+      type: String,
+      default: "dark",
+      validator: value => {
+        return value.match(/(dark|shade|light)/)
+      },
     },
   },
   computed: {
@@ -527,6 +537,11 @@ export default {
       display: none;
       min-width: 100%;
 
+      @media (min-width: 900px) {
+        background: var(--color-white);
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+      }
+
       li {
         white-space: nowrap;
 
@@ -537,6 +552,15 @@ export default {
 
       &.lux-show {
         display: block;
+      }
+
+      a {
+        color: var(--color-rich-black);
+
+        &:hover,
+        &:focus {
+          color: var(--color-rich-black);
+        }
       }
     }
 
@@ -560,6 +584,94 @@ export default {
     }
   }
 }
+
+.dark {
+  background: var(--color-rich-black);
+
+  @media (max-width: 899px) {
+    &.lux-main-menu a {
+      color: var(--color-rich-black);
+    }
+  }
+
+  @media (min-width: 900px) {
+    &.lux-main-menu a,
+    &.lux-main-menu button {
+      color: var(--color-white);
+
+      &:hover,
+      &:focus {
+        color: var(--color-white);
+      }
+    }
+  }
+
+  &.lux-main-menu .lux-submenu-toggle {
+    background-image: url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPHN2ZyB2ZXJzaW9uPSIxLjEiIGlkPSJMYXllcl8xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB4PSIwcHgiIHk9IjBweCIKCSB2aWV3Qm94PSIwIDAgMjkyLjQgMjkyLjQiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDI5Mi40IDI5Mi40OyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+CjxzdHlsZSB0eXBlPSJ0ZXh0L2NzcyI+Cgkuc3Qwe2ZpbGw6I0ZGRkZGRjt9Cjwvc3R5bGU+CjxwYXRoIGNsYXNzPSJzdDAiIGQ9Ik0yODcsNjkuNGMtMy40LTMuNS04LjEtNS41LTEzLTUuNEgxOC40Yy01LDAtOS4zLDEuOC0xMi45LDUuNEMyLDcyLjcsMCw3Ny40LDAsODIuMmMwLDUsMS44LDkuMyw1LjQsMTIuOQoJbDEyOCwxMjcuOWMzLjYsMy42LDcuOCw1LjQsMTIuOCw1LjRzOS4yLTEuOCwxMi44LTUuNEwyODcsOTVjMy41LTMuNSw1LjQtNy44LDUuNC0xMi44cy0xLjktOS4yLTUuNS0xMi44TDI4Nyw2OS40eiIvPgo8L3N2Zz4K");
+
+    @media (min-width: 900px) {
+      color: white;
+    }
+  }
+}
+
+.shade {
+  background: var(--color-grayscale-darker);
+
+  @media (max-width: 899px) {
+    &.lux-main-menu a {
+      color: var(--color-rich-black);
+    }
+  }
+
+  @media (min-width: 900px) {
+    &.lux-main-menu a,
+    &.lux-main-menu button {
+      color: var(--color-white);
+
+      &:hover,
+      &:focus {
+        color: var(--color-white);
+      }
+    }
+  }
+
+  &.lux-main-menu .lux-submenu-toggle {
+    background-image: url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPHN2ZyB2ZXJzaW9uPSIxLjEiIGlkPSJMYXllcl8xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB4PSIwcHgiIHk9IjBweCIKCSB2aWV3Qm94PSIwIDAgMjkyLjQgMjkyLjQiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDI5Mi40IDI5Mi40OyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+CjxzdHlsZSB0eXBlPSJ0ZXh0L2NzcyI+Cgkuc3Qwe2ZpbGw6I0ZGRkZGRjt9Cjwvc3R5bGU+CjxwYXRoIGNsYXNzPSJzdDAiIGQ9Ik0yODcsNjkuNGMtMy40LTMuNS04LjEtNS41LTEzLTUuNEgxOC40Yy01LDAtOS4zLDEuOC0xMi45LDUuNEMyLDcyLjcsMCw3Ny40LDAsODIuMmMwLDUsMS44LDkuMyw1LjQsMTIuOQoJbDEyOCwxMjcuOWMzLjYsMy42LDcuOCw1LjQsMTIuOCw1LjRzOS4yLTEuOCwxMi44LTUuNEwyODcsOTVjMy41LTMuNSw1LjQtNy44LDUuNC0xMi44cy0xLjktOS4yLTUuNS0xMi44TDI4Nyw2OS40eiIvPgo8L3N2Zz4K");
+
+    @media (min-width: 900px) {
+      color: white;
+    }
+  }
+}
+
+.light {
+  background: var(--color-white);
+
+  :deep(.hamburger-inner),
+  :deep(.hamburger-inner:after),
+  :deep(.hamburger-inner:before) {
+    background-color: var(--color-rich-black);
+  }
+
+  @media (max-width: 899px) {
+    &.lux-main-menu a {
+      color: var(--color-rich-black);
+    }
+  }
+
+  @media (min-width: 900px) {
+    &.lux-main-menu a,
+    &.lux-main-menu button.lux-submenu-toggle {
+      color: var(--color-rich-black);
+
+      &:hover,
+      &:focus {
+        color: var(--color-rich-black);
+      }
+    }
+  }
+}
 </style>
 
 <docs>
@@ -577,5 +689,8 @@ export default {
         {name: 'Logout', component: 'Logout', href: '/example/'}
       ]}
     ]"/>
+
+    <lux-menu-bar type="links" active="Dashboard" :menu-items="[
+      {name: 'Logout', component: 'Logout', href: '/logout'}]" theme="light"/>
   ```
 </docs>
