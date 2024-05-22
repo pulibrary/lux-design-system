@@ -122,6 +122,8 @@
 </template>
 
 <script>
+import _LuxHamburger from "./_LuxHamburger.vue"
+
 /**
  * Used as main page navigation in templates.
  */
@@ -192,6 +194,9 @@ export default {
       this.isVisible = false
       this.activeItem = ""
     },
+  },
+  components: {
+    "lux-hamburger": _LuxHamburger,
   },
   directives: {
     "click-outside": {
