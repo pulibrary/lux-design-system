@@ -78,6 +78,18 @@ describe("LuxMenuBar.vue", () => {
     expect(wrapper.vm.menuItems).toEqual(menuItemsList)
   })
 
+  it("defaults to a dark theme", async () => {
+    wrapper.setProps({ type: "main-menu" })
+    await nextTick()
+    expect(wrapper.get("nav").classes()).toContain("dark")
+  })
+
+  it("has to a light theme", async () => {
+    wrapper.setProps({ type: "main-menu", theme: "light" })
+    await nextTick()
+    expect(wrapper.get("nav").classes()).toContain("light")
+  })
+
   it("has the expected html structure", () => {
     expect(wrapper.element).toMatchSnapshot()
   })

@@ -2,7 +2,7 @@
 
 exports[`LuxMenuBar.vue has the expected html structure 1`] = `
 <nav
-  class="lux-nav"
+  class="lux-nav dark"
 >
   <ul>
     
