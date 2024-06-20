@@ -183,6 +183,17 @@ export default {
       display: none;
     }
   }
+
+  @media (max-width: 899px) {
+    .full-name {
+      display: none;
+    }
+
+    .abbr-name {
+      display: block;
+      font-size: var(--font-size-small);
+    }
+  }
 }
 </style>
 
