@@ -63,7 +63,7 @@ function toggleTheDisclosure() {
     // to load the content into memory, then
     // set focus on the new content
     setTimeout(() => {
-      contentContainer.value.focus()
+      contentContainer.value.focus({ preventScroll: true })
     }, 500)
   }
 }
