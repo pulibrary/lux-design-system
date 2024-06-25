@@ -1,6 +1,6 @@
 <template>
-  <component :is="type" class="lux-accessibility">
-    <a href="https://accessibility.princeton.edu/help">Accessibility</a>
+  <component :is="type" class="lux-accessibility" :class="theme">
+    <a href="https://accessibility.princeton.edu/help">Digital Accessibility</a>
   </component>
 </template>
 
@@ -13,6 +13,7 @@ export default {
   status: "ready",
   release: "1.0.0",
   type: "Element",
+
   props: {
     /**
      * The html element name used for the wrapper.
@@ -20,6 +21,10 @@ export default {
     type: {
       type: String,
       default: "span",
+    },
+    theme: {
+      type: String,
+      default: "dark",
     },
   },
 }
@@ -37,15 +42,31 @@ export default {
   font-family: var(--font-family-heading);
   font-size: var(--font-size-x-small);
   line-height: var(--line-height-heading);
-  color: var(--color-rich-black);
 
   a {
-    color: var(--color-rich-black);
     text-decoration: none;
 
     &:hover,
     &:focus {
       text-decoration: underline;
+    }
+  }
+
+  &.dark {
+    a {
+      color: var(--color-white);
+    }
+  }
+
+  &.shade {
+    a {
+      color: var(--color-rich-black);
+    }
+  }
+
+  &.light {
+    a {
+      color: var(--color-rich-black);
     }
   }
 }

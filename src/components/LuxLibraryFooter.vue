@@ -1,93 +1,24 @@
 <template>
-  <component :is="type" :class="['lux-library-footer']">
+  <component :is="type" :class="['lux-library-footer', theme]">
     <lux-wrapper class="lux-footer-content" :maxWidth="maxWidth">
       <div class="lux-library-links">
-        <nav role="navigation" aria-label="Research Tools">
-          <h2><a href="https://library.princeton.edu/research">Research Tools</a></h2>
-          <ul>
-            <li><a href="https://dss.princeton.edu">Data and Statistics</a></li>
-            <li><a href="https://library.princeton.edu/research/databases">Databases</a></li>
-            <li>
-              <a
-                href="https://catalog.princeton.edu/?f%5Baccess_facet%5D%5B%5D=Online&f%5Bformat%5D%5B%5D=Journal"
-                >E-journals</a
-              >
-            </li>
-            <li><a href="https://library.princeton.edu/library-guides">Research Guides</a></li>
-            <li><a href="https://catalog.princeton.edu/">Catalog</a></li>
-            <li>
-              <a href="https://library.princeton.edu/databases/subject/special-collections"
-                >Special Collections</a
-              >
-            </li>
-          </ul>
-        </nav>
+        <lux-library-logo width="142" height="40" :theme="value(theme)" />
+        <lux-library-contact-info :theme="value(theme)" />
+        <lux-university-accessibility type="span" :theme="value(theme)" />
       </div>
       <div class="lux-library-links">
-        <nav role="navigation" aria-label="Library Services">
-          <h2><a href="https://library.princeton.edu/services">Library Services</a></h2>
-          <ul>
-            <li>
-              <a
-                href="https://library.princeton.edu/services/article-express"
-                title="Use our Interlibrary Loan and Article Express Services"
-                >Article Express</a
-              >
-            </li>
-            <li><a href="https://library.princeton.edu/services/borrowdirect">Borrow Direct</a></li>
-            <li>
-              <a href="https://library.princeton.edu/services/access/circulation-policies"
-                >Circulation</a
-              >
-            </li>
-            <li><a href="https://library.princeton.edu/services/reserves">Course Reserves</a></li>
-            <li>
-              <a
-                href="https://library.princeton.edu/services/interlibrary-services"
-                title="Interlibrary Loan Services, Article Express"
-                >Interlibrary Loan (ILL)</a
-              >
-            </li>
-            <li><a href="https://library.princeton.edu/services/access">Library Access</a></li>
-            <li>
-              <a href="https://library.princeton.edu/services/study-spaces"
-                >Study Spaces and Lockers</a
-              >
-            </li>
-            <li><a href="https://library.princeton.edu/accounts">Your Accounts</a></li>
-          </ul>
-        </nav>
+        <lux-university-copyright type="div" :theme="value(theme)" />
       </div>
       <div class="lux-library-links">
-        <nav role="navigation" aria-label="About the Library">
-          <h2><a href="https://library.princeton.edu/about">About the Library</a></h2>
+        <nav role="navigation" aria-label="Library Staff">
           <ul>
-            <li>
-              <a href="https://library.princeton.edu/collections-and-collection-development"
-                >Collections and Collecting</a
-              >
-            </li>
-            <li><a href="https://rbsc.princeton.edu/exhibitions">Exhibitions</a></li>
-            <li><a href="https://library.princeton.edu/about/locations">Library Locations</a></li>
-            <li><a href="https://library.princeton.edu/alumni">For Alumni</a></li>
             <li><a href="https://library.princeton.edu/staff">For Library Staff</a></li>
             <li><a href="https://library.princeton.edu/staff/directory">Staff Directory</a></li>
             <li>
-              <a href="https://library.princeton.edu/about/friends">Friends of the Library</a>
-            </li>
-            <li>
-              <a href="https://library.princeton.edu/services/technology/off-campus-access"
-                >Using the Library Off-Campus</a
-              >
+              <a href="https://library.princeton.edu/about/jobs">Library Jobs</a>
             </li>
           </ul>
         </nav>
-      </div>
-      <div class="lux-library-links">
-        <lux-library-contact-info />
-        <lux-logo-university width="142" height="40" />
-        <lux-university-copyright type="div" />
-        <lux-university-accessibility type="span" />
       </div>
     </lux-wrapper>
   </component>
@@ -116,6 +47,11 @@ export default {
     LuxWrapper,
     LuxLogoUniversity,
   },
+  methods: {
+    value: function (theme) {
+      return theme == "light" ? "light" : "dark"
+    },
+  },
   props: {
     /**
      * The html element name used for the container
@@ -130,6 +66,13 @@ export default {
     maxWidth: {
       type: Number,
       default: 1170,
+    },
+    /**
+     * Whether the header is dark, shade, or light. Default is set to dark.
+     */
+    theme: {
+      type: String,
+      default: "dark",
     },
   },
 }
@@ -146,11 +89,37 @@ export default {
   @include stack-space(var(--space-base));
   font-family: var(--font-family-heading);
   line-height: var(--line-height-heading);
-  color: var(--color-rich-black);
-  background: var(--color-grayscale-lighter);
+  color: var(--color-white);
+  background: var(--color-rich-black);
   padding-top: 1em;
   padding-bottom: 1em;
   margin-top: 3em;
+
+  &.dark {
+    background: var(--color-rich-black);
+
+    .lux-library-links a {
+      text-decoration: none;
+      color: var(--color-white);
+    }
+  }
+
+  &.shade {
+    background: var(--color-grayscale-darker);
+    .lux-library-links a {
+      text-decoration: none;
+      color: var(--color-rich-black);
+    }
+  }
+
+  &.light {
+    background: var(--color-white);
+
+    .lux-library-links a {
+      text-decoration: none;
+      color: var(--color-rich-black);
+    }
+  }
 }
 
 .lux-footer-content {
@@ -183,7 +152,7 @@ export default {
 
   a {
     text-decoration: none;
-    color: var(--color-rich-black);
+    color: var(--color-white);
 
     &:hover,
     &:focus {
@@ -207,7 +176,7 @@ export default {
 <docs>
   ```jsx
   <div>
-    <lux-library-footer></lux-library-footer>
+    <lux-library-footer theme="dark"></lux-library-footer>
   </div>
   ```
 </docs>
