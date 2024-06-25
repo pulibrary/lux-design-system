@@ -1,5 +1,5 @@
 <template>
-  <component :is="type" :theme="theme" class="lux-library-contact">
+  <component :is="type" class="lux-library-contact" :class="theme">
     <div itemscope itemtype="http://schema.org/Organization">
       <div itemscope itemtype="http://schema.org/PostalAddress">
         <span itemprop="streetAddress">One Washington Road</span> <br />
@@ -51,7 +51,6 @@ export default {
   font-family: var(--font-family-heading);
   font-size: var(--font-size-small);
   line-height: var(--line-height-base);
-  color: var(--color-white);
 
   &.dark {
     a {
@@ -64,6 +63,7 @@ export default {
   }
 
   &.shade {
+    color: var(--color-rich-black);
     a {
       color: var(--color-rich-black);
     }
@@ -74,6 +74,7 @@ export default {
   }
 
   &.light {
+    color: var(--color-rich-black);
     a {
       color: var(--color-rich-black);
     }
@@ -85,11 +86,9 @@ export default {
 
   a {
     text-decoration: none;
-    color: var(--color-white);
   }
 
   h2 {
-    color: var(--color-white);
     font-family: var(--font-family-heading);
     font-size: var(--font-size-base);
     font-weight: var(--font-weight-bold);

@@ -1,5 +1,5 @@
 <template>
-  <component :is="type" class="lux-copyright">
+  <component :is="type" class="lux-copyright" :class="theme">
     &copy; {{ new Date().getFullYear() }} The Trustees of Princeton University
   </component>
 </template>
@@ -42,7 +42,16 @@ export default {
   font-family: var(--font-family-heading);
   font-size: var(--font-size-x-small);
   line-height: var(--line-height-heading);
-  color: var(--color-rich-black);
+
+  &.dark {
+    color: var(--color-white);
+  }
+  &.shade {
+    color: var(--color-rich-black);
+  }
+  &.light {
+    color: var(--color-rich-black);
+  }
 }
 </style>
 
