@@ -22,6 +22,10 @@ export default {
       type: String,
       default: "span",
     },
+    theme: {
+      type: String,
+      default: "dark",
+    },
   },
 }
 </script>
