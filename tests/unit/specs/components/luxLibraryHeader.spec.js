@@ -30,11 +30,18 @@ describe("LuxLibraryHeader.vue", () => {
   it("has a long and short name", () => {
     let full_name = wrapper.find(".full-name")
     expect(full_name.text()).toEqual("My Application")
-    // expect(full_name.isVisible()).toBe(false)
     let short_name = wrapper.find(".abbr-name")
     expect(short_name.text()).toEqual("My App")
-    // expect(short_name.isVisible()).toBe(true)
   })
+  // See https://github.com/pulibrary/lux-design-system/issues/243
+  // Need to add CSS compilation to tests in order to test visibility
+  it.todo(
+    "has only one application name visible at a time"
+    // let full_name = wrapper.find(".full-name")
+    // expect(full_name.isVisible()).toBe(false)
+    // let short_name = wrapper.find(".abbr-name")
+    // expect(short_name.isVisible()).toBe(true)
+  )
   it("links to the appUrl", () => {
     let appLink = wrapper.find(".lux-app-name")
     expect(appLink.attributes("href")).toBe("http://example.com/")
