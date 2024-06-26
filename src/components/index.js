@@ -9,6 +9,7 @@ import _LuxCardContent from "./_LuxCardContent.vue"
 import _LuxCardHeader from "./_LuxCardHeader.vue"
 import _LuxCardMedia from "./_LuxCardMedia.vue"
 import _LuxHamburger from "./_LuxHamburger.vue"
+import _LuxSubscribeNewsletter from "./_LuxSubscribeNewsletter.vue"
 import _LuxUniversityAccessibility from "./_LuxUniversityAccessibility.vue"
 import _LuxLibraryContactInfo from "./_LuxLibraryContactInfo.vue"
 import _LuxUniversityCopyright from "./_LuxUniversityCopyright.vue"
@@ -57,6 +58,7 @@ export {
   _LuxCardHeader,
   _LuxCardMedia,
   _LuxHamburger,
+  _LuxSubscribeNewsletter,
   _LuxUniversityAccessibility,
   _LuxLibraryContactInfo,
   _LuxUniversityCopyright,
