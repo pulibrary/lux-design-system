@@ -4,7 +4,7 @@
       <div class="lux-library-links">
         <lux-library-logo width="142" height="40" :theme="value(theme)" />
         <lux-library-contact-info :theme="value(theme)" />
-        <lux-university-accessibility type="span" :theme="value(theme)" />
+        <lux-university-accessibility :theme="value(theme)" />
       </div>
       <div class="lux-library-links">
         <lux-university-copyright type="div" :theme="value(theme)" />
