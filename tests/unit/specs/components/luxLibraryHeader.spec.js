@@ -14,11 +14,17 @@ describe("LuxLibraryHeader.vue", () => {
         maxWidth: 1111,
         theme: "light",
       },
+      slots: {
+        default: "Some menu bar",
+      },
     })
+  })
+  it("renders the slot", () => {
+    expect(wrapper.find(".lux-library-header").text()).toContain("Some menu bar")
   })
   it("accepts a type prop", () => {
     expect(wrapper.find("abbr").text()).toBe(
-      "Princeton University Library LogoPrinceton University Library IconMy ApplicationMy App"
+      "Princeton University Library LogoPrinceton University Library IconMy ApplicationMy AppSome menu bar"
     )
   })
   it("gets the theme and defaults to dark unless the theme is light", () => {
