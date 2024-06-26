@@ -1,5 +1,5 @@
 <template>
-  <component :is="type" class="lux-accessibility" :class="theme">
+  <component :is="type" :class="['lux-accessibility', theme]">
     <a href="https://accessibility.princeton.edu/help">Digital Accessibility</a>
   </component>
 </template>
@@ -9,7 +9,7 @@
  * Used to show the University’s Accessibility site in the footer.
  */
 export default {
-  name: "UniversityAccessibility",
+  name: "LuxUniversityAccessibility",
   status: "ready",
   release: "1.0.0",
   type: "Element",
@@ -55,18 +55,21 @@ export default {
   &.dark {
     a {
       color: var(--color-white);
+      background: var(--color-rich-black);
     }
   }
 
   &.shade {
     a {
-      color: var(--color-rich-black);
+      color: var(--color-white);
+      background: var(--color-grayscale-darker);
     }
   }
 
   &.light {
     a {
       color: var(--color-rich-black);
+      background: var(--color-white);
     }
   }
 }
@@ -75,7 +78,7 @@ export default {
 <docs>
   ```jsx
   <div>
-    <lux-university-accessibility type="span"></lux-university-accessibility>
+    <lux-university-accessibility theme="light" type="span"></lux-university-accessibility>
   </div>
   ```
 </docs>

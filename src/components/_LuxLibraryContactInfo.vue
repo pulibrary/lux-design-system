@@ -1,5 +1,5 @@
 <template>
-  <component :is="type" class="lux-library-contact" :class="theme">
+  <component :is="type" :class="['lux-library-contact', theme]">
     <div itemscope itemtype="http://schema.org/Organization">
       <div itemscope itemtype="http://schema.org/PostalAddress">
         <span itemprop="streetAddress">One Washington Road</span> <br />
@@ -18,7 +18,7 @@
  */
 
 export default {
-  name: "LibraryContactInfo",
+  name: "LuxLibraryContactInfo",
   status: "ready",
   release: "1.0.0",
   type: "Element",
@@ -53,6 +53,8 @@ export default {
   line-height: var(--line-height-base);
 
   &.dark {
+    color: var(--color-white);
+    background-color: var(--color-rich-black);
     a {
       color: var(--color-white);
     }
@@ -63,18 +65,20 @@ export default {
   }
 
   &.shade {
-    color: var(--color-rich-black);
+    color: var(--color-white);
+    background-color: var(--color-grayscale-darker);
     a {
-      color: var(--color-rich-black);
+      color: var(--color-white);
     }
 
     h2 {
-      color: var(--color-rich-black);
+      color: var(--color-white);
     }
   }
 
   &.light {
     color: var(--color-rich-black);
+    background-color: var(--color-white);
     a {
       color: var(--color-rich-black);
     }
@@ -111,7 +115,7 @@ export default {
 <docs>
   ```jsx
   <div>
-    <lux-library-contact-info type="div" theme="dark"></lux-library-contact-info>
+    <lux-library-contact-info type="div" theme="light"></lux-library-contact-info>
   </div>
   ```
 </docs>

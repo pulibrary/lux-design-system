@@ -1,5 +1,5 @@
 <template>
-  <component :is="type" class="lux-copyright" :class="theme">
+  <component :is="type" :class="['lux-copyright', theme]">
     &copy; {{ new Date().getFullYear() }} The Trustees of Princeton University
   </component>
 </template>
@@ -45,12 +45,15 @@ export default {
 
   &.dark {
     color: var(--color-white);
+    background: var(--color-rich-black);
   }
   &.shade {
-    color: var(--color-rich-black);
+    color: var(--color-white);
+    background: var(--color-grayscale-darker);
   }
   &.light {
     color: var(--color-rich-black);
+    background: var(--color-white);
   }
 }
 </style>
@@ -58,7 +61,7 @@ export default {
 <docs>
   ```jsx
   <div>
-    <lux-university-copyright type="span"></lux-university-copyright>
+    <lux-university-copyright theme="light" type="span"></lux-university-copyright>
   </div>
   ```
 </docs>

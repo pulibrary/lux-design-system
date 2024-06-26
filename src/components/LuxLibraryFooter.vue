@@ -4,7 +4,7 @@
       <div class="lux-library-links">
         <lux-library-logo width="142" height="40" :theme="value(theme)" />
         <lux-library-contact-info :theme="value(theme)" />
-        <lux-university-accessibility type="span" :theme="value(theme)" />
+        <lux-university-accessibility :theme="value(theme)" />
       </div>
       <div class="lux-library-links">
         <lux-university-copyright type="div" :theme="value(theme)" />
@@ -49,7 +49,10 @@ export default {
   },
   methods: {
     value: function (theme) {
-      return theme == "light" ? "light" : "dark"
+      if (theme == "light" || theme == "shade") {
+        return theme
+      }
+      return "dark"
     },
   },
   props: {
@@ -106,9 +109,10 @@ export default {
 
   &.shade {
     background: var(--color-grayscale-darker);
+
     .lux-library-links a {
       text-decoration: none;
-      color: var(--color-rich-black);
+      color: var(----color-white);
     }
   }
 
