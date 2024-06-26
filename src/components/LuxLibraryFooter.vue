@@ -49,7 +49,10 @@ export default {
   },
   methods: {
     value: function (theme) {
-      return theme == "light" ? "light" : theme == "shade" ? "shade" : "dark"
+      if (theme == "light" || theme == "shade") {
+        return theme
+      }
+      return "dark"
     },
   },
   props: {
