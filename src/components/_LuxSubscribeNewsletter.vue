@@ -22,7 +22,7 @@
           type="submit"
           name="subscribe"
           class="lux-subscribe-newsletter"
-          variation="solid"
+          variation="outline"
           :size="size"
           aria-describedby="describe-mailchimp-form"
           >{{ buttonLabel }}</lux-input-button
@@ -38,6 +38,9 @@
 </template>
 
 <script>
+import LuxInputButton from "./LuxInputButton.vue"
+import LuxInputText from "./LuxInputText.vue"
+
 /**
  * Used to add a Subscribe Newsletter input.
  */
@@ -59,6 +62,10 @@ export default {
       default: "Subscribe",
     },
   },
+  components: {
+    LuxInputButton,
+    LuxInputText,
+  },
 }
 </script>
 
@@ -67,20 +74,35 @@ export default {
 @import "../assets/styles/mixins.scss";
 
 .lux-subscribe-newsletter {
+  #mc_embed_signup_scroll {
+    display: flex;
+  }
   input {
     height: 3rem;
     width: 18rem;
   }
-  button {
+  .lux-button {
     color: inherit;
-    background-color: inherit;
+    background-color: var(--black);
     border-color: inherit;
+    border-radius: 0;
     min-height: 3rem;
     min-width: 8rem;
+    height: 3rem;
+    margin: 0rem 0.2rem 0rem 0rem;
   }
-  button:hover {
+  .lux-button:hover {
     color: var(--black);
     background-color: var(--orange-50);
+  }
+  :deep(.lux-input .lux-input-field) {
+    box-shadow: none;
+    height: 3rem;
+    border: 1px solid black;
+    border-radius: 0;
+    &:hover {
+      box-shadow: none;
+    }
   }
 }
 

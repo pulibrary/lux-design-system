@@ -7,6 +7,9 @@
         <lux-university-accessibility :theme="value(theme)" />
       </div>
       <div class="lux-library-links">
+        <lux-subscribe-newsletter type="div"></lux-subscribe-newsletter>
+      </div>
+      <div class="lux-library-links">
         <lux-university-copyright type="div" :theme="value(theme)" />
       </div>
       <div class="lux-library-links">
