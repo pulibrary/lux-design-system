@@ -109,9 +109,10 @@ export default {
 
   &.shade {
     background: var(--color-grayscale-darker);
+
     .lux-library-links a {
       text-decoration: none;
-      color: var(--color-rich-black);
+      color: var(----color-white);
     }
   }
 
