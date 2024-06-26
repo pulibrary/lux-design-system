@@ -94,7 +94,7 @@ export default {
    */
 .lux-library-header {
   @include reset;
-  border-top: 3px solid var(--color-princeton-orange-on-black);
+  border-bottom: 1px solid var(--color-princeton-orange-on-black);
   font-family: var(--font-family-heading);
   position: relative;
 
