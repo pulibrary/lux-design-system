@@ -8,7 +8,7 @@
     aria-labelledby="lux-logo-library-icon"
     role="img"
   >
-    <title id="lux-logo-library-icon">Princeton University Library Icon</title>
+    <title id="lux-logo-library-icon">Princeton University Library</title>
     <g>
       <path
         d="M12.2 0h71.5A12.27 12.27 0 0196 12.2v72.5A12.29 12.29 0 0183.7 97H12.2A12.27 12.27 0 010 84.7V12.2A12.25 12.25 0 0112.2 0z"

@@ -8,7 +8,7 @@
     aria-labelledby="logo-gov-docs"
     role="img"
   >
-    <title id="logo-gov-docs" lang="en">Government Docs Logo</title>
+    <title id="logo-gov-docs" lang="en">Government Docs</title>
     <g>
       <path
         fill="#002C64"
