@@ -1,27 +1,37 @@
 <template>
   <component :is="type" :class="['lux-library-footer', theme]">
     <lux-wrapper class="lux-footer-content" :maxWidth="maxWidth">
-      <div class="lux-library-links">
-        <lux-library-logo width="142" height="40" :theme="value(theme)" />
-        <lux-library-contact-info :theme="value(theme)" />
-        <lux-university-accessibility :theme="value(theme)" />
+      <div class="lux-footer-main">
+        <div class="lux-library-links">
+          <lux-library-logo width="142" height="40" :theme="value(theme)" />
+          <lux-library-contact-info :theme="value(theme)" />
+        </div>
+        <div class="lux-library-links">
+          <lux-subscribe-newsletter type="div" :theme="value(theme)" />
+        </div>
+        <div class="lux-library-links">
+          <nav role="navigation" aria-label="Library Staff">
+            <ul>
+              <li><a href="https://library.princeton.edu/staff">For Library Staff</a></li>
+              <li><a href="https://library.princeton.edu/staff/directory">Staff Directory</a></li>
+              <li>
+                <a href="https://library.princeton.edu/about/jobs">Library Jobs</a>
+              </li>
+            </ul>
+          </nav>
+        </div>
       </div>
-      <div class="lux-library-links">
-        <lux-subscribe-newsletter type="div"></lux-subscribe-newsletter>
-      </div>
-      <div class="lux-library-links">
-        <lux-university-copyright type="div" :theme="value(theme)" />
-      </div>
-      <div class="lux-library-links">
-        <nav role="navigation" aria-label="Library Staff">
-          <ul>
-            <li><a href="https://library.princeton.edu/staff">For Library Staff</a></li>
-            <li><a href="https://library.princeton.edu/staff/directory">Staff Directory</a></li>
-            <li>
-              <a href="https://library.princeton.edu/about/jobs">Library Jobs</a>
-            </li>
-          </ul>
-        </nav>
+      <div class="lux-footer-bottom">
+        <div class="lux-library-links">
+          <lux-university-accessibility :theme="value(theme)" />
+        </div>
+        <div class="lux-library-links">
+          <lux-university-copyright type="div" :theme="value(theme)" />
+        </div>
+        <div class="lux-library-links">
+          <!-- Placeholder for university logo -->
+          <lux-university-copyright type="div" :theme="value(theme)" />
+        </div>
       </div>
     </lux-wrapper>
   </component>
@@ -129,23 +139,52 @@ export default {
   }
 }
 
+.lux-footer-main {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 1rem 0rem;
+
+  @media (min-width: 900px) {
+    max-width: 1170px;
+  }
+  @media (max-width: 899px) {
+    flex-direction: column;
+  }
+}
+
+.lux-footer-bottom {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 1rem 0rem;
+
+  @media (min-width: 900px) {
+    max-width: 1170px;
+  }
+  @media (max-width: 899px) {
+    flex-direction: column;
+  }
+}
+
 .lux-footer-content {
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
-  justify-content: center;
-  align-content: stretch;
-  align-items: flex-start;
-  padding: 1em;
+  align-items: stretch;
+  padding: 0rem 3rem 0rem 3rem;
 
   @media (min-width: 900px) {
-    flex-direction: row;
     max-width: 1170px;
   }
 }
 
 .lux-library-links {
   order: 0;
+  display: flex;
+  flex-flow: column wrap;
   align-self: auto;
   @media (min-width: 900px) {
     flex: 1;
@@ -171,6 +210,12 @@ export default {
     list-style-type: none;
     margin: 0;
     padding: 0;
+    display: flex;
+    flex-flow: column wrap;
+    align-content: flex-end;
+    @media (max-width: 899px) {
+      align-content: flex-start;
+    }
 
     li {
       line-height: var(--line-height-base);
