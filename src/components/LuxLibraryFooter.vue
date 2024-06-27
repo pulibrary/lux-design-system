@@ -29,8 +29,7 @@
           <lux-university-copyright type="div" :theme="value(theme)" />
         </div>
         <div class="lux-library-links">
-          <!-- Placeholder for university logo -->
-          <lux-university-copyright type="div" :theme="value(theme)" />
+          <lux-logo-university-white type="div" />
         </div>
       </div>
     </lux-wrapper>
@@ -42,7 +41,7 @@ import LuxLibraryContactInfo from "./_LuxLibraryContactInfo.vue"
 import LuxUniversityCopyright from "./_LuxUniversityCopyright.vue"
 import LuxUniversityAccessibility from "./_LuxUniversityAccessibility.vue"
 import LuxWrapper from "./LuxWrapper.vue"
-import LuxLogoUniversity from "./logos/LuxLogoUniversity.vue"
+import LuxLogoUniversityWhite from "./logos/LuxLogoUniversityWhite.vue"
 /**
  * LibraryFooter is the preferred Footer styling/behavior for PUL websites.
  * Don't forget to create a fallback for this component by providing the HTML
@@ -58,7 +57,7 @@ export default {
     LuxUniversityCopyright,
     LuxUniversityAccessibility,
     LuxWrapper,
-    LuxLogoUniversity,
+    LuxLogoUniversityWhite,
   },
   methods: {
     value: function (theme) {
@@ -112,7 +111,7 @@ export default {
   margin-top: 3em;
 
   &.dark {
-    background: var(--color-rich-black);
+    // background: var(--color-rich-black);
 
     .lux-library-links a {
       text-decoration: none;

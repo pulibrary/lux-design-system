@@ -140,7 +140,11 @@ export default {
   },
 }
 </script>
-<style></style>
+<style>
+.a {
+  fill: #fff;
+}
+</style>
 
 <docs>
   ```jsx
