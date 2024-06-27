@@ -41,6 +41,7 @@ import LuxLogoLibrary from "./logos/LuxLogoLibrary.vue"
 import LuxLogoLibraryIcon from "./logos/LuxLogoLibraryIcon.vue"
 import LuxLogoX from "./logos/LuxLogoX.vue"
 import LuxLogoUniversity from "./logos/LuxLogoUniversity.vue"
+import LuxLogoUniversityWhite from "./logos/LuxLogoUniversityWhite.vue"
 import LuxSearchBox from "./LuxSearchBox.vue"
 import LuxAlert from "./LuxAlert.vue"
 import LuxDropdownMenu from "./LuxDropdownMenu.vue"
@@ -90,6 +91,7 @@ export {
   LuxLogoLibraryIcon,
   LuxLogoX,
   LuxLogoUniversity,
+  LuxLogoUniversityWhite,
   LuxSearchBox,
   LuxAlert,
   LuxDropdownMenu,
