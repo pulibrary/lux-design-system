@@ -5,6 +5,7 @@
     :height="height"
     viewBox="0 0 263 71.84"
     aria-labelledby="logo-university"
+    alt="Princeton Universiy Library"
     role="img"
   >
     <title id="logo-university-white" lang="en">Princeton University Logo</title>
@@ -149,7 +150,7 @@ export default {
 <docs>
   ```jsx
   <div>
-    <lux-logo-university-white></lux-logo-university-white>
+    <lux-logo-university-white style="background-color:#000000"></lux-logo-university-white>
   </div>
   ```
 </docs>

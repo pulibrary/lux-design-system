@@ -7,6 +7,7 @@
           <lux-library-contact-info :theme="value(theme)" />
         </div>
         <div class="lux-library-links">
+          <h2>Subscribe to our Newsletter</h2>
           <lux-subscribe-newsletter type="div" :theme="value(theme)" />
         </div>
         <div class="lux-library-links">
@@ -28,8 +29,8 @@
         <div class="lux-library-links">
           <lux-university-copyright type="div" :theme="value(theme)" />
         </div>
-        <div class="lux-library-links">
-          <lux-logo-university-white type="div" />
+        <div class="lux-library-links pu-logo-white">
+          <lux-logo-university-white width="150px" height="50px" type="div" />
         </div>
       </div>
     </lux-wrapper>
@@ -111,8 +112,6 @@ export default {
   margin-top: 3em;
 
   &.dark {
-    // background: var(--color-rich-black);
-
     .lux-library-links a {
       text-decoration: none;
       color: var(--color-white);
@@ -142,7 +141,6 @@ export default {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: space-between;
   padding: 1rem 0rem;
 
   @media (min-width: 900px) {
@@ -157,7 +155,6 @@ export default {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: space-between;
   padding: 1rem 0rem;
 
   @media (min-width: 900px) {
@@ -185,8 +182,17 @@ export default {
   display: flex;
   flex-flow: column wrap;
   align-self: auto;
+  justify-content: center;
+  padding-bottom: 1em;
   @media (min-width: 900px) {
     flex: 1;
+  }
+
+  &.pu-logo-white {
+    align-content: flex-end;
+    @media (max-width: 899px) {
+      align-content: flex-start;
+    }
   }
 
   h2 {
@@ -208,7 +214,7 @@ export default {
   ul {
     list-style-type: none;
     margin: 0;
-    padding: 0;
+    padding: 0rem 2rem 0rem 0rem;
     display: flex;
     flex-flow: column wrap;
     align-content: flex-end;
