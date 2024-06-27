@@ -76,11 +76,9 @@ export default {
 .lux-subscribe-newsletter {
   #mc_embed_signup_scroll {
     display: flex;
+    flex-flow: row nowrap;
   }
-  input {
-    height: 3rem;
-    width: 18rem;
-  }
+
   .lux-button {
     color: inherit;
     background-color: var(--black);
@@ -98,6 +96,7 @@ export default {
   :deep(.lux-input .lux-input-field) {
     box-shadow: none;
     height: 3rem;
+    width: 10rem;
     border: 1px solid black;
     border-radius: 0;
     &:hover {
