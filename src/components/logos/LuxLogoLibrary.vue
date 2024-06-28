@@ -8,7 +8,7 @@
     aria-labelledby="lux-logo-library"
     role="img"
   >
-    <title id="lux-logo-library">Princeton University Library Logo</title>
+    <title id="lux-logo-library">Princeton University Library</title>
     <g>
       <clipPath id="clip-path"><path d="M3 .91h90v90H3z" fill="none" /></clipPath>
       <rect width="96" height="97" rx="12.24" ry="12.24" fill="#ef7622" />

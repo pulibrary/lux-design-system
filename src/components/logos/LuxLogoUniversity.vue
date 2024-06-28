@@ -7,7 +7,7 @@
     aria-labelledby="logo-university"
     role="img"
   >
-    <title id="logo-university" lang="en">Princeton University Logo</title>
+    <title id="logo-university" lang="en">Princeton University</title>
     <g>
       <path
         class="pu-logo-mc-a"

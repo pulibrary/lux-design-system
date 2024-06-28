@@ -8,7 +8,7 @@
     alt="Princeton Universiy Library"
     role="img"
   >
-    <title id="logo-university-white" lang="en">Princeton University Logo</title>
+    <title id="logo-university-white" lang="en">Princeton University</title>
     <g>
       <path
         class="a"

@@ -24,7 +24,7 @@ describe("LuxLibraryHeader.vue", () => {
   })
   it("accepts a type prop", () => {
     expect(wrapper.find("abbr").text()).toBe(
-      "Princeton University Library LogoPrinceton University Library IconMy ApplicationMy AppSome menu bar"
+      "Princeton University LibraryPrinceton University LibraryMy ApplicationMy AppSome menu bar"
     )
   })
   it("gets the theme and defaults to dark unless the theme is light", () => {
