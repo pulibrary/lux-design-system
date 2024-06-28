@@ -398,6 +398,10 @@ export default {
     border: 0;
   }
 
+  .lux-nav-item:focus {
+    outline: 0.25rem var(--color-princeton-orange-on-black) solid;
+  }
+
   a,
   .lux-submenu-toggle {
     font-family: $font-family-text;
