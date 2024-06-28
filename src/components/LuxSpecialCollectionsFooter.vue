@@ -75,19 +75,20 @@
         </nav>
       </div>
       <div class="lux-library-links">
-        <lux-library-contact-info />
+        <lux-library-contact-info-old />
         <lux-logo-university width="142" height="40" />
-        <lux-university-copyright type="div" />
-        <lux-university-accessibility type="span" />
+        <lux-university-copyright-old type="div" />
+        <lux-university-accessibility-old type="span" />
       </div>
     </lux-wrapper>
   </component>
 </template>
 
 <script>
-import LuxLibraryContactInfo from "./_LuxLibraryContactInfo.vue"
+import LuxLibraryContactInfoOld from "./_LuxLibraryContactInfoOld.vue"
 import LuxUniversityCopyright from "./_LuxUniversityCopyright.vue"
-import LuxUniversityAccessibility from "./_LuxUniversityAccessibility.vue"
+import LuxUniversityAccessibilityOld from "./_LuxUniversityAccessibilityOld.vue"
+import LuxUniversityCopyrightOld from "./_LuxUniversityCopyrightOld.vue"
 /**
  * LibraryFooter is the preferred Footer styling/behavior for PUL websites.
  * Don't forget to create a fallback for this component by providing the HTML
@@ -99,9 +100,9 @@ export default {
   release: "1.0.0",
   type: "Pattern",
   components: {
-    LuxLibraryContactInfo,
+    LuxLibraryContactInfoOld,
     LuxUniversityCopyright,
-    LuxUniversityAccessibility,
+    LuxUniversityAccessibilityOld,
   },
   props: {
     /**

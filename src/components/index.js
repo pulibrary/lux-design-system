@@ -11,8 +11,11 @@ import _LuxCardMedia from "./_LuxCardMedia.vue"
 import _LuxHamburger from "./_LuxHamburger.vue"
 import _LuxSubscribeNewsletter from "./_LuxSubscribeNewsletter.vue"
 import _LuxUniversityAccessibility from "./_LuxUniversityAccessibility.vue"
+import _LuxUniversityAccessibilityOld from "./_LuxUniversityAccessibilityOld.vue"
 import _LuxLibraryContactInfo from "./_LuxLibraryContactInfo.vue"
+import _LuxLibraryContactInfoOld from "./_LuxLibraryContactInfoOld.vue"
 import _LuxUniversityCopyright from "./_LuxUniversityCopyright.vue"
+import _LuxUniversityCopyrightOld from "./_LuxUniversityCopyrightOld.vue"
 import LuxBanner from "./LuxBanner.vue"
 import LuxCard from "./LuxCard.vue"
 import LuxCounter from "./LuxCounter.vue"
@@ -62,8 +65,11 @@ export {
   _LuxHamburger,
   _LuxSubscribeNewsletter,
   _LuxUniversityAccessibility,
+  _LuxUniversityAccessibilityOld,
   _LuxLibraryContactInfo,
+  _LuxLibraryContactInfoOld,
   _LuxUniversityCopyright,
+  _LuxUniversityCopyrightOld,
   LuxBanner,
   LuxCard,
   LuxCounter,
