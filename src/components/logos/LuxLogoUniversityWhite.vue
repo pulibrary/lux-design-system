@@ -4,8 +4,7 @@
     :width="width"
     :height="height"
     viewBox="0 0 263 71.84"
-    aria-labelledby="logo-university"
-    alt="Princeton Universiy Library"
+    aria-labelledby="logo-university-white"
     role="img"
   >
     <title id="logo-university-white" lang="en">Princeton University</title>
