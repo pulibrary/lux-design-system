@@ -37,6 +37,7 @@ import LuxSpacer from "./LuxSpacer.vue"
 import LuxLogoFacebook from "./logos/LuxLogoFacebook.vue"
 import LuxLogoFriends from "./logos/LuxLogoFriends.vue"
 import LuxLogoGovDocs from "./logos/LuxLogoGovDocs.vue"
+import LuxLogoInstagram from "./logos/LuxLogoInstagram.vue"
 import LuxLogoLibrary from "./logos/LuxLogoLibrary.vue"
 import LuxLogoLibraryIcon from "./logos/LuxLogoLibraryIcon.vue"
 import LuxLogoX from "./logos/LuxLogoX.vue"
@@ -87,6 +88,7 @@ export {
   LuxLogoFacebook,
   LuxLogoFriends,
   LuxLogoGovDocs,
+  LuxLogoInstagram,
   LuxLogoLibrary,
   LuxLogoLibraryIcon,
   LuxLogoX,

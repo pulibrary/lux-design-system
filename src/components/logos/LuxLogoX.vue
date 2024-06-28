@@ -7,6 +7,8 @@
     preserveAspectRatio="xMinYMid"
     aria-labelledby="logo-x"
     role="img"
+    fill="currentColor"
+    class="lux-logo-x"
   >
     <title id="logo-x" lang="en">X</title>
     <g>
