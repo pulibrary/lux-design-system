@@ -208,7 +208,6 @@ export default {
     border: 2px solid $color-bleu-de-france;
     &:hover,
     &:focus {
-      color: $color-bleu-de-france-darker;
       border-color: $color-bleu-de-france-darker;
     }
   }
