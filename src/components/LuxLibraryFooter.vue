@@ -9,6 +9,13 @@
         <div class="lux-library-links">
           <h2>Subscribe to our Newsletter</h2>
           <lux-subscribe-newsletter type="div" :theme="value(theme)" />
+          <div class="social-pul-icons">
+            <lux-logo-x width="24" height="24" />
+            <lux-logo-facebook width="24" height="24" />
+            <lux-logo-instagram width="24" height="24" />
+            <lux-logo-gov-docs width="30" height="30" />
+            <lux-logo-friends width="120" height="35" />
+          </div>
         </div>
         <div class="lux-library-links">
           <nav role="navigation" aria-label="Library Staff">
@@ -43,6 +50,11 @@ import LuxUniversityCopyright from "./_LuxUniversityCopyright.vue"
 import LuxUniversityAccessibility from "./_LuxUniversityAccessibility.vue"
 import LuxWrapper from "./LuxWrapper.vue"
 import LuxLogoUniversityWhite from "./logos/LuxLogoUniversityWhite.vue"
+import LuxLogoFacebook from "./logos/LuxLogoFacebook.vue"
+import LuxLogoFriends from "./logos/LuxLogoFriends.vue"
+import LuxLogoX from "./logos/LuxLogoX.vue"
+import LuxLogoGovDocs from "./logos/LuxLogoGovDocs.vue"
+import LuxLogoInstagram from "./logos/LuxLogoInstagram.vue"
 /**
  * LibraryFooter is the preferred Footer styling/behavior for PUL websites.
  * Don't forget to create a fallback for this component by providing the HTML
@@ -59,6 +71,11 @@ export default {
     LuxUniversityAccessibility,
     LuxWrapper,
     LuxLogoUniversityWhite,
+    LuxLogoFacebook,
+    LuxLogoFriends,
+    LuxLogoX,
+    LuxLogoGovDocs,
+    LuxLogoInstagram,
   },
   methods: {
     value: function (theme) {
@@ -99,7 +116,28 @@ export default {
 @import "../assets/styles/mixins.scss";
 @import "../assets/styles/variables.css";
 @import "../assets/styles/system.scss";
+.lux-library-logo {
+  padding-bottom: 2rem;
+}
+.lux-logo-x {
+  margin: 0.5rem 0.1rem 0rem 0.2rem;
+}
 
+.lux-logo-facebook {
+  margin: 0.5rem 0.2rem 0rem 0.1rem;
+}
+
+.lux-logo-instagram {
+  margin: 0.5rem 0.25rem 0rem 0.2rem;
+}
+
+.lux-logo-gov-docs {
+  margin: 0.5rem 0.1rem 0rem 0.3rem;
+}
+
+.lux-logo-friends {
+  margin: 0.5rem 0.2rem -0.2rem 0.2rem;
+}
 .lux-library-footer {
   @include reset;
   @include stack-space(var(--space-base));

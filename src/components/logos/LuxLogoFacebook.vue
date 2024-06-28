@@ -7,6 +7,8 @@
     preserveAspectRatio="xMinYMid"
     aria-labelledby="logo-facebook"
     role="img"
+    fill="currentColor"
+    class="lux-logo-facebook"
   >
     <title id="logo-facebook" lang="en">Facebook</title>
     <g>

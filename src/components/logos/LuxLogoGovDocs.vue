@@ -7,6 +7,7 @@
     preserveAspectRatio="xMinYMid"
     aria-labelledby="logo-gov-docs"
     role="img"
+    class="lux-logo-gov-docs"
   >
     <title id="logo-gov-docs" lang="en">Government Docs</title>
     <g>
