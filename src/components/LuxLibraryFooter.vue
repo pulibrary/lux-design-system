@@ -48,7 +48,7 @@
         </div>
         <div class="lux-library-links pu-logo-white">
           <a href="https://www.princeton.edu"
-            ><lux-logo-university-white width="150px" height="50px" type="div"
+            ><lux-logo-university-white width="200px" height="80px" type="div"
           /></a>
         </div>
       </div>
