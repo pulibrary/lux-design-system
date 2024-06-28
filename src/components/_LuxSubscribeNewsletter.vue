@@ -15,7 +15,7 @@
           type="email"
           name="EMAIL"
           aria-required="true"
-          aria-label="Enter your email address"
+          aria-label="Email address"
         />
         <lux-input-button
           id="mc-embedded-subscribe"
