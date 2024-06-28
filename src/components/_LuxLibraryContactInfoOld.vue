@@ -39,7 +39,7 @@ import LuxLogoGovDocs from "./logos/LuxLogoGovDocs.vue"
 import LuxLogoFriends from "./logos/LuxLogoFriends.vue"
 
 export default {
-  name: "LibraryContactInfo",
+  name: "LibraryContactInfoOld",
   status: "ready",
   release: "5.2.0",
   type: "Element",
@@ -102,9 +102,9 @@ export default {
 </style>
 
 <docs>
-    ```jsx
-    <div>
-      <lux-library-contact-info-old type="div"></lux-library-contact-info-old>
-    </div>
-    ```
-  </docs>
+  ```jsx
+   <div>
+    <lux-library-contact-info-old type="div"></lux-library-contact-info-old>
+  </div>
+  ```
+</docs>
