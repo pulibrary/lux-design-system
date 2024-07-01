@@ -470,9 +470,12 @@ export default {
           border-bottom: 0;
         }
       }
-      .lux-show a:focus,
-      .lux-show a:hover {
-        outline: 0.25rem var(--color-princeton-orange-on-white) solid;
+
+      .lux-show a {
+        &:hover,
+        &:focus {
+          outline: 0.25rem var(--color-princeton-orange-on-white) solid;
+        }
       }
     }
 
