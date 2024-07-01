@@ -473,7 +473,8 @@ export default {
 
       .lux-show a {
         &:hover,
-        &:focus {
+        &:focus-visible {
+          outline-offset: 0;
           outline: 0.25rem var(--color-princeton-orange-on-white) solid;
         }
       }
@@ -592,7 +593,8 @@ export default {
   a,
   .lux-submenu-toggle {
     &:hover,
-    &:focus {
+    &:focus-visible {
+      outline-offset: 0;
       outline: 0.25rem var(--color-princeton-orange-on-black) solid;
     }
   }
@@ -630,7 +632,8 @@ export default {
   a,
   .lux-submenu-toggle {
     &:hover,
-    &:focus {
+    &:focus-visible {
+      outline-offset: 0;
       outline: 0.25rem var(--color-princeton-orange-on-black) solid;
     }
   }
@@ -667,7 +670,8 @@ export default {
   a,
   .lux-submenu-toggle {
     &:hover,
-    &:focus {
+    &:focus-visible {
+      outline-offset: 0;
       outline: 0.25rem var(--color-princeton-orange-on-white) solid;
     }
   }
