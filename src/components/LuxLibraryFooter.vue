@@ -58,15 +58,18 @@
 
 <script>
 import LuxLibraryContactInfo from "./_LuxLibraryContactInfo.vue"
-import LuxUniversityCopyright from "./_LuxUniversityCopyright.vue"
-import LuxUniversityAccessibility from "./_LuxUniversityAccessibility.vue"
-import LuxWrapper from "./LuxWrapper.vue"
-import LuxLogoUniversityWhite from "./logos/LuxLogoUniversityWhite.vue"
+import LuxLibraryLogo from "./LuxLibraryLogo.vue"
 import LuxLogoFacebook from "./logos/LuxLogoFacebook.vue"
 import LuxLogoFriends from "./logos/LuxLogoFriends.vue"
-import LuxLogoX from "./logos/LuxLogoX.vue"
 import LuxLogoGovDocs from "./logos/LuxLogoGovDocs.vue"
 import LuxLogoInstagram from "./logos/LuxLogoInstagram.vue"
+import LuxLogoUniversityWhite from "./logos/LuxLogoUniversityWhite.vue"
+import LuxLogoX from "./logos/LuxLogoX.vue"
+import LuxSubscribeNewsletter from "./_LuxSubscribeNewsletter.vue"
+import LuxUniversityAccessibility from "./_LuxUniversityAccessibility.vue"
+import LuxUniversityCopyright from "./_LuxUniversityCopyright.vue"
+import LuxWrapper from "./LuxWrapper.vue"
+
 /**
  * LibraryFooter is the preferred Footer styling/behavior for PUL websites.
  * Don't forget to create a fallback for this component by providing the HTML
@@ -79,15 +82,17 @@ export default {
   type: "Pattern",
   components: {
     LuxLibraryContactInfo,
-    LuxUniversityCopyright,
-    LuxUniversityAccessibility,
-    LuxWrapper,
-    LuxLogoUniversityWhite,
+    LuxLibraryLogo,
     LuxLogoFacebook,
     LuxLogoFriends,
-    LuxLogoX,
     LuxLogoGovDocs,
     LuxLogoInstagram,
+    LuxLogoUniversityWhite,
+    LuxLogoX,
+    LuxSubscribeNewsletter,
+    LuxUniversityAccessibility,
+    LuxUniversityCopyright,
+    LuxWrapper,
   },
   methods: {
     value: function (theme) {
