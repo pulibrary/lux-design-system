@@ -3,21 +3,12 @@
     <a href="https://library.princeton.edu">
       <lux-logo-library width="155px" height="34px" v-if="theme === 'dark'" class="full-logo" />
       <lux-logo-library width="155px" height="34px" v-else color="#000000" class="full-logo" />
-      <lux-logo-library-icon width="34px" height="34px" v-if="theme === 'dark'" class="icon-only" />
-      <lux-logo-library-icon
-        width="34px"
-        height="34px"
-        v-else
-        color="var(--color-princeton-orange-on-white)"
-        class="icon-only"
-      />
     </a>
   </component>
 </template>
 
 <script>
 import LuxLogoLibrary from "./logos/LuxLogoLibrary.vue"
-import LuxLogoLibraryIcon from "./logos/LuxLogoLibraryIcon.vue"
 
 /**
  * Used to identify that the site is a Princeton University site in the footer
@@ -46,7 +37,6 @@ export default {
   },
   components: {
     LuxLogoLibrary,
-    LuxLogoLibraryIcon,
   },
 }
 </script>
@@ -60,20 +50,7 @@ export default {
 }
 
 .full-logo {
-  display: none;
-}
-
-.icon-only {
   display: block;
-}
-
-@media #{$media-query-x-large} {
-  .icon-only {
-    display: none;
-  }
-  .full-logo {
-    display: block;
-  }
 }
 </style>
 
