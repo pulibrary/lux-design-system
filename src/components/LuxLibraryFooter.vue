@@ -3,18 +3,26 @@
     <lux-wrapper class="lux-footer-content" :maxWidth="maxWidth">
       <div class="lux-footer-main">
         <div class="lux-library-links">
-          <lux-library-logo width="142" height="40" :theme="value(theme)" />
+          <a href="https://library.princeton.edu"
+            ><lux-library-logo width="142" height="40" :theme="value(theme)"
+          /></a>
           <lux-library-contact-info :theme="value(theme)" />
         </div>
         <div class="lux-library-links">
           <h2>Subscribe to our Newsletter</h2>
           <lux-subscribe-newsletter type="div" :theme="value(theme)" />
           <div class="social-pul-icons">
-            <lux-logo-x width="24" height="24" />
-            <lux-logo-facebook width="24" height="24" />
-            <lux-logo-instagram width="24" height="24" />
-            <lux-logo-gov-docs width="30" height="30" />
-            <lux-logo-friends width="120" height="35" />
+            <a href="https://x.com/PULibrary"><lux-logo-x width="24" height="24" /></a>
+            <a href="http://www.facebook.com/PULibrary"
+              ><lux-logo-facebook width="24" height="24"
+            /></a>
+            <a href="https://www.instagram.com/PULibrary/"
+              ><lux-logo-instagram width="24" height="24"
+            /></a>
+            <a href="https://libguides.princeton.edu/usgovdocs"
+              ><lux-logo-gov-docs width="30" height="30"
+            /></a>
+            <a href="https://fpul.princeton.edu/"><lux-logo-friends width="120" height="35" /></a>
           </div>
         </div>
         <div class="lux-library-links">
@@ -31,13 +39,17 @@
       </div>
       <div class="lux-footer-bottom">
         <div class="lux-library-links">
-          <lux-university-accessibility :theme="value(theme)" />
+          <a href="http://accessibility.princeton.edu/help"
+            ><lux-university-accessibility :theme="value(theme)"
+          /></a>
         </div>
         <div class="lux-library-links">
           <lux-university-copyright type="div" :theme="value(theme)" />
         </div>
         <div class="lux-library-links pu-logo-white">
-          <lux-logo-university-white width="150px" height="50px" type="div" />
+          <a href="https://www.princeton.edu"
+            ><lux-logo-university-white width="200px" height="80px" type="div"
+          /></a>
         </div>
       </div>
     </lux-wrapper>
@@ -46,15 +58,18 @@
 
 <script>
 import LuxLibraryContactInfo from "./_LuxLibraryContactInfo.vue"
-import LuxUniversityCopyright from "./_LuxUniversityCopyright.vue"
-import LuxUniversityAccessibility from "./_LuxUniversityAccessibility.vue"
-import LuxWrapper from "./LuxWrapper.vue"
-import LuxLogoUniversityWhite from "./logos/LuxLogoUniversityWhite.vue"
+import LuxLibraryLogo from "./LuxLibraryLogo.vue"
 import LuxLogoFacebook from "./logos/LuxLogoFacebook.vue"
 import LuxLogoFriends from "./logos/LuxLogoFriends.vue"
-import LuxLogoX from "./logos/LuxLogoX.vue"
 import LuxLogoGovDocs from "./logos/LuxLogoGovDocs.vue"
 import LuxLogoInstagram from "./logos/LuxLogoInstagram.vue"
+import LuxLogoUniversityWhite from "./logos/LuxLogoUniversityWhite.vue"
+import LuxLogoX from "./logos/LuxLogoX.vue"
+import LuxSubscribeNewsletter from "./_LuxSubscribeNewsletter.vue"
+import LuxUniversityAccessibility from "./_LuxUniversityAccessibility.vue"
+import LuxUniversityCopyright from "./_LuxUniversityCopyright.vue"
+import LuxWrapper from "./LuxWrapper.vue"
+
 /**
  * LibraryFooter is the preferred Footer styling/behavior for PUL websites.
  * Don't forget to create a fallback for this component by providing the HTML
@@ -67,15 +82,17 @@ export default {
   type: "Pattern",
   components: {
     LuxLibraryContactInfo,
-    LuxUniversityCopyright,
-    LuxUniversityAccessibility,
-    LuxWrapper,
-    LuxLogoUniversityWhite,
+    LuxLibraryLogo,
     LuxLogoFacebook,
     LuxLogoFriends,
-    LuxLogoX,
     LuxLogoGovDocs,
     LuxLogoInstagram,
+    LuxLogoUniversityWhite,
+    LuxLogoX,
+    LuxSubscribeNewsletter,
+    LuxUniversityAccessibility,
+    LuxUniversityCopyright,
+    LuxWrapper,
   },
   methods: {
     value: function (theme) {
