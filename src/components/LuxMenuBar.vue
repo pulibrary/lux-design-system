@@ -586,7 +586,7 @@ export default {
 }
 
 .dark {
-  background: var(--color-rich-black);
+  background: var(--color-gray-100);
 
   @media (max-width: 899px) {
     &.lux-main-menu a {
@@ -651,7 +651,7 @@ export default {
   :deep(.hamburger-inner),
   :deep(.hamburger-inner:after),
   :deep(.hamburger-inner:before) {
-    background-color: var(--color-rich-black);
+    background-color: var(--color-gray-100);
   }
 
   @media (max-width: 899px) {

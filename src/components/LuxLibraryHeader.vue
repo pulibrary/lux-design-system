@@ -121,7 +121,7 @@ export default {
   }
 
   &.dark {
-    background: var(--color-rich-black);
+    background: var(--color-gray-100);
   }
 
   &.shade {
