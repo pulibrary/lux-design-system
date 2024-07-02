@@ -45,47 +45,6 @@ npm run deploy
 This will update the docs at [https://pulibrary.github.io/lux-design-system/](https://pulibrary.github.io/lux-design-system/).
 Please note: For informational purposes only. Don't do this outside of a release!
 
-
-## Copying Vue 2 components from lux
-1. Copy a component from the lux repository into src/components
-1. Run `npm run lint --fix` to make sure the component has our formatting rules applied.
-1. This repo uses CSS variables, rather than SCSS token variables.  If the component
-includes tokens:
-    1. Add `@import "../assets/styles/variables.css";` to the `<style>` section.
-    1. Replace any token references to use the CSS variable instead.  For example,
-      `$font-family-text` can be changed to `var(--font-family-text)`.
-1. If the component includes SCSS mixins, add `@import "../assets/styles/mixins.scss";`
-to the `<style>` section.  You may also need `../assets/styles/spacing.scss` if the
-component uses spacing mixins.  Media queries can't be included in CSS variables, so if you need those, import `../assets/styles/media_queries.scss` and use SCSS variables. There are functions that use SCSS variables and cannot take CSS variables as a parameter; In this case add `@import ../assets/styles/system.scss`.
-1. Vue 3 no longer supports functional templates.  If the component includes `<template functional>`,
-you will need to refactor it back into a regular template.
-1. If the component emits events, [declare the emits in the `emits` option](https://v3-migration.vuejs.org/breaking-changes/emits-option.html).
-1. Run `npm run styleguide` and make sure it compiles and looks good.
-1. Add the component to src/components/index.js so it is added to the lux Vue plugin and can be used in other projects.
-1. Copy the test for the component from the lux test/unit/specs/components directory.
-    1. Revert any changes to the test that were needed for functional templates.
-    1. Modify the import for the test to point to the component's new path.
-    1. Remove any references to `localVue`, the new versions of vue-test-utils don't
-    support it or need it.
-    1. Change mount params in this format:
-
-        ```
-        {context: { props: { my_data: "data" }}}
-        ```
-
-        to this format:
-
-        ```
-        {props: { my_data: "data" }}
-        ```
-    1. Run the tests with `npm run test`.  Make any necessary changes to get the tests to pass.
-        1. If a value is not updating correctly after a `wrapper.setProps` call, follow these steps to add a `nextTick()`, which will cause Vue to update the value:
-            1. If it's not already imported, add `import { nextTick } from "vue"`
-            2. Add `async` to the test arrow function.
-            3. Add `await nextTick()` between the `setProps` and the assertion, or simply prepend the setProps command with `await`. (Example: `await wrapper.setProps({ show: true })`)  
-        1. Refer to the [vue-test-utils migration guide](https://test-utils.vuejs.org/migration/) for other breaking changes.
-    1. Running the tests will produce a snapshot file.  Compare it to the original snapshot file.  If there are no substantial changes, commit it.  If there are substantial changes, make any necessary changes.
-
 ### Linting
 We are using the eslint_plugin-prettier to lint our files. To adjust the lint format settings, please use the `.prettierrc` file. Code linting rules should be set in `eslintrc.js`.
 
