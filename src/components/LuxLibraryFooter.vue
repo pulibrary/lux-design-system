@@ -228,7 +228,7 @@ export default {
   padding: 0rem 3rem 0rem 3rem;
 
   @media (min-width: 900px) {
-    max-width: 1170px;
+    max-width: 1440px;
   }
 }
 
