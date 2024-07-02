@@ -1,8 +1,8 @@
 <template>
   <component :is="type" class="lux-library-logo">
     <a href="https://library.princeton.edu">
-      <lux-logo-library width="155px" height="34px" v-if="theme === 'dark'" class="full-logo" />
-      <lux-logo-library width="155px" height="34px" v-else color="#000000" class="full-logo" />
+      <lux-logo-library :width="width" :height="height" v-if="theme === 'dark'" class="full-logo" />
+      <lux-logo-library :width="width" :height="height" v-else color="#000000" class="full-logo" />
     </a>
   </component>
 </template>
@@ -33,6 +33,20 @@ export default {
     theme: {
       type: String,
       default: "dark",
+    },
+    /*
+     * The width of the logo
+     */
+    width: {
+      type: String,
+      default: "155px",
+    },
+    /*
+     * The height of the logo
+     */
+    height: {
+      type: String,
+      default: "34px",
     },
   },
   components: {
