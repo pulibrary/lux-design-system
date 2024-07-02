@@ -4,7 +4,7 @@
       <div class="lux-footer-main">
         <div class="lux-library-links">
           <a href="https://library.princeton.edu"
-            ><lux-library-logo width="142" height="40" :theme="value(theme)"
+            ><lux-library-logo width="245" height="54" :theme="value(theme)"
           /></a>
           <lux-library-contact-info :theme="value(theme)" />
         </div>
