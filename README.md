@@ -92,12 +92,12 @@ We are using the eslint_plugin-prettier to lint our files. To adjust the lint fo
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
 
-### Using a local copy of lux-styleguidist in your project
+### Using a local copy of lux-design-system in your project
 
 1. `yarn global add yalc` (yalc has to be installed globally, it doesn't work as part of the package.json)
-2. In lux-styleguidist run: `npm run build && yarn exec yalc publish`   
+2. In lux-design-system run: `npm run build && yarn exec yalc publish`   
 You should see a note that it's published in store  
-3. In the application where lux-styleguidist is installed,    
+3. In the application where lux-design-system is installed,    
 run: `yarn exec yalc add lux-design-system`
 4. Sometimes, your application's vite will have cached the old version.
 If you are not seeing your changes, in your application directory run:
