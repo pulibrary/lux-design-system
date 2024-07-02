@@ -14,7 +14,6 @@
           id="mce-EMAIL"
           type="email"
           name="EMAIL"
-          aria-required="true"
           label="Email address"
           hideLabel="true"
         />
