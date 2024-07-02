@@ -55,7 +55,7 @@ export default {
   &.dark {
     a {
       color: var(--color-white);
-      background: var(--color-rich-black);
+      background: var(--color-gray-100);
     }
   }
 

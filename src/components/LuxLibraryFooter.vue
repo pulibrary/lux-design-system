@@ -161,7 +161,7 @@ export default {
   font-family: var(--font-family-heading);
   line-height: var(--line-height-heading);
   color: var(--color-white);
-  background: var(--color-rich-black);
+  background: var(--color-gray-100);
   padding-top: 1em;
   padding-bottom: 1em;
   margin-top: 3em;
