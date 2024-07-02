@@ -144,7 +144,7 @@ export default {
 
   @media (min-width: 900px) {
     flex-direction: row;
-    max-width: 1170px;
+    max-width: 1440px;
   }
 }
 

@@ -11,7 +11,7 @@
 <script>
 /**
  * Used to build the outer wrapper of a page, including the page title and
- * associated actions. Wrapper can be span the full width of the viewport or limited to a max-width of 1170px.
+ * associated actions. Wrapper can be span the full width of the viewport or limited to a max-width of 1440px.
  */
 export default {
   name: "LuxWrapper",
