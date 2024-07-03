@@ -193,12 +193,9 @@ export default {
   }
 
   &:hover,
-  &:focus {
-    box-shadow: none;
-
+  &:focus-visible {
     &::after {
-      box-shadow: var(--box-shadow-selected);
-      transition: box-shadow 0.2s ease;
+      outline: var(--color-princeton-orange-on-white) solid 0.25rem;
     }
   }
 
