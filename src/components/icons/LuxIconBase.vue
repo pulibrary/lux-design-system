@@ -5,11 +5,11 @@
       :width="width"
       :height="height"
       viewBox="0 0 24 24"
-      :aria-labelledby="iconName"
+      :aria-labelledby="iconTitleId"
       :aria-hidden="iconHide"
       role="img"
     >
-      <title v-if="iconName" :id="iconName" lang="en">{{ iconName }}</title>
+      <title v-if="iconName" :id="iconTitleId" lang="en">{{ iconName }}</title>
       <g :fill="iconColor">
         <slot></slot>
       </g>
@@ -30,7 +30,7 @@ export default {
   type: "Element",
   props: {
     /**
-     * The name of the icon to display. Also used for accessibility purposes.
+     * The name of the icon to display. Also used as the accessible name of the icon.
      */
     iconName: {
       required: false,
@@ -68,6 +68,18 @@ export default {
     iconHide: {
       type: [String, Boolean],
       default: false,
+    },
+  },
+  computed: {
+    // Present the iconName prop in a format suitable for use as an element's ID.
+    // Only ASCII letters, digits, '_', and '-' should be used in an id, per
+    // https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/id
+    iconTitleId() {
+      return this.iconName
+        .toLowerCase()
+        .replace(/[^\w\d\s-_]/g, "")
+        .trim()
+        .replace(/\s/g, "-")
     },
   },
 }
