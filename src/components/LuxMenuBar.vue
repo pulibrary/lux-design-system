@@ -188,6 +188,11 @@ export default {
         this.$emit("input", val)
       },
     },
+    cssProps() {
+      return {
+        "--theme": this.theme,
+      }
+    },
   },
   methods: {
     menuItemClicked(value) {
@@ -239,6 +244,7 @@ export default {
 @import "../assets/styles/spacing.scss";
 @import "../assets/styles/system.scss";
 @import "../assets/styles/media_queries.scss";
+@import "../assets/styles/focus.scss";
 
 // CSS variables that are specific to this component
 :root {
@@ -474,8 +480,7 @@ export default {
       .lux-show a {
         &:hover,
         &:focus-visible {
-          outline-offset: 0;
-          outline: 0.25rem var(--color-princeton-orange-on-white) solid;
+          @include princeton-focus(light);
         }
       }
     }
@@ -594,8 +599,7 @@ export default {
   .lux-submenu-toggle {
     &:hover,
     &:focus-visible {
-      outline-offset: 0;
-      outline: 0.25rem var(--color-princeton-orange-on-black) solid;
+      @include princeton-focus(var(--theme));
     }
   }
 
@@ -633,8 +637,7 @@ export default {
   .lux-submenu-toggle {
     &:hover,
     &:focus-visible {
-      outline-offset: 0;
-      outline: 0.25rem var(--color-princeton-orange-on-black) solid;
+      @include princeton-focus(var(--theme));
     }
   }
 
@@ -671,8 +674,7 @@ export default {
   .lux-submenu-toggle {
     &:hover,
     &:focus-visible {
-      outline-offset: 0;
-      outline: 0.25rem var(--color-princeton-orange-on-white) solid;
+      @include princeton-focus(var(--theme));
     }
   }
 

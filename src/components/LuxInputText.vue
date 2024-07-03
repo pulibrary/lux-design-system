@@ -300,6 +300,7 @@ export default {
 @import "../assets/styles/spacing.scss";
 @import "../assets/styles/mixins.scss";
 @import "../assets/styles/system.scss";
+@import "../assets/styles/focus.scss";
 
 // Design Tokens with local scope
 $color-placeholder: tint(rgb(149, 156, 167), 50%);
@@ -378,7 +379,7 @@ $color-placeholder: tint(rgb(149, 156, 167), 50%);
       }
       &:hover,
       &:focus {
-        outline: solid 0.25rem var(--color-princeton-orange-on-white);
+        @include princeton-focus(light);
       }
     }
 
@@ -457,7 +458,7 @@ $color-placeholder: tint(rgb(149, 156, 167), 50%);
     border-bottom-right-radius: 3px;
     &:hover,
     &:focus {
-      outline: solid 0.25rem var(--color-princeton-orange-on-white);
+      @include princeton-focus(light);
     }
   }
 }

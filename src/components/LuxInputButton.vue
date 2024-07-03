@@ -148,6 +148,8 @@ export default {
 @import "../assets/styles/system.scss";
 @import "../assets/styles/spacing.scss";
 @import "../assets/styles/mixins.scss";
+@import "../assets/styles/focus.scss";
+
 .lux-button {
   @include inset-space($space-small);
   font-family: $font-family-text;
@@ -193,7 +195,7 @@ export default {
     align-items: center;
     &:hover,
     &:focus-visible {
-      outline: var(--color-princeton-orange-on-white) solid 0.25rem;
+      @include princeton-focus(light);
     }
   }
 
@@ -203,7 +205,7 @@ export default {
     &:hover,
     &:focus-visible {
       background: $color-bleu-de-france-darker;
-      outline: var(--color-princeton-orange-on-black) solid 0.25rem;
+      @include princeton-focus(light);
     }
   }
 
@@ -222,7 +224,7 @@ export default {
     background-color: transparent;
     &:hover,
     &:focus-visible {
-      outline: var(--color-princeton-orange-on-white) solid 0.25rem;
+      @include princeton-focus(light);
     }
   }
 
