@@ -300,6 +300,7 @@ export default {
 @import "../assets/styles/spacing.scss";
 @import "../assets/styles/mixins.scss";
 @import "../assets/styles/system.scss";
+@import "../assets/styles/focus.scss";
 
 // Design Tokens with local scope
 $color-placeholder: tint(rgb(149, 156, 167), 50%);
@@ -376,6 +377,10 @@ $color-placeholder: tint(rgb(149, 156, 167), 50%);
         -moz-osx-font-smoothing: grayscale;
         opacity: 1;
       }
+      &:hover,
+      &:focus {
+        @include princeton-focus(light);
+      }
     }
 
     textarea {
@@ -451,6 +456,10 @@ $color-placeholder: tint(rgb(149, 156, 167), 50%);
     background-color: var(--color-white);
     border-top-right-radius: 3px;
     border-bottom-right-radius: 3px;
+    &:hover,
+    &:focus {
+      @include princeton-focus(light);
+    }
   }
 }
 </style>

@@ -37,13 +37,13 @@ export default {
   },
   props: {
     /**
-     * The button's variations `solid, outline, text, dropdown`
+     * The button's variations `solid, outline, text, dropdown, icon`
      */
     variation: {
       type: String,
       default: "solid",
       validator: value => {
-        return value.match(/(solid|outline|text|dropdown|icon)/)
+        return value.match(/(solid|outline|text|dropdown|icon|icon-prepend)/)
       },
     },
     /**
@@ -148,6 +148,8 @@ export default {
 @import "../assets/styles/system.scss";
 @import "../assets/styles/spacing.scss";
 @import "../assets/styles/mixins.scss";
+@import "../assets/styles/focus.scss";
+
 .lux-button {
   @include inset-space($space-small);
   font-family: $font-family-text;
@@ -191,29 +193,39 @@ export default {
   &.icon-prepend {
     display: flex;
     align-items: center;
+    &:hover,
+    &:focus-visible {
+      @include princeton-focus(light);
+    }
   }
 
   &.solid {
     background: $color-bleu-de-france;
     color: $color-white;
     &:hover,
-    &:focus {
+    &:focus-visible {
       background: $color-bleu-de-france-darker;
+      @include princeton-focus(light);
     }
   }
 
   &.outline {
     background: transparent;
     color: $color-bleu-de-france;
-    border: 2px solid $color-bleu-de-france;
+    border: 0.125rem solid $color-bleu-de-france;
     &:hover,
-    &:focus {
+    &:focus-visible {
       border-color: $color-bleu-de-france-darker;
+      outline: var(--color-princeton-orange-on-white) solid (0.25rem-0.125rem);
     }
   }
 
   &.text {
     background-color: transparent;
+    &:hover,
+    &:focus-visible {
+      @include princeton-focus(light);
+    }
   }
 
   &.dropdown {

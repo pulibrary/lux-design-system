@@ -188,6 +188,11 @@ export default {
         this.$emit("input", val)
       },
     },
+    cssProps() {
+      return {
+        "--theme": this.theme,
+      }
+    },
   },
   methods: {
     menuItemClicked(value) {
@@ -239,6 +244,7 @@ export default {
 @import "../assets/styles/spacing.scss";
 @import "../assets/styles/system.scss";
 @import "../assets/styles/media_queries.scss";
+@import "../assets/styles/focus.scss";
 
 // CSS variables that are specific to this component
 :root {
@@ -420,11 +426,6 @@ export default {
       font-size: var(--font-size-base);
     }
 
-    &:hover,
-    &:focus {
-      text-decoration: underline;
-    }
-
     &[target="_blank"]:after {
       content: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAQElEQVR42qXKwQkAIAxDUUdxtO6/RBQkQZvSi8I/pL4BoGw/XPkh4XigPmsUgh0626AjRsgxHTkUThsG2T/sIlzdTsp52kSS1wAAAABJRU5ErkJggg==);
       margin: 0px 3px 0px 5px;
@@ -473,6 +474,13 @@ export default {
       &.lux-has-children {
         @media #{$media-query-medium-max} {
           border-bottom: 0;
+        }
+      }
+
+      .lux-show a {
+        &:hover,
+        &:focus-visible {
+          @include princeton-focus(light);
         }
       }
     }
@@ -586,6 +594,13 @@ export default {
 }
 
 .dark {
+  a,
+  .lux-submenu-toggle {
+    &:hover,
+    &:focus-visible {
+      @include princeton-focus(var(--theme));
+    }
+  }
   background: var(--color-gray-100);
 
   @media (max-width: 899px) {
@@ -618,6 +633,14 @@ export default {
 .shade {
   background: var(--color-grayscale-darker);
 
+  a,
+  .lux-submenu-toggle {
+    &:hover,
+    &:focus-visible {
+      @include princeton-focus(var(--theme));
+    }
+  }
+
   @media (max-width: 899px) {
     &.lux-main-menu a {
       color: var(--color-rich-black);
@@ -647,6 +670,13 @@ export default {
 
 .light {
   background: var(--color-white);
+  a,
+  .lux-submenu-toggle {
+    &:hover,
+    &:focus-visible {
+      @include princeton-focus(var(--theme));
+    }
+  }
 
   :deep(.hamburger-inner),
   :deep(.hamburger-inner:after),

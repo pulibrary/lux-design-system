@@ -96,6 +96,7 @@ export default {
 @import "../assets/styles/variables.css";
 @import "../assets/styles/mixins.scss";
 @import "../assets/styles/spacing.scss";
+@import "../assets/styles/focus.scss";
 
 .lux-card {
   font-family: var(--font-family-text);
@@ -193,12 +194,9 @@ export default {
   }
 
   &:hover,
-  &:focus {
-    box-shadow: none;
-
+  &:focus-visible {
     &::after {
-      box-shadow: var(--box-shadow-selected);
-      transition: box-shadow 0.2s ease;
+      @include princeton-focus(light);
     }
   }
 
