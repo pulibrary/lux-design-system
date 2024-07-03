@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Hyperlink.vue has the expected html structure 1`] = `
+exports[`LuxHyperlink.vue has the expected html structure 1`] = `
 <a
   class="lux-link link medium"
   href="https://library.princeton.edu"
@@ -8,5 +8,6 @@ exports[`Hyperlink.vue has the expected html structure 1`] = `
   
   I'll take you places
   
+  <!--v-if-->
 </a>
 `;

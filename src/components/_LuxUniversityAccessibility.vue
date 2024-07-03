@@ -1,10 +1,14 @@
 <template>
   <component :is="type" :class="['lux-accessibility', theme]">
-    <a href="https://accessibility.princeton.edu/help">Accessibility Help</a>
+    <LuxHyperlink href="https://accessibility.princeton.edu/help" newTab="true"
+      >Accessibility Help</LuxHyperlink
+    >
   </component>
 </template>
 
 <script>
+import LuxHyperlink from "./LuxHyperlink.vue"
+
 /**
  * Used to show the University’s Accessibility site in the footer.
  */
@@ -26,6 +30,9 @@ export default {
       type: String,
       default: "dark",
     },
+  },
+  components: {
+    LuxHyperlink,
   },
 }
 </script>
