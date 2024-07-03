@@ -25,6 +25,7 @@ import LuxIconHospital from "./LuxIconHospital.vue"
 import LuxIconInfo from "./LuxIconInfo.vue"
 import LuxIconLockClose from "./LuxIconLockClose.vue"
 import LuxIconLockOpen from "./LuxIconLockOpen.vue"
+import LuxIconNewTab from "./LuxIconNewTab.vue"
 import LuxIconNote from "./LuxIconNote.vue"
 import LuxIconPerson from "./LuxIconPerson.vue"
 import LuxIconPicture from "./LuxIconPicture.vue"
@@ -72,6 +73,7 @@ export {
   LuxIconInfo,
   LuxIconLockClose,
   LuxIconLockOpen,
+  LuxIconNewTab,
   LuxIconNote,
   LuxIconPerson,
   LuxIconPicture,

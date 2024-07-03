@@ -1,10 +1,16 @@
 <template>
-  <a :href="href" :class="['lux-link', variation, size]">
+  <a :href="href" :class="['lux-link', variation, size]" :target="newTab ? '_blank' : null">
     <slot />
+    <lux-icon-base v-if="newTab" width="14" height="14" icon-name="(opens in new tab)">
+      <lux-icon-new-tab></lux-icon-new-tab>
+    </lux-icon-base>
   </a>
 </template>
 
 <script>
+import LuxIconBase from "./icons/LuxIconBase.vue"
+import LuxIconNewTab from "./icons/LuxIconNewTab.vue"
+
 /**
  * Used to create hyperlinks as text or buttons. Can also be used on Card component
  * sub-elements to make the entire card click-able.
@@ -44,6 +50,18 @@ export default {
         return value.match(/(small|medium|large)/)
       },
     },
+    /**
+     * Should the link open in a new tab?  This can be
+     * disconcerting, so don't use it unless necessary.
+     */
+    newTab: {
+      type: Boolean,
+      default: false,
+    },
+  },
+  components: {
+    LuxIconBase,
+    LuxIconNewTab,
   },
 }
 </script>
@@ -137,6 +155,7 @@ export default {
       <lux-hyperlink href="#" variation="button solid">Bar</lux-hyperlink>
       <lux-hyperlink href="#" variation="button solid" size="large">Bar</lux-hyperlink>
       <lux-hyperlink href="#" variation="button outline">Bar</lux-hyperlink>
+      <lux-hyperlink href="#" newTab="true">I open in a new tab</lux-hyperlink>
     </div>
   ```
 </docs>
