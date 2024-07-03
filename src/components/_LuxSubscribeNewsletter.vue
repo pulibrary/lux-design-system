@@ -14,8 +14,8 @@
           id="mce-EMAIL"
           type="email"
           name="EMAIL"
-          aria-required="true"
-          aria-label="Email address"
+          label="Email address"
+          hideLabel="true"
         />
         <lux-input-button
           id="mc-embedded-subscribe"

@@ -4,7 +4,7 @@
       <div class="lux-footer-main">
         <div class="lux-library-links">
           <a href="https://library.princeton.edu"
-            ><lux-library-logo width="142" height="40" :theme="value(theme)"
+            ><lux-library-logo width="245" height="54" :theme="value(theme)"
           /></a>
           <lux-library-contact-info :theme="value(theme)" />
         </div>
@@ -161,7 +161,7 @@ export default {
   font-family: var(--font-family-heading);
   line-height: var(--line-height-heading);
   color: var(--color-white);
-  background: var(--color-rich-black);
+  background: var(--color-gray-100);
   padding-top: 1em;
   padding-bottom: 1em;
   margin-top: 3em;
@@ -228,7 +228,7 @@ export default {
   padding: 0rem 3rem 0rem 3rem;
 
   @media (min-width: 900px) {
-    max-width: 1170px;
+    max-width: 1440px;
   }
 }
 

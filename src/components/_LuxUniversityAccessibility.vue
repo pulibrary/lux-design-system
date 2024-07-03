@@ -40,7 +40,7 @@ export default {
   @include reset;
   @include stack-space(var(--space-base));
   font-family: var(--font-family-heading);
-  font-size: var(--font-size-x-small);
+  font-size: var(--font-size-small);
   line-height: var(--line-height-heading);
 
   a {
@@ -55,7 +55,7 @@ export default {
   &.dark {
     a {
       color: var(--color-white);
-      background: var(--color-rich-black);
+      background: var(--color-gray-100);
     }
   }
 
