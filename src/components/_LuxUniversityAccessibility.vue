@@ -1,6 +1,6 @@
 <template>
   <component :is="type" :class="['lux-accessibility', theme]">
-    <LuxHyperlink href="https://accessibility.princeton.edu/help" newTab="true"
+    <LuxHyperlink href="https://accessibility.princeton.edu/help" :newTab="true"
       >Accessibility Help</LuxHyperlink
     >
   </component>

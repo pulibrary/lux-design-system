@@ -68,6 +68,11 @@
 </template>
 
 <script>
+import LuxIconAlert from "./icons/LuxIconAlert.vue"
+import LuxIconApproved from "./icons/LuxIconApproved.vue"
+import LuxIconBase from "./icons/LuxIconBase.vue"
+import LuxIconDenied from "./icons/LuxIconDenied.vue"
+
 /**
  * Form Inputs are used to allow users to provide text input when the expected
  * input is short. Form Input has a range of options and supports several text
@@ -291,6 +296,12 @@ export default {
         }
       }
     })
+  },
+  components: {
+    LuxIconAlert,
+    LuxIconApproved,
+    LuxIconDenied,
+    LuxIconBase,
   },
 }
 </script>
