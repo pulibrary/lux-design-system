@@ -2,13 +2,13 @@
   <component :is="type" :class="['lux-library-footer', theme]">
     <lux-wrapper class="lux-footer-content" :maxWidth="maxWidth">
       <div class="lux-footer-main">
-        <div class="lux-library-links">
+        <div class="lux-library-links contact-info-layout">
           <a href="https://library.princeton.edu"
             ><lux-library-logo width="245" height="54" :theme="value(theme)"
           /></a>
           <lux-library-contact-info :theme="value(theme)" />
         </div>
-        <div class="lux-library-links">
+        <div class="lux-library-links subscribe-layout">
           <h2>Subscribe to our Newsletter</h2>
           <lux-subscribe-newsletter type="div" :theme="value(theme)" />
           <div class="social-pul-icons">
@@ -37,7 +37,7 @@
           </nav>
         </div>
       </div>
-      <div class="lux-footer-bottom">
+      <div class="lux-footer-bottom bottom-layout">
         <div class="lux-library-links">
           <a href="http://accessibility.princeton.edu/help"
             ><lux-university-accessibility :theme="value(theme)"
@@ -133,6 +133,31 @@ export default {
 @import "../assets/styles/mixins.scss";
 @import "../assets/styles/variables.css";
 @import "../assets/styles/system.scss";
+
+.contact-info-layout {
+  margin-right: 3.25rem;
+  @media (min-width: 900px) {
+    border-right: 1px solid rgba(255, 255, 255, 0.3);
+  }
+  @media (max-width: 899px) {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  }
+}
+
+.subscribe-layout {
+  margin-right: 3.25rem;
+  @media (min-width: 900px) {
+    border-right: 1px solid rgba(255, 255, 255, 0.3);
+  }
+  @media (max-width: 899px) {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  }
+}
+
+.bottom-layout {
+  border-top: 1px solid rgba(255, 255, 255, 0.3);
+}
+
 .lux-library-logo {
   padding-bottom: 2rem;
 }
