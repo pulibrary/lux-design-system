@@ -27,7 +27,7 @@ export default {
       default: "div",
     },
     /**
-     * The maximum width of the wrapper. Default is set to 1170.
+     * The maximum width of the wrapper. Default is set to 1440.
      */
     maxWidth: {
       type: [String, Number],
