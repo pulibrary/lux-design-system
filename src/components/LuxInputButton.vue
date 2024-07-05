@@ -21,6 +21,8 @@
 </template>
 
 <script>
+import LuxIconBase from "./icons/LuxIconBase.vue"
+
 /**
  * Buttons are used to toggle something in the interface or trigger new
  * content in the same context.
@@ -140,6 +142,9 @@ export default {
         this.$refs.inputButton.focus()
       }
     })
+  },
+  components: {
+    LuxIconBase,
   },
 }
 </script>

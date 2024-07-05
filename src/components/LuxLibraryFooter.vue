@@ -10,7 +10,7 @@
         </div>
         <div class="lux-library-links subscribe-layout">
           <h2>Subscribe to our Newsletter</h2>
-          <lux-subscribe-newsletter type="div" :theme="value(theme)" />
+          <lux-subscribe-newsletter type="div" />
           <div class="social-pul-icons">
             <a href="https://x.com/PULibrary"><lux-logo-x width="24" height="24" /></a>
             <a href="http://www.facebook.com/PULibrary"

@@ -1,5 +1,5 @@
 <template>
-  <component :is="type" :class="['lux-subscribe-newsletter', theme]">
+  <component :is="type" class="lux-subscribe-newsletter">
     <form
       id="mc-embedded-subscribe-form"
       action="https://princeton.us4.list-manage.com/subscribe/post?u=f1159e2c2a8bc35d62147f282&amp;id=6c19fe9a37"
@@ -15,7 +15,7 @@
           type="email"
           name="EMAIL"
           label="Email address"
-          hideLabel="true"
+          :hideLabel="true"
         />
         <lux-input-button
           id="mc-embedded-subscribe"
@@ -23,7 +23,6 @@
           name="subscribe"
           class="lux-subscribe-newsletter"
           variation="outline"
-          :size="size"
           aria-describedby="describe-mailchimp-form"
           >{{ buttonLabel }}</lux-input-button
         >
@@ -112,7 +111,7 @@ export default {
 <docs>
   ```jsx
   <div>
-    <lux-subscribe-newsletter theme="light" type="div"></lux-subscribe-newsletter>
+    <lux-subscribe-newsletter type="div"></lux-subscribe-newsletter>
   </div>
   ```
 </docs>

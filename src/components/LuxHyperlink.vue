@@ -155,7 +155,7 @@ export default {
       <lux-hyperlink href="#" variation="button solid">Bar</lux-hyperlink>
       <lux-hyperlink href="#" variation="button solid" size="large">Bar</lux-hyperlink>
       <lux-hyperlink href="#" variation="button outline">Bar</lux-hyperlink>
-      <lux-hyperlink href="#" newTab="true">I open in a new tab</lux-hyperlink>
+      <lux-hyperlink href="#" :newTab="true">I open in a new tab</lux-hyperlink>
     </div>
   ```
 </docs>
