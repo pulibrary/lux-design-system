@@ -297,7 +297,7 @@ export default {
     padding: 0rem 2rem 0rem 0rem;
     display: flex;
     flex-flow: column wrap;
-    align-content: flex-end;
+    align-content: center;
     @media (max-width: 899px) {
       align-content: flex-start;
     }
