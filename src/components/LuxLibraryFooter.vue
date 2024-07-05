@@ -224,7 +224,7 @@ export default {
   padding: 1rem 0rem;
 
   @media (min-width: 900px) {
-    max-width: 1170px;
+    max-width: 1440px;
   }
   @media (max-width: 899px) {
     flex-direction: column;
@@ -238,7 +238,7 @@ export default {
   padding: 1rem 0rem;
 
   @media (min-width: 900px) {
-    max-width: 1170px;
+    max-width: 1440px;
   }
   @media (max-width: 899px) {
     flex-direction: column;
