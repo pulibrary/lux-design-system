@@ -57,11 +57,11 @@ export default {
       default: "",
     },
     /**
-     * The maximum width of the wrapper. Default is set to 1170.
+     * The maximum width of the wrapper. Default is set to 1440.
      */
     maxWidth: {
       type: Number,
-      default: 1170,
+      default: 1440,
     },
     /**
      * Whether the header is dark, shade, or light. Default is set to dark.
