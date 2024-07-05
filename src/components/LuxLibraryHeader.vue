@@ -87,6 +87,7 @@ export default {
 <style lang="scss" scoped>
 @import "../assets/styles/variables.css";
 @import "../assets/styles/mixins.scss";
+@import "../assets/styles/focus.scss";
 /**
    * Styles in a top-level App component and in layout components may be global,
    * but all other components should always be scoped (using either scoped
@@ -122,10 +123,30 @@ export default {
 
   &.dark {
     background: var(--color-gray-100);
+    a.lux-app-name {
+      &:hover,
+      &:focus,
+      &:focus-visible {
+        outline: none;
+        span:not(:empty) {
+          @include princeton-focus(dark);
+        }
+      }
+    }
   }
 
   &.shade {
     background: var(--color-grayscale-darker);
+    a.lux-app-name {
+      &:hover,
+      &:focus,
+      &:focus-visible {
+        outline: none;
+        span:not(:empty) {
+          @include princeton-focus(shade);
+        }
+      }
+    }
   }
 
   &.light {
@@ -133,6 +154,16 @@ export default {
 
     .lux-app-name:not(:empty) {
       color: var(--color-rich-black);
+    }
+    a.lux-app-name {
+      &:hover,
+      &:focus,
+      &:focus-visible {
+        outline: none;
+        span:not(:empty) {
+          @include princeton-focus(light);
+        }
+      }
     }
   }
 }
