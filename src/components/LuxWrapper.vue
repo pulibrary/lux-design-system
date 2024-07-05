@@ -31,7 +31,7 @@ export default {
      */
     maxWidth: {
       type: [String, Number],
-      default: 1170,
+      default: 1440,
     },
     /**
      * Determines whether the wrapper takes up 100% of the parent container.
