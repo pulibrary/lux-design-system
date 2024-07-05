@@ -250,7 +250,7 @@ export default {
   flex-direction: column;
   flex-wrap: nowrap;
   align-items: stretch;
-  padding: 0rem 3rem 0rem 3rem;
+  padding: 0rem 1rem 0rem 1rem;
 
   @media (min-width: 900px) {
     max-width: 1440px;
