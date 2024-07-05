@@ -135,8 +135,8 @@ export default {
 @import "../assets/styles/system.scss";
 
 .contact-info-layout {
-  margin-right: 3.25rem;
   @media (min-width: 900px) {
+    margin-right: 3.25rem;
     border-right: 1px solid rgba(255, 255, 255, 0.3);
   }
   @media (max-width: 899px) {
@@ -145,8 +145,8 @@ export default {
 }
 
 .subscribe-layout {
-  margin-right: 3.25rem;
   @media (min-width: 900px) {
+    margin-right: 3.25rem;
     border-right: 1px solid rgba(255, 255, 255, 0.3);
   }
   @media (max-width: 899px) {
