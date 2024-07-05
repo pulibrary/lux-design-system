@@ -1,5 +1,5 @@
 <template>
-  <component :is="type" class="lux-library-logo">
+  <component :is="type" :class="['lux-library-logo', theme]">
     <a href="https://library.princeton.edu">
       <lux-logo-library :width="width" :height="height" v-if="theme === 'dark'" class="full-logo" />
       <lux-logo-library :width="width" :height="height" v-else color="#000000" class="full-logo" />
@@ -58,9 +58,37 @@ export default {
 <style lang="scss" scoped>
 @import "../assets/styles/variables.css";
 @import "../assets/styles/media_queries.scss";
+@import "../assets/styles/focus.scss";
 
 .lux-library-logo {
   margin: var(--space-x-small) 0;
+  a {
+    &:focus,
+    &:focus-visible {
+      outline: none;
+    }
+  }
+  &.light {
+    &:hover,
+    &:focus-within {
+      @include princeton-focus(light);
+      outline-offset: 0.1rem;
+    }
+  }
+  &.dark {
+    &:hover,
+    &:focus-within {
+      @include princeton-focus(dark);
+      outline-offset: 0.1rem;
+    }
+  }
+  &.shade {
+    &:hover,
+    &:focus-within {
+      @include princeton-focus(shade);
+      outline-offset: 0.1rem;
+    }
+  }
 }
 
 .full-logo {

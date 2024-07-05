@@ -188,11 +188,6 @@ export default {
         this.$emit("input", val)
       },
     },
-    cssProps() {
-      return {
-        "--theme": this.theme,
-      }
-    },
   },
   methods: {
     menuItemClicked(value) {
@@ -598,7 +593,7 @@ export default {
   .lux-submenu-toggle {
     &:hover,
     &:focus-visible {
-      @include princeton-focus(var(--theme));
+      @include princeton-focus(dark);
     }
   }
   background: var(--color-gray-100);
@@ -637,7 +632,7 @@ export default {
   .lux-submenu-toggle {
     &:hover,
     &:focus-visible {
-      @include princeton-focus(var(--theme));
+      @include princeton-focus(shade);
     }
   }
 
@@ -674,7 +669,7 @@ export default {
   .lux-submenu-toggle {
     &:hover,
     &:focus-visible {
-      @include princeton-focus(var(--theme));
+      @include princeton-focus(light);
     }
   }
 

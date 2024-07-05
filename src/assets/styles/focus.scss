@@ -3,9 +3,11 @@
 @mixin princeton-focus($theme: light) {
   @if $theme == light {
     outline: var(--color-princeton-orange-on-white) solid 0.25rem;
-    outline-offset: 0px;
-  } @else {
+  } @else if $theme == dark {
     outline: var(--color-princeton-orange-on-black) solid 0.25rem;
-    outline-offset: 0px;
+  } @else if $theme == shade {
+    outline: var(--color-princeton-orange-on-black) solid 0.25rem;
   }
+  outline-offset: none;
+  box-shadow: none;
 }
