@@ -3,9 +3,7 @@
     <lux-wrapper class="lux-footer-content" :maxWidth="maxWidth">
       <div class="lux-footer-main">
         <div class="lux-library-links contact-info-layout">
-          <a href="https://library.princeton.edu"
-            ><lux-library-logo width="245" height="54" :theme="value(theme)"
-          /></a>
+          <lux-library-logo width="245" height="54" :theme="value(theme)" />
           <lux-library-contact-info :theme="value(theme)" />
         </div>
         <div class="lux-library-links subscribe-layout">
@@ -39,9 +37,7 @@
       </div>
       <div class="lux-footer-bottom bottom-layout">
         <div class="lux-library-links">
-          <a href="http://accessibility.princeton.edu/help"
-            ><lux-university-accessibility :theme="value(theme)"
-          /></a>
+          <lux-university-accessibility :theme="value(theme)" />
         </div>
         <div class="lux-library-links">
           <lux-university-copyright type="div" :theme="value(theme)" />
@@ -133,6 +129,7 @@ export default {
 @import "../assets/styles/mixins.scss";
 @import "../assets/styles/variables.css";
 @import "../assets/styles/system.scss";
+@import "../assets/styles/focus.scss";
 
 .contact-info-layout {
   @media (min-width: 900px) {
@@ -195,6 +192,10 @@ export default {
     .lux-library-links a {
       text-decoration: none;
       color: var(--color-white);
+      &:hover,
+      &:focus-visible {
+        @include princeton-focus(dark);
+      }
     }
   }
 
@@ -204,6 +205,10 @@ export default {
     .lux-library-links a {
       text-decoration: none;
       color: var(----color-white);
+      &:hover,
+      &:focus-visible {
+        @include princeton-focus(dark);
+      }
     }
   }
 
@@ -213,6 +218,10 @@ export default {
     .lux-library-links a {
       text-decoration: none;
       color: var(--color-rich-black);
+      &:hover,
+      &:focus-visible {
+        @include princeton-focus(dark);
+      }
     }
   }
 }

@@ -8,5 +8,6 @@
   } @else if $theme == shade {
     outline: var(--color-princeton-orange-on-black) solid 0.25rem;
   }
-  outline-offset: 0px;
+  outline-offset: none;
+  box-shadow: none;
 }

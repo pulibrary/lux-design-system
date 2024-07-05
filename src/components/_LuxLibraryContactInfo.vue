@@ -44,6 +44,7 @@ export default {
 @import "../assets/styles/mixins.scss";
 @import "../assets/styles/variables.css";
 @import "../assets/styles/system.scss";
+@import "../assets/styles/focus.scss";
 
 .lux-library-contact {
   @include reset;
@@ -57,6 +58,10 @@ export default {
     background-color: var(--color-gray-100);
     a {
       color: var(--color-white);
+      &:hover,
+      &:focus-visible {
+        @include princeton-focus(dark);
+      }
     }
 
     h2 {
@@ -69,6 +74,10 @@ export default {
     background-color: var(--color-grayscale-darker);
     a {
       color: var(--color-white);
+      &:hover,
+      &:focus-visible {
+        @include princeton-focus(dark);
+      }
     }
 
     h2 {
@@ -81,6 +90,10 @@ export default {
     background-color: var(--color-white);
     a {
       color: var(--color-rich-black);
+      &:hover,
+      &:focus-visible {
+        @include princeton-focus(light);
+      }
     }
 
     h2 {

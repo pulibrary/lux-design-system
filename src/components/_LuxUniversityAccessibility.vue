@@ -42,6 +42,7 @@ export default {
 @import "../assets/styles/mixins.scss";
 @import "../assets/styles/variables.css";
 @import "../assets/styles/system.scss";
+@import "../assets/styles/focus.scss";
 
 .lux-accessibility {
   @include reset;
@@ -52,17 +53,16 @@ export default {
 
   a {
     text-decoration: none;
-
-    &:hover,
-    &:focus {
-      text-decoration: underline;
-    }
   }
 
   &.dark {
     a {
       color: var(--color-white);
       background: var(--color-gray-100);
+      &:hover,
+      &:focus-visible {
+        @include princeton-focus(dark);
+      }
     }
   }
 
@@ -70,6 +70,10 @@ export default {
     a {
       color: var(--color-white);
       background: var(--color-grayscale-darker);
+      &:hover,
+      &:focus-visible {
+        @include princeton-focus(shade);
+      }
     }
   }
 
@@ -77,6 +81,10 @@ export default {
     a {
       color: var(--color-rich-black);
       background: var(--color-white);
+      &:hover,
+      &:focus-visible {
+        @include princeton-focus(light);
+      }
     }
   }
 }
