@@ -393,7 +393,7 @@ export default {
 .lux-main-menu {
   @include stack-space($space-base);
   font-family: $font-family-text;
-  font-size: $font-size-small;
+  font-size: var(--font-size-small);
   line-height: $line-height-base;
   width: 100%;
 
@@ -414,7 +414,7 @@ export default {
     outline: none;
     padding: $space-small $space-x-small;
     padding-left: $space-small;
-    font-size: $font-size-small;
+    font-size: var(--font-size-small);
     color: $color-rich-black;
     display: block;
     text-decoration: none;
