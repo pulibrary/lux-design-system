@@ -1,7 +1,7 @@
 <template>
   <component :is="type" :class="['lux-library-header', theme]">
     <lux-wrapper class="lux-header-content" :maxWidth="maxWidth">
-      <lux-library-logo :theme="value(theme)"></lux-library-logo>
+      <lux-library-logo width="245" height="54" :theme="value(theme)"></lux-library-logo>
       <a class="lux-app-name" :href="appUrl" :title="appName" aria-labelledby="appName">
         <span id="appName" class="full-name">{{ appName }}</span>
         <span class="abbr-name">{{ abbrName }}</span>
