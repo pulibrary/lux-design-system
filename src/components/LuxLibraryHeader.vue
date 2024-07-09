@@ -171,7 +171,7 @@ export default {
 .lux-header-content {
   align-items: center;
   display: flex;
-  padding: 0 var(--space-small);
+  padding: 0 1rem;
 
   @media (min-width: 900px) {
     flex-direction: row;
