@@ -81,7 +81,7 @@ function toggleTheDisclosure() {
 }
 
 .lux-disclosure button .lux-icon {
-  border: 1px solid black;
+  border: 2px solid black;
   padding: var(--space-xx-small);
   border-radius: var(--border-radius-default);
 }
