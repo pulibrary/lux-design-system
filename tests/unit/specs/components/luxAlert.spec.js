@@ -35,14 +35,24 @@ describe("LuxAlert.vue", () => {
     expect(button.exists()).toBe(true)
   })
 
-  it("should be dismissible on click", async () => {
-    wrapper.setProps({ dismissible: true })
-    await nextTick()
-    expect(wrapper.findComponent({ name: "LuxAlert" })).toBeTruthy
-    const button = wrapper.find("button")
-    button.trigger("click")
-    await nextTick()
-    expect(wrapper.findComponent({ name: "LuxAlert" })).toBeFalsy
+  describe("when the alert is dismissible", () => {
+    beforeEach(async () => {
+      wrapper.setProps({ dismissible: true })
+      await nextTick()
+    })
+    it("should be dismissible on click", async () => {
+      expect(wrapper.findComponent({ name: "LuxAlert" })).toBeTruthy
+      const button = wrapper.find("button")
+      button.trigger("click")
+      await nextTick()
+      expect(wrapper.findComponent({ name: "LuxAlert" })).toBeFalsy
+    })
+    it("should emit dismissed event when clicked", async () => {
+      const button = wrapper.find("button")
+      button.trigger("click")
+      await nextTick()
+      expect(wrapper.emitted()["dismissed"].length).toEqual(1)
+    })
   })
 
   it("should be accessible", () => {
