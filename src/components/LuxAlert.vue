@@ -97,7 +97,9 @@ export default {
       default: false,
     },
     /**
-     * User can manually hide the notification.
+     * User can manually hide the notification.  This emits a dismissed
+     * event that you can bind to if needed (for example, if you want to
+     * record that the user hid the notification in a database or localStorage)
      */
     dismissible: {
       type: Boolean,
@@ -107,6 +109,11 @@ export default {
   methods: {
     hideAlert() {
       this.show = false
+
+      /**
+       * The user has dismissed (or hidden) the alert.
+       */
+      this.$emit("dismissed")
     },
   },
   mounted() {
@@ -116,6 +123,7 @@ export default {
       }, 2000)
     }
   },
+  emits: ["dismissed"],
 }
 </script>
 
