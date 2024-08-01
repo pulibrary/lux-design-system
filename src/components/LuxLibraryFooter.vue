@@ -186,7 +186,6 @@ export default {
   background: var(--color-gray-100);
   padding-top: 1em;
   padding-bottom: 1em;
-  margin-top: 3em;
 
   &.dark {
     .lux-library-links a {
