@@ -44,7 +44,7 @@
         </div>
         <div class="lux-library-links pu-logo-white">
           <a href="https://www.princeton.edu"
-            ><lux-logo-university-white width="200px" height="80px" type="div"
+            ><lux-logo-university-white width="200px" height="72px" type="div"
           /></a>
         </div>
       </div>
@@ -155,9 +155,6 @@ export default {
   border-top: 1px solid rgba(255, 255, 255, 0.3);
 }
 
-.lux-library-logo {
-  padding-bottom: 2rem;
-}
 .lux-logo-x {
   margin: 0.5rem 0.1rem 0rem 0.2rem;
 }
@@ -185,7 +182,6 @@ export default {
   color: var(--color-white);
   background: var(--color-gray-100);
   padding-top: 1em;
-  padding-bottom: 1em;
 
   &.dark {
     .lux-library-links a {
@@ -243,7 +239,6 @@ export default {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  padding: 1rem 0rem;
 
   @media (min-width: 900px) {
     max-width: 1440px;
@@ -271,7 +266,6 @@ export default {
   flex-flow: column wrap;
   align-self: auto;
   justify-content: center;
-  padding-bottom: 1em;
   @media (min-width: 900px) {
     flex: 1;
   }
@@ -311,8 +305,8 @@ export default {
     }
 
     li {
-      line-height: var(--line-height-base);
-      font-size: var(--font-size-small);
+      line-height: var(--line-height-heading);
+      font-size: var(--font-size-base);
     }
   }
 }
