@@ -52,7 +52,7 @@ export default {
   line-height: var(--line-height-heading);
 
   a {
-    text-decoration: none;
+    text-decoration: underline;
   }
 
   &.dark {

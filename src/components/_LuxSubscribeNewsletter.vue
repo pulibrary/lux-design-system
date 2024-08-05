@@ -76,6 +76,16 @@ export default {
   #mc_embed_signup_scroll {
     display: flex;
     flex-flow: row nowrap;
+    @media (min-width: 900px) {
+      .lux-input {
+        width: 100%;
+      }
+    }
+    @media (max-width: 899px) {
+      .lux-input {
+        width: 200px;
+      }
+    }
   }
 
   .lux-button {
@@ -95,11 +105,16 @@ export default {
   :deep(.lux-input .lux-input-field) {
     box-shadow: none;
     height: 3rem;
-    width: 10rem;
     border: 1px solid black;
     border-radius: 0;
     &:hover {
       box-shadow: none;
+    }
+    @media (min-width: 900px) {
+      width: 100%;
+    }
+    @media (max-width: 899px) {
+      width: 200px;
     }
   }
 }

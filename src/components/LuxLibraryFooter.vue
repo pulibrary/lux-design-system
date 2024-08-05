@@ -133,7 +133,6 @@ export default {
 
 .contact-info-layout {
   @media (min-width: 900px) {
-    margin-right: 3.25rem;
     border-right: 1px solid rgba(255, 255, 255, 0.3);
   }
   @media (max-width: 899px) {
@@ -143,8 +142,8 @@ export default {
 
 .subscribe-layout {
   @media (min-width: 900px) {
-    margin-right: 3.25rem;
     border-right: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 0rem 2rem 0rem 2rem;
   }
   @media (max-width: 899px) {
     border-bottom: 1px solid rgba(255, 255, 255, 0.3);
@@ -185,7 +184,7 @@ export default {
 
   &.dark {
     .lux-library-links a {
-      text-decoration: none;
+      text-decoration: underline;
       color: var(--color-white);
       @include princeton-focus(dark);
     }
@@ -195,7 +194,7 @@ export default {
     background: var(--color-grayscale-darker);
 
     .lux-library-links a {
-      text-decoration: none;
+      text-decoration: underline;
       color: var(----color-white);
       @include princeton-focus(dark);
     }
@@ -205,7 +204,7 @@ export default {
     background: var(--color-white);
 
     .lux-library-links a {
-      text-decoration: none;
+      text-decoration: underline;
       color: var(--color-rich-black);
       @include princeton-focus(dark);
     }
@@ -262,7 +261,7 @@ export default {
   }
 
   &.pu-logo-white {
-    align-content: flex-end;
+    align-content: center;
     @media (max-width: 899px) {
       align-content: flex-start;
     }
@@ -275,7 +274,6 @@ export default {
   }
 
   a {
-    text-decoration: none;
     color: var(--color-white);
 
     &:hover,
@@ -286,18 +284,22 @@ export default {
 
   ul {
     list-style-type: none;
-    margin: 0;
-    padding: 0rem 2rem 0rem 0rem;
+    margin-right: calc(70% - 10rem);
     display: flex;
     flex-flow: column wrap;
     align-content: center;
     @media (max-width: 899px) {
+      padding: 0rem 2rem 0rem 0rem;
       align-content: flex-start;
     }
 
     li {
       line-height: var(--line-height-heading);
       font-size: var(--font-size-base);
+      padding-bottom: 0.5rem;
+      a {
+        text-decoration: underline;
+      }
     }
   }
 }
