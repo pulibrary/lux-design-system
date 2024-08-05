@@ -198,19 +198,16 @@ export default {
   &.icon-prepend {
     display: flex;
     align-items: center;
-    &:hover,
-    &:focus-visible {
-      @include princeton-focus(light);
-    }
+    @include princeton-focus(light);
   }
 
   &.solid {
     background: $color-bleu-de-france;
     color: $color-white;
+    @include princeton-focus(light);
     &:hover,
     &:focus-visible {
       background: $color-bleu-de-france-darker;
-      @include princeton-focus(light);
     }
   }
 
@@ -227,10 +224,7 @@ export default {
 
   &.text {
     background-color: transparent;
-    &:hover,
-    &:focus-visible {
-      @include princeton-focus(light);
-    }
+    @include princeton-focus(light);
   }
 
   &.dropdown {

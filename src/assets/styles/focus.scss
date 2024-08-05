@@ -1,13 +1,26 @@
 /* VUE DESIGN SYSTEM FOCUS AND HOVER HELPERS
 --------------------------------------------- */
-@mixin princeton-focus($theme: light) {
+@function decoration-color-by-theme($theme: light) {
   @if $theme == light {
-    outline: var(--color-princeton-orange-on-white) solid 0.25rem;
+    @return var(--color-princeton-orange-on-white);
   } @else if $theme == dark {
-    outline: var(--color-princeton-orange-on-black) solid 0.25rem;
+    @return var(--color-princeton-orange-on-black);
   } @else if $theme == shade {
-    outline: var(--color-princeton-orange-on-black) solid 0.25rem;
+    @return var(--color-princeton-orange-on-black);
   }
-  outline-offset: none;
-  box-shadow: none;
+}
+@mixin princeton-focus($theme: light) {
+  &:hover {
+    text-decoration: underline;
+    text-decoration-color: decoration-color-by-theme($theme)
+  }
+  &:focus-visible {
+    outline: decoration-color-by-theme($theme) solid 0.25rem;
+    outline-offset: none;
+    box-shadow: none;
+  }
+  &:focus-within {
+    text-decoration: underline;
+    text-decoration-color: decoration-color-by-theme($theme)
+  }
 }

@@ -58,10 +58,7 @@ export default {
     background-color: var(--color-gray-100);
     a {
       color: var(--color-white);
-      &:hover,
-      &:focus-visible {
-        @include princeton-focus(dark);
-      }
+      @include princeton-focus(dark);
     }
 
     h2 {
@@ -74,10 +71,7 @@ export default {
     background-color: var(--color-grayscale-darker);
     a {
       color: var(--color-white);
-      &:hover,
-      &:focus-visible {
-        @include princeton-focus(dark);
-      }
+      @include princeton-focus(dark);
     }
 
     h2 {
@@ -90,10 +84,7 @@ export default {
     background-color: var(--color-white);
     a {
       color: var(--color-rich-black);
-      &:hover,
-      &:focus-visible {
-        @include princeton-focus(light);
-      }
+      @include princeton-focus(light);
     }
 
     h2 {

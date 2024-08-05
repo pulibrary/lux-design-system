@@ -59,10 +59,7 @@ export default {
     a {
       color: var(--color-white);
       background: var(--color-gray-100);
-      &:hover,
-      &:focus-visible {
-        @include princeton-focus(dark);
-      }
+      @include princeton-focus(dark);
     }
   }
 
@@ -70,10 +67,7 @@ export default {
     a {
       color: var(--color-white);
       background: var(--color-grayscale-darker);
-      &:hover,
-      &:focus-visible {
-        @include princeton-focus(shade);
-      }
+      @include princeton-focus(shade);
     }
   }
 
@@ -81,10 +75,7 @@ export default {
     a {
       color: var(--color-rich-black);
       background: var(--color-white);
-      &:hover,
-      &:focus-visible {
-        @include princeton-focus(light);
-      }
+      @include princeton-focus(light);
     }
   }
 }
