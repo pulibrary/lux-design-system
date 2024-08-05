@@ -71,7 +71,7 @@ export default {
   @include reset;
   @include stack-space(var(--space-x-small));
   font-family: var(--font-family-heading);
-  font-size: var(--font-size-small);
+  font-size: var(--font-size-base);
   line-height: var(--line-height-base);
   color: var(--color-rich-black);
 
