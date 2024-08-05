@@ -193,12 +193,7 @@ export default {
     background-color: rgba(0, 0, 0, 0);
   }
 
-  &:hover,
-  &:focus-visible {
-    &::after {
-      @include princeton-focus(light);
-    }
-  }
+  @include princeton-focus(light);
 
   &:visited {
     color: var(--color-rich-black);

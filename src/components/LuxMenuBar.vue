@@ -473,10 +473,7 @@ export default {
       }
 
       .lux-show a {
-        &:hover,
-        &:focus-visible {
-          @include princeton-focus(light);
-        }
+        @include princeton-focus(light);
       }
     }
 
@@ -591,10 +588,7 @@ export default {
 .dark {
   a,
   .lux-submenu-toggle {
-    &:hover,
-    &:focus-visible {
-      @include princeton-focus(dark);
-    }
+    @include princeton-focus(dark);
   }
   background: var(--color-gray-100);
 
@@ -630,10 +624,7 @@ export default {
 
   a,
   .lux-submenu-toggle {
-    &:hover,
-    &:focus-visible {
-      @include princeton-focus(shade);
-    }
+    @include princeton-focus(shade);
   }
 
   @media (max-width: 899px) {
@@ -667,10 +658,7 @@ export default {
   background: var(--color-white);
   a,
   .lux-submenu-toggle {
-    &:hover,
-    &:focus-visible {
-      @include princeton-focus(light);
-    }
+    @include princeton-focus(light);
   }
 
   :deep(.hamburger-inner),

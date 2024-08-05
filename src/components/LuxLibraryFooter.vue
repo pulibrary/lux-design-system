@@ -187,10 +187,7 @@ export default {
     .lux-library-links a {
       text-decoration: none;
       color: var(--color-white);
-      &:hover,
-      &:focus-visible {
-        @include princeton-focus(dark);
-      }
+      @include princeton-focus(dark);
     }
   }
 
@@ -200,10 +197,7 @@ export default {
     .lux-library-links a {
       text-decoration: none;
       color: var(----color-white);
-      &:hover,
-      &:focus-visible {
-        @include princeton-focus(dark);
-      }
+      @include princeton-focus(dark);
     }
   }
 
@@ -213,10 +207,7 @@ export default {
     .lux-library-links a {
       text-decoration: none;
       color: var(--color-rich-black);
-      &:hover,
-      &:focus-visible {
-        @include princeton-focus(dark);
-      }
+      @include princeton-focus(dark);
     }
   }
 }

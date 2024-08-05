@@ -124,28 +124,14 @@ export default {
   &.dark {
     background: var(--color-gray-100);
     a.lux-app-name {
-      &:hover,
-      &:focus,
-      &:focus-visible {
-        outline: none;
-        span:not(:empty) {
-          @include princeton-focus(dark);
-        }
-      }
+      @include princeton-focus(dark);
     }
   }
 
   &.shade {
     background: var(--color-grayscale-darker);
     a.lux-app-name {
-      &:hover,
-      &:focus,
-      &:focus-visible {
-        outline: none;
-        span:not(:empty) {
-          @include princeton-focus(shade);
-        }
-      }
+      @include princeton-focus(shade);
     }
   }
 
@@ -156,14 +142,7 @@ export default {
       color: var(--color-rich-black);
     }
     a.lux-app-name {
-      &:hover,
-      &:focus,
-      &:focus-visible {
-        outline: none;
-        span:not(:empty) {
-          @include princeton-focus(light);
-        }
-      }
+      @include princeton-focus(light);
     }
   }
 }
