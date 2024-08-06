@@ -150,6 +150,16 @@ export default {
   }
 }
 
+.social-pul-icons {
+  display: flex;
+  width: 300px;
+  align-items: flex-end;
+  justify-content: space-between;
+  @media (max-width: 899px) {
+    width: 200px;
+  }
+}
+
 .bottom-layout {
   border-top: 1px solid rgba(255, 255, 255, 0.3);
 }
