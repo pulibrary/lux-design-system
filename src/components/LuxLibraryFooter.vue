@@ -229,7 +229,7 @@ export default {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  padding: 1rem 0rem;
+  padding: 0rem 0rem 1rem 0rem;
 
   @media (min-width: 900px) {
     max-width: 1440px;
