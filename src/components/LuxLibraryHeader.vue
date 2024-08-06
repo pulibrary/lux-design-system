@@ -201,7 +201,7 @@ export default {
 
     .abbr-name {
       display: block;
-      font-size: var(--font-size-small);
+      font-size: var(--font-size-base);
     }
   }
 }

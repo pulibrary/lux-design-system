@@ -253,7 +253,7 @@ export default {
 .lux-nav {
   @include stack-space($space-base);
   font-family: var(--font-family-text);
-  font-size: var(--font-size-small);
+  font-size: var(--font-size-base);
   line-height: var(--line-height-base);
   width: 100%;
 
@@ -363,7 +363,7 @@ export default {
     padding: 0.5rem 1rem;
     width: 100%;
     text-align: left;
-    font-size: var(--font-size-small);
+    font-size: var(--font-size-base);
 
     &:hover,
     &:focus {
@@ -391,7 +391,7 @@ export default {
 .lux-main-menu {
   @include stack-space($space-base);
   font-family: $font-family-text;
-  font-size: var(--font-size-small);
+  font-size: var(--font-size-base);
   line-height: $line-height-base;
   width: 100%;
 
@@ -412,7 +412,7 @@ export default {
     outline: none;
     padding: $space-small $space-x-small;
     padding-left: $space-small;
-    font-size: var(--font-size-small);
+    font-size: var(--font-size-base);
     color: $color-rich-black;
     display: block;
     text-decoration: none;
