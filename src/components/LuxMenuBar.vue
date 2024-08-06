@@ -100,6 +100,7 @@
                 :target="child.target"
                 :data-method="child.method"
                 class="lux-nav-item"
+                @click="menuItemClicked(child)"
                 >{{ child.name }}</a
               >
             </li>
@@ -112,6 +113,7 @@
             :title="item.name"
             :data-method="item.method"
             class="lux-nav-item"
+            @click="menuItemClicked(item)"
           >
             {{ item.name }}
           </a>
@@ -231,6 +233,7 @@ export default {
       },
     },
   },
+  emits: ["input", "menu-item-clicked"],
 }
 </script>
 
