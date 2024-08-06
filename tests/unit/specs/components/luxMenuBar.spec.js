@@ -93,4 +93,17 @@ describe("LuxMenuBar.vue", () => {
   it("has the expected html structure", () => {
     expect(wrapper.element).toMatchSnapshot()
   })
+
+  describe("when type is main-menu", () => {
+    it("emits menu-item-clicked with metadata about the clicked menu item", async () => {
+      wrapper.setProps({ type: "main-menu" })
+      await nextTick()
+      wrapper.findAll(".lux-nav-item")[1].trigger("click")
+
+      expect(wrapper.emitted()["menu-item-clicked"].length).toEqual(1)
+      expect(wrapper.emitted()["menu-item-clicked"][0]).toEqual([
+        { name: "Bar", component: "Bar", href: "/example/" },
+      ])
+    })
+  })
 })
