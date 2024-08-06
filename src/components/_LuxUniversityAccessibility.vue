@@ -51,8 +51,13 @@ export default {
   font-size: var(--font-size-base);
   line-height: var(--line-height-heading);
 
+  :deep(.lux-link) {
+    box-shadow: none;
+  }
+
   a {
     text-decoration: underline;
+    text-underline-offset: 3px;
   }
 
   &.dark {

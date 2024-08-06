@@ -12,6 +12,8 @@
 @mixin princeton-focus($theme: light) {
   &:hover {
     text-decoration: underline;
+    text-underline-offset: 3px;
+    text-decoration-thickness: 0.15rem;
     text-decoration-color: decoration-color-by-theme($theme)
   }
   &:focus-visible {

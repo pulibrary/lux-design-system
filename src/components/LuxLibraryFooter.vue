@@ -185,6 +185,7 @@ export default {
   &.dark {
     .lux-library-links a {
       text-decoration: underline;
+      text-underline-offset: 3px;
       color: var(--color-white);
       @include princeton-focus(dark);
     }
@@ -195,6 +196,7 @@ export default {
 
     .lux-library-links a {
       text-decoration: underline;
+      text-underline-offset: 3px;
       color: var(----color-white);
       @include princeton-focus(dark);
     }
@@ -205,6 +207,7 @@ export default {
 
     .lux-library-links a {
       text-decoration: underline;
+      text-underline-offset: 3px;
       color: var(--color-rich-black);
       @include princeton-focus(dark);
     }
@@ -299,6 +302,7 @@ export default {
       padding-bottom: 0.5rem;
       a {
         text-decoration: underline;
+        text-underline-offset: 3px;
       }
     }
   }
