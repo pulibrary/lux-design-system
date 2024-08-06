@@ -152,6 +152,7 @@ export default {
 
 .social-pul-icons {
   display: flex;
+  flex-flow: row nowrap;
   width: 300px;
   align-items: flex-end;
   justify-content: space-between;

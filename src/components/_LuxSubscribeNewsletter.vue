@@ -86,6 +86,12 @@ export default {
         width: 200px;
       }
     }
+    @media (max-width: 380px) {
+      flex-flow: column wrap;
+      .lux-input {
+        width: 100%;
+      }
+    }
   }
 
   .lux-button {
@@ -115,6 +121,9 @@ export default {
     }
     @media (max-width: 899px) {
       width: 200px;
+    }
+    @media (max-width: 380px) {
+      width: 100%;
     }
   }
 }
