@@ -4,7 +4,7 @@
       <div itemscope itemtype="http://schema.org/PostalAddress">
         <span itemprop="streetAddress">One Washington Road</span> <br />
         <span itemprop="addressLocality">Princeton</span>, <span itemprop="addressRegion">NJ</span>
-        <span itemprop="postalCode">08544</span> <span itemprop="addressCountry">USA</span>
+        <span itemprop="postalCode"> 08544</span> <span itemprop="addressCountry">USA</span>
       </div>
       <span itemprop="telephone"><a href="tel:1-609-258-1470">(609) 258-1470</a></span>
     </div>

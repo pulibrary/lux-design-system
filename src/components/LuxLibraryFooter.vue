@@ -299,7 +299,7 @@ export default {
     li {
       line-height: var(--line-height-heading);
       font-size: var(--font-size-base);
-      padding-bottom: 0.5rem;
+      padding-bottom: 1rem;
       a {
         text-decoration: underline;
         text-underline-offset: 3px;

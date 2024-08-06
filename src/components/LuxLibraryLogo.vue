@@ -61,7 +61,7 @@ export default {
 @import "../assets/styles/focus.scss";
 
 .lux-library-logo {
-  margin: var(--space-x-small) 0;
+  margin: 0rem 0rem 1.5rem 0rem;
   a {
     &:focus,
     &:focus-visible {
