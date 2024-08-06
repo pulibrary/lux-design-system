@@ -1,6 +1,6 @@
 ### Adding Lux to your project
 
-#### Adding lux to a vue+vite application
+#### Adding Lux to a vue+vite application
 
 [An example Vue+Vite application](https://github.com/pulibrary/vue-app-with-lux)
 that demonstrates [tree-shaking](https://developer.mozilla.org/en-US/docs/Glossary/Tree_shaking).
@@ -18,7 +18,7 @@ tree-shake lux.  This way, your application bundle
 will only include the lux components that you 
 actually use, which means faster download times for the user.
 
-#### Adding lux to a vite+rails project
+#### Adding Lux to a vite+rails project
 
 Some examples of this approach include [approvals](https://github.com/pulibrary/approvals) and
 [DSS](https://github.com/pulibrary/DSS).
@@ -74,7 +74,7 @@ Vue app to the appropriate element(s) in the DOM.
 1. Add classes or CSS variables from lux to your styling.
 
 
-#### Adding lux to a static HTML page
+#### Adding Lux to a static HTML page
 
 Importmaps are a nice way to add vue and
 lux to a static site.  An example of this
@@ -113,6 +113,29 @@ Vue application and installs lux as a vue plugin.
     ```
 1. Add lux components as needed in your HTML.
 1. Add classes or CSS variables from lux to your styling.
+
+##### Adding Lux to a static HTML page using an IIFE file
+If you can't use an import map and have to use `<script src>` then from cdn use the IIFE file - `https://unpkg.com/lux-design-system@<versionNumber>/dist/lux-styleguidist.iife.js`.
+
+Add the following `<script>` tags after the `<head>` tag:
+```
+  <script>
+    window.process = {
+        env: {
+          NODE_ENV: 'production'
+        }
+      };
+  </script>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <script src="https://unpkg.com/lux-design-system@5.5.0/dist/lux-styleguidist.iife.js"></script>
+```
+After `<body>` tag add the following `<script>` tag:
+```
+<script>
+    const { createApp } = Vue
+    createApp().use(Lux.default).mount('#app')
+</script>
+```
 
 #### Adding only the Lux CSS
 
