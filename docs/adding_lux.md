@@ -119,13 +119,6 @@ If you can't use an import map and have to use `<script src>` then from cdn use 
 
 Add the following `<script>` tags after the `<head>` tag:
 ```
-  <script>
-    window.process = {
-        env: {
-          NODE_ENV: 'production'
-        }
-      };
-  </script>
   <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
   <script src="https://unpkg.com/lux-design-system@5.5.0/dist/lux-styleguidist.iife.js"></script>
 ```
