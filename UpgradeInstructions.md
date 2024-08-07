@@ -51,7 +51,7 @@
   
 - Run: `bundle exec vite dev` to make sure that vite bundles JS and CSS.
 - Run: `bundle install`
-- Run: `bundle exec rails server s`
+- Run: `bundle exec rails s`
 - In `package.json` update Jest and vue/test-utils to vue3:     
     - Update @vue/test-utils and eslint-plugin-jest   
     - Add @vue/vue3-jest as a dev dependency.
