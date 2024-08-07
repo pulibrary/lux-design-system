@@ -16,6 +16,7 @@ import _LuxLibraryContactInfo from "./_LuxLibraryContactInfo.vue"
 import _LuxLibraryContactInfoOld from "./_LuxLibraryContactInfoOld.vue"
 import _LuxUniversityCopyright from "./_LuxUniversityCopyright.vue"
 import _LuxUniversityCopyrightOld from "./_LuxUniversityCopyrightOld.vue"
+import _LuxUniversityPrivacyNotice from "./_LuxUniversityPrivacyNotice.vue"
 import LuxBanner from "./LuxBanner.vue"
 import LuxCard from "./LuxCard.vue"
 import LuxCounter from "./LuxCounter.vue"
@@ -70,6 +71,7 @@ export {
   _LuxLibraryContactInfoOld,
   _LuxUniversityCopyright,
   _LuxUniversityCopyrightOld,
+  _LuxUniversityPrivacyNotice,
   LuxBanner,
   LuxCard,
   LuxCounter,
