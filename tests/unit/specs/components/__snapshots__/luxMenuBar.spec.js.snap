@@ -14,7 +14,9 @@ exports[`LuxMenuBar.vue has the expected html structure 1`] = `
         href="/example/"
         title="Foo"
       >
+        
         Foo
+        
       </a>
       <ul
         aria-label="submenu"
@@ -40,7 +42,9 @@ exports[`LuxMenuBar.vue has the expected html structure 1`] = `
         href="/example/"
         title="Bar"
       >
+        
         Bar
+        
       </a>
     </li>
     
