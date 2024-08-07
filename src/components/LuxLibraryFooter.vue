@@ -31,6 +31,9 @@
               <li>
                 <a href="https://library.princeton.edu/about/jobs">Library Jobs</a>
               </li>
+              <li>
+                <lux-university-privacy-notice :theme="value(theme)" />
+              </li>
             </ul>
           </nav>
         </div>
@@ -64,6 +67,7 @@ import LuxLogoX from "./logos/LuxLogoX.vue"
 import LuxSubscribeNewsletter from "./_LuxSubscribeNewsletter.vue"
 import LuxUniversityAccessibility from "./_LuxUniversityAccessibility.vue"
 import LuxUniversityCopyright from "./_LuxUniversityCopyright.vue"
+import LuxUniversityPrivacyNotice from "./_LuxUniversityPrivacyNotice.vue"
 import LuxWrapper from "./LuxWrapper.vue"
 
 /**
@@ -88,6 +92,7 @@ export default {
     LuxSubscribeNewsletter,
     LuxUniversityAccessibility,
     LuxUniversityCopyright,
+    LuxUniversityPrivacyNotice,
     LuxWrapper,
   },
   methods: {
@@ -298,7 +303,6 @@ export default {
 
   ul {
     list-style-type: none;
-    margin-right: calc(70% - 10rem);
     display: flex;
     flex-flow: column wrap;
     align-content: center;
