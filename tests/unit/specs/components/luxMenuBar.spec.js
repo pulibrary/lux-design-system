@@ -84,10 +84,24 @@ describe("LuxMenuBar.vue", () => {
     expect(wrapper.get("nav").classes()).toContain("dark")
   })
 
-  it("has to a light theme", async () => {
+  it("has a light theme", async () => {
     wrapper.setProps({ type: "main-menu", theme: "light" })
     await nextTick()
     expect(wrapper.get("nav").classes()).toContain("light")
+  })
+
+  it("can include arbitrary html with the unsafe_name property", async () => {
+    wrapper.setProps({
+      menuItems: [
+        {
+          name: "Foo Bar",
+          unsafe_name: "<span id='my-foo'>Foo</span> <span class='my-bar'>Bar</span>",
+        },
+      ],
+    })
+    await nextTick()
+    expect(wrapper.get("#my-foo").text()).toEqual("Foo")
+    expect(wrapper.get(".my-bar").text()).toEqual("Bar")
   })
 
   it("has the expected html structure", () => {

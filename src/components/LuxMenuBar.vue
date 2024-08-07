@@ -10,8 +10,8 @@
             class="lux-has-children lux-nav-item"
             aria-haspopup="true"
             @click="menuItemClicked($event, item)"
-            >{{ item.name }}</a
-          >
+            ><lux-menu-bar-label :item="item"></lux-menu-bar-label
+          ></a>
           <ul class="lux-nav-children" aria-label="submenu">
             <li v-for="{ href, name, index, target } in item.children" :key="index">
               <a
@@ -31,8 +31,8 @@
             :title="item.name"
             class="lux-nav-item"
             @click="menuItemClicked($event, item)"
-            >{{ item.name }}</a
-          >
+            ><lux-menu-bar-label :item="item"></lux-menu-bar-label
+          ></a>
         </template>
       </li>
     </ul>
@@ -50,10 +50,11 @@
             { 'lux-disabled': item.disabled },
             { 'lux-is-child': item.hasOwnProperty('parent') === true },
           ]"
-          v-html="item.name"
           :disabled="item.disabled"
           @click="menuItemClicked($event, item)"
-        ></button>
+        >
+          <lux-menu-bar-label :item="item"></lux-menu-bar-label>
+        </button>
       </li>
     </ul>
   </div>
@@ -88,7 +89,7 @@
             :data-method="item.method"
             @click="setActiveItem(index)"
           >
-            {{ item.name }}
+            <lux-menu-bar-label :item="item"></lux-menu-bar-label>
           </button>
           <ul role="menu" :class="{ 'lux-show': index === activeItem }">
             <li v-for="(child, index) in item.children" :key="index">
@@ -101,8 +102,8 @@
                 :data-method="child.method"
                 class="lux-nav-item"
                 @click="menuItemClicked(child)"
-                >{{ child.name }}</a
-              >
+                ><lux-menu-bar-label :item="child"></lux-menu-bar-label
+              ></a>
             </li>
           </ul>
         </template>
@@ -115,7 +116,7 @@
             class="lux-nav-item"
             @click="menuItemClicked(item)"
           >
-            {{ item.name }}
+            <lux-menu-bar-label :item="item"></lux-menu-bar-label>
           </a>
         </template>
       </li>
@@ -125,6 +126,7 @@
 
 <script>
 import _LuxHamburger from "./_LuxHamburger.vue"
+import _LuxMenuBarLabel from "./_LuxMenuBarLabel.vue"
 
 /**
  * Used as main page navigation in templates.
@@ -164,7 +166,16 @@ export default {
       type: String,
     },
     /**
-     * Menu items are options to be displayed to the user. To mimic a Rails link_to helper for an item, simply pass the HTTP method with a `method` property.
+     * Menu items are options to be displayed to the user.  They have several possible properties:
+     * <dl><dt><code>name</code></dt><dd>The text that is displayed for this menu item</dd>
+     * <dt><code>href</code></dt><dd>If the type is links or main-menu, the url that the menu item links to.</dd>
+     * <dt><code>target</code></dt><dd>If the type is links or main-menu, where to display the linked URL (for example, <code>_blank</code> for a new tab).</dd>
+     * <dt><code>children</code></dt><dd>An array of items that should display below the current item hierarchically.</dd>
+     * <dt><code>disabled</code></dt><dd>If the type is buttons, whether or not the button should be disabled.</dd>
+     * <dt><code>component</code></dt><dd>Optional. An identifier you can use in conjunction with the <code>active</code> prop.</dd>
+     * <dt><code>unsafe_name</code></dt><dd>Optional. If you need to include some arbitrary HTML in the menu item text, you can here and it will override the label provided in <code>name</code>.  Don't bind the <code>unsafe_name</code> property to any user-provided value, since it does not have Cross-Site Scripting protections (<code>name</code> does have these protections).</dd>
+     * <dt><code>method</code></dt><dd>Optional. For use in conjunction with Rails applications that use UJS to link to non-GET HTTP methods, like POST or DELETE.  To mimic a Rails link_to helper for an item, pass the HTTP method with a `method` property.</dd>
+     * </dl>
      */
     menuItems: {
       required: true,
@@ -209,6 +220,7 @@ export default {
   },
   components: {
     "lux-hamburger": _LuxHamburger,
+    "lux-menu-bar-label": _LuxMenuBarLabel,
   },
   directives: {
     "click-outside": {
