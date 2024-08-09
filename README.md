@@ -4,7 +4,8 @@
 
 ## Adding Lux to an application or website
 
-[Instructions for adding lux](docs/adding_lux.md)
+* [Instructions for adding lux](docs/adding_lux.md)
+* If you are looking for examples, take a look at one of the [many PUL applications and sites that use Lux](docs/lux_usage.md).
 
 ## Project setup
 ```
