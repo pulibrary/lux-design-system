@@ -107,11 +107,42 @@ Vue application and installs lux as a vue plugin.
     app.use(lux)
     .mount('#app');
     ```
+    If you are only using lux for a header and footer:
+    ```
+    import { createApp } from 'vue';
+    import lux from 'lux-design-system';
+
+    const headerApp = createApp({});
+    headerApp.use(lux)
+    .mount('#lux-header-container')
+
+    const footerApp = createApp({});
+    footerApp.use(lux)
+    .mount('#lux-footer-container');
+    ```
+
 1. Import the CSS as from a CDN.
     ```
     <link rel="stylesheet" href="https://unpkg.com/lux-design-system@5.0.2/dist/style.css">
     ```
-1. Add lux components as needed in your HTML.
+1. Add lux components as needed in your HTML.  If you are just adding a
+   header and footer:
+   ```
+   <div id="lux-header-container">
+    <lux-library-header app-name="Research Guides" abbr-name="Guides" app-url="https://libguides.princeton.edu/" theme="dark">
+      <lux-menu-bar type="main-menu" :menu-items="[
+          {name: 'Help', component: 'Help', href: 'https://library.princeton.edu/ask-us'},
+          {name: 'Your Accounts', component: 'Account', href: 'https://library.princeton.edu/accounts'}
+        ]"
+      ></lux-menu-bar>
+    </lux-library-header>
+
+    <!-- the rest of your page -->
+
+    <div id="lux-footer-container">
+      <lux-library-footer></lux-library-footer>
+    </div>
+   ```
 1. Add classes or CSS variables from lux to your styling.
 
 ##### Adding Lux to a static HTML page using an IIFE file
