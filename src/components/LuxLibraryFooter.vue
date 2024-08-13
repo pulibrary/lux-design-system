@@ -26,10 +26,12 @@
         <div class="lux-library-links">
           <nav role="navigation" aria-label="Library Staff">
             <ul>
-              <li><a href="https://library.princeton.edu/staff">For Library Staff</a></li>
-              <li><a href="https://library.princeton.edu/staff/directory">Staff Directory</a></li>
+              <li><a href="https://library.princeton.edu/library-staff">For Library Staff</a></li>
               <li>
-                <a href="https://library.princeton.edu/about/jobs">Library Jobs</a>
+                <a href="https://library.princeton.edu/about/staff-directory">Staff Directory</a>
+              </li>
+              <li>
+                <a href="https://library.princeton.edu/about/employment">Library Jobs</a>
               </li>
               <li>
                 <lux-university-privacy-notice :theme="value(theme)" />
