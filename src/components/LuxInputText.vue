@@ -468,10 +468,6 @@ $color-placeholder: tint(rgb(149, 156, 167), 50%);
     background-color: var(--color-white);
     border-top-right-radius: 3px;
     border-bottom-right-radius: 3px;
-    &:focus,
-    &:hover {
-      text-decoration: none;
-    }
   }
 }
 </style>
