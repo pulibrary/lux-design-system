@@ -19,3 +19,4 @@
 * [Figgy](https://figgy.princeton.edu)
 * [Imagecat](https://imagecat.princeton.edu)
 * [Lib-Jobs](https://lib-jobs.princeton.edu)
+* [LUX Design System Documentation](https://pulibrary.github.io/lux-design-system)
