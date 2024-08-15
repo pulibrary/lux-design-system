@@ -13,9 +13,10 @@
 * [Lockers and Study Spaces](https://lockers-and-study-spaces.princeton.edu)
 * [Static Tables](https://static-tables-prod.princeton.edu/)
 
-#### Internal applications
+#### Internal applications and sites
 
 * [Approvals](https://approvals.princeton.edu)
+* [DACS handbook](https://pulibrary.github.io/dacs_handbook/)
 * [Figgy](https://figgy.princeton.edu)
 * [Imagecat](https://imagecat.princeton.edu)
 * [Lib-Jobs](https://lib-jobs.princeton.edu)
