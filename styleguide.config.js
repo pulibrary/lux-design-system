@@ -26,4 +26,5 @@ module.exports = {
   ],
   exampleMode: "expand",
   enhancePreviewApp: path.join(__dirname, "styleguide_vue_app.js"),
+  version: process.env.npm_package_version,
 }
