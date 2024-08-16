@@ -46,8 +46,8 @@
 
   // Used to prevent text selection on an element
   @mixin prevent-user-select {
-    -webkit-user-select: none;
-    -moz-user-select: none;
+    user-select: none;
+    user-select: none;
     user-select: none;
   }
 

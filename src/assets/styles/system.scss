@@ -1,26 +1,26 @@
-$color-grayscale-light: rgb(186, 190, 197);
-$color-tan: rgb(188, 139, 82);
-$color-bleu-de-france-dark: rgb(45, 112, 180);
-$color-bleu-de-france-light: rgb(108, 163, 218);
-$color-green: rgb(124, 181, 24);
-$color-princeton-orange-on-white: rgb(231, 117, 0);
-$color-tan-lighter: rgb(219, 193, 163);
-$color-grayscale-dark: rgb(130, 138, 151);
-$color-grayscale: rgb(149, 156, 167);
-$color-white: rgb(255, 255, 255);
-$color-grayscale-lighter: rgb(245, 245, 245);
-$color-grayscale-warm-lighter: rgb(250, 249, 245);
-$color-yellow: rgb(255, 186, 10);
-$color-bleu-de-france: rgb(44, 110, 175);
-$color-tan-dark: rgb(158, 113, 61);
-$color-bleu-de-france-darker: rgb(35, 87, 139);
-$color-bleu-de-france-lighter: rgb(149, 189, 228);
-$color-red: rgb(201, 40, 19);
-$color-grayscale-darker: rgb(65, 70, 78);
-$color-rich-black: rgb(0, 17, 35);
-$color-tan-light: rgb(202, 163, 119);
-$color-tan-darker: rgb(121, 87, 47);
-$color-princeton-orange-on-black: rgb(245, 128, 37);
+$color-grayscale-light: rgb(186 190 197);
+$color-tan: rgb(188 139 82);
+$color-bleu-de-france-dark: rgb(45 112 180);
+$color-bleu-de-france-light: rgb(108 163 218);
+$color-green: rgb(124 181 24);
+$color-princeton-orange-on-white: rgb(231 117 0);
+$color-tan-lighter: rgb(219 193 163);
+$color-grayscale-dark: rgb(130 138 151);
+$color-grayscale: rgb(149 156 167);
+$color-white: rgb(255 255 255);
+$color-grayscale-lighter: rgb(245 245 245);
+$color-grayscale-warm-lighter: rgb(250 249 245);
+$color-yellow: rgb(255 186 10);
+$color-bleu-de-france: rgb(44 110 175);
+$color-tan-dark: rgb(158 113 61);
+$color-bleu-de-france-darker: rgb(35 87 139);
+$color-bleu-de-france-lighter: rgb(149 189 228);
+$color-red: rgb(201 40 19);
+$color-grayscale-darker: rgb(65 70 78);
+$color-rich-black: rgb(0 17 35);
+$color-tan-light: rgb(202 163 119);
+$color-tan-darker: rgb(121 87 47);
+$color-princeton-orange-on-black: rgb(245 128 37);
 $font-size-large-min: 1.125em;
 $font-size-base-max: 1.125em;
 $font-size-x-large: 36px;
@@ -38,8 +38,8 @@ $font-size-x-large-min: 1.266em;
 $font-size-xxx-large-min: 1.602em;
 $font-size-xx-large-min: 1.424em;
 $font-size-base: 16px;
-$font-family-heading: "franklin-gothic-urw", Helvetica, Arial, sans-serif;
-$font-family-text: "franklin-gothic-urw", Helvetica, Arial, sans-serif;
+$font-family-heading: "franklin-gothic-urw", helvetica, arial, sans-serif;
+$font-family-text: "franklin-gothic-urw", helvetica, arial, sans-serif;
 $font-weight-bold: 700;
 $font-weight-semi-bold: 600;
 $font-weight-regular: 400;
@@ -57,8 +57,8 @@ $media-query-large: (min-width: 900px);
 $media-query-x-large: (min-width: 1200px);
 $media-query-xx-large: (min-width: 1800px);
 $media-query-xxx-large: (min-width: 2300px);
-$box-shadow-small: 0 0 0 1px rgba(92, 106, 196, 0.1);
-$box-shadow-small-inset: inset 0 0 0 1px rgba(0, 0, 0, 0.05);
+$box-shadow-small: 0 0 0 1px rgb(92 106 196 / 10%);
+$box-shadow-small-inset: inset 0 0 0 1px rgb(0 0 0 / 5%);
 $box-shadow-selected: 0 0 0 1px #e77500;
 $letter-spacing-x-large: 2px;
 $letter-spacing-large: 1px;
@@ -126,8 +126,8 @@ $line-height-heading: 1.5;
 
 // Used to prevent text selection on an element
 @mixin prevent-user-select {
-  -webkit-user-select: none;
-  -moz-user-select: none;
+  user-select: none;
+  user-select: none;
   user-select: none;
 }
 
@@ -202,7 +202,8 @@ $line-height-heading: 1.5;
   @if $fallback == null {
     $fallback: #000;
   }
-  @if (color-difference($color, $background) == "false") {
+
+  @if color-difference($color, $background) == "false" {
     @return $fallback;
   } @else {
     @return $color;
@@ -217,7 +218,7 @@ $line-height-heading: 1.5;
 /// @return {Color} The modified color.
 @function color-multiply($foreground, $background: null) {
   @if $background == null {
-    $background: #ffffff;
+    $background: #fff;
   }
 
   @return $foreground * $background / 255;

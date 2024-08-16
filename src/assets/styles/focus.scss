@@ -9,6 +9,7 @@
     @return var(--color-princeton-orange-on-black);
   }
 }
+
 @mixin princeton-focus($theme: light) {
   &:hover {
     text-decoration: underline;
@@ -16,11 +17,13 @@
     text-decoration-thickness: 0.15rem;
     text-decoration-color: decoration-color-by-theme($theme)
   }
+
   &:focus-visible {
     outline: decoration-color-by-theme($theme) solid 0.25rem;
     outline-offset: none;
     box-shadow: none;
   }
+
   &:focus-within {
     text-decoration: underline;
     text-decoration-color: decoration-color-by-theme($theme)
