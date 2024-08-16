@@ -1,3 +1,9 @@
 {
-  "extends": "stylelint-config-standard-scss"
+  "extends": "stylelint-config-standard-scss",
+  "rules": {
+    "scss/no-global-function-names": null,
+    "scss/comment-no-empty": null,
+    "declaration-block-no-duplicate-properties": null,
+    "scss/at-if-no-null": null
+  }
 }

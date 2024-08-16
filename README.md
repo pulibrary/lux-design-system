@@ -49,6 +49,9 @@ Please note: For informational purposes only. Don't do this outside of a release
 ### Linting
 We are using the eslint_plugin-prettier to lint our files. To adjust the lint format settings, please use the `.prettierrc` file. Code linting rules should be set in `eslintrc.js`.
 
+### Style Linting
+We are using stylelint and stylelint-config-standard-scss to lint scss files. To disable or customize any rules use the `.stylelintrc.json`. Run `npx stylelint "**/*.scss"` to lint the scss files.
+
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
 
