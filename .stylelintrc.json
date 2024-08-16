@@ -4,6 +4,7 @@
     "scss/no-global-function-names": null,
     "scss/comment-no-empty": null,
     "declaration-block-no-duplicate-properties": null,
-    "scss/at-if-no-null": null
+    "scss/at-if-no-null": null,
+    "property-no-vendor-prefix": null
   }
 }

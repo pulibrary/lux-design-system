@@ -126,8 +126,8 @@ $line-height-heading: 1.5;
 
 // Used to prevent text selection on an element
 @mixin prevent-user-select {
-  user-select: none;
-  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
   user-select: none;
 }
 
