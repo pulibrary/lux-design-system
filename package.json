@@ -68,6 +68,8 @@
     "rollup-plugin-copy": "^3.5.0",
     "sass": "^1.71.1",
     "sass-loader": "^14.1.1",
+    "stylelint": "^16.8.2",
+    "stylelint-config-standard-scss": "^13.1.0",
     "vue": "^3.4.21",
     "vue-cli-plugin-styleguidist": "~4.72.4"
   },
