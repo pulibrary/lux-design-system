@@ -8,6 +8,10 @@ module.exports = {
   pagePerSection: true,
   sections: [
     {
+      name: "Design Tokens",
+      content: "docs/design_tokens.md",
+    },
+    {
       name: "Components",
       components: "src/components/[A-Z]*.vue",
     },
