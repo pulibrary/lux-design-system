@@ -7,6 +7,7 @@
 * [Digital PUL](https://dpul.princeton.edu)
 * [DSS Catalog](https://dss.princeton.edu/catalog)
 * [Finding Aids](https://findingaids.princeton.edu)
+* [PUL Quick Answers](https://faq.library.princeton.edu/)
 * [PUL Scheduler](https://libcal.princeton.edu/)
 * [Research Guides](https://libguides.princeton.edu/)
 * Libwizard
