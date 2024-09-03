@@ -92,7 +92,7 @@ CDN, like so:
       {
         "imports": {
           "vue": "https://unpkg.com/vue@3.2.47/dist/vue.esm-browser.prod.js",
-          "lux-design-system": "https://unpkg.com/lux-design-system@5.0.2/dist/lux-styleguidist.mjs"
+          "lux-design-system": "https://unpkg.com/lux-design-system@5.6.3/dist/lux-styleguidist.mjs"
         }
       }
     </script>
@@ -123,7 +123,7 @@ Vue application and installs lux as a vue plugin.
 
 1. Import the CSS as from a CDN.
     ```
-    <link rel="stylesheet" href="https://unpkg.com/lux-design-system@5.0.2/dist/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/lux-design-system@5.6.3/dist/style.css">
     ```
 1. Add lux components as needed in your HTML.  If you are just adding a
    header and footer:
@@ -151,7 +151,7 @@ If you can't use an import map and have to use `<script src>` then from cdn use 
 Add the following `<script>` tags after the `<head>` tag:
 ```
   <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-  <script src="https://unpkg.com/lux-design-system@5.5.0/dist/lux-styleguidist.iife.js"></script>
+  <script src="https://unpkg.com/lux-design-system@5.6.3/dist/lux-styleguidist.iife.js"></script>
 ```
 After `<body>` tag add the following `<script>` tag:
 ```
@@ -169,5 +169,5 @@ An example of this approach is the [DACS handbook](https://github.com/pulibrary/
 To do this, add the CSS from a CDN to your HTML:
 
 ```
-    <link rel="stylesheet" href="https://unpkg.com/lux-design-system@5.1.1/dist/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/lux-design-system@5.6.3/dist/style.css">
 ```
