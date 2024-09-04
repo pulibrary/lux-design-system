@@ -141,6 +141,7 @@ export default {
 .contact-info-layout {
   @media (min-width: 900px) {
     border-right: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 0rem 2rem 0rem 2rem;
   }
   @media (max-width: 899px) {
     border-bottom: 1px solid rgba(255, 255, 255, 0.3);
