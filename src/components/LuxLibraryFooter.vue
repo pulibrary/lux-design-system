@@ -308,7 +308,7 @@ export default {
     display: flex;
     flex-flow: column wrap;
     align-content: end;
-    // padding-right: 2rem;
+    padding-right: 2rem;
     @media (max-width: 899px) {
       padding: 0rem 2rem 0rem 0rem;
       align-content: flex-start;
