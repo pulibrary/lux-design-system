@@ -282,7 +282,8 @@ export default {
   }
 
   &.pu-logo-white {
-    align-content: center;
+    align-content: end;
+    padding-right: 0.5rem;
     @media (max-width: 899px) {
       align-content: flex-start;
     }
