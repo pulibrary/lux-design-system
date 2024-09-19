@@ -171,19 +171,17 @@ export default {
   text-align: center;
   text-decoration: none;
 
-  @media (min-width: 1200px) {
-    border-left: 1px solid var(--color-grayscale-light);
-    height: 35px;
-    margin: 0 0 0 1rem;
-    padding: 0 0 0 1rem;
-    text-align: left;
-  }
-
   .full-name {
     display: none;
   }
 
   @media (min-width: 900px) {
+    border-left: 1px solid var(--color-grayscale-light);
+    height: 35px;
+    margin: 0 0 0 1rem;
+    padding: 0 0 0 1rem;
+    text-align: left;
+
     .full-name {
       display: block;
       font-size: var(--font-size-large);
@@ -195,6 +193,12 @@ export default {
   }
 
   @media (max-width: 899px) {
+    border-left: 1px solid var(--color-grayscale-light);
+    height: 35px;
+    margin: 0 0 0 1rem;
+    padding: 0 0 0 1rem;
+    text-align: left;
+
     .full-name {
       display: none;
     }
