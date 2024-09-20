@@ -88,6 +88,7 @@
             class="lux-submenu-toggle"
             :data-method="item.method"
             @click="setActiveItem(index)"
+            @keydown.esc="activeItem ? setActiveItem(index) : 'false'"
           >
             <lux-menu-bar-label :item="item"></lux-menu-bar-label>
           </button>
