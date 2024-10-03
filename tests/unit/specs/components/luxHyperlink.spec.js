@@ -57,6 +57,17 @@ describe("LuxHyperlink.vue", () => {
     })
   })
 
+  describe("with the underline prop", () => {
+    beforeEach(async () => {
+      wrapper.setProps({ underline: true })
+      await nextTick()
+    })
+
+    it("adds an underline class", () => {
+      expect(wrapper.find("a").classes()).toContain("lux-link-underline")
+    })
+  })
+
   it("has the expected html structure", () => {
     expect(wrapper.element).toMatchSnapshot()
   })

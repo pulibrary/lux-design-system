@@ -1,5 +1,9 @@
 <template>
-  <a :href="href" :class="['lux-link', variation, size]" :target="newTab ? '_blank' : null">
+  <a
+    :href="href"
+    :class="['lux-link', variation, size, underline ? 'lux-link-underline' : '']"
+    :target="newTab ? '_blank' : null"
+  >
     <slot />
     <lux-icon-base v-if="newTab" width="14" height="14" icon-name="(opens in new tab)">
       <lux-icon-new-tab></lux-icon-new-tab>
@@ -55,6 +59,13 @@ export default {
      * disconcerting, so don't use it unless necessary.
      */
     newTab: {
+      type: Boolean,
+      default: false,
+    },
+    /**
+     * Should the link have an underline?
+     */
+    underline: {
       type: Boolean,
       default: false,
     },
@@ -146,6 +157,17 @@ export default {
     }
   }
 }
+
+.lux-link-underline {
+  border-bottom: 2px black solid;
+
+  &:focus,
+  &:hover {
+    border-bottom: 2px var(--color-princeton-orange-on-white) solid;
+    box-shadow: none;
+    text-decoration: none;
+  }
+}
 </style>
 
 <docs>
@@ -156,6 +178,12 @@ export default {
       <lux-hyperlink href="#" variation="button solid" size="large">Bar</lux-hyperlink>
       <lux-hyperlink href="#" variation="button outline">Bar</lux-hyperlink>
       <lux-hyperlink href="#" :newTab="true">I open in a new tab</lux-hyperlink>
+      <lux-hyperlink href="#" :underline="true">
+        I am underlined and have an arrow
+        <lux-icon-base width="14" height="14">
+          <lux-icon-arrow-right></lux-icon-arrow-right>
+        </lux-icon-base>
+      </lux-hyperlink>
     </div>
   ```
 </docs>
