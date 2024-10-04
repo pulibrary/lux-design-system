@@ -34,6 +34,35 @@ describe("LuxMenuBar.vue", () => {
     expect(wrapper.element.innerHTML).not.toContain('role="presentation"')
   })
 
+  it("should start with aria-expanded false", async () => {
+    wrapper.setProps({ type: "main-menu" })
+    await nextTick()
+    expect(wrapper.find(".lux-submenu-toggle").attributes("aria-expanded")).toEqual("false")
+  })
+
+  it("should be aria-expanded true after a user opens the menu", async () => {
+    wrapper.setProps({ type: "main-menu" })
+    await nextTick()
+
+    wrapper.find("button.lux-submenu-toggle").trigger("click")
+    await nextTick()
+
+    expect(wrapper.find(".lux-submenu-toggle").attributes("aria-expanded")).toEqual("true")
+  })
+
+  it("should close the menu when the user presses the Esc key", async () => {
+    wrapper.setProps({ type: "main-menu" })
+    await nextTick()
+    wrapper.find("button.lux-submenu-toggle").trigger("click")
+    await nextTick()
+    expect(wrapper.find(".lux-submenu-toggle").attributes("aria-expanded")).toEqual("true")
+
+    wrapper.find("button.lux-submenu-toggle").trigger("keydown.esc")
+
+    await nextTick()
+    expect(wrapper.find(".lux-submenu-toggle").attributes("aria-expanded")).toEqual("false")
+  })
+
   it("should be a nav element if the type prop value is 'links'", async () => {
     expect(wrapper.find("nav").exists()).toBe(true)
     expect(wrapper.find("div").exists()).toBe(false)
