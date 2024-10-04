@@ -84,11 +84,11 @@
         <template v-if="item.children">
           <button
             aria-haspopup="true"
-            :aria-expanded="activeItem ? 'true' : 'false'"
+            :aria-expanded="activeItem === '' ? 'false' : 'true'"
             class="lux-submenu-toggle"
             :data-method="item.method"
             @click="setActiveItem(index)"
-            @keydown.esc="activeItem ? setActiveItem(index) : 'false'"
+            @keydown.esc="setActiveItem(index)"
           >
             <lux-menu-bar-label :item="item"></lux-menu-bar-label>
           </button>
