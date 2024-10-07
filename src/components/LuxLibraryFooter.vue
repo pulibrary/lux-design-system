@@ -3,8 +3,10 @@
     <lux-wrapper class="lux-footer-content" :maxWidth="maxWidth">
       <div class="lux-footer-main">
         <div class="lux-library-links contact-info-layout">
-          <lux-library-logo width="245" height="54" :theme="value(theme)" />
-          <lux-library-contact-info :theme="value(theme)" />
+          <div>
+            <lux-library-logo width="245" height="54" :theme="value(theme)" />
+            <lux-library-contact-info :theme="value(theme)" />
+          </div>
         </div>
         <div class="lux-library-links subscribe-layout">
           <h2>Subscribe to our Newsletter</h2>
@@ -44,7 +46,7 @@
         <div class="lux-library-links">
           <lux-university-accessibility :theme="value(theme)" />
         </div>
-        <div class="lux-library-links">
+        <div class="lux-library-links center-panel">
           <lux-university-copyright type="div" :theme="value(theme)" />
         </div>
         <div class="lux-library-links pu-logo-white">
@@ -141,9 +143,15 @@ export default {
 .contact-info-layout {
   @media (min-width: 900px) {
     border-right: 1px solid rgba(255, 255, 255, 0.3);
+    .contact-info-layout div {
+      padding-left: 1.5rem;
+    }
   }
   @media (max-width: 899px) {
     border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    .contact-info-layout div {
+      padding-left: 0;
+    }
   }
 }
 
@@ -289,6 +297,11 @@ export default {
     }
   }
 
+  &.center-panel {
+    align-content: center;
+    text-align: center;
+  }
+
   h2 {
     font-family: var(--font-family-heading);
     font-size: var(--font-size-base);
@@ -308,7 +321,6 @@ export default {
     list-style-type: none;
     display: flex;
     flex-flow: column wrap;
-    align-content: end;
     padding-right: 2rem;
     @media (max-width: 899px) {
       padding: 0rem 2rem 0rem 0rem;
@@ -326,6 +338,7 @@ export default {
     }
   }
 }
+
 </style>
 
 <docs>
