@@ -143,15 +143,14 @@ export default {
 .contact-info-layout {
   @media (min-width: 900px) {
     border-right: 1px solid rgba(255, 255, 255, 0.3);
-    .contact-info-layout div {
-      padding-left: 1.5rem;
+    > div {
+      padding-left: 8px;
     }
   }
+
   @media (max-width: 899px) {
+    /* on phone sizes it stacks */
     border-bottom: 1px solid rgba(255, 255, 255, 0.3);
-    .contact-info-layout div {
-      padding-left: 0;
-    }
   }
 }
 
@@ -206,7 +205,9 @@ export default {
   line-height: var(--line-height-heading);
   color: var(--color-white);
   background: var(--color-gray-100);
-  padding-top: 1em;
+  @media (min-width: 900px) {
+    padding-top: 1em;
+  }
 
   &.dark {
     .lux-library-links a {
@@ -251,6 +252,10 @@ export default {
   }
   @media (max-width: 899px) {
     flex-direction: column;
+    > div {
+      padding-bottom: 8px;
+      padding-top: 8px;
+    }
   }
 }
 
@@ -264,6 +269,8 @@ export default {
   }
   @media (max-width: 899px) {
     flex-direction: column;
+    padding-top: 10px;
+    padding-bottom: 8px;
   }
 }
 
@@ -298,8 +305,13 @@ export default {
   }
 
   &.center-panel {
-    align-content: center;
-    text-align: center;
+    @media (min-width: 900px) {
+      align-content: center;
+      text-align: center;
+    }
+    @media (max-width: 899px) {
+      padding-top: 1em;
+    }
   }
 
   h2 {
@@ -325,12 +337,15 @@ export default {
     @media (max-width: 899px) {
       padding: 0rem 2rem 0rem 0rem;
       align-content: flex-start;
+      margin-bottom: 0px;
     }
 
+    li:not(:last-child) {
+      padding-bottom: 1rem;
+    }
     li {
       line-height: var(--line-height-heading);
       font-size: var(--font-size-base);
-      padding-bottom: 1rem;
       a {
         text-decoration: underline;
         text-underline-offset: 3px;
@@ -338,7 +353,6 @@ export default {
     }
   }
 }
-
 </style>
 
 <docs>
