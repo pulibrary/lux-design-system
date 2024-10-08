@@ -51,6 +51,10 @@ export default {
   font-size: var(--font-size-base);
   line-height: var(--line-height-heading);
 
+  @media (min-width: 900px) {
+    padding-left: 8px;
+  }
+
   :deep(.lux-link) {
     box-shadow: none;
   }

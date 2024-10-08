@@ -3,8 +3,10 @@
     <lux-wrapper class="lux-footer-content" :maxWidth="maxWidth">
       <div class="lux-footer-main">
         <div class="lux-library-links contact-info-layout">
-          <lux-library-logo width="245" height="54" :theme="value(theme)" />
-          <lux-library-contact-info :theme="value(theme)" />
+          <div>
+            <lux-library-logo width="245" height="54" :theme="value(theme)" />
+            <lux-library-contact-info :theme="value(theme)" />
+          </div>
         </div>
         <div class="lux-library-links subscribe-layout">
           <h2>Subscribe to our Newsletter</h2>
@@ -44,7 +46,7 @@
         <div class="lux-library-links">
           <lux-university-accessibility :theme="value(theme)" />
         </div>
-        <div class="lux-library-links">
+        <div class="lux-library-links center-panel">
           <lux-university-copyright type="div" :theme="value(theme)" />
         </div>
         <div class="lux-library-links pu-logo-white">
@@ -141,8 +143,13 @@ export default {
 .contact-info-layout {
   @media (min-width: 900px) {
     border-right: 1px solid rgba(255, 255, 255, 0.3);
+    > div {
+      padding-left: 8px;
+    }
   }
+
   @media (max-width: 899px) {
+    /* on phone sizes it stacks */
     border-bottom: 1px solid rgba(255, 255, 255, 0.3);
   }
 }
@@ -198,7 +205,9 @@ export default {
   line-height: var(--line-height-heading);
   color: var(--color-white);
   background: var(--color-gray-100);
-  padding-top: 1em;
+  @media (min-width: 900px) {
+    padding-top: 1em;
+  }
 
   &.dark {
     .lux-library-links a {
@@ -243,6 +252,10 @@ export default {
   }
   @media (max-width: 899px) {
     flex-direction: column;
+    > div {
+      padding-bottom: 8px;
+      padding-top: 8px;
+    }
   }
 }
 
@@ -256,6 +269,8 @@ export default {
   }
   @media (max-width: 899px) {
     flex-direction: column;
+    padding-top: 10px;
+    padding-bottom: 8px;
   }
 }
 
@@ -289,6 +304,16 @@ export default {
     }
   }
 
+  &.center-panel {
+    @media (min-width: 900px) {
+      align-content: center;
+      text-align: center;
+    }
+    @media (max-width: 899px) {
+      padding-top: 1em;
+    }
+  }
+
   h2 {
     font-family: var(--font-family-heading);
     font-size: var(--font-size-base);
@@ -308,17 +333,19 @@ export default {
     list-style-type: none;
     display: flex;
     flex-flow: column wrap;
-    align-content: end;
     padding-right: 2rem;
     @media (max-width: 899px) {
       padding: 0rem 2rem 0rem 0rem;
       align-content: flex-start;
+      margin-bottom: 0px;
     }
 
+    li:not(:last-child) {
+      padding-bottom: 1rem;
+    }
     li {
       line-height: var(--line-height-heading);
       font-size: var(--font-size-base);
-      padding-bottom: 1rem;
       a {
         text-decoration: underline;
         text-underline-offset: 3px;
