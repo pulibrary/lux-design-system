@@ -333,7 +333,6 @@ export default {
     list-style-type: none;
     display: flex;
     flex-flow: column wrap;
-    padding-right: 2rem;
     @media (max-width: 899px) {
       padding: 0rem 2rem 0rem 0rem;
       align-content: flex-start;
