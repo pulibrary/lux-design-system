@@ -63,7 +63,6 @@
     v-else-if="type === 'main-menu'"
     :class="['lux-main-menu', theme]"
     aria-label="Main Navigation"
-    v-click-outside="hide"
   >
     <button
       aria-haspopup="true"
@@ -89,6 +88,7 @@
             :data-method="item.method"
             @click="setActiveItem(index)"
             @keydown.esc="setActiveItem(index)"
+            v-click-outside="hide"
           >
             <lux-menu-bar-label :item="item"></lux-menu-bar-label>
           </button>
@@ -214,8 +214,11 @@ export default {
         this.activeItem = index
       }
     },
-    hide: function (event) {
-      this.isVisible = false
+    hide() {
+      console.log("Hi Jane")
+      // if (this.activeItem === index) {
+      //   this.activeItem = ""
+      // }
       this.activeItem = ""
     },
   },
@@ -223,14 +226,43 @@ export default {
     "lux-hamburger": _LuxHamburger,
     "lux-menu-bar-label": _LuxMenuBarLabel,
   },
+  // directives: {
+  //   "click-outside": {
+  //     bind: function (el, binding, vNode) {
+  //       // Define Handler and cache it on the element
+  //       console.log('bind')
+  //       const bubble = binding.modifiers.bubble
+  //       const handler = e => {
+  //         if (bubble || (!el.contains(e.target) && el !== e.target)) {
+  //           binding.value(e)
+  //           console.log('bind if')
+  //         }
+  //       }
+  //       el.__vueClickOutside__ = handler
+
+  //       // add Event Listeners
+  //       document.addEventListener("click", handler)
+  //     },
+
+  //     unbind: function (el, binding) {
+  //       // Remove Event Listeners
+  //       console.log('unbind')
+  //       document.removeEventListener("click", el.__vueClickOutside__)
+  //       el.__vueClickOutside__ = null
+  //     },
+  //   },
+  // },
   directives: {
     "click-outside": {
-      bind: function (el, binding, vNode) {
+      beforeMount: function (el, binding) {
         // Define Handler and cache it on the element
+        console.log("inside beforeMount")
         const bubble = binding.modifiers.bubble
         const handler = e => {
+          console.log(e)
           if (bubble || (!el.contains(e.target) && el !== e.target)) {
             binding.value(e)
+            console.log("inside beforeMount if")
           }
         }
         el.__vueClickOutside__ = handler
@@ -239,8 +271,9 @@ export default {
         document.addEventListener("click", handler)
       },
 
-      unbind: function (el, binding) {
+      unmounted: function (el, binding) {
         // Remove Event Listeners
+        console.log("unmounted")
         document.removeEventListener("click", el.__vueClickOutside__)
         el.__vueClickOutside__ = null
       },

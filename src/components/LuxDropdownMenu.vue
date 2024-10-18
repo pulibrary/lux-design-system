@@ -91,6 +91,7 @@ export default {
   },
   methods: {
     hide: function (event) {
+      console.log("Hi Jane")
       this.isVisible = false
     },
     buttonClicked(value) {
@@ -106,10 +107,12 @@ export default {
     "click-outside": {
       beforeMount: function (el, binding) {
         // Define Handler and cache it on the element
+        console.log("inside beforeMount")
         const bubble = binding.modifiers.bubble
         const handler = e => {
           if (bubble || (!el.contains(e.target) && el !== e.target)) {
             binding.value(e)
+            console.log("inside beforeMount if")
           }
         }
         el.__vueClickOutside__ = handler
@@ -120,6 +123,7 @@ export default {
 
       unmounted: function (el, binding) {
         // Remove Event Listeners
+        console.log("unmounted")
         document.removeEventListener("click", el.__vueClickOutside__)
         el.__vueClickOutside__ = null
       },
