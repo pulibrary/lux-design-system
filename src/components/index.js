@@ -53,6 +53,7 @@ import LuxAlert from "./LuxAlert.vue"
 import LuxDropdownMenu from "./LuxDropdownMenu.vue"
 import LuxAutocompleteInput from "./LuxAutocompleteInput.vue"
 import LuxTag from "./LuxTag.vue"
+import LuxUniversityFooter from "./LuxUniversityFooter.vue"
 
 export {
   LuxInputButton,
@@ -109,4 +110,5 @@ export {
   LuxDropdownMenu,
   LuxAutocompleteInput,
   LuxTag,
+  LuxUniversityFooter,
 }
