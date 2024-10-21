@@ -35,27 +35,12 @@
               <li>
                 <a href="https://library.princeton.edu/about/employment">Library Jobs</a>
               </li>
-              <li>
-                <lux-university-privacy-notice :theme="value(theme)" />
-              </li>
             </ul>
           </nav>
         </div>
       </div>
-      <div class="lux-footer-bottom bottom-layout">
-        <div class="lux-library-links">
-          <lux-university-accessibility :theme="value(theme)" />
-        </div>
-        <div class="lux-library-links center-panel">
-          <lux-university-copyright type="div" :theme="value(theme)" />
-        </div>
-        <div class="lux-library-links pu-logo-white">
-          <a href="https://www.princeton.edu"
-            ><lux-logo-university-white width="200px" height="72px" type="div"
-          /></a>
-        </div>
-      </div>
     </lux-wrapper>
+    <lux-university-footer :theme="value(theme)" />
   </component>
 </template>
 
@@ -66,16 +51,15 @@ import LuxLogoFacebook from "./logos/LuxLogoFacebook.vue"
 import LuxLogoFriends from "./logos/LuxLogoFriends.vue"
 import LuxLogoGovDocs from "./logos/LuxLogoGovDocs.vue"
 import LuxLogoInstagram from "./logos/LuxLogoInstagram.vue"
-import LuxLogoUniversityWhite from "./logos/LuxLogoUniversityWhite.vue"
 import LuxLogoX from "./logos/LuxLogoX.vue"
 import LuxSubscribeNewsletter from "./_LuxSubscribeNewsletter.vue"
-import LuxUniversityAccessibility from "./_LuxUniversityAccessibility.vue"
-import LuxUniversityCopyright from "./_LuxUniversityCopyright.vue"
-import LuxUniversityPrivacyNotice from "./_LuxUniversityPrivacyNotice.vue"
 import LuxWrapper from "./LuxWrapper.vue"
+import LuxUniversityFooter from "./LuxUniversityFooter.vue"
 
 /**
- * LibraryFooter is the preferred Footer styling/behavior for PUL websites.
+ * LibraryFooter is the preferred Footer styling/behavior for the PUL main
+ * website. Other sites tightly integrated with the main site may also want
+ * to use this footer.
  * Don't forget to create a fallback for this component by providing the HTML
  * rendering in _<noscript></noscript>_ tags.
  */
@@ -91,13 +75,10 @@ export default {
     LuxLogoFriends,
     LuxLogoGovDocs,
     LuxLogoInstagram,
-    LuxLogoUniversityWhite,
     LuxLogoX,
     LuxSubscribeNewsletter,
-    LuxUniversityAccessibility,
-    LuxUniversityCopyright,
-    LuxUniversityPrivacyNotice,
     LuxWrapper,
+    LuxUniversityFooter,
   },
   methods: {
     value: function (theme) {
@@ -256,21 +237,6 @@ export default {
       padding-bottom: 8px;
       padding-top: 8px;
     }
-  }
-}
-
-.lux-footer-bottom {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-
-  @media (min-width: 900px) {
-    max-width: 1440px;
-  }
-  @media (max-width: 899px) {
-    flex-direction: column;
-    padding-top: 10px;
-    padding-bottom: 8px;
   }
 }
 
