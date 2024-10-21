@@ -2,13 +2,26 @@
   <component :is="type" :class="['lux-university-footer', theme]">
     <lux-wrapper class="lux-footer-content" :maxWidth="maxWidth">
       <div class="lux-footer-bottom bottom-layout">
-        <div class="lux-library-links">
-          <lux-university-accessibility :theme="value(theme)" />
+        <div class="lux-university-links">
+          <div class="policy-links">
+            <LuxHyperlink
+              href="https://library.princeton.edu/about/policies/copyright-and-permissions-policies"
+            >
+              Copyright Policy</LuxHyperlink
+            >
+            |
+            <LuxHyperlink href="https://www.princeton.edu/privacy-notice">
+              Privacy Notice
+            </LuxHyperlink>
+          </div>
+          <LuxHyperlink href="https://accessibility.princeton.edu/help"
+            >Accessibility Help</LuxHyperlink
+          >
         </div>
-        <div class="lux-library-links center-panel">
+        <div class="lux-university-links center-panel">
           <lux-university-copyright type="div" :theme="value(theme)" />
         </div>
-        <div class="lux-library-links pu-logo-white">
+        <div class="lux-university-links pu-logo-white">
           <a href="https://www.princeton.edu"
             ><lux-logo-university-white width="200px" height="72px" type="div"
           /></a>
@@ -19,14 +32,13 @@
 </template>
 
 <script>
-import LuxUniversityAccessibility from "./_LuxUniversityAccessibility.vue"
 import LuxUniversityCopyright from "./_LuxUniversityCopyright.vue"
 import LuxLogoUniversityWhite from "./logos/LuxLogoUniversityWhite.vue"
 import LuxUniversityPrivacyNotice from "./_LuxUniversityPrivacyNotice.vue"
 import LuxWrapper from "./LuxWrapper.vue"
 
 /**
- * LibraryFooter is the preferred Footer styling/behavior for PUL websites.
+ * UniversityFooter is the preferred Footer styling/behavior for PUL websites.
  * Don't forget to create a fallback for this component by providing the HTML
  * rendering in _<noscript></noscript>_ tags.
  */
@@ -37,7 +49,6 @@ export default {
   type: "Pattern",
   components: {
     LuxLogoUniversityWhite,
-    LuxUniversityAccessibility,
     LuxUniversityCopyright,
     LuxUniversityPrivacyNotice,
     LuxWrapper,
@@ -98,9 +109,8 @@ export default {
   background: var(--color-gray-100);
 
   &.dark {
-    .lux-library-links a {
-      text-decoration: underline;
-      text-underline-offset: 3px;
+    a {
+      text-decoration: none;
       color: var(--color-white);
       @include princeton-focus(dark);
     }
@@ -109,9 +119,8 @@ export default {
   &.shade {
     background: var(--color-grayscale-darker);
 
-    .lux-library-links a {
-      text-decoration: underline;
-      text-underline-offset: 3px;
+    a {
+      text-decoration: none;
       color: var(----color-white);
       @include princeton-focus(dark);
     }
@@ -120,29 +129,10 @@ export default {
   &.light {
     background: var(--color-white);
 
-    .lux-library-links a {
-      text-decoration: underline;
-      text-underline-offset: 3px;
+    a {
+      text-decoration: none;
       color: var(--color-rich-black);
       @include princeton-focus(dark);
-    }
-  }
-}
-
-.lux-footer-main {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  padding: 0rem 0rem 1rem 0rem;
-
-  @media (min-width: 900px) {
-    max-width: 1440px;
-  }
-  @media (max-width: 899px) {
-    flex-direction: column;
-    > div {
-      padding-bottom: 8px;
-      padding-top: 8px;
     }
   }
 }
@@ -174,7 +164,7 @@ export default {
   }
 }
 
-.lux-library-links {
+.lux-university-links {
   order: 0;
   display: flex;
   flex-flow: column wrap;
@@ -182,6 +172,10 @@ export default {
   justify-content: center;
   @media (min-width: 900px) {
     flex: 1;
+  }
+
+  .policy-links {
+    display: flow-root;
   }
 
   &.pu-logo-white {
@@ -199,38 +193,6 @@ export default {
     }
     @media (max-width: 899px) {
       padding-top: 1em;
-    }
-  }
-
-  a {
-    color: var(--color-white);
-
-    &:hover,
-    &:focus {
-      text-decoration: underline;
-    }
-  }
-
-  ul {
-    list-style-type: none;
-    display: flex;
-    flex-flow: column wrap;
-    @media (max-width: 899px) {
-      padding: 0rem 2rem 0rem 0rem;
-      align-content: flex-start;
-      margin-bottom: 0px;
-    }
-
-    li:not(:last-child) {
-      padding-bottom: 1rem;
-    }
-    li {
-      line-height: var(--line-height-heading);
-      font-size: var(--font-size-base);
-      a {
-        text-decoration: underline;
-        text-underline-offset: 3px;
-      }
     }
   }
 }

@@ -35,9 +35,6 @@
               <li>
                 <a href="https://library.princeton.edu/about/employment">Library Jobs</a>
               </li>
-              <li>
-                <lux-university-privacy-notice :theme="value(theme)" />
-              </li>
             </ul>
           </nav>
         </div>
@@ -56,11 +53,10 @@ import LuxLogoGovDocs from "./logos/LuxLogoGovDocs.vue"
 import LuxLogoInstagram from "./logos/LuxLogoInstagram.vue"
 import LuxLogoX from "./logos/LuxLogoX.vue"
 import LuxSubscribeNewsletter from "./_LuxSubscribeNewsletter.vue"
-import LuxUniversityPrivacyNotice from "./_LuxUniversityPrivacyNotice.vue"
 import LuxWrapper from "./LuxWrapper.vue"
 
 /**
- * LibraryFooter is the preferred Footer styling/behavior for PUL websites.
+ * LibraryFooter is the preferred Footer styling/behavior for the PUL main website.
  * Don't forget to create a fallback for this component by providing the HTML
  * rendering in _<noscript></noscript>_ tags.
  */
@@ -78,7 +74,6 @@ export default {
     LuxLogoInstagram,
     LuxLogoX,
     LuxSubscribeNewsletter,
-    LuxUniversityPrivacyNotice,
     LuxWrapper,
   },
   methods: {
