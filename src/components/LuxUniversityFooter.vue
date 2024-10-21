@@ -1,61 +1,27 @@
 <template>
-  <component :is="type" :class="['lux-library-footer', theme]">
+  <component :is="type" :class="['lux-university-footer', theme]">
     <lux-wrapper class="lux-footer-content" :maxWidth="maxWidth">
-      <div class="lux-footer-main">
-        <div class="lux-library-links contact-info-layout">
-          <div>
-            <lux-library-logo width="245" height="54" :theme="value(theme)" />
-            <lux-library-contact-info :theme="value(theme)" />
-          </div>
-        </div>
-        <div class="lux-library-links subscribe-layout">
-          <h2>Subscribe to our Newsletter</h2>
-          <lux-subscribe-newsletter type="div" />
-          <div class="social-pul-icons">
-            <a href="https://x.com/PULibrary"><lux-logo-x width="24" height="24" /></a>
-            <a href="http://www.facebook.com/PULibrary"
-              ><lux-logo-facebook width="24" height="24"
-            /></a>
-            <a href="https://www.instagram.com/PULibrary/"
-              ><lux-logo-instagram width="24" height="24"
-            /></a>
-            <a href="https://libguides.princeton.edu/usgovdocs"
-              ><lux-logo-gov-docs width="30" height="30"
-            /></a>
-            <a href="https://fpul.princeton.edu/"><lux-logo-friends width="120" height="35" /></a>
-          </div>
-        </div>
+      <div class="lux-footer-bottom bottom-layout">
         <div class="lux-library-links">
-          <nav role="navigation" aria-label="Library Staff">
-            <ul>
-              <li><a href="https://library.princeton.edu/library-staff">For Library Staff</a></li>
-              <li>
-                <a href="https://library.princeton.edu/about/staff-directory">Staff Directory</a>
-              </li>
-              <li>
-                <a href="https://library.princeton.edu/about/employment">Library Jobs</a>
-              </li>
-              <li>
-                <lux-university-privacy-notice :theme="value(theme)" />
-              </li>
-            </ul>
-          </nav>
+          <lux-university-accessibility :theme="value(theme)" />
+        </div>
+        <div class="lux-library-links center-panel">
+          <lux-university-copyright type="div" :theme="value(theme)" />
+        </div>
+        <div class="lux-library-links pu-logo-white">
+          <a href="https://www.princeton.edu"
+            ><lux-logo-university-white width="200px" height="72px" type="div"
+          /></a>
         </div>
       </div>
     </lux-wrapper>
-    <lux-university-footer :theme="value(theme)" />
   </component>
 </template>
 
 <script>
-import LuxLibraryContactInfo from "./_LuxLibraryContactInfo.vue"
-import LuxLibraryLogo from "./LuxLibraryLogo.vue"
-import LuxLogoFacebook from "./logos/LuxLogoFacebook.vue"
-import LuxLogoFriends from "./logos/LuxLogoFriends.vue"
-import LuxLogoGovDocs from "./logos/LuxLogoGovDocs.vue"
-import LuxLogoInstagram from "./logos/LuxLogoInstagram.vue"
-import LuxLogoX from "./logos/LuxLogoX.vue"
-import LuxSubscribeNewsletter from "./_LuxSubscribeNewsletter.vue"
+import LuxUniversityAccessibility from "./_LuxUniversityAccessibility.vue"
+import LuxUniversityCopyright from "./_LuxUniversityCopyright.vue"
+import LuxLogoUniversityWhite from "./logos/LuxLogoUniversityWhite.vue"
 import LuxUniversityPrivacyNotice from "./_LuxUniversityPrivacyNotice.vue"
 import LuxWrapper from "./LuxWrapper.vue"
 
@@ -65,22 +31,18 @@ import LuxWrapper from "./LuxWrapper.vue"
  * rendering in _<noscript></noscript>_ tags.
  */
 export default {
-  name: "LuxLibraryFooter",
+  name: "LuxUniversityFooter",
   status: "ready",
   release: "1.0.0",
   type: "Pattern",
   components: {
-    LuxLibraryContactInfo,
-    LuxLibraryLogo,
-    LuxLogoFacebook,
-    LuxLogoFriends,
-    LuxLogoGovDocs,
-    LuxLogoInstagram,
-    LuxLogoX,
-    LuxSubscribeNewsletter,
+    LuxLogoUniversityWhite,
+    LuxUniversityAccessibility,
+    LuxUniversityCopyright,
     LuxUniversityPrivacyNotice,
     LuxWrapper,
   },
+
   methods: {
     value: function (theme) {
       if (theme == "light" || theme == "shade") {
@@ -89,6 +51,7 @@ export default {
       return "dark"
     },
   },
+
   props: {
     /**
      * The html element name used for the container
@@ -122,74 +85,17 @@ export default {
 @import "../assets/styles/system.scss";
 @import "../assets/styles/focus.scss";
 
-.contact-info-layout {
-  @media (min-width: 900px) {
-    border-right: 1px solid rgba(255, 255, 255, 0.3);
-    > div {
-      padding-left: 8px;
-    }
-  }
-
-  @media (max-width: 899px) {
-    /* on phone sizes it stacks */
-    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
-  }
-}
-
-.subscribe-layout {
-  @media (min-width: 900px) {
-    border-right: 1px solid rgba(255, 255, 255, 0.3);
-    padding: 0rem 2rem 0rem 2rem;
-  }
-  @media (max-width: 899px) {
-    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
-  }
-}
-
-.social-pul-icons {
-  display: flex;
-  flex-flow: row nowrap;
-  width: 300px;
-  align-items: flex-end;
-  justify-content: space-between;
-  @media (max-width: 899px) {
-    width: 200px;
-  }
-}
-
 .bottom-layout {
   border-top: 1px solid rgba(255, 255, 255, 0.3);
 }
 
-.lux-logo-x {
-  margin: 0.5rem 0.1rem 0rem 0.2rem;
-}
-
-.lux-logo-facebook {
-  margin: 0.5rem 0.2rem 0rem 0.1rem;
-}
-
-.lux-logo-instagram {
-  margin: 0.5rem 0.25rem 0rem 0.2rem;
-}
-
-.lux-logo-gov-docs {
-  margin: 0.5rem 0.1rem 0rem 0.3rem;
-}
-
-.lux-logo-friends {
-  margin: 0.5rem 0.2rem -0.2rem 0.2rem;
-}
-.lux-library-footer {
+.lux-university-footer {
   @include reset;
   @include stack-space(var(--space-base));
   font-family: var(--font-family-heading);
   line-height: var(--line-height-heading);
   color: var(--color-white);
   background: var(--color-gray-100);
-  @media (min-width: 900px) {
-    padding-top: 1em;
-  }
 
   &.dark {
     .lux-library-links a {
@@ -241,6 +147,21 @@ export default {
   }
 }
 
+.lux-footer-bottom {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+
+  @media (min-width: 900px) {
+    max-width: 1440px;
+  }
+  @media (max-width: 899px) {
+    flex-direction: column;
+    padding-top: 10px;
+    padding-bottom: 8px;
+  }
+}
+
 .lux-footer-content {
   display: flex;
   flex-direction: column;
@@ -281,12 +202,6 @@ export default {
     }
   }
 
-  h2 {
-    font-family: var(--font-family-heading);
-    font-size: var(--font-size-base);
-    font-weight: var(--font-weight-bold);
-  }
-
   a {
     color: var(--color-white);
 
@@ -324,7 +239,7 @@ export default {
 <docs>
   ```jsx
   <div>
-    <lux-library-footer theme="dark"></lux-library-footer>
+    <lux-university-footer theme="dark"></lux-university-footer>
   </div>
   ```
 </docs>
