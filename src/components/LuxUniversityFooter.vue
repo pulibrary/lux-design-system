@@ -4,19 +4,17 @@
       <div class="lux-footer-bottom bottom-layout">
         <div class="lux-university-links">
           <div class="policy-links">
-            <LuxHyperlink
+            <a
               href="https://library.princeton.edu/about/policies/copyright-and-permissions-policies"
             >
-              Copyright Policy</LuxHyperlink
+              Copyright Policy</a
             >
             |
-            <LuxHyperlink href="https://www.princeton.edu/privacy-notice">
-              Privacy Notice
-            </LuxHyperlink>
+            <a href="https://www.princeton.edu/privacy-notice">Privacy Notice</a>
           </div>
-          <LuxHyperlink href="https://accessibility.princeton.edu/help"
-            >Accessibility Help</LuxHyperlink
-          >
+          <div class="policy-links">
+            <a href="https://accessibility.princeton.edu/help">Accessibility Help</a>
+          </div>
         </div>
         <div class="lux-university-links center-panel">
           <lux-university-copyright type="div" :theme="value(theme)" />
@@ -178,6 +176,7 @@ export default {
 
   .policy-links {
     display: flow-root;
+    text-align: left;
   }
 
   &.pu-logo-white {
