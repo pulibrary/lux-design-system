@@ -54,9 +54,12 @@ import LuxLogoInstagram from "./logos/LuxLogoInstagram.vue"
 import LuxLogoX from "./logos/LuxLogoX.vue"
 import LuxSubscribeNewsletter from "./_LuxSubscribeNewsletter.vue"
 import LuxWrapper from "./LuxWrapper.vue"
+import LuxUniversityFooter from "./LuxUniversityFooter.vue"
 
 /**
- * LibraryFooter is the preferred Footer styling/behavior for the PUL main website.
+ * LibraryFooter is the preferred Footer styling/behavior for the PUL main
+ * website. Other sites tightly integrated with the main site may also want
+ * to use this footer.
  * Don't forget to create a fallback for this component by providing the HTML
  * rendering in _<noscript></noscript>_ tags.
  */
@@ -75,6 +78,7 @@ export default {
     LuxLogoX,
     LuxSubscribeNewsletter,
     LuxWrapper,
+    LuxUniversityFooter,
   },
   methods: {
     value: function (theme) {

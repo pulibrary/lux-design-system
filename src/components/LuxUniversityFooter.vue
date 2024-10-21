@@ -38,7 +38,9 @@ import LuxUniversityPrivacyNotice from "./_LuxUniversityPrivacyNotice.vue"
 import LuxWrapper from "./LuxWrapper.vue"
 
 /**
- * UniversityFooter is the preferred Footer styling/behavior for PUL websites.
+ * UniversityFooter includes footer elements required by the University. It may
+ * be used when the LibraryFooter is too heavy for or not fully relevant to the
+ * site in question.
  * Don't forget to create a fallback for this component by providing the HTML
  * rendering in _<noscript></noscript>_ tags.
  */
