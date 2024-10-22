@@ -83,7 +83,7 @@
         <template v-if="item.children">
           <button
             aria-haspopup="true"
-            :aria-expanded="activeItem === '' ? 'false' : 'true'"
+            :aria-expanded="activeItem === index ? 'true' : 'false'"
             class="lux-submenu-toggle"
             :data-method="item.method"
             @click="setActiveItem(index)"
@@ -214,11 +214,15 @@ export default {
         this.activeItem = index
       }
     },
-    hide() {
-      console.log("Hi Jane")
-      // if (this.activeItem === index) {
-      //   this.activeItem = ""
-      // }
+    // hide() {
+    //   console.log("Hi Jane")
+    //   // if (this.activeItem === index) {
+    //   //   this.activeItem = ""
+    //   // }
+    //   this.activeItem = ""
+    // },
+    hide: function (event) {
+      console.log(this.activeItem)
       this.activeItem = ""
     },
   },
@@ -258,11 +262,18 @@ export default {
         // Define Handler and cache it on the element
         console.log("inside beforeMount")
         const bubble = binding.modifiers.bubble
+        // const isAriaExpanded = el.ariaExpanded
+        // console.log(typeof(isAriaExpanded))
         const handler = e => {
-          console.log(e)
-          if (bubble || (!el.contains(e.target) && el !== e.target)) {
+          console.log("el: ", el)
+          // console.log(el)
+          if (
+            el.ariaExpanded === "true" &&
+            (bubble || (!el.contains(e.target) && el !== e.target))
+          ) {
+            // if ((!el.contains(e.target) && el.ariaExpanded)) {
             binding.value(e)
-            console.log("inside beforeMount if")
+            // console.log("inside beforeMount if")
           }
         }
         el.__vueClickOutside__ = handler
