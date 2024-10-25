@@ -39,11 +39,6 @@ module.exports = {
       light: "var(--color-grayscale-dark)",
       sidebarBackground: "var(--color-grayscale-lighter)",
       link: "var(--color-bleu-de-france)",
-      codeBackground: "var(--color-grayscale-lighter)",
-      codeKeyword: "var(--color-bleu-de-france-darker)",
-      codePunctuation: "var(--color-bleu-de-france-darker)",
-      codeProperty: "var(--color-gray-100)",
-      codeString: "var(--color-red)",
     },
   },
   styles: {
@@ -58,4 +53,9 @@ module.exports = {
   template: {
     lang: "en",
   },
+  editorConfig: {
+    screenReaderLabel: "Code example editor",
+    theme: "abcdef",
+  },
+  simpleEditor: false,
 }
