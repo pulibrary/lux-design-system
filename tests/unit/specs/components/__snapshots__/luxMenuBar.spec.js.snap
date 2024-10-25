@@ -37,6 +37,36 @@ exports[`LuxMenuBar.vue has the expected html structure 1`] = `
       
     </li>
     <li>
+      
+      <a
+        aria-haspopup="true"
+        class="lux-has-children lux-nav-item"
+        href="/example/"
+        title="Foo1"
+      >
+        
+        Foo1
+        
+      </a>
+      <ul
+        aria-label="submenu"
+        class="lux-nav-children"
+      >
+        
+        <li>
+          <a
+            class="lux-nav-item"
+            href="/example/"
+            title="Baz1"
+          >
+            Baz1
+          </a>
+        </li>
+        
+      </ul>
+      
+    </li>
+    <li>
       <a
         class="lux-nav-item"
         href="/example/"
