@@ -63,7 +63,6 @@
     v-else-if="type === 'main-menu'"
     :class="['lux-main-menu', theme]"
     aria-label="Main Navigation"
-    v-click-outside="hide"
   >
     <button
       aria-haspopup="true"
@@ -84,11 +83,12 @@
         <template v-if="item.children">
           <button
             aria-haspopup="true"
-            :aria-expanded="activeItem === '' ? 'false' : 'true'"
+            :aria-expanded="activeItem === index ? 'true' : 'false'"
             class="lux-submenu-toggle"
             :data-method="item.method"
             @click="setActiveItem(index)"
             @keydown.esc="setActiveItem(index)"
+            v-click-outside="hide"
           >
             <lux-menu-bar-label :item="item"></lux-menu-bar-label>
           </button>
@@ -214,8 +214,8 @@ export default {
         this.activeItem = index
       }
     },
+
     hide: function (event) {
-      this.isVisible = false
       this.activeItem = ""
     },
   },
@@ -223,13 +223,18 @@ export default {
     "lux-hamburger": _LuxHamburger,
     "lux-menu-bar-label": _LuxMenuBarLabel,
   },
+
   directives: {
     "click-outside": {
-      bind: function (el, binding, vNode) {
+      beforeMount: function (el, binding) {
         // Define Handler and cache it on the element
         const bubble = binding.modifiers.bubble
+
         const handler = e => {
-          if (bubble || (!el.contains(e.target) && el !== e.target)) {
+          if (
+            el.ariaExpanded === "true" &&
+            (bubble || (!el.contains(e.target) && el !== e.target))
+          ) {
             binding.value(e)
           }
         }
@@ -239,8 +244,9 @@ export default {
         document.addEventListener("click", handler)
       },
 
-      unbind: function (el, binding) {
+      unmounted: function (el, binding) {
         // Remove Event Listeners
+        console.log("unmounted")
         document.removeEventListener("click", el.__vueClickOutside__)
         el.__vueClickOutside__ = null
       },

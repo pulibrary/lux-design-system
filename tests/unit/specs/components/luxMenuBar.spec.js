@@ -7,6 +7,11 @@ let wrapper
 
 describe("LuxMenuBar.vue", () => {
   beforeEach(() => {
+    document.body.innerHTML = `
+      <div>
+        <div id="app"><h1>Heading</h1></div>
+      </div>
+    `
     wrapper = mount(LuxMenuBar, {
       propsData: {
         active: "Foo",
@@ -17,6 +22,12 @@ describe("LuxMenuBar.vue", () => {
             href: "/example/",
             children: [{ name: "Baz", component: "Baz", href: "/example/" }],
           },
+          {
+            name: "Foo1",
+            component: "Foo1",
+            href: "/example/",
+            children: [{ name: "Baz1", component: "Baz1", href: "/example/" }],
+          },
           { name: "Bar", component: "Bar", href: "/example/" },
         ],
       },
@@ -25,6 +36,7 @@ describe("LuxMenuBar.vue", () => {
           "lux-hamburger": _LuxHamburger,
         },
       },
+      attachTo: document.getElementById("app"),
     })
   })
 
@@ -37,17 +49,19 @@ describe("LuxMenuBar.vue", () => {
   it("should start with aria-expanded false", async () => {
     wrapper.setProps({ type: "main-menu" })
     await nextTick()
-    expect(wrapper.find(".lux-submenu-toggle").attributes("aria-expanded")).toEqual("false")
+    expect(wrapper.findAll(".lux-submenu-toggle")[0].attributes("aria-expanded")).toEqual("false")
+    expect(wrapper.findAll(".lux-submenu-toggle")[1].attributes("aria-expanded")).toEqual("false")
   })
 
-  it("should be aria-expanded true after a user opens the menu", async () => {
+  it("should be aria-expanded true after a user opens the menu for the opened menu only", async () => {
     wrapper.setProps({ type: "main-menu" })
     await nextTick()
 
     wrapper.find("button.lux-submenu-toggle").trigger("click")
     await nextTick()
 
-    expect(wrapper.find(".lux-submenu-toggle").attributes("aria-expanded")).toEqual("true")
+    expect(wrapper.findAll(".lux-submenu-toggle")[0].attributes("aria-expanded")).toEqual("true")
+    expect(wrapper.findAll(".lux-submenu-toggle")[1].attributes("aria-expanded")).toEqual("false")
   })
 
   it("should close the menu when the user presses the Esc key", async () => {
@@ -102,6 +116,12 @@ describe("LuxMenuBar.vue", () => {
         href: "/example/",
         children: [{ name: "Baz", component: "Baz", href: "/example/" }],
       },
+      {
+        name: "Foo1",
+        component: "Foo1",
+        href: "/example/",
+        children: [{ name: "Baz1", component: "Baz1", href: "/example/" }],
+      },
       { name: "Bar", component: "Bar", href: "/example/" },
     ]
     expect(wrapper.vm.menuItems).toEqual(menuItemsList)
@@ -141,7 +161,7 @@ describe("LuxMenuBar.vue", () => {
     it("emits menu-item-clicked with metadata about the clicked menu item", async () => {
       wrapper.setProps({ type: "main-menu" })
       await nextTick()
-      wrapper.findAll(".lux-nav-item")[1].trigger("click")
+      wrapper.findAll(".lux-nav-item")[2].trigger("click")
 
       expect(wrapper.emitted()["menu-item-clicked"].length).toEqual(1)
       expect(wrapper.emitted()["menu-item-clicked"][0]).toEqual([
