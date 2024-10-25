@@ -293,7 +293,7 @@ function stringSeemsLikeDateRange(possibleRange) {
   flex-wrap: wrap;
 }
 
-.lux-input label {
+.lux-date-picker .lux-input label {
   display: inline-block;
   width: 100%;
 }

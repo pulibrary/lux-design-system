@@ -131,6 +131,7 @@ export default {
 @import "../assets/styles/mixins.scss";
 @import "../assets/styles/variables.css";
 @import "../assets/styles/system.scss";
+@import "../assets/styles/focus.scss";
 
 fieldset {
   border: 0;
@@ -138,8 +139,6 @@ fieldset {
 }
 
 .lux-input {
-  @include stack-space(var(--space-small));
-
   font-weight: var(--font-weight-regular);
   font-family: var(--font-family-text);
   font-size: var(--font-size-base);
@@ -154,92 +153,30 @@ fieldset {
 }
 
 .lux-checkbox {
-  @include reset;
-  @include stack-space(var(--space-x-small));
   font-family: var(--font-family-text);
   line-height: var(--line-height-base);
-}
-
-.lux-checkbox input[type="checkbox"] {
-  @include visually-hidden;
-  &:focus {
-    box-shadow: inset 0 1px 0 0 rgba($color-rich-black, 0.07),
-      0 0 0 1px tint($color-rich-black, 80%);
-  }
+  display: flex;
 }
 
 .lux-checkbox label {
-  position: relative;
-  display: inline-block;
-  margin-bottom: var(--space-xx-small);
   cursor: pointer;
-  padding-left: var(--space-base);
+  margin-left: var(--space-xx-small);
 }
 
-.lux-checkbox label::before,
-.lux-checkbox label::after {
-  position: absolute;
-  content: "";
-
-  /*Needed for the line-height to take effect*/
+label {
   display: inline-block;
+  margin-top: calc(var(--font-size-base) * 0.175);
+  margin-bottom: calc(var(--font-size-base) * 0.175);
 }
 
-/*Outer box of the fake checkbox*/
-.lux-checkbox label::before {
-  height: 16px;
-  width: 16px;
-  background-color: var(--color-white);
-  border: 0;
-  border-radius: var(--border-radius-default);
-  box-shadow: inset 0 1px 0 0 rgba($color-rich-black, 0.07), 0 0 0 1px tint($color-rich-black, 80%);
-  left: 0;
-  top: 4px;
+input[type="checkbox"] {
+  width: calc(var(--font-size-base) * 1.35);
+  height: calc(var(--font-size-base) * 1.35);
+  outline: 0px;
 }
 
-/* On mouse-over, add a grey background color */
-.lux-checkbox :not([disabled]) + label:hover::before {
-  box-shadow: 0 1px 5px 0 rgba($color-rich-black, 0.07), 0 0 0 1px tint($color-rich-black, 60%);
-}
-
-.lux-checkbox input:checked + label::before {
-  transition: box-shadow 0.2s ease;
-  background-color: var(--color-bleu-de-france);
-  box-shadow: inset 0 0 0 1px var(--color-bleu-de-france), 0 0 0 1px var(--color-bleu-de-france);
-  outline: 0;
-}
-
-/*Checkmark of the fake checkbox*/
-.lux-checkbox label::after {
-  height: 5px;
-  width: 10px;
-  border-left: 2px solid var(--color-white);
-  border-bottom: 2px solid var(--color-white);
-
-  transform: rotate(-45deg);
-
-  left: 3px;
-  top: 7px;
-}
-
-/*Hide the checkmark by default*/
-.lux-checkbox input[type="checkbox"] + label::after {
-  content: none;
-}
-
-/*Unhide on the checked state*/
-.lux-checkbox input[type="checkbox"]:checked + label::after {
-  content: "";
-}
-
-/*Adding focus styles on the outer-box of the fake checkbox*/
-.lux-checkbox input[type="checkbox"]:focus + label::before {
-  transition: box-shadow var(--duration-quickly) ease;
-  box-shadow: inset 0 0 0 1px var(--color-bleu-de-france), 0 0 0 1px var(--color-bleu-de-france);
-}
-
-.lux-inline {
-  display: inline-block;
+input[type="checkbox"]:focus-visible {
+  @include princeton-focus(dark);
 }
 
 .lux-error {
