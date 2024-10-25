@@ -55,4 +55,7 @@ module.exports = {
       },
     },
   },
+  template: {
+    lang: "en",
+  },
 }
