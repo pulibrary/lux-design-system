@@ -214,15 +214,8 @@ export default {
         this.activeItem = index
       }
     },
-    // hide() {
-    //   console.log("Hi Jane")
-    //   // if (this.activeItem === index) {
-    //   //   this.activeItem = ""
-    //   // }
-    //   this.activeItem = ""
-    // },
+
     hide: function (event) {
-      console.log(this.activeItem)
       this.activeItem = ""
     },
   },
@@ -230,50 +223,19 @@ export default {
     "lux-hamburger": _LuxHamburger,
     "lux-menu-bar-label": _LuxMenuBarLabel,
   },
-  // directives: {
-  //   "click-outside": {
-  //     bind: function (el, binding, vNode) {
-  //       // Define Handler and cache it on the element
-  //       console.log('bind')
-  //       const bubble = binding.modifiers.bubble
-  //       const handler = e => {
-  //         if (bubble || (!el.contains(e.target) && el !== e.target)) {
-  //           binding.value(e)
-  //           console.log('bind if')
-  //         }
-  //       }
-  //       el.__vueClickOutside__ = handler
 
-  //       // add Event Listeners
-  //       document.addEventListener("click", handler)
-  //     },
-
-  //     unbind: function (el, binding) {
-  //       // Remove Event Listeners
-  //       console.log('unbind')
-  //       document.removeEventListener("click", el.__vueClickOutside__)
-  //       el.__vueClickOutside__ = null
-  //     },
-  //   },
-  // },
   directives: {
     "click-outside": {
       beforeMount: function (el, binding) {
         // Define Handler and cache it on the element
-        console.log("inside beforeMount")
         const bubble = binding.modifiers.bubble
-        // const isAriaExpanded = el.ariaExpanded
-        // console.log(typeof(isAriaExpanded))
+
         const handler = e => {
-          console.log("el: ", el)
-          // console.log(el)
           if (
             el.ariaExpanded === "true" &&
             (bubble || (!el.contains(e.target) && el !== e.target))
           ) {
-            // if ((!el.contains(e.target) && el.ariaExpanded)) {
             binding.value(e)
-            // console.log("inside beforeMount if")
           }
         }
         el.__vueClickOutside__ = handler
