@@ -1,8 +1,16 @@
 <template>
   <component :is="type" :class="['lux-library-header', theme]">
     <lux-wrapper class="lux-header-content" :maxWidth="maxWidth">
-      <lux-library-logo width="245" height="54" :theme="value(theme)"></lux-library-logo>
-      <a class="lux-app-name" :href="appUrl" :title="appName" aria-labelledby="appName">
+      <slot name="logo">
+        <lux-library-logo width="245" height="54" :theme="value(theme)"></lux-library-logo>
+      </slot>
+      <a
+        v-if="appName"
+        class="lux-app-name"
+        :href="appUrl"
+        :title="appName"
+        aria-labelledby="appName"
+      >
         <span id="appName" class="full-name">{{ appName }}</span>
         <span class="abbr-name">{{ abbrName }}</span>
       </a>
@@ -245,6 +253,24 @@ export default {
         </div>
         <p>JavaScript-disabled browsers won't see any branding and may be missing important functionality.</p>
       </div>
+    </div>
+  ```
+
+  You can pass in a custom logo via the logo slot:
+
+  ```jsx
+    <div>
+      <lux-library-header app-url="https://catalog.princeton.edu" theme="dark">
+        <template v-slot:logo><img src="https://raw.githubusercontent.com/pulibrary/tigerdata-app/refs/heads/main/app/assets/images/TigerData-LOGO-KO_wide2.svg" height="100"></template>
+        <lux-menu-bar type="main-menu" :menu-items="[
+            {name: 'Help', component: 'Help', href: '/help/'},
+            {name: 'Feedback', component: 'Feedback', href: '/feedback/'},
+            {name: 'Your Account', component: 'Account', href: '/account/', children: [
+              {name: 'Logout', component: 'Logout', href: '/account/'}
+            ]}
+          ]"
+        ></lux-menu-bar>
+      </lux-library-header>
     </div>
   ```
 </docs>
