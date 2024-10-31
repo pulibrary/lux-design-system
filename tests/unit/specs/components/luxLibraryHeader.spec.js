@@ -56,4 +56,32 @@ describe("LuxLibraryHeader.vue", () => {
   it("has a max width", () => {
     expect(wrapper.vm.maxWidth).toBe(1111)
   })
+  it("renders the princeton logo by default", () => {
+    expect(wrapper.find(".lux-library-logo").exists()).toBe(true)
+  })
+  describe("when we pass a custom logo in a slot", () => {
+    beforeEach(() => {
+      wrapper = mount(LuxLibraryHeader, {
+        attachTo: document.body,
+        props: {
+          type: "abbr",
+          appName: "My Application",
+          abbrName: "My App",
+          appUrl: "http://example.com/",
+          maxWidth: 1111,
+          theme: "light",
+        },
+        slots: {
+          default: "Some menu bar",
+          logo: "<img src='logo.png' id='custom-logo'></img>",
+        },
+      })
+    })
+    it("renders the custom logo provided via slot", () => {
+      expect(wrapper.find("#custom-logo").exists()).toBe(true)
+    })
+    it("does not render the default princeton logo", () => {
+      expect(wrapper.find(".lux-library-logo").exists()).toBe(false)
+    })
+  })
 })
