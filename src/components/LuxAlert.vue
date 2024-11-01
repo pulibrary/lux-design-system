@@ -14,6 +14,7 @@
       role="alert"
     >
       <span>
+        <!-- @slot the alert text -->
         <slot>{{ alertMessage }}</slot>
       </span>
       <button

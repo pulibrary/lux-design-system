@@ -4,6 +4,7 @@
     :class="['lux-link', variation, size, underline ? 'lux-link-underline' : '']"
     :target="newTab ? '_blank' : null"
   >
+    <!-- @slot The text of your hyperlink. -->
     <slot />
     <lux-icon-base v-if="newTab" width="14" height="14" icon-name="(opens in new tab)">
       <lux-icon-new-tab></lux-icon-new-tab>

@@ -5,6 +5,7 @@ exports[`LuxHyperlink.vue has the expected html structure 1`] = `
   class="lux-link link medium"
   href="https://library.princeton.edu"
 >
+  <!-- @slot The text of your hyperlink. -->
   
   I'll take you places
   

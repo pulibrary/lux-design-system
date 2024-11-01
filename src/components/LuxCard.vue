@@ -11,6 +11,7 @@
     ]"
     v-bind:style="{ 'max-width': cardPixelWidth + 'px' }"
   >
+    <!-- @slot The heading, media, and other contents of your card.  -->
     <slot></slot>
   </article>
 </template>

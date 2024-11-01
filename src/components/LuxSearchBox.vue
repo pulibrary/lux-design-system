@@ -1,5 +1,6 @@
 <template>
   <component :is="type" class="lux-search-box">
+    <!-- @slot The input and its button. -->
     <slot />
   </component>
 </template>

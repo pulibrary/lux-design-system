@@ -6,6 +6,7 @@ exports[`LuxCard.vue has the expected html structure 1`] = `
   id="MyCard"
   style="max-width: px;"
 >
+  <!-- @slot The heading, media, and other contents of your card.  -->
   
   
 </article>

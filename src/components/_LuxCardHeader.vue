@@ -1,5 +1,6 @@
 <template>
   <component :is="type" class="lux-card-header">
+    <!-- @slot The header content.  You should probably include a LuxHeading component in this slot to provide good document structure. -->
     <slot></slot>
   </component>
 </template>

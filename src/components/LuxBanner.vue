@@ -12,6 +12,7 @@
         >
           <span aria-hidden="true">×</span>
         </button>
+        <!-- @slot The content for your banner. -->
         <slot>{{ bannerMessage }}</slot>
       </lux-wrapper>
     </div>

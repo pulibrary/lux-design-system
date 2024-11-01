@@ -1,5 +1,6 @@
 <template>
   <component :is="type" class="lux-card-content">
+    <!-- @slot The supplementary conent in your card -->
     <slot></slot>
   </component>
 </template>

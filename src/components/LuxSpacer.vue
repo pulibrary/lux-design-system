@@ -1,5 +1,6 @@
 <template>
   <component :is="type" class="lux-spacer">
+    <!-- @slot Optional: some content that should be spaced. -->
     <slot />
   </component>
 </template>

@@ -1,5 +1,6 @@
 <template>
   <component :is="type" class="lux-card-media">
+    <!-- @slot the media content or icon you'd like to include in your card -->
     <slot></slot>
   </component>
 </template>

@@ -11,6 +11,7 @@
         <component :is="iconComponent"></component>
       </lux-icon-base>
     </div>
+    <!-- @slot The text of your button. -->
     <slot />
     <div v-if="variation === 'icon'" class="append-icon">
       <lux-icon-base width="18" height="18" :icon-name="icon">

@@ -4,6 +4,7 @@ exports[`GridItem.vue has the expected html structure 1`] = `
 <div
   class="lux-flex-container center"
 >
+  <!-- @slot The grid items that live in your grid container. -->
   
   
 </div>
