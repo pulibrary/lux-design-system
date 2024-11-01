@@ -1,5 +1,6 @@
 <template>
   <component :is="type" :class="['lux-flex-container', horizontal]">
+    <!-- @slot The grid items that live in your grid container. -->
     <slot />
   </component>
 </template>

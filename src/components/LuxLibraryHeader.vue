@@ -1,6 +1,7 @@
 <template>
   <component :is="type" :class="['lux-library-header', theme]">
     <lux-wrapper class="lux-header-content" :maxWidth="maxWidth">
+      <!-- @slot A custom logo to display in the Header.  If no logo is provided, it defaults to the Princeton University Library logo. -->
       <slot name="logo">
         <lux-library-logo width="245" height="54" :theme="value(theme)"></lux-library-logo>
       </slot>
@@ -15,6 +16,7 @@
         <span class="abbr-name">{{ abbrName }}</span>
       </a>
       <lux-spacer></lux-spacer>
+      <!-- @slot The content of the header, such as a navigation menu. -->
       <slot />
     </lux-wrapper>
   </component>

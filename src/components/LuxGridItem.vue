@@ -1,5 +1,6 @@
 <template>
   <component :is="type" :class="['lux-col', columns, vertical, { push: offset }, order]">
+    <!-- @slot The content of your grid item. -->
     <slot />
   </component>
 </template>

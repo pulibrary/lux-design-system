@@ -21,6 +21,7 @@
       tabindex="-1"
       :style="{ fontSize: fontSize }"
     >
+      <!-- @slot The full content that should be shown when the user opens the disclosure. -->
       <slot></slot>
     </div>
   </div>

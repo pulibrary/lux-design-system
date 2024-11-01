@@ -1,5 +1,6 @@
 <template>
   <component :is="level" class="lux-heading" :class="[{ 'lux-hidden': hidden }, size]">
+    <!-- @slot The text of your heading. -->
     <slot />
   </component>
 </template>

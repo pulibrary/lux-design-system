@@ -1,5 +1,6 @@
 <template>
   <component :is="type" :class="['lux-text-style ', variation]">
+    <!-- @slot The text you'd like to style -->
     <slot />
   </component>
 </template>
