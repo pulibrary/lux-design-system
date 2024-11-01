@@ -74,7 +74,7 @@
     >
       <lux-hamburger></lux-hamburger>
     </button>
-    <ul class="lux-main-menu-list" :class="{ 'lux-show': isVisible }">
+    <ul class="lux-main-menu-list" :class="{ 'lux-show': isVisible }" v-click-outside="hide">
       <li
         v-for="(item, index) in menuItems"
         :key="index"
@@ -103,6 +103,19 @@
                 :data-method="child.method"
                 class="lux-nav-item"
                 @click="menuItemClicked(child)"
+                v-if="index === item.children.length - 1"
+                @focusout="hide"
+                ><lux-menu-bar-label :item="child"></lux-menu-bar-label
+              ></a>
+              <a
+                role="menuitem"
+                :href="child.href"
+                :title="child.name"
+                :target="child.target"
+                :data-method="child.method"
+                class="lux-nav-item"
+                @click="menuItemClicked(child)"
+                v-else
                 ><lux-menu-bar-label :item="child"></lux-menu-bar-label
               ></a>
             </li>
@@ -218,6 +231,18 @@ export default {
     hide: function (event) {
       this.activeItem = ""
     },
+
+    check_hide: function (event) {
+      // target = event.target
+      console.log("236", event)
+      console.log("237", event.target)
+      console.log("238", document.activeElement)
+
+      // if (target === target.closest(".lux-has-children").lastElementChild?.lastElementChild) {
+      if (!event.target.contains(event.relatedTarget)) {
+        this.activeItem = ""
+      }
+    },
   },
   components: {
     "lux-hamburger": _LuxHamburger,
@@ -246,9 +271,35 @@ export default {
 
       unmounted: function (el, binding) {
         // Remove Event Listeners
-        console.log("unmounted")
         document.removeEventListener("click", el.__vueClickOutside__)
         el.__vueClickOutside__ = null
+      },
+    },
+    "focus-out": {
+      beforeMount: function (el, binding) {
+        // Define Handler and cache it on the element
+        const bubble = binding.modifiers.bubble
+
+        const handler = e => {
+          console.log("260", el)
+          console.log("261", el.closest(".lux-has-children")?.lastElementChild?.lastElementChild)
+          if (
+            el.closest(".lux-has-children")?.querySelector("button")?.ariaExpanded === "true" &&
+            (bubble || (!el.contains(e.target) && el !== e.target))
+          ) {
+            binding.value(e)
+          }
+        }
+        el.__vueFocusOut__ = handler
+
+        // add Event Listeners
+        document.addEventListener("focusout", handler)
+      },
+
+      unmounted: function (el, binding) {
+        // Remove Event Listeners
+        document.removeEventListener("focusout", el.__vueFocusOut__)
+        el.__vueFocusOut__ = null
       },
     },
   },
