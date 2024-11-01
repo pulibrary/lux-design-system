@@ -9,6 +9,7 @@ exports[`LuxDropdownMenu.vue has the expected html structure 1`] = `
     type="button"
   >
     <!--v-if-->
+    <!-- @slot The text of your button. -->
     
     Dropdown
     

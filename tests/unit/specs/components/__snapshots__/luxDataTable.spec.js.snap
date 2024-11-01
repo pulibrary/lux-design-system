@@ -36,6 +36,7 @@ exports[`LuxDataTable.vue has the expected html structure 1`] = `
           type="button"
         >
           <!--v-if-->
+          <!-- @slot The text of your button. -->
           
           <div
             class="lux-icon"
@@ -95,6 +96,7 @@ exports[`LuxDataTable.vue has the expected html structure 1`] = `
           type="button"
         >
           <!--v-if-->
+          <!-- @slot The text of your button. -->
           
           <div
             class="lux-icon"
@@ -154,6 +156,7 @@ exports[`LuxDataTable.vue has the expected html structure 1`] = `
           type="button"
         >
           <!--v-if-->
+          <!-- @slot The text of your button. -->
           
           <div
             class="lux-icon"
@@ -232,6 +235,7 @@ exports[`LuxDataTable.vue has the expected html structure 1`] = `
             class="lux-link link medium"
             href="https://example.com"
           >
+            <!-- @slot The text of your hyperlink. -->
             
             foo
             

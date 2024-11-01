@@ -4,6 +4,7 @@ exports[`GridItem.vue has the expected html structure 1`] = `
 <div
   class="lux-col lg-9 sm-6"
 >
+  <!-- @slot The content of your grid item. -->
   
   
 </div>

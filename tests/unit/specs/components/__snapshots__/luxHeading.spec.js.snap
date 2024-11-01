@@ -4,6 +4,7 @@ exports[`LuxHeading.vue has the expected html structure 1`] = `
 <h1
   class="lux-heading h1"
 >
+  <!-- @slot The text of your heading. -->
   
   Here's a heading.
   

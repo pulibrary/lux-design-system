@@ -12,6 +12,7 @@ exports[`LuxAlert.vue has the expected html structure 1`] = `
     role="alert"
   >
     <span>
+      <!-- @slot the alert text -->
       
       Here's some info for you.
       
