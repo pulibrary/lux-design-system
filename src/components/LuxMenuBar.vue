@@ -89,6 +89,7 @@
             @click="setActiveItem(index)"
             @keydown.esc="setActiveItem(index)"
             v-click-outside="hide"
+            @focusout="hideIfExitingMenu"
           >
             <lux-menu-bar-label :item="item"></lux-menu-bar-label>
           </button>
@@ -103,6 +104,7 @@
                 :data-method="child.method"
                 class="lux-nav-item"
                 @click="menuItemClicked(child)"
+                @focusout="hideIfExitingMenu"
                 ><lux-menu-bar-label :item="child"></lux-menu-bar-label
               ></a>
             </li>
@@ -217,6 +219,14 @@ export default {
 
     hide: function (event) {
       this.activeItem = ""
+    },
+
+    hideIfExitingMenu: function (event) {
+      const menuOfOldElement = event.currentTarget?.closest(".lux-has-children")
+      const menuOfNewElement = event.relatedTarget?.closest(".lux-has-children")
+      if (menuOfOldElement !== menuOfNewElement) {
+        this.hide(event)
+      }
     },
   },
   components: {
