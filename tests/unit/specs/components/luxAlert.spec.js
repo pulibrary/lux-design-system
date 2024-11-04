@@ -70,15 +70,57 @@ describe("LuxAlert.vue", () => {
     expect(wrapper.vm.show).toBe(false)
   })
 
-  it("should hide after 2 seconds when autoclear is true", async () => {
-    wrapper.setProps({ autoclear: true })
-    await nextTick()
-    const el = wrapper.find(".lux-alert")
-    expect(wrapper.vm.show).toBe(true)
-    // wait 3 seconds and see if it's hidden
-    setTimeout(() => {
+  describe("when autoclear prop is true", () => {
+    beforeEach(() => {
+      jest.useFakeTimers()
+      wrapper = mount(LuxAlert, {
+        props: {
+          autoclear: true,
+        },
+      })
+    })
+    afterEach(() => {
+      jest.useRealTimers()
+    })
+    it("should still display after 1 second", () => {
+      expect(wrapper.vm.show).toBe(true)
+
+      // wait 1 second and confirm that it is still there
+      jest.advanceTimersByTime(1000)
+      expect(wrapper.vm.show).toBe(true)
+    })
+    it("should hide after 2 seconds", () => {
+      expect(wrapper.vm.show).toBe(true)
+
+      // wait 3 seconds and see if it's hidden
+      jest.advanceTimersByTime(3000)
       expect(wrapper.vm.show).toBe(false)
-    }, 3000)
+    })
+  })
+
+  describe("when autoclear prop is true and autoclearSeconds is set to 10", () => {
+    beforeEach(() => {
+      jest.useFakeTimers()
+      wrapper = mount(LuxAlert, {
+        props: {
+          autoclear: true,
+          autoclearSeconds: 10,
+        },
+      })
+    })
+    afterEach(() => {
+      jest.useRealTimers()
+    })
+    it("should still display after 3 seconds", () => {
+      expect(wrapper.vm.show).toBe(true)
+      jest.advanceTimersByTime(3000)
+      expect(wrapper.vm.show).toBe(true)
+    })
+    it("should be hiddent after 11 seconds", () => {
+      expect(wrapper.vm.show).toBe(true)
+      jest.advanceTimersByTime(11_000)
+      expect(wrapper.vm.show).toBe(false)
+    })
   })
 
   it("has the expected html structure", () => {
