@@ -98,6 +98,15 @@ export default {
       default: false,
     },
     /**
+     * The number of seconds to wait before autoclearing the
+     * notification.  This prop has no effect if autoclear
+     * is not true.
+     */
+    autoclearSeconds: {
+      type: Number,
+      default: 2,
+    },
+    /**
      * User can manually hide the notification.  This emits a dismissed
      * event that you can bind to if needed (for example, if you want to
      * record that the user hid the notification in a database or localStorage)
@@ -121,7 +130,7 @@ export default {
     if (this.autoclear) {
       setTimeout(() => {
         this.show = false
-      }, 2000)
+      }, this.autoclearSeconds * 1000)
     }
   },
   emits: ["dismissed"],
