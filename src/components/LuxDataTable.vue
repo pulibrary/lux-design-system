@@ -402,13 +402,14 @@ export default {
       background-color: var(--color-white);
       border: 0;
       border-radius: $border-radius-default;
-      box-shadow: inset 0 1px 0 0 rgba($color-rich-black, 0.07),
+      box-shadow: inset 0 1px 0 0 color-mix(in srgb, var(--color-rich-black) 7%, transparent),
         0 0 0 1px tint($color-rich-black, 80%);
     }
 
     /* On mouse-over, add a grey background color */
     input:not([disabled]):hover::before {
-      box-shadow: 0 1px 5px 0 rgba($color-rich-black, 0.07), 0 0 0 1px tint($color-rich-black, 60%);
+      box-shadow: 0 1px 5px 0 color-mix(in srgb, var(--color-rich-black) 7%, transparent),
+        0 0 0 1px tint($color-rich-black, 60%);
     }
 
     input:checked::before {
