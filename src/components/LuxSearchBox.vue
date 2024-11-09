@@ -1,7 +1,22 @@
 <template>
   <component :is="type" class="lux-search-box">
     <!-- @slot The input and its button. -->
-    <slot />
+    <slot>
+      <lux-input-text
+        id="searchbox"
+        name="query"
+        label="Search"
+        :hide-label="true"
+        placeholder="Type here!"
+        size="medium"
+      ></lux-input-text>
+      <lux-input-button
+        type="button"
+        variation="icon"
+        size="medium"
+        icon="search"
+      ></lux-input-button>
+    </slot>
   </component>
 </template>
 
