@@ -54,11 +54,11 @@ export default {
 @import "../assets/styles/system.scss";
 
 // $border-color: var(--color-white);
-$border-color: $color-princeton-orange-on-white;
 .lux-loader {
   @include reset;
   @include stack-space($space-base);
   color: var(--color-rich-black);
+  --border-color: var(--color-princeton-orange-on-white);
 }
 
 .lux-loader,
@@ -69,14 +69,10 @@ $border-color: $color-princeton-orange-on-white;
 .lux-loader {
   transform: translate(-50%, -50%);
   text-indent: -9999em;
-  border-top: 1.1em solid rgba($border-color, 0.2);
-  border-right: 1.1em solid rgba($border-color, 0.2);
-  border-bottom: 1.1em solid rgba($border-color, 0.2);
-  border-left: 1.1em solid rgba($border-color, 1);
-  // border-top: 1.1em solid rgba(var(--border-color), 0.2);
-  // border-right: 1.1em solid rgba(var(--border-color), 0.2);
-  // border-bottom: 1.1em solid rgba(var(--border-color), 0.2);
-  // border-left: 1.1em solid rgba(var(--border-color), 1);
+  border-top: 1.1em solid color-mix(in srgb, var(--border-color) 20%, transparent);
+  border-right: 1.1em solid color-mix(in srgb, var(--border-color) 20%, transparent);
+  border-bottom: 1.1em solid color-mix(in srgb, var(--border-color) 20%, transparent);
+  border-left: 1.1em solid var(--border-color);
   -webkit-transform: translateZ(0);
   -ms-transform: translateZ(0);
   transform: translateZ(0);

@@ -242,7 +242,7 @@ $color-placeholder: tint($color-grayscale, 50%);
     }
 
     &[disabled] {
-      box-shadow: inset 0 1px 0 0 rgba($color-rich-black, 0.07),
+      box-shadow: inset 0 1px 0 0 color-mix(in srgb, var(--color-rich-black) 7%, transparent),
         0 0 0 1px tint($color-rich-black, 80%);
       background: lighten($color-placeholder, 42%);
       cursor: not-allowed;
