@@ -258,12 +258,17 @@ export default {
     </div>
   ```
 
-  You can pass in a custom logo via the logo slot:
+  You can pass in a custom logo via the logo slot. Wrap it in your home page
+  link if desired, and make sure to include an `alt` property on the `img` tag:
 
   ```jsx
     <div>
       <lux-library-header app-url="https://catalog.princeton.edu" theme="dark">
-        <template v-slot:logo><img src="https://raw.githubusercontent.com/pulibrary/tigerdata-app/refs/heads/main/app/assets/images/TigerData-LOGO-KO_wide2.svg" height="100"></template>
+        <template v-slot:logo>
+          <a href="https://github.com/pulibrary/tigerdata-app">
+            <img src="https://raw.githubusercontent.com/pulibrary/tigerdata-app/refs/heads/main/app/assets/images/TigerData-LOGO-KO_wide2.svg" alt="TigerData" height="100">
+          </a>
+        </template>
         <lux-menu-bar type="main-menu" :menu-items="[
             {name: 'Help', component: 'Help', href: '/help/'},
             {name: 'Feedback', component: 'Feedback', href: '/feedback/'},
