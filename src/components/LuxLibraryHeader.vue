@@ -175,8 +175,6 @@ export default {
   height: 40px;
   @media (min-width: 900px) {
     margin: 1rem 0rem 1rem 0rem;
-    width: 245px;
-    height: 54px;
   }
 }
 
