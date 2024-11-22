@@ -1,4 +1,4 @@
-If you would like to add an icon, the easiest way to do this is to contact Axa or Shaun. The process involves splitting the SVG markup of the iconset that we use, to create individual icon components that are dynamically filled, sized, and labeled.
+The process of adding an icon involves splitting the SVG markup of the iconset that we use, to create individual icon components that are dynamically filled, sized, and labeled.
 
 ## Where can I get icons?
 
