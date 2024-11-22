@@ -63,9 +63,11 @@ function toggleTheDisclosure() {
     // Wait for any screen reader's virtual buffer
     // to load the content into memory, then
     // set focus on the new content
-    setTimeout(() => {
-      contentContainer.value.focus({ preventScroll: true })
-    }, 500)
+    if (contentContainer.value !== null) {
+      setTimeout(() => {
+        contentContainer.value.focus({ preventScroll: true })
+      }, 500)
+    }
   }
 }
 </script>
