@@ -8,6 +8,10 @@ module.exports = {
   pagePerSection: true,
   sections: [
     {
+      name: "Design Principles",
+      content: "docs/design_principles.md",
+    },
+    {
       name: "Design Tokens",
       content: "docs/design_tokens.md",
     },
