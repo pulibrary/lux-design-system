@@ -1,5 +1,5 @@
 <template>
-  <component :is="type" class="lux-search-box default-search">
+  <component :is="type" class="lux-search-box">
     <!-- @slot The input and its button. -->
     <slot>
       <lux-input-text
@@ -8,7 +8,8 @@
         label="Search"
         :hide-label="true"
         placeholder="Search for library materials and website content"
-        size="medium"
+        size="large"
+        class="default-input"
       ></lux-input-text>
       <lux-input-button
         type="button"
@@ -74,22 +75,27 @@ export default {
   :deep(.lux-input) {
     flex: 1;
     margin-bottom: 0;
+    font-size: small !important;
+    height: 3rem;
 
-    // input {
-    //   border-top-right-radius: 0;
-    //   border-bottom-right-radius: 0;
-    // }
+    input {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+    }
   }
 
   :deep(.default-button) {
     background-color: $color-princeton-orange-on-white;
-    border-radius: 0% !important;
+    border-radius: 0px !important;
+    padding: 12px 15px;
   }
 
   :deep(.lux-button) {
     margin: 0;
-    // border-top-left-radius: 0;
-    // border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
 
     &.lux-icon {
       background: var(--color-white);
@@ -106,6 +112,11 @@ export default {
         <lux-input-text id="foo" name="value" label="Search" :hide-label="true" placeholder="Find all the things" size="large"></lux-input-text>
         <lux-input-button type="button" variation="icon" size="medium" icon="search"></lux-input-button>
     </lux-search-box>
+    </div>
+
+    <div>
+      <lux-search-box>
+      </lux-search-box>
     </div>
 ```
   </docs>
