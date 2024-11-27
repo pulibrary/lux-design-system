@@ -1,8 +1,8 @@
 <template>
   <component :is="type" :class="['lux-library-logo', theme]">
     <a href="https://library.princeton.edu">
-      <lux-logo-library :width="width" :height="height" v-if="theme === 'dark'" class="full-logo" />
-      <lux-logo-library :width="width" :height="height" v-else color="#000000" class="full-logo" />
+      <lux-logo-library v-if="theme === 'dark'" class="full-logo" />
+      <lux-logo-library v-else color="#000000" class="full-logo" />
     </a>
   </component>
 </template>
@@ -34,20 +34,6 @@ export default {
       type: String,
       default: "dark",
     },
-    /*
-     * The width of the logo
-     */
-    width: {
-      type: String,
-      default: "155px",
-    },
-    /*
-     * The height of the logo
-     */
-    height: {
-      type: String,
-      default: "34px",
-    },
   },
   components: {
     LuxLogoLibrary,
@@ -61,7 +47,6 @@ export default {
 @import "../assets/styles/focus.scss";
 
 .lux-library-logo {
-  margin: 1rem 0rem 1rem 0rem;
   a {
     &:focus,
     &:focus-visible {

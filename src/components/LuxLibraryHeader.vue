@@ -3,7 +3,7 @@
     <lux-wrapper class="lux-header-content" :maxWidth="maxWidth">
       <!-- @slot A custom logo to display in the Header.  If no logo is provided, it defaults to the Princeton University Library logo. -->
       <slot name="logo">
-        <lux-library-logo width="205px" height="40px" :theme="value(theme)"></lux-library-logo>
+        <lux-library-logo :theme="value(theme)"></lux-library-logo>
       </slot>
       <a
         v-if="appName"
@@ -161,7 +161,6 @@ export default {
   align-items: center;
   display: flex;
   padding: 0;
-
   @media (min-width: 900px) {
     flex-direction: row;
     max-width: 1440px;
@@ -169,12 +168,19 @@ export default {
   }
 }
 
+// .full-logo {
+//   width: 7rem;
+//   @media (min-width: 900px) {
+//       width: 10rem;
+//   }
+// }
+
 .lux-library-logo {
-  margin: 0.5rem;
-  width: 205px;
-  height: 40px;
+  margin: 0.5rem 0 0.5rem 0.5rem;
+  width: 7rem;
   @media (min-width: 900px) {
-    margin: 1rem 0rem 1rem 0rem;
+    margin: 1rem !important;
+    width: 10rem !important;
   }
 }
 
