@@ -3,17 +3,8 @@
     <lux-wrapper class="lux-footer-content" :maxWidth="maxWidth">
       <div class="lux-footer-bottom bottom-layout">
         <div class="lux-university-links">
-          <div class="policy-links">
-            <a
-              href="https://library.princeton.edu/about/policies/copyright-and-permissions-policies"
-            >
-              Copyright Policy</a
-            >
-            |
-            <a href="https://www.princeton.edu/privacy-notice">Privacy Notice</a>
-          </div>
-          <div class="policy-links">
-            <a href="https://accessibility.princeton.edu/help">Accessibility Help</a>
+          <div class="policy-links" v-for="(link, index) in links" :key="index">
+            <a href="{{ link.href }}">{{ link.text }}</a>
           </div>
         </div>
         <div class="lux-university-links center-panel">
@@ -84,6 +75,24 @@ export default {
     theme: {
       type: String,
       default: "dark",
+    },
+    /**
+     * Links are supplied via an array of objects containting `text` and `href` properties.  If no links are supplied then a default list is displayed.
+     * To remove all links pass an empty array.
+     */
+    links: {
+      required: false,
+      type: Array,
+      default(rawProps) {
+        return [
+          {
+            text: "Copyright Policy",
+            href: "https://library.princeton.edu/about/policies/copyright-and-permissions-policies",
+          },
+          { text: "Privacy Notice", href: "https://www.princeton.edu/privacy-notice" },
+          { text: "Accessibility Help", href: "https://accessibility.princeton.edu/help" },
+        ]
+      },
     },
   },
 }
