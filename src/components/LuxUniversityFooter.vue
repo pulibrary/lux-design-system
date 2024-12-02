@@ -179,6 +179,8 @@ export default {
   flex-flow: column wrap;
   align-self: auto;
   justify-content: center;
+  flex-wrap: wrap;
+  padding: 0.5rem 0 0.5rem 0;
   @media (min-width: 900px) {
     flex: 1;
   }
@@ -186,6 +188,8 @@ export default {
   .policy-links {
     display: flow-root;
     text-align: left;
+    flex: 0 0 33.3333%;
+    font-size: smaller;
   }
 
   &.pu-logo-white {
