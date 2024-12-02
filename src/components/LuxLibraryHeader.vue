@@ -168,13 +168,6 @@ export default {
   }
 }
 
-// .full-logo {
-//   width: 7rem;
-//   @media (min-width: 900px) {
-//       width: 10rem;
-//   }
-// }
-
 .lux-library-logo {
   margin: 0.5rem 0 0.5rem 0.5rem;
   width: 7rem;
