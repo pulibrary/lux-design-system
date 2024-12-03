@@ -183,6 +183,7 @@ export default {
   padding: 0.5rem 0 0.5rem 0;
   @media (min-width: 900px) {
     flex: 1;
+    padding-left: 0.5rem;
   }
 
   .policy-links {
