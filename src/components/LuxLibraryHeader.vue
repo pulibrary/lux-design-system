@@ -172,8 +172,8 @@ export default {
   margin: 0.5rem 0 0.5rem 0.5rem;
   width: 7rem;
   @media (min-width: 900px) {
-    margin: 1rem !important;
-    width: 10rem !important;
+    margin: 1rem;
+    width: 10rem;
   }
 }
 

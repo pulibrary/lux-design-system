@@ -256,7 +256,6 @@ export default {
 
       unmounted: function (el, binding) {
         // Remove Event Listeners
-        console.log("unmounted")
         document.removeEventListener("click", el.__vueClickOutside__)
         el.__vueClickOutside__ = null
       },

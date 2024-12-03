@@ -4,7 +4,7 @@
       <div class="lux-footer-main">
         <div class="lux-library-links contact-info-layout">
           <div>
-            <lux-library-logo width="245" height="54" :theme="value(theme)" />
+            <lux-library-logo :theme="value(theme)" />
             <lux-library-contact-info :theme="value(theme)" />
           </div>
         </div>
@@ -132,6 +132,15 @@ export default {
   @media (max-width: 899px) {
     /* on phone sizes it stacks */
     border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  }
+}
+
+.lux-library-logo {
+  margin: 1rem 1rem 1rem 0;
+  width: 12rem;
+  @media (min-width: 900px) {
+    margin: 0 1rem 1rem 0;
+    width: 14rem;
   }
 }
 
