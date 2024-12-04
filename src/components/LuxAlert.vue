@@ -177,7 +177,7 @@ export default {
 .lux-alert-info {
   background-color: var(--color-light-blue);
   border-color: var(--color-sky-blue);
-  color: var(--color-bleu-de-france);
+  color: var(--color-cerulean-blue);
 }
 
 .lux-alert-dismissible > span {
