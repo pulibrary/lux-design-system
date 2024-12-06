@@ -62,6 +62,7 @@
 |<div class="swatch" style="background-color: rgb(138, 109, 59);"></div>|<pre>--color-golden-brown</pre>|rgb(138, 109, 59);|
 |<div class="swatch" style="background-color: rgb(217, 237, 247);"></div>|<pre>--color-light-blue</pre>|rgb(217, 237, 247);|
 |<div class="swatch" style="background-color: rgb(188, 223, 241);"></div>|<pre>--color-sky-blue</pre>|rgb(188, 223, 241);|
+|<div class="swatch" style="background-color: rgb(49, 112, 143);"></div>|<pre>--color-cerulean-blue</pre>|rgb(49, 112, 143);|
 
 ## Font sizes
 
