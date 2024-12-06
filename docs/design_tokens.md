@@ -51,6 +51,18 @@
 |<div class="swatch" style="background-color: #E77500;"></div>|<pre>--color-princeton-orange-50</pre>|#E77500;|
 |<div class="swatch" style="background-color: #FCF1E5;"></div>|<pre>--color-princeton-orange-10</pre>|#FCF1E5;|
 |<div class="swatch" style="background-color: #121212;"></div>|<pre>--color-gray-100</pre>|#121212;|
+|<div class="swatch" style="background-color: rgb(223, 240, 216);"></div>|<pre>--color-light-pistachio-green</pre>|rgb(223, 240, 216);|
+|<div class="swatch" style="background-color: rgb(208, 233, 198);"></div>|<pre>--color-pistachio-green</pre>|rgb(208, 233, 198);|
+|<div class="swatch" style="background-color: rgb(60, 118, 61);"></div>|<pre>--color-forest-green</pre>|rgb(60, 118, 61);|
+|<div class="swatch" style="background-color: rgb(242, 222, 222);"></div>|<pre>--color-light-pink</pre>|rgb(242, 222, 222);|
+|<div class="swatch" style="background-color: rgb(235, 204, 204);"></div>|<pre>--color-dusty-pink</pre>|rgb(235, 204, 204);|
+|<div class="swatch" style="background-color: rgb(169, 68, 66);"></div>|<pre>--color-brick-red</pre>|rgb(169, 68, 66);|
+|<div class="swatch" style="background-color: rgb(252, 248, 227);"></div>|<pre>--color-light-sand-yellow</pre>|rgb(252, 248, 227);|
+|<div class="swatch" style="background-color: rgb(250, 242, 204);"></div>|<pre>--color-sand-yellow</pre>|rgb(250, 242, 204);|
+|<div class="swatch" style="background-color: rgb(138, 109, 59);"></div>|<pre>--color-golden-brown</pre>|rgb(138, 109, 59);|
+|<div class="swatch" style="background-color: rgb(217, 237, 247);"></div>|<pre>--color-light-blue</pre>|rgb(217, 237, 247);|
+|<div class="swatch" style="background-color: rgb(188, 223, 241);"></div>|<pre>--color-sky-blue</pre>|rgb(188, 223, 241);|
+|<div class="swatch" style="background-color: rgb(49, 112, 143);"></div>|<pre>--color-cerulean-blue</pre>|rgb(49, 112, 143);|
 
 ## Font sizes
 

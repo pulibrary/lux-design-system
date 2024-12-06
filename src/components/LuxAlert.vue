@@ -160,24 +160,24 @@ export default {
   position: relative;
 }
 .lux-alert-success {
-  background-color: #dff0d8;
-  border-color: #d0e9c6;
-  color: #3c763d;
+  background-color: var(--color-light-pistachio-green);
+  border-color: var(--color-pistachio-green);
+  color: var(--color-forest-green);
 }
 .lux-alert-error {
-  background-color: #f2dede;
-  border-color: #ebcccc;
-  color: #a94442;
+  background-color: var(--color-light-pink);
+  border-color: var(--color-dusty-pink);
+  color: var(--color-brick-red);
 }
 .lux-alert-warning {
-  background-color: #fcf8e3;
-  border-color: #faf2cc;
-  color: #8a6d3b;
+  background-color: var(--color-light-sand-yellow);
+  border-color: var(--color-sand-yellow);
+  color: var(--color-golden-brown);
 }
 .lux-alert-info {
-  background-color: #d9edf7;
-  border-color: #bcdff1;
-  color: #31708f;
+  background-color: var(--color-light-blue);
+  border-color: var(--color-sky-blue);
+  color: var(--color-cerulean-blue);
 }
 
 .lux-alert-dismissible > span {
