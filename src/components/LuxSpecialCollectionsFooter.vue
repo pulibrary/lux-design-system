@@ -8,7 +8,6 @@
             <li><a href="/research_account">Creating a Research Account</a></li>
             <li><a href="/requesting_materials">Requesting Materials</a></li>
             <li><a href="/search_tips">Search Tips</a></li>
-            <li><a href="/archival_language">Statement on Archival Language</a></li>
             <li><a href="/av_materials">Statement on Audio Visual Materials</a></li>
             <li><a href="/faq">Frequently Asked Questions (FAQs)</a></li>
           </ul>
