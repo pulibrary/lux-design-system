@@ -51,13 +51,11 @@
             :name="col.name"
             :value="lineItem[col.name].value"
           />
+          <lux-hyperlink v-else-if="lineItem[col.name].link" :href="lineItem[col.name].link">
+            {{ lineItem[col.name].value }}
+          </lux-hyperlink>
           <span v-else>
-            <lux-hyperlink v-if="lineItem[col.name].link" :href="lineItem[col.name].link">
-              {{ lineItem[col.name].value }}
-            </lux-hyperlink>
-            <span v-else>
-              {{ lineItem[col.name].value }}
-            </span>
+            {{ lineItem[col.name].value }}
           </span>
         </td>
       </tr>
