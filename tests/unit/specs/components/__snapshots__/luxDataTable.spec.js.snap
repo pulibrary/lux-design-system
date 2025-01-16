@@ -230,44 +230,36 @@ exports[`LuxDataTable.vue has the expected html structure 1`] = `
       <td
         class=""
       >
-        <span>
-          <a
-            class="lux-link link medium"
-            href="https://example.com"
-          >
-            <!-- @slot The text of your hyperlink. -->
-            
-            foo
-            
-            <!--v-if-->
-          </a>
-        </span>
+        <a
+          class="lux-link link medium"
+          href="https://example.com"
+        >
+          <!-- @slot The text of your hyperlink. -->
+          
+          foo
+          
+          <!--v-if-->
+        </a>
       </td>
       <td
         class="lux-data-table-center"
       >
         <span>
-          <span>
-            foo@xxx.xxx
-          </span>
+          foo@xxx.xxx
         </span>
       </td>
       <td
         class="lux-data-table-number"
       >
         <span>
-          <span>
-            42
-          </span>
+          42
         </span>
       </td>
       <td
         class=""
       >
         <span>
-          <span>
-            May 5, 2000
-          </span>
+          May 5, 2000
         </span>
       </td>
       
@@ -291,36 +283,28 @@ exports[`LuxDataTable.vue has the expected html structure 1`] = `
         class=""
       >
         <span>
-          <span>
-            bar
-          </span>
+          bar
         </span>
       </td>
       <td
         class="lux-data-table-center"
       >
         <span>
-          <span>
-            bar@xxx.xxx
-          </span>
+          bar@xxx.xxx
         </span>
       </td>
       <td
         class="lux-data-table-number"
       >
         <span>
-          <span>
-            23
-          </span>
+          23
         </span>
       </td>
       <td
         class=""
       >
         <span>
-          <span>
-            April 5, 2000
-          </span>
+          April 5, 2000
         </span>
       </td>
       
@@ -344,36 +328,28 @@ exports[`LuxDataTable.vue has the expected html structure 1`] = `
         class=""
       >
         <span>
-          <span>
-            fez
-          </span>
+          fez
         </span>
       </td>
       <td
         class="lux-data-table-center"
       >
         <span>
-          <span>
-            fez@xxx.xxx
-          </span>
+          fez@xxx.xxx
         </span>
       </td>
       <td
         class="lux-data-table-number"
       >
         <span>
-          <span>
-            34
-          </span>
+          34
         </span>
       </td>
       <td
         class=""
       >
         <span>
-          <span>
-            January 5, 2000
-          </span>
+          January 5, 2000
         </span>
       </td>
       
@@ -397,36 +373,28 @@ exports[`LuxDataTable.vue has the expected html structure 1`] = `
         class=""
       >
         <span>
-          <span>
-            hey
-          </span>
+          hey
         </span>
       </td>
       <td
         class="lux-data-table-center"
       >
         <span>
-          <span>
-            hey@xxx.xxx
-          </span>
+          hey@xxx.xxx
         </span>
       </td>
       <td
         class="lux-data-table-number"
       >
         <span>
-          <span>
-            4
-          </span>
+          4
         </span>
       </td>
       <td
         class=""
       >
         <span>
-          <span>
-            March 5, 2000
-          </span>
+          March 5, 2000
         </span>
       </td>
       
