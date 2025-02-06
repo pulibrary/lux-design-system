@@ -96,6 +96,7 @@
           <ul role="menu" :class="{ 'lux-show': index === activeItem }">
             <li v-for="(child, index) in item.children" :key="index">
               <a
+                v-if="child.href"
                 role="menuitem"
                 :key="index"
                 :href="child.href"
@@ -107,6 +108,18 @@
                 @focusout="hideIfExitingMenu"
                 ><lux-menu-bar-label :item="child"></lux-menu-bar-label
               ></a>
+              <button
+                v-else
+                role="menuitem"
+                key="{{ index }}-button"
+                :title="child.name"
+                :data-method="child.method"
+                class="lux-nav-item"
+                @click="menuItemClicked(child)"
+                @focusout="hideIfExitingMenu"
+              >
+                <lux-menu-bar-label :item="child"></lux-menu-bar-label>
+              </button>
             </li>
           </ul>
         </template>
@@ -611,6 +624,29 @@ export default {
         &:last-child {
           padding-top: 0.75rem;
         }
+      }
+
+      + ul button {
+        font-family: var(--font-family-text);
+        font-size: var(--font-size-base);
+        line-height: 1;
+        border: none;
+        background: none;
+        color: var(--color-rich-black);
+        padding: 0.5rem 1rem;
+        @include princeton-focus(light);
+        width: 100%;
+        box-sizing: border-box;
+        text-align: start;
+      }
+
+      + ul button:hover {
+        cursor: pointer;
+        color: var(--color-rich-black);
+      }
+
+      + ul button:focus {
+        color: var(--color-rich-black);
       }
     }
   }
