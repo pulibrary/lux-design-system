@@ -171,15 +171,34 @@ describe("LuxMenuBar.vue", () => {
   })
 
   describe("when type is main-menu", () => {
-    it("emits menu-item-clicked with metadata about the clicked menu item", async () => {
+    beforeEach(async () => {
       wrapper.setProps({ type: "main-menu" })
       await nextTick()
+    })
+    it("emits menu-item-clicked with metadata about the clicked menu item", () => {
       wrapper.findAll(".lux-nav-item")[2].trigger("click")
 
       expect(wrapper.emitted()["menu-item-clicked"].length).toEqual(1)
       expect(wrapper.emitted()["menu-item-clicked"][0]).toEqual([
         { name: "Bar", component: "Bar", href: "/example/" },
       ])
+    })
+    it("creates a button rather than link when the item does not have an href supplied", async () => {
+      wrapper.setProps({
+        menuItems: [
+          {
+            name: "Foo",
+            component: "Foo",
+            children: [{ name: "Baz", component: "Baz" }],
+          },
+        ],
+      })
+      await nextTick()
+
+      wrapper.find("button.lux-submenu-toggle").trigger("click")
+      await nextTick()
+
+      expect(wrapper.get("button.lux-nav-item").text()).toEqual("Baz")
     })
   })
 })
