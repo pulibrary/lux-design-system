@@ -55,6 +55,10 @@ export default {
   font-size: var(--font-size-base);
   line-height: var(--line-height-base);
 
+  @media (max-width: 899px) {
+    margin-left: 0.5rem;
+  }
+
   &.dark {
     color: var(--color-white);
     background-color: var(--color-gray-100);

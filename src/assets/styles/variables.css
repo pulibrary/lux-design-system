@@ -109,4 +109,8 @@
   --line-height-small: 1.175;
   --line-height-heading: 1.5;
   --positive-text: #7cb518;
+  --lux-library-logo-width-small: 7rem;
+  --lux-library-logo-width-large: 10rem;
+  --lux-library-logo-margin-small: 0.5rem 0 0.5rem 0.5rem;
+  --lux-library-logo-margin-large: 1rem 1rem 1rem 0;
 }

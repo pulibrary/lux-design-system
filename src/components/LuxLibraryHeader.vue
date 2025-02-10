@@ -169,11 +169,12 @@ export default {
 }
 
 .lux-library-logo {
-  margin: 0.5rem 0 0.5rem 0.5rem;
-  width: 7rem;
+  margin: var(--lux-library-logo-margin-small);
+  width: var(--lux-library-logo-width-small);
   @media (min-width: 900px) {
-    margin: 1rem;
-    width: 10rem;
+    margin: var(--lux-library-logo-margin-large);
+    width: var(--lux-library-logo-width-large);
+    margin-left: 0.5rem;
   }
 }
 
