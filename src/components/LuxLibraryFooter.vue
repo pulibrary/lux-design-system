@@ -125,7 +125,7 @@ export default {
   @media (min-width: 900px) {
     border-right: 1px solid rgba(255, 255, 255, 0.3);
     > div {
-      padding-left: 8px;
+      padding-left: 0.5rem;
     }
   }
 
@@ -136,11 +136,11 @@ export default {
 }
 
 .lux-library-logo {
-  margin: 1rem 1rem 1rem 0;
-  width: 12rem;
+  margin: var(--lux-library-logo-margin-small);
+  width: var(--lux-library-logo-width-small);
   @media (min-width: 900px) {
-    margin: 0 1rem 1rem 0;
-    width: 14rem;
+    margin: var(--lux-library-logo-margin-large);
+    width: var(--lux-library-logo-width-large);
   }
 }
 
@@ -254,10 +254,11 @@ export default {
   flex-direction: column;
   flex-wrap: nowrap;
   align-items: stretch;
-  padding: 0rem 1rem 0rem 1rem;
+  padding-right: 1rem;
 
   @media (min-width: 900px) {
     max-width: 1440px;
+    padding: 0rem 1rem 0rem 1rem;
   }
 }
 
