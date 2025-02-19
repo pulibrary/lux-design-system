@@ -95,4 +95,16 @@ describe("InputAutocomplete.vue", () => {
   it("has the expected html structure", () => {
     expect(wrapper.element).toMatchSnapshot()
   })
+
+  it("closes dropdown when we have a blur event", async () => {
+    const input = wrapper.find("input")
+    input.setValue("Man")
+    await nextTick()
+
+    // Tests that dropdown is initially visible when you start typing
+    expect(wrapper.find(".lux-autocomplete-results").isVisible()).toBe(true)
+
+    await wrapper.find("input").trigger("blur")
+    expect(wrapper.find(".lux-autocomplete-results").isVisible()).toBe(false)
+  })
 })

@@ -14,6 +14,7 @@
         @keydown.enter="onEnter"
         @keydown.esc="onEscape"
         @keydown.tab="onEscape"
+        @blur="onEscape"
         :required="required"
       />
       <ul v-show="isOpen" class="lux-autocomplete-results">
