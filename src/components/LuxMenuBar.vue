@@ -93,11 +93,10 @@
           >
             <lux-menu-bar-label :item="item"></lux-menu-bar-label>
           </button>
-          <ul role="menu" :class="{ 'lux-show': index === activeItem }">
+          <ul :class="{ 'lux-show': index === activeItem }">
             <li v-for="(child, index) in item.children" :key="index">
               <a
                 v-if="child.href"
-                role="menuitem"
                 :key="index"
                 :href="child.href"
                 :title="child.name"
@@ -110,7 +109,6 @@
               ></a>
               <button
                 v-else
-                role="menuitem"
                 key="{{ index }}-button"
                 :title="child.name"
                 :data-method="child.method"
