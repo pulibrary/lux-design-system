@@ -4,7 +4,7 @@
       <div class="lux-footer-bottom bottom-layout">
         <div class="lux-university-links">
           <div class="policy-links" v-for="(link, index) in links" :key="index">
-            <a href="{{ link.href }}">{{ link.text }}</a>
+            <a :href="link.href">{{ link.text }}</a>
           </div>
         </div>
         <div class="lux-university-links center-panel">
