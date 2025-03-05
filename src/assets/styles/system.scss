@@ -78,6 +78,8 @@ $line-height-base: 1.6;
 $line-height-small: 1.3;
 $line-height-heading: 1.5;
 
+@use 'sass:color';
+@use 'sass:math';
 /* GLOBAL MIXINS
 --------------------------------------------- */
 
@@ -95,7 +97,7 @@ $line-height-heading: 1.5;
 */
 @mixin responsive-font($responsive, $min, $max: false, $fallback: false) {
   $responsive-unitless: strip-unit($responsive);
-  $dimension: if(unit($responsive) == "vh", "height", "width");
+  $dimension: if(math.unit($responsive) == "vh", "height", "width");
   $min-breakpoint: calc($min / $responsive-unitless * 100);
 
   @media (max-#{$dimension}: #{$min-breakpoint}) {
@@ -161,8 +163,10 @@ $line-height-heading: 1.5;
 // @param  {Color}  $color to tint
 // @param  {Number} $percentage of `$color` in returned color
 // @return {Color}
+
+
 @function tint($color, $percentage) {
-  @return mix(white, $color, $percentage);
+  @return color.mix(white, $color, $percentage);
 }
 
 // Create a shade
@@ -171,7 +175,7 @@ $line-height-heading: 1.5;
 // @param  {Number} $percentage of `$color` in returned color
 // @return {Color}
 @function shade($color, $percentage) {
-  @return mix(black, $color, $percentage);
+  @return color.mix(black, $color, $percentage);
 }
 
 // Calculate color difference
@@ -181,9 +185,9 @@ $line-height-heading: 1.5;
 // @param  {Color} $color of background
 // @return {Boolean}
 @function color-difference($foreground, $background) {
-  $r: (max(red($foreground), red($background))) - (min(red($foreground), red($background)));
-  $g: (max(green($foreground), green($background))) - (min(green($foreground), green($background)));
-  $b: (max(blue($foreground), blue($background))) - (min(blue($foreground), blue($background)));
+  $r: (max(color.channel($foreground, "red", $space: rgb), color.channel($background, "red", $space: rgb))) - (min(color.channel($foreground, "red", $space: rgb), color.channel($background, "red", $space: rgb)));
+  $g: (max(color.channel($foreground, "green", $space: rgb), color.channel($background, "green", $space: rgb))) - (min(color.channel($foreground, "green", $space: rgb), color.channel($background, "green", $space: rgb)));
+  $b: (max(color.channel($foreground, "blue", $space: rgb), color.channel($background, "blue", $space: rgb))) - (min(color.channel($foreground, "blue", $space: rgb), color.channel($background, "blue", $space: rgb)));
   $sum-rgb: $r + $g + $b;
 
   @if $sum-rgb < 350 {

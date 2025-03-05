@@ -265,6 +265,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@use "sass:color";
 @import "../assets/styles/spacing.scss";
 @import "../assets/styles/mixins.scss";
 @import "../assets/styles/variables.css";
@@ -320,7 +321,7 @@ export default {
     border-bottom: none;
     border-left: none;
     border-right: none;
-    border-top: 1px solid darken($color-grayscale-lighter, 10%);
+    border-top: 1px solid color.adjust($color-grayscale-lighter, $lightness: -10%);
     @include inset-space($space-base);
     overflow: hidden;
   }

@@ -307,6 +307,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@use "sass:color";
 @import "../assets/styles/variables.css";
 @import "../assets/styles/spacing.scss";
 @import "../assets/styles/mixins.scss";
@@ -413,7 +414,7 @@ $color-placeholder: tint(rgb(149, 156, 167), 50%);
     &.disabled {
       box-shadow: inset 0 1px 0 0 color-mix(in srgb, var(--color-rich-black) 7%, transparent),
         0 0 0 1px tint($color-rich-black, 80%);
-      background: lighten($color-placeholder, 42%);
+      background: color.adjust($color-placeholder, $lightness: 42%);
       cursor: not-allowed;
       opacity: 0.5;
 
