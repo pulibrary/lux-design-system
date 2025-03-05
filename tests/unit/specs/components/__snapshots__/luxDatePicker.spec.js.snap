@@ -28,6 +28,7 @@ exports[`LuxDatePicker.vue has the expected html structure 1`] = `
         name="start"
         placeholder=""
         type="text"
+        value=""
       />
       <!--v-if-->
     </div>

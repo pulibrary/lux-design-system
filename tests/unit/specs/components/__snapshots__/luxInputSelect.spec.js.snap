@@ -10,6 +10,7 @@ exports[`LuxInputSelect.vue has the expected html structure 1`] = `
     errormessage=""
     id="foo"
     name="foo"
+    value="two"
   >
     
     <option

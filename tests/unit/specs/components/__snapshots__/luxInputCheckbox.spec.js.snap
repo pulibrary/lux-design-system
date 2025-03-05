@@ -10,6 +10,7 @@ exports[`LuxInputCheckbox.vue has the expected html structure 1`] = `
     class="lux-checkbox lux-inline"
   >
     <input
+      checked=""
       id="checkbox-opt1"
       name=""
       type="checkbox"
