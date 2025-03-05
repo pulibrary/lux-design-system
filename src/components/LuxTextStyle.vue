@@ -40,10 +40,9 @@ export default {
 </script>
 
 <style lang="scss">
-@import "../assets/styles/variables.css";
-@import "../assets/styles/spacing.scss";
-@import "../assets/styles/mixins.scss";
-@import "../assets/styles/system.scss";
+@use "/src/assets/styles/spacing.scss" as *;
+@use "/src/assets/styles/variables.css" as *;
+@use "/src/assets/styles/system.scss" as *;
 $positive-text: #7cb518;
 
 .lux-text-style {

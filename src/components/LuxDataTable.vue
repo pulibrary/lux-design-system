@@ -266,10 +266,9 @@ export default {
 
 <style lang="scss" scoped>
 @use "sass:color";
-@import "../assets/styles/spacing.scss";
-@import "../assets/styles/mixins.scss";
-@import "../assets/styles/variables.css";
-@import "../assets/styles/system.scss";
+@use "/src/assets/styles/system.scss" as *;
+@use "/src/assets/styles/variables.css" as *;
+@use "/src/assets/styles/spacing.scss" as *;
 
 .lux-data-table {
   border-collapse: collapse;

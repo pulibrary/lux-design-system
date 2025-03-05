@@ -27,7 +27,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "../assets/styles/mixins.scss";
+@use "/src/assets/styles/mixins.scss" as *;
+
 .lux-spacer {
   @include reset;
   flex-grow: 1 !important;

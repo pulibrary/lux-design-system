@@ -239,10 +239,9 @@ export default {
 </script>
 
 <style lang="scss">
-@import "../assets/styles/spacing.scss";
-@import "../assets/styles/mixins.scss";
-@import "../assets/styles/variables.css";
-@import "../assets/styles/system.scss";
+@use "/src/assets/styles/spacing.scss" as *;
+@use "/src/assets/styles/variables.css" as *;
+@use "/src/assets/styles/system.scss" as *;
 // Design Tokens with local scope
 $color-placeholder: tint($color-grayscale, 50%);
 

@@ -42,9 +42,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "../assets/styles/variables.css";
-@import "../assets/styles/media_queries.scss";
-@import "../assets/styles/focus.scss";
+@use "/src/assets/styles/variables.css" as *;
+@use "/src/assets/styles/focus.scss" as *;
+@use "/src/assets/styles/media_queries.scss" as *;
 
 .lux-library-logo {
   a {

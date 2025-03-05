@@ -129,10 +129,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "../assets/styles/variables.css";
-@import "../assets/styles/system.scss";
-@import "../assets/styles/spacing.scss";
-@import "../assets/styles/mixins.scss";
+@use "/src/assets/styles/variables.css" as *;
+@use "/src/assets/styles/system.scss" as *;
+@use "/src/assets/styles/spacing.scss" as *;
+@use "/src/assets/styles/mixins.scss" as *;
 
 .lux-dropdown-menu {
   margin: 0 0.25rem 1rem;
