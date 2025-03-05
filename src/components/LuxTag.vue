@@ -104,9 +104,9 @@ export default {
 
 <style lang="scss">
 @use "sass:color";
-@import "../assets/styles/variables.css";
-@import "../assets/styles/spacing.scss";
-@import "../assets/styles/system.scss";
+@use "/src/assets/styles/spacing.scss" as *;
+@use "/src/assets/styles/system.scss" as *;
+@use "/src/assets/styles/variables.css" as *;
 
 .lux-tag {
   @include stack-space($space-base);

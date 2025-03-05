@@ -120,10 +120,10 @@ export default {
   }
 
   :deep(.lux-main-menu .lux-submenu-toggle) {
+    padding-right: 25px;
     @media (min-width: 900px) {
       color: var(--color-white);
     }
-    padding-right: 25px;
   }
 
   :deep(.lux-main-menu-list li:last-child ul) {

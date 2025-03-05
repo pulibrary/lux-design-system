@@ -282,15 +282,15 @@ export default {
     @include stack-space(var(--space-base));
     display: table-caption;
     text-align: left;
+    font-weight: var(--font-weight-bold);
+    font-family: var(--font-family-text);
+    line-height: var(--line-height-heading);
     @include responsive-font(
       2vw,
       $font-size-x-large-min,
       $font-size-x-large-max,
       $font-size-x-large
     );
-    font-weight: var(--font-weight-bold);
-    font-family: var(--font-family-text);
-    line-height: var(--line-height-heading);
   }
 
   thead {

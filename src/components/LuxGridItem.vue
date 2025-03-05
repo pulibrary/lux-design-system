@@ -59,6 +59,7 @@ export default {
 </script>
 
 <style lang="scss">
+@use "sass:math";
 @import "../assets/styles/media_queries.scss";
 $grid-columns: 12;
 
@@ -100,7 +101,7 @@ $grid-columns: 12;
 }
 
 @function round-width($i) {
-  $width: #{calc(floor(calc(100 * $i * 100 / $grid-columns)) / 100) + "%"};
+  $width: #{calc(math.floor(calc(100 * $i * 100 / $grid-columns)) / 100) + "%"};
   @return $width;
 }
 
