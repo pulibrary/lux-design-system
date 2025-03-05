@@ -34,6 +34,7 @@ export default defineConfig({
       name: "Lux",
       // the proper extensions will be added
       fileName: "lux-styleguidist",
+      cssFileName: "style",
       formats: ["es", "umd", "iife"],
     },
     rollupOptions: {

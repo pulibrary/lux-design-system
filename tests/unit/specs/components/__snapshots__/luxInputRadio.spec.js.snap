@@ -10,6 +10,7 @@ exports[`LuxInputRadio.vue has the expected html structure 1`] = `
     class="lux-radio lux-inline"
   >
     <input
+      checked=""
       id="radio-opt1"
       name="opt 1"
       type="radio"
