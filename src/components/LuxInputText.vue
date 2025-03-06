@@ -308,11 +308,11 @@ export default {
 
 <style lang="scss" scoped>
 @use "sass:color";
-@import "../assets/styles/variables.css";
-@import "../assets/styles/spacing.scss";
-@import "../assets/styles/mixins.scss";
-@import "../assets/styles/system.scss";
-@import "../assets/styles/focus.scss";
+@use "/src/assets/styles/variables.css" as *;
+@use "/src/assets/styles/spacing.scss" as *;
+@use "/src/assets/styles/mixins.scss" as mi;
+@use "/src/assets/styles/system.scss" as *;
+@use "/src/assets/styles/focus.scss" as *;
 
 // Design Tokens with local scope
 $color-placeholder: tint(rgb(149, 156, 167), 50%);
@@ -353,7 +353,7 @@ $color-placeholder: tint(rgb(149, 156, 167), 50%);
 
   .lux-input-field {
     @include reset;
-    @include box-shadow-inputs;
+    @include mi.box-shadow-inputs;
     background: var(--color-white);
     border-radius: var(--border-radius-default);
     display: flex;
@@ -402,7 +402,7 @@ $color-placeholder: tint(rgb(149, 156, 167), 50%);
 
     &:hover,
     &[hover] {
-      @include box-shadow-inputs-hover;
+      @include mi.box-shadow-inputs-hover;
     }
     &:focus,
     &[focus] {

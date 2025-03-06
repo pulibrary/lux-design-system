@@ -151,10 +151,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "../assets/styles/system.scss";
-@import "../assets/styles/spacing.scss";
-@import "../assets/styles/mixins.scss";
-@import "../assets/styles/focus.scss";
+@use "/src/assets/styles/system.scss" as *;
+@use "/src/assets/styles/spacing.scss" as *;
+@use "/src/assets/styles/mixins.scss" as mi;
+@use "/src/assets/styles/focus.scss" as *;
 
 .lux-button {
   @include inset-space($space-small);
@@ -229,7 +229,7 @@ export default {
   }
 
   &.dropdown {
-    @include box-shadow-inputs;
+    @include mi.box-shadow-inputs;
     background: $color-white;
     border-radius: $border-radius-default;
     color: $color-rich-black;
@@ -240,7 +240,7 @@ export default {
     padding-right: 36px;
 
     &:hover {
-      @include box-shadow-inputs-hover;
+      @include mi.box-shadow-inputs-hover;
     }
   }
 }

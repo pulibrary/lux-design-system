@@ -69,8 +69,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "../assets/styles/variables.css";
-@import "../assets/styles/mixins.scss";
+@use "/src/assets/styles/variables.css" as *;
+@use "/src/assets/styles/mixins.scss" as *;
 
 .lux-subscribe-newsletter {
   #mc_embed_signup_scroll {

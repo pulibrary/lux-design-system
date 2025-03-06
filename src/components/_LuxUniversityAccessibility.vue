@@ -38,11 +38,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "../assets/styles/spacing.scss";
-@import "../assets/styles/mixins.scss";
-@import "../assets/styles/variables.css";
-@import "../assets/styles/system.scss";
-@import "../assets/styles/focus.scss";
+@use "/src/assets/styles/spacing.scss" as *;
+@use "/src/assets/styles/mixins.scss" as *;
+@use "/src/assets/styles/variables.css" as *;
+@use "/src/assets/styles/focus.scss" as *;
 
 .lux-accessibility {
   @include reset;

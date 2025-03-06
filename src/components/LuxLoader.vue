@@ -48,10 +48,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "../assets/styles/variables.css";
-@import "../assets/styles/mixins.scss";
-@import "../assets/styles/spacing.scss";
-@import "../assets/styles/system.scss";
+@use "/src/assets/styles/variables.css" as *;
+@use "/src/assets/styles/spacing.scss" as *;
+@use "/src/assets/styles/system.scss" as *;
 
 // $border-color: var(--color-white);
 .lux-loader {

@@ -60,7 +60,7 @@ export default {
 
 <style lang="scss">
 @use "sass:math";
-@import "../assets/styles/media_queries.scss";
+@use "/src/assets/styles/media_queries.scss" as *;
 $grid-columns: 12;
 
 * {
