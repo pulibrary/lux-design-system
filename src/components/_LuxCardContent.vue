@@ -27,7 +27,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "../assets/styles/spacing.scss";
+@use "/src/assets/styles/spacing.scss" as *;
 .lux-card-content {
   padding: 0 var(--space-small) var(--space-small);
 

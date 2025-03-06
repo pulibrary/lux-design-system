@@ -103,9 +103,10 @@ export default {
 </script>
 
 <style lang="scss">
-@import "../assets/styles/variables.css";
-@import "../assets/styles/spacing.scss";
-@import "../assets/styles/system.scss";
+@use "sass:color";
+@use "/src/assets/styles/spacing.scss" as *;
+@use "/src/assets/styles/system.scss" as *;
+@use "/src/assets/styles/variables.css" as *;
 
 .lux-tag {
   @include stack-space($space-base);
@@ -167,44 +168,44 @@ export default {
   }
 
   .lux-tag-item.green {
-    background: lighten($color-green, 30%);
-    color: darken($color-green, 20%);
+    background: color.adjust($color-green, $lightness: 30%);
+    color: color.adjust($color-green, $lightness: -20%);
     border-color: transparent;
   }
 
   a:hover.green,
   a:focus.green {
-    color: darken($color-green, 20%);
-    border-color: darken($color-green, 15%);
+    color: color.adjust($color-green, $lightness: -20%);
+    border-color: color.adjust($color-green, $lightness: -15%);
   }
 
   .lux-tag-item.red {
-    background: lighten($color-red, 45%);
-    color: darken($color-red, 25%);
+    background: color.adjust($color-red, $lightness: 45%);
+    color: color.adjust($color-red, $lightness: -25%);
     border-color: transparent;
   }
 
   a:hover.red,
   a:focus.red {
-    color: darken($color-red, 25%);
-    border-color: darken($color-red, 10%);
+    color: color.adjust($color-red, $lightness: -25%);
+    border-color: color.adjust($color-red, $lightness: -10%);
   }
 
   .lux-tag-item.yellow {
-    background: lighten($color-yellow, 35%);
-    color: darken($color-yellow, 30%);
+    background: color.adjust($color-yellow, $lightness: 35%);
+    color: color.adjust($color-yellow, $lightness: -30%);
     border-color: transparent;
   }
 
   a:hover.yellow,
   a:focus.yellow {
-    color: darken($color-yellow, 30%);
-    border-color: darken($color-yellow, 10%);
+    color: color.adjust($color-yellow, $lightness: -30%);
+    border-color: color.adjust($color-yellow, $lightness: -10%);
   }
 
   .lux-tag-item.blue {
-    background: lighten($color-bleu-de-france-dark, 30%);
-    color: darken($color-bleu-de-france-dark, 25%);
+    background: color.adjust($color-bleu-de-france-dark, $lightness: 30%);
+    color: color.adjust($color-bleu-de-france-dark, $lightness: -25%);
     border-color: transparent;
   }
 
@@ -215,8 +216,8 @@ export default {
 
   a:hover.blue,
   a:focus.blue {
-    color: darken($color-bleu-de-france-dark, 25%);
-    border-color: darken($color-bleu-de-france-dark, 10%);
+    color: color.adjust($color-bleu-de-france-dark, $lightness: -25%);
+    border-color: color.adjust($color-bleu-de-france-dark, $lightness: -10%);
   }
 
   span {

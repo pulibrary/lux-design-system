@@ -138,8 +138,8 @@ export default {
 </script>
 
 <style lang="scss">
-@import "../assets/styles/variables.css";
-@import "../assets/styles/mixins.scss";
+@use "/src/assets/styles/variables.css" as *;
+@use "/src/assets/styles/mixins.scss" as *;
 
 .lux-alert-fullscreen {
   position: fixed !important;

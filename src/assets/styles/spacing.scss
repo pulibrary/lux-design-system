@@ -3,6 +3,7 @@
 
 $spacing-ratio: 1.7;
 
+@use 'sass:math';
 /*
   INSET-SPACE: For interface containers.
   INSET-SQUISH-SPACE: For buttons, form elements, cells.
@@ -14,14 +15,14 @@ $spacing-ratio: 1.7;
 //
 // @param  {Number} inset-space to set
 @mixin inset-space($value) {
-  padding: round($value / $spacing-ratio) $value;
+  padding: math.round(calc($value / $spacing-ratio)) $value;
 }
 
 // Create inset-squish-space
 //
 // @param  {Number} inset-squish-space to set
 @mixin inset-squish-space($value) {
-  padding: round($value / $spacing-ratio - 1px) $value round($value / $spacing-ratio);
+  padding: math.round(calc($value / $spacing-ratio) - 1px) $value math.round(calc($value / $spacing-ratio));
 }
 
 // Create stack-space

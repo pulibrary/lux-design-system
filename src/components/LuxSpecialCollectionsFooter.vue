@@ -123,10 +123,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "../assets/styles/spacing.scss";
-@import "../assets/styles/mixins.scss";
-@import "../assets/styles/variables.css";
-@import "../assets/styles/system.scss";
+@use "/src/assets/styles/spacing.scss" as *;
+@use "/src/assets/styles/mixins.scss" as *;
+@use "/src/assets/styles/variables.css" as *;
 
 .lux-special-collections-footer {
   @include reset;

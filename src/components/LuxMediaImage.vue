@@ -75,8 +75,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "../assets/styles/mixins.scss";
-@import "../assets/styles/spacing.scss";
+@use "/src/assets/styles/spacing.scss" as *;
+@use "/src/assets/styles/mixins.scss" as *;
 
 .lux-media-image {
   @include reset;

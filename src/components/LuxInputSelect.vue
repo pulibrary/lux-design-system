@@ -184,10 +184,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "../assets/styles/variables.css";
-@import "../assets/styles/spacing.scss";
-@import "../assets/styles/mixins.scss";
-@import "../assets/styles/system.scss";
+@use "sass:color";
+@use "/src/assets/styles/variables.css" as *;
+@use "/src/assets/styles/spacing.scss" as *;
+@use "/src/assets/styles/mixins.scss" as mi;
+@use "/src/assets/styles/system.scss" as *;
 
 // Design Tokens with local scope
 $color-placeholder: tint($color-grayscale, 50%);
@@ -221,7 +222,7 @@ $color-placeholder: tint($color-grayscale, 50%);
   }
   select {
     @include inset-space($space-small);
-    @include box-shadow-inputs;
+    @include mi.box-shadow-inputs;
     transition: all 0.2s ease;
     -webkit-appearance: none;
     appearance: none;
@@ -238,13 +239,14 @@ $color-placeholder: tint($color-grayscale, 50%);
 
     &:hover,
     &[hover] {
-      @include box-shadow-inputs-hover;
+      @include mi.box-shadow-inputs-hover;
     }
 
     &[disabled] {
       box-shadow: inset 0 1px 0 0 color-mix(in srgb, var(--color-rich-black) 7%, transparent),
         0 0 0 1px tint($color-rich-black, 80%);
-      background: lighten($color-placeholder, 42%);
+
+      background: color.adjust($color-placeholder, $lightness: 42%);
       cursor: not-allowed;
       opacity: 0.5;
     }

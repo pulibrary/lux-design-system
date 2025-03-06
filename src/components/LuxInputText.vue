@@ -307,11 +307,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "../assets/styles/variables.css";
-@import "../assets/styles/spacing.scss";
-@import "../assets/styles/mixins.scss";
-@import "../assets/styles/system.scss";
-@import "../assets/styles/focus.scss";
+@use "sass:color";
+@use "/src/assets/styles/variables.css" as *;
+@use "/src/assets/styles/spacing.scss" as *;
+@use "/src/assets/styles/mixins.scss" as mi;
+@use "/src/assets/styles/system.scss" as *;
+@use "/src/assets/styles/focus.scss" as *;
 
 // Design Tokens with local scope
 $color-placeholder: tint(rgb(149, 156, 167), 50%);
@@ -352,7 +353,7 @@ $color-placeholder: tint(rgb(149, 156, 167), 50%);
 
   .lux-input-field {
     @include reset;
-    @include box-shadow-inputs;
+    @include mi.box-shadow-inputs;
     background: var(--color-white);
     border-radius: var(--border-radius-default);
     display: flex;
@@ -401,7 +402,7 @@ $color-placeholder: tint(rgb(149, 156, 167), 50%);
 
     &:hover,
     &[hover] {
-      @include box-shadow-inputs-hover;
+      @include mi.box-shadow-inputs-hover;
     }
     &:focus,
     &[focus] {
@@ -413,7 +414,7 @@ $color-placeholder: tint(rgb(149, 156, 167), 50%);
     &.disabled {
       box-shadow: inset 0 1px 0 0 color-mix(in srgb, var(--color-rich-black) 7%, transparent),
         0 0 0 1px tint($color-rich-black, 80%);
-      background: lighten($color-placeholder, 42%);
+      background: color.adjust($color-placeholder, $lightness: 42%);
       cursor: not-allowed;
       opacity: 0.5;
 

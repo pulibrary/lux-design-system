@@ -277,11 +277,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "../assets/styles/variables.css";
-@import "../assets/styles/spacing.scss";
-@import "../assets/styles/system.scss";
-@import "../assets/styles/media_queries.scss";
-@import "../assets/styles/focus.scss";
+@use "/src/assets/styles/variables.css" as *;
+@use "/src/assets/styles/spacing.scss" as *;
+@use "/src/assets/styles/system.scss" as *;
+@use "/src/assets/styles/media_queries.scss" as mq;
+@use "/src/assets/styles/focus.scss" as *;
 
 // CSS variables that are specific to this component
 :root {
@@ -459,7 +459,7 @@ export default {
     text-align: left;
     white-space: nowrap;
 
-    @media #{$media-query-medium-max} {
+    @media #{mq.$media-query-medium-max} {
       font-size: var(--font-size-base);
     }
 
@@ -474,7 +474,7 @@ export default {
     @include reset;
     flex-wrap: wrap;
 
-    @media #{$media-query-medium-max} {
+    @media #{mq.$media-query-medium-max} {
       > li:first-child a {
         padding-top: $space-base;
       }
@@ -504,12 +504,12 @@ export default {
     li {
       list-style-type: none;
       flex-basis: 100%;
-      @media #{$media-query-medium-max} {
+      @media #{mq.$media-query-medium-max} {
         border-bottom: 1px solid $color-grayscale-light;
       }
 
       &.lux-has-children {
-        @media #{$media-query-medium-max} {
+        @media #{mq.$media-query-medium-max} {
           border-bottom: 0;
         }
       }
@@ -519,7 +519,7 @@ export default {
       }
     }
 
-    @media #{$media-query-medium-max} {
+    @media #{mq.$media-query-medium-max} {
       &.lux-show {
         display: flex;
         position: absolute;
@@ -532,7 +532,7 @@ export default {
     }
   }
 
-  @media #{$media-query-medium-max} {
+  @media #{mq.$media-query-medium-max} {
     .lux-submenu-toggle {
       font-size: 0.85rem;
       color: $color-grayscale;
@@ -545,7 +545,7 @@ export default {
     }
   }
 
-  @media #{$media-query-large} {
+  @media #{mq.$media-query-large} {
     .lux-main-menu-toggle {
       display: none;
     }

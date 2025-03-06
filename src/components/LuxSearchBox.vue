@@ -45,8 +45,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "../assets/styles/mixins.scss";
-@import "../assets/styles/system.scss";
+@use "/src/assets/styles/system.scss" as *;
+@use "/src/assets/styles/mixins.scss" as *;
 
 .lux-search-box {
   @include box-shadow-inputs;

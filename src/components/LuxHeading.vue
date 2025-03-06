@@ -52,9 +52,9 @@ export default {
 </script>
 
 <style lang="scss">
-@import "../assets/styles/variables.css";
-@import "../assets/styles/mixins.scss";
-@import "../assets/styles/spacing.scss";
+@use "/src/assets/styles/variables.css" as *;
+@use "/src/assets/styles/mixins.scss" as *;
+@use "/src/assets/styles/spacing.scss" as *;
 
 .lux-heading {
   @include reset;
@@ -69,30 +69,30 @@ export default {
 }
 
 .h1 {
-  @include responsive-font(3vw, 1.602em, 3.157em, 64px);
   letter-spacing: var(--letter-spacing-x-small);
   font-weight: var(--font-weight-bold);
+  @include responsive-font(3vw, 1.602em, 3.157em, 64px);
 }
 
 .h2 {
-  @include responsive-font(2.5vw, 1.602em, 3.157em, 42px);
   letter-spacing: var(--letter-spacing-small);
   font-weight: var(--font-weight-bold);
+  @include responsive-font(2.5vw, 1.602em, 3.157em, 42px);
 }
 
 .h3 {
-  @include responsive-font(2vw, 1.266em, 1.777em, 36px);
   font-weight: var(--font-weight-bold);
+  @include responsive-font(2vw, 1.266em, 1.777em, 36px);
 }
 
 .h4 {
-  @include responsive-font(1.5vw, 1.266em, 1.777em, 36px);
   font-weight: var(--font-weight-semi-bold);
+  @include responsive-font(1.5vw, 1.266em, 1.777em, 36px);
 }
 
 .h5 {
-  @include responsive-font(1vw, 1em, 1.125em, 16px);
   font-weight: var(--font-weight-semi-bold);
+  @include responsive-font(1vw, 1em, 1.125em, 16px);
 }
 
 .h6 {

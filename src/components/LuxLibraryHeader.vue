@@ -95,9 +95,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "../assets/styles/variables.css";
-@import "../assets/styles/mixins.scss";
-@import "../assets/styles/focus.scss";
+@use "/src/assets/styles/variables.css" as *;
+@use "/src/assets/styles/mixins.scss" as *;
+@use "/src/assets/styles/focus.scss" as *;
 /**
    * Styles in a top-level App component and in layout components may be global,
    * but all other components should always be scoped (using either scoped
@@ -120,10 +120,10 @@ export default {
   }
 
   :deep(.lux-main-menu .lux-submenu-toggle) {
+    padding-right: 25px;
     @media (min-width: 900px) {
       color: var(--color-white);
     }
-    padding-right: 25px;
   }
 
   :deep(.lux-main-menu-list li:last-child ul) {

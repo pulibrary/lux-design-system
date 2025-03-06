@@ -265,10 +265,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "../assets/styles/spacing.scss";
-@import "../assets/styles/mixins.scss";
-@import "../assets/styles/variables.css";
-@import "../assets/styles/system.scss";
+@use "sass:color";
+@use "/src/assets/styles/system.scss" as *;
+@use "/src/assets/styles/variables.css" as *;
+@use "/src/assets/styles/spacing.scss" as *;
 
 .lux-data-table {
   border-collapse: collapse;
@@ -281,15 +281,15 @@ export default {
     @include stack-space(var(--space-base));
     display: table-caption;
     text-align: left;
+    font-weight: var(--font-weight-bold);
+    font-family: var(--font-family-text);
+    line-height: var(--line-height-heading);
     @include responsive-font(
       2vw,
       $font-size-x-large-min,
       $font-size-x-large-max,
       $font-size-x-large
     );
-    font-weight: var(--font-weight-bold);
-    font-family: var(--font-family-text);
-    line-height: var(--line-height-heading);
   }
 
   thead {
@@ -320,7 +320,7 @@ export default {
     border-bottom: none;
     border-left: none;
     border-right: none;
-    border-top: 1px solid darken($color-grayscale-lighter, 10%);
+    border-top: 1px solid color.adjust($color-grayscale-lighter, $lightness: -10%);
     @include inset-space($space-base);
     overflow: hidden;
   }
