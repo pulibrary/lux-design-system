@@ -107,8 +107,13 @@ describe("InputAutocomplete.vue", () => {
     expect(wrapper.find(".lux-autocomplete-results").isVisible()).toBe(false)
   })
 
-  it("shows dropdown when input is clicked", async () => {
+  it("shows dropdown when input is clicked", () => {
     wrapper.find("input").trigger("click")
+    expect(wrapper.find(".lux-autocomplete-results").isVisible()).toBe(true)
+  })
+
+  it("shows dropdown when input is focused", () => {
+    wrapper.find("input").trigger("focus")
     expect(wrapper.find(".lux-autocomplete-results").isVisible()).toBe(true)
   })
 })
