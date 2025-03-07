@@ -8,6 +8,8 @@
         ref="autoComplete"
         type="text"
         @input="onChange"
+        @click="onChange"
+        @focus="onChange"
         v-model="search"
         @keydown.down="onArrowDown"
         @keydown.up="onArrowUp"
