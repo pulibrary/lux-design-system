@@ -86,7 +86,6 @@ describe("InputAutocomplete.vue", () => {
 
   it("emits an input event when the user changes the text", async () => {
     wrapper.find("#displayInput").setValue("Code4lib 2025")
-    // Updates this code because wrapper.emitted().input includes the defaultValue
     expect(wrapper.emitted().input.length).toEqual(2)
     expect(wrapper.emitted().input[1]).toEqual(["Code4lib 2025"])
   })
