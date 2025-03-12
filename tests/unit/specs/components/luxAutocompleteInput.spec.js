@@ -85,11 +85,9 @@ describe("InputAutocomplete.vue", () => {
   })
 
   it("emits an input event when the user changes the text", async () => {
-    const input = wrapper.find("#displayInput")
-    input.setValue("Code4lib 2025")
-
-    expect(wrapper.emitted().input.length).toEqual(1)
-    expect(wrapper.emitted().input[0]).toEqual(["Code4lib 2025"])
+    wrapper.find("#displayInput").setValue("Code4lib 2025")
+    expect(wrapper.emitted().input.length).toEqual(2)
+    expect(wrapper.emitted().input[1]).toEqual(["Code4lib 2025"])
   })
 
   it("has the expected html structure", () => {
@@ -106,5 +104,15 @@ describe("InputAutocomplete.vue", () => {
 
     await wrapper.find("input").trigger("blur")
     expect(wrapper.find(".lux-autocomplete-results").isVisible()).toBe(false)
+  })
+
+  it("shows dropdown when input is clicked", () => {
+    wrapper.find("input").trigger("click")
+    expect(wrapper.find(".lux-autocomplete-results").isVisible()).toBe(true)
+  })
+
+  it("shows dropdown when input is focused", () => {
+    wrapper.find("input").trigger("focus")
+    expect(wrapper.find(".lux-autocomplete-results").isVisible()).toBe(true)
   })
 })

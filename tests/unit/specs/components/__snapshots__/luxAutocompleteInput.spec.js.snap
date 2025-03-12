@@ -15,9 +15,14 @@ exports[`InputAutocomplete.vue has the expected html structure 1`] = `
     />
     <ul
       class="lux-autocomplete-results"
-      style="display: none;"
+      style=""
     >
       
+      <li
+        class="lux-autocomplete-result"
+      >
+        Banana
+      </li>
       
     </ul>
     <input
