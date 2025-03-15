@@ -4,6 +4,7 @@
       @click="toggleTheDisclosure()"
       :aria-controls="contentId"
       :aria-expanded="open.toString()"
+      :aria-describedby="descriptionId"
       :class="{ 'lux-disclosure-open-button': open }"
       :style="{ fontSize: fontSize }"
     >
@@ -62,6 +63,14 @@ const props = defineProps({
   contentId: {
     type: String,
     required: true,
+  },
+  /**
+   * The ID of an element in the DOM that provides further description of the full content.
+   *
+   * Use this prop if you have multiple disclosures in your page with the same `showLabel` or `hideLabel`.
+   */
+  descriptionId: {
+    type: String,
   },
   /**
    * How wide should the disclosure be?  You can use any value accepted by the CSS width property.
@@ -147,7 +156,7 @@ event that a user gets disoriented or distracted by the full content.
 how it might differ from other instances of the component.  For example, please don't use this component 10 times in a page
 and use "Show more" as the label for each one.  You can do this in one of two ways:
     * Use distinct `showLabel` and `hideLabel` props for each instance
-    * Provide a `descriptionId`
+    * Provide a `descriptionId` prop.
 
 ### Accessibility considerations
 

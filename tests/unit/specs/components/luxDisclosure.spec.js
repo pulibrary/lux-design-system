@@ -25,6 +25,17 @@ describe("LuxDisclosure.vue", () => {
     expect(wrapper.text()).not.toContain("Hello, how is it going? I hope you will read my article.")
   })
 
+  it("has no aria-describedby by default", () => {
+    expect("aria-describedby" in wrapper.find("button").attributes()).toBe(false)
+  })
+
+  it("can create an aria-describedby from the descriptionId prop", async () => {
+    wrapper.setProps({ descriptionId: "other-element-3" })
+    await nextTick()
+
+    expect(wrapper.find("button").attributes()["aria-describedby"]).toEqual("other-element-3")
+  })
+
   it("can open when clicked", async () => {
     wrapper.find("button").trigger("click")
     await nextTick()
