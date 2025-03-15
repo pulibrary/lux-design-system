@@ -44,14 +44,14 @@ defineOptions({ name: "LuxDisclosure" })
 
 const props = defineProps({
   /**
-   * A description of the action of showing the the full content.
+   * A description of the action of showing the full content.
    */
   showLabel: {
     type: String,
     required: true,
   },
   /**
-   * A description of the action of hiding the the full content.
+   * A description of the action of hiding the full content.
    */
   hideLabel: {
     type: String,
