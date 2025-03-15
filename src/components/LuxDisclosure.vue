@@ -31,23 +31,48 @@ import LuxIconArrowDown from "./icons/LuxIconArrowDown.vue"
 import LuxIconArrowUp from "./icons/LuxIconArrowUp.vue"
 import LuxIconBase from "./icons/LuxIconBase.vue"
 import { ref } from "vue"
+
+/**
+ * Disclosures are used for elements that are useful for some users, but
+ * disruptive for others.  For example, some users find it helpful to have
+ * lengthy journal article abstracts available on a search results page,
+ * while for others the abstracts are unhelpful and cause substantial
+ * unnecessary scrolling.
+ */
+defineOptions({ name: "LuxDisclosure" })
+
 const props = defineProps({
+  /**
+   * A description of the action of showing the the full content.
+   */
   showLabel: {
     type: String,
     required: true,
   },
+  /**
+   * A description of the action of hiding the the full content.
+   */
   hideLabel: {
     type: String,
     required: true,
   },
+  /**
+   * Used for setting focus and aria-controls.  It must be unique in your page.
+   */
   contentId: {
     type: String,
     required: true,
   },
+  /**
+   * How wide should the disclosure be?  You can use any value accepted by the CSS width property.
+   */
   width: {
     type: String,
     default: "var(--card-width-medium)",
   },
+  /**
+   * What size should the font be?  You can use any value accepted by the CSS font-size property.
+   */
   fontSize: {
     type: String,
     default: "var(--font-size-base)",
@@ -112,10 +137,24 @@ function toggleTheDisclosure() {
       <p>As you can see, you can configure the disclosure to be a different width.</p>
     </lux-disclosure>
   ```
-Accessibility considerations:
-<ul>
-  <li>Once the disclosure is opened, this component waits for a short amount of time for a screen reader's virtual buffer to update, then sets focus on the expanded content.</li>
-  <li>This component implements the <code>aria-controls</code> and <code>aria-expanded</code> properties.</li>
-  <li>Please supply a <code>contentId</code> prop, which is used for setting focus and aria-controls.</li>
-</ul>
+### How to use a disclosure
+
+* Supply a `contentId` prop, which is used for setting focus and aria-controls.  It must be unique in your page.
+* Supply clear text for the `showLabel` and `hideLabel` props that orients the user to what the content
+is.  The `hideLabel` text should provide a concise re-orientation to what the content is and how to dismiss it in the
+event that a user gets disoriented or distracted by the full content.
+* If you use this component multiple times on the same page, make it clear to the user what each instance does, and
+how it might differ from other instances of the component.  For example, please don't use this component 10 times in a page
+and use "Show more" as the label for each one.  You can do this in one of two ways:
+    * Use distinct `showLabel` and `hideLabel` props for each instance
+    * Provide a `descriptionId`
+
+### Accessibility considerations
+
+* Once the disclosure is opened, this component waits for a short amount of time for a screen reader's virtual buffer to update, then sets focus on the expanded content.
+* This component implements the `aria-controls` and `aria-expanded` properties.
+* If you use this component multiple times in the same page, try navigating your page via buttons on a screen reader (<kbd>Control+Option+Command+J</kbd> on Voice Over).
+  Make sure that each instance has a specific and unique label.
+* This component was tested in 2024 by third party testers using NVDA, Screen magnification, and a QuadStick.  This component was tested in 2025 by a third party tester with VoiceOver.  All their feedback has been incorporated.
+
 </docs>
