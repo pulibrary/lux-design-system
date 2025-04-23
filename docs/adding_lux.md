@@ -7,9 +7,11 @@ that demonstrates [tree-shaking](https://developer.mozilla.org/en-US/docs/Glossa
 
 1. Add lux-design-system to your dependencies in package.json
 1. In your main.js, import the LUX css:
-    ```
+
+    ```ts
     import 'lux-design-system/dist/style.css'
     ```
+
 1. You can now import individual lux components into
 your application's components.
 
@@ -24,7 +26,8 @@ Some examples of this approach include [approvals](https://github.com/pulibrary/
 [DSS](https://github.com/pulibrary/DSS).
 
 1. In your entrypoints/application.js file, add the import statements for lux and vue:
-   ```
+
+   ```ts
    import { createApp } from "vue";
    import "lux-design-system/dist/style.css";
 
@@ -37,16 +40,20 @@ Some examples of this approach include [approvals](https://github.com/pulibrary/
    // a smaller bundle size
    import { LuxLibraryFooter, LuxLibraryHeader, LuxMenuBar, LuxLogoUniversity, LuxLogoLibraryIcon, LuxLibraryLogo, LuxLogoLibrary, LuxWrapper, LuxSpacer } from "lux-design-system";
    ```
+
 1. In your entrypoints/application.js, create a factory function
 for creating vue apps:
-    ```
+
+    ```ts
     const app = createApp({});
     const createMyApp = () => createApp(app);
     ```
+
 1. In your entrypoints/application.js, use the lux plugin (if you chose option 1 above) or add the specific components your
 Rails app uses (if you chose option 2 above).  Then mount the
 Vue app to the appropriate element(s) in the DOM.
-    ```
+
+    ```ts
     document.addEventListener('DOMContentLoaded', () => {
         const elements = document.getElementsByClassName('lux')
         for (let i = 0; i < elements.length; i++) {
@@ -70,6 +77,7 @@ Vue app to the appropriate element(s) in the DOM.
         }
     })
     ```
+
 1. Add lux components as needed in your views or ViewComponents.
 1. Add classes or CSS variables from lux to your styling.
 
@@ -87,19 +95,22 @@ tree shaking).
 
 1. In your HTML, import Vue and lux from a
 CDN, like so:
-    ```
+
+    ```html
     <script type="importmap">
       {
         "imports": {
           "vue": "https://unpkg.com/vue@3.2.47/dist/vue.esm-browser.prod.js",
-          "lux-design-system": "https://unpkg.com/lux-design-system@5.6.3/dist/lux-styleguidist.mjs"
+          "lux-design-system": "https://unpkg.com/lux-design-system@6.3.1/dist/lux-styleguidist.mjs"
         }
       }
     </script>
     ```
+
 1. Add some javascript that creates and mounts a
 Vue application and installs lux as a vue plugin.
-    ```
+
+    ```ts
     import { createApp } from 'vue';
     import lux from 'lux-design-system';
 
@@ -107,8 +118,10 @@ Vue application and installs lux as a vue plugin.
     app.use(lux)
     .mount('#app');
     ```
+
     If you are only using lux for a header and footer:
-    ```
+
+    ```ts
     import { createApp } from 'vue';
     import lux from 'lux-design-system';
 
@@ -122,12 +135,15 @@ Vue application and installs lux as a vue plugin.
     ```
 
 1. Import the CSS as from a CDN.
+
+    ```html
+    <link rel="stylesheet" href="https://unpkg.com/lux-design-system@6.3.1/dist/style.css">
     ```
-    <link rel="stylesheet" href="https://unpkg.com/lux-design-system@5.6.3/dist/style.css">
-    ```
+
 1. Add lux components as needed in your HTML.  If you are just adding a
    header and footer:
-   ```
+
+   ```html
    <div id="lux-header-container">
     <lux-library-header app-name="Research Guides" abbr-name="Guides" app-url="https://libguides.princeton.edu/" theme="dark">
       <lux-menu-bar type="main-menu" :menu-items="[
@@ -143,18 +159,19 @@ Vue application and installs lux as a vue plugin.
       <lux-library-footer></lux-library-footer>
     </div>
    ```
+
 1. Add classes or CSS variables from lux to your styling.
 
 ##### Adding Lux to a static HTML page using an IIFE file
 If you can't use an import map and have to use `<script src>` then from cdn use the IIFE file - `https://unpkg.com/lux-design-system@<versionNumber>/dist/lux-styleguidist.iife.js`.
 
 Add the following `<script>` tags after the `<head>` tag:
-```
+```html
   <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-  <script src="https://unpkg.com/lux-design-system@5.6.3/dist/lux-styleguidist.iife.js"></script>
+  <script src="https://unpkg.com/lux-design-system@6.3.1/dist/lux-styleguidist.iife.js"></script>
 ```
 After `<body>` tag add the following `<script>` tag:
-```
+```html
 <script>
     const { createApp } = Vue
     createApp().use(Lux.default).mount('#app')
@@ -168,6 +185,6 @@ An example of this approach is the [DACS handbook](https://github.com/pulibrary/
 
 To do this, add the CSS from a CDN to your HTML:
 
-```
-    <link rel="stylesheet" href="https://unpkg.com/lux-design-system@5.6.3/dist/style.css">
+```html
+    <link rel="stylesheet" href="https://unpkg.com/lux-design-system@6.3.1/dist/style.css">
 ```

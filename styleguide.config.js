@@ -8,6 +8,10 @@ module.exports = {
   pagePerSection: true,
   sections: [
     {
+      name: "Adding Lux to Your Project",
+      content: "docs/adding_lux.md",
+    },
+    {
       name: "Design Principles",
       content: "docs/design_principles.md",
     },
