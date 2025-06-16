@@ -12,7 +12,7 @@
         class="default-input"
       ></lux-input-text>
       <lux-input-button
-        type="button"
+        type="submit"
         variation="icon"
         size="medium"
         icon="search"
