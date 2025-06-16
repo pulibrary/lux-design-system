@@ -4,10 +4,9 @@
     <slot>
       <lux-input-text
         id="searchbox"
-        name="query"
+        :name="name"
         label="Search"
         :hide-label="true"
-        placeholder="Search for library materials and website content"
         size="large"
         class="default-input"
         :value="modelValue"
@@ -49,6 +48,14 @@ export default {
     type: {
       type: String,
       default: "div",
+    },
+    /**
+     * The name of the input, which will be part of
+     * the URL after the search is submitted.
+     */
+    name: {
+      type: String,
+      default: "query",
     },
     modelValue: {
       type: String,
@@ -93,7 +100,8 @@ export default {
   :deep(.lux-input) {
     flex: 1;
     margin-bottom: 0;
-    font-size: small !important;
+    font-size: 1rem !important;
+    padding: 0.375rem 0.75rem;
     height: 3rem;
 
     input {

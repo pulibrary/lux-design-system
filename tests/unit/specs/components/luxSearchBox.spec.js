@@ -6,6 +6,15 @@ describe("LuxSearchBox", () => {
     const wrapper = mount(LuxSearchBox)
     expect(wrapper.find('button[type="submit"]').exists()).toBe(true)
   })
+  it("has an input named query", () => {
+    const wrapper = mount(LuxSearchBox)
+    expect(wrapper.find('input[name="query"]').exists()).toBe(true)
+  })
+  it("can change the name of the input", () => {
+    const wrapper = mount(LuxSearchBox, { props: { name: "q" } })
+    expect(wrapper.find('input[name="query"]').exists()).toBe(false)
+    expect(wrapper.find('input[name="q"]').exists()).toBe(true)
+  })
   it("implements v-model", async () => {
     const wrapper = mount(LuxSearchBox, {
       props: {
