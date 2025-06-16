@@ -6,11 +6,11 @@ jobs:
   styleguide:
     working_directory: ~/project
     docker:
-      - image: cimg/node:20.11.0
+      - image: cimg/node:24.2.0
     steps:
       - checkout
       - node/install:
-          node-version: '20.11.1'
+          node-version: '24.2.0'
       - node/install-packages
       - run:
           command: npm run styleguide:build
@@ -18,11 +18,11 @@ jobs:
   package:
     working_directory: ~/project
     docker:
-      - image: cimg/node:20.11.0
+      - image: cimg/node:24.2.0
     steps:
       - checkout
       - node/install:
-          node-version: '20.11.1'
+          node-version: '24.2.0'
       - node/install-packages
       - run:
           command: npm run build
@@ -35,8 +35,8 @@ workflows:
           matrix:
             parameters:
               version:
-                - 22.2.0
-                - 20.12.0
-                - 18.20.0
+                - 24.2.0
+                - 22.16.0
+                - 20.19.2
       - styleguide
       - package
