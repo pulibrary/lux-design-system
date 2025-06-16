@@ -23,6 +23,9 @@
 </template>
 
 <script>
+import LuxInputButton from "./LuxInputButton.vue"
+import LuxInputText from "./LuxInputText.vue"
+
 /**
  * The SearchBox is a wrapper for an input group consisting of an
  * InputText and InputButton.
@@ -40,6 +43,10 @@ export default {
       type: String,
       default: "div",
     },
+  },
+  components: {
+    LuxInputButton,
+    LuxInputText,
   },
 }
 </script>
