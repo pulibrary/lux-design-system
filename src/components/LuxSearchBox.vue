@@ -10,6 +10,8 @@
         placeholder="Search for library materials and website content"
         size="large"
         class="default-input"
+        :value="modelValue"
+        @input="$emit('update:modelValue', $event.target.value)"
       ></lux-input-text>
       <lux-input-button
         type="submit"
@@ -28,7 +30,12 @@ import LuxInputText from "./LuxInputText.vue"
 
 /**
  * The SearchBox is a wrapper for an input group consisting of an
- * InputText and InputButton.
+ * InputText and InputButton.  It has a default look and feel,
+ * which you can override by placing your own input and button
+ * within the default slot.
+ *
+ * The default searchbox implements `v-model`.  If you override
+ * the default searchbox, you will have to implement it yourself.
  */
 export default {
   name: "LuxSearchBox",
@@ -43,7 +50,11 @@ export default {
       type: String,
       default: "div",
     },
+    modelValue: {
+      type: String,
+    },
   },
+  emits: ["update:modelValue"],
   components: {
     LuxInputButton,
     LuxInputText,
