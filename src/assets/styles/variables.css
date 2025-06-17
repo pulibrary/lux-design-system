@@ -1,4 +1,5 @@
 :root {
+  --color-cold-blue: rgb(3, 83, 164);
   --color-grayscale-light: rgb(197, 200, 206);
   --color-princeton-salmon-lighter: rgb(255, 252, 250);
   --color-tan: rgb(188, 139, 82);
@@ -99,6 +100,7 @@
   --border-radius-circle: 50%;
   --border-radius-pill: 16px;
   --space-xx-large: 128px;
+  --space-x-larger:100px;
   --space-x-large: 64px;
   --space-large: 48px;
   --space-base: 24px;
