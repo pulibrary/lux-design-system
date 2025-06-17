@@ -80,6 +80,7 @@ export default {
   background: $color-white;
   margin-bottom: 1rem;
   border: 2px solid #212529;
+  border-radius: 3rem;
 
   &:hover,
   &[hover] {
@@ -100,11 +101,10 @@ export default {
   :deep(.lux-input) {
     flex: 1;
     margin-bottom: 0;
-    font-size: 1rem !important;
     padding: 0.375rem 0.75rem;
-    height: 3rem;
 
     input {
+      font-size: 1.5rem;
       border-top-right-radius: 0;
       border-bottom-right-radius: 0;
       border-top-left-radius: 0;
@@ -112,20 +112,31 @@ export default {
     }
   }
 
+  :deep(div.lux-input) {
+    height: 3rem;
+  }
+
+  :deep(input.lux-input) {
+    height: 2.25rem;
+  }
+
   :deep(.default-button) {
-    background-color: $color-princeton-orange-on-white;
-    border-radius: 0px !important;
+    background-color: transparent;
     padding: 12px 15px;
   }
 
   :deep(.lux-button) {
     margin: 0;
-    border-top-left-radius: 0;
-    border-bottom-left-radius: 0;
+    border-radius: 0 3rem 3rem 0;
 
     &.lux-icon {
       background: var(--color-white);
       padding: 2px;
+    }
+
+    svg {
+      height: max(24px, 1.5rem);
+      width: max(24px, 1.5rem);
     }
   }
 }
