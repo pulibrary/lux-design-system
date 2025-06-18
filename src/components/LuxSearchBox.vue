@@ -1,5 +1,5 @@
 <template>
-  <component :is="type" class="lux-search-box">
+  <component :is="type" :class="{ 'lux-search-box': true, rounded: corners === 'rounded' }">
     <!-- @slot The input and its button. -->
     <slot>
       <lux-input-text
@@ -57,6 +57,15 @@ export default {
       type: String,
       default: "query",
     },
+    /**
+     * Whether the corners should be rounded (default)
+     * or square.
+     */
+    corners: {
+      type: String,
+      default: "rounded",
+      validator: value => ["rounded", "square"].includes(value),
+    },
     modelValue: {
       type: String,
     },
@@ -80,7 +89,14 @@ export default {
   background: $color-white;
   margin-bottom: 1rem;
   border: 2px solid #212529;
-  border-radius: 3rem;
+
+  &.rounded {
+    border-radius: 3rem;
+
+    :deep(.lux-button) {
+      border-radius: 0 3rem 3rem 0;
+    }
+  }
 
   &:hover,
   &[hover] {
@@ -127,7 +143,6 @@ export default {
 
   :deep(.lux-button) {
     margin: 0;
-    border-radius: 0 3rem 3rem 0;
 
     &.lux-icon {
       background: var(--color-white);
@@ -145,14 +160,15 @@ export default {
 <docs>
 ```jsx
     <div>
-    <lux-search-box>
+    <lux-search-box corners="square">
         <lux-input-text id="foo" name="value" label="Search" :hide-label="true" placeholder="Find all the things" size="large"></lux-input-text>
         <lux-input-button type="button" variation="icon" size="medium" icon="search"></lux-input-button>
     </lux-search-box>
     </div>
 
     <div>
-      <lux-search-box>
+      <!-- rounded is the default -->
+      <lux-search-box corners="rounded">
       </lux-search-box>
     </div>
 ```
