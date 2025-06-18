@@ -18,6 +18,7 @@
 
 |Color|Variable|Value|
 |---|---|---|
+|<div class="swatch" style="background-color: rgb(3, 83, 164);"></div>|<pre>--color-cold-blue</pre>|rgb(3, 83, 164);|
 |<div class="swatch" style="background-color: rgb(197, 200, 206);"></div>|<pre>--color-grayscale-light</pre>|rgb(197, 200, 206);|
 |<div class="swatch" style="background-color: rgb(255, 252, 250);"></div>|<pre>--color-princeton-salmon-lighter</pre>|rgb(255, 252, 250);|
 |<div class="swatch" style="background-color: rgb(188, 139, 82);"></div>|<pre>--color-tan</pre>|rgb(188, 139, 82);|
@@ -89,6 +90,7 @@
 ## Spacing
 
 <div class="spacing" style="height: 128px;;line-height: 128px;">--space-xx-large (128px;)</div>
+<div class="spacing" style="height: 100px;;line-height: 100px;">--space-x-larger (100px;)</div>
 <div class="spacing" style="height: 64px;;line-height: 64px;">--space-x-large (64px;)</div>
 <div class="spacing" style="height: 48px;;line-height: 48px;">--space-large (48px;)</div>
 <div class="spacing" style="height: 24px;;line-height: 24px;">--space-base (24px;)</div>
