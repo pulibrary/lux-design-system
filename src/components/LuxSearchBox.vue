@@ -1,5 +1,5 @@
 <template>
-  <component :is="type" class="lux-search-box">
+  <component :is="type" :class="{ 'lux-search-box': true, rounded: corners === 'rounded' }">
     <!-- @slot The input and its button. -->
     <slot>
       <lux-input-text
@@ -57,6 +57,15 @@ export default {
       type: String,
       default: "query",
     },
+    /**
+     * Whether the corners should be rounded (default)
+     * or square.
+     */
+    corners: {
+      type: String,
+      default: "rounded",
+      validator: value => ["rounded", "square"].includes(value),
+    },
     modelValue: {
       type: String,
     },
@@ -81,6 +90,14 @@ export default {
   margin-bottom: 1rem;
   border: 2px solid #212529;
 
+  &.rounded {
+    border-radius: 3rem;
+
+    :deep(.lux-button) {
+      border-radius: 0 3rem 3rem 0;
+    }
+  }
+
   &:hover,
   &[hover] {
     @include box-shadow-inputs-hover;
@@ -100,11 +117,10 @@ export default {
   :deep(.lux-input) {
     flex: 1;
     margin-bottom: 0;
-    font-size: 1rem !important;
     padding: 0.375rem 0.75rem;
-    height: 3rem;
 
     input {
+      font-size: 1.5rem;
       border-top-right-radius: 0;
       border-bottom-right-radius: 0;
       border-top-left-radius: 0;
@@ -112,20 +128,30 @@ export default {
     }
   }
 
+  :deep(div.lux-input) {
+    height: 3rem;
+  }
+
+  :deep(input.lux-input) {
+    height: 2.25rem;
+  }
+
   :deep(.default-button) {
-    background-color: $color-princeton-orange-on-white;
-    border-radius: 0px !important;
+    background-color: transparent;
     padding: 12px 15px;
   }
 
   :deep(.lux-button) {
     margin: 0;
-    border-top-left-radius: 0;
-    border-bottom-left-radius: 0;
 
     &.lux-icon {
       background: var(--color-white);
       padding: 2px;
+    }
+
+    svg {
+      height: max(24px, 1.5rem);
+      width: max(24px, 1.5rem);
     }
   }
 }
@@ -134,14 +160,15 @@ export default {
 <docs>
 ```jsx
     <div>
-    <lux-search-box>
+    <lux-search-box corners="square">
         <lux-input-text id="foo" name="value" label="Search" :hide-label="true" placeholder="Find all the things" size="large"></lux-input-text>
         <lux-input-button type="button" variation="icon" size="medium" icon="search"></lux-input-button>
     </lux-search-box>
     </div>
 
     <div>
-      <lux-search-box>
+      <!-- rounded is the default -->
+      <lux-search-box corners="rounded">
       </lux-search-box>
     </div>
 ```
