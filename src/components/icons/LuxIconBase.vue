@@ -10,7 +10,11 @@
       role="img"
     >
       <title v-if="iconName" :id="iconTitleId" lang="en">{{ iconName }}</title>
-      <g :fill="iconColor">
+      <circle v-if="circleColor" cx="50%" cy="50%" r="11.8" :fill="circleColor" />
+      <g v-if="circleColor" :fill="iconColor" transform="translate(3.6, 3.6) scale(0.7)">
+        <slot></slot>
+      </g>
+      <g v-else :fill="iconColor">
         <slot></slot>
       </g>
     </svg>
@@ -63,6 +67,12 @@ export default {
       default: "currentColor",
     },
     /**
+     * If set, put the SVG icon in a circle with the specified color.
+     */
+    circleColor: {
+      type: String,
+    },
+    /**
      * Hides decorative icon from screen readers
      */
     iconHide: {
@@ -104,6 +114,10 @@ export default {
   <div>
     <lux-icon-base width="30" height="30" icon-name="file">
       <lux-icon-file></lux-icon-file>
+    </lux-icon-base>
+    <!-- You can also surround the icon in a circle of the color you choose -->
+    <lux-icon-base width="40" height="40" icon-name="person" icon-color="white" circle-color="var(--color-rich-black)">
+      <lux-icon-person></lux-icon-person>
     </lux-icon-base>
   </div>
   ```
