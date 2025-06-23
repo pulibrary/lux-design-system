@@ -22,13 +22,13 @@ export default {
 
 <style scoped>
 .st0 {
-  fill: #000000;
-  stroke: #000000;
+  fill: currentColor;
+  stroke: currentColor;
   stroke-miterlimit: 10;
 }
 .st1 {
   fill: none;
-  stroke: #000000;
+  stroke: currentColor;
   stroke-linecap: round;
   stroke-linejoin: round;
   stroke-miterlimit: 10;
