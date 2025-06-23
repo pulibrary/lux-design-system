@@ -1,6 +1,8 @@
 <template>
-  <g>
+  <g transform="translate(1.2, 0)">
     <path
+      stroke="currentColor"
+      stroke-width="3"
       d="M5.5,24c-0.1,0-0.3-0.1-0.4-0.2c-0.2-0.2-0.2-0.5,0-0.7L17.7,12L5.2,0.9C5,0.7,4.9,0.4,5.1,0.2c0.2-0.2,0.5-0.2,0.7,0
               l13,11.5c0.1,0.1,0.2,0.2,0.2,0.4s-0.1,0.3-0.2,0.4l-13,11.5C5.7,24,5.6,24,5.5,24z"
     />
@@ -36,6 +38,11 @@ export default {
   
       <!-- or make it a little bigger too, with colors :) -->
       <lux-icon-base width="30" height="30" icon-name="Arrow Right" icon-color="red">
+        <lux-icon-arrow-right></lux-icon-arrow-right>
+      </lux-icon-base>
+
+      <!-- or put it in a circle -->
+      <lux-icon-base width="30" height="30" icon-name="Arrow Right" icon-color="white" circle-color="black">
         <lux-icon-arrow-right></lux-icon-arrow-right>
       </lux-icon-base>
     </div>
