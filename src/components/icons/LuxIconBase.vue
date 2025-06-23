@@ -13,7 +13,7 @@
     >
       <title v-if="iconName" :id="iconTitleId" lang="en">{{ iconName }}</title>
       <circle v-if="circleColor" cx="50%" cy="50%" r="11.8" :fill="circleColor" />
-      <g v-if="circleColor" :fill="iconColor" transform="translate(3.6, 3.6) scale(0.7)">
+      <g v-if="circleColor" :fill="iconColor" transform="translate(4.8, 4.8) scale(0.6)">
         <slot></slot>
       </g>
       <g v-else :fill="iconColor">
