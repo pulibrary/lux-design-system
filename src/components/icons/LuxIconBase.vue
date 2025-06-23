@@ -6,6 +6,7 @@
       :height="height"
       :color="iconColor"
       viewBox="0 0 24 24"
+      overflow="visible"
       :aria-labelledby="iconTitleId"
       :aria-hidden="iconHide"
       role="img"
