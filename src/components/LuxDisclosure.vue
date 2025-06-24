@@ -39,6 +39,8 @@ import { ref } from "vue"
  * lengthy journal article abstracts available on a search results page,
  * while for others the abstracts are unhelpful and cause substantial
  * unnecessary scrolling.
+ *
+ * @deprecated Use LuxShowMore instead
  */
 defineOptions({ name: "LuxDisclosure" })
 
