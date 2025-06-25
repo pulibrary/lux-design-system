@@ -33,9 +33,12 @@
   --color-princeton-orange-50: #E77500;
   --color-princeton-orange-10: #FCF1E5;
   --color-gray-100: #121212;
+  --color-gray-90: rgb(33, 37, 41);
+  --color-gray-10: rgb(247, 247, 247);
   --color-light-pistachio-green: rgb(223, 240, 216);
   --color-pistachio-green: rgb(208, 233, 198);
   --color-forest-green: rgb(60, 118, 61);
+  --color-dark-green: rgb(0, 80, 16);
   --color-light-pink: rgb(242, 222, 222);
   --color-dusty-pink: rgb(235, 204, 204);
   --color-brick-red: rgb(169, 68, 66);
@@ -45,6 +48,10 @@
   --color-light-blue: rgb(217, 237, 247);
   --color-sky-blue: rgb(188, 223, 241);
   --color-cerulean-blue: rgb(49, 112, 143);
+  --color-very-dark-blue: rgb(0, 39, 80);
+  --color-light-blue: rgb(203, 221, 230);
+  --color-yellow: rgb(251, 227, 187);
+  --color-dark-yellow: rgb(124, 68, 5);
   --font-size-large-min: 1.125em;
   --font-size-base-max: 1.125em;
   --font-size-x-large: 36px;
