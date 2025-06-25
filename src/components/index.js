@@ -50,8 +50,10 @@ import LuxLogoUniversity from "./logos/LuxLogoUniversity.vue"
 import LuxLogoUniversityWhite from "./logos/LuxLogoUniversityWhite.vue"
 import LuxSearchBox from "./LuxSearchBox.vue"
 import LuxAlert from "./LuxAlert.vue"
+import LuxBadge from "./LuxBadge.vue"
 import LuxDropdownMenu from "./LuxDropdownMenu.vue"
 import LuxAutocompleteInput from "./LuxAutocompleteInput.vue"
+import LuxShowMore from "./LuxShowMore.vue"
 import LuxTag from "./LuxTag.vue"
 import LuxUniversityFooter from "./LuxUniversityFooter.vue"
 
@@ -107,8 +109,10 @@ export {
   LuxLogoUniversityWhite,
   LuxSearchBox,
   LuxAlert,
+  LuxBadge,
   LuxDropdownMenu,
   LuxAutocompleteInput,
+  LuxShowMore,
   LuxTag,
   LuxUniversityFooter,
 }
