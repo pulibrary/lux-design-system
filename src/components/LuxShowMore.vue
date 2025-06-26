@@ -1,10 +1,16 @@
 <template>
   <div class="lux-show-more">
-    <div :id="contentId" ref="contentContainer" class="lux-show-more-content" tabindex="-1">
+    <div
+      v-show="open"
+      :id="contentId"
+      ref="contentContainer"
+      class="lux-show-more-content"
+      tabindex="-1"
+    >
       <!-- @slot The full content that should be shown when the user presses the Show More button. -->
-      <slot v-if="open"></slot>
-      <span v-else>{{ truncatedText }}</span>
+      <slot></slot>
     </div>
+    <div v-if="!open" class="lux-show-more-content">{{ truncatedText }}</div>
     <lux-input-button
       type="button"
       variation="text"
@@ -19,7 +25,7 @@
 </template>
 <script setup>
 import LuxInputButton from "./LuxInputButton.vue"
-import { computed, ref } from "vue"
+import { computed, ref, useTemplateRef } from "vue"
 
 /**
  * LuxShowMore is used for long texts that are useful for some users, but
@@ -71,22 +77,13 @@ const props = defineProps({
   },
 })
 const open = ref(false)
-const contentContainer = ref()
-
-function getSlotTextContent(children) {
-  return children
-    .map(node => {
-      if (typeof node.children === "string") return node.children
-      if (Array.isArray(node.children)) return getSlotTextContent(node.children)
-      return ""
-    })
-    .join("")
-}
+const contentContainer = useTemplateRef("contentContainer")
 
 function truncationPoint(text, characterLimit) {
   if (!characterLimit) {
+    // don't truncate anything
     return text.length
-  } // don't truncate anything
+  }
   if (characterLimit >= text.length) {
     return text.length
   }
@@ -95,19 +92,19 @@ function truncationPoint(text, characterLimit) {
   return finalDelimiter < 1 ? text.length : finalDelimiter
 }
 
-const fullText = computed(() =>
-  ((slots.default && getSlotTextContent(slots.default())) || "").trimEnd()
-)
+const fullText = computed(() => {
+  return contentContainer.value?.textContent || ""
+})
 
-const shouldTruncate = computed(
-  () => truncationPoint(fullText.value, props.characterLimit) < fullText.value.length
-)
+const shouldTruncate = computed(() => {
+  return truncationPoint(fullText.value, props.characterLimit) < fullText.value.length
+})
 
 const truncatedText = computed(() => {
   if (shouldTruncate.value) {
     return fullText.value.slice(0, truncationPoint(fullText.value, props.characterLimit)) + "…"
   } else {
-    return fullText
+    return fullText.value
   }
 })
 

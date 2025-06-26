@@ -2,6 +2,13 @@ import { mount } from "@vue/test-utils"
 import LuxShowMore from "@/components/LuxShowMore.vue"
 import { nextTick } from "vue"
 
+function visibleContent(wrapper) {
+  return wrapper
+    .findAll(".lux-show-more-content")
+    .filter(w => w.isVisible())
+    .reduce((text, w) => text + w.text(), "")
+}
+
 describe("LuxShowMore.vue", () => {
   let wrapper
   beforeEach(() => {
@@ -26,8 +33,11 @@ describe("LuxShowMore.vue", () => {
   })
 
   it("shows the truncated text by default", () => {
-    expect(wrapper.text()).toContain("Hello, how is it going?")
-    expect(wrapper.text()).not.toContain("Hello, how is it going? I hope you will read my article.")
+    expect(visibleContent(wrapper)).toContain("…")
+    expect(visibleContent(wrapper)).toContain("Hello, how is it going?")
+    expect(visibleContent(wrapper)).not.toContain(
+      "Hello, how is it going? I hope you will read my article."
+    )
   })
 
   it("has no aria-describedby by default", () => {
@@ -91,5 +101,22 @@ describe("LuxShowMore.vue", () => {
     })
 
     expect(wrapper.find("button").exists()).toBe(false)
+  })
+  it("does not show comments", async () => {
+    wrapper = mount(LuxShowMore, {
+      props: {
+        showLabel: "View Abstract",
+        hideLabel: "Hide Abstract",
+        contentId: "my-disclosure",
+        characterLimit: 20,
+      },
+      slots: {
+        default: "<!-- I should not display -->Good",
+      },
+      attachTo: document.body,
+    })
+
+    expect(wrapper.text()).not.toContain("I should not")
+    expect(wrapper.text()).toContain("Good")
   })
 })
