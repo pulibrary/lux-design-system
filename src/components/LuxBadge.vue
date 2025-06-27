@@ -22,13 +22,13 @@ export default {
   // Calculates the class to apply correct colors
   computed: {
     badgeClass() {
-      return `badge badge-${this.color}`
+      return `lux-badge lux-badge-${this.color}`
     },
   },
 }
 </script>
 <style>
-.badge {
+.lux-badge {
   height: 23px;
   font-size: 0.625rem;
   padding: 0px 8px;
@@ -40,27 +40,27 @@ export default {
   width: fit-content;
 }
 
-.badge-blue {
+.lux-badge-blue {
   background: var(--color-light-blue);
   color: var(--color-very-dark-blue);
 }
 
-.badge-green {
+.lux-badge-green {
   background: var(--color-pistachio-green);
   color: var(--color-dark-green);
 }
 
-.badge-red {
+.lux-badge-red {
   background: var(--color-light-pink);
   color: var(--color-brick-red);
 }
 
-.badge-gray {
+.lux-badge-gray {
   background: var(--color-gray-10);
   color: var(--color-gray-90);
 }
 
-.badge-yellow {
+.lux-badge-yellow {
   background: var(--color-yellow);
   color: var(--color-dark-yellow);
 }
