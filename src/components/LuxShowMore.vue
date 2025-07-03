@@ -155,7 +155,7 @@ function toggleTheDisclosure() {
 .lux-show-more {
   font-family: var(--font-family-text);
   font-size: var(--font-size-base);
-  line-height: var(line-height-small);
+  line-height: var(--line-height-small);
 }
 
 .lux-show-more-content:focus-visible {
