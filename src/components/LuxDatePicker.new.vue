@@ -117,6 +117,7 @@
 <script setup>
 /* global document, window */
 import elementIdModifier from "../utils/id-modifier.js"
+import { onMounted } from "vue"
 
 class DSDatePicker {
   constructor(el, options = {}) {
@@ -869,8 +870,10 @@ class DSCalendarDay {
     }
   }
 }
-const datePickers = [].slice.call(document.querySelectorAll('[data-module="ds-datepicker"]'))
-datePickers.forEach(datePicker => new DSDatePicker(datePicker).init())
+onMounted(() => {
+  const datePickers = [].slice.call(document.querySelectorAll('[data-module="ds-datepicker"]'))
+  datePickers.forEach(datePicker => new DSDatePicker(datePicker).init())
+})
 </script>
 
 <style lang="scss">
