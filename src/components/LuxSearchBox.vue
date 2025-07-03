@@ -83,7 +83,6 @@ export default {
 @use "/src/assets/styles/mixins.scss" as *;
 
 .lux-search-box {
-  @include box-shadow-inputs;
   box-sizing: border-box;
   display: flex;
   background: $color-white;
