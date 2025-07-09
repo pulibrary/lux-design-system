@@ -2,7 +2,7 @@
 
 exports[`LuxTextStyle.vue has the expected html structure 1`] = `
 <p
-  class="lux-text-style default"
+  class="lux-text-style default var(--color-rich-black)"
 >
   <!-- @slot The text you'd like to style -->
   

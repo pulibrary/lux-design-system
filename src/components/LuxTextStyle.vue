@@ -1,5 +1,5 @@
 <template>
-  <component :is="type" :class="['lux-text-style ', variation]">
+  <component :is="type" :class="['lux-text-style ', variation, color]">
     <!-- @slot The text you'd like to style -->
     <slot />
   </component>
@@ -33,6 +33,13 @@ export default {
       default: "default",
       validator: value => {
         return value.match(/(default|disabled|strong|emphasis|positive|negative|small|uppercase)/)
+      },
+    },
+    color: {
+      type: String,
+      default: "var(--color-rich-black)",
+      validator: value => {
+        return value.match(/(grey-dark|red|green|blue)/)
       },
     },
   },
@@ -78,6 +85,18 @@ $positive-text: #7cb518;
   &.uppercase {
     text-transform: uppercase;
   }
+  &.blue {
+    color: var(--very-dark-blue);
+  }
+  &.red {
+    color: var(--color-brick-red);
+  }
+  &.green {
+    color: var(--dark-green);
+  }
+  &.grey-dark {
+    color: var(--color-grey-dark);
+  }
 }
 </style>
 
@@ -88,6 +107,7 @@ $positive-text: #7cb518;
     <lux-text-style variation="disabled">Design isn’t just about the look and feel.</lux-text-style>
     <lux-text-style variation="strong">Design isn’t just about look and feel.</lux-text-style>
     <lux-text-style variation="emphasis">Design is how it works.</lux-text-style>
+    <lux-text-style variation="strong" color="red">Design is how it works.</lux-text-style>
   </div>
   ```
 </docs>
