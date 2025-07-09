@@ -64,6 +64,10 @@ export default {
   background: var(--color-yellow);
   color: var(--color-dark-yellow);
 }
+.lux-badge-transparent-green {
+  background: transparent;
+  color: var(--positive-text);
+}
 </style>
 <docs>
   ```jsx
@@ -73,6 +77,7 @@ export default {
       <lux-badge color="blue">A Blue Badge</lux-badge>
       <lux-badge color="gray">A Gray Badge</lux-badge>
       <lux-badge color="red">A Red Badge</lux-badge>
+      <lux-badge color="transparent-green">A transparent-success Badge</lux-badge>
     </div>
   ```
 </docs>
