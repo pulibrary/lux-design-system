@@ -86,16 +86,16 @@ $positive-text: #7cb518;
     text-transform: uppercase;
   }
   &.blue {
-    color: var(--very-dark-blue);
+    color: var(--color-bleu-de-france);
   }
   &.red {
-    color: var(--color-brick-red);
+    color: var(--color-red);
   }
   &.green {
     color: var(--color-green);
   }
   &.grey-dark {
-    color: var(--color-grey-dark);
+    color: var(--color-gray-90);
   }
 }
 </style>
