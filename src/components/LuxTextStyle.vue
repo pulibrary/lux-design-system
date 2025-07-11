@@ -92,7 +92,7 @@ $positive-text: #7cb518;
     color: var(--color-brick-red);
   }
   &.green {
-    color: var(--dark-green);
+    color: var(--color-green);
   }
   &.grey-dark {
     color: var(--color-grey-dark);
