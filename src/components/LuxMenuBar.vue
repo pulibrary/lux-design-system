@@ -429,7 +429,7 @@ export default {
 
 .lux-main-menu {
   @include stack-space($space-base);
-  font-family: $font-family-text;
+  font-family: var(--font-family-text);
   font-size: var(--font-size-base);
   line-height: $line-height-base;
   width: 100%;
@@ -443,7 +443,7 @@ export default {
 
   a,
   .lux-submenu-toggle {
-    font-family: $font-family-text;
+    font-family: var(--font-family-text);
     background-color: transparent;
     border: 0;
     line-height: 1;

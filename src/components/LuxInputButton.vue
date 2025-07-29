@@ -158,7 +158,7 @@ export default {
 
 .lux-button {
   @include inset-space($space-small);
-  font-family: $font-family-text;
+  font-family: var(--font-family-text);
   font-size: $font-size-base;
   line-height: $line-height-small;
   border: 0;
