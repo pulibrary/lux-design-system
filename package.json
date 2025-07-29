@@ -20,7 +20,7 @@
       "require": "./dist/styles/style.scss"
     }
   },
-  "version": "6.9.2",
+  "version": "6.10.0",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vite build",
