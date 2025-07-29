@@ -5,12 +5,27 @@
     height: 100px;
     width: 100px;
     border: 1px solid black;
+    border-radius: var(--border-radius-default);
   }
   .spacing {
     background: var(--color-grayscale-lighter);
     width: 100%;
     box-shadow: inset 0 0 0 1px rgba(0,0,0,0.05);
     margin-bottom: 8px;
+    border-radius: var(--border-radius-default);
+  }
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .border-radius {
+    border: var(--color-princeton-orange-on-white) 2px solid;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 200px;
+    height: 200px;
+    margin: 8px;
   }
 </style>
 
@@ -104,3 +119,10 @@
 <div class="spacing" style="height: 16px;;line-height: 16px;">--space-small (16px;)</div>
 <div class="spacing" style="height: 8px;;line-height: 8px;">--space-x-small (8px;)</div>
 <div class="spacing" style="height: 4px;;line-height: 4px;">--space-xx-small (4px;)</div>
+
+## Border Radius
+
+<div class="row"><div class="border-radius" style="border-radius: 3px;">--border-radius-default (3px;)</div>
+<div class="border-radius" style="border-radius: 50%;">--border-radius-circle (50%;)</div>
+<div class="border-radius" style="border-radius: 16px;">--border-radius-pill (16px;)</div>
+</div>
