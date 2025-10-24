@@ -40,6 +40,20 @@ describe("InputAutocomplete.vue", () => {
     // expect(wrapper.vm.arrowCounter).toBe(1)
   })
 
+  it("can announce the currently selected item via aria-activedescendant", async () => {
+    const input = wrapper.find("#displayInput")
+    input.trigger("focus")
+    // Enter the first few letters of pineapple
+    input.setValue("pin")
+    // Select pineapple
+    input.trigger("keydown.down")
+    await nextTick()
+
+    const pineappleItem = wrapper.find(".lux-autocomplete-result")
+    expect(pineappleItem.text()).toEqual("Pineapple")
+    expect(input.attributes("aria-activedescendant")).toEqual(pineappleItem.attributes("id"))
+  })
+
   it("hitting enter resets the counter and closes the dropdown", () => {
     wrapper.setData({ isOpen: true })
     wrapper.setData({ arrowCounter: 0 })

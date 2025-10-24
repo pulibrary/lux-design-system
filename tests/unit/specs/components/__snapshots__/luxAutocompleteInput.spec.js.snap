@@ -11,6 +11,7 @@ exports[`InputAutocomplete.vue has the expected html structure 1`] = `
     <input
       autocomplete="off"
       id="displayInput"
+      role="combobox"
       type="text"
     />
     <ul
@@ -20,6 +21,7 @@ exports[`InputAutocomplete.vue has the expected html structure 1`] = `
       
       <li
         class="lux-autocomplete-result"
+        id="lux-autocomplete-v-0result-0"
       >
         Banana
       </li>
