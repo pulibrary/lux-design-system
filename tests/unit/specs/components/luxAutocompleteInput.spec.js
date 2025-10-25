@@ -33,11 +33,14 @@ describe("InputAutocomplete.vue", () => {
   })
 
   it("keyboard navigation works", () => {
-    // not sure why this isn't working
-    // wrapper.setData({ arrowCounter: 1 })
-    // wrapper.vm.arrowCounter = 1
-    // wrapper.vm.onArrowDown()
-    // expect(wrapper.vm.arrowCounter).toBe(1)
+    wrapper.find("#displayInput").trigger("focus")
+    expect(wrapper.vm.arrowCounter).toBe(-1)
+    wrapper.find("#displayInput").trigger("keydown.down")
+    expect(wrapper.vm.arrowCounter).toBe(0)
+    wrapper.find("#displayInput").trigger("keydown.down")
+    expect(wrapper.vm.arrowCounter).toBe(1)
+    wrapper.find("#displayInput").trigger("keydown.up")
+    expect(wrapper.vm.arrowCounter).toBe(0)
   })
 
   it("can announce the currently selected item via aria-activedescendant", async () => {
