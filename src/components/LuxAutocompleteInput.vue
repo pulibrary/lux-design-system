@@ -4,6 +4,7 @@
     <div class="lux-autocomplete-input">
       <input
         id="displayInput"
+        role="combobox"
         autocomplete="off"
         ref="autoComplete"
         type="text"
@@ -11,13 +12,14 @@
         @click="onChange"
         @focus="onChange"
         v-model="search"
-        @keydown.down="onArrowDown"
-        @keydown.up="onArrowUp"
+        @keydown.down.prevent="onArrowDown"
+        @keydown.up.prevent="onArrowUp"
         @keydown.enter="onEnter"
         @keydown.esc="onEscape"
         @keydown.tab="onEscape"
         @blur="onEscape"
         :required="required"
+        :aria-activedescendant="ariaActiveDescendant"
       />
       <ul v-show="isOpen" class="lux-autocomplete-results">
         <li class="loading" v-if="isLoading">Loading results...</li>
@@ -28,6 +30,7 @@
           @click="setResult(result)"
           class="lux-autocomplete-result"
           :class="{ 'is-active': i === arrowCounter }"
+          :id="'lux-autocomplete-' + this.componentId + 'result-' + i"
         >
           {{ result }}
         </li>
@@ -38,6 +41,8 @@
 </template>
 
 <script>
+import { useId } from "vue"
+
 /**
  * InputAutocomplete is a cross between a text input and select input.
  * This component is used to offer users suggested values that
@@ -221,6 +226,15 @@ export default {
       }
     },
   },
+  computed: {
+    ariaActiveDescendant() {
+      if (this.arrowCounter < 0) {
+        return null
+      } else {
+        return `lux-autocomplete-${this.componentId}result-${this.arrowCounter}`
+      }
+    },
+  },
   created() {
     this.setResult(this.defaultValue)
   },
@@ -236,6 +250,12 @@ export default {
   },
   unmounted() {
     document.removeEventListener("click", this.handleClickOutside)
+  },
+  setup() {
+    // A unique id that identifies this specific instance of the component, so that DOM ids are unique
+    // even if you have many autocompletes on a screen
+    const componentId = useId()
+    return { componentId }
   },
 }
 </script>
