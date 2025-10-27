@@ -27,7 +27,7 @@
           v-else
           v-for="(result, i) in results"
           :key="i"
-          @click="setResult(result, true)"
+          @click="setResult(result, emitSelectedId)"
           class="lux-autocomplete-result"
           :class="{ 'is-active': i === arrowCounter }"
           :id="'lux-autocomplete-' + this.componentId + 'result-' + i"
@@ -174,7 +174,7 @@ export default {
         )
       }
     },
-    setResult(result, emit = false) {
+    setResult(result, onSelectCallback = id => {}) {
       this.search = result
       this.inputValue = result
       this.isOpen = false
@@ -187,12 +187,7 @@ export default {
         })
         if (typeof item !== "undefined") {
           this.inputValue = item.id
-          if (emit) {
-            /**
-             * Emitted when the user selects an "official" value from the list of supplied terms
-             */
-            this.$emit("selected", item.id)
-          }
+          onSelectCallback(item.id)
         }
       }
     },
@@ -207,7 +202,7 @@ export default {
       }
     },
     onEnter() {
-      this.setResult(this.results[this.arrowCounter], true)
+      this.setResult(this.results[this.arrowCounter], this.emitSelectedId)
       this.isOpen = false
       this.arrowCounter = -1
     },
@@ -221,6 +216,12 @@ export default {
         this.isOpen = false
         this.arrowCounter = -1
       }
+    },
+    emitSelectedId(id) {
+      /**
+       * Emitted when the user selects an "official" value from the list of supplied terms
+       */
+      this.$emit("selected", id)
     },
   },
   watch: {
