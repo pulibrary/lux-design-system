@@ -57,6 +57,35 @@ describe("InputAutocomplete.vue", () => {
     expect(input.attributes("aria-activedescendant")).toEqual(pineappleItem.attributes("id"))
   })
 
+  it("emits a selected event when the user selects an item via keyboard", () => {
+    const input = wrapper.find("#displayInput")
+    input.trigger("focus")
+    // Enter the first few letters of mango
+    input.setValue("mang")
+    // Select mango
+    input.trigger("keydown.down")
+    input.trigger("keydown.enter")
+
+    expect(wrapper.emitted().selected.length).toEqual(1)
+    expect(wrapper.emitted().selected[0]).toEqual([3]) // The ID of Mango
+  })
+
+  it("emits a selected event when the user selects an item via mouse click", async () => {
+    const input = wrapper.find("#displayInput")
+    input.trigger("focus")
+    // Enter the first few letters of mango
+    input.setValue("mang")
+    // Wait for Vue to re-render the DOM
+    await nextTick()
+
+    const mangoItem = wrapper.find(".lux-autocomplete-result")
+    expect(mangoItem.text()).toEqual("Mango")
+    mangoItem.trigger("click")
+
+    expect(wrapper.emitted().selected.length).toEqual(1)
+    expect(wrapper.emitted().selected[0]).toEqual([3]) // The ID of Mango
+  })
+
   it("hitting enter resets the counter and closes the dropdown", () => {
     wrapper.setData({ isOpen: true })
     wrapper.setData({ arrowCounter: 0 })
