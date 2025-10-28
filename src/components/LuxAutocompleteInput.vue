@@ -361,7 +361,7 @@ $color-placeholder: tint($color-grayscale, 50%);
 .lux-autocomplete-results {
   padding: 0;
   margin: 0;
-  border: 1px solid #eeeeee;
+  border: 1px solid var(--color-gray-10);
   height: 120px;
   overflow: auto;
   color: set-text-color($color-rich-black, $color-white);
