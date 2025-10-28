@@ -27,7 +27,7 @@
           v-else
           v-for="(result, i) in results"
           :key="i"
-          @click="setResult(result)"
+          @click="setResult(result, emitSelectedId)"
           class="lux-autocomplete-result"
           :class="{ 'is-active': i === arrowCounter }"
           :id="'lux-autocomplete-' + this.componentId + 'result-' + i"
@@ -134,7 +134,7 @@ export default {
       default: false,
     },
   },
-  emits: ["input"],
+  emits: ["input", "selected"],
   data() {
     return {
       isOpen: false,
@@ -148,6 +148,9 @@ export default {
   methods: {
     onChange() {
       // Let's warn the parent that a change was made
+      /**
+       * Emitted on any input-like action that the user does: focusing the input, typing, etc.
+       */
       this.$emit("input", this.search)
 
       // Is the data given by an outside ajax request?
@@ -171,7 +174,7 @@ export default {
         )
       }
     },
-    setResult(result) {
+    setResult(result, onSelectCallback = id => {}) {
       this.search = result
       this.inputValue = result
       this.isOpen = false
@@ -184,6 +187,7 @@ export default {
         })
         if (typeof item !== "undefined") {
           this.inputValue = item.id
+          onSelectCallback(item.id)
         }
       }
     },
@@ -198,7 +202,7 @@ export default {
       }
     },
     onEnter() {
-      this.setResult(this.results[this.arrowCounter])
+      this.setResult(this.results[this.arrowCounter], this.emitSelectedId)
       this.isOpen = false
       this.arrowCounter = -1
     },
@@ -212,6 +216,12 @@ export default {
         this.isOpen = false
         this.arrowCounter = -1
       }
+    },
+    emitSelectedId(id) {
+      /**
+       * Emitted when the user selects an "official" value from the list of supplied terms
+       */
+      this.$emit("selected", id)
     },
   },
   watch: {
