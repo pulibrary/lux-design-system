@@ -80,7 +80,7 @@ describe("InputAutocomplete.vue", () => {
 
     const mangoItem = wrapper.find(".lux-autocomplete-result")
     expect(mangoItem.text()).toEqual("Mango")
-    mangoItem.trigger("click")
+    mangoItem.trigger("mousedown")
 
     expect(wrapper.emitted().selected.length).toEqual(1)
     expect(wrapper.emitted().selected[0]).toEqual([3]) // The ID of Mango
