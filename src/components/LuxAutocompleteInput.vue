@@ -20,6 +20,7 @@
         @blur="onEscape"
         :required="required"
         :aria-activedescendant="ariaActiveDescendant"
+        :placeholder="placeholder"
       />
       <ul v-show="isOpen" class="lux-autocomplete-results">
         <li class="loading" v-if="isLoading">Loading results...</li>
@@ -72,7 +73,7 @@ export default {
      */
     placeholder: {
       type: String,
-      default: "",
+      default: null,
     },
     /**
      * The default value for the form input field.

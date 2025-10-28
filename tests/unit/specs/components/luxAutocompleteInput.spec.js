@@ -136,6 +136,20 @@ describe("InputAutocomplete.vue", () => {
     expect(wrapper.emitted().input[1]).toEqual(["Code4lib 2025"])
   })
 
+  describe("placeholder", () => {
+    it("displays no placeholder by default", () => {
+      expect(wrapper.find("input").attributes("placeholder")).toBeFalsy()
+    })
+
+    it("displays the provided placeholder if supplied as a prop", async () => {
+      wrapper.setProps({ placeholder: "Please choose your favorite one!" })
+      await nextTick()
+      expect(wrapper.find("input").attributes("placeholder")).toEqual(
+        "Please choose your favorite one!"
+      )
+    })
+  })
+
   it("has the expected html structure", () => {
     expect(wrapper.element).toMatchSnapshot()
   })
