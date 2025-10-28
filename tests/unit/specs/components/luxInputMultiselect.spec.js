@@ -65,4 +65,19 @@ describe("MultiSelect.vue", () => {
 
     expect(wrapper.find(".selected-items").text()).not.toContain("Mango")
   })
+
+  it("can create a hidden input for use in an HTML form", async () => {
+    wrapper = mount(LuxInputMultiselect, {
+      props: {
+        items: fruits,
+      },
+      slots: {
+        hiddenInput: `<template #hiddenInput="{selectedItems}"><input name="selectedFruit[]" type="hidden" :value="selectedItems[0]?.id" /></template>`,
+      },
+    })
+    await addMangoItemByMouse(wrapper)
+
+    expect(wrapper.find("input[type='hidden']").attributes("name")).toEqual("selectedFruit[]")
+    expect(wrapper.find("input[type='hidden']").attributes("value")).toEqual("4")
+  })
 })
