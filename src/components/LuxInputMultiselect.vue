@@ -1,128 +1,137 @@
 <template>
-  <div>
-    <label v-if="inputLabel" :for="id">{{ inputLabel }}</label>
-    <multiselect
-      v-model="vals"
-      :id="id"
-      :tag-placeholder="tagPlaceholder"
+  <div class="autocomplete-container">
+    <lux-autocomplete-input
+      :items="props.items"
+      @selected="addSelected($event)"
+      ref="autocomplete"
       :placeholder="placeholder"
-      label="name"
-      track-by="code"
-      :options="opts"
-      :multiple="true"
-      :taggable="true"
-      @tag="addTag"
-    ></multiselect>
-    <pre class="language-json"><code>{{ vals  }}</code></pre>
+    />
+    <lux-icon-base class="search-icon"><lux-icon-search></lux-icon-search></lux-icon-base>
   </div>
+  <span v-if="selectedItemsLabel" class="selected-item">{{ selectedItemsLabel }}</span>
+  <ul class="selected-items">
+    <li v-if="selectedItems.length == 0" class="selected-item">{{ noneSelectedLabel }}</li>
+    <li v-else v-for="item in selectedItems" :key="item" class="selected-item">
+      <!--
+        @slot item -- used to adjust the style and format of the items you have selected
+          @binding {object} itemProps an individual item that you would like to style
+      -->
+      <slot name="item" :itemProps="item">{{ item.label }}</slot>
+      <lux-input-button
+        @button-clicked="removeItem(item)"
+        type="button"
+        variation="icon"
+        icon="close"
+        size="small"
+        class="remove-item"
+      >
+      </lux-input-button>
+    </li>
+  </ul>
+  <!--
+  @slot hiddenInput -- useful for embedding this component into an HTML form
+      @binding {array} selectedItems an array of items (objects) that the user has selected
+  -->
+  <slot name="hiddenInput" :selectedItems="selectedItems"></slot>
 </template>
+<script setup>
+import LuxAutocompleteInput from "./LuxAutocompleteInput.vue"
+import LuxIconBase from "./icons/LuxIconBase.vue"
+import LuxIconSearch from "./icons/LuxIconSearch.vue"
+import LuxInputButton from "./LuxInputButton.vue"
+import { ref, useTemplateRef } from "vue"
 
-<script>
-import Multiselect from "vue-multiselect"
-/**
- * A customizable select box with support for searching, tagging,
- * remote data sets, infinite scrolling, and many other options.
- * <br/>Read more: https://github.com/shentao/vue-multiselect
- * <br/><em>Note: Some `vue-multiselect` options, such as Vuex integration, have not been implemented (yet) for LUX.</em>
- */
-export default {
-  name: "LuxInputMultiselect",
-  status: "prototype",
-  release: "4.1.0",
-  type: "Element",
-  components: {
-    Multiselect,
+const selectedItems = ref([])
+const props = defineProps({
+  items: Array,
+  placeholder: String,
+  noneSelectedLabel: {
+    type: String,
+    default: "None selected",
   },
-  data() {
-    return {
-      vals: this.value,
-      opts: this.options,
-    }
-  },
-  props: {
-    /**
-     * Optionally set the placeholder using a string
-     */
-    placeholder: {
-      type: String,
-      default: "Search or add a tag",
-      required: false,
-    },
-    /**
-     * Optionally set the tag placeholder using a string
-     */
-    tagPlaceholder: {
-      type: String,
-      default: "Add this as new tag",
-      required: false,
-    },
+  selectedItemsLabel: String,
+})
+const autocompleteRef = useTemplateRef("autocomplete")
 
-    /**
-     * Set the selected options using an array of label/value pairs
-     */
-    value: {
-      type: Array,
-      default: null,
-      required: false,
-    },
-    /**
-     * Customize the selectable options using an array of label/value pairs
-     */
-    options: {
-      type: Array,
-      default: null,
-      required: false,
-    },
-    /**
-     * The label of the LuxSelect2 field.
-     */
-    inputLabel: {
-      type: String,
-      default: "",
-    },
-    /**
-     * Unique identifier of the LuxSelect2 field.
-     */
-    id: {
-      type: String,
-      default: null,
-      required: true,
-    },
-  },
-  methods: {
-    addTag(newTag) {
-      const tag = {
-        name: newTag,
-        code: newTag.substring(0, 2) + Math.floor(Math.random() * 10000000),
-      }
-      this.opts.push(tag)
-      this.vals.push(tag)
-    },
-  },
-  beforeMount: function () {},
+function addSelected(id) {
+  const fullItem = props.items.find(item => item.id === id)
+  selectedItems.value.push(fullItem)
+  autocompleteRef.value.setResult("")
+}
+
+function removeItem(item) {
+  const indexToRemove = selectedItems.value.indexOf(item)
+  if (indexToRemove > -1) {
+    selectedItems.value.splice(indexToRemove, 1)
+  }
 }
 </script>
+<style>
+.autocomplete-container {
+  position: relative;
 
-<style src="vue-multiselect/dist/vue-multiselect.css"></style>
+  input {
+    padding-right: var(--space-large);
+  }
+}
+.search-icon {
+  position: absolute;
+  top: calc(50% - var(--space-small));
+  right: var(--space-x-small);
+}
+.selected-items {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-xx-small);
+  list-style-type: none;
+  padding-left: 0;
+  width: 100%;
+
+  .selected-item {
+    display: flex;
+    padding: var(--space-xx-small) 0.75rem;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 0.25rem;
+    background: var(--color-gray-10);
+    width: 100%;
+  }
+
+  .selected-items-label {
+    font-weight: var(--font-weight-semi-bold);
+    font-size: var(--font-size-x-small);
+  }
+}
+</style>
 
 <docs>
   ```jsx
-  <div>
-    <lux-input-multiselect
-      id="some_id"
-      inputLabel="Input label"
-      placeholder="Search or add a thingummy"
-      tagPlaceholder="Add this as a new thingummy"
-      :options="[
-        { name: 'Vue.js', code: 'vu' },
-        { name: 'Javascript', code: 'js' },
-        { name: 'Open Source', code: 'os' },
-      ]"
-      :value="[{
-        name: 'Javascript',
-        code: 'js'
-      }]"
-    ></lux-input-multiselect>
-  </div>
+    <div>
+    <lux-input-multiselect :items="[
+          { id: 1, label: 'Apple' },
+          { id: 2, label: 'Banana' },
+          { id: 3, label: 'Banana split' },
+          { id: 4, label: 'Mango' },
+        ]"
+        placeholder="Please choose a fruit"
+        selected-items-label="Selected fruits"
+        none-selected-label="No fruits selected" />
+    <p>If you have a specific way you'd like to display the items, you can pass it as a template into the item slot:</p>
+    <lux-input-multiselect :items="[
+          { id: 1, label: 'Apple' },
+          { id: 2, label: 'Banana' },
+          { id: 3, label: 'Banana split' },
+          { id: 4, label: 'Mango' },
+        ]">
+      <template #item="{itemProps}">
+        <lux-text-style style="display: flex">
+          <lux-badge>{{itemProps.id}}</lux-badge>
+          <span style="background-color:red;color:white;" v-if="itemProps.id === 1">Apples are delicious!  Good choice!</span>
+          <span v-else>{{itemProps.label}}</span>
+        </lux-text-style>
+      </template>
+    </lux-input-multiselect>
+    </div>
   ```
 </docs>

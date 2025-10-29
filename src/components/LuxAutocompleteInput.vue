@@ -28,7 +28,7 @@
           v-else
           v-for="(result, i) in results"
           :key="i"
-          @click="setResult(result, emitSelectedId)"
+          @mousedown="onClickResult(result)"
           class="lux-autocomplete-result"
           :class="{ 'is-active': i === arrowCounter }"
           :id="'lux-autocomplete-' + this.componentId + 'result-' + i"
@@ -207,6 +207,7 @@ export default {
       this.isOpen = false
       this.arrowCounter = -1
     },
+
     onEscape() {
       this.setResult(this.search)
       this.isOpen = false
@@ -217,6 +218,9 @@ export default {
         this.isOpen = false
         this.arrowCounter = -1
       }
+    },
+    onClickResult(result) {
+      this.setResult(result, this.emitSelectedId)
     },
     emitSelectedId(id) {
       /**
@@ -357,7 +361,7 @@ $color-placeholder: tint($color-grayscale, 50%);
 .lux-autocomplete-results {
   padding: 0;
   margin: 0;
-  border: 1px solid #eeeeee;
+  border: 1px solid var(--color-gray-10);
   height: 120px;
   overflow: auto;
   color: set-text-color($color-rich-black, $color-white);
