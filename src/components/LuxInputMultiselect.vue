@@ -54,7 +54,7 @@ const props = defineProps({
    */
   items: {
     type: Array,
-    default: []
+    default: () => [],
   },
 
   /**
@@ -177,7 +177,7 @@ async function findNewItems(query) {
         none-selected-label="No fruits selected" />
 
     <p style="margin-top: var(--space-large);">If you have asynchronous data you can return it via a function:</p>
-    <lux-input-multiselect :items="[]"
+    <lux-input-multiselect
         placeholder="Please choose your query"
         label="Your query"
         selected-items-label="Selected Queries"
@@ -192,7 +192,7 @@ async function findNewItems(query) {
           { id: 4, label: 'Mango' },
         ]"
         label="Your second fruit"
-        hide-label="true">
+        :hide-label="true">
       <template #item="{itemProps}">
         <lux-text-style style="display: flex">
           <lux-badge>{{itemProps.id}}</lux-badge>
