@@ -29,7 +29,7 @@
     </li>
   </ul>
   <!--
-  @slot hiddenInput -- useful for embedding this component into an HTML form
+  @slot hiddenInput -- You can use this to pass all of the user's selected values back to the backend (e.g. Rails) on form submit
       @binding {array} selectedItems an array of items (objects) that the user has selected
   -->
   <slot name="hiddenInput" :selectedItems="selectedItems"></slot>
