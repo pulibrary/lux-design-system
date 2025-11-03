@@ -45,8 +45,16 @@ import { ref, useTemplateRef } from "vue"
 
 const selectedItems = ref([])
 const props = defineProps({
+  /**
+   * An array of items.  Each item should be an object with (at minimum) an id and label property.
+   */
   items: Array,
+
+  /**
+   * Placeholder text to display
+   */
   placeholder: String,
+
   /**
    * The label of the form input field.
    */
@@ -54,6 +62,7 @@ const props = defineProps({
     type: String,
     required: true,
   },
+
   /**
    * Visually hides the label of the form input field.
    */
@@ -61,10 +70,18 @@ const props = defineProps({
     type: Boolean,
     default: false,
   },
+
+  /**
+   * Text to display if the user hasn't selected anything yet
+   */
   noneSelectedLabel: {
     type: String,
     default: "None selected",
   },
+
+  /**
+   * Label for the summary of items that the user has selected so far
+   */
   selectedItemsLabel: String,
 })
 const autocompleteRef = useTemplateRef("autocomplete")
