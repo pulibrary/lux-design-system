@@ -3,7 +3,7 @@ import LuxInputMultiselect from "@/components/LuxInputMultiselect.vue"
 import { nextTick } from "vue"
 
 async function addMangoItemByMouse(wrapper) {
-  const input = wrapper.find("#displayInput")
+  const input = wrapper.find("input.displayInput")
   input.trigger("focus")
   // Enter the first few letters of mango
   input.setValue("mang")
@@ -30,6 +30,7 @@ describe("MultiSelect.vue", () => {
     wrapper = mount(LuxInputMultiselect, {
       props: {
         items: fruits,
+        label: "Fruits",
       },
     })
   })
@@ -43,6 +44,7 @@ describe("MultiSelect.vue", () => {
     wrapper = mount(LuxInputMultiselect, {
       props: {
         items: fruits,
+        label: "Fruits",
       },
       slots: {
         item: `<template #item="{itemProps}">My fruit {{itemProps.label}} has an id {{itemProps.id}}</template>`,
@@ -70,6 +72,7 @@ describe("MultiSelect.vue", () => {
     wrapper = mount(LuxInputMultiselect, {
       props: {
         items: fruits,
+        label: "Fruits",
       },
       slots: {
         hiddenInput: `<template #hiddenInput="{selectedItems}"><input name="selectedFruit[]" type="hidden" :value="selectedItems[0]?.id" /></template>`,
@@ -79,5 +82,22 @@ describe("MultiSelect.vue", () => {
 
     expect(wrapper.find("input[type='hidden']").attributes("name")).toEqual("selectedFruit[]")
     expect(wrapper.find("input[type='hidden']").attributes("value")).toEqual("4")
+  })
+
+  it("requires an accessible name to be passed in", () => {
+    expect(LuxInputMultiselect.props.label.required).toBe(true)
+  })
+
+  it("uses the label prop to label the input", () => {
+    wrapper = mount(LuxInputMultiselect, {
+      props: {
+        items: fruits,
+        label: "Your preferred fruits",
+      },
+    })
+
+    const inputId = wrapper.find("input").attributes("id")
+    const label = wrapper.find(`label[for=${inputId}]`)
+    expect(label.text()).toEqual("Your preferred fruits")
   })
 })

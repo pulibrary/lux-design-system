@@ -5,6 +5,8 @@
       @selected="addSelected($event)"
       ref="autocomplete"
       :placeholder="placeholder"
+      :label="label"
+      :hide-label="hideLabel"
     />
     <lux-icon-base class="search-icon"><lux-icon-search></lux-icon-search></lux-icon-base>
   </div>
@@ -45,6 +47,20 @@ const selectedItems = ref([])
 const props = defineProps({
   items: Array,
   placeholder: String,
+  /**
+   * The label of the form input field.
+   */
+  label: {
+    type: String,
+    required: true,
+  },
+  /**
+   * Visually hides the label of the form input field.
+   */
+  hideLabel: {
+    type: Boolean,
+    default: false,
+  },
   noneSelectedLabel: {
     type: String,
     default: "None selected",

@@ -24,7 +24,7 @@ describe("InputAutocomplete.vue", () => {
   })
 
   it("should be focused when the focused property is set to true", () => {
-    const input = wrapper.find("#displayInput").element
+    const input = wrapper.find("input.displayInput").element
     expect(input).toBe(document.activeElement)
   })
 
@@ -33,18 +33,18 @@ describe("InputAutocomplete.vue", () => {
   })
 
   it("keyboard navigation works", () => {
-    wrapper.find("#displayInput").trigger("focus")
+    wrapper.find("input.displayInput").trigger("focus")
     expect(wrapper.vm.arrowCounter).toBe(-1)
-    wrapper.find("#displayInput").trigger("keydown.down")
+    wrapper.find("input.displayInput").trigger("keydown.down")
     expect(wrapper.vm.arrowCounter).toBe(0)
-    wrapper.find("#displayInput").trigger("keydown.down")
+    wrapper.find("input.displayInput").trigger("keydown.down")
     expect(wrapper.vm.arrowCounter).toBe(1)
-    wrapper.find("#displayInput").trigger("keydown.up")
+    wrapper.find("input.displayInput").trigger("keydown.up")
     expect(wrapper.vm.arrowCounter).toBe(0)
   })
 
   it("can announce the currently selected item via aria-activedescendant", async () => {
-    const input = wrapper.find("#displayInput")
+    const input = wrapper.find("input.displayInput")
     input.trigger("focus")
     // Enter the first few letters of pineapple
     input.setValue("pin")
@@ -58,7 +58,7 @@ describe("InputAutocomplete.vue", () => {
   })
 
   it("emits a selected event when the user selects an item via keyboard", () => {
-    const input = wrapper.find("#displayInput")
+    const input = wrapper.find("input.displayInput")
     input.trigger("focus")
     // Enter the first few letters of mango
     input.setValue("mang")
@@ -71,7 +71,7 @@ describe("InputAutocomplete.vue", () => {
   })
 
   it("emits a selected event when the user selects an item via mouse click", async () => {
-    const input = wrapper.find("#displayInput")
+    const input = wrapper.find("input.displayInput")
     input.trigger("focus")
     // Enter the first few letters of mango
     input.setValue("mang")
@@ -131,7 +131,7 @@ describe("InputAutocomplete.vue", () => {
   })
 
   it("emits an input event when the user changes the text", async () => {
-    wrapper.find("#displayInput").setValue("Code4lib 2025")
+    wrapper.find("input.displayInput").setValue("Code4lib 2025")
     expect(wrapper.emitted().input.length).toEqual(2)
     expect(wrapper.emitted().input[1]).toEqual(["Code4lib 2025"])
   })

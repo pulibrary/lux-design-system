@@ -1,9 +1,14 @@
 <template>
   <div class="lux-autocomplete">
-    <label v-if="label" :class="{ 'lux-hidden': hideLabel }">{{ label }}</label>
+    <label
+      v-if="label"
+      :class="{ 'lux-hidden': hideLabel }"
+      :for="'displayInput-' + this.componentId"
+      >{{ label }}</label
+    >
     <div class="lux-autocomplete-input">
       <input
-        id="displayInput"
+        :id="'displayInput-' + this.componentId"
         role="combobox"
         autocomplete="off"
         ref="autoComplete"
@@ -21,6 +26,7 @@
         :required="required"
         :aria-activedescendant="ariaActiveDescendant"
         :placeholder="placeholder"
+        class="displayInput"
       />
       <ul v-show="isOpen" class="lux-autocomplete-results">
         <li class="loading" v-if="isLoading">Loading results...</li>
