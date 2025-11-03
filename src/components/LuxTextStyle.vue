@@ -39,7 +39,7 @@ export default {
       type: String,
       default: "var(--color-rich-black)",
       validator: value => {
-        return value.match(/(grey-dark|red|green|blue)/)
+        return value.match(/(var\(--color-rich-black\)|grey-dark|red|green|blue)/)
       },
     },
   },

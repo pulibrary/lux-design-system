@@ -42,6 +42,12 @@ describe("LuxMediaImage.vue", () => {
         cover: false,
         contain: true,
       },
+      global: {
+        stubs: {
+          "lux-icon-base": true,
+          "lux-icon-file": true,
+        },
+      },
     })
     expect(wrapper2.find('[name="pul-icon-file"]').exists()).toBe(false)
     expect(wrapper2.find("img").exists()).toBe(true)

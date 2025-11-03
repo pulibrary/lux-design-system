@@ -20,6 +20,9 @@
 </template>
 
 <script>
+import LuxIconBase from "./icons/LuxIconBase.vue"
+import LuxIconFile from "./icons/LuxIconFile.vue"
+
 /**
  * Media-Image is a component that is used to display an image,
  * or an icon if the image can't be resolved.
@@ -69,6 +72,10 @@ export default {
     contain: {
       type: Boolean,
       default: false,
+    },
+    components: {
+      LuxIconBase,
+      LuxIconFile,
     },
   },
 }
