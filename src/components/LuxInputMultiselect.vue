@@ -1,12 +1,16 @@
 <template>
   <div class="autocomplete-container">
     <lux-autocomplete-input
-      :items="props.items"
+      :items="allCurrentItems"
       @selected="addSelected($event)"
+      @input="findNewItems($event)"
       ref="autocomplete"
       :placeholder="placeholder"
       :label="label"
       :hide-label="hideLabel"
+      :isAsync="
+        !(props.asyncLoadItemsFunction === undefined) && !(props.asyncLoadItemsFunction === null)
+      "
     />
     <lux-icon-base class="search-icon"><lux-icon-search></lux-icon-search></lux-icon-base>
   </div>
@@ -18,7 +22,7 @@
         @slot item -- used to adjust the style and format of the items you have selected
           @binding {object} itemProps an individual item that you would like to style
       -->
-      <slot name="item" :itemProps="item">{{ item.label }}</slot>
+      <slot name="item" :itemProps="item">{{ item?.label }}</slot>
       <lux-input-button
         @button-clicked="removeItem(item)"
         type="button"
@@ -49,6 +53,14 @@ const props = defineProps({
    * An array of items.  Each item should be an object with (at minimum) an id and label property.
    */
   items: Array,
+
+  /**
+   * A function to load items asynchronously on user input. It should return an item list in the format [{id: "", label: ""}].
+   */
+  asyncLoadItemsFunction: {
+    type: Function,
+    default: null,
+  },
 
   /**
    * Placeholder text to display
@@ -85,9 +97,10 @@ const props = defineProps({
   selectedItemsLabel: String,
 })
 const autocompleteRef = useTemplateRef("autocomplete")
+const allCurrentItems = ref(props.items)
 
 function addSelected(id) {
-  const fullItem = props.items.find(item => item.id === id)
+  const fullItem = allCurrentItems.value.find(item => item.id === id)
   selectedItems.value.push(fullItem)
   autocompleteRef.value.setResult("")
 }
@@ -96,6 +109,14 @@ function removeItem(item) {
   const indexToRemove = selectedItems.value.indexOf(item)
   if (indexToRemove > -1) {
     selectedItems.value.splice(indexToRemove, 1)
+  }
+}
+
+async function findNewItems(query) {
+  if (!(props.asyncLoadItemsFunction === undefined) && !(props.asyncLoadItemsFunction === null)) {
+    let resultProxy = await props.asyncLoadItemsFunction(query)
+    let result = JSON.parse(JSON.stringify(resultProxy))
+    allCurrentItems.value = result
   }
 }
 </script>
@@ -151,6 +172,15 @@ function removeItem(item) {
         label="Your first fruit"
         selected-items-label="Selected fruits"
         none-selected-label="No fruits selected" />
+
+    <p style="margin-top: var(--space-large);">If you have asynchronous data you can return it via a function:</p>
+    <lux-input-multiselect :items="[]"
+        placeholder="Please choose your query"
+        label="Your query"
+        selected-items-label="Selected Queries"
+        :asyncLoadItemsFunction="query => [{id: 'abc', label: query}]"
+        none-selected-label="No query selected" />
+
     <p style="margin-top: var(--space-large);">If you have a specific way you'd like to display the items, you can pass it as a template into the item slot:</p>
     <lux-input-multiselect :items="[
           { id: 1, label: 'Apple' },

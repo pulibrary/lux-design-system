@@ -241,7 +241,8 @@ export default {
     items: function (value, oldValue) {
       // we want to make sure we only do this when it's an async request
       if (this.isAsync) {
-        this.results = value
+        // we should likely handle items that are not an object here
+        this.results = value.map(result => result.label)
         this.isOpen = true
         this.isLoading = false
       }
