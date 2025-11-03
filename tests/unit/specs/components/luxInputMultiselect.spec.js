@@ -1,4 +1,4 @@
-import { mount } from "@vue/test-utils"
+import { flushPromises, mount } from "@vue/test-utils"
 import LuxInputMultiselect from "@/components/LuxInputMultiselect.vue"
 import { nextTick } from "vue"
 
@@ -99,5 +99,23 @@ describe("MultiSelect.vue", () => {
     const inputId = wrapper.find("input").attributes("id")
     const label = wrapper.find(`label[for=${inputId}]`)
     expect(label.text()).toEqual("Your preferred fruits")
+  })
+
+  it("can use an async function to provide the entries", async () => {
+    wrapper = mount(LuxInputMultiselect, {
+      props: {
+        label: "Your preferred fruits",
+        asyncLoadItemsFunction: async (query) => [{label: `${query} #1`, id: 1}, {label: `${query} #2`, id: 2}]
+      },
+    })
+
+      const input = wrapper.find("input.displayInput")
+  input.trigger("focus")
+  input.setValue("my query")
+    await flushPromises();
+
+    const items = wrapper.findAll(".lux-autocomplete-result");
+    expect(items[0].text()).toEqual('my query #1')
+    expect(items[1].text()).toEqual('my query #2')
   })
 })

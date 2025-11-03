@@ -52,7 +52,10 @@ const props = defineProps({
   /**
    * An array of items.  Each item should be an object with (at minimum) an id and label property.
    */
-  items: Array,
+  items: {
+    type: Array,
+    default: []
+  },
 
   /**
    * A function to load items asynchronously on user input. It should return an item list in the format [{id: "", label: ""}].
