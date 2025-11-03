@@ -175,4 +175,38 @@ describe("InputAutocomplete.vue", () => {
     wrapper.find("input").trigger("focus")
     expect(wrapper.find(".lux-autocomplete-results").isVisible()).toBe(true)
   })
+
+  describe("asynchronous usage", () => {
+    beforeEach(() => wrapper.setProps({ isAsync: true }))
+
+    it("lets the user know that things are loading", async () => {
+      wrapper.find("input").trigger("click")
+      await nextTick()
+      expect(wrapper.text()).toContain("Loading")
+    })
+
+    it("updates options according to the newly loaded items", async () => {
+      wrapper.find("input").trigger("click")
+      wrapper.setProps({
+        items: [
+          { label: "Tea", id: 1 },
+          { label: "Coffee", id: 2 },
+          { label: "Hot Chocolate", id: 3 },
+        ],
+      })
+      await nextTick()
+
+      expect(wrapper.text()).not.toContain("Loading")
+      expect(wrapper.text()).toContain("Hot Chocolate")
+    })
+
+    it("can handle newly loaded strings", async () => {
+      wrapper.find("input").trigger("click")
+      wrapper.setProps({ items: ["Omura whale", "Bowhead whale", "North Pacific right whale"] })
+      await nextTick()
+
+      expect(wrapper.text()).not.toContain("Loading")
+      expect(wrapper.text()).toContain("Omura whale")
+    })
+  })
 })
