@@ -22,7 +22,6 @@ import LuxBanner from "./LuxBanner.vue"
 import LuxCard from "./LuxCard.vue"
 import LuxDataTable from "./LuxDataTable.vue"
 import LuxDatePicker from "./LuxDatePicker.vue"
-import LuxDisclosure from "./LuxDisclosure.vue"
 import LuxGallery from "./LuxGallery.vue"
 import LuxGridContainer from "./LuxGridContainer.vue"
 import LuxGridItem from "./LuxGridItem.vue"
@@ -80,7 +79,6 @@ export {
   LuxCard,
   LuxDataTable,
   LuxDatePicker,
-  LuxDisclosure,
   LuxGallery,
   LuxGridContainer,
   LuxGridItem,
