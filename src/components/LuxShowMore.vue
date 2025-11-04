@@ -34,7 +34,7 @@ import { computed, ref, useTemplateRef } from "vue"
  * while for others the abstracts are unhelpful and cause substantial
  * unnecessary scrolling.
  */
-defineOptions({ name: "LuxDisclosure" })
+defineOptions({ name: "LuxShowMore" })
 
 const slots = defineSlots()
 
