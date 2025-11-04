@@ -8,9 +8,7 @@
       :placeholder="placeholder"
       :label="label"
       :hide-label="hideLabel"
-      :isAsync="
-        !(props.asyncLoadItemsFunction === undefined) && !(props.asyncLoadItemsFunction === null)
-      "
+      :isAsync="isAsync"
     />
     <lux-icon-base class="search-icon"><lux-icon-search></lux-icon-search></lux-icon-base>
   </div>
@@ -45,7 +43,9 @@ import LuxAutocompleteInput from "./LuxAutocompleteInput.vue"
 import LuxIconBase from "./icons/LuxIconBase.vue"
 import LuxIconSearch from "./icons/LuxIconSearch.vue"
 import LuxInputButton from "./LuxInputButton.vue"
-import { ref, useTemplateRef } from "vue"
+import { computed, ref, useTemplateRef } from "vue"
+
+defineOptions({ name: "LuxInputMultiselect" })
 
 const selectedItems = ref([])
 const props = defineProps({
@@ -101,6 +101,9 @@ const props = defineProps({
 })
 const autocompleteRef = useTemplateRef("autocomplete")
 const allCurrentItems = ref(props.items)
+const isAsync = computed(
+  () => !(props.asyncLoadItemsFunction === undefined) && !(props.asyncLoadItemsFunction === null)
+)
 
 function addSelected(id) {
   const fullItem = allCurrentItems.value.find(item => item.id === id)

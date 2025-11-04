@@ -1,0 +1,49 @@
+<!--
+This is an example that uses lux-input-multiselect to allow you to select and de-select wikipedia articles
+To run it:
+1. npm run build
+2. ruby -run -e httpd . -p 5000
+3. In your browser, visit http://localhost:5000/examples/multiselect.html
+-->
+<html>
+
+<head>
+  <link rel="stylesheet" href="/dist/style.css">
+</head>
+
+<body>
+  <script type="importmap">
+  {
+    "imports": {
+      "vue": "https://unpkg.com/vue@3.5.22/dist/vue.esm-browser.prod.js",
+      "lux-design-system": "/dist/lux-styleguidist.mjs"
+    }
+  }
+  </script>
+  <script type="module">
+    import { createApp } from 'vue';
+    import lux from 'lux-design-system';
+
+    const app = createApp({});
+
+    // If you are not running a full Vue application, just embedding the component into a static HTML,
+    // ruby web app, or similar: one way to bind your logic to the async-load-items-function prop is
+    // to add it to the vue application's globalProperties.
+    app.config.globalProperties.searchWikipedia = async (query) => {
+      if (query.length === 0) return []
+      const result = await fetch(`https://en.wikipedia.org/w/rest.php/v1/search/title?q=${query}&limit=10`)
+      const json = await result.json()
+      return json.pages?.map(page => { return { label: page.title, id: page.id } }) || []
+    }
+    app.use(lux).mount('#app')
+  </script>
+  <div id="app">
+    <lux-input-multiselect
+        label="Wikipedia pages"
+        selected-items-label="Selected pages"
+        none-selected-label="No pages selected"
+        :async-load-items-function="searchWikipedia" />
+  </div>
+</body>
+
+</html>
