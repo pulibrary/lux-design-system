@@ -1,7 +1,7 @@
 <template>
   <div class="autocomplete-container">
     <lux-autocomplete-input
-      :items="allCurrentItems"
+      :items="unselectedItems"
       @selected="addSelected($event)"
       @input="findNewItems($event)"
       ref="autocomplete"
@@ -114,6 +114,9 @@ const props = defineProps({
 })
 const autocompleteRef = useTemplateRef("autocomplete")
 const allCurrentItems = ref(props.items)
+const unselectedItems = computed(() =>
+  allCurrentItems.value.filter(item => !selectedItems.value.includes(item))
+)
 const isAsync = computed(
   () => !(props.asyncLoadItemsFunction === undefined) && !(props.asyncLoadItemsFunction === null)
 )
