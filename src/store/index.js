@@ -1,5 +1,5 @@
 import { createStore } from "vuex"
-import { counterModule, galleryModule } from "./modules"
+import { galleryModule } from "./modules"
 // import { galleryModule } from "./modules"
 
 export default createStore({
@@ -18,7 +18,6 @@ export default createStore({
   //   },
   // },
   modules: {
-    counter: counterModule,
     gallery: galleryModule,
   },
 })

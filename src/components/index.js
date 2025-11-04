@@ -20,7 +20,6 @@ import _LuxUniversityCopyrightOld from "./_LuxUniversityCopyrightOld.vue"
 import _LuxUniversityPrivacyNotice from "./_LuxUniversityPrivacyNotice.vue"
 import LuxBanner from "./LuxBanner.vue"
 import LuxCard from "./LuxCard.vue"
-import LuxCounter from "./LuxCounter.vue"
 import LuxDataTable from "./LuxDataTable.vue"
 import LuxDatePicker from "./LuxDatePicker.vue"
 import LuxDisclosure from "./LuxDisclosure.vue"
@@ -79,7 +78,6 @@ export {
   _LuxUniversityPrivacyNotice,
   LuxBanner,
   LuxCard,
-  LuxCounter,
   LuxDataTable,
   LuxDatePicker,
   LuxDisclosure,
