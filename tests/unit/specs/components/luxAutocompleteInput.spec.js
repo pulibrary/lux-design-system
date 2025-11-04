@@ -24,7 +24,7 @@ describe("InputAutocomplete.vue", () => {
   })
 
   it("should be focused when the focused property is set to true", () => {
-    const input = wrapper.find("#displayInput").element
+    const input = wrapper.find("input.displayInput").element
     expect(input).toBe(document.activeElement)
   })
 
@@ -33,18 +33,18 @@ describe("InputAutocomplete.vue", () => {
   })
 
   it("keyboard navigation works", () => {
-    wrapper.find("#displayInput").trigger("focus")
+    wrapper.find("input.displayInput").trigger("focus")
     expect(wrapper.vm.arrowCounter).toBe(-1)
-    wrapper.find("#displayInput").trigger("keydown.down")
+    wrapper.find("input.displayInput").trigger("keydown.down")
     expect(wrapper.vm.arrowCounter).toBe(0)
-    wrapper.find("#displayInput").trigger("keydown.down")
+    wrapper.find("input.displayInput").trigger("keydown.down")
     expect(wrapper.vm.arrowCounter).toBe(1)
-    wrapper.find("#displayInput").trigger("keydown.up")
+    wrapper.find("input.displayInput").trigger("keydown.up")
     expect(wrapper.vm.arrowCounter).toBe(0)
   })
 
   it("can announce the currently selected item via aria-activedescendant", async () => {
-    const input = wrapper.find("#displayInput")
+    const input = wrapper.find("input.displayInput")
     input.trigger("focus")
     // Enter the first few letters of pineapple
     input.setValue("pin")
@@ -58,7 +58,7 @@ describe("InputAutocomplete.vue", () => {
   })
 
   it("emits a selected event when the user selects an item via keyboard", () => {
-    const input = wrapper.find("#displayInput")
+    const input = wrapper.find("input.displayInput")
     input.trigger("focus")
     // Enter the first few letters of mango
     input.setValue("mang")
@@ -71,7 +71,7 @@ describe("InputAutocomplete.vue", () => {
   })
 
   it("emits a selected event when the user selects an item via mouse click", async () => {
-    const input = wrapper.find("#displayInput")
+    const input = wrapper.find("input.displayInput")
     input.trigger("focus")
     // Enter the first few letters of mango
     input.setValue("mang")
@@ -80,7 +80,7 @@ describe("InputAutocomplete.vue", () => {
 
     const mangoItem = wrapper.find(".lux-autocomplete-result")
     expect(mangoItem.text()).toEqual("Mango")
-    mangoItem.trigger("click")
+    mangoItem.trigger("mousedown")
 
     expect(wrapper.emitted().selected.length).toEqual(1)
     expect(wrapper.emitted().selected[0]).toEqual([3]) // The ID of Mango
@@ -131,7 +131,7 @@ describe("InputAutocomplete.vue", () => {
   })
 
   it("emits an input event when the user changes the text", async () => {
-    wrapper.find("#displayInput").setValue("Code4lib 2025")
+    wrapper.find("input.displayInput").setValue("Code4lib 2025")
     expect(wrapper.emitted().input.length).toEqual(2)
     expect(wrapper.emitted().input[1]).toEqual(["Code4lib 2025"])
   })
@@ -174,5 +174,39 @@ describe("InputAutocomplete.vue", () => {
   it("shows dropdown when input is focused", () => {
     wrapper.find("input").trigger("focus")
     expect(wrapper.find(".lux-autocomplete-results").isVisible()).toBe(true)
+  })
+
+  describe("asynchronous usage", () => {
+    beforeEach(() => wrapper.setProps({ isAsync: true }))
+
+    it("lets the user know that things are loading", async () => {
+      wrapper.find("input").trigger("click")
+      await nextTick()
+      expect(wrapper.text()).toContain("Loading")
+    })
+
+    it("updates options according to the newly loaded items", async () => {
+      wrapper.find("input").trigger("click")
+      wrapper.setProps({
+        items: [
+          { label: "Tea", id: 1 },
+          { label: "Coffee", id: 2 },
+          { label: "Hot Chocolate", id: 3 },
+        ],
+      })
+      await nextTick()
+
+      expect(wrapper.text()).not.toContain("Loading")
+      expect(wrapper.text()).toContain("Hot Chocolate")
+    })
+
+    it("can handle newly loaded strings", async () => {
+      wrapper.find("input").trigger("click")
+      wrapper.setProps({ items: ["Omura whale", "Bowhead whale", "North Pacific right whale"] })
+      await nextTick()
+
+      expect(wrapper.text()).not.toContain("Loading")
+      expect(wrapper.text()).toContain("Omura whale")
+    })
   })
 })

@@ -34,6 +34,7 @@
   --color-princeton-orange-10: #FCF1E5;
   --color-gray-100: #121212;
   --color-gray-90: rgb(33, 37, 41);
+  --color-gray-80: #717171;
   --color-gray-10: rgb(247, 247, 247);
   --color-light-pistachio-green: rgb(223, 240, 216);
   --color-pistachio-green: rgb(208, 233, 198);
@@ -62,6 +63,7 @@
   --font-size-large: 24px;
   --font-size-xx-large-max: 2.369em;
   --font-size-large-max: 1.333em;
+  --font-size-xx-small: 10px;
   --font-size-x-small: 12px;
   --font-size-base-min: 1em;
   --font-size-small: 14px;

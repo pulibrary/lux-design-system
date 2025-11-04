@@ -1,9 +1,14 @@
 <template>
   <div class="lux-autocomplete">
-    <label v-if="label" :class="{ 'lux-hidden': hideLabel }">{{ label }}</label>
+    <label
+      v-if="label"
+      :class="{ 'lux-hidden': hideLabel }"
+      :for="'displayInput-' + this.componentId"
+      >{{ label }}</label
+    >
     <div class="lux-autocomplete-input">
       <input
-        id="displayInput"
+        :id="'displayInput-' + this.componentId"
         role="combobox"
         autocomplete="off"
         ref="autoComplete"
@@ -21,6 +26,7 @@
         :required="required"
         :aria-activedescendant="ariaActiveDescendant"
         :placeholder="placeholder"
+        class="displayInput"
       />
       <ul v-show="isOpen" class="lux-autocomplete-results">
         <li class="loading" v-if="isLoading">Loading results...</li>
@@ -28,7 +34,7 @@
           v-else
           v-for="(result, i) in results"
           :key="i"
-          @click="setResult(result, emitSelectedId)"
+          @mousedown="onClickResult(result)"
           class="lux-autocomplete-result"
           :class="{ 'is-active': i === arrowCounter }"
           :id="'lux-autocomplete-' + this.componentId + 'result-' + i"
@@ -207,6 +213,7 @@ export default {
       this.isOpen = false
       this.arrowCounter = -1
     },
+
     onEscape() {
       this.setResult(this.search)
       this.isOpen = false
@@ -217,6 +224,9 @@ export default {
         this.isOpen = false
         this.arrowCounter = -1
       }
+    },
+    onClickResult(result) {
+      this.setResult(result, this.emitSelectedId)
     },
     emitSelectedId(id) {
       /**
@@ -231,7 +241,9 @@ export default {
     items: function (value, oldValue) {
       // we want to make sure we only do this when it's an async request
       if (this.isAsync) {
-        this.results = value
+        this.results = value.map(result =>
+          typeof result === "object" ? result.label : result.toString()
+        )
         this.isOpen = true
         this.isLoading = false
       }
@@ -357,7 +369,7 @@ $color-placeholder: tint($color-grayscale, 50%);
 .lux-autocomplete-results {
   padding: 0;
   margin: 0;
-  border: 1px solid #eeeeee;
+  border: 1px solid var(--color-gray-10);
   height: 120px;
   overflow: auto;
   color: set-text-color($color-rich-black, $color-white);

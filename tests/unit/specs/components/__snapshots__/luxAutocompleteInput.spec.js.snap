@@ -10,7 +10,8 @@ exports[`InputAutocomplete.vue has the expected html structure 1`] = `
   >
     <input
       autocomplete="off"
-      id="displayInput"
+      class="displayInput"
+      id="displayInput-v-0"
       role="combobox"
       type="text"
     />
