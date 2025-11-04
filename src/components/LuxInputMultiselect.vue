@@ -12,26 +12,39 @@
     />
     <lux-icon-base class="search-icon"><lux-icon-search></lux-icon-search></lux-icon-base>
   </div>
-  <span v-if="selectedItemsLabel" class="selected-item">{{ selectedItemsLabel }}</span>
-  <ul class="selected-items">
-    <li v-if="selectedItems.length == 0" class="selected-item">{{ noneSelectedLabel }}</li>
-    <li v-else v-for="item in selectedItems" :key="item" class="selected-item">
-      <!--
-        @slot item -- used to adjust the style and format of the items you have selected
-          @binding {object} itemProps an individual item that you would like to style
-      -->
-      <slot name="item" :itemProps="item">{{ item?.label }}</slot>
-      <lux-input-button
-        @button-clicked="removeItem(item)"
-        type="button"
-        variation="icon"
-        icon="close"
-        size="small"
-        class="remove-item"
-      >
-      </lux-input-button>
-    </li>
-  </ul>
+  <div class="selected-items-frame">
+    <span v-if="selectedItemsLabel" class="selected-items-label">{{ selectedItemsLabel }}</span>
+    <ul class="selected-items">
+      <li v-if="selectedItems.length == 0" class="selected-item">
+        <div class="info">
+          <div class="info-text">{{ noneSelectedLabel }}</div>
+        </div>
+      </li>
+      <li v-else v-for="item in selectedItems" :key="item" class="selected-item">
+        <!--
+          @slot item -- used to adjust the style and format of the items you have selected
+            @binding {object} itemProps an individual item that you would like to style
+        -->
+        <slot name="item" :itemProps="item">
+          <div class="info">
+            <lux-badge class="badge">
+              <div class="badge-text">{{ item.id }}</div>
+            </lux-badge>
+            <div class="item-text">{{ item.label }}</div>
+          </div>
+        </slot>
+        <lux-input-button
+          @button-clicked="removeItem(item)"
+          type="button"
+          variation="icon"
+          icon="close"
+          size="small"
+          class="remove-item"
+        >
+        </lux-input-button>
+      </li>
+    </ul>
+  </div>
   <!--
   @slot hiddenInput -- You can use this to pass all of the user's selected values back to the backend (e.g. Rails) on form submit
       @binding {array} selectedItems an array of items (objects) that the user has selected
@@ -130,14 +143,39 @@ async function findNewItems(query) {
 .autocomplete-container {
   position: relative;
 
+  .lux-autocomplete-input {
+    border: none;
+    box-shadow: none;
+  }
+
   input {
     padding-right: var(--space-large);
+    border-radius: 8px;
+    border: 1px solid var(--Neutral-Medium-Gray, #d0d0d0);
+    background: var(--Neutral-White, #fff);
+  }
+
+  input::placeholder {
+    color: var(--color-gray-80);
   }
 }
 .search-icon {
   position: absolute;
   top: calc(100% - 36px);
   right: var(--space-x-small);
+}
+.selected-items-frame {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.25rem;
+
+  .selected-items-label {
+    align-self: stretch;
+    font-weight: var(--font-weight-semi-bold);
+    font-size: var(--font-size-x-small);
+  }
 }
 .selected-items {
   display: flex;
@@ -156,11 +194,46 @@ async function findNewItems(query) {
     border-radius: 0.25rem;
     background: var(--color-gray-10);
     width: 100%;
-  }
+    .info {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      flex: 1 0 0;
 
-  .selected-items-label {
-    font-weight: var(--font-weight-semi-bold);
-    font-size: var(--font-size-x-small);
+      .badge {
+        display: flex;
+        min-width: 3.125rem;
+        padding: 0.125rem 0.5rem;
+        justify-content: center;
+        align-items: center;
+        border-radius: 0.75rem;
+        background: var(--color-white);
+
+        .badge-text {
+          color: var(--color-gray-100);
+          text-align: center;
+          font-size: var(--font-size-xx-small);
+          line-height: 150%; /* 150% */
+        }
+      }
+
+      .info-text {
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 1;
+        flex: 1 0 0;
+        overflow: hidden;
+        color: var(--color-gray-80);
+        text-overflow: ellipsis;
+
+        font-size: var(--font-size-small);
+        line-height: 150%;
+      }
+    }
+
+    .remove-item {
+      background: var(--color-gray-10);
+    }
   }
 }
 </style>
