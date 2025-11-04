@@ -68,6 +68,19 @@ describe("MultiSelect.vue", () => {
     expect(wrapper.find(".selected-items").text()).not.toContain("Mango")
   })
 
+  it("does not let the user select the same item twice", async () => {
+    await addMangoItemByMouse(wrapper)
+
+    // Re-open the dropdown
+    wrapper.find("input.displayInput").trigger("focus")
+    await nextTick()
+
+    const itemsInDropdown = wrapper.findAll(".lux-autocomplete-result").map(item => item.text())
+    expect(itemsInDropdown).toContain("Apple", "Banana", "Banana split")
+    // The selected item is not available to add again
+    expect(itemsInDropdown).not.toContain("Mango")
+  })
+
   it("can create a hidden input for use in an HTML form", async () => {
     wrapper = mount(LuxInputMultiselect, {
       props: {
@@ -105,17 +118,20 @@ describe("MultiSelect.vue", () => {
     wrapper = mount(LuxInputMultiselect, {
       props: {
         label: "Your preferred fruits",
-        asyncLoadItemsFunction: async (query) => [{label: `${query} #1`, id: 1}, {label: `${query} #2`, id: 2}]
+        asyncLoadItemsFunction: async query => [
+          { label: `${query} #1`, id: 1 },
+          { label: `${query} #2`, id: 2 },
+        ],
       },
     })
 
-      const input = wrapper.find("input.displayInput")
-  input.trigger("focus")
-  input.setValue("my query")
-    await flushPromises();
+    const input = wrapper.find("input.displayInput")
+    input.trigger("focus")
+    input.setValue("my query")
+    await flushPromises()
 
-    const items = wrapper.findAll(".lux-autocomplete-result");
-    expect(items[0].text()).toEqual('my query #1')
-    expect(items[1].text()).toEqual('my query #2')
+    const items = wrapper.findAll(".lux-autocomplete-result")
+    expect(items[0].text()).toEqual("my query #1")
+    expect(items[1].text()).toEqual("my query #2")
   })
 })
