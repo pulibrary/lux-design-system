@@ -68,6 +68,7 @@
 |<div class="swatch" style="background-color: #FCF1E5;"></div>|<pre>--color-princeton-orange-10</pre>|#FCF1E5;|
 |<div class="swatch" style="background-color: #121212;"></div>|<pre>--color-gray-100</pre>|#121212;|
 |<div class="swatch" style="background-color: rgb(33, 37, 41);"></div>|<pre>--color-gray-90</pre>|rgb(33, 37, 41);|
+|<div class="swatch" style="background-color: #717171;"></div>|<pre>--color-gray-80</pre>|#717171;|
 |<div class="swatch" style="background-color: rgb(247, 247, 247);"></div>|<pre>--color-gray-10</pre>|rgb(247, 247, 247);|
 |<div class="swatch" style="background-color: rgb(223, 240, 216);"></div>|<pre>--color-light-pistachio-green</pre>|rgb(223, 240, 216);|
 |<div class="swatch" style="background-color: rgb(208, 233, 198);"></div>|<pre>--color-pistachio-green</pre>|rgb(208, 233, 198);|
@@ -101,6 +102,7 @@
 |<span style="font-size: 24px;">--font-size-large</span>|24px;|
 |<span style="font-size: 2.369em;">--font-size-xx-large-max</span>|2.369em;|
 |<span style="font-size: 1.333em;">--font-size-large-max</span>|1.333em;|
+|<span style="font-size: 10px;">--font-size-xx-small</span>|10px;|
 |<span style="font-size: 12px;">--font-size-x-small</span>|12px;|
 |<span style="font-size: 1em;">--font-size-base-min</span>|1em;|
 |<span style="font-size: 14px;">--font-size-small</span>|14px;|
