@@ -53,6 +53,7 @@
 </template>
 <script setup>
 import LuxAutocompleteInput from "./LuxAutocompleteInput.vue"
+import LuxBadge from "./LuxBadge.vue"
 import LuxIconBase from "./icons/LuxIconBase.vue"
 import LuxIconSearch from "./icons/LuxIconSearch.vue"
 import LuxInputButton from "./LuxInputButton.vue"
@@ -136,9 +137,7 @@ function removeItem(item) {
 
 async function findNewItems(query) {
   if (!(props.asyncLoadItemsFunction === undefined) && !(props.asyncLoadItemsFunction === null)) {
-    let resultProxy = await props.asyncLoadItemsFunction(query)
-    let result = JSON.parse(JSON.stringify(resultProxy))
-    allCurrentItems.value = result
+    allCurrentItems.value = await props.asyncLoadItemsFunction(query)
   }
 }
 </script>
