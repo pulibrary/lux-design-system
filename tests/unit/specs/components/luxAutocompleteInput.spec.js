@@ -1,6 +1,7 @@
 import { mount } from "@vue/test-utils"
 import LuxAutocompleteInput from "@/components/LuxAutocompleteInput.vue"
 import { nextTick } from "vue"
+import AutocompleteFormFake from "./fakes/AutocompleteFormFake.vue"
 
 describe("InputAutocomplete.vue", () => {
   let wrapper
@@ -207,6 +208,16 @@ describe("InputAutocomplete.vue", () => {
 
       expect(wrapper.text()).not.toContain("Loading")
       expect(wrapper.text()).toContain("Omura whale")
+    })
+  })
+  describe("when the autocomplete is in a form element", () => {
+    beforeEach(() => (wrapper = mount(AutocompleteFormFake, { attachTo: document.body })))
+    it("does not submit when the user selects an element using the enter key", () => {
+      const input = wrapper.find("input.displayInput")
+      input.trigger("focus")
+      input.trigger("keydown.down")
+      input.trigger("keydown.enter")
+      expect(wrapper.emitted().submitted).toBeUndefined()
     })
   })
 })
