@@ -19,7 +19,7 @@
         v-model="search"
         @keydown.down.prevent="onArrowDown"
         @keydown.up.prevent="onArrowUp"
-        @keydown.enter="onEnter"
+        @keydown.enter.prevent="onEnter"
         @keydown.esc="onEscape"
         @keydown.tab="onEscape"
         @blur="onEscape"

@@ -2,6 +2,7 @@ import { mount } from "@vue/test-utils"
 import LuxAutocompleteInput from "@/components/LuxAutocompleteInput.vue"
 import { nextTick } from "vue"
 import AutocompleteFormFake from "./fakes/AutocompleteFormFake.vue"
+import FormFake from "./fakes/FormFake.vue"
 
 describe("InputAutocomplete.vue", () => {
   let wrapper
@@ -218,6 +219,43 @@ describe("InputAutocomplete.vue", () => {
       input.trigger("keydown.down")
       input.trigger("keydown.enter")
       expect(wrapper.emitted().submitted).toBeUndefined()
+    })
+  })
+
+  describe("when the autocomplete is in a form element", () => {
+    beforeEach(() => (wrapper = mount(FormFake, { attachTo: document.body })))
+
+    it("submits a form", async () => {
+      const email = "name@mail.com"
+      const description = "Lorem ipsum dolor sit amet"
+      const city = "moscow"
+
+      const input = wrapper.find("input.displayInput")
+      input.trigger("focus")
+      input.trigger("keydown.down")
+      input.setValue("aard")
+      // Wait for Vue to re-render the DOM
+      await nextTick()
+      const item = wrapper.find("li.lux-autocomplete-result")
+      input.trigger("keypress.enter")
+      input.trigger("keydown.enter")
+
+      await wrapper.find("input[type=email]").setValue(email)
+      await wrapper.find("textarea").setValue(description)
+      await wrapper.find("select").setValue(city)
+      await wrapper.find("input[type=checkbox]").setValue()
+      await wrapper.find("input[type=radio][value=monthly]").setValue()
+
+      await wrapper.find("form").trigger("submit.prevent")
+
+      expect(wrapper.emitted("submit")[0][0]).toStrictEqual({
+        animals: 1,
+        email,
+        description,
+        city,
+        subscribe: true,
+        interval: "monthly",
+      })
     })
   })
 })
