@@ -1,0 +1,50 @@
+<!--
+This is an example that uses lux-autocomplete-input within a form to allow you to select animals
+  It shows that the form is not submitted on enter with the current LuxAutoCompleteInput
+To run it:
+1. npm run build
+2. ruby -run -e httpd . -p 5000
+3. In your browser, visit http://localhost:5000/examples/singleselect.html
+-->
+<html>
+
+<head>
+  <link rel="stylesheet" href="/dist/style.css">
+</head>
+
+<body>
+  <script type="importmap">
+  {
+    "imports": {
+      "vue": "https://unpkg.com/vue@3.5.22/dist/vue.esm-browser.prod.js",
+      "lux-design-system": "/dist/lux-styleguidist.mjs"
+    }
+  }
+  </script>
+  <script type="module">
+    import { createApp } from 'vue';
+    import lux from 'lux-design-system';
+
+    const app = createApp({});
+    app.use(lux).mount('#app')
+  </script>
+  <div id="app">
+
+      <form action="https://www.w3schools.com/action_page.php" >
+        <lux-autocomplete-input
+          id="animals"
+          label="Animals"
+          default-value="crocodile"
+          :items="[{id: 1, label: 'aardvark'}, {id: 2, label: 'bear'}, {id:3, label: 'crocodile'},
+                    {id: 4, label: 'dolphin'}, {id: 5, label: 'frog'}, {id:6, label: 'hippo'}]"
+        >
+        </lux-autocomplete-input>
+
+        <input type="email" label="email"/>
+
+        <button type="submit">Submit</button>
+      </form>
+  </div>
+</body>
+
+</html>

@@ -2,6 +2,10 @@ version: 2.1
 orbs:
   node: circleci/node@5.0.2
 
+executors:
+  pw-noble-development:
+    docker:
+      - image: mcr.microsoft.com/playwright:v1.56.1-noble
 jobs:
   styleguide:
     working_directory: ~/project
@@ -27,6 +31,15 @@ jobs:
       - run:
           command: npm run build
           name: Confirm that we can build the package for NPM
+  playwright:
+    executor: pw-noble-development
+    working_directory: ~/project
+    # parallelism: 4
+    steps:
+      - checkout
+      - node/install-packages
+      - run: npx playwright test
+      # - run: SHARD="$((${CIRCLE_NODE_INDEX}+1))"; npx playwright test --shard=${SHARD}/${CIRCLE_NODE_TOTAL}
 workflows:
   test_my_app:
     jobs:
@@ -38,5 +51,6 @@ workflows:
                 - 24.2.0
                 - 22.16.0
                 - 20.19.2
+      - playwright
       - styleguide
       - package
