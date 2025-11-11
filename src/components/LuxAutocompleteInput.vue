@@ -199,13 +199,15 @@ export default {
       }
     },
     onArrowDown() {
-      if (this.arrowCounter < this.results.length) {
+      if (this.arrowCounter < this.results.length - 1) {
         this.arrowCounter = this.arrowCounter + 1
+        this.scroll_to_active_item()
       }
     },
     onArrowUp() {
       if (this.arrowCounter > 0) {
         this.arrowCounter = this.arrowCounter - 1
+        this.scroll_to_active_item()
       }
     },
     onEnter() {
@@ -233,6 +235,11 @@ export default {
        * Emitted when the user selects an "official" value from the list of supplied terms
        */
       this.$emit("selected", id)
+    },
+    scroll_to_active_item() {
+      var item_id = `lux-autocomplete-${this.componentId}result-${this.arrowCounter}`
+      var item = document.getElementById(item_id)
+      item.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "start" })
     },
   },
   watch: {
