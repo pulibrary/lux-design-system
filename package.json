@@ -31,7 +31,8 @@
     "styleguide": "npm run design_tokens:docs:build && vue-cli-service styleguidist",
     "styleguide:build": "npm run design_tokens:docs:build && vue-cli-service styleguidist:build",
     "design_tokens:docs:build": "node src/utils/generateDesignTokenDocs.mjs",
-    "start": "npm run build; npx http-server --port 5002"
+    "start": "npm run build; npx http-server --port 5002",
+    "start:dev": "npm run build; npx http-server --port 5000"
   },
   "dependencies": {
     "core-js": "^3.8.3",
