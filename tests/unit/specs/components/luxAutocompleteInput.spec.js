@@ -6,6 +6,7 @@ describe("InputAutocomplete.vue", () => {
   let wrapper
 
   beforeEach(() => {
+    Element.prototype.scrollIntoView = jest.fn()
     wrapper = mount(LuxAutocompleteInput, {
       propsData: {
         id: "foo",
@@ -16,6 +17,8 @@ describe("InputAutocomplete.vue", () => {
           { id: 2, label: "Banana" },
           { id: 3, label: "Mango" },
           { id: 4, label: "Pineapple" },
+          { id: 5, label: "Passion Fruit" },
+          { id: 6, label: "Star Fruit" },
         ],
         focused: true,
       },
@@ -32,15 +35,29 @@ describe("InputAutocomplete.vue", () => {
     expect(wrapper.vm.inputValue).toBe(2)
   })
 
-  it("keyboard navigation works", () => {
-    wrapper.find("input.displayInput").trigger("focus")
+  it("keyboard navigation works", async () => {
+    const input = wrapper.find("input.displayInput")
+
+    input.trigger("focus")
+    input.setValue("")
+    await nextTick()
     expect(wrapper.vm.arrowCounter).toBe(-1)
-    wrapper.find("input.displayInput").trigger("keydown.down")
+    input.trigger("keydown.down")
     expect(wrapper.vm.arrowCounter).toBe(0)
-    wrapper.find("input.displayInput").trigger("keydown.down")
+    input.trigger("keydown.down")
     expect(wrapper.vm.arrowCounter).toBe(1)
-    wrapper.find("input.displayInput").trigger("keydown.up")
+    input.trigger("keydown.up")
     expect(wrapper.vm.arrowCounter).toBe(0)
+    input.trigger("keydown.down")
+    expect(wrapper.vm.arrowCounter).toBe(1)
+    input.trigger("keydown.down")
+    expect(wrapper.vm.arrowCounter).toBe(2)
+    input.trigger("keydown.down")
+    expect(wrapper.vm.arrowCounter).toBe(3)
+    input.trigger("keydown.down")
+    expect(wrapper.vm.arrowCounter).toBe(4)
+    await nextTick()
+    expect(Element.prototype.scrollIntoView.mock.calls).toHaveLength(7)
   })
 
   it("can announce the currently selected item via aria-activedescendant", async () => {
