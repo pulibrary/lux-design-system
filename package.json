@@ -30,7 +30,8 @@
     "release": "npm run build && np && npm run deploy",
     "styleguide": "npm run design_tokens:docs:build && vue-cli-service styleguidist",
     "styleguide:build": "npm run design_tokens:docs:build && vue-cli-service styleguidist:build",
-    "design_tokens:docs:build": "node src/utils/generateDesignTokenDocs.mjs"
+    "design_tokens:docs:build": "node src/utils/generateDesignTokenDocs.mjs",
+    "start": "npm run build; ruby -run -e httpd . -p 5002"
   },
   "dependencies": {
     "core-js": "^3.8.3",
