@@ -31,10 +31,11 @@
     "styleguide": "npm run design_tokens:docs:build && vue-cli-service styleguidist",
     "styleguide:build": "npm run design_tokens:docs:build && vue-cli-service styleguidist:build",
     "design_tokens:docs:build": "node src/utils/generateDesignTokenDocs.mjs",
-    "start": "npm run build; ruby -run -e httpd . -p 5002"
+    "start": "npm run build; npx http-server --port 5002"
   },
   "dependencies": {
     "core-js": "^3.8.3",
+    "http-server": "^14.1.1",
     "register-service-worker": "^1.7.2",
     "v-calendar": "^3.1.2",
     "vue-draggable-plus": "^0.3.5",
