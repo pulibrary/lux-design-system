@@ -31,6 +31,8 @@ need to be part of the PULibrary organization on npm.
 ```
 npm login
 npm install --global np # don't add this as a devDependency, otherwise you won't be able to push to npm
+git switch main
+git pull
 npm run release
 ```
 
