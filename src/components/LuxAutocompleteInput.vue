@@ -292,7 +292,6 @@ export default {
 
 <style lang="scss">
 @use "/src/assets/styles/spacing.scss" as *;
-@use "/src/assets/styles/variables.css" as *;
 @use "/src/assets/styles/system.scss" as *;
 // Design Tokens with local scope
 $color-placeholder: tint($color-grayscale, 50%);

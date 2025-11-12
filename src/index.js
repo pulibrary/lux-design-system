@@ -9,6 +9,7 @@
 import * as components from "./components"
 import VCalendar from "v-calendar"
 import "v-calendar/style.css"
+import "./assets/styles/variables.css"
 
 export default {
   // Vue plugins must expose an install() method, see

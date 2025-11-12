@@ -79,7 +79,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@use "/src/assets/styles/variables.css" as *;
 @use "/src/assets/styles/spacing.scss" as *;
 
 .lux-link {
