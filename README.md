@@ -23,6 +23,11 @@ npm run styleguide
 * Run a single test file with `npx jest tests/unit/specs/components/luxGridItem.spec.js`
 * Run a single test with the name of the test from the `it()` call: `npx jest -t "should have the appropriate class to define the columns"`
 
+#### Running playwright
+
+* `npx playwright install`
+* `npx playwright test --ui`
+
 ## Release a new version
 
 This requires you to have an account on npm with 2fa enabled.  You will also
