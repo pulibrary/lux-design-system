@@ -69,7 +69,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@use "/src/assets/styles/variables.css" as *;
 @use "/src/assets/styles/mixins.scss" as *;
 
 .lux-subscribe-newsletter {

@@ -43,6 +43,7 @@ module.exports = {
   exampleMode: "expand",
   enhancePreviewApp: path.join(__dirname, "styleguide_vue_app.js"),
   version: process.env.npm_package_version,
+  require: [path.join(__dirname, "src/assets/styles/variables.css")],
   theme: {
     fontFamily: {
       base: "var(--font-family-text)",

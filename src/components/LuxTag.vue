@@ -106,7 +106,6 @@ export default {
 @use "sass:color";
 @use "/src/assets/styles/spacing.scss" as *;
 @use "/src/assets/styles/system.scss" as *;
-@use "/src/assets/styles/variables.css" as *;
 
 .lux-tag {
   @include stack-space($space-base);

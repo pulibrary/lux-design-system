@@ -283,7 +283,6 @@ function stringSeemsLikeDateRange(possibleRange) {
 
 <style lang="scss">
 @use "/src/assets/styles/spacing.scss" as *;
-@use "/src/assets/styles/variables.css" as *;
 .lux-date-picker {
   @include stack-space(var(--space-small));
 }

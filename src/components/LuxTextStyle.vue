@@ -48,7 +48,6 @@ export default {
 
 <style lang="scss">
 @use "/src/assets/styles/spacing.scss" as *;
-@use "/src/assets/styles/variables.css" as *;
 @use "/src/assets/styles/system.scss" as *;
 $positive-text: #7cb518;
 

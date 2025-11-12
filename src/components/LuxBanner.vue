@@ -84,7 +84,6 @@ export default {
 
 <style lang="scss">
 @use "/src/assets/styles/mixins.scss" as *;
-@use "/src/assets/styles/variables.css" as *;
 
 .lux-banner-fullscreen {
   position: fixed;
