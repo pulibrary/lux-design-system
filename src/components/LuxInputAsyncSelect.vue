@@ -24,6 +24,19 @@ import LuxIconBase from "./icons/LuxIconBase.vue"
 import LuxIconSearch from "./icons/LuxIconSearch.vue"
 import { computed, ref, useTemplateRef } from "vue"
 
+/** 
+    This component can be utilized to provide asynchronous data to a LuxAutocompleteInput.
+    This component only allows the user to choose one option from the list.
+    When the user types into the search box asyncLoadItemsFunction is triggered to get the options shown to the user.
+
+    - Utilize LuxInputSelect if you have a small number of static options for the user to scroll through.
+      LuxInputSelect allows for a static list of options.
+    - Utilize LuxAutocompleteInput if you want to allow the user to search a static list of options, not just scroll them.
+      LuxAutocompleteInput allows for a static list of options.
+    - Utilize LuxInputMultiselect if you want to allow the user to select multiple options.
+      LuxInputMultiselect allows for both a static list or an asynchronous list of options.
+
+  */
 defineOptions({ name: "LuxInputAsyncSelect" })
 
 const selectedItem = ref(null)
