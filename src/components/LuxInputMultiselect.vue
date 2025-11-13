@@ -126,6 +126,7 @@ function addSelected(id) {
   const fullItem = allCurrentItems.value.find(item => item.id === id)
   selectedItems.value.push(fullItem)
   autocompleteRef.value.setResult("")
+  if (props.isAsync) allCurrentItems = []
 }
 
 function removeItem(item) {
@@ -259,7 +260,7 @@ async function findNewItems(query) {
         placeholder="Please choose your query"
         label="Your query"
         selected-items-label="Selected Queries"
-        :asyncLoadItemsFunction="query => [{id: 'abc', label: query}]"
+        :asyncLoadItemsFunction="query => {if (query === '') return []; else return [{id: 'abc', label: query}]}"
         none-selected-label="No query selected" />
 
     <p style="margin-top: var(--space-large);">If you have a specific way you'd like to display the items, you can pass it as a template into the item slot:</p>

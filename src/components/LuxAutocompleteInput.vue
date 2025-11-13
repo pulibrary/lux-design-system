@@ -166,8 +166,8 @@ export default {
       } else {
         // Data is sync, we can search our flat array
         this.filterResults()
-        this.isOpen = true
       }
+      this.isOpen = true
     },
     filterResults() {
       if (this.items.length && typeof this.items[0] === "object") {
@@ -248,11 +248,16 @@ export default {
     items: function (value, oldValue) {
       // we want to make sure we only do this when it's an async request
       if (this.isAsync) {
-        this.results = value.map(result =>
-          typeof result === "object" ? result.label : result.toString()
-        )
-        this.isOpen = true
-        this.isLoading = false
+        if (value.length > 0) {
+          this.results = value.map(result =>
+            typeof result === "object" ? result.label : result.toString()
+          )
+          this.isLoading = false
+        } else {
+          this.results = []
+          this.isOpen = false
+          this.isLoading = false
+        }
       }
     },
   },
