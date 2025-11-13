@@ -88,7 +88,7 @@ describe("MultiSelect.vue", () => {
         label: "Fruits",
       },
       slots: {
-        hiddenInput: `<template #hiddenInput="{selectedItems}"><input name="selectedFruit[]" type="hidden" :value="selectedItems[0]?.id" /></template>`,
+        hidden_input: `<template #hidden_input="{selectedItems}"><input name="selectedFruit[]" type="hidden" :value="selectedItems[0]?.id" /></template>`,
       },
     })
     await addMangoItemByMouse(wrapper)

@@ -15,6 +15,9 @@ test("Shows the asynchronous results for a MultiSelect", async ({ page }) => {
   await page.getByLabel("Wikipedia pages").press("Enter")
   await expect(page.locator("lux-autocomplete-results")).not.toBeVisible()
   await expect(page.locator(".selected-items")).toContainText("Frog legs")
+  await expect(page.locator("input[name=all_selected]")).toHaveValue(
+    '[{"label":"Frog legs","id":543812}]'
+  )
   await page.getByLabel("Wikipedia pages").fill("Cat")
   await expect(page.locator(".lux-autocomplete-results")).toBeVisible()
   await expect(page.locator("body")).not.toContainText("Loading results")
@@ -23,4 +26,7 @@ test("Shows the asynchronous results for a MultiSelect", async ({ page }) => {
   await page.getByLabel("Wikipedia pages").press("Enter")
   await expect(page.locator("lux-autocomplete-results")).not.toBeVisible()
   await expect(page.locator(".selected-items")).toContainText("Catholic Church")
+  await expect(page.locator("input[name=all_selected]")).toHaveValue(
+    '[{"label":"Frog legs","id":543812},{"label":"Catholic Church","id":606848}]'
+  )
 })
