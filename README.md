@@ -25,8 +25,16 @@ npm run styleguide
 
 #### Running playwright
 
-* `npx playwright install`
-* `npx playwright test --ui`
+Playwright is an end to end testing harness.  It is installed as a packge in the system and is run as part if the CI testing suite.
+
+*  to run the tests without a ui and on multiple browsers
+   ```
+   npx playwright test
+   ```
+* to run the test with screen shots of each step
+  ```
+  npx playwright test --ui`
+  ```
 
 ## Release a new version
 
