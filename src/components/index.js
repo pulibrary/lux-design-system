@@ -4,6 +4,7 @@ import LuxInputCheckbox from "./LuxInputCheckbox.vue"
 import LuxInputMultiselect from "./LuxInputMultiselect.vue"
 import LuxInputRadio from "./LuxInputRadio.vue"
 import LuxInputSelect from "./LuxInputSelect.vue"
+import LuxInputAsyncSelect from "./LuxInputAsyncSelect.vue"
 import LuxInputText from "./LuxInputText.vue"
 import _LuxCardContent from "./_LuxCardContent.vue"
 import _LuxCardHeader from "./_LuxCardHeader.vue"
@@ -60,6 +61,7 @@ export {
   LuxInputMultiselect,
   LuxInputRadio,
   LuxInputSelect,
+  LuxInputAsyncSelect,
   LuxInputText,
   _LuxCardContent,
   _LuxCardHeader,
