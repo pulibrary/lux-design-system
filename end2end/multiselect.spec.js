@@ -6,7 +6,11 @@ test("Shows the asynchronous results for a MultiSelect", async ({ page }) => {
 
   // Expect a title "to contain" a substring.
   await expect(page.locator("body")).toContainText("Wikipedia pages")
+  await page.getByLabel("Wikipedia pages").fill("a")
+  await page.getByLabel("Wikipedia pages").fill("b")
+  await page.getByLabel("Wikipedia pages").fill("c")
   await page.getByLabel("Wikipedia pages").fill("Frog")
+  await page.waitForTimeout(3000)
   await expect(page.locator(".lux-autocomplete-results")).toBeVisible()
   await expect(page.locator("body")).toContainText("Frog legs")
   await expect(page.locator("body")).not.toContainText("Loading results")

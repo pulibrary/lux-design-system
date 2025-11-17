@@ -112,6 +112,14 @@ const props = defineProps({
    * Label for the summary of items that the user has selected so far
    */
   selectedItemsLabel: String,
+
+  /**
+   * The milliseconds to wait for more user input before sending the query
+   */
+  debounceTimeout: {
+    type: Number,
+    default: 500,
+  },
 })
 const autocompleteRef = useTemplateRef("autocomplete")
 const allCurrentItems = ref(props.items)
@@ -138,7 +146,24 @@ function removeItem(item) {
 
 async function findNewItems(query) {
   if (!(props.asyncLoadItemsFunction === undefined) && !(props.asyncLoadItemsFunction === null)) {
-    allCurrentItems.value = await props.asyncLoadItemsFunction(query)
+    await debounceFindNew(query)
+  }
+}
+
+async function findAsyncNewItems(query) {
+  allCurrentItems.value = await props.asyncLoadItemsFunction(query)
+}
+
+const debounceFindNew = debounce(findAsyncNewItems, props.debounceTimeout)
+
+// Debounce function
+function debounce(func, delay) {
+  let timeout
+  return function (...args) {
+    clearTimeout(timeout)
+    timeout = setTimeout(() => {
+      func.apply(this, args)
+    }, delay)
   }
 }
 </script>

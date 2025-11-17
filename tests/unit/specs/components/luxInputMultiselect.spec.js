@@ -115,6 +115,8 @@ describe("MultiSelect.vue", () => {
   })
 
   it("can use an async function to provide the entries", async () => {
+    jest.useFakeTimers()
+
     wrapper = mount(LuxInputMultiselect, {
       props: {
         label: "Your preferred fruits",
@@ -128,6 +130,9 @@ describe("MultiSelect.vue", () => {
     const input = wrapper.find("input.displayInput")
     input.trigger("focus")
     input.setValue("my query")
+
+    // Allow the debounce to occur
+    jest.runAllTimers()
     await flushPromises()
 
     const items = wrapper.findAll(".lux-autocomplete-result")

@@ -6,7 +6,11 @@ test("has the Animal Select", async ({ page }) => {
 
   // Expect a title "to contain" a substring.
   await expect(page.locator("body")).toContainText("Wikipedia page")
+  await page.getByLabel("Wikipedia page").fill("t")
+  await page.getByLabel("Wikipedia page").fill("te")
+  await page.getByLabel("Wikipedia page").fill("testi")
   await page.getByLabel("Wikipedia page").fill("Tes")
+  await page.waitForTimeout(3000)
   await expect(page.locator("body")).toContainText("Tesla")
   await page.getByLabel("Wikipedia page").press("ArrowDown")
   await page.getByLabel("Wikipedia page").press("ArrowDown")
