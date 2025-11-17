@@ -30,7 +30,7 @@ To run it:
     // to add it to the vue application's globalProperties.
     app.config.globalProperties.searchWikipedia = async (query) => {
       if (query.length === 0) return []
-      const result = await fetch(`https://en.wikipedia.org/w/rest.php/v1/search/title?q=${query}&limit=10`)
+      const result = await fetch(`https://en.wikipedia.org/w/rest.php/v1/search/title?q=${query}&limit=100`)
       const json = await result.json()
       return json.pages?.map(page => { return { label: page.title, id: page.id } }) || []
     }

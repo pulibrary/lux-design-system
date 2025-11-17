@@ -3,7 +3,7 @@
     <lux-autocomplete-input
       :items="allCurrentItems"
       @selected="setSelected($event)"
-      @input="findNewItems($event)"
+      @input="debounceFindNew($event)"
       ref="autocomplete"
       :placeholder="placeholder"
       :label="label"
@@ -69,12 +69,18 @@ const props = defineProps({
     type: Boolean,
     default: false,
   },
+
+  /**
+   * The milliseconds to wait for more user input before sending the query
+   */
+  debounceTimeout: {
+    type: Number,
+    default: 500,
+  },
 })
 const autocompleteRef = useTemplateRef("autocomplete")
 const allCurrentItems = ref([])
-const isAsync = computed(
-  () => !(props.asyncLoadItemsFunction === undefined) && !(props.asyncLoadItemsFunction === null)
-)
+const isAsync = computed(() => true)
 
 function setSelected(id) {
   const fullItem = allCurrentItems.value.find(item => item.id === id)
@@ -82,8 +88,19 @@ function setSelected(id) {
 }
 
 async function findNewItems(query) {
-  if (!(props.asyncLoadItemsFunction === undefined) && !(props.asyncLoadItemsFunction === null)) {
-    allCurrentItems.value = await props.asyncLoadItemsFunction(query)
+  allCurrentItems.value = await props.asyncLoadItemsFunction(query)
+}
+
+const debounceFindNew = debounce(findNewItems, props.debounceTimeout)
+
+// Debounce function
+function debounce(func, delay) {
+  let timeout
+  return function (...args) {
+    clearTimeout(timeout)
+    timeout = setTimeout(() => {
+      func.apply(this, args)
+    }, delay)
   }
 }
 </script>

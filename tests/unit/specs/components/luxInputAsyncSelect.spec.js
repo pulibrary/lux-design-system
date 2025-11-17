@@ -2,14 +2,17 @@ import { flushPromises, mount } from "@vue/test-utils"
 import LuxInputAsyncSelect from "@/components/LuxInputAsyncSelect.vue"
 import { nextTick } from "vue"
 
+jest.useFakeTimers()
+
 async function addMangoItemByMouse(wrapper) {
   const input = wrapper.find("input.displayInput")
   // Enter mango
   input.setValue("mango")
-  // Wait for js to return the values
-  await nextTick()
-  // Wait for Vue to re-render the DOM
-  await nextTick()
+
+  // Allow the debounce to occur
+  jest.runAllTimers()
+  await flushPromises()
+
   const items = wrapper.findAll(".lux-autocomplete-result")
   expect(items[0].text()).toEqual("mango #1")
   expect(items[1].text()).toEqual("mango #2")
@@ -28,6 +31,7 @@ describe("AsyncSelect.vue", () => {
           { label: `${query} #1`, id: 1 },
           { label: `${query} #2`, id: 2 },
         ],
+        debounceTimeout: 1,
       },
     })
   })
@@ -94,6 +98,9 @@ describe("AsyncSelect.vue", () => {
     const input = wrapper.find("input.displayInput")
     input.trigger("focus")
     input.setValue("my query")
+
+    // Allow the debounce to occur
+    jest.runAllTimers()
     await flushPromises()
 
     const items = wrapper.findAll(".lux-autocomplete-result")
