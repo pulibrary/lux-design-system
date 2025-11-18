@@ -9,14 +9,15 @@
       :label="label"
       :hide-label="hideLabel"
       :isAsync="isAsync"
+      :defaultValue="defaultValue?.label"
     />
     <lux-icon-base class="search-icon"><lux-icon-search></lux-icon-search></lux-icon-base>
   </div>
   <!--
-  @slot hiddenInput -- You can use this to pass the user's selected value back to the backend (e.g. Rails) on form submit
+  @slot hidden_input -- You can use this to pass the user's selected value back to the backend (e.g. Rails) on form submit
       @binding {string} selectedItem an array of items (objects) that the user has selected
   -->
-  <slot name="hiddenInput" :selectedItem="selectedItem"></slot>
+  <slot name="hidden_input" :selectedItem="selectedItem"></slot>
 </template>
 <script setup>
 import LuxAutocompleteInput from "./LuxAutocompleteInput.vue"
@@ -39,7 +40,6 @@ import { computed, ref, useTemplateRef } from "vue"
   */
 defineOptions({ name: "LuxInputAsyncSelect" })
 
-const selectedItem = ref(null)
 const props = defineProps({
   /**
    * A function to load items asynchronously on user input. It should return an item list in the format [{id: "", label: ""}].
@@ -77,14 +77,23 @@ const props = defineProps({
     type: Number,
     default: 500,
   },
+
+  /**
+   * The default value for the form input field.
+   */
+  defaultValue: {
+    type: Object,
+  },
 })
 const autocompleteRef = useTemplateRef("autocomplete")
-const allCurrentItems = ref([])
+const allCurrentItems = ref([props.defaultValue])
 const isAsync = computed(() => true)
+const selectedItem = ref(props.defaultValue)
 
 function setSelected(id) {
+  console.log("id: ", id)
   const fullItem = allCurrentItems.value.find(item => item.id === id)
-  selectedItem.value = fullItem.id
+  selectedItem.value = fullItem
 }
 
 async function findNewItems(query) {

@@ -61,7 +61,6 @@ import { computed, ref, useTemplateRef } from "vue"
 
 defineOptions({ name: "LuxInputMultiselect" })
 
-const selectedItems = ref([])
 const props = defineProps({
   /**
    * An array of items.  Each item should be an object with (at minimum) an id and label property.
@@ -120,6 +119,14 @@ const props = defineProps({
     type: Number,
     default: 500,
   },
+
+  /**
+   * The default selected items. It should be an array in the format [{id: "", label: ""}]
+   */
+  defaultValues: {
+    type: Array,
+    default: () => [],
+  },
 })
 const autocompleteRef = useTemplateRef("autocomplete")
 const allCurrentItems = ref(props.items)
@@ -129,6 +136,7 @@ const unselectedItems = computed(() =>
 const isAsync = computed(
   () => !(props.asyncLoadItemsFunction === undefined) && !(props.asyncLoadItemsFunction === null)
 )
+const selectedItems = ref(props.defaultValues)
 
 function addSelected(id) {
   const fullItem = allCurrentItems.value.find(item => item.id === id)

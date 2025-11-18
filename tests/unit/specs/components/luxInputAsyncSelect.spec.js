@@ -32,6 +32,7 @@ describe("AsyncSelect.vue", () => {
           { label: `${query} #2`, id: 2 },
         ],
         debounceTimeout: 1,
+        defaultValue: { label: "abc", id: 50 },
       },
     })
   })
@@ -39,6 +40,11 @@ describe("AsyncSelect.vue", () => {
   it("adds selected items to the selected area", async () => {
     await addMangoItemByMouse(wrapper)
     expect(wrapper.find("input").element.value).toEqual("mango #1")
+  })
+
+  it("should populate the selectedItem with json when defaultValue is passed and found in items", () => {
+    expect(wrapper.vm.selectedItem).toEqual({ label: "abc", id: 50 })
+    expect(wrapper.find("input").element.value).toEqual("abc")
   })
 
   it("can create a hidden input for use in an HTML form", async () => {
@@ -51,13 +57,15 @@ describe("AsyncSelect.vue", () => {
         ],
       },
       slots: {
-        hiddenInput: `<template #hiddenInput="{selectedItem}"><input name="selectedFruit" type="hidden" :value="selectedItem" /></template>`,
+        hidden_input: `<template #hidden_input="{selectedItem}"><input name="selectedFruit" type="hidden" :value="JSON.stringify(selectedItem)" /></template>`,
       },
     })
     await addMangoItemByMouse(wrapper)
 
     expect(wrapper.find("input[type='hidden']").attributes("name")).toEqual("selectedFruit")
-    expect(wrapper.find("input[type='hidden']").attributes("value")).toEqual("1")
+    expect(wrapper.find("input[type='hidden']").attributes("value")).toEqual(
+      '{"label":"mango #1","id":1}'
+    )
   })
 
   it("requires an accessible name to be passed in", () => {

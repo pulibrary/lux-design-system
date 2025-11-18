@@ -1,8 +1,13 @@
 // @ts-check
 import { test, expect } from "@playwright/test"
 
-test("has the Animal Select", async ({ page }) => {
+test("has the Wiki Page Select", async ({ page }) => {
   await page.goto("http://localhost:5002/examples/singleselectasync.html")
+
+  // The default value shows in the select input and the hidden input slot
+  await expect(page.getByLabel("Wikipedia page")).toHaveValue("frog")
+  await expect(page.locator("#wiki_id")).toHaveValue("123")
+  await expect(page.locator("#wiki_label")).toHaveValue("frog")
 
   // Expect a title "to contain" a substring.
   await expect(page.locator("body")).toContainText("Wikipedia page")
@@ -16,4 +21,8 @@ test("has the Animal Select", async ({ page }) => {
   await page.getByLabel("Wikipedia page").press("ArrowDown")
   await page.getByLabel("Wikipedia page").press("Enter")
   await expect(page.getByLabel("Wikipedia page")).toHaveValue("Tesla, Inc.")
+
+  //  the hidden input slot gets updated with the value chosen
+  await expect(page.locator("#wiki_id")).toHaveValue("5533631")
+  await expect(page.locator("#wiki_label")).toHaveValue("Tesla, Inc.")
 })
