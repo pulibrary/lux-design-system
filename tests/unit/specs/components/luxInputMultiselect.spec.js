@@ -31,6 +31,7 @@ describe("MultiSelect.vue", () => {
       props: {
         items: fruits,
         label: "Fruits",
+        defaultValues: [{ label: "Banana split", id: 3 }],
       },
     })
   })
@@ -61,10 +62,18 @@ describe("MultiSelect.vue", () => {
   })
 
   it("can remove items from the selected area", async () => {
+    await expect(wrapper.find(".selected-items").text()).toContain("Banana split")
     await addMangoItemByMouse(wrapper)
+    expect(wrapper.find(".selected-items").text()).toContain("Mango")
+
+    // remove the default
     wrapper.find(".remove-item").trigger("click")
     await nextTick()
+    expect(wrapper.find(".selected-items").text()).not.toContain("Banana split")
 
+    // also remove mango just added
+    wrapper.find(".remove-item").trigger("click")
+    await nextTick()
     expect(wrapper.find(".selected-items").text()).not.toContain("Mango")
   })
 
@@ -88,7 +97,7 @@ describe("MultiSelect.vue", () => {
         label: "Fruits",
       },
       slots: {
-        hidden_input: `<template #hidden_input="{selectedItems}"><input name="selectedFruit[]" type="hidden" :value="selectedItems[0]?.id" /></template>`,
+        "hidden-input": `<template #hidden-input="{selectedItems}"><input name="selectedFruit[]" type="hidden" :value="selectedItems[0]?.id" /></template>`,
       },
     })
     await addMangoItemByMouse(wrapper)
@@ -112,6 +121,12 @@ describe("MultiSelect.vue", () => {
     const inputId = wrapper.find("input").attributes("id")
     const label = wrapper.find(`label[for=${inputId}]`)
     expect(label.text()).toEqual("Your preferred fruits")
+  })
+
+  it("should populate the selectedItems with json when defaultValue is passed and found in items", () => {
+    expect(wrapper.vm.selectedItems).toEqual([{ label: "Banana split", id: 3 }])
+    expect(wrapper.find("input").element.value).toEqual("")
+    expect(wrapper.find(".selected-items").text()).toContain("Banana split")
   })
 
   it("can use an async function to provide the entries", async () => {
