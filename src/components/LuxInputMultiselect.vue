@@ -46,10 +46,10 @@
     </ul>
   </div>
   <!--
-    @slot hidden_input -- You can use this to pass all of the user's selected values back to the backend (e.g. Rails) on form submit
+    @slot hidden-input -- You can use this to pass all of the user's selected values back to the backend (e.g. Rails) on form submit
       @binding {array} selectedItems an array of items (objects) that the user has selected
   -->
-  <slot name="hidden_input" :selectedItems="selectedItems"></slot>
+  <slot name="hidden-input" :selectedItems="selectedItems"></slot>
 </template>
 <script setup>
 import LuxAutocompleteInput from "./LuxAutocompleteInput.vue"

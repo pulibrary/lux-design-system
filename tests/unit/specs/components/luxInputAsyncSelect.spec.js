@@ -57,7 +57,7 @@ describe("AsyncSelect.vue", () => {
         ],
       },
       slots: {
-        hidden_input: `<template #hidden_input="{selectedItem}"><input name="selectedFruit" type="hidden" :value="JSON.stringify(selectedItem)" /></template>`,
+        "hidden-input": `<template #hidden-input="{selectedItem}"><input name="selectedFruit" type="hidden" :value="JSON.stringify(selectedItem)" /></template>`,
       },
     })
     await addMangoItemByMouse(wrapper)

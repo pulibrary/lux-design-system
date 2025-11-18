@@ -43,7 +43,7 @@ To run it:
         none-selected-label="No pages selected"
         :async-load-items-function="searchWikipedia"
         :default-values="[{label: 'frog', id: '123'}]">
-        <template v-slot:hidden_input="{ selectedItems }">
+        <template v-slot:hidden-input="{ selectedItems }">
             <input type="hidden" name="all_selected" :value="JSON.stringify(selectedItems)"></input>
         </template>
     </lux-input-multiselect>

@@ -14,10 +14,10 @@
     <lux-icon-base class="search-icon"><lux-icon-search></lux-icon-search></lux-icon-base>
   </div>
   <!--
-  @slot hidden_input -- You can use this to pass the user's selected value back to the backend (e.g. Rails) on form submit
+  @slot hidden-input -- You can use this to pass the user's selected value back to the backend (e.g. Rails) on form submit
       @binding {string} selectedItem an array of items (objects) that the user has selected
   -->
-  <slot name="hidden_input" :selectedItem="selectedItem"></slot>
+  <slot name="hidden-input" :selectedItem="selectedItem"></slot>
 </template>
 <script setup>
 import LuxAutocompleteInput from "./LuxAutocompleteInput.vue"

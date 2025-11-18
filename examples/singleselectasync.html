@@ -42,7 +42,7 @@ To run it:
         none-selected-label="No page selected"
         :async-load-items-function="searchWikipedia"
         :default-value="{label: 'frog', id: '123'}" >
-      <template v-slot:hidden_input="{ selectedItem }">
+      <template v-slot:hidden-input="{ selectedItem }">
          <input id="wiki_id" class="all_selected" :value="selectedItem.id"></input>
          <input id="wiki_label" class="all_selected" :value="selectedItem.label"></input>
       </template>
