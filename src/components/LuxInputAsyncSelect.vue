@@ -3,7 +3,7 @@
     <lux-autocomplete-input
       :items="allCurrentItems"
       @selected="setSelected($event)"
-      @input="debounceFindNew($event)"
+      @input="onInput($event)"
       ref="autocomplete"
       :placeholder="placeholder"
       :label="label"
@@ -84,6 +84,14 @@ const props = defineProps({
   defaultValue: {
     type: Object,
   },
+  /**
+   * Should we run a search when a user clicks into the component
+   */
+  searchOnEmptyQuery: {
+    type: Boolean,
+    required: false,
+    default: false,
+  },
 })
 const autocompleteRef = useTemplateRef("autocomplete")
 const allCurrentItems = ref([props.defaultValue])
@@ -91,7 +99,6 @@ const isAsync = computed(() => true)
 const selectedItem = ref(props.defaultValue)
 
 function setSelected(id) {
-  console.log("id: ", id)
   const fullItem = allCurrentItems.value.find(item => item.id === id)
   selectedItem.value = fullItem
 }
@@ -110,6 +117,15 @@ function debounce(func, delay) {
     timeout = setTimeout(() => {
       func.apply(this, args)
     }, delay)
+  }
+}
+
+function onInput(query) {
+  if (query || props.searchOnEmptyQuery) {
+    debounceFindNew(query)
+  } else {
+    allCurrentItems.value = []
+    selectedItem.value = {}
   }
 }
 </script>
