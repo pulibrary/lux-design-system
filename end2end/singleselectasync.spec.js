@@ -9,6 +9,14 @@ test("has the Wiki Page Select", async ({ page }) => {
   await expect(page.locator("#wiki_id")).toHaveValue("123")
   await expect(page.locator("#wiki_label")).toHaveValue("frog")
 
+  // we get no drop down if we type nothing
+  await page.getByLabel("Wikipedia page").click()
+  await expect(page.locator(".lux-autocomplete-results")).toBeVisible()
+  await page.getByLabel("Wikipedia page").fill("")
+  await expect(page.locator(".lux-autocomplete-results")).toBeHidden()
+  await expect(page.locator("#wiki_id")).toHaveValue("")
+  await expect(page.locator("#wiki_label")).toHaveValue("")
+
   // Expect a title "to contain" a substring.
   await expect(page.locator("body")).toContainText("Wikipedia page")
   await page.getByLabel("Wikipedia page").fill("t")

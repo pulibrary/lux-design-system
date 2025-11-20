@@ -105,13 +105,56 @@ describe("AsyncSelect.vue", () => {
 
     const input = wrapper.find("input.displayInput")
     input.trigger("focus")
+
+    // Allow the debounce to occur
+    jest.runAllTimers()
+    await flushPromises()
+
+    let items = wrapper.findAll(".lux-autocomplete-result")
+    expect(items.length).toEqual(0)
+
     input.setValue("my query")
 
     // Allow the debounce to occur
     jest.runAllTimers()
     await flushPromises()
 
-    const items = wrapper.findAll(".lux-autocomplete-result")
+    items = wrapper.findAll(".lux-autocomplete-result")
+    expect(items[0].text()).toEqual("my query #1")
+    expect(items[1].text()).toEqual("my query #2")
+  })
+
+  it("can use query with blank if desired", async () => {
+    wrapper = mount(LuxInputAsyncSelect, {
+      props: {
+        label: "Your preferred fruits",
+        asyncLoadItemsFunction: async query => [
+          { label: `${query} #1`, id: 1 },
+          { label: `${query} #2`, id: 2 },
+        ],
+        searchOnEmptyQuery: true,
+      },
+    })
+
+    const input = wrapper.find("input.displayInput")
+    input.trigger("focus")
+
+    // Allow the debounce to occur
+    jest.runAllTimers()
+    await flushPromises()
+
+    let items = wrapper.findAll(".lux-autocomplete-result")
+    expect(items.length).toEqual(2)
+    expect(items[0].text()).toEqual("#1")
+    expect(items[1].text()).toEqual("#2")
+
+    input.setValue("my query")
+
+    // Allow the debounce to occur
+    jest.runAllTimers()
+    await flushPromises()
+
+    items = wrapper.findAll(".lux-autocomplete-result")
     expect(items[0].text()).toEqual("my query #1")
     expect(items[1].text()).toEqual("my query #2")
   })
