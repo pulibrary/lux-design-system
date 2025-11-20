@@ -225,5 +225,34 @@ describe("InputAutocomplete.vue", () => {
       expect(wrapper.text()).not.toContain("Loading")
       expect(wrapper.text()).toContain("Omura whale")
     })
+
+    it("resets the arrow location when new items are passed", async () => {
+      const input = wrapper.find("input.displayInput")
+      wrapper.find("input").trigger("click")
+      wrapper.setProps({
+        items: [
+          { label: "Tea", id: 1 },
+          { label: "Coffee", id: 2 },
+          { label: "Hot Chocolate", id: 3 },
+        ],
+      })
+      input.trigger("focus")
+      input.setValue("")
+      await nextTick()
+      expect(wrapper.vm.arrowCounter).toBe(-1)
+      input.trigger("keydown.down")
+      expect(wrapper.vm.arrowCounter).toBe(0)
+      input.trigger("keydown.down")
+      expect(wrapper.vm.arrowCounter).toBe(1)
+      input.trigger("keydown.down")
+      expect(wrapper.vm.arrowCounter).toBe(2)
+
+      wrapper.setProps({ items: ["Omura whale", "Bowhead whale", "North Pacific right whale"] })
+      await nextTick()
+
+      expect(wrapper.text()).not.toContain("Loading")
+      expect(wrapper.text()).toContain("Omura whale")
+      expect(wrapper.vm.arrowCounter).toBe(-1)
+    })
   })
 })

@@ -248,6 +248,7 @@ export default {
     items: function (value, oldValue) {
       // we want to make sure we only do this when it's an async request
       if (this.isAsync) {
+        this.arrowCounter = -1
         if (value.length > 0) {
           this.results = value.map(result =>
             typeof result === "object" ? result.label : result.toString()
