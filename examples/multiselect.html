@@ -29,7 +29,7 @@ To run it:
     // ruby web app, or similar: one way to bind your logic to the async-load-items-function prop is
     // to add it to the vue application's globalProperties.
     app.config.globalProperties.searchWikipedia = async (query) => {
-      if (query.length === 0) return []
+      if (query.length === 0) return ['none']
       const result = await fetch(`https://en.wikipedia.org/w/rest.php/v1/search/title?q=${query}&limit=100`)
       const json = await result.json()
       return json.pages?.map(page => { return { label: page.title, id: page.id } }) || []
