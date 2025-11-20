@@ -127,6 +127,15 @@ const props = defineProps({
     type: Array,
     default: () => [],
   },
+
+  /**
+   * Should we run a search when a user clicks into the component
+   */
+  searchOnEmptyQuery: {
+    type: Boolean,
+    required: false,
+    default: false,
+  },
 })
 const autocompleteRef = useTemplateRef("autocomplete")
 const allCurrentItems = ref(props.items)
@@ -154,7 +163,11 @@ function removeItem(item) {
 
 async function findNewItems(query) {
   if (!(props.asyncLoadItemsFunction === undefined) && !(props.asyncLoadItemsFunction === null)) {
-    await debounceFindNew(query)
+    if (query || props.searchOnEmptyQuery) {
+      await debounceFindNew(query)
+    } else {
+      allCurrentItems.value = []
+    }
   }
 }
 

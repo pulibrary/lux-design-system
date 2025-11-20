@@ -4,6 +4,15 @@ import { test, expect } from "@playwright/test"
 test("Shows the asynchronous results for a MultiSelect", async ({ page }) => {
   await page.goto("http://localhost:5002/examples/multiselect.html")
 
+  // make sure the default shows on the page
+  await expect(page.locator("input[name='all_selected']")).toHaveValue(
+    '[{"label":"frog","id":"123"}]'
+  )
+
+  // we get no drop down if we type nothing
+  await page.getByLabel("Wikipedia page").click()
+  await expect(page.locator(".lux-autocomplete-results")).toBeHidden()
+
   // Expect a title "to contain" a substring.
   await expect(page.locator("body")).toContainText("Wikipedia pages")
   await page.getByLabel("Wikipedia pages").fill("a")
