@@ -47,6 +47,13 @@ describe("AsyncSelect.vue", () => {
     expect(wrapper.find("input").element.value).toEqual("abc")
   })
 
+  it("emits a selected event when the user selects an item via keyboard", async () => {
+    await addMangoItemByMouse(wrapper)
+
+    expect(wrapper.emitted().selected.length).toEqual(1)
+    expect(wrapper.emitted().selected[0]).toEqual([{ id: 1, label: "mango #1" }])
+  })
+
   it("can create a hidden input for use in an HTML form", async () => {
     wrapper = mount(LuxInputAsyncSelect, {
       props: {

@@ -40,6 +40,8 @@ import { computed, ref, useTemplateRef } from "vue"
   */
 defineOptions({ name: "LuxInputAsyncSelect" })
 
+const emit = defineEmits("selected")
+
 const props = defineProps({
   /**
    * A function to load items asynchronously on user input. It should return an item list in the format [{id: "", label: ""}].
@@ -101,6 +103,7 @@ const selectedItem = ref(props.defaultValue)
 function setSelected(id) {
   const fullItem = allCurrentItems.value.find(item => item.id === id)
   selectedItem.value = fullItem
+  emit("selected", fullItem)
 }
 
 async function findNewItems(query) {

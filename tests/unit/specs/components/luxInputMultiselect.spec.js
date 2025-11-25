@@ -90,6 +90,13 @@ describe("MultiSelect.vue", () => {
     expect(itemsInDropdown).not.toContain("Mango")
   })
 
+  it("emits a selected event when the user selects an item via keyboard", async () => {
+    await addMangoItemByMouse(wrapper)
+
+    expect(wrapper.emitted().selected.length).toEqual(1)
+    expect(wrapper.emitted().selected[0]).toEqual([{ id: 4, label: "Mango" }])
+  })
+
   it("can create a hidden input for use in an HTML form", async () => {
     wrapper = mount(LuxInputMultiselect, {
       props: {
