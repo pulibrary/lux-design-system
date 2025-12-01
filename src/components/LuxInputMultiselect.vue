@@ -154,7 +154,7 @@ function addSelected(id) {
   selectedItems.value.push(fullItem)
   emit("selected", fullItem)
   autocompleteRef.value.setResult("")
-  if (props.isAsync) allCurrentItems = []
+  if (props.isAsync) allCurrentItems.value = []
 }
 
 function removeItem(item) {
