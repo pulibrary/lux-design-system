@@ -58,6 +58,7 @@
  */
 import { DatePicker } from "v-calendar"
 import { ref, watchEffect, computed } from "vue"
+import LuxInputText from "./LuxInputText.vue"
 
 defineOptions({ name: "LuxDatePicker" })
 const props = defineProps({
@@ -175,6 +176,9 @@ const props = defineProps({
   helper: {
     type: String,
     default: "",
+  },
+  components: {
+    LuxInputText,
   },
 })
 
@@ -306,7 +310,7 @@ function stringSeemsLikeDateRange(possibleRange) {
   ```jsx
     <div>
       <lux-date-picker id="dateRange" name="daterange" label="Date Range" helper="Please enter both start and end dates." mode="range" :disabled-dates="[{ start: null, end: new Date(2019, 05, 01)}, { start: new Date(), end: null }]"  placeholder="01/10/2020" />
-  
+
       <lux-date-picker id="today" name="today" label="Today's Date" mode="single" :holidays="['2020-02-20','2020-02-21']" :defaultDate="new Date()" />
     </div>
   ```
