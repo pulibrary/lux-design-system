@@ -1,11 +1,8 @@
 <template>
   <div class="lux-autocomplete">
-    <label
-      v-if="label"
-      :class="{ 'lux-hidden': hideLabel }"
-      :for="'displayInput-' + this.componentId"
-      >{{ label }}</label
-    >
+    <label v-if="label" :class="{ 'lux-hidden': hideLabel }" :for="displayInputDomId">{{
+      label
+    }}</label>
     <div class="lux-autocomplete-input">
       <input
         :id="displayInputDomId"
