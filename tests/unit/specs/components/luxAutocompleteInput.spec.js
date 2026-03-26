@@ -130,6 +130,15 @@ describe("InputAutocomplete.vue", () => {
     expect(wrapper.find("label").text()).toBe("Fill in the blank:")
   })
 
+  it("should associate the label with the displayed input", async () => {
+    wrapper.setProps({ label: "Fill in the blank:" })
+    await nextTick()
+
+    expect(wrapper.find("label").attributes("for")).toEqual(
+      wrapper.find("input.displayInput").attributes("id")
+    )
+  })
+
   it("should work with an item list comprised of simple strings", async () => {
     wrapper.setProps({ items: ["Apple", "Banana", "Orange"] })
     await nextTick()
