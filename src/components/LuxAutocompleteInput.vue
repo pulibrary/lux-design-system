@@ -8,7 +8,7 @@
     >
     <div class="lux-autocomplete-input">
       <input
-        :id="'displayInput-' + this.componentId"
+        :id="displayInputDomId"
         role="combobox"
         autocomplete="off"
         ref="autoComplete"
@@ -103,11 +103,17 @@ export default {
       default: false,
     },
     /**
-     * The id of the form input field.
+     * The id of the hidden form input field (which will contain the selected value)
      */
     id: {
       type: String,
       default: "",
+    },
+    /**
+     * The id of the visible form input field (where the user will enter their text)
+     */
+    displayId: {
+      type: String,
     },
     /**
      * The name of the form input field.
@@ -269,6 +275,9 @@ export default {
       } else {
         return `lux-autocomplete-${this.componentId}result-${this.arrowCounter}`
       }
+    },
+    displayInputDomId() {
+      return this.displayId || `displayInput-${this.componentId}`
     },
   },
   created() {
