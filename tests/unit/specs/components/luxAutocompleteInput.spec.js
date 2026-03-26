@@ -255,4 +255,16 @@ describe("InputAutocomplete.vue", () => {
       expect(wrapper.vm.arrowCounter).toBe(-1)
     })
   })
+  describe("displayId prop", () => {
+    it("can be passed to set the id of the visible input", async () => {
+      wrapper.setProps({ displayId: "my-nice-id" })
+      await nextTick()
+      const input = wrapper.find("input.displayInput")
+      expect(input.attributes("id")).toEqual("my-nice-id")
+    })
+    it("defaults to contain displayInput", () => {
+      const input = wrapper.find("input.displayInput")
+      expect(input.attributes("id")).toMatch(/displayInput-v-\d+/)
+    })
+  })
 })
