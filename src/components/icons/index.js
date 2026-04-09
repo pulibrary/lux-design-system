@@ -46,6 +46,7 @@ import LuxIconSearch from "./LuxIconSearch.vue"
 import LuxIconUnsorted from "./LuxIconUnsorted.vue"
 import LuxIconVacation from "./LuxIconVacation.vue"
 import LuxIconView from "./LuxIconView.vue"
+import LuxIconCalendar from "./LuxIconCalendar.vue"
 
 export {
   LuxIconAdd,
@@ -96,4 +97,5 @@ export {
   LuxIconUnsorted,
   LuxIconVacation,
   LuxIconView,
+  LuxIconCalendar,
 }

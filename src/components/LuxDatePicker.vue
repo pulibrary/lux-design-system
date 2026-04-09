@@ -21,12 +21,8 @@
           :value="inputValue"
           :placeholder="placeholder"
           :helper="helper"
+          :icon="icon"
         ></lux-input-text>
-        <div v-if="variation === 'icon'" class="append-icon">
-          <lux-icon-base width="18" height="18" :icon-name="icon">
-            <component :is="iconComponent"></component>
-          </lux-icon-base>
-        </div>
       </template>
     </DatePicker>
     <DatePicker
@@ -49,12 +45,8 @@
           v-model:value="formattedRange"
           :placeholder="placeholder"
           :helper="helper"
+          :icon="icon"
         ></lux-input-text>
-        <div v-if="variation === 'icon'" class="append-icon">
-          <lux-icon-base width="18" height="18" :icon-name="icon">
-            <component :is="iconComponent"></component>
-          </lux-icon-base>
-        </div>
       </template>
     </DatePicker>
   </div>
@@ -69,20 +61,12 @@
 import { DatePicker } from "v-calendar"
 import { ref, watchEffect, computed } from "vue"
 import LuxInputText from "./LuxInputText.vue"
-import LuxIconBase from "./icons/LuxIconBase.vue"
 
 defineOptions({ name: "LuxDatePicker" })
 const props = defineProps({
   /**
    * Allows for a single date or a date range to be selected. Possible values are: `single, range`.
    */
-  variation: {
-    type: String,
-    default: "solid",
-    validator: value => {
-      return value.match(/(solid|outline|text|dropdown|icon|icon-prepend)/)
-    },
-  },
   mode: {
     type: String,
     default: "single",
@@ -201,7 +185,6 @@ const props = defineProps({
   },
   components: {
     LuxInputText,
-    LuxIconBase,
   },
 })
 
@@ -230,10 +213,6 @@ const formattedRange = computed({
     updateRangeInput(newValue)
   },
 })
-
-function iconComponent() {
-  return "lux-icon-" + props.icon
-}
 
 function calendarClosedSingle(value) {
   if (date.value && isValidFormat(date.value.toLocaleDateString("en-US"))) {
@@ -336,7 +315,7 @@ function stringSeemsLikeDateRange(possibleRange) {
 <docs>
   ```jsx
     <div>
-      <lux-date-picker id="dateRange" variation="icon" icon="search" name="daterange" label="Date Range" helper="Please enter both start and end dates." mode="range" :disabled-dates="[{ start: null, end: new Date(2019, 05, 01)}, { start: new Date(), end: null }]"  placeholder="01/10/2020" />
+      <lux-date-picker id="dateRange" name="daterange" label="Date Range" helper="Please enter both start and end dates." mode="range" :disabled-dates="[{ start: null, end: new Date(2019, 05, 01)}, { start: new Date(), end: null }]"  placeholder="01/10/2020" />
 
       <lux-date-picker id="today" name="today" label="Today's Date" mode="single" :holidays="['2020-02-20','2020-02-21']" :defaultDate="new Date()" />
     </div>
