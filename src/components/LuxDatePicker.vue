@@ -21,6 +21,7 @@
           :value="inputValue"
           :placeholder="placeholder"
           :helper="helper"
+          :icon="icon"
         ></lux-input-text>
       </template>
     </DatePicker>
@@ -44,6 +45,7 @@
           v-model:value="formattedRange"
           :placeholder="placeholder"
           :helper="helper"
+          :icon="icon"
         ></lux-input-text>
       </template>
     </DatePicker>
@@ -174,6 +176,10 @@ const props = defineProps({
    * The helper text a user should get.
    */
   helper: {
+    type: String,
+    default: "",
+  },
+  icon: {
     type: String,
     default: "",
   },

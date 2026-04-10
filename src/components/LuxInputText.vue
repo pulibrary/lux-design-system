@@ -58,6 +58,7 @@
           <lux-icon-alert v-if="icon === 'alert'"></lux-icon-alert>
           <lux-icon-approved v-if="icon === 'approved'"></lux-icon-approved>
           <lux-icon-denied v-if="icon === 'denied'"></lux-icon-denied>
+          <lux-icon-calendar v-if="icon === 'calendar'"></lux-icon-calendar>
         </lux-icon-base>
       </div>
     </div>
@@ -72,6 +73,7 @@ import LuxIconAlert from "./icons/LuxIconAlert.vue"
 import LuxIconApproved from "./icons/LuxIconApproved.vue"
 import LuxIconBase from "./icons/LuxIconBase.vue"
 import LuxIconDenied from "./icons/LuxIconDenied.vue"
+import LuxIconCalendar from "./icons/LuxIconCalendar.vue"
 
 /**
  * Form Inputs are used to allow users to provide text input when the expected
@@ -302,6 +304,7 @@ export default {
     LuxIconApproved,
     LuxIconDenied,
     LuxIconBase,
+    LuxIconCalendar,
   },
 }
 </script>
