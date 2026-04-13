@@ -490,6 +490,7 @@ $color-placeholder: tint(rgb(149, 156, 167), 50%);
 
     <!-- with icons -->
     <lux-input-text id="foo" name="value" label="Icon" placeholder="Write your text" icon="alert"></lux-input-text>
+    <lux-input-text id="foo" name="value" label="Icon" placeholder="Write your text" icon="calendar"></lux-input-text>
   </div>
   ```
 </docs>
