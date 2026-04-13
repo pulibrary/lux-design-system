@@ -7,6 +7,7 @@ import LuxIconArrowUp from "./LuxIconArrowUp.vue"
 import LuxIconAscending from "./LuxIconAscending.vue"
 import LuxIconBase from "./LuxIconBase.vue"
 import LuxIconBookmark from "./LuxIconBookmark.vue"
+import LuxIconCalendar from "./LuxIconCalendar.vue"
 import LuxIconClock from "./LuxIconClock.vue"
 import LuxIconClose from "./LuxIconClose.vue"
 import LuxIconConsulting from "./LuxIconConsulting.vue"
@@ -57,6 +58,7 @@ export {
   LuxIconAscending,
   LuxIconBase,
   LuxIconBookmark,
+  LuxIconCalendar,
   LuxIconClock,
   LuxIconClose,
   LuxIconConsulting,
