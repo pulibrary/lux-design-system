@@ -16,7 +16,6 @@
             <li v-for="{ href, name, index, target } in item.children" :key="index">
               <a
                 :href="href"
-                :title="name"
                 :target="target"
                 class="lux-nav-item"
                 @click="menuItemClicked($event, item)"
