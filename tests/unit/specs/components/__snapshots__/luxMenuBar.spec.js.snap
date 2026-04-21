@@ -12,7 +12,6 @@ exports[`LuxMenuBar.vue has the expected html structure 1`] = `
         aria-haspopup="true"
         class="lux-has-children lux-nav-item"
         href="/example/"
-        title="Foo"
       >
         
         Foo
@@ -27,7 +26,6 @@ exports[`LuxMenuBar.vue has the expected html structure 1`] = `
           <a
             class="lux-nav-item"
             href="/example/"
-            title="Baz"
           >
             Baz
           </a>
@@ -42,7 +40,6 @@ exports[`LuxMenuBar.vue has the expected html structure 1`] = `
         aria-haspopup="true"
         class="lux-has-children lux-nav-item"
         href="/example/"
-        title="Foo1"
       >
         
         Foo1
@@ -57,7 +54,6 @@ exports[`LuxMenuBar.vue has the expected html structure 1`] = `
           <a
             class="lux-nav-item"
             href="/example/"
-            title="Baz1"
           >
             Baz1
           </a>
@@ -70,7 +66,6 @@ exports[`LuxMenuBar.vue has the expected html structure 1`] = `
       <a
         class="lux-nav-item"
         href="/example/"
-        title="Bar"
       >
         
         Bar
