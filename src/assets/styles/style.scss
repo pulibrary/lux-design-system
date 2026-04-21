@@ -1,5 +1,5 @@
 @use "../styles/media_queries";
 @use "../styles/mixins";
-@use "../styles/spacing";
-@use "../styles/system";
+@forward "../styles/spacing";
+@forward "../styles/system";
 @use "../styles/focus";
