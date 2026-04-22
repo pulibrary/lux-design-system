@@ -6,7 +6,6 @@
           <a
             :key="index"
             :href="item.href"
-            :title="item.name"
             class="lux-has-children lux-nav-item"
             aria-haspopup="true"
             @click="menuItemClicked($event, item)"
@@ -16,7 +15,6 @@
             <li v-for="{ href, name, index, target } in item.children" :key="index">
               <a
                 :href="href"
-                :title="name"
                 :target="target"
                 class="lux-nav-item"
                 @click="menuItemClicked($event, item)"
@@ -26,11 +24,7 @@
           </ul>
         </template>
         <template v-else>
-          <a
-            :href="item.href"
-            :title="item.name"
-            class="lux-nav-item"
-            @click="menuItemClicked($event, item)"
+          <a :href="item.href" class="lux-nav-item" @click="menuItemClicked($event, item)"
             ><lux-menu-bar-label :item="item"></lux-menu-bar-label
           ></a>
         </template>
@@ -99,7 +93,6 @@
                 v-if="child.href"
                 :key="index"
                 :href="child.href"
-                :title="child.name"
                 :target="child.target"
                 :data-method="child.method"
                 class="lux-nav-item"
@@ -110,7 +103,6 @@
               <button
                 v-else
                 key="{{ index }}-button"
-                :title="child.name"
                 :data-method="child.method"
                 class="lux-nav-item"
                 @click="menuItemClicked(child)"
@@ -125,7 +117,6 @@
           <a
             :key="index"
             :href="item.href"
-            :title="item.name"
             :data-method="item.method"
             class="lux-nav-item"
             @click="menuItemClicked(item)"
