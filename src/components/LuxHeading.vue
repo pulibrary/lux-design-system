@@ -70,28 +70,28 @@ export default {
 .h1 {
   letter-spacing: var(--letter-spacing-x-small);
   font-weight: var(--font-weight-bold);
-  @include responsive-font(3vw, 1.602em, 3.157em, 64px);
+  font-size: var(--font-size-xxx-large);
 }
 
 .h2 {
   letter-spacing: var(--letter-spacing-small);
   font-weight: var(--font-weight-bold);
-  @include responsive-font(2.5vw, 1.602em, 3.157em, 42px);
+  font-size: 42px;
 }
 
 .h3 {
   font-weight: var(--font-weight-bold);
-  @include responsive-font(2vw, 1.266em, 1.777em, 36px);
+  font-size: var(--font-size-x-large);
 }
 
 .h4 {
   font-weight: var(--font-weight-semi-bold);
-  @include responsive-font(1.5vw, 1.266em, 1.777em, 36px);
+  font-size: var(--font-size-x-large);
 }
 
 .h5 {
   font-weight: var(--font-weight-semi-bold);
-  @include responsive-font(1vw, 1em, 1.125em, 16px);
+  font-size: var(--font-size-base);
 }
 
 .h6 {

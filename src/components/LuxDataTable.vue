@@ -283,12 +283,7 @@ export default {
     font-weight: var(--font-weight-bold);
     font-family: var(--font-family-text);
     line-height: var(--line-height-heading);
-    @include responsive-font(
-      2vw,
-      $font-size-x-large-min,
-      $font-size-x-large-max,
-      $font-size-x-large
-    );
+    font-size: var(--font-size-x-large);
   }
 
   thead {
