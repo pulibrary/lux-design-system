@@ -164,12 +164,6 @@ export default {
   .lux-text-style {
     padding: 0;
   }
-  :deep(.lux-card-content) {
-    padding: 1rem;
-    @media (min-width: 900px) {
-      padding: var(--space-base);
-    }
-  }
 
   @media (min-width: 600px) {
     .lux-card-header {
@@ -197,6 +191,16 @@ export default {
 
   &:visited {
     color: var(--color-rich-black);
+  }
+}
+</style>
+<style scoped>
+.full-width {
+  :deep(.lux-card-content) {
+    padding: 1rem;
+    @media (min-width: 900px) {
+      padding: var(--space-base);
+    }
   }
 }
 </style>
