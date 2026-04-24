@@ -107,7 +107,7 @@ export default {
     color: var(--black);
     background-color: var(--orange-50);
   }
-  :deep(.lux-input .lux-input-field) {
+  .lux-input .lux-input-field {
     box-shadow: none;
     height: 3rem;
     border: 1px solid black;
