@@ -421,12 +421,12 @@ export default {
   @include stack-space($space-base);
   font-family: var(--font-family-text);
   font-size: var(--font-size-base);
-  line-height: $line-height-base;
+  line-height: var(--line-height-base);
   width: 100%;
 
   .lux-main-menu-toggle {
     text-align: center;
-    padding: $space-x-small;
+    padding: var(--space-x-small);
     background: transparent;
     border: 0;
   }
@@ -439,10 +439,10 @@ export default {
     line-height: 1;
     cursor: pointer;
     outline: none;
-    padding: $space-small $space-x-small;
-    padding-left: $space-small;
+    padding: var(--space-small) var(--space-x-small);
+    padding-left: var(--space-small);
     font-size: var(--font-size-base);
-    color: $color-rich-black;
+    color: var(--color-rich-black);
     display: block;
     text-decoration: none;
     width: 100%;
@@ -489,23 +489,23 @@ export default {
 
     @media #{mq.$media-query-medium-max} {
       > li:first-child a {
-        padding-top: $space-base;
+        padding-top: var(--space-base);
       }
 
       li:last-child a:last-child {
-        padding-bottom: $space-base;
+        padding-bottom: var(--space-base);
       }
 
       .lux-has-children {
         .lux-submenu-toggle {
-          padding-bottom: $space-xx-small;
+          padding-bottom: var(--space-xx-small);
         }
         li:first-child a {
-          padding-top: $space-small;
+          padding-top: var(--space-small);
         }
 
         &:last-child li:last-child a:last-child {
-          padding-bottom: $space-base;
+          padding-bottom: var(--space-base);
         }
       }
     }
@@ -518,7 +518,7 @@ export default {
       list-style-type: none;
       flex-basis: 100%;
       @media #{mq.$media-query-medium-max} {
-        border-bottom: 1px solid $color-grayscale-light;
+        border-bottom: 1px solid var(--color-grayscale-light);
       }
 
       &.lux-has-children {
@@ -553,7 +553,7 @@ export default {
       font-weight: 700;
 
       + ul a {
-        padding-left: $space-base * 1.5;
+        padding-left: calc(var(--space-base) * 1.5);
       }
     }
   }
@@ -583,7 +583,7 @@ export default {
 
     .lux-has-children ul {
       position: absolute;
-      background: $color-white;
+      background: var(--color-white);
       margin-bottom: 20px;
       z-index: 100000;
       left: 0;
