@@ -128,7 +128,7 @@ export default {
 
     a {
       text-decoration: none;
-      color: var(----color-white);
+      color: var(--color-white);
       @include princeton-focus(dark);
     }
   }
