@@ -383,9 +383,6 @@ $color-placeholder: tint(rgb(149, 156, 167), 50%);
         -webkit-font-smoothing: antialiased;
         color: $color-placeholder;
       }
-      &:-ms-input-placeholder {
-        color: $color-placeholder;
-      }
       &::-moz-placeholder {
         color: $color-placeholder;
         -moz-osx-font-smoothing: grayscale;
