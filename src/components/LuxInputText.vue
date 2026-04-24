@@ -125,7 +125,7 @@ export default {
      */
     placeholder: {
       type: String,
-      default: "",
+      default: null,
     },
     /**
      * The label of the form input field.
