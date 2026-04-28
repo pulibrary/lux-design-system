@@ -466,8 +466,8 @@ $color-placeholder: tint(rgb(149, 156, 167), 50%);
   .append-icon {
     padding: var(--space-xx-small);
     background-color: var(--color-white);
-    border-top-right-radius: 3px;
-    border-bottom-right-radius: 3px;
+    border-top-right-radius: var(--border-radius-default);
+    border-bottom-right-radius: var(--border-radius-default);
   }
 }
 </style>
