@@ -1,8 +1,9 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`LuxWrapper.vue has the expected html structure 1`] = `
+exports[`LuxWrapper.vue > has the expected html structure 1`] = `
 <div
   class="lux-wrapper"
+  data-v-814c9aeb=""
   style="max-width: 123px;"
 >
   

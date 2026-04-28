@@ -20,8 +20,8 @@ npm run styleguide
 ### Running tests
 
 * Run all tests with `npm run test`
-* Run a single test file with `npx jest tests/unit/specs/components/luxGridItem.spec.js`
-* Run a single test with the name of the test from the `it()` call: `npx jest -t "should have the appropriate class to define the columns"`
+* Run a single test file with `npx vitest tests/unit/specs/components/luxGridItem.spec.js`
+* Run a single test with the name of the test from the `it()` call: `npx vitest -t "should have the appropriate class to define the columns"`
 
 #### Running playwright
 

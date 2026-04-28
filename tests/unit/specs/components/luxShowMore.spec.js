@@ -64,10 +64,10 @@ describe("LuxShowMore.vue", () => {
   })
 
   it("sets focus on the content half a second after click", async () => {
-    jest.useFakeTimers()
+    vi.useFakeTimers()
     wrapper.find("button").trigger("click")
     await nextTick()
-    jest.advanceTimersByTime(500)
+    vi.advanceTimersByTime(500)
     const content = wrapper.find("#my-disclosure").element
     expect(content).toEqual(document.activeElement)
   })

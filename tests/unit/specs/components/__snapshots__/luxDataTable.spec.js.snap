@@ -1,38 +1,54 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`LuxDataTable.vue has the expected html structure 1`] = `
+exports[`LuxDataTable.vue > has the expected html structure 1`] = `
 <table
   border="1px"
   class="lux-data-table"
+  data-v-2338fe96=""
 >
-  <caption>
+  <caption
+    data-v-2338fe96=""
+  >
     This is a caption.
   </caption>
-  <thead>
-    <tr>
+  <thead
+    data-v-2338fe96=""
+  >
+    <tr
+      data-v-2338fe96=""
+    >
       
       <th
+        data-v-2338fe96=""
         nowrap=""
         scope="col"
       >
-        <span>
+        <span
+          data-v-2338fe96=""
+        >
           Select Items
         </span>
       </th>
       <th
+        data-v-2338fe96=""
         nowrap=""
         scope="col"
       >
-        <span>
+        <span
+          data-v-2338fe96=""
+        >
           name
         </span>
       </th>
       <th
+        data-v-2338fe96=""
         nowrap=""
         scope="col"
       >
         <button
           class="lux-button text medium"
+          data-v-2338fe96=""
+          data-v-2a78a0df=""
           type="button"
         >
           <!--v-if-->
@@ -40,11 +56,14 @@ exports[`LuxDataTable.vue has the expected html structure 1`] = `
           
           <div
             class="lux-icon"
+            data-v-2338fe96=""
+            data-v-6dc5806d=""
           >
             <svg
               aria-hidden="false"
               aria-labelledby="unsorted"
               color="currentColor"
+              data-v-6dc5806d=""
               height="16"
               overflow="visible"
               role="img"
@@ -53,6 +72,7 @@ exports[`LuxDataTable.vue has the expected html structure 1`] = `
               xmlns="http://www.w3.org/2000/svg"
             >
               <title
+                data-v-6dc5806d=""
                 id="unsorted"
                 lang="en"
               >
@@ -60,24 +80,31 @@ exports[`LuxDataTable.vue has the expected html structure 1`] = `
               </title>
               <!--v-if-->
               <g
+                data-v-6dc5806d=""
                 fill="currentColor"
               >
                 
                 <!--v-if-->
                 <!--v-if-->
-                <g>
+                <g
+                  data-v-2338fe96=""
+                  data-v-cb7702f1=""
+                >
                   <circle
                     class="st0"
                     cx="12"
                     cy="12"
+                    data-v-cb7702f1=""
                     r="2"
                   />
                   <polygon
                     class="st1"
+                    data-v-cb7702f1=""
                     points="17.5,6.5 12,0.5 6.5,6.5 	"
                   />
                   <polygon
                     class="st1"
+                    data-v-cb7702f1=""
                     points="6.5,17.5 12,23.5 17.5,17.5 	"
                   />
                 </g>
@@ -91,11 +118,14 @@ exports[`LuxDataTable.vue has the expected html structure 1`] = `
         </button>
       </th>
       <th
+        data-v-2338fe96=""
         nowrap=""
         scope="col"
       >
         <button
           class="lux-button text medium"
+          data-v-2338fe96=""
+          data-v-2a78a0df=""
           type="button"
         >
           <!--v-if-->
@@ -103,11 +133,14 @@ exports[`LuxDataTable.vue has the expected html structure 1`] = `
           
           <div
             class="lux-icon"
+            data-v-2338fe96=""
+            data-v-6dc5806d=""
           >
             <svg
               aria-hidden="false"
               aria-labelledby="unsorted"
               color="currentColor"
+              data-v-6dc5806d=""
               height="16"
               overflow="visible"
               role="img"
@@ -116,6 +149,7 @@ exports[`LuxDataTable.vue has the expected html structure 1`] = `
               xmlns="http://www.w3.org/2000/svg"
             >
               <title
+                data-v-6dc5806d=""
                 id="unsorted"
                 lang="en"
               >
@@ -123,24 +157,31 @@ exports[`LuxDataTable.vue has the expected html structure 1`] = `
               </title>
               <!--v-if-->
               <g
+                data-v-6dc5806d=""
                 fill="currentColor"
               >
                 
                 <!--v-if-->
                 <!--v-if-->
-                <g>
+                <g
+                  data-v-2338fe96=""
+                  data-v-cb7702f1=""
+                >
                   <circle
                     class="st0"
                     cx="12"
                     cy="12"
+                    data-v-cb7702f1=""
                     r="2"
                   />
                   <polygon
                     class="st1"
+                    data-v-cb7702f1=""
                     points="17.5,6.5 12,0.5 6.5,6.5 	"
                   />
                   <polygon
                     class="st1"
+                    data-v-cb7702f1=""
                     points="6.5,17.5 12,23.5 17.5,17.5 	"
                   />
                 </g>
@@ -154,11 +195,14 @@ exports[`LuxDataTable.vue has the expected html structure 1`] = `
         </button>
       </th>
       <th
+        data-v-2338fe96=""
         nowrap=""
         scope="col"
       >
         <button
           class="lux-button text medium"
+          data-v-2338fe96=""
+          data-v-2a78a0df=""
           type="button"
         >
           <!--v-if-->
@@ -166,11 +210,14 @@ exports[`LuxDataTable.vue has the expected html structure 1`] = `
           
           <div
             class="lux-icon"
+            data-v-2338fe96=""
+            data-v-6dc5806d=""
           >
             <svg
               aria-hidden="false"
               aria-labelledby="unsorted"
               color="currentColor"
+              data-v-6dc5806d=""
               height="16"
               overflow="visible"
               role="img"
@@ -179,6 +226,7 @@ exports[`LuxDataTable.vue has the expected html structure 1`] = `
               xmlns="http://www.w3.org/2000/svg"
             >
               <title
+                data-v-6dc5806d=""
                 id="unsorted"
                 lang="en"
               >
@@ -186,24 +234,31 @@ exports[`LuxDataTable.vue has the expected html structure 1`] = `
               </title>
               <!--v-if-->
               <g
+                data-v-6dc5806d=""
                 fill="currentColor"
               >
                 
                 <!--v-if-->
                 <!--v-if-->
-                <g>
+                <g
+                  data-v-2338fe96=""
+                  data-v-cb7702f1=""
+                >
                   <circle
                     class="st0"
                     cx="12"
                     cy="12"
+                    data-v-cb7702f1=""
                     r="2"
                   />
                   <polygon
                     class="st1"
+                    data-v-cb7702f1=""
                     points="17.5,6.5 12,0.5 6.5,6.5 	"
                   />
                   <polygon
                     class="st1"
+                    data-v-cb7702f1=""
                     points="6.5,17.5 12,23.5 17.5,17.5 	"
                   />
                 </g>
@@ -219,17 +274,22 @@ exports[`LuxDataTable.vue has the expected html structure 1`] = `
       
     </tr>
   </thead>
-  <tbody>
+  <tbody
+    data-v-2338fe96=""
+  >
     
     <tr
       class="row"
+      data-v-2338fe96=""
     >
       
       <td
         class="lux-data-table-center"
+        data-v-2338fe96=""
       >
         <input
           aria-label="id: 1, name: foo, email: foo@xxx.xxx, age: 42, birthday: May 5, 2000"
+          data-v-2338fe96=""
           id="1"
           name="id"
           type="checkbox"
@@ -238,9 +298,12 @@ exports[`LuxDataTable.vue has the expected html structure 1`] = `
       </td>
       <td
         class=""
+        data-v-2338fe96=""
       >
         <a
           class="lux-link link medium"
+          data-v-2338fe96=""
+          data-v-7cb0fc63=""
           href="https://example.com"
         >
           <!-- @slot The text of your hyperlink. -->
@@ -252,22 +315,31 @@ exports[`LuxDataTable.vue has the expected html structure 1`] = `
       </td>
       <td
         class="lux-data-table-center"
+        data-v-2338fe96=""
       >
-        <span>
+        <span
+          data-v-2338fe96=""
+        >
           foo@xxx.xxx
         </span>
       </td>
       <td
         class="lux-data-table-number"
+        data-v-2338fe96=""
       >
-        <span>
+        <span
+          data-v-2338fe96=""
+        >
           42
         </span>
       </td>
       <td
         class=""
+        data-v-2338fe96=""
       >
-        <span>
+        <span
+          data-v-2338fe96=""
+        >
           May 5, 2000
         </span>
       </td>
@@ -275,13 +347,16 @@ exports[`LuxDataTable.vue has the expected html structure 1`] = `
     </tr>
     <tr
       class="row"
+      data-v-2338fe96=""
     >
       
       <td
         class="lux-data-table-center"
+        data-v-2338fe96=""
       >
         <input
           aria-label="id: 2, name: bar, email: bar@xxx.xxx, age: 23, birthday: April 5, 2000"
+          data-v-2338fe96=""
           id="2"
           name="id"
           type="checkbox"
@@ -290,29 +365,41 @@ exports[`LuxDataTable.vue has the expected html structure 1`] = `
       </td>
       <td
         class=""
+        data-v-2338fe96=""
       >
-        <span>
+        <span
+          data-v-2338fe96=""
+        >
           bar
         </span>
       </td>
       <td
         class="lux-data-table-center"
+        data-v-2338fe96=""
       >
-        <span>
+        <span
+          data-v-2338fe96=""
+        >
           bar@xxx.xxx
         </span>
       </td>
       <td
         class="lux-data-table-number"
+        data-v-2338fe96=""
       >
-        <span>
+        <span
+          data-v-2338fe96=""
+        >
           23
         </span>
       </td>
       <td
         class=""
+        data-v-2338fe96=""
       >
-        <span>
+        <span
+          data-v-2338fe96=""
+        >
           April 5, 2000
         </span>
       </td>
@@ -320,13 +407,16 @@ exports[`LuxDataTable.vue has the expected html structure 1`] = `
     </tr>
     <tr
       class="row"
+      data-v-2338fe96=""
     >
       
       <td
         class="lux-data-table-center"
+        data-v-2338fe96=""
       >
         <input
           aria-label="id: 3, name: fez, email: fez@xxx.xxx, age: 34, birthday: January 5, 2000"
+          data-v-2338fe96=""
           id="3"
           name="id"
           type="checkbox"
@@ -335,29 +425,41 @@ exports[`LuxDataTable.vue has the expected html structure 1`] = `
       </td>
       <td
         class=""
+        data-v-2338fe96=""
       >
-        <span>
+        <span
+          data-v-2338fe96=""
+        >
           fez
         </span>
       </td>
       <td
         class="lux-data-table-center"
+        data-v-2338fe96=""
       >
-        <span>
+        <span
+          data-v-2338fe96=""
+        >
           fez@xxx.xxx
         </span>
       </td>
       <td
         class="lux-data-table-number"
+        data-v-2338fe96=""
       >
-        <span>
+        <span
+          data-v-2338fe96=""
+        >
           34
         </span>
       </td>
       <td
         class=""
+        data-v-2338fe96=""
       >
-        <span>
+        <span
+          data-v-2338fe96=""
+        >
           January 5, 2000
         </span>
       </td>
@@ -365,13 +467,16 @@ exports[`LuxDataTable.vue has the expected html structure 1`] = `
     </tr>
     <tr
       class="row"
+      data-v-2338fe96=""
     >
       
       <td
         class="lux-data-table-center"
+        data-v-2338fe96=""
       >
         <input
           aria-label="id: 4, name: hey, email: hey@xxx.xxx, age: 4, birthday: March 5, 2000"
+          data-v-2338fe96=""
           id="4"
           name="id"
           type="checkbox"
@@ -380,29 +485,41 @@ exports[`LuxDataTable.vue has the expected html structure 1`] = `
       </td>
       <td
         class=""
+        data-v-2338fe96=""
       >
-        <span>
+        <span
+          data-v-2338fe96=""
+        >
           hey
         </span>
       </td>
       <td
         class="lux-data-table-center"
+        data-v-2338fe96=""
       >
-        <span>
+        <span
+          data-v-2338fe96=""
+        >
           hey@xxx.xxx
         </span>
       </td>
       <td
         class="lux-data-table-number"
+        data-v-2338fe96=""
       >
-        <span>
+        <span
+          data-v-2338fe96=""
+        >
           4
         </span>
       </td>
       <td
         class=""
+        data-v-2338fe96=""
       >
-        <span>
+        <span
+          data-v-2338fe96=""
+        >
           March 5, 2000
         </span>
       </td>

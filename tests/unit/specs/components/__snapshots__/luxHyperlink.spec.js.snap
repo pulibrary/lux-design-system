@@ -1,8 +1,9 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`LuxHyperlink.vue has the expected html structure 1`] = `
+exports[`LuxHyperlink.vue > has the expected html structure 1`] = `
 <a
   class="lux-link link medium"
+  data-v-7cb0fc63=""
   href="https://library.princeton.edu"
 >
   <!-- @slot The text of your hyperlink. -->

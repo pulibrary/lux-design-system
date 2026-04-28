@@ -1,10 +1,12 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`LuxMediaImage.vue has the expected html structure 1`] = `
+exports[`LuxMediaImage.vue > has the expected html structure 1`] = `
 <div
   class="lux-media-image medium lux-default-thumbnail"
+  data-v-327f7a2b=""
 >
   <lux-icon-base-stub
+    data-v-327f7a2b=""
     height="50"
     icon-color="rgb(225,225,225)"
     icon-hide="true"

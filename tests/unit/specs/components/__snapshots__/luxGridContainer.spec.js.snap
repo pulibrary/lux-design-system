@@ -1,8 +1,9 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`GridItem.vue has the expected html structure 1`] = `
+exports[`GridItem.vue > has the expected html structure 1`] = `
 <div
   class="lux-flex-container center"
+  data-v-ff6365ae=""
 >
   <!-- @slot The grid items that live in your grid container. -->
   

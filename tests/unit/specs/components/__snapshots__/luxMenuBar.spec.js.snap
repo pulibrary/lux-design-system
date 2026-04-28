@@ -1,16 +1,22 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`LuxMenuBar.vue has the expected html structure 1`] = `
+exports[`LuxMenuBar.vue > has the expected html structure 1`] = `
 <nav
   class="lux-nav dark"
+  data-v-f328bb9a=""
 >
-  <ul>
+  <ul
+    data-v-f328bb9a=""
+  >
     
-    <li>
+    <li
+      data-v-f328bb9a=""
+    >
       
       <a
         aria-haspopup="true"
         class="lux-has-children lux-nav-item"
+        data-v-f328bb9a=""
         href="/example/"
       >
         
@@ -20,11 +26,15 @@ exports[`LuxMenuBar.vue has the expected html structure 1`] = `
       <ul
         aria-label="submenu"
         class="lux-nav-children"
+        data-v-f328bb9a=""
       >
         
-        <li>
+        <li
+          data-v-f328bb9a=""
+        >
           <a
             class="lux-nav-item"
+            data-v-f328bb9a=""
             href="/example/"
           >
             Baz
@@ -34,11 +44,14 @@ exports[`LuxMenuBar.vue has the expected html structure 1`] = `
       </ul>
       
     </li>
-    <li>
+    <li
+      data-v-f328bb9a=""
+    >
       
       <a
         aria-haspopup="true"
         class="lux-has-children lux-nav-item"
+        data-v-f328bb9a=""
         href="/example/"
       >
         
@@ -48,11 +61,15 @@ exports[`LuxMenuBar.vue has the expected html structure 1`] = `
       <ul
         aria-label="submenu"
         class="lux-nav-children"
+        data-v-f328bb9a=""
       >
         
-        <li>
+        <li
+          data-v-f328bb9a=""
+        >
           <a
             class="lux-nav-item"
+            data-v-f328bb9a=""
             href="/example/"
           >
             Baz1
@@ -62,9 +79,12 @@ exports[`LuxMenuBar.vue has the expected html structure 1`] = `
       </ul>
       
     </li>
-    <li>
+    <li
+      data-v-f328bb9a=""
+    >
       <a
         class="lux-nav-item"
+        data-v-f328bb9a=""
         href="/example/"
       >
         

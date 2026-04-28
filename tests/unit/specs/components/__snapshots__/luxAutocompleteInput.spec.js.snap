@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`InputAutocomplete.vue has the expected html structure 1`] = `
+exports[`InputAutocomplete.vue > has the expected html structure 1`] = `
 <div
   class="lux-autocomplete"
 >
@@ -17,7 +17,6 @@ exports[`InputAutocomplete.vue has the expected html structure 1`] = `
     />
     <ul
       class="lux-autocomplete-results"
-      style=""
     >
       
       <li

@@ -1,12 +1,14 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`LuxInputSelect.vue has the expected html structure 1`] = `
+exports[`LuxInputSelect.vue > has the expected html structure 1`] = `
 <div
   class="lux-select"
+  data-v-ea76d866=""
 >
   <!--v-if-->
   <select
     class="lux-select medium"
+    data-v-ea76d866=""
     errormessage=""
     id="foo"
     name="foo"
@@ -14,9 +16,11 @@ exports[`LuxInputSelect.vue has the expected html structure 1`] = `
   >
     
     <option
+      data-v-ea76d866=""
       value="one"
     />
     <option
+      data-v-ea76d866=""
       value="two"
     />
     

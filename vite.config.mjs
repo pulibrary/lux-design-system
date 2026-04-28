@@ -3,7 +3,7 @@ import { resolve } from "path"
 import { defineConfig } from "vite"
 import copy from "rollup-plugin-copy"
 
-const vueDocsPlugin = {
+export const vueDocsPlugin = {
   name: "vue-docs",
   transform(code, id) {
     if (!/vue&type=docs/.test(id)) return
