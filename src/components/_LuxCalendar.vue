@@ -18,7 +18,14 @@
         <th scope="col">{{ dayName(SATURDAY, props.locale) }}</th>
       </tr>
       <tr v-for="week in calendarWeeks" :key="week">
-        <td v-for="day in week" @click="emitDay(day)" :key="day">{{ day }}</td>
+        <td
+          v-for="day in week"
+          @click="emitDay(day)"
+          :key="day"
+          :class="{ 'lux-highlight-today': isToday(day) }"
+        >
+          {{ day }}
+        </td>
       </tr>
     </tbody>
   </table>
@@ -78,4 +85,19 @@ function nextMonth() {
 function emitDay(day) {
   emit("selected", new Date(currentYear.value, currentMonth.value, day))
 }
+
+function isToday(day) {
+  const today = new Date()
+  return (
+    day === today.getDate() &&
+    currentMonth.value === today.getMonth() &&
+    currentYear.value === today.getFullYear()
+  )
+}
 </script>
+<style>
+.lux-highlight-today {
+  background-color: var(--color-bleu-de-france-darker);
+  color: var(--color-white);
+}
+</style>

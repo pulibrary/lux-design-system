@@ -27,4 +27,11 @@ describe("_LuxCalendar", () => {
 
     expect(component.emitted().selected).toEqual([[new Date(2026, 3, 8)]])
   })
+  it("highlights today's date", () => {
+    const component = mount(_LuxCalendar, {
+      props: { month: new Date().getMonth(), year: new Date().getFullYear() },
+    })
+    const today = component.findAll("td").find(td => td.text() === String(new Date().getDate()))
+    expect(today.classes()).toContain("lux-highlight-today")
+  })
 })
