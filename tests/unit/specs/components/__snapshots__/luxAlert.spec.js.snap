@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`LuxAlert.vue has the expected html structure 1`] = `
+exports[`LuxAlert.vue > has the expected html structure 1`] = `
 <transition-stub
   appear="false"
   css="true"

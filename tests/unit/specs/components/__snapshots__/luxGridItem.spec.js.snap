@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`GridItem.vue has the expected html structure 1`] = `
+exports[`GridItem.vue > has the expected html structure 1`] = `
 <div
   class="lux-col lg-9 sm-6"
 >

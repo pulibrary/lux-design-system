@@ -1,22 +1,26 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`LuxInputRadio.vue has the expected html structure 1`] = `
+exports[`LuxInputRadio.vue > has the expected html structure 1`] = `
 <div
   class="lux-input"
+  data-v-97288885=""
 >
   <!--v-if-->
   
   <div
     class="lux-radio lux-inline"
+    data-v-97288885=""
   >
     <input
       checked=""
+      data-v-97288885=""
       id="radio-opt1"
       name="opt 1"
       type="radio"
       value="one"
     />
     <label
+      data-v-97288885=""
       for="radio-opt1"
     >
       one
@@ -24,14 +28,17 @@ exports[`LuxInputRadio.vue has the expected html structure 1`] = `
   </div>
   <div
     class="lux-radio lux-inline"
+    data-v-97288885=""
   >
     <input
+      data-v-97288885=""
       id="radio-opt2"
       name="opt 2"
       type="radio"
       value="two"
     />
     <label
+      data-v-97288885=""
       for="radio-opt2"
     >
       two

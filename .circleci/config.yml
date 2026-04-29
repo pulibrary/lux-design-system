@@ -44,7 +44,6 @@ workflows:
   test_my_app:
     jobs:
       - node/test:
-          test-results-for: jest
           matrix:
             parameters:
               version:

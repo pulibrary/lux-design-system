@@ -1,11 +1,13 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`LuxLoader.vue has the expected html structure 1`] = `
+exports[`LuxLoader.vue > has the expected html structure 1`] = `
 <div
   class="lux-overlay"
+  data-v-a8288144=""
 >
   <div
     class="lux-loader"
+    data-v-a8288144=""
     size="medium"
   />
 </div>

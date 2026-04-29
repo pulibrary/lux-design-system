@@ -1,11 +1,14 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`LuxDropdownMenu.vue has the expected html structure 1`] = `
+exports[`LuxDropdownMenu.vue > has the expected html structure 1`] = `
 <div
   class="lux-dropdown-menu medium"
+  data-v-4dce0a16=""
 >
   <button
     class="lux-button dropdown medium lux-dropdown-button"
+    data-v-2a78a0df=""
+    data-v-4dce0a16=""
     type="button"
   >
     <!--v-if-->
@@ -18,6 +21,7 @@ exports[`LuxDropdownMenu.vue has the expected html structure 1`] = `
   <lux-menu-bar-stub
     active="All"
     class=""
+    data-v-4dce0a16=""
     menu-items="[object Object],[object Object],[object Object],[object Object]"
     type="buttons"
   />

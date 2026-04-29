@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`LuxDatePicker.vue has the expected html structure 1`] = `
+exports[`LuxDatePicker.vue > has the expected html structure 1`] = `
 <div
   class="lux-date-picker medium"
 >
@@ -8,19 +8,23 @@ exports[`LuxDatePicker.vue has the expected html structure 1`] = `
   
   <div
     class="lux-input"
+    data-v-f2a652b7=""
   >
     <label
       class=""
+      data-v-f2a652b7=""
       for="startDate"
     >
       Start Date
     </label>
     <div
       class="lux-input-field medium"
+      data-v-f2a652b7=""
     >
       <input
         autocomplete="off"
         class="lux-input"
+        data-v-f2a652b7=""
         errormessage=""
         hover="false"
         id="startDate"

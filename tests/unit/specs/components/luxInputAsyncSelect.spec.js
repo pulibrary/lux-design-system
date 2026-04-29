@@ -2,7 +2,7 @@ import { flushPromises, mount } from "@vue/test-utils"
 import LuxInputAsyncSelect from "@/components/LuxInputAsyncSelect.vue"
 import { nextTick } from "vue"
 
-jest.useFakeTimers()
+vi.useFakeTimers()
 
 async function addMangoItemByMouse(wrapper) {
   const input = wrapper.find("input.displayInput")
@@ -10,7 +10,7 @@ async function addMangoItemByMouse(wrapper) {
   input.setValue("mango")
 
   // Allow the debounce to occur
-  jest.runAllTimers()
+  vi.runAllTimers()
   await flushPromises()
 
   const items = wrapper.findAll(".lux-autocomplete-result")
@@ -114,7 +114,7 @@ describe("AsyncSelect.vue", () => {
     input.trigger("focus")
 
     // Allow the debounce to occur
-    jest.runAllTimers()
+    vi.runAllTimers()
     await flushPromises()
 
     let items = wrapper.findAll(".lux-autocomplete-result")
@@ -123,7 +123,7 @@ describe("AsyncSelect.vue", () => {
     input.setValue("my query")
 
     // Allow the debounce to occur
-    jest.runAllTimers()
+    vi.runAllTimers()
     await flushPromises()
 
     items = wrapper.findAll(".lux-autocomplete-result")
@@ -147,7 +147,7 @@ describe("AsyncSelect.vue", () => {
     input.trigger("focus")
 
     // Allow the debounce to occur
-    jest.runAllTimers()
+    vi.runAllTimers()
     await flushPromises()
 
     let items = wrapper.findAll(".lux-autocomplete-result")
@@ -158,7 +158,7 @@ describe("AsyncSelect.vue", () => {
     input.setValue("my query")
 
     // Allow the debounce to occur
-    jest.runAllTimers()
+    vi.runAllTimers()
     await flushPromises()
 
     items = wrapper.findAll(".lux-autocomplete-result")
