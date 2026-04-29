@@ -9,13 +9,13 @@
   <table>
     <tbody>
       <tr>
-        <th scope="col">{{ dayName(SUNDAY) }}</th>
-        <th scope="col">{{ dayName(MONDAY) }}</th>
-        <th scope="col">{{ dayName(TUESDAY) }}</th>
-        <th scope="col">{{ dayName(WEDNESDAY) }}</th>
-        <th scope="col">{{ dayName(THURSDAY) }}</th>
-        <th scope="col">{{ dayName(FRIDAY) }}</th>
-        <th scope="col">{{ dayName(SATURDAY) }}</th>
+        <th scope="col">{{ dayName(SUNDAY, props.locale) }}</th>
+        <th scope="col">{{ dayName(MONDAY, props.locale) }}</th>
+        <th scope="col">{{ dayName(TUESDAY, props.locale) }}</th>
+        <th scope="col">{{ dayName(WEDNESDAY, props.locale) }}</th>
+        <th scope="col">{{ dayName(THURSDAY, props.locale) }}</th>
+        <th scope="col">{{ dayName(FRIDAY, props.locale) }}</th>
+        <th scope="col">{{ dayName(SATURDAY, props.locale) }}</th>
       </tr>
       <tr v-for="week in calendarWeeks" :key="week">
         <td v-for="day in week" @click="emitDay(day)" :key="day">{{ day }}</td>

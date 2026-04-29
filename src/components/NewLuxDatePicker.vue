@@ -1,6 +1,6 @@
 <template>
   <LuxInputText :value="dateString"></LuxInputText>
-  <LuxCalendar @selected="writeToInput($event)"></LuxCalendar>
+  <LuxCalendar @selected="writeToInput($event)" :locale="locale"></LuxCalendar>
 </template>
 <script setup>
 import LuxInputText from "./LuxInputText.vue"
