@@ -146,7 +146,7 @@ fieldset {
   }
 
   label {
-    padding-right: var(--space-base);
+    padding-inline-end: var(--space-base);
   }
 }
 
@@ -158,7 +158,7 @@ fieldset {
 
 .lux-radio label {
   cursor: pointer;
-  padding-left: var(--space-xx-small);
+  padding-inline-start: var(--space-xx-small);
   margin-top: calc(var(--font-size-base) * 0.175);
   margin-bottom: calc(var(--font-size-base) * 0.175);
 }
