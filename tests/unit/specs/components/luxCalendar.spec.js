@@ -1,6 +1,11 @@
 import _LuxCalendar from "@/components/_LuxCalendar.vue"
 import { mount } from "@vue/test-utils"
 import { describe, expect, it } from "vitest"
+import { nextTick } from "vue"
+
+function findDay(component, day) {
+  return component.findAll("td").find(td => td.text() === String(day))
+}
 
 describe("_LuxCalendar", () => {
   it("displays the calendar for the specified month", () => {
@@ -21,17 +26,37 @@ describe("_LuxCalendar", () => {
   })
   it("emits an event on click", () => {
     const component = mount(_LuxCalendar, { props: { month: 3, year: 2026 } })
-    const april_8th = component.findAll("td").find(td => td.text() === "8")
+    const april_8th = findDay(component, 8)
 
     april_8th.trigger("click")
 
     expect(component.emitted().selected).toEqual([[new Date(2026, 3, 8)]])
   })
   it("highlights today's date", () => {
+    const todayAsDate = new Date()
     const component = mount(_LuxCalendar, {
-      props: { month: new Date().getMonth(), year: new Date().getFullYear() },
+      props: { month: todayAsDate.getMonth(), year: todayAsDate.getFullYear() },
     })
-    const today = component.findAll("td").find(td => td.text() === String(new Date().getDate()))
+    const today = findDay(component, todayAsDate.getDate())
     expect(today.classes()).toContain("lux-highlight-today")
+  })
+  it("implements v-model", async () => {
+    const component = mount(_LuxCalendar, {
+      props: {
+        month: 0,
+        year: 1,
+        modelValue: 1,
+        "onUpdate:modelValue": e => component.setProps({ modelValue: e }),
+      },
+    })
+    const newYearsDay = findDay(component, 1)
+    expect(newYearsDay.classes()).toContain("lux-highlight-selected")
+
+    const january_5th = findDay(component, 5)
+    january_5th.trigger("click")
+
+    await nextTick()
+
+    expect(component.props("modelValue")).toEqual(5)
   })
 })
