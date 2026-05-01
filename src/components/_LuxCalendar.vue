@@ -6,7 +6,7 @@
   <LuxInputButton @button-clicked="nextMonth()" type="button" size="small"
     >Next month</LuxInputButton
   >
-  <table>
+  <table class="lux-calendar">
     <tbody>
       <tr>
         <th scope="col">{{ dayName(SUNDAY, props.locale) }}</th>
@@ -24,6 +24,7 @@
           :key="day"
           :class="{
             'lux-day': true,
+            'lux-highlight-focus': focusedDay == day,
             'lux-highlight-today': isToday(day),
             'lux-highlight-selected': isSelected(day),
           }"
@@ -47,7 +48,7 @@ import {
   FRIDAY,
   SATURDAY,
 } from "@/utils/luxDate"
-import { computed, defineModel, ref } from "vue"
+import { computed, defineModel, onDeactivated, onMounted, ref } from "vue"
 import LuxInputButton from "./LuxInputButton.vue"
 
 const JANUARY = 0
@@ -68,6 +69,32 @@ const currentMonth = ref(props.month)
 const currentYear = ref(props.year)
 const calendarWeeks = computed(() => weeks(currentYear.value, currentMonth.value))
 const monthLabel = computed(() => monthName(currentMonth.value, props.locale))
+
+// The day selected with keyboard focus
+const focusedDay = ref(selectedDate.value || new Date().getDate())
+const keydownBehavior = event => {
+  switch (event.key) {
+    case "ArrowDown":
+      focusedDay.value += 7
+      break
+    case "ArrowUp":
+      focusedDay.value -= 7
+      break
+    case "ArrowRight":
+      focusedDay.value += 1
+      break
+    case "ArrowLeft":
+      focusedDay.value -= 1
+      break
+    case "Enter":
+      emitDay(focusedDay.value)
+      break
+  }
+}
+onMounted(() => {
+  document.addEventListener("keydown", keydownBehavior)
+})
+onDeactivated(() => document.removeEventListener("keydown", keydownBehavior))
 
 function previousMonth() {
   if (currentMonth.value == JANUARY) {
@@ -110,6 +137,10 @@ function isSelected(day) {
 }
 </script>
 <style>
+.lux-calendar {
+  border-radius: var(--border-radius-default);
+}
+
 .lux-highlight-today {
   background-color: var(--color-bleu-de-france-darker);
   color: var(--color-white);
@@ -125,5 +156,9 @@ td.lux-day {
   height: var(--lux-cell-size);
   width: var(--lux-cell-size);
   text-align: center;
+}
+
+td.lux-highlight-focus {
+  border: 0.25rem var(--color-princeton-orange-on-white) solid;
 }
 </style>

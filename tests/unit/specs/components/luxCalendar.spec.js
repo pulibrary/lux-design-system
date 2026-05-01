@@ -59,4 +59,44 @@ describe("_LuxCalendar", () => {
 
     expect(component.props("modelValue")).toEqual(5)
   })
+  it("can be navigated by arrow keys", async () => {
+    const component = mount(_LuxCalendar, {
+      props: {
+        month: 0,
+        year: 1,
+        modelValue: 1,
+        "onUpdate:modelValue": e => component.setProps({ modelValue: e }),
+      },
+      attachTo: document.body,
+    })
+    const newYearsDay = findDay(component, 1)
+    const january8th = findDay(component, 8)
+    const january9th = findDay(component, 9)
+    const pressKey = async key => {
+      document.dispatchEvent(new KeyboardEvent("keydown", { key: key }))
+      await nextTick()
+    }
+
+    expect(newYearsDay.classes()).toContain("lux-highlight-focus")
+
+    await pressKey("ArrowDown")
+
+    expect(newYearsDay.classes()).not.toContain("lux-highlight-focus")
+    expect(january8th.classes()).toContain("lux-highlight-focus")
+
+    await pressKey("ArrowRight")
+
+    expect(january8th.classes()).not.toContain("lux-highlight-focus")
+    expect(january9th.classes()).toContain("lux-highlight-focus")
+
+    await pressKey("ArrowLeft")
+
+    expect(january9th.classes()).not.toContain("lux-highlight-focus")
+    expect(january8th.classes()).toContain("lux-highlight-focus")
+
+    await pressKey("ArrowUp")
+
+    expect(january8th.classes()).not.toContain("lux-highlight-focus")
+    expect(newYearsDay.classes()).toContain("lux-highlight-focus")
+  })
 })
