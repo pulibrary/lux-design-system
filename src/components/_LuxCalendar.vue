@@ -22,7 +22,11 @@
           v-for="day in week"
           @click="emitDay(day)"
           :key="day"
-          :class="{ 'lux-highlight-today': isToday(day) }"
+          :class="{
+            'lux-day': true,
+            'lux-highlight-today': isToday(day),
+            'lux-highlight-selected': isSelected(day),
+          }"
         >
           {{ day }}
         </td>
@@ -43,7 +47,7 @@ import {
   FRIDAY,
   SATURDAY,
 } from "@/utils/luxDate"
-import { computed, ref } from "vue"
+import { computed, defineModel, ref } from "vue"
 import LuxInputButton from "./LuxInputButton.vue"
 
 const JANUARY = 0
@@ -58,6 +62,7 @@ const props = defineProps({
   locale: { type: String, default: "default" },
 })
 const emit = defineEmits(["selected"])
+const selectedDate = defineModel()
 
 const currentMonth = ref(props.month)
 const currentYear = ref(props.year)
@@ -83,6 +88,7 @@ function nextMonth() {
 }
 
 function emitDay(day) {
+  selectedDate.value = day
   emit("selected", new Date(currentYear.value, currentMonth.value, day))
 }
 
@@ -94,10 +100,30 @@ function isToday(day) {
     currentYear.value === today.getFullYear()
   )
 }
+
+function isSelected(day) {
+  if (day) {
+    return day == selectedDate.value
+  } else {
+    return false
+  }
+}
 </script>
 <style>
 .lux-highlight-today {
   background-color: var(--color-bleu-de-france-darker);
   color: var(--color-white);
+}
+.lux-highlight-selected {
+  background-color: var(--color-light-blue);
+  color: var(--color-gray-90);
+  border-radius: var(--border-radius-circle);
+  border: 1px solid var(--color-bleu-de-france-light);
+}
+
+td.lux-day {
+  height: var(--lux-cell-size);
+  width: var(--lux-cell-size);
+  text-align: center;
 }
 </style>
