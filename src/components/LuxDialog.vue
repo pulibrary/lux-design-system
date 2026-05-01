@@ -5,7 +5,7 @@
       :class="{ 'lux-dialog': true, 'lux-dialog-inline': props.position == 'inline' }"
       :id="id"
     >
-      <div class="dialog-content" tabindex="-1">
+      <div class="dialog-content" tabindex="-1" ref="dialogContent">
         <div class="dialog-title">
           <LuxHeading level="h2" size="h4" v-if="$slots.title"
             ><slot name="title"></slot
@@ -33,6 +33,8 @@
 import { useTemplateRef } from "vue"
 import LuxInputButton from "./LuxInputButton.vue"
 import LuxHeading from "./LuxHeading.vue"
+import LuxIconBase from "./icons/LuxIconBase.vue"
+import LuxIconClose from "./icons/LuxIconClose.vue"
 
 const props = defineProps({
   /**
@@ -52,12 +54,14 @@ const props = defineProps({
 })
 
 const dialog = useTemplateRef("dialog")
+const dialogContent = useTemplateRef("dialogContent")
 function open() {
   if (props.position == "inline") {
     dialog.value.show()
   } else {
     dialog.value.showModal()
   }
+  setTimeout(() => dialogContent.value.focus())
 }
 
 function close() {
@@ -86,6 +90,16 @@ dialog.lux-dialog {
 
   .dialog-content {
     margin: 0 var(--space-base);
+  }
+
+  .dialog-content:focus {
+    /* Don't display a focus indicator on :focus, only on :focus-visible */
+    outline: none !important;
+  }
+
+  .dialog-content:focus-visible {
+    outline-offset: -6px !important;
+    outline: 0.25rem solid var(--color-princeton-orange-on-white) !important;
   }
 }
 

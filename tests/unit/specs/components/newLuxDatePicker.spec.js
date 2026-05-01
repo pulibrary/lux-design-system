@@ -24,17 +24,17 @@ describe("LuxDatePicker", () => {
     expect(dialogId).toBeTruthy()
     expect(component.find("button").attributes("aria-controls")).toEqual(dialogId)
   })
-  it("maintains aria-pressed correctly for the button", async () => {
+  it("maintains aria-expanded correctly for the button", async () => {
     const component = mount(NewLuxDatePicker)
     const button = component.find("button")
-    expect(button.attributes("aria-pressed")).toEqual("false")
+    expect(button.attributes("aria-expanded")).toEqual("false")
 
     button.trigger("click")
     await nextTick()
-    expect(button.attributes("aria-pressed")).toEqual("true")
+    expect(button.attributes("aria-expanded")).toEqual("true")
 
     button.trigger("click")
     await nextTick()
-    expect(button.attributes("aria-pressed")).toEqual("true")
+    expect(button.attributes("aria-expanded")).toEqual("true")
   })
 })

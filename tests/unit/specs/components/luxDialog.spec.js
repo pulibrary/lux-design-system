@@ -1,5 +1,6 @@
 import LuxDialog from "@/components/LuxDialog.vue"
 import { mount } from "@vue/test-utils"
+import { vi } from "vitest"
 
 describe("LuxDialog", () => {
   it("provides an open() function", () => {
@@ -7,6 +8,14 @@ describe("LuxDialog", () => {
     expect(component.find("dialog[open]").exists()).toBe(false)
     component.vm.open()
     expect(component.find("dialog[open]").exists()).toBe(true)
+  })
+
+  it("focuses the dialog content on open()", async () => {
+    vi.useFakeTimers()
+    const component = mount(LuxDialog, { attachTo: document.body })
+    component.vm.open()
+    vi.runAllTimers()
+    expect(component.find(".dialog-content").element).toEqual(document.activeElement)
   })
 
   it("provides an close() function", () => {

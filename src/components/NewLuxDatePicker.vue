@@ -1,15 +1,15 @@
 <template>
   <div class="lux-datepicker-input-group">
-    <LuxInputText :value="dateString"></LuxInputText>
+    <LuxInputText :value="dateString" :id="props.id" :name="props.name"></LuxInputText>
     <LuxInputButton
       type="button"
-      variation="text"
+      variation="outline"
       currentColor="black"
       @buttonClicked="toggle()"
       :aria-controls="id"
-      :aria-pressed="isOpen()"
+      :aria-expanded="isOpen()"
     >
-      <LuxIconBase height="14" width="14" iconName="close">
+      <LuxIconBase height="14" width="14" iconName="toggle calendar">
         <LuxIconCalendar></LuxIconCalendar>
       </LuxIconBase>
     </LuxInputButton>
@@ -25,10 +25,13 @@ import LuxCalendar from "./_LuxCalendar.vue"
 import { ref, useId, useTemplateRef } from "vue"
 import { toString } from "@/utils/luxDate"
 import LuxDialog from "./LuxDialog.vue"
+import LuxIconBase from "./icons/LuxIconBase.vue"
 import LuxInputButton from "./LuxInputButton.vue"
 import LuxIconCalendar from "./icons/LuxIconCalendar.vue"
 
 const props = defineProps({
+  id: String,
+  name: String,
   label: String,
   /**
    * The locale to use for the calendar (e.g. en-US, cs-CZ).  If none is specified, use the user's browser default locale.
