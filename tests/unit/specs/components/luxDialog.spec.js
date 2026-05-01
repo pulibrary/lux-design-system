@@ -18,6 +18,17 @@ describe("LuxDialog", () => {
     expect(component.find("dialog[open]").exists()).toBe(false)
   })
 
+  it("provides an isOpen() function", () => {
+    const component = mount(LuxDialog)
+    expect(component.vm.isOpen()).toBe(false)
+
+    component.vm.open()
+    expect(component.vm.isOpen()).toBe(true)
+
+    component.vm.close()
+    expect(component.vm.isOpen()).toBe(false)
+  })
+
   it("allows you to pass in a title", () => {
     const component = mount(LuxDialog, { slots: { title: "My nice title" } })
     expect(component.text()).toContain("My nice title")
@@ -31,5 +42,10 @@ describe("LuxDialog", () => {
   it("allows you to pass in a footer", () => {
     const component = mount(LuxDialog, { slots: { footer: "My nice footer" } })
     expect(component.text()).toContain("My nice footer")
+  })
+
+  it("allows you to provide a DOM id", () => {
+    const component = mount(LuxDialog, { props: { id: "my-id-123" } })
+    expect(component.find("dialog").attributes("id")).toEqual("my-id-123")
   })
 })

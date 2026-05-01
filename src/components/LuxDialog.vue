@@ -3,6 +3,7 @@
     <dialog
       ref="dialog"
       :class="{ 'lux-dialog': true, 'lux-dialog-inline': props.position == 'inline' }"
+      :id="id"
     >
       <div class="dialog-content" tabindex="-1">
         <div class="dialog-title">
@@ -44,6 +45,10 @@ const props = defineProps({
       return ["centered", "inline"].includes(value)
     },
   },
+  /**
+   * The id for this element in the DOM
+   */
+  id: String,
 })
 
 const dialog = useTemplateRef("dialog")
@@ -59,7 +64,11 @@ function close() {
   dialog.value.close()
 }
 
-defineExpose({ open, close })
+function isOpen() {
+  return dialog.value?.open
+}
+
+defineExpose({ open, close, isOpen })
 </script>
 <style>
 dialog.lux-dialog {
