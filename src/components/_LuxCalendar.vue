@@ -57,7 +57,7 @@ const props = defineProps({
    */
   locale: { type: String, default: "default" },
 })
-const emit = defineEmits("selected")
+const emit = defineEmits(["selected"])
 
 const currentMonth = ref(props.month)
 const currentYear = ref(props.year)
