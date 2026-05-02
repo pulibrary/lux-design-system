@@ -1,18 +1,19 @@
 <template>
   <a
-    :href="href"
-    :class="['lux-link', variation, size, underline ? 'lux-link-underline' : '']"
-    :target="newTab ? '_blank' : null"
+    :href="props.href"
+    :class="['lux-link', props.variation, props.size, props.underline ? 'lux-link-underline' : '']"
+    :target="props.newTab ? '_blank' : null"
   >
     <!-- @slot The text of your hyperlink. -->
     <slot />
-    <lux-icon-base v-if="newTab" width="14" height="14" icon-name="(opens in new tab)">
+    <lux-icon-base v-if="props.newTab" width="14" height="14" icon-name="(opens in new tab)">
       <lux-icon-new-tab></lux-icon-new-tab>
     </lux-icon-base>
   </a>
 </template>
 
-<script>
+<script setup>
+import { defineOptions } from "vue"
 import LuxIconBase from "./icons/LuxIconBase.vue"
 import LuxIconNewTab from "./icons/LuxIconNewTab.vue"
 
@@ -20,62 +21,59 @@ import LuxIconNewTab from "./icons/LuxIconNewTab.vue"
  * Used to create hyperlinks as text or buttons. Can also be used on Card component
  * sub-elements to make the entire card click-able.
  */
-export default {
+defineOptions({
   name: "LuxHyperlink",
   status: "ready",
   release: "1.0.0",
   type: "Element",
-  props: {
-    /**
-     * The href value of the link.
-     */
-    href: {
-      type: String,
-      default: "",
-      required: true,
-    },
-    /**
-     * Whether the link appears as text or as a button. Options include `button solid`
-     * and `button outline`.
-     */
-    variation: {
-      type: String,
-      default: "link",
-      validator: value => {
-        return value.match(/(link|button)/)
-      },
-    },
-    /**
-     * Sets the size of the button `small`, `medium`, `large`
-     */
-    size: {
-      type: String,
-      default: "medium",
-      validator: value => {
-        return value.match(/(small|medium|large)/)
-      },
-    },
-    /**
-     * Should the link open in a new tab?  This can be
-     * disconcerting, so don't use it unless necessary.
-     */
-    newTab: {
-      type: Boolean,
-      default: false,
-    },
-    /**
-     * Should the link have an underline?
-     */
-    underline: {
-      type: Boolean,
-      default: false,
+})
+
+const props = defineProps({
+  /**
+   * The href value of the link.
+   */
+  href: {
+    type: String,
+    default: "",
+    required: true,
+  },
+  /**
+   * Whether the link appears as text or as a button. Options include `button solid`
+   * and `button outline`.
+   */
+  variation: {
+    type: String,
+    default: "link",
+    validator: value => {
+      return value.match(/(link|button)/)
     },
   },
-  components: {
-    LuxIconBase,
-    LuxIconNewTab,
+  /**
+   * Sets the size of the button `small`, `medium`, `large`
+   */
+  size: {
+    type: String,
+    default: "medium",
+    validator: value => {
+      return value.match(/(small|medium|large)/)
+    },
   },
-}
+  /**
+   * Should the link open in a new tab?  This can be
+   * disconcerting, so don't use it unless necessary.
+   */
+  newTab: {
+    type: Boolean,
+    default: false,
+  },
+  /**
+   * Should the link have an underline?
+   */
+  underline: {
+    type: Boolean,
+    default: false,
+  },
+})
 </script>
 
 <style lang="scss" scoped>
