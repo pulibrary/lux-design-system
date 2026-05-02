@@ -39,7 +39,7 @@ import LuxIconRelax from "./LuxIconRelax.vue"
 import LuxIconReportHealthy from "./LuxIconReportHealthy.vue"
 import LuxIconReportRemove from "./LuxIconReportRemove.vue"
 import LuxIconReportUnhealthy from "./LuxIconReportUnhealthy.vue"
-import LuxIconReportUserHome from "./LuxIconReportUserHome.vue"
+import LuxIconUserHome from "./LuxIconUserHome.vue"
 import LuxIconReported from "./LuxIconReported.vue"
 import LuxIconResearch from "./LuxIconResearch.vue"
 import LuxIconScales from "./LuxIconScales.vue"
@@ -90,7 +90,7 @@ export {
   LuxIconReportHealthy,
   LuxIconReportRemove,
   LuxIconReportUnhealthy,
-  LuxIconReportUserHome,
+  LuxIconUserHome,
   LuxIconReported,
   LuxIconResearch,
   LuxIconScales,
