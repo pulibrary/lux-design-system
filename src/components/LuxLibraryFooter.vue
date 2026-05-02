@@ -1,11 +1,11 @@
 <template>
-  <component :is="type" :class="['lux-library-footer', theme]">
-    <lux-wrapper class="lux-footer-content" :maxWidth="maxWidth">
+  <component :is="props.type" :class="['lux-library-footer', theme]">
+    <lux-wrapper class="lux-footer-content" :maxWidth="props.maxWidth">
       <div class="lux-footer-main">
         <div class="lux-library-links contact-info-layout">
           <div>
-            <lux-library-logo :theme="value(theme)" />
-            <lux-library-contact-info :theme="value(theme)" />
+            <lux-library-logo :theme="theme" />
+            <lux-library-contact-info :theme="theme" />
           </div>
         </div>
         <div class="lux-library-links subscribe-layout">
@@ -40,11 +40,12 @@
         </div>
       </div>
     </lux-wrapper>
-    <lux-university-footer :theme="value(theme)" />
+    <lux-university-footer :theme="theme" />
   </component>
 </template>
 
-<script>
+<script setup>
+import { computed, defineOptions } from "vue"
 import LuxLibraryContactInfo from "./_LuxLibraryContactInfo.vue"
 import LuxLibraryLogo from "./LuxLibraryLogo.vue"
 import LuxLogoFacebook from "./logos/LuxLogoFacebook.vue"
@@ -63,55 +64,43 @@ import LuxUniversityFooter from "./LuxUniversityFooter.vue"
  * Don't forget to create a fallback for this component by providing the HTML
  * rendering in _<noscript></noscript>_ tags.
  */
-export default {
+defineOptions({
   name: "LuxLibraryFooter",
   status: "ready",
   release: "1.0.0",
   type: "Pattern",
-  components: {
-    LuxLibraryContactInfo,
-    LuxLibraryLogo,
-    LuxLogoFacebook,
-    LuxLogoFriends,
-    LuxLogoGovDocs,
-    LuxLogoInstagram,
-    LuxLogoX,
-    LuxSubscribeNewsletter,
-    LuxWrapper,
-    LuxUniversityFooter,
+})
+
+const props = defineProps({
+  /**
+   * The html element name used for the container
+   */
+  type: {
+    type: String,
+    default: "div",
   },
-  methods: {
-    value: function (theme) {
-      if (theme == "light" || theme == "shade") {
-        return theme
-      }
-      return "dark"
-    },
+  /**
+   * The maximum width of the wrapper. Default is set to 1440.
+   */
+  maxWidth: {
+    type: Number,
+    default: 1440,
   },
-  props: {
-    /**
-     * The html element name used for the container
-     */
-    type: {
-      type: String,
-      default: "div",
-    },
-    /**
-     * The maximum width of the wrapper. Default is set to 1440.
-     */
-    maxWidth: {
-      type: Number,
-      default: 1440,
-    },
-    /**
-     * Whether the header is dark, shade, or light. Default is set to dark.
-     */
-    theme: {
-      type: String,
-      default: "dark",
-    },
+  /**
+   * Whether the header is dark, shade, or light. Default is set to dark.
+   */
+  theme: {
+    type: String,
+    default: "dark",
   },
-}
+})
+
+const theme = computed(() => {
+  if (props.theme == "light" || props.theme == "shade") {
+    return props.theme
+  }
+  return "dark"
+})
 </script>
 
 <style lang="scss" scoped>
@@ -212,7 +201,7 @@ export default {
     .lux-library-links a {
       text-decoration: underline;
       text-underline-offset: 3px;
-      color: var(----color-white);
+      color: var(--color-white);
       @include princeton-focus(dark);
     }
   }
