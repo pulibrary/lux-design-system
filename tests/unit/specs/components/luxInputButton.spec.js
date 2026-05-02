@@ -85,4 +85,12 @@ describe("LuxInputButton.vue", () => {
       expect(wrapper.emitted()["button-clicked"].length).toEqual(1)
     })
   })
+  it("can focus via prop", async () => {
+    wrapper = mount(LuxInputButton, { attachTo: document.body })
+
+    wrapper.setProps({ focused: true })
+    await nextTick()
+
+    expect(document.activeElement).toEqual(wrapper.find("button").element)
+  })
 })

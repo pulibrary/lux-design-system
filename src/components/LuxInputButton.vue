@@ -2,152 +2,140 @@
   <button
     ref="inputButton"
     :type="!!type ? type : false"
-    :class="['lux-button', variation, size, { 'lux-expanded': block == true }]"
+    :class="['lux-button', props.variation, props.size, { 'lux-expanded': props.block == true }]"
     :disabled="disabled"
     @click="buttonClicked($event)"
   >
-    <div v-if="variation === 'icon-prepend'" class="prepend-icon">
+    <div v-if="props.variation === 'icon-prepend'" class="prepend-icon">
       <lux-icon-base width="18" height="18" :icon-name="icon">
         <component :is="iconComponent"></component>
       </lux-icon-base>
     </div>
     <!-- @slot The text of your button. -->
     <slot />
-    <div v-if="variation === 'icon'" class="append-icon">
-      <lux-icon-base width="18" height="18" :icon-name="icon">
+    <div v-if="props.variation === 'icon'" class="append-icon">
+      <lux-icon-base width="18" height="18" :icon-name="props.icon">
         <component :is="iconComponent"></component>
       </lux-icon-base>
     </div>
   </button>
 </template>
 
-<script>
+<script setup>
+import { computed, defineOptions, onUpdated, toRef, useTemplateRef, watch } from "vue"
 import LuxIconBase from "./icons/LuxIconBase.vue"
 
 /**
  * Buttons are used to toggle something in the interface or trigger new
  * content in the same context.
  */
-export default {
+defineOptions({
   name: "LuxInputButton",
   status: "ready",
   release: "1.0.0",
   type: "Element",
-  data: function () {
-    return {
-      label: "Submit",
-    }
-  },
-  props: {
-    /**
-     * The button's variations `solid, outline, text, dropdown, icon`
-     */
-    variation: {
-      type: String,
-      default: "solid",
-      validator: value => {
-        return value.match(/(solid|outline|text|dropdown|icon|icon-prepend)/)
-      },
-    },
-    /**
-     * The button's type attribute `button, submit`
-     */
-    type: {
-      type: String,
-      default: "button",
-      validator: value => {
-        return value.match(/(|button|submit)/)
-      },
-    },
-    /**
-     * Sets the size of the button `small, medium, large`
-     */
-    size: {
-      type: String,
-      default: "medium",
-      validator: value => {
-        return value.match(/(small|medium|large)/)
-      },
-    },
-    /**
-     * Whether the button extends the full available width or not
-     */
-    block: {
-      type: Boolean,
-      default: false,
-    },
-    /**
-     * Whether the button is disabled or not
-     * `true, false`
-     */
-    disabled: {
-      type: Boolean,
-      default: false,
-    },
-    /**
-     * Whether the button is focused or not
-     * `true, false`
-     */
-    focused: {
-      type: Boolean,
-      default: false,
-    },
-    /**
-     * Clicking this button can emit a custom event that should trigger an alert.
-     * You must supply an alertStatus and alertMessage, like so:
-     * { 'alertStatus': 'success', 'alertMessage': 'This is my message.'}
-     */
-    customAlertEvent: {
-      type: Object,
-      default: null,
-    },
-    /**
-     * Visually hides the button text.
-     */
-    hideLabel: {
-      type: Boolean,
-      default: false,
-    },
-    /**
-     * Indicates what icon to use. Values should be hyphenated and do not use the "lux-icon-" prefix.
-     * For example, instead of `lux-icon-search`, simply use `search`.
-     */
-    icon: {
-      type: String,
-      default: "",
-    },
-  },
-  computed: {
-    iconComponent() {
-      return "lux-icon-" + this.icon
-    },
-  },
-  emits: ["button-clicked", "system-alert"],
-  methods: {
-    buttonClicked(value) {
-      if (this.customAlertEvent) {
-        this.$emit("system-alert", {
-          event: value,
-          alertStatus: this.customAlertEvent.alertStatus,
-          alertMessage: this.customAlertEvent.alertMessage,
-        })
-      }
-      this.$emit("button-clicked", value)
-    },
-  },
-  mounted() {
-    let vm = this
+})
 
-    vm.$nextTick(function () {
-      if (vm.focused) {
-        this.$refs.inputButton.focus()
-      }
+const props = defineProps({
+  /**
+   * The button's variations `solid, outline, text, dropdown, icon`
+   */
+  variation: {
+    type: String,
+    default: "solid",
+    validator: value => {
+      return value.match(/(solid|outline|text|dropdown|icon|icon-prepend)/)
+    },
+  },
+  /**
+   * The button's type attribute `button, submit`
+   */
+  type: {
+    type: String,
+    default: "button",
+    validator: value => {
+      return value.match(/(|button|submit)/)
+    },
+  },
+  /**
+   * Sets the size of the button `small, medium, large`
+   */
+  size: {
+    type: String,
+    default: "medium",
+    validator: value => {
+      return value.match(/(small|medium|large)/)
+    },
+  },
+  /**
+   * Whether the button extends the full available width or not
+   */
+  block: {
+    type: Boolean,
+    default: false,
+  },
+  /**
+   * Whether the button is disabled or not
+   * `true, false`
+   */
+  disabled: {
+    type: Boolean,
+    default: false,
+  },
+  /**
+   * Whether the button is focused or not
+   * `true, false`
+   */
+  focused: {
+    type: Boolean,
+    default: false,
+  },
+  /**
+   * Clicking this button can emit a custom event that should trigger an alert.
+   * You must supply an alertStatus and alertMessage, like so:
+   * { 'alertStatus': 'success', 'alertMessage': 'This is my message.'}
+   */
+  customAlertEvent: {
+    type: Object,
+    default: null,
+  },
+  /**
+   * Visually hides the button text.
+   */
+  hideLabel: {
+    type: Boolean,
+    default: false,
+  },
+  /**
+   * Indicates what icon to use. Values should be hyphenated and do not use the "lux-icon-" prefix.
+   * For example, instead of `lux-icon-search`, simply use `search`.
+   */
+  icon: {
+    type: String,
+    default: "",
+  },
+})
+
+const emit = defineEmits(["button-clicked", "system-alert"])
+const inputButton = useTemplateRef("inputButton")
+const iconComponent = computed(() => "lux-icon-" + props.icon)
+
+function buttonClicked(value) {
+  if (props.customAlertEvent) {
+    emit("system-alert", {
+      event: value,
+      alertStatus: props.customAlertEvent.alertStatus,
+      alertMessage: props.customAlertEvent.alertMessage,
     })
-  },
-  components: {
-    LuxIconBase,
-  },
+  }
+  emit("button-clicked", value)
 }
+
+onUpdated(() => {
+  if (props.focused) {
+    inputButton.value.focus()
+  }
+})
 </script>
 
 <style lang="scss" scoped>
