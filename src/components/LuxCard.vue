@@ -1,95 +1,95 @@
 <template>
   <article
-    :id="id"
+    :id="props.id"
     @click.capture="select($event)"
     class="lux-card"
     :class="[
-      size,
-      { 'lux-card-selected': selected },
-      { 'lux-card-edited': edited },
-      { 'lux-card-disabled': disabled },
+      props.size,
+      { 'lux-card-selected': props.selected },
+      { 'lux-card-edited': props.edited },
+      { 'lux-card-disabled': props.disabled },
     ]"
-    v-bind:style="{ 'max-width': cardPixelWidth + 'px' }"
+    v-bind:style="{ 'max-width': props.cardPixelWidth + 'px' }"
   >
     <!-- @slot The heading, media, and other contents of your card.  -->
     <slot></slot>
   </article>
 </template>
 
-<script>
+<script setup>
+import { defineOptions } from "vue"
 /**
  * Cards are used to apply a container around a related grouping of information.
  */
-export default {
+defineOptions({
   name: "LuxCard",
   status: "ready",
   release: "1.0.0",
   type: "Element",
-  props: {
-    /**
-     * Sets the id to reference this card with.
-     */
-    id: {
-      type: String,
-      default: "",
-    },
-    /**
-     * Sets the URL linking to the card content
-     */
-    cardUrl: {
-      type: String,
-      default: "",
-    },
-    /**
-     * Sets arbitrary card width. It's recommended to use size over this setting.
-     */
-    cardPixelWidth: {
-      default: "",
-    },
-    /**
-     * Sets the size of the card `small, medium, large, full-width`
-     */
-    size: {
-      type: String,
-      default: "medium",
-      // validator: (value) => {
-      //   return value.match(/(small|medium|large|full-width)/);
-      // },
-    },
-    /**
-     * Indicates whether the card is selected.
-     */
-    selected: {
-      type: Boolean,
-      default: false,
-    },
-    /**
-     * Indicates whether the object a card represents has been altered from its persisted form.
-     */
-    edited: {
-      type: Boolean,
-      default: false,
-    },
-    /**
-     * Indicates the user cannot interact with the card.
-     */
-    disabled: {
-      type: Boolean,
-      default: false,
-    },
-    /**
-     * Indicates the user cannot interact with the card.
-     */
-    cardTitle: {
-      type: String,
-      default: "",
-    },
+})
+
+const props = defineProps({
+  /**
+   * Sets the id to reference this card with.
+   */
+  id: {
+    type: String,
+    default: "",
   },
-  methods: {
-    select: function (event) {
-      this.$emit("card-click", event)
-    },
+  /**
+   * Sets the URL linking to the card content -- this does not seem to be used
+   */
+  cardUrl: {
+    type: String,
+    default: "",
   },
+  /**
+   * Sets arbitrary card width. It's recommended to use size over this setting.
+   */
+  cardPixelWidth: {
+    default: "",
+  },
+  /**
+   * Sets the size of the card `small, medium, large, full-width`
+   */
+  size: {
+    type: String,
+    default: "medium",
+  },
+  /**
+   * Indicates whether the card is selected.
+   */
+  selected: {
+    type: Boolean,
+    default: false,
+  },
+  /**
+   * Indicates whether the object a card represents has been altered from its persisted form.
+   */
+  edited: {
+    type: Boolean,
+    default: false,
+  },
+  /**
+   * Indicates the user cannot interact with the card.
+   */
+  disabled: {
+    type: Boolean,
+    default: false,
+  },
+  /**
+   * The title of the card -- this prop is not used
+   */
+  cardTitle: {
+    type: String,
+    default: "",
+  },
+})
+
+const emit = defineEmits(["card-click"])
+
+function select(event) {
+  emit("card-click", event)
 }
 </script>
 
