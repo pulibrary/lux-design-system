@@ -12,34 +12,36 @@
   Q19 3 18 3
   Z
   "
-    :stroke="lineColor"
+    :stroke="props.lineColor"
     :stroke-width="1.5"
   />
 </template>
 
-<script>
+<script setup>
+import { defineOptions } from "vue"
 /**
  * Icons are used to visually communicate core parts of the product and
  * available actions. Please be aware that all elements must have closing tags (not "self-closing").
  * To add additional icons, please consult [the instructions](/#/Adding%20Icons).
  */
-export default {
+defineOptions({
   name: "LuxIconBookmark",
   status: "ready",
   release: "1.0.0",
   type: "Element",
-  props: {
-    /**
-     * The outline/stroke color for the bookmark icon.  If not specified,
-     * it will use the iconColor of the parent LuxIconBase component.
-     */
-    lineColor: {
-      required: false,
-      type: String,
-      default: "currentColor",
-    },
+})
+
+const props = defineProps({
+  /**
+   * The outline/stroke color for the bookmark icon.  If not specified,
+   * it will use the iconColor of the parent LuxIconBase component.
+   */
+  lineColor: {
+    required: false,
+    type: String,
+    default: "currentColor",
   },
-}
+})
 </script>
 
 <docs>
