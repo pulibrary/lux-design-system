@@ -1,5 +1,5 @@
 <template>
-  <component :is="type" :class="['lux-library-contact', theme]">
+  <component :is="props.type" :class="['lux-library-contact', props.theme]">
     <div itemscope itemtype="http://schema.org/Organization">
       <div itemscope itemtype="http://schema.org/PostalAddress">
         <span itemprop="streetAddress">One Washington Road</span> <br />
@@ -13,36 +13,37 @@
   </component>
 </template>
 
-<script>
+<script setup>
+import { defineOptions } from "vue"
+
 /**
  * Used to show Library's contact information, including address and phone, is
  * clear and in the footer.
  */
 
-export default {
+defineOptions({
   name: "LuxLibraryContactInfo",
   status: "ready",
   release: "1.0.0",
   type: "Element",
+})
 
-  props: {
-    /**
-     * The html element name used for the wrapper.
-     */
-    type: {
-      type: String,
-      default: "div",
-    },
-    theme: {
-      type: String,
-      default: "dark",
-    },
+const props = defineProps({
+  /**
+   * The html element name used for the wrapper.
+   */
+  type: {
+    type: String,
+    default: "div",
   },
-}
+  theme: {
+    type: String,
+    default: "dark",
+  },
+})
 </script>
 
 <style lang="scss" scoped>
-@use "/src/assets/styles/spacing.scss" as *;
 @use "/src/assets/styles/mixins.scss" as *;
 @use "/src/assets/styles/focus.scss" as *;
 

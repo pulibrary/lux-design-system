@@ -1,28 +1,31 @@
 <template>
-  <component :is="type" class="lux-accessibility">
+  <component :is="props.type" class="lux-accessibility">
     <a href="https://accessibility.princeton.edu/help">Accessibility</a>
   </component>
 </template>
 
-<script>
+<script setup>
+import { defineOptions } from "vue"
+
 /**
  * Used to show the University’s Accessibility site in the footer.
  */
-export default {
+defineOptions({
   name: "LuxUniversityAccessibilityOld",
   status: "ready",
   release: "5.2.0",
   type: "Element",
-  props: {
-    /**
-     * The html element name used for the wrapper.
-     */
-    type: {
-      type: String,
-      default: "span",
-    },
+})
+
+const props = defineProps({
+  /**
+   * The html element name used for the wrapper.
+   */
+  type: {
+    type: String,
+    default: "span",
   },
-}
+})
 </script>
 
 <style lang="scss" scoped>

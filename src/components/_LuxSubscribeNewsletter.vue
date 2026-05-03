@@ -1,5 +1,5 @@
 <template>
-  <component :is="type" class="lux-subscribe-newsletter">
+  <component :is="props.type" class="lux-subscribe-newsletter">
     <form
       id="mc-embedded-subscribe-form"
       action="https://princeton.us4.list-manage.com/subscribe/post?u=f1159e2c2a8bc35d62147f282&amp;id=6c19fe9a37"
@@ -36,36 +36,35 @@
   </component>
 </template>
 
-<script>
+<script setup>
+import { defineOptions } from "vue"
+
 import LuxInputButton from "./LuxInputButton.vue"
 import LuxInputText from "./LuxInputText.vue"
 
 /**
  * Used to add a Subscribe Newsletter input.
  */
-export default {
+defineOptions({
   name: "LuxSubscribeNewsletter",
   status: "ready",
   release: "5.2.0",
   type: "Element",
-  props: {
-    /**
-     * The html element name used for the wrapper.
-     */
-    type: {
-      type: String,
-      default: "div",
-    },
-    buttonLabel: {
-      type: String,
-      default: "Subscribe",
-    },
+})
+
+const props = defineProps({
+  /**
+   * The html element name used for the wrapper.
+   */
+  type: {
+    type: String,
+    default: "div",
   },
-  components: {
-    LuxInputButton,
-    LuxInputText,
+  buttonLabel: {
+    type: String,
+    default: "Subscribe",
   },
-}
+})
 </script>
 
 <style lang="scss" scoped>

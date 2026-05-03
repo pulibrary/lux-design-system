@@ -1,5 +1,5 @@
 <template>
-  <component :is="type" class="lux-library-contact">
+  <component :is="props.type" class="lux-library-contact">
     <div itemscope itemtype="http://schema.org/Organization">
       <h2 itemprop="name">Princeton University Library</h2>
       <div itemscope itemtype="http://schema.org/PostalAddress">
@@ -28,37 +28,33 @@
   </component>
 </template>
 
-<script>
-/**
- * Used to show Library's contact information, including address and phone, is
- * clear and in the footer.
- */
+<script setup>
+import { defineOptions } from "vue"
 import LuxLogoFacebook from "./logos/LuxLogoFacebook.vue"
 import LuxLogoX from "./logos/LuxLogoX.vue"
 import LuxLogoGovDocs from "./logos/LuxLogoGovDocs.vue"
 import LuxLogoFriends from "./logos/LuxLogoFriends.vue"
 
-export default {
+/**
+ * Used to show Library's contact information, including address and phone, is
+ * clear and in the footer.
+ */
+defineOptions({
   name: "LibraryContactInfoOld",
   status: "ready",
   release: "5.2.0",
   type: "Element",
-  components: {
-    LuxLogoFacebook,
-    LuxLogoX,
-    LuxLogoGovDocs,
-    LuxLogoFriends,
+})
+
+const props = defineProps({
+  /**
+   * The html element name used for the wrapper.
+   */
+  type: {
+    type: String,
+    default: "div",
   },
-  props: {
-    /**
-     * The html element name used for the wrapper.
-     */
-    type: {
-      type: String,
-      default: "div",
-    },
-  },
-}
+})
 </script>
 
 <style lang="scss" scoped>

@@ -1,33 +1,36 @@
 <template>
-  <component :is="type" :class="['lux-copyright', theme]">
+  <component :is="props.type" :class="['lux-copyright', props.theme]">
     &copy; {{ new Date().getFullYear() }} The Trustees of Princeton University
   </component>
 </template>
 
-<script>
+<script setup>
+import { defineOptions } from "vue"
+
 /**
  * Used to show the University’s copyright notice, including the current year
  * (“© 20xx The Trustees of Princeton University”) in the footer.
  */
-export default {
+defineOptions({
   name: "LuxUniversityCopyright",
   status: "ready",
   release: "1.0.0",
   type: "Element",
-  props: {
-    /**
-     * The html element name used for the wrapper.
-     */
-    type: {
-      type: String,
-      default: "span",
-    },
-    theme: {
-      type: String,
-      default: "dark",
-    },
+})
+
+const props = defineProps({
+  /**
+   * The html element name used for the wrapper.
+   */
+  type: {
+    type: String,
+    default: "span",
   },
-}
+  theme: {
+    type: String,
+    default: "dark",
+  },
+})
 </script>
 
 <style lang="scss" scoped>

@@ -1,33 +1,35 @@
 <template>
-  <component :is="type" class="lux-card-content">
+  <component :is="props.type" class="lux-card-content">
     <!-- @slot The supplementary conent in your card -->
     <slot></slot>
   </component>
 </template>
 
-<script>
+<script setup>
+import { defineOptions } from "vue"
+
 /**
  * Used to establish a section of a card for supplementary content.
  */
-export default {
+defineOptions({
   name: "LuxCardContent",
   status: "ready",
   release: "1.0.0",
   type: "Element",
-  props: {
-    /**
-     * The html element name used for the wrapper.
-     */
-    type: {
-      type: String,
-      default: "div",
-    },
+})
+
+const props = defineProps({
+  /**
+   * The html element name used for the wrapper.
+   */
+  type: {
+    type: String,
+    default: "div",
   },
-}
+})
 </script>
 
-<style lang="scss" scoped>
-@use "/src/assets/styles/spacing.scss" as *;
+<style scoped>
 .lux-card-content {
   padding: 0 var(--space-small) var(--space-small);
 
