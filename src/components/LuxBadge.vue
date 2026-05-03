@@ -1,37 +1,37 @@
 <template>
   <span :class="badgeClass"><slot></slot></span>
 </template>
-<script>
+<script setup>
+import { computed, defineOptions } from "vue"
+
 /**
  * Badge is a basic informational component with various color options.
  */
-export default {
+defineOptions({
   name: "LuxBadge",
   status: "ready",
   release: "6.8.0",
   type: "Element",
-  props: {
-    /**
-     * Sets the color for the badge.
-     */
-    color: {
-      type: String,
-      default: "green",
-    },
+})
+
+const props = defineProps({
+  /**
+   * Sets the color for the badge.
+   */
+  color: {
+    type: String,
+    default: "green",
   },
-  // Calculates the class to apply correct colors
-  computed: {
-    badgeClass() {
-      return `lux-badge lux-badge-${this.color}`
-    },
-  },
-}
+})
+
+// Calculates the class to apply correct colors
+const badgeClass = computed(() => `lux-badge lux-badge-${props.color}`)
 </script>
 <style>
 .lux-badge {
   height: 23px;
   font-size: 0.625rem;
-  padding: 0px 8px;
+  padding: 0px var(--space-x-small);
   letter-spacing: 0.32px;
   margin: 0.25rem 0.25rem 0.25rem 0;
   border-radius: 24px;
