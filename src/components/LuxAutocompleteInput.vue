@@ -309,6 +309,9 @@ export default {
 $color-placeholder: tint($color-grayscale, 50%);
 
 .lux-autocomplete {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-x-small);
   @include stack-space($space-small);
   font-weight: var(--font-weight-regular);
   font-family: var(--font-family-text);
@@ -325,7 +328,6 @@ $color-placeholder: tint($color-grayscale, 50%);
     display: block;
     font-size: var(--font-size-base);
     color: tint($color-rich-black, 20%);
-    @include stack-space($space-x-small);
 
     &.lux-hidden {
       @include visually-hidden;
@@ -334,7 +336,6 @@ $color-placeholder: tint($color-grayscale, 50%);
 
   input {
     @include inset-squish-space($space-small);
-    @include stack-space($space-small);
     appearance: none;
     -webkit-appearance: none;
     background: var(--color-white);

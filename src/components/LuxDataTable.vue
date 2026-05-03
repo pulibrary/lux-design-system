@@ -277,13 +277,13 @@ export default {
   border-bottom: none;
 
   caption {
-    @include stack-space(var(--space-base));
     display: table-caption;
     text-align: left;
     font-weight: var(--font-weight-bold);
     font-family: var(--font-family-text);
     line-height: var(--line-height-heading);
     font-size: var(--font-size-x-large);
+    margin-block-end: var(--space-base);
   }
 
   thead {

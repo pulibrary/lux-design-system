@@ -42,7 +42,6 @@ const props = defineProps({
 
 .lux-accessibility {
   @include reset;
-  @include stack-space(var(--space-base));
   font-family: var(--font-family-heading);
   font-size: var(--font-size-base);
   line-height: var(--line-height-heading);
