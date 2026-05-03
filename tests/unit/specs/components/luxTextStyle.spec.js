@@ -1,5 +1,6 @@
 import { mount } from "@vue/test-utils"
 import LuxTextStyle from "@/components/LuxTextStyle.vue"
+import { nextTick } from "vue"
 
 describe("LuxTextStyle.vue", () => {
   let wrapper
@@ -31,6 +32,12 @@ describe("LuxTextStyle.vue", () => {
   it("should render slotted text", () => {
     const text = wrapper.find("p")
     expect(text.text()).toBe("foo")
+  })
+
+  it("can be green", async () => {
+    wrapper.setProps({ color: "green" })
+    await nextTick()
+    expect(wrapper.find(".green").exists()).toBe(true)
   })
 
   it("has the expected html structure", () => {

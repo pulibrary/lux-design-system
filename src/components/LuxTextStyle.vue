@@ -1,49 +1,52 @@
 <template>
-  <component :is="type" :class="['lux-text-style ', variation, color]">
+  <component :is="props.type" :class="['lux-text-style ', props.variation, props.color]">
     <!-- @slot The text you'd like to style -->
     <slot />
   </component>
 </template>
 
-<script>
+<script setup>
+import { defineOptions } from "vue"
+
 /**
  * Text style enhances text with additional visual meaning. For example, using
  * disabled text to de-emphasize it from its surrounding text. Don’t use text
  * styles only for aesthetic effect.
  */
-export default {
+defineOptions({
   name: "LuxTextStyle",
   status: "ready",
   release: "1.0.0",
   type: "Element",
-  props: {
-    /**
-     * The html element name used for the text
-     */
-    type: {
-      type: String,
-      default: "p",
-    },
-    /**
-     * Style variation to give additional meaning.
-     * `default, disabled, strong, positive, negative,small,uppercase`
-     */
-    variation: {
-      type: String,
-      default: "default",
-      validator: value => {
-        return value.match(/(default|disabled|strong|emphasis|positive|negative|small|uppercase)/)
-      },
-    },
-    color: {
-      type: String,
-      default: "var(--color-rich-black)",
-      validator: value => {
-        return value.match(/(var\(--color-rich-black\)|grey-dark|red|green|blue)/)
-      },
+})
+
+const props = defineProps({
+  /**
+   * The html element name used for the text
+   */
+  type: {
+    type: String,
+    default: "p",
+  },
+  /**
+   * Style variation to give additional meaning.
+   * `default, disabled, strong, positive, negative,small,uppercase`
+   */
+  variation: {
+    type: String,
+    default: "default",
+    validator: value => {
+      return value.match(/(default|disabled|strong|emphasis|positive|negative|small|uppercase)/)
     },
   },
-}
+  color: {
+    type: String,
+    default: "var(--color-rich-black)",
+    validator: value => {
+      return value.match(/(var\(--color-rich-black\)|grey-dark|red|green|blue)/)
+    },
+  },
+})
 </script>
 
 <style lang="scss">
