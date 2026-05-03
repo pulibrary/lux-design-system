@@ -31,11 +31,63 @@
   </transition>
 </template>
 
-<script>
+<script setup>
+import { computed, defineOptions, defineEmits, onMounted, ref } from "vue"
+
+const props = defineProps({
+  /**
+   * The intent of the message. Valid options: `alert, indicator`. Alerts are full page and indicators are “inline”.
+   */
+  type: {
+    type: String,
+    default: "indicator",
+    validator: value => {
+      return value.match(/(alert|indicator)/)
+    },
+  },
+  /**
+   * Severity of the message. Valid options: `info, warning, success, error`
+   */
+  status: {
+    type: String,
+    default: "info",
+    validator: value => {
+      return value.match(/(info|warning|success|error)/)
+    },
+  },
+  /**
+   * Automatically hides the notification after 2 seconds.
+   */
+  autoclear: {
+    type: Boolean,
+    default: false,
+  },
+  /**
+   * The number of seconds to wait before autoclearing the
+   * notification.  This prop has no effect if autoclear
+   * is not true.
+   */
+  autoclearSeconds: {
+    type: Number,
+    default: 2,
+  },
+  /**
+   * User can manually hide the notification.  This emits a dismissed
+   * event that you can bind to if needed (for example, if you want to
+   * record that the user hid the notification in a database or localStorage)
+   */
+  dismissible: {
+    type: Boolean,
+    default: false,
+  },
+})
+
+const emit = defineEmits(["dismissed"])
+
 /**
  * Alerts are used to provide timely information to a user in response to some event.
  */
-export default {
+defineOptions({
   name: "LuxAlert",
   status: "ready",
   release: "1.0.0",
@@ -46,95 +98,33 @@ export default {
       lang: "en",
     },
   },
-  data: function () {
-    return {
-      alertMessage: "Something happened, but we're not sure what.",
-      show: true,
-    }
-  },
-  computed: {
-    isSuccess() {
-      return this.status === "success" ? true : false
-    },
-    isInfo() {
-      return this.status === "info" ? true : false
-    },
-    isWarning() {
-      return this.status === "warning" ? true : false
-    },
-    isError() {
-      return this.status === "error" ? true : false
-    },
-    isFullScreen() {
-      return this.type === "alert" ? true : false
-    },
-  },
-  props: {
-    /**
-     * The intent of the message. Valid options: `alert, indicator`. Alerts are full page and indicators are “inline”.
-     */
-    type: {
-      type: String,
-      default: "indicator",
-      validator: value => {
-        return value.match(/(alert|indicator)/)
-      },
-    },
-    /**
-     * Severity of the message. Valid options: `info, warning, success, error`
-     */
-    status: {
-      type: String,
-      default: "info",
-      validator: value => {
-        return value.match(/(info|warning|success|error)/)
-      },
-    },
-    /**
-     * Automatically hides the notification after 2 seconds.
-     */
-    autoclear: {
-      type: Boolean,
-      default: false,
-    },
-    /**
-     * The number of seconds to wait before autoclearing the
-     * notification.  This prop has no effect if autoclear
-     * is not true.
-     */
-    autoclearSeconds: {
-      type: Number,
-      default: 2,
-    },
-    /**
-     * User can manually hide the notification.  This emits a dismissed
-     * event that you can bind to if needed (for example, if you want to
-     * record that the user hid the notification in a database or localStorage)
-     */
-    dismissible: {
-      type: Boolean,
-      default: false,
-    },
-  },
-  methods: {
-    hideAlert() {
-      this.show = false
+})
 
-      /**
-       * The user has dismissed (or hidden) the alert.
-       */
-      this.$emit("dismissed")
-    },
-  },
-  mounted() {
-    if (this.autoclear) {
-      setTimeout(() => {
-        this.show = false
-      }, this.autoclearSeconds * 1000)
-    }
-  },
-  emits: ["dismissed"],
+const alertMessage = "Something happened, but we're not sure what."
+const show = ref(true)
+
+const isSuccess = computed(() => props.status === "success")
+const isInfo = computed(() => props.status === "info")
+const isWarning = computed(() => props.status === "warning")
+const isError = computed(() => props.status === "error")
+const isFullScreen = computed(() => props.type === "alert")
+
+function hideAlert() {
+  show.value = false
+
+  /**
+   * The user has dismissed (or hidden) the alert.
+   */
+  emit("dismissed")
 }
+
+onMounted(() => {
+  if (props.autoclear) {
+    setTimeout(() => {
+      show.value = false
+    }, props.autoclearSeconds * 1000)
+  }
+})
 </script>
 
 <style lang="scss">
