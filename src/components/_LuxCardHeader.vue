@@ -1,33 +1,35 @@
 <template>
-  <component :is="type" class="lux-card-header">
+  <component :is="props.type" class="lux-card-header">
     <!-- @slot The header content.  You should probably include a LuxHeading component in this slot to provide good document structure. -->
     <slot></slot>
   </component>
 </template>
 
-<script>
+<script setup>
+import { defineOptions } from "vue"
+
 /**
  * Used to establish a section of a card for the primary title of the card.
  */
-export default {
+defineOptions({
   name: "LuxCardHeader",
   status: "ready",
   release: "1.0.0",
   type: "Element",
-  props: {
-    /**
-     * The html element name used for the wrapper.
-     */
-    type: {
-      type: String,
-      default: "div",
-    },
+})
+
+const props = defineProps({
+  /**
+   * The html element name used for the wrapper.
+   */
+  type: {
+    type: String,
+    default: "div",
   },
-}
+})
 </script>
 
-<style lang="scss" scoped>
-@use "/src/assets/styles/spacing.scss" as *;
+<style scoped>
 .lux-heading {
   margin-bottom: 0;
 }

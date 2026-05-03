@@ -1,40 +1,38 @@
 <template>
-  <component :is="type" :class="['lux-accessibility', theme]">
+  <component :is="props.type" :class="['lux-accessibility', props.theme]">
     <LuxHyperlink href="https://accessibility.princeton.edu/help" :newTab="true"
       >Accessibility Help</LuxHyperlink
     >
   </component>
 </template>
 
-<script>
+<script setup>
+import { defineOptions } from "vue"
 import LuxHyperlink from "./LuxHyperlink.vue"
 
 /**
  * Used to show the University’s Accessibility site in the footer.
  */
-export default {
+defineOptions({
   name: "LuxUniversityAccessibility",
   status: "ready",
   release: "1.0.0",
   type: "Element",
+})
 
-  props: {
-    /**
-     * The html element name used for the wrapper.
-     */
-    type: {
-      type: String,
-      default: "span",
-    },
-    theme: {
-      type: String,
-      default: "dark",
-    },
+const props = defineProps({
+  /**
+   * The html element name used for the wrapper.
+   */
+  type: {
+    type: String,
+    default: "span",
   },
-  components: {
-    LuxHyperlink,
+  theme: {
+    type: String,
+    default: "dark",
   },
-}
+})
 </script>
 
 <style lang="scss" scoped>

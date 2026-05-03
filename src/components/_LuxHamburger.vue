@@ -4,47 +4,41 @@
   </span>
 </template>
 
-<script>
+<script setup>
+import { defineOptions } from "vue"
+
 /**
  * Used in conjunction with LuxMenuBar to display a menu on narrow screens.
  */
-export default {
+defineOptions({
   name: "LuxHamburger",
   status: "ready",
   release: "1.0.0",
   type: "Element",
-  props: {
-    /**
-     * The html element name used for the wrapper.
-     */
-    type: {
-      type: String,
-      default: "div",
-    },
-  },
-}
+})
 </script>
 
-<style lang="scss" scoped>
-// Hamburger
-// ==================================================
-$hamburger-padding-x: 15px !default;
-$hamburger-padding-y: 15px !default;
-$hamburger-layer-width: 40px !default;
-$hamburger-layer-height: 4px !default;
-$hamburger-layer-spacing: 6px !default;
-$hamburger-layer-color: #fff !default;
-$hamburger-layer-border-radius: 4px !default;
-$hamburger-hover-opacity: 0.7 !default;
-$hamburger-active-layer-color: $hamburger-layer-color !default;
-$hamburger-active-hover-opacity: $hamburger-hover-opacity !default;
+<style scoped>
+.hamburger-box {
+  --hamburger-padding-x: 15px;
+  --hamburger-padding-y: 15px;
+  --hamburger-layer-height: 4px;
+  --hamburger-layer-width: 40px;
+  --hamburger-layer-spacing: calc(var(--space-xx-small) * 1.5);
+  --hamburger-layer-color: #fff;
+  --hamburger-layer-border-radius: 4px;
+  --hamburger-hover-opacity: 0.7;
+  --hamburger-active-layer-color: var(--hamburger-layer-color);
+  --hamburger-active-hover-opacity: var(--hamburger-hover-opacity);
 
-$hamburger-hover-use-filter: false !default;
-$hamburger-hover-filter: opacity(50%) !default;
-$hamburger-active-hover-filter: $hamburger-hover-filter !default;
+  width: var(--hamburger-layer-width);
+  height: calc(var(--hamburger-layer-height) * 2 + var(--hamburger-layer-height) * 2);
+  display: inline-block;
+  position: relative;
+}
 
 .hamburger {
-  padding: $hamburger-padding-y $hamburger-padding-x;
+  padding: var(--hamburger-padding-y) var(--hamburger-padding-x);
   display: inline-block;
   cursor: pointer;
 
@@ -52,7 +46,6 @@ $hamburger-active-hover-filter: $hamburger-hover-filter !default;
   transition-duration: 0.15s;
   transition-timing-function: linear;
 
-  // Normalize (<button>)
   font: inherit;
   color: inherit;
   text-transform: none;
@@ -62,49 +55,34 @@ $hamburger-active-hover-filter: $hamburger-hover-filter !default;
   overflow: visible;
 
   &:hover {
-    @if $hamburger-hover-use-filter == true {
-      filter: $hamburger-hover-filter;
-    } @else {
-      opacity: $hamburger-hover-opacity;
-    }
+    opacity: var(--hamburger-hover-opacity);
   }
 
   &.is-active {
     &:hover {
-      @if $hamburger-hover-use-filter == true {
-        filter: $hamburger-active-hover-filter;
-      } @else {
-        opacity: $hamburger-active-hover-opacity;
-      }
+      opacity: var(--hamburger-active-hover-opacity);
     }
 
     .hamburger-inner,
     .hamburger-inner::before,
     .hamburger-inner::after {
-      background-color: $hamburger-active-layer-color;
+      background-color: var(--hamburger-active-layer-color);
     }
   }
-}
-
-.hamburger-box {
-  width: $hamburger-layer-width;
-  height: $hamburger-layer-height * 3 + $hamburger-layer-spacing * 2;
-  display: inline-block;
-  position: relative;
 }
 
 .hamburger-inner {
   display: block;
   top: 50%;
-  margin-top: calc($hamburger-layer-height / -2);
+  margin-top: calc(var(--hamburger-layer-height) / -2);
 
   &,
   &::before,
   &::after {
-    width: $hamburger-layer-width;
-    height: $hamburger-layer-height;
-    background-color: $hamburger-layer-color;
-    border-radius: $hamburger-layer-border-radius;
+    width: var(--hamburger-layer-width);
+    height: var(--hamburger-layer-height);
+    background-color: var(--hamburger-layer-color);
+    border-radius: var(--hamburger-layer-border-radius);
     position: absolute;
     transition-property: transform;
     transition-duration: 0.15s;
@@ -118,11 +96,11 @@ $hamburger-active-hover-filter: $hamburger-hover-filter !default;
   }
 
   &::before {
-    top: ($hamburger-layer-spacing + $hamburger-layer-height) * -1;
+    top: calc((var(--hamburger-layer-spacing) + var(--hamburger-layer-height)) * -1);
   }
 
   &::after {
-    bottom: ($hamburger-layer-spacing + $hamburger-layer-height) * -1;
+    bottom: calc((var(--hamburger-layer-spacing) + var(--hamburger-layer-height)) * -1);
   }
 }
 
