@@ -177,7 +177,6 @@ const theme = computed(() => {
 }
 .lux-library-footer {
   @include reset;
-  @include stack-space(var(--space-base));
   font-family: var(--font-family-heading);
   line-height: var(--line-height-heading);
   color: var(--color-white);

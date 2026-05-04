@@ -63,7 +63,10 @@ const props = defineProps({
 
 .lux-library-contact {
   @include reset;
-  @include stack-space(var(--space-x-small));
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-x-small);
+
   font-family: var(--font-family-heading);
   font-size: var(--font-size-base);
   line-height: var(--line-height-base);
@@ -85,7 +88,7 @@ const props = defineProps({
 
 .icons {
   list-style-type: none;
-  margin: 8px 0 0;
+  margin-block: 0 var(--space-x-small);
   padding: 0;
 
   li {

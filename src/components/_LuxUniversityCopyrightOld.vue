@@ -29,13 +29,9 @@ const props = defineProps({
 })
 </script>
 
-<style lang="scss" scoped>
-@use "/src/assets/styles/spacing.scss" as *;
-@use "/src/assets/styles/mixins.scss" as *;
-
+<style lang="css" scoped>
 .lux-copyright {
-  @include reset;
-  @include stack-space(var(--space-xx-small));
+  margin-block-end: var(--space-xx-small);
   font-family: var(--font-family-heading);
   font-size: var(--font-size-x-small);
   line-height: var(--line-height-heading);

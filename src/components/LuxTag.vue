@@ -108,7 +108,6 @@ export default {
 @use "/src/assets/styles/system.scss" as *;
 
 .lux-tag {
-  @include stack-space($space-base);
   font-family: var(--font-family-heading);
   line-height: var(--line-height-heading);
   color: var(--color-rich-black);

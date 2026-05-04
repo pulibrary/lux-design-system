@@ -128,7 +128,6 @@ export default {
 
 .lux-special-collections-footer {
   @include reset;
-  @include stack-space(var(--space-base));
   font-family: var(--font-family-heading);
   line-height: var(--line-height-heading);
   color: var(--color-rich-black);

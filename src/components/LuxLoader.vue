@@ -51,10 +51,8 @@ export default {
 @use "/src/assets/styles/spacing.scss" as *;
 @use "/src/assets/styles/system.scss" as *;
 
-// $border-color: var(--color-white);
 .lux-loader {
   @include reset;
-  @include stack-space($space-base);
   color: var(--color-rich-black);
   --border-color: var(--color-princeton-orange-on-white);
 }
