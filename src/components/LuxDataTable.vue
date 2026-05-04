@@ -83,98 +83,17 @@
   </table>
 </template>
 
-<script>
+<script setup>
+import { defineOptions, ref, computed } from "vue"
 /**
  * Used to display data to end users.
  */
-export default {
+defineOptions({
   name: "LuxDataTable",
   status: "ready",
   release: "3.1.4",
   type: "Element",
-  data() {
-    return {
-      rows: this.jsonData,
-      parsedColumns: [],
-    }
-  },
-  props: {
-    /**
-     * caption provides context for the data that is helpful to users, particularly those who use screenreaders.
-     * `e.g. [name, title, age]`
-     */
-    caption: {
-      required: true,
-      type: String,
-    },
-    /**
-     * summaryLabel provides context to the data values in tfoot element cells.
-     */
-    summaryLabel: {
-      required: false,
-      type: String,
-    },
-    /**
-     * columns define the columns and order for which the data should be displayed.
-     * Columns entries can be simple strings, or they may be more complicated objects
-     * that can define `name`, `display_name`,`align`, `sortable`, and `checkbox` properties.
-     * Sorting on `numeric` or `currency` values requires a column to have
-     * a `datatype='number'` or `datatype='currency'` property.
-     * Sorting on `date` values requires a column to have
-     * a `datatype='date'` property.
-     * Use `checkbox=true` to create a checkbox whose value is the value for that
-     * column value for the row in the table.
-     * `e.g. ['name', 'email', 'age']`
-     */
-    columns: {
-      required: true,
-      type: Array,
-    },
-    /**
-     * jsonData is supplied via Array with an object representing each row.
-     * Applying links to data cell content can be achieved by supplying an object
-     * that contains a `value` and `link` property. Date sorting uses the JavaScript
-     * `datestring` parameter. Shorthand dates are supported in most browsers, but can be implementation-specific.
-     * (e.g., `{ value: 'content', link: 'https://url.com'}`)
-     * See above example for exact structure.
-     */
-    jsonData: {
-      required: true,
-      type: Array,
-    },
-  },
-  created: function () {
-    // Normalize the column data by converting any simple string field
-    // names into objects with a name property
-    let pCols = this.columns.map(col => {
-      if (!this.isObject(col)) {
-        return { name: col.toLowerCase(), ascending: null }
-      } else {
-        col.name = col.name.toLowerCase()
-        if (col.sortable && typeof col.ascending === "undefined") {
-          col.ascending = null
-        }
-        return col
-      }
-    })
-    this.parsedColumns = pCols
 
-    // Normalize the row data by converting any simple values into
-    // objects with the link properties
-    let rowNum = this.jsonData.length
-    for (let i = 0; i < rowNum; i++) {
-      // console.log(this.jsonData[i].name)
-      for (let key in this.jsonData[i]) {
-        if (this.jsonData[i].hasOwnProperty(key)) {
-          if (!this.isObject(this.jsonData[i][key])) {
-            // eslint-disable-next-line vue/no-mutating-props
-            this.jsonData[i][key] = { value: this.jsonData[i][key], link: null }
-          }
-        }
-      }
-    }
-    this.rows = this.jsonData
-  },
   computed: {
     footerColumns() {
       let fCols = this.columns
@@ -206,61 +125,140 @@ export default {
         return col.name
       }
     },
-    sortTable(col) {
-      if (!col.ascending) {
-        if (col.datatype === "number" || col.datatype === "currency") {
-          this.rows.sort((a, b) => a[col.name].value - b[col.name].value)
-        } else if (col.datatype === "date") {
-          this.rows.sort((a, b) => new Date(a[col.name].value) - new Date(b[col.name].value))
+  },
+})
+
+const props = defineProps({
+  /**
+   * caption provides context for the data that is helpful to users, particularly those who use screenreaders.
+   * `e.g. [name, title, age]`
+   */
+  caption: {
+    required: true,
+    type: String,
+  },
+  /**
+   * summaryLabel provides context to the data values in tfoot element cells.
+   */
+  summaryLabel: {
+    required: false,
+    type: String,
+  },
+  /**
+   * columns define the columns and order for which the data should be displayed.
+   * Columns entries can be simple strings, or they may be more complicated objects
+   * that can define `name`, `display_name`,`align`, `sortable`, and `checkbox` properties.
+   * Sorting on `numeric` or `currency` values requires a column to have
+   * a `datatype='number'` or `datatype='currency'` property.
+   * Sorting on `date` values requires a column to have
+   * a `datatype='date'` property.
+   * Use `checkbox=true` to create a checkbox whose value is the value for that
+   * column value for the row in the table.
+   * `e.g. ['name', 'email', 'age']`
+   */
+  columns: {
+    required: true,
+    type: Array,
+  },
+  /**
+   * jsonData is supplied via Array with an object representing each row.
+   * Applying links to data cell content can be achieved by supplying an object
+   * that contains a `value` and `link` property. Date sorting uses the JavaScript
+   * `datestring` parameter. Shorthand dates are supported in most browsers, but can be implementation-specific.
+   * (e.g., `{ value: 'content', link: 'https://url.com'}`)
+   * See above example for exact structure.
+   */
+  jsonData: {
+    required: true,
+    type: Array,
+  },
+})
+
+function isObject(value) {
+  return value && typeof value === "object" && value.constructor === Object
+}
+function isCurrency(value) {
+  return value === "currency" ? true : false
+}
+function isNum(value) {
+  return value === "number" ? true : false
+}
+function isLeft(value) {
+  return value === "left" ? true : false
+}
+function isCenter(value) {
+  return value === "center" ? true : false
+}
+function isRight(value) {
+  return value === "right" ? true : false
+}
+
+// Normalize the column data by converting any simple string field
+// names into objects with a name property
+let pCols = props.columns.map(col => {
+  if (!isObject(col)) {
+    return { name: col.toLowerCase(), ascending: null }
+  } else {
+    col.name = col.name.toLowerCase()
+    if (col.sortable && typeof col.ascending === "undefined") {
+      col.ascending = null
+    }
+    return col
+  }
+})
+const parsedColumns = ref(pCols)
+
+const rows = computed(() =>
+  props.jsonData.map(row => {
+    let newRow = {}
+    for (let key in row) {
+      if (row.hasOwnProperty(key)) {
+        if (isObject(row[key])) {
+          newRow[key] = row[key]
         } else {
-          this.rows.sort(function (a, b) {
-            let textA = a[col.name.toLowerCase()].value.toString().toLowerCase()
-            let textB = b[col.name.toLowerCase()].value.toString().toLowerCase()
-            return textA < textB ? -1 : textA > textB ? 1 : 0
-          })
-        }
-      } else {
-        if (col.datatype === "number" || col.datatype === "currency") {
-          this.rows.sort((a, b) => b[col.name].value - a[col.name].value)
-        } else if (col.datatype === "date") {
-          this.rows.sort((a, b) => new Date(b[col.name].value) - new Date(a[col.name].value))
-        } else {
-          this.rows.sort(function (a, b) {
-            let textA = a[col.name.toLowerCase()].value.toString().toLowerCase()
-            let textB = b[col.name.toLowerCase()].value.toString().toLowerCase()
-            return textA < textB ? 1 : textA > textB ? -1 : 0
-          })
+          newRow[key] = { value: row[key], link: null }
         }
       }
-      col.ascending = !col.ascending
+    }
+    return newRow
+  })
+)
 
-      // reset other columns ascending prop to null (aka, "unsorted")
-      this.parsedColumns = this.parsedColumns.map(function (column) {
-        if (col.name != column.name) {
-          column.ascending = null
-        }
-        return column
+function sortTable(col) {
+  if (!col.ascending) {
+    if (col.datatype === "number" || col.datatype === "currency") {
+      rows.value.sort((a, b) => a[col.name].value - b[col.name].value)
+    } else if (col.datatype === "date") {
+      rows.value.sort((a, b) => new Date(a[col.name].value) - new Date(b[col.name].value))
+    } else {
+      rows.value.sort(function (a, b) {
+        let textA = a[col.name.toLowerCase()].value.toString().toLowerCase()
+        let textB = b[col.name.toLowerCase()].value.toString().toLowerCase()
+        return textA < textB ? -1 : textA > textB ? 1 : 0
       })
-    },
-    isObject(value) {
-      return value && typeof value === "object" && value.constructor === Object
-    },
-    isCurrency(value) {
-      return value === "currency" ? true : false
-    },
-    isNum(value) {
-      return value === "number" ? true : false
-    },
-    isLeft(value) {
-      return value === "left" ? true : false
-    },
-    isCenter(value) {
-      return value === "center" ? true : false
-    },
-    isRight(value) {
-      return value === "right" ? true : false
-    },
-  },
+    }
+  } else {
+    if (col.datatype === "number" || col.datatype === "currency") {
+      rows.value.sort((a, b) => b[col.name].value - a[col.name].value)
+    } else if (col.datatype === "date") {
+      rows.value.sort((a, b) => new Date(b[col.name].value) - new Date(a[col.name].value))
+    } else {
+      rows.value.sort(function (a, b) {
+        let textA = a[col.name.toLowerCase()].value.toString().toLowerCase()
+        let textB = b[col.name.toLowerCase()].value.toString().toLowerCase()
+        return textA < textB ? 1 : textA > textB ? -1 : 0
+      })
+    }
+  }
+  col.ascending = !col.ascending
+
+  // reset other columns ascending prop to null (aka, "unsorted")
+  parsedColumns.value = parsedColumns.value.map(function (column) {
+    if (col.name != column.name) {
+      column.ascending = null
+    }
+    return column
+  })
 }
 </script>
 
