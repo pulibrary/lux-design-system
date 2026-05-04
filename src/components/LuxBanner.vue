@@ -1,9 +1,9 @@
 <template>
-  <div v-if="show" :class="['lux-banner', { 'lux-banner-fullscreen': isFullScreen }]">
+  <div v-if="show" :class="['lux-banner', { 'lux-banner-fullscreen': props.fullscreen }]">
     <div class="lux-announcement open" role="alert">
       <lux-wrapper maxWidth="1125">
         <button
-          v-if="dismissible"
+          v-if="props.dismissible"
           type="button"
           class="lux-announcement__close"
           data-dismiss="alert"
@@ -19,14 +19,14 @@
   </div>
 </template>
 
-<script>
-// import VueCookies from "vue-cookies"
+<script setup>
 import { useCookies } from "vue3-cookies"
+import { defineOptions, ref } from "vue"
 
 /**
  * Banners are used to provide timely, general information to users of a website or app.
  */
-export default {
+defineOptions({
   name: "LuxBanner",
   status: "prototype",
   release: "2.16.3",
@@ -37,49 +37,42 @@ export default {
       lang: "en",
     },
   },
-  setup() {
-    const { cookies } = useCookies()
-    return { cookies }
+})
+
+const props = defineProps({
+  /**
+   * Allows the banner to act as an overlay, near the top of the screen.
+   */
+  fullscreen: {
+    type: Boolean,
+    default: false,
   },
-  data: function () {
-    return {
-      bannerMessage: "This is the announcement description.",
-      show: true,
-    }
+  /**
+   * User can manually hide the notification.
+   */
+  dismissible: {
+    type: Boolean,
+    default: false,
   },
-  computed: {
-    isFullScreen() {
-      return this.fullscreen === "true" ? true : false
-    },
-  },
-  props: {
-    /**
-     * Allows the banner to act as an overlay, near the top of the screen.
-     */
-    fullscreen: {
-      type: Boolean,
-      default: false,
-    },
-    /**
-     * User can manually hide the notification.
-     */
-    dismissible: {
-      type: Boolean,
-      default: false,
-    },
-  },
-  methods: {
-    hideBanner() {
-      this.show = false
-      this.cookies.set("showBanner", false)
-    },
-  },
-  created: function () {
-    if (this.cookies.isKey("showBanner")) {
-      this.show = this.cookies.get("showBanner") === "true"
-    }
-  },
+})
+
+const { cookies } = useCookies()
+
+function initialShowValue() {
+  if (cookies.isKey("showBanner")) {
+    return cookies.get("showBanner") === "true"
+  } else {
+    return true
+  }
 }
+const show = ref(initialShowValue())
+
+function hideBanner() {
+  show.value = false
+  cookies.set("showBanner", false)
+}
+
+const bannerMessage = "This is the announcement description."
 </script>
 
 <style lang="scss">
@@ -90,7 +83,7 @@ export default {
   top: 5vh;
   left: 50%; /* move the left edge to the center … */
   margin-left: -25vw !important; /* … and move it to the left half the box’ width. */
-  z-index: 9999;
+  z-index: var(--z-index-modal);
   width: 50vw;
 }
 
@@ -106,7 +99,7 @@ export default {
 
 .lux-banner-dismissible .lux-banner__close {
   position: absolute;
-  top: -4px;
+  top: calc(var(--space-xx-small) * -1);
   right: -5px;
   padding: 0.75rem 1.25rem;
   color: inherit;
