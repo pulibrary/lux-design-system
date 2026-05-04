@@ -17,113 +17,112 @@
   </component>
 </template>
 
-<script>
+<script setup>
+import { defineOptions, ref } from "vue"
+
 /**
  * Dropdowns allows a user to select a value from a series of options. Note that a simple,
  * two-level hierarchy (not recursive) is possible by adding a `children` property
  * to the item and supplying sub-items using the same syntax as the top level items.
  */
-export default {
+defineOptions({
   name: "LuxDropdownMenu",
   status: "ready",
   release: "1.0.0",
   type: "Pattern",
-  emits: ["button-clicked", "menu-item-clicked"],
-  data: function () {
-    return {
-      isVisible: false,
+})
+
+const props = defineProps({
+  element: {
+    type: String,
+    default: "div",
+  },
+  /**
+   * The menu items in the dropdown
+   */
+  buttonLabel: {
+    type: String,
+    default: "Dropdown",
+  },
+  /**
+   * Whether the dropdown includes links or buttons as menu items
+   * `links, buttons`
+   */
+  type: {
+    type: String,
+    default: "buttons",
+    validator: value => {
+      return value.match(/(links|buttons)/)
+    },
+  },
+  /**
+   * An array of item (and sub-item) options for the DropdownMenu. Properties
+   * for menuItems are described in the LuxMenuBar pattern.
+   */
+  menuItems: {
+    type: Array,
+    default() {
+      return ["div"]
+    },
+  },
+  /**
+   * Alignment of menu items (not currently working)
+   * `left, right`
+   */
+  align: {
+    type: String,
+    default: "left",
+    validator: value => {
+      return value.match(/(left|right)/)
+    },
+  },
+  /**
+   * Sets the size of the dropdown menu area `small, medium, large`
+   */
+  size: {
+    type: String,
+    default: "medium",
+    validator: value => {
+      return value.match(/(small|medium|large)/)
+    },
+  },
+})
+
+const emit = defineEmits(["button-clicked", "menu-item-clicked"])
+
+const isVisible = ref(false)
+
+function hide() {
+  isVisible.value = false
+}
+function buttonClicked(value) {
+  isVisible.value = !this.isVisible.value
+  emit("button-clicked", value)
+}
+function menuItemClicked(value) {
+  isVisible.value = false
+  emit("menu-item-clicked", value)
+}
+
+const vClickOutside = {
+  beforeMount: function (el, binding) {
+    // Define Handler and cache it on the element
+    const bubble = binding.modifiers.bubble
+    const handler = e => {
+      if (bubble || (!el.contains(e.target) && el !== e.target)) {
+        binding.value(e)
+      }
     }
-  },
-  props: {
-    element: {
-      type: String,
-      default: "div",
-    },
-    /**
-     * The menu items in the dropdown
-     */
-    buttonLabel: {
-      type: String,
-      default: "Dropdown",
-    },
-    /**
-     * Whether the dropdown includes links or buttons as menu items
-     * `links, buttons`
-     */
-    type: {
-      type: String,
-      default: "buttons",
-      validator: value => {
-        return value.match(/(links|buttons)/)
-      },
-    },
-    /**
-     * An array of item (and sub-item) options for the DropdownMenu. Properties
-     * for menuItems are described in the LuxMenuBar pattern.
-     */
-    menuItems: {
-      type: Array,
-      default() {
-        return ["div"]
-      },
-    },
-    /**
-     * Alignment of menu items (not currently working)
-     * `left, right`
-     */
-    align: {
-      type: String,
-      default: "left",
-      validator: value => {
-        return value.match(/(left|right)/)
-      },
-    },
-    /**
-     * Sets the size of the dropdown menu area `small, medium, large`
-     */
-    size: {
-      type: String,
-      default: "medium",
-      validator: value => {
-        return value.match(/(small|medium|large)/)
-      },
-    },
-  },
-  methods: {
-    hide: function (event) {
-      this.isVisible = false
-    },
-    buttonClicked(value) {
-      this.isVisible = !this.isVisible
-      this.$emit("button-clicked", value)
-    },
-    menuItemClicked(value) {
-      this.isVisible = false
-      this.$emit("menu-item-clicked", value)
-    },
-  },
-  directives: {
-    "click-outside": {
-      beforeMount: function (el, binding) {
-        // Define Handler and cache it on the element
-        const bubble = binding.modifiers.bubble
-        const handler = e => {
-          if (bubble || (!el.contains(e.target) && el !== e.target)) {
-            binding.value(e)
-          }
-        }
-        el.__vueClickOutside__ = handler
+    el.__vueClickOutside__ = handler
 
-        // add Event Listeners
-        document.addEventListener("click", handler)
-      },
+    // add Event Listeners
+    document.addEventListener("click", handler)
+  },
 
-      unmounted: function (el, binding) {
-        // Remove Event Listeners
-        document.removeEventListener("click", el.__vueClickOutside__)
-        el.__vueClickOutside__ = null
-      },
-    },
+  unmounted: function (el, binding) {
+    // Remove Event Listeners
+    document.removeEventListener("click", el.__vueClickOutside__)
+    el.__vueClickOutside__ = null
   },
 }
 </script>
@@ -207,8 +206,8 @@ export default {
   }
 
   :deep(.lux-nav) {
-    background: $color-white;
-    box-shadow: $box-shadow-small;
+    background: var(--color-white);
+    box-shadow: var(--box-shadow-small);
 
     position: absolute;
     min-width: calc(100% - 1px);
@@ -240,7 +239,7 @@ export default {
 
       a {
         padding-left: 1.5rem;
-        color: $color-rich-black;
+        color: var(--color-rich-black);
 
         &::before {
           content: "-";
@@ -250,21 +249,21 @@ export default {
     }
 
     .lux-nav-item {
-      background: $color-white;
+      background: var(--color-white);
       border: 0;
-      color: $color-rich-black;
+      color: var(--color-rich-black);
       cursor: pointer;
       display: block;
       padding: 0.5rem 1rem;
       margin: 0;
       width: 100%;
       text-align: left;
-      font-size: $font-size-small;
+      font-size: var(--font-size-small);
 
       &:hover,
       &:focus {
-        color: $color-rich-black;
-        background: $color-grayscale-lighter;
+        color: var(--color-rich-black);
+        background: var(--color-grayscale-lighter);
         transition: opacity 0.1s ease;
       }
 
@@ -274,11 +273,11 @@ export default {
     }
 
     .lux-disabled {
-      color: $color-grayscale-dark;
+      color: var(--color-grayscale-dark);
 
       &:hover,
       &:focus {
-        background: $color-white;
+        background: var(--color-white);
         cursor: not-allowed;
         outline: none;
       }
