@@ -1,61 +1,66 @@
 <template>
-  <component :is="type" :class="['lux-col', columns, vertical, { push: offset }, order]">
+  <component
+    :is="props.type"
+    :class="['lux-col', props.columns, props.vertical, { push: props.offset }, props.order]"
+  >
     <!-- @slot The content of your grid item. -->
     <slot />
   </component>
 </template>
 
-<script>
+<script setup>
+import { defineOptions } from "vue"
 /**
  * Used to build the containers to layout a page. Grid items need to be nested inside a `GridContainer`
  * component. Do not nest grid items inside other grid items.
  *
  */
-export default {
+defineOptions({
   name: "LuxGridItem",
   status: "ready",
   release: "1.0.0",
   type: "Element",
-  props: {
-    /**
-     * The html element name used for the container.
-     */
-    type: {
-      type: String,
-      default: "div",
-    },
-    /**
-     * Sets the size of the column. Prefix with `sm-` or `lg-`. Based on a 12 column grid.
-     * The inclusion of `auto` will set that grid item to have a width based on the width and height of the content.
-     * The inclusion of `fill` will set the grid item to have a width based on the space available.
-     */
-    columns: {
-      type: String,
-      default: "",
-    },
-    /**
-     * Sets the order to lay out an item in a grid container.
-     */
-    order: {
-      type: String,
-      default: "",
-    },
-    /**
-     * Pushes grid items to the right side of the container.
-     */
-    offset: {
-      type: Boolean,
-      default: false,
-    },
-    /**
-     * Sets the vertical alignment of the item. `start`, `center`, or `end`. For horizontal alignment, please look at the grid-container component.
-     */
-    vertical: {
-      type: String,
-      default: "",
-    },
+})
+
+const props = defineProps({
+  /**
+   * The html element name used for the container.
+   */
+  type: {
+    type: String,
+    default: "div",
   },
-}
+  /**
+   * Sets the size of the column. Prefix with `sm-` or `lg-`. Based on a 12 column grid.
+   * The inclusion of `auto` will set that grid item to have a width based on the width and height of the content.
+   * The inclusion of `fill` will set the grid item to have a width based on the space available.
+   */
+  columns: {
+    type: String,
+    default: "",
+  },
+  /**
+   * Sets the order to lay out an item in a grid container.
+   */
+  order: {
+    type: String,
+    default: "",
+  },
+  /**
+   * Pushes grid items to the right side of the container.
+   */
+  offset: {
+    type: Boolean,
+    default: false,
+  },
+  /**
+   * Sets the vertical alignment of the item. `start`, `center`, or `end`. For horizontal alignment, please look at the grid-container component.
+   */
+  vertical: {
+    type: String,
+    default: "",
+  },
+})
 </script>
 
 <style lang="scss">
