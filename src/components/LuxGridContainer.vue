@@ -1,40 +1,42 @@
 <template>
-  <component :is="type" :class="['lux-flex-container', horizontal]">
+  <component :is="props.type" :class="['lux-flex-container', props.horizontal]">
     <!-- @slot The grid items that live in your grid container. -->
     <slot />
   </component>
 </template>
 
-<script>
+<script setup>
+import { defineOptions } from "vue"
 /**
  * Used to build the container of GridItems.
  */
-export default {
+defineOptions({
   name: "LuxGridContainer",
   status: "ready",
   release: "1.0.0",
   type: "Element",
-  props: {
-    /**
-     * The html element name used for the grid container.
-     */
-    type: {
-      type: String,
-      default: "div",
-    },
-    /**
-     * Determines how the flexbox container is horizontally aligned. This value defaults to
-     * having space between grid items. Options include `start`, `center`, and `end`.
-     */
-    horizontal: {
-      type: String,
-      default: "",
-    },
+})
+
+const props = defineProps({
+  /**
+   * The html element name used for the grid container.
+   */
+  type: {
+    type: String,
+    default: "div",
   },
-}
+  /**
+   * Determines how the flexbox container is horizontally aligned. This value defaults to
+   * having space between grid items. Options include `start`, `center`, and `end`.
+   */
+  horizontal: {
+    type: String,
+    default: "",
+  },
+})
 </script>
 
-<style lang="scss" scoped>
+<style scoped>
 .lux-flex-container {
   padding: 0 1rem 1rem 0;
   display: flex;
