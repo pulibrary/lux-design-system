@@ -113,32 +113,32 @@
   </svg>
 </template>
 
-<script>
+<script setup>
 /**
  * Official Princeton University Logo - black & white
  */
-export default {
+defineOptions({
   name: "LuxLogoUniversityWhite",
   status: "ready",
   release: "5.2.0",
   type: "Element",
-  props: {
-    /**
-     * The width of the logo.
-     */
-    width: {
-      type: [Number, String],
-      default: 263,
-    },
-    /**
-     * The height of the logo.
-     */
-    height: {
-      type: [Number, String],
-      default: 72,
-    },
+})
+const props = defineProps({
+  /**
+   * The width of the logo.
+   */
+  width: {
+    type: [Number, String],
+    default: 263,
   },
-}
+  /**
+   * The height of the logo.
+   */
+  height: {
+    type: [Number, String],
+    default: 72,
+  },
+})
 </script>
 <style>
 .a {
