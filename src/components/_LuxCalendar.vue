@@ -47,6 +47,7 @@ import {
   THURSDAY,
   FRIDAY,
   SATURDAY,
+  lastDayOfMonth,
 } from "@/utils/luxDate"
 import { computed, defineModel, onDeactivated, onMounted, ref } from "vue"
 import LuxInputButton from "./LuxInputButton.vue"
@@ -76,15 +77,19 @@ const keydownBehavior = event => {
   switch (event.key) {
     case "ArrowDown":
       focusedDay.value += 7
+      validateFocusedDay()
       break
     case "ArrowUp":
       focusedDay.value -= 7
+      validateFocusedDay()
       break
     case "ArrowRight":
       focusedDay.value += 1
+      validateFocusedDay()
       break
     case "ArrowLeft":
       focusedDay.value -= 1
+      validateFocusedDay()
       break
     case "Enter":
       emitDay(focusedDay.value)
@@ -95,6 +100,26 @@ onMounted(() => {
   document.addEventListener("keydown", keydownBehavior)
 })
 onDeactivated(() => document.removeEventListener("keydown", keydownBehavior))
+
+function validateFocusedDay() {
+  const daysInMonth = lastDayOfMonth(currentYear.value, currentMonth.value)
+  console.log(focusedDay.value, daysInMonth)
+  if (focusedDay.value < 1) {
+    currentMonth.value = currentMonth.value - 1
+    if (currentMonth.value < JANUARY) {
+      currentMonth.value = DECEMBER
+      currentYear.value--
+    }
+    focusedDay.value = lastDayOfMonth(currentYear.value, currentMonth.value) + focusedDay.value
+  } else if (focusedDay.value > daysInMonth) {
+    currentMonth.value = currentMonth.value + 1
+    if (currentMonth.value > DECEMBER) {
+      currentMonth.value = JANUARY
+      currentYear.value++
+    }
+    focusedDay.value = focusedDay.value - daysInMonth
+  }
+}
 
 function previousMonth() {
   if (currentMonth.value == JANUARY) {

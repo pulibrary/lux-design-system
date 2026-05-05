@@ -61,7 +61,7 @@ function monthStartsOnDay(year, monthIndex) {
   return new Date(year, monthIndex, 1).getDay()
 }
 
-function lastDayOfMonth(year, monthIndex) {
+export function lastDayOfMonth(year, monthIndex) {
   return new Date(year, monthIndex + 1, 0).getDate()
 }
 
