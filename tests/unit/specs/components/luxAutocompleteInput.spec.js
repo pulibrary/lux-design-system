@@ -104,8 +104,11 @@ describe("InputAutocomplete.vue", () => {
   })
 
   it("hitting enter resets the counter and closes the dropdown", () => {
-    wrapper.setData({ isOpen: true })
-    wrapper.setData({ arrowCounter: 0 })
+    const input = wrapper.find("input.displayInput")
+    input.trigger("focus")
+    input.trigger("keydown.down")
+    expect(wrapper.vm.arrowCounter).toBe(0)
+
     wrapper.vm.onEnter()
     expect(wrapper.vm.arrowCounter).toBe(-1)
     expect(wrapper.vm.isOpen).toBe(false)

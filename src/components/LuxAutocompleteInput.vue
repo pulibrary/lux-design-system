@@ -1,5 +1,5 @@
 <template>
-  <div class="lux-autocomplete">
+  <div class="lux-autocomplete" ref="root">
     <label v-if="label" :class="{ 'lux-hidden': hideLabel }" :for="displayInputDomId">{{
       label
     }}</label>
@@ -34,7 +34,7 @@
           @mousedown="onClickResult(result)"
           class="lux-autocomplete-result"
           :class="{ 'is-active': i === arrowCounter }"
-          :id="'lux-autocomplete-' + this.componentId + 'result-' + i"
+          :id="'lux-autocomplete-' + componentId + 'result-' + i"
         >
           {{ result }}
         </li>
@@ -44,8 +44,21 @@
   </div>
 </template>
 
-<script>
-import { useId } from "vue"
+<script setup>
+import {
+  computed,
+  defineEmits,
+  defineExpose,
+  defineOptions,
+  ref,
+  useId,
+  useTemplateRef,
+  watch,
+  nextTick,
+  onMounted,
+  onUnmounted,
+  toRef,
+} from "vue"
 
 /**
  * InputAutocomplete is a cross between a text input and select input.
@@ -54,252 +67,248 @@ import { useId } from "vue"
  * The id and name supplied to this component are applied to a hidden input field, which
  * will contain the preferred value for submission based on the structure of the `items` prop.
  */
-export default {
+defineOptions({
   name: "LuxAutocompleteInput",
   status: "prototype",
   release: "1.0.0",
   type: "Element",
-  props: {
-    /**
-     * The available items in the autocomplete. This can be a simple array of strings
-     * or an array of objects with an id and a label, if id is needed.
-     */
-    items: {
-      type: Array,
-      required: false,
-      default() {
-        return [""]
-      },
-    },
-    /**
-     * The placeholder value for the form input field.
-     */
-    placeholder: {
-      type: String,
-      default: null,
-    },
-    /**
-     * The default value for the form input field.
-     */
-    defaultValue: {
-      type: String,
-      default: "",
-    },
-    /**
-     * The label of the form input field.
-     */
-    label: {
-      type: String,
-      default: "",
-    },
-    /**
-     * Visually hides the label of the form input field.
-     */
-    hideLabel: {
-      type: Boolean,
-      default: false,
-    },
-    /**
-     * The id of the hidden form input field (which will contain the selected value)
-     */
-    id: {
-      type: String,
-      default: "",
-    },
-    /**
-     * The id of the visible form input field (where the user will enter their text)
-     */
-    displayId: {
-      type: String,
-    },
-    /**
-     * The name of the form input field.
-     */
-    name: {
-      type: String,
-      default: "",
-    },
-    /**
-     * Is the data given by an outside ajax request?
-     */
-    isAsync: {
-      type: Boolean,
-      required: false,
-      default: false,
-    },
-    /**
-     * Whether the form input field is required or not.
-     * `true, false`
-     */
-    required: {
-      type: Boolean,
-      default: false,
-    },
-    /**
-     * Whether the input is focused or not
-     * `true, false`
-     */
-    focused: {
-      type: Boolean,
-      default: false,
-    },
-  },
-  emits: ["input", "selected"],
-  data() {
-    return {
-      isOpen: false,
-      results: [],
-      search: "",
-      inputValue: "",
-      isLoading: false,
-      arrowCounter: -1,
-    }
-  },
-  methods: {
-    onChange() {
-      // Let's warn the parent that a change was made
-      /**
-       * Emitted on any input-like action that the user does: focusing the input, typing, etc.
-       */
-      this.$emit("input", this.search)
+})
 
-      // Is the data given by an outside ajax request?
-      if (this.isAsync) {
-        this.isLoading = true
-      } else {
-        // Data is sync, we can search our flat array
-        this.filterResults()
-      }
-      this.isOpen = true
-    },
-    filterResults() {
-      if (this.items.length && typeof this.items[0] === "object") {
-        let preResults = this.items.filter(
-          item => item.label.toLowerCase().indexOf(this.search.toLowerCase()) > -1
-        )
-        this.results = preResults.map(x => x.label)
-      } else {
-        this.results = this.items.filter(
-          item => item.toLowerCase().indexOf(this.search.toLowerCase()) > -1
-        )
-      }
-    },
-    setResult(result, onSelectCallback = id => {}) {
-      this.search = result
-      this.inputValue = result
-      this.isOpen = false
+const ariaActiveDescendant = computed(() => {
+  if (arrowCounter.value < 0) {
+    return null
+  } else {
+    return `lux-autocomplete-${componentId}result-${arrowCounter.value}`
+  }
+})
 
-      if (this.items.length && typeof this.items[0] === "object") {
-        // we need to search the input list for a matching label and return
-        // an id if it's found
-        let item = this.items.find(obj => {
-          return obj.label === result
-        })
-        if (typeof item !== "undefined") {
-          this.inputValue = item.id
-          onSelectCallback(item.id)
-        }
-      }
-    },
-    onArrowDown() {
-      if (this.arrowCounter < this.results.length - 1) {
-        this.arrowCounter = this.arrowCounter + 1
-        this.scroll_to_active_item()
-      }
-    },
-    onArrowUp() {
-      if (this.arrowCounter > 0) {
-        this.arrowCounter = this.arrowCounter - 1
-        this.scroll_to_active_item()
-      }
-    },
-    onEnter() {
-      this.setResult(this.results[this.arrowCounter], this.emitSelectedId)
-      this.isOpen = false
-      this.arrowCounter = -1
-    },
+onMounted(() => document.addEventListener("click", handleClickOutside))
+onUnmounted(() => document.removeEventListener("click", handleClickOutside))
 
-    onEscape() {
-      this.setResult(this.search)
-      this.isOpen = false
-    },
-    handleClickOutside(evt) {
-      if (!this.$el.contains(evt.target)) {
-        this.setResult(this.search)
-        this.isOpen = false
-        this.arrowCounter = -1
-      }
-    },
-    onClickResult(result) {
-      this.setResult(result, this.emitSelectedId)
-    },
-    emitSelectedId(id) {
-      /**
-       * Emitted when the user selects an "official" value from the list of supplied terms
-       */
-      this.$emit("selected", id)
-    },
-    scroll_to_active_item() {
-      var item_id = `lux-autocomplete-${this.componentId}result-${this.arrowCounter}`
-      var item = document.getElementById(item_id)
-      item.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "start" })
-    },
-  },
-  watch: {
-    // Once the items content changes, it means the parent component
-    // provided the needed data
-    items: function (value, oldValue) {
-      // we want to make sure we only do this when it's an async request
-      if (this.isAsync) {
-        this.arrowCounter = -1
-        if (value.length > 0) {
-          this.results = value.map(result =>
-            typeof result === "object" ? result.label : result.toString()
-          )
-          this.isLoading = false
-        } else {
-          this.results = []
-          this.isOpen = false
-          this.isLoading = false
-        }
-      }
-    },
-  },
-  computed: {
-    ariaActiveDescendant() {
-      if (this.arrowCounter < 0) {
-        return null
-      } else {
-        return `lux-autocomplete-${this.componentId}result-${this.arrowCounter}`
-      }
-    },
-    displayInputDomId() {
-      return this.displayId || `displayInput-${this.componentId}`
-    },
-  },
-  created() {
-    this.setResult(this.defaultValue)
-  },
-  mounted() {
-    document.addEventListener("click", this.handleClickOutside)
-    let vm = this
+const isOpen = ref(false)
+const isLoading = ref(false)
 
-    vm.$nextTick(function () {
-      if (vm.focused) {
-        this.$refs.autoComplete.focus()
-      }
-    })
+const search = ref("")
+const arrowCounter = ref(-1)
+const results = ref([])
+
+const props = defineProps({
+  /**
+   * The available items in the autocomplete. This can be a simple array of strings
+   * or an array of objects with an id and a label, if id is needed.
+   */
+  items: {
+    type: Array,
+    required: false,
+    default() {
+      return [""]
+    },
   },
-  unmounted() {
-    document.removeEventListener("click", this.handleClickOutside)
+  /**
+   * The placeholder value for the form input field.
+   */
+  placeholder: {
+    type: String,
+    default: null,
   },
-  setup() {
-    // A unique id that identifies this specific instance of the component, so that DOM ids are unique
-    // even if you have many autocompletes on a screen
-    const componentId = useId()
-    return { componentId }
+  /**
+   * The default value for the form input field.
+   */
+  defaultValue: {
+    type: String,
+    default: "",
   },
+  /**
+   * The label of the form input field.
+   */
+  label: {
+    type: String,
+    default: "",
+  },
+  /**
+   * Visually hides the label of the form input field.
+   */
+  hideLabel: {
+    type: Boolean,
+    default: false,
+  },
+  /**
+   * The id of the hidden form input field (which will contain the selected value)
+   */
+  id: {
+    type: String,
+    default: "",
+  },
+  /**
+   * The id of the visible form input field (where the user will enter their text)
+   */
+  displayId: {
+    type: String,
+  },
+  /**
+   * The name of the form input field.
+   */
+  name: {
+    type: String,
+    default: "",
+  },
+  /**
+   * Is the data given by an outside ajax request?
+   */
+  isAsync: {
+    type: Boolean,
+    required: false,
+    default: false,
+  },
+  /**
+   * Whether the form input field is required or not.
+   * `true, false`
+   */
+  required: {
+    type: Boolean,
+    default: false,
+  },
+  /**
+   * Whether the input is focused or not
+   * `true, false`
+   */
+  focused: {
+    type: Boolean,
+    default: false,
+  },
+})
+
+const emit = defineEmits(["input", "selected"])
+function emitSelectedId(id) {
+  /**
+   * Emitted when the user selects an "official" value from the list of supplied terms
+   */
+  emit("selected", id)
 }
+
+function onChange() {
+  // Let's warn the parent that a change was made
+  /**
+   * Emitted on any input-like action that the user does: focusing the input, typing, etc.
+   */
+  emit("input", search.value)
+
+  // Is the data given by an outside ajax request?
+  if (props.isAsync) {
+    isLoading.value = true
+  } else {
+    // Data is sync, we can search our flat array
+    filterResults()
+  }
+  isOpen.value = true
+}
+function filterResults() {
+  if (props.items.length && typeof props.items[0] === "object") {
+    const preResults = props.items.filter(
+      item => item.label.toLowerCase().indexOf(search.value.toLowerCase()) > -1
+    )
+    results.value = preResults.map(x => x.label)
+  } else {
+    results.value = props.items.filter(
+      item => item.toLowerCase().indexOf(search.value.toLowerCase()) > -1
+    )
+  }
+}
+const inputValue = ref("")
+function setResult(result, onSelectCallback = id => {}) {
+  search.value = result
+  inputValue.value = result
+  isOpen.value = false
+
+  if (props.items.length && typeof props.items[0] === "object") {
+    // we need to search the input list for a matching label and return
+    // an id if it's found
+    let item = props.items.find(obj => {
+      return obj.label === result
+    })
+    if (typeof item !== "undefined") {
+      inputValue.value = item.id
+      onSelectCallback(item.id)
+    }
+  }
+}
+function onArrowDown() {
+  if (arrowCounter.value < results.value.length - 1) {
+    arrowCounter.value++
+    scrollToActiveItem()
+  }
+}
+function onArrowUp() {
+  if (arrowCounter.value > 0) {
+    arrowCounter.value--
+    scrollToActiveItem()
+  }
+}
+function onEnter() {
+  setResult(results.value[arrowCounter.value], emitSelectedId)
+  isOpen.value = false
+  arrowCounter.value = -1
+}
+
+function onEscape() {
+  setResult(search.value)
+  isOpen.value = false
+}
+function onClickResult(result) {
+  setResult(result, emitSelectedId)
+}
+function scrollToActiveItem() {
+  const itemId = `lux-autocomplete-${componentId}result-${arrowCounter.value}`
+  const item = document.getElementById(itemId)
+  item.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "start" })
+}
+
+const componentRootRef = useTemplateRef("root")
+function handleClickOutside(evt) {
+  if (!componentRootRef.value.contains(evt.target)) {
+    setResult(search.value)
+    isOpen.value = false
+    arrowCounter.value = -1
+  }
+}
+
+watch(
+  () => props.items,
+  value => {
+    // we want to make sure we only do this when it's an async request
+    if (props.isAsync) {
+      arrowCounter.value = -1
+      if (value.length > 0) {
+        results.value = value.map(result =>
+          typeof result === "object" ? result.label : result.toString()
+        )
+        isLoading.value = false
+      } else {
+        results.value = []
+        isOpen.value = false
+        isLoading.value = false
+      }
+    }
+  }
+)
+
+const autoCompleteRef = useTemplateRef("autoComplete")
+nextTick(() => {
+  if (props.focused) {
+    autoCompleteRef.value.focus()
+  }
+})
+
+// A unique id that identifies this specific instance of the component, so that DOM ids are unique
+// even if you have many autocompletes on a screen
+const componentId = useId()
+const displayInputDomId = computed(() => {
+  return props.displayId || `displayInput-${componentId}`
+})
+
+setResult(props.defaultValue)
+
+defineExpose({ setResult })
 </script>
 
 <style lang="scss">
