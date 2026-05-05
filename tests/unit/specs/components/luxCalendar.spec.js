@@ -99,4 +99,28 @@ describe("_LuxCalendar", () => {
     expect(january8th.classes()).not.toContain("lux-highlight-focus")
     expect(newYearsDay.classes()).toContain("lux-highlight-focus")
   })
+  it("can move focus to the first day of the month when the month changes", async () => {
+    const component = mount(_LuxCalendar, {
+      props: {
+        month: 0,
+        year: 2026,
+        modelValue: 31,
+        "onUpdate:modelValue": e => component.setProps({ modelValue: e }),
+      },
+      attachTo: document.body,
+    })
+
+    const january31st = findDay(component, 31)
+
+    const pressKey = async key => {
+      document.dispatchEvent(new KeyboardEvent("keydown", { key: key }))
+      await nextTick()
+    }
+    expect(january31st.classes()).toContain("lux-highlight-focus")
+    expect(component.text()).toContain("January")
+    await pressKey("ArrowRight")
+    const february1st = findDay(component, 1)
+    expect(component.text()).toContain("February")
+    expect(february1st.classes()).toContain("lux-highlight-focus")
+  })
 })
