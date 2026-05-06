@@ -20,32 +20,32 @@
   </svg>
 </template>
 
-<script>
+<script setup>
 /**
  * Instagram logo for social media sharing purposes.
  */
-export default {
+defineOptions({
   name: "LuxLogoInstagram",
   status: "ready",
   release: "5.2.0",
   type: "Element",
-  props: {
-    /**
-     * The width of the logo.
-     */
-    width: {
-      type: [Number, String],
-      default: 24,
-    },
-    /**
-     * The height of the logo.
-     */
-    height: {
-      type: [Number, String],
-      default: 24,
-    },
+})
+defineProps({
+  /**
+   * The width of the logo.
+   */
+  width: {
+    type: [Number, String],
+    default: 24,
   },
-}
+  /**
+   * The height of the logo.
+   */
+  height: {
+    type: [Number, String],
+    default: 24,
+  },
+})
 </script>
 
 <style lang="scss" scoped></style>
