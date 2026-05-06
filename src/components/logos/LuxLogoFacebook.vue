@@ -20,32 +20,32 @@
   </svg>
 </template>
 
-<script>
+<script setup>
 /**
  * Facebook logo for social media sharing purposes.
  */
-export default {
+defineOptions({
   name: "LuxLogoFacebook",
   status: "ready",
   release: "1.0.0",
   type: "Element",
-  props: {
-    /**
-     * The width of the logo.
-     */
-    width: {
-      type: [Number, String],
-      default: 24,
-    },
-    /**
-     * The height of the logo.
-     */
-    height: {
-      type: [Number, String],
-      default: 24,
-    },
+})
+defineProps({
+  /**
+   * The width of the logo.
+   */
+  width: {
+    type: [Number, String],
+    default: 24,
   },
-}
+  /**
+   * The height of the logo.
+   */
+  height: {
+    type: [Number, String],
+    default: 24,
+  },
+})
 </script>
 
 <style lang="scss" scoped></style>
