@@ -24,13 +24,15 @@
   </component>
 </template>
 
-<script>
+<script setup>
+import { computed, defineOptions } from "vue"
+
 /**
  * Form Inputs are used to allow users to provide text input when the expected
  * input is short. Form Input has a range of options and supports several text
  * formats including numbers. For longer input, use the `FormTextarea` element.
  */
-export default {
+defineOptions({
   name: "LuxInputCheckbox",
   status: "ready",
   release: "1.0.0",
@@ -39,91 +41,89 @@ export default {
     prop: "checked",
     event: "change",
   },
-  emits: ["change", "inputblur"],
-  data: function () {
-    return {
-      wrapper: this.groupLabel.length ? "fieldset" : "div",
-    }
+})
+
+const props = defineProps({
+  /**
+   * If true, the checkboxes will be stacked vertically. Otherwise they will be horizontal (inline).
+   */
+  vertical: {
+    type: Boolean,
+    default: false,
   },
-  props: {
-    /**
-     * If true, the checkboxes will be stacked vertically. Otherwise they will be horizontal (inline).
-     */
-    vertical: {
-      type: Boolean,
-      default: false,
-    },
-    /**
-     * The available options to check. Option properties are: id, value, disabled, required, checked
-     */
-    options: {
-      required: true,
-      type: Array,
-    },
-    /**
-     * The label of the form input field.
-     */
-    label: {
-      type: String,
-      default: "",
-    },
-    /**
-     * The validation message a user should get.
-     */
-    errormessage: {
-      type: String,
-      default: "",
-    },
-    /**
-     * The html element name used for the wrapper.
-     * `div, section`
-     */
-    groupLabel: {
-      type: String,
-      default: "",
-    },
-    /**
-     * Whether the form input field is disabled or not.
-     * `true, false`
-     */
-    disabled: {
-      type: Boolean,
-      default: false,
-    },
-    /**
-     * Whether the form input field is required or not.
-     * `true, false`
-     */
-    required: {
-      type: Boolean,
-      default: false,
-    },
-    /**
-     * Manually trigger input field’s hover state.
-     * `true, false`
-     */
-    hover: {
-      type: Boolean,
-      default: false,
-    },
-    /**
-     * Manually trigger input field’s focus state.
-     * `true, false`
-     */
-    focus: {
-      type: Boolean,
-      default: false,
-    },
+  /**
+   * The available options to check. Option properties are: id, value, disabled, required, checked
+   */
+  options: {
+    required: true,
+    type: Array,
   },
-  methods: {
-    change(event) {
-      this.$emit("change", event.target.checked)
-    },
-    inputblur(value) {
-      this.$emit("inputblur", value)
-    },
+  /**
+   * The label of the form input field.
+   */
+  label: {
+    type: String,
+    default: "",
   },
+  /**
+   * The validation message a user should get.
+   */
+  errormessage: {
+    type: String,
+    default: "",
+  },
+  /**
+   * The html element name used for the wrapper.
+   * `div, section`
+   */
+  groupLabel: {
+    type: String,
+    default: "",
+  },
+  /**
+   * Whether the form input field is disabled or not.
+   * `true, false`
+   */
+  disabled: {
+    type: Boolean,
+    default: false,
+  },
+  /**
+   * Whether the form input field is required or not.
+   * `true, false`
+   */
+  required: {
+    type: Boolean,
+    default: false,
+  },
+  /**
+   * Manually trigger input field’s hover state.
+   * `true, false`
+   */
+  hover: {
+    type: Boolean,
+    default: false,
+  },
+  /**
+   * Manually trigger input field’s focus state.
+   * `true, false`
+   */
+  focus: {
+    type: Boolean,
+    default: false,
+  },
+})
+
+const emit = defineEmits(["change", "inputblur"])
+
+function change(event) {
+  emit("change", event.target.checked)
 }
+function inputblur(value) {
+  emit("inputblur", value)
+}
+
+const wrapper = computed(() => (props.groupLabel.length ? "fieldset" : "div"))
 </script>
 
 <style lang="scss" scoped>
