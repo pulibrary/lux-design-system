@@ -84,7 +84,6 @@
 |<div class="swatch" style="background-color: rgb(188, 223, 241);"></div>|<pre>--color-sky-blue</pre>|rgb(188, 223, 241);|
 |<div class="swatch" style="background-color: rgb(49, 112, 143);"></div>|<pre>--color-cerulean-blue</pre>|rgb(49, 112, 143);|
 |<div class="swatch" style="background-color: rgb(0, 39, 80);"></div>|<pre>--color-very-dark-blue</pre>|rgb(0, 39, 80);|
-|<div class="swatch" style="background-color: rgb(203, 221, 230);"></div>|<pre>--color-light-blue</pre>|rgb(203, 221, 230);|
 |<div class="swatch" style="background-color: rgb(251, 227, 187);"></div>|<pre>--color-yellow</pre>|rgb(251, 227, 187);|
 |<div class="swatch" style="background-color: rgb(124, 68, 5);"></div>|<pre>--color-dark-yellow</pre>|rgb(124, 68, 5);|
 
