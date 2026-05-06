@@ -30,41 +30,41 @@
   </svg>
 </template>
 
-<script>
+<script setup>
 /**
  * Official Princeton University Library Brandmark and Wordmark combination Logo.
  * Please, note that the white type on the first example below is not visible due
  * to the white background color of the preview box.
  */
-export default {
+defineOptions({
   name: "LuxLogoLibrary",
   status: "ready",
   release: "1.0.0",
   type: "Element",
-  props: {
-    /**
-     * The width of the logo.
-     */
-    width: {
-      type: [Number, String],
-      default: 440,
-    },
-    /**
-     * The height of the logo.
-     */
-    height: {
-      type: [Number, String],
-      default: 97,
-    },
-    /**
-     * The color of the logo text.
-     */
-    color: {
-      type: String,
-      default: "#ffffff",
-    },
+})
+defineProps({
+  /**
+   * The width of the logo.
+   */
+  width: {
+    type: [Number, String],
+    default: 440,
   },
-}
+  /**
+   * The height of the logo.
+   */
+  height: {
+    type: [Number, String],
+    default: 97,
+  },
+  /**
+   * The color of the logo text.
+   */
+  color: {
+    type: String,
+    default: "#ffffff",
+  },
+})
 </script>
 
 <style lang="scss" scoped>
