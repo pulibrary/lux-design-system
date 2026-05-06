@@ -53,22 +53,28 @@ export default {
     }
   }
   &.light {
-    @include princeton-focus(light);
-    &:hover,
-    &:focus-within {
-      outline-offset: 0.1rem;
+    a {
+      @include princeton-focus(light);
+      &:hover,
+      &:focus-within {
+        outline-offset: 0.1rem;
+      }
     }
   }
   &.dark {
-    @include princeton-focus(dark);
-    &:focus-within {
-      outline-offset: 0.1rem;
+    a {
+      @include princeton-focus(dark);
+      &:focus-within {
+        outline-offset: 0.1rem;
+      }
     }
   }
   &.shade {
-    @include princeton-focus(shade);
-    &:focus-within {
-      outline-offset: 0.1rem;
+    a {
+      @include princeton-focus(shade);
+      &:focus-within {
+        outline-offset: 0.1rem;
+      }
     }
   }
 }
