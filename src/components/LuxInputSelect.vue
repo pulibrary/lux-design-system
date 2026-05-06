@@ -33,11 +33,12 @@
   </component>
 </template>
 
-<script>
+<script setup>
+import { computed, defineEmits, defineOptions, nextTick, useTemplateRef } from "vue"
 /**
  * Input Selects are used to allow users to choose among a number of options.
  */
-export default {
+defineOptions({
   name: "LuxInputSelect",
   status: "ready",
   release: "1.0.0",
@@ -45,142 +46,140 @@ export default {
   model: {
     event: "change",
   },
-  computed: {
-    hasError() {
-      return this.errormessage.length
+})
+
+const props = defineProps({
+  /**
+   * Sets the value of the selected option.
+   */
+  value: {
+    type: String,
+  },
+  /**
+   * Determines whether the user can select multiple options.
+   */
+  multiple: {
+    type: Boolean,
+    default: false,
+  },
+  /**
+   * The available options to check.
+   */
+  options: {
+    required: true,
+    type: Array,
+  },
+  /**
+   * The label of the input select field.
+   */
+  label: {
+    type: String,
+    default: "",
+  },
+  /**
+   * Visually hides the label of the form input field.
+   */
+  hideLabel: {
+    type: Boolean,
+    default: false,
+  },
+  /**
+   * The validation message a user should get.
+   */
+  errormessage: {
+    type: String,
+    default: "",
+  },
+  /**
+   * The html element name used for the wrapper.
+   * `div, section`
+   */
+  wrapper: {
+    type: String,
+    default: "div",
+    validator: value => {
+      return value.match(/(div|section)/)
     },
   },
-  emits: ["change", "inputblur"],
-  props: {
-    /**
-     * Sets the value of the selected option.
-     */
-    value: {
-      type: String,
-    },
-    /**
-     * Determines whether the user can select multiple options.
-     */
-    multiple: {
-      type: Boolean,
-      default: false,
-    },
-    /**
-     * The available options to check.
-     */
-    options: {
-      required: true,
-      type: Array,
-    },
-    /**
-     * The label of the input select field.
-     */
-    label: {
-      type: String,
-      default: "",
-    },
-    /**
-     * Visually hides the label of the form input field.
-     */
-    hideLabel: {
-      type: Boolean,
-      default: false,
-    },
-    /**
-     * The validation message a user should get.
-     */
-    errormessage: {
-      type: String,
-      default: "",
-    },
-    /**
-     * The html element name used for the wrapper.
-     * `div, section`
-     */
-    wrapper: {
-      type: String,
-      default: "div",
-      validator: value => {
-        return value.match(/(div|section)/)
-      },
-    },
-    /**
-     * Unique identifier of the input select field.
-     */
-    id: {
-      type: String,
-      default: "",
-      required: true,
-    },
-    /**
-     * The name attribute for the form input field.
-     */
-    name: {
-      type: String,
-      default: "",
-      required: true,
-    },
-    /**
-     * The width of the input select field.
-     * `auto, expand`
-     */
-    width: {
-      type: String,
-      default: "auto",
-      validator: value => {
-        return value.match(/(auto|expand)/)
-      },
-    },
-    /**
-     * Sets the size of the input area `small, medium, large`
-     */
-    size: {
-      type: String,
-      default: "medium",
-      validator: value => {
-        return value.match(/(small|medium|large)/)
-      },
-    },
-    /**
-     * Whether the form input field is disabled or not.
-     * `true, false`
-     */
-    disabled: {
-      type: Boolean,
-      default: false,
-    },
-    /**
-     * Whether the form input field is required or not.
-     * `true, false`
-     */
-    required: {
-      type: Boolean,
-      default: false,
-    },
-    /**
-     * Manually trigger input field’s hover state.
-     * `true, false`
-     */
-    hover: {
-      type: Boolean,
-      default: false,
+  /**
+   * Unique identifier of the input select field.
+   */
+  id: {
+    type: String,
+    default: "",
+    required: true,
+  },
+  /**
+   * The name attribute for the form input field.
+   */
+  name: {
+    type: String,
+    default: "",
+    required: true,
+  },
+  /**
+   * The width of the input select field.
+   * `auto, expand`
+   */
+  width: {
+    type: String,
+    default: "auto",
+    validator: value => {
+      return value.match(/(auto|expand)/)
     },
   },
-  methods: {
-    change(event) {
-      this.$emit("change", event.target.value)
-    },
-    inputblur(value) {
-      this.$emit("inputblur", value)
-    },
-    focusSelect() {
-      this.$nextTick(() => {
-        const selectRef = this.$refs.select
-        selectRef.focus()
-      })
+  /**
+   * Sets the size of the input area `small, medium, large`
+   */
+  size: {
+    type: String,
+    default: "medium",
+    validator: value => {
+      return value.match(/(small|medium|large)/)
     },
   },
+  /**
+   * Whether the form input field is disabled or not.
+   * `true, false`
+   */
+  disabled: {
+    type: Boolean,
+    default: false,
+  },
+  /**
+   * Whether the form input field is required or not.
+   * `true, false`
+   */
+  required: {
+    type: Boolean,
+    default: false,
+  },
+  /**
+   * Manually trigger input field’s hover state.
+   * `true, false`
+   */
+  hover: {
+    type: Boolean,
+    default: false,
+  },
+})
+
+const emit = defineEmits(["change", "inputblur"])
+function change(event) {
+  emit("change", event.target.value)
 }
+function inputblur(value) {
+  emit("inputblur", value)
+}
+
+const hasError = computed(() => props.errormessage.length)
+
+const selectRef = useTemplateRef("select")
+async function focusSelect() {
+  await nextTick()
+  selectRef.value.focus()
+}
+defineExpose({ focusSelect })
 </script>
 
 <style lang="scss" scoped>
