@@ -1,10 +1,15 @@
 import _LuxCalendar from "@/components/_LuxCalendar.vue"
 import { mount } from "@vue/test-utils"
-import { describe, expect, it } from "vitest"
+import { describe, expect, it, vi } from "vitest"
 import { nextTick } from "vue"
 
 function findDay(component, day) {
   return component.findAll("td").find(td => td.text() === String(day))
+}
+
+async function pressKey(key) {
+  document.dispatchEvent(new KeyboardEvent("keydown", { key: key }))
+  await nextTick()
 }
 
 describe("_LuxCalendar", () => {
@@ -60,6 +65,7 @@ describe("_LuxCalendar", () => {
     expect(component.props("modelValue")).toEqual(5)
   })
   it("can be navigated by arrow keys", async () => {
+    vi.useFakeTimers()
     const component = mount(_LuxCalendar, {
       props: {
         month: 0,
@@ -69,35 +75,34 @@ describe("_LuxCalendar", () => {
       },
       attachTo: document.body,
     })
+    await nextTick()
+    vi.runAllTimers()
+
     const newYearsDay = findDay(component, 1)
     const january8th = findDay(component, 8)
     const january9th = findDay(component, 9)
-    const pressKey = async key => {
-      document.dispatchEvent(new KeyboardEvent("keydown", { key: key }))
-      await nextTick()
-    }
 
-    expect(newYearsDay.classes()).toContain("lux-highlight-focus")
+    expect(document.activeElement).toEqual(newYearsDay.element)
 
     await pressKey("ArrowDown")
-
-    expect(newYearsDay.classes()).not.toContain("lux-highlight-focus")
-    expect(january8th.classes()).toContain("lux-highlight-focus")
+    await nextTick()
+    vi.runAllTimers()
+    expect(january8th.element).toEqual(document.activeElement)
 
     await pressKey("ArrowRight")
-
-    expect(january8th.classes()).not.toContain("lux-highlight-focus")
-    expect(january9th.classes()).toContain("lux-highlight-focus")
+    await nextTick()
+    vi.runAllTimers()
+    expect(january9th.element).toEqual(document.activeElement)
 
     await pressKey("ArrowLeft")
-
-    expect(january9th.classes()).not.toContain("lux-highlight-focus")
-    expect(january8th.classes()).toContain("lux-highlight-focus")
+    await nextTick()
+    vi.runAllTimers()
+    expect(january8th.element).toEqual(document.activeElement)
 
     await pressKey("ArrowUp")
-
-    expect(january8th.classes()).not.toContain("lux-highlight-focus")
-    expect(newYearsDay.classes()).toContain("lux-highlight-focus")
+    await nextTick()
+    vi.runAllTimers()
+    expect(newYearsDay.element).toEqual(document.activeElement)
   })
   it("can move focus to the first day of the month when the month changes", async () => {
     const component = mount(_LuxCalendar, {
@@ -112,15 +117,16 @@ describe("_LuxCalendar", () => {
 
     const january31st = findDay(component, 31)
 
-    const pressKey = async key => {
-      document.dispatchEvent(new KeyboardEvent("keydown", { key: key }))
-      await nextTick()
-    }
-    expect(january31st.classes()).toContain("lux-highlight-focus")
+    await nextTick()
+    vi.runAllTimers()
+    expect(document.activeElement).toEqual(january31st.element)
     expect(component.text()).toContain("January")
+
     await pressKey("ArrowRight")
     const february1st = findDay(component, 1)
+    await nextTick()
+    vi.runAllTimers()
     expect(component.text()).toContain("February")
-    expect(february1st.classes()).toContain("lux-highlight-focus")
+    expect(february1st.element).toEqual(document.activeElement)
   })
 })

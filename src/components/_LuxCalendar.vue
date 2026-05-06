@@ -2,7 +2,7 @@
   <LuxInputButton @button-clicked="previousMonth()" type="button" size="small"
     >Previous month</LuxInputButton
   >
-  {{ monthLabel }} {{ currentYear }}
+  <span :id="monthId">{{ monthLabel }} {{ currentYear }}</span>
   <LuxInputButton @button-clicked="nextMonth()" type="button" size="small"
     >Next month</LuxInputButton
   >
@@ -24,10 +24,14 @@
           :key="day"
           :class="{
             'lux-day': true,
-            'lux-highlight-focus': focusedDay == day,
             'lux-highlight-today': isToday(day),
             'lux-highlight-selected': isSelected(day),
           }"
+          role="button"
+          :aria-label="day"
+          :aria-describedby="monthId"
+          tabindex="-1"
+          :ref="'day-' + day"
         >
           {{ day }}
         </td>
@@ -49,7 +53,16 @@ import {
   SATURDAY,
   lastDayOfMonth,
 } from "@/utils/luxDate"
-import { computed, defineModel, onDeactivated, onMounted, ref } from "vue"
+import {
+  computed,
+  defineModel,
+  onDeactivated,
+  onMounted,
+  ref,
+  watch,
+  useTemplateRef,
+  useId,
+} from "vue"
 import LuxInputButton from "./LuxInputButton.vue"
 
 const JANUARY = 0
@@ -98,12 +111,18 @@ const keydownBehavior = event => {
 }
 onMounted(() => {
   document.addEventListener("keydown", keydownBehavior)
+  setTimeout(() => dayRefs[focusedDay.value].value[0].focus())
 })
 onDeactivated(() => document.removeEventListener("keydown", keydownBehavior))
 
+const dayRefs = [...Array(32).keys()].map(day => useTemplateRef(`day-${day}`))
+
+watch(focusedDay, value => {
+  setTimeout(() => dayRefs[value].value[0].focus())
+})
+
 function validateFocusedDay() {
   const daysInMonth = lastDayOfMonth(currentYear.value, currentMonth.value)
-  console.log(focusedDay.value, daysInMonth)
   if (focusedDay.value < 1) {
     currentMonth.value = currentMonth.value - 1
     if (currentMonth.value < JANUARY) {
@@ -160,6 +179,9 @@ function isSelected(day) {
     return false
   }
 }
+
+const idPrefix = useId()
+const monthId = `${idPrefix}-month`
 </script>
 <style>
 .lux-calendar {
@@ -183,7 +205,7 @@ td.lux-day {
   text-align: center;
 }
 
-td.lux-highlight-focus {
+td:focus {
   border: 0.25rem var(--color-princeton-orange-on-white) solid;
 }
 </style>
