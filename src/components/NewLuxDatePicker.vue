@@ -6,7 +6,7 @@
       variation="outline"
       currentColor="black"
       @buttonClicked="toggle()"
-      :aria-controls="id"
+      :aria-controls="dialogId"
       :aria-expanded="isOpen()"
     >
       <LuxIconBase height="14" width="14" iconName="toggle calendar">
@@ -14,7 +14,7 @@
       </LuxIconBase>
     </LuxInputButton>
   </div>
-  <LuxDialog position="inline" ref="dialog" :id="id">
+  <LuxDialog position="inline" ref="dialog" :id="dialogId">
     <template v-if="props.label" #title>{{ props.label }}</template>
     <LuxCalendar @selected="writeToInput($event)" :locale="locale"></LuxCalendar>
   </LuxDialog>
@@ -43,7 +43,7 @@ const dialog = useTemplateRef("dialog")
 
 const dateString = ref(toString(new Date()))
 
-const id = useId()
+const dialogId = useId()
 
 function isOpen() {
   return Boolean(dialog.value?.isOpen())

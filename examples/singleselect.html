@@ -6,30 +6,28 @@ To run it:
 2. In your browser, visit http://localhost:5000/examples/singleselect.html
 -->
 <html>
+  <head>
+    <link rel="stylesheet" href="/dist/style.css" />
+  </head>
 
-<head>
-  <link rel="stylesheet" href="/dist/style.css">
-</head>
+  <body>
+    <script type="importmap">
+      {
+        "imports": {
+          "vue": "https://unpkg.com/vue@3.5.22/dist/vue.esm-browser.prod.js",
+          "lux-design-system": "/dist/lux-styleguidist.mjs"
+        }
+      }
+    </script>
+    <script type="module">
+      import { createApp } from "vue";
+      import lux from "lux-design-system";
 
-<body>
-  <script type="importmap">
-  {
-    "imports": {
-      "vue": "https://unpkg.com/vue@3.5.22/dist/vue.esm-browser.prod.js",
-      "lux-design-system": "/dist/lux-styleguidist.mjs"
-    }
-  }
-  </script>
-  <script type="module">
-    import { createApp } from 'vue';
-    import lux from 'lux-design-system';
-
-    const app = createApp({});
-    app.use(lux).mount('#app')
-  </script>
-  <div id="app">
-
-      <form action="https://www.w3schools.com/action_page.php" >
+      const app = createApp({});
+      app.use(lux).mount("#app");
+    </script>
+    <div id="app">
+      <form action="https://www.w3schools.com/action_page.php">
         <lux-autocomplete-input
           id="animals"
           label="Animals"
@@ -39,11 +37,10 @@ To run it:
         >
         </lux-autocomplete-input>
 
-        <input type="email" label="email"/>
+        <input type="email" label="email" />
 
         <button type="submit">Submit</button>
       </form>
-  </div>
-</body>
-
+    </div>
+  </body>
 </html>

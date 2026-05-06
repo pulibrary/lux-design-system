@@ -392,20 +392,24 @@ function sortTable(col) {
       background-color: var(--color-white);
       border: 0;
       border-radius: $border-radius-default;
-      box-shadow: inset 0 1px 0 0 color-mix(in srgb, var(--color-rich-black) 7%, transparent),
+      box-shadow:
+        inset 0 1px 0 0 color-mix(in srgb, var(--color-rich-black) 7%, transparent),
         0 0 0 1px tint($color-rich-black, 80%);
     }
 
     /* On mouse-over, add a grey background color */
     input:not([disabled]):hover::before {
-      box-shadow: 0 1px 5px 0 color-mix(in srgb, var(--color-rich-black) 7%, transparent),
+      box-shadow:
+        0 1px 5px 0 color-mix(in srgb, var(--color-rich-black) 7%, transparent),
         0 0 0 1px tint($color-rich-black, 60%);
     }
 
     input:checked::before {
       transition: box-shadow 0.2s ease;
       background-color: var(--color-bleu-de-france);
-      box-shadow: inset 0 0 0 1px var(--color-bleu-de-france), 0 0 0 1px $color-bleu-de-france;
+      box-shadow:
+        inset 0 0 0 1px var(--color-bleu-de-france),
+        0 0 0 1px $color-bleu-de-france;
       outline: 0;
     }
 
@@ -435,7 +439,9 @@ function sortTable(col) {
     /*Adding focus styles on the outer-box of the fake checkbox*/
     input[type="checkbox"]:focus::before {
       transition: box-shadow $duration-quickly ease;
-      box-shadow: inset 0 0 0 1px $color-bleu-de-france, 0 0 0 1px $color-bleu-de-france;
+      box-shadow:
+        inset 0 0 0 1px $color-bleu-de-france,
+        0 0 0 1px $color-bleu-de-france;
     }
   }
 

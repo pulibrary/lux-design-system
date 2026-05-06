@@ -406,12 +406,15 @@ $color-placeholder: tint(rgb(149, 156, 167), 50%);
     &:focus,
     &[focus] {
       transition: box-shadow 0.2s ease;
-      box-shadow: inset 0 0 0 1px $color-bleu-de-france, 0 0 0 1px $color-bleu-de-france;
+      box-shadow:
+        inset 0 0 0 1px $color-bleu-de-france,
+        0 0 0 1px $color-bleu-de-france;
       outline: 0;
     }
     &[disabled],
     &.disabled {
-      box-shadow: inset 0 1px 0 0 color-mix(in srgb, var(--color-rich-black) 7%, transparent),
+      box-shadow:
+        inset 0 1px 0 0 color-mix(in srgb, var(--color-rich-black) 7%, transparent),
         0 0 0 1px tint($color-rich-black, 80%);
       background: color.adjust($color-placeholder, $lightness: 42%);
       cursor: not-allowed;
