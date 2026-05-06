@@ -46,32 +46,32 @@
   </svg>
 </template>
 
-<script>
+<script setup>
 /**
  * Official Princeton University Logo
  */
-export default {
+defineOptions({
   name: "LuxLogoUniversity",
   status: "ready",
   release: "1.0.0",
   type: "Element",
-  props: {
-    /**
-     * The width of the logo.
-     */
-    width: {
-      type: [Number, String],
-      default: 263,
-    },
-    /**
-     * The height of the logo.
-     */
-    height: {
-      type: [Number, String],
-      default: 72,
-    },
+})
+defineProps({
+  /**
+   * The width of the logo.
+   */
+  width: {
+    type: [Number, String],
+    default: 263,
   },
-}
+  /**
+   * The height of the logo.
+   */
+  height: {
+    type: [Number, String],
+    default: 72,
+  },
+})
 </script>
 
 <style lang="scss" scoped>
