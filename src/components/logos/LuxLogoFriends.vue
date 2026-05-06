@@ -38,32 +38,32 @@
   </svg>
 </template>
 
-<script>
+<script setup>
 /**
  * Official logo for Friends of PUL.
  */
-export default {
+defineOptions({
   name: "LuxLogoFriends",
   status: "ready",
   release: "1.0.0",
   type: "Element",
-  props: {
-    /**
-     * The width of the logo.
-     */
-    width: {
-      type: [Number, String],
-      default: 115,
-    },
-    /**
-     * The height of the logo.
-     */
-    height: {
-      type: [Number, String],
-      default: 31,
-    },
+})
+defineProps({
+  /**
+   * The width of the logo.
+   */
+  width: {
+    type: [Number, String],
+    default: 115,
   },
-}
+  /**
+   * The height of the logo.
+   */
+  height: {
+    type: [Number, String],
+    default: 31,
+  },
+})
 </script>
 
 <style lang="scss" scoped>
