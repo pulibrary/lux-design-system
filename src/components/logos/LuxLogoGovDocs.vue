@@ -39,32 +39,32 @@
   </svg>
 </template>
 
-<script>
+<script setup>
 /**
  * Government Docs site logo.
  */
-export default {
+defineOptions({
   name: "LuxLogoGovDocs",
   status: "ready",
   release: "1.0.0",
   type: "Element",
-  props: {
-    /**
-     * The width of the logo.
-     */
-    width: {
-      type: [Number, String],
-      default: 32,
-    },
-    /**
-     * The height of the logo.
-     */
-    height: {
-      type: [Number, String],
-      default: 32,
-    },
+})
+defineProps({
+  /**
+   * The width of the logo.
+   */
+  width: {
+    type: [Number, String],
+    default: 32,
   },
-}
+  /**
+   * The height of the logo.
+   */
+  height: {
+    type: [Number, String],
+    default: 32,
+  },
+})
 </script>
 
 <style lang="scss" scoped></style>
