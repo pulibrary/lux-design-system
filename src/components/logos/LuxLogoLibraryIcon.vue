@@ -26,36 +26,36 @@
   </svg>
 </template>
 
-<script>
+<script setup>
 /**
  * Official Princeton University Library Brandmark Logo.
  */
-export default {
+defineOptions({
   name: "LuxLogoLibraryIcon",
   status: "ready",
   release: "1.0.0",
   type: "Element",
-  props: {
-    /**
-     * The width of the logo.
-     */
-    width: {
-      type: [Number, String],
-      default: 97,
-    },
-    /**
-     * The height of the logo.
-     */
-    height: {
-      type: [Number, String],
-      default: 97,
-    },
-    color: {
-      type: String,
-      default: "var(--color-princeton-orange-on-black)",
-    },
+})
+defineProps({
+  /**
+   * The width of the logo.
+   */
+  width: {
+    type: [Number, String],
+    default: 97,
   },
-}
+  /**
+   * The height of the logo.
+   */
+  height: {
+    type: [Number, String],
+    default: 97,
+  },
+  color: {
+    type: String,
+    default: "var(--color-princeton-orange-on-black)",
+  },
+})
 </script>
 
 <style lang="scss" scoped>
