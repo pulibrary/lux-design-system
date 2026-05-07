@@ -5,25 +5,25 @@
   </component>
 </template>
 
-<script>
+<script setup>
 /**
  * Used to fill available space or make space between two components.
  */
-export default {
+defineOptions({
   name: "LuxSpacer",
   status: "ready",
   release: "1.0.0",
   type: "Element",
-  props: {
-    /**
-     * The html element name used for the wrapper.
-     */
-    type: {
-      type: String,
-      default: "div",
-    },
+})
+defineProps({
+  /**
+   * The html element name used for the wrapper.
+   */
+  type: {
+    type: String,
+    default: "div",
   },
-}
+})
 </script>
 
 <style lang="scss" scoped>
