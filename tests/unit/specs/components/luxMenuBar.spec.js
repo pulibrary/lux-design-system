@@ -120,7 +120,6 @@ describe("LuxMenuBar.vue", () => {
     const e = wrapper.emitted()
     expect(Object.prototype.hasOwnProperty.call(e, "input")).toBe(true)
   })
-  /* eslint-disable quotes */
   it("should properly parse menu items into a hierarchy", () => {
     const menuItemsList = [
       {

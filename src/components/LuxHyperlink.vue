@@ -106,7 +106,9 @@ const props = defineProps({
     padding: 0.5rem 1rem;
     text-decoration: none;
     text-align: center;
-    transition: background 250ms ease-in-out, transform 150ms ease;
+    transition:
+      background 250ms ease-in-out,
+      transform 150ms ease;
     margin: 0 0.25rem;
 
     &:first-child {

@@ -1,18 +1,18 @@
-import { defineConfig } from 'vitest/config';
-import vue from '@vitejs/plugin-vue';
-import path from 'path';
-import { vueDocsPlugin } from './vite.config.mjs';
+import { defineConfig } from "vitest/config"
+import vue from "@vitejs/plugin-vue"
+import path from "path"
+import { vueDocsPlugin } from "./vite.config.mjs"
 
 export default defineConfig({
   test: {
-    environment: 'happy-dom',
+    environment: "happy-dom",
     globals: true,
-    include: ['tests/**/*.spec.js'],
+    include: ["tests/**/*.spec.js"],
   },
   plugins: [vue(), vueDocsPlugin],
   resolve: {
-      alias: {
+    alias: {
       "@": path.resolve(__dirname, "./src"),
     },
-  }
-});
+  },
+})

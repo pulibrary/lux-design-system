@@ -8,16 +8,16 @@ that demonstrates [tree-shaking](https://developer.mozilla.org/en-US/docs/Glossa
 1. Add lux-design-system to your dependencies in package.json
 1. In your main.js, import the LUX css:
 
-    ```ts
-    import 'lux-design-system/dist/style.css'
-    ```
+   ```text
+   import "lux-design-system/dist/style.css";
+   ```
 
 1. You can now import individual lux components into
-your application's components.
+   your application's components.
 
 The nice thing about this approach is that Vite will
-tree-shake lux.  This way, your application bundle
-will only include the lux components that you 
+tree-shake lux. This way, your application bundle
+will only include the lux components that you
 actually use, which means faster download times for the user.
 
 #### Adding Lux to a vite+rails project
@@ -25,35 +25,45 @@ actually use, which means faster download times for the user.
 Some examples of this approach include [approvals](https://github.com/pulibrary/approvals) and
 [DSS](https://github.com/pulibrary/DSS).
 
-1. In your entrypoints/application.js file, add the import statements for lux and vue:
+1.  In your entrypoints/application.js file, add the import statements for lux and vue:
 
-   ```ts
-   import { createApp } from "vue";
-   import "lux-design-system/dist/style.css";
+    ```text
+    import { createApp } from "vue";
+    import "lux-design-system/dist/style.css";
 
-   // Option 1: import the default export from
-   // lux to import all of lux into your project
-   import lux from "lux-design-system";
+    // Option 1: import the default export from
+    // lux to import all of lux into your project
+    import lux from "lux-design-system";
 
-   // Option 2: import only the components you
-   // need from lux, to enable tree-shaking and
-   // a smaller bundle size
-   import { LuxLibraryFooter, LuxLibraryHeader, LuxMenuBar, LuxLogoUniversity, LuxLogoLibraryIcon, LuxLibraryLogo, LuxLogoLibrary, LuxWrapper, LuxSpacer } from "lux-design-system";
-   ```
+    // Option 2: import only the components you
+    // need from lux, to enable tree-shaking and
+    // a smaller bundle size
+    import {
+      LuxLibraryFooter,
+      LuxLibraryHeader,
+      LuxMenuBar,
+      LuxLogoUniversity,
+      LuxLogoLibraryIcon,
+      LuxLibraryLogo,
+      LuxLogoLibrary,
+      LuxWrapper,
+      LuxSpacer,
+    } from "lux-design-system";
+    ```
 
-1. In your entrypoints/application.js, create a factory function
-for creating vue apps:
+1.  In your entrypoints/application.js, create a factory function
+    for creating vue apps:
 
-    ```ts
+    ```text
     const app = createApp({});
     const createMyApp = () => createApp(app);
     ```
 
-1. In your entrypoints/application.js, use the lux plugin (if you chose option 1 above) or add the specific components your
-Rails app uses (if you chose option 2 above).  Then mount the
-Vue app to the appropriate element(s) in the DOM.
+1.  In your entrypoints/application.js, use the lux plugin (if you chose option 1 above) or add the specific components your
+    Rails app uses (if you chose option 2 above). Then mount the
+    Vue app to the appropriate element(s) in the DOM.
 
-    ```ts
+    ```text
     document.addEventListener('DOMContentLoaded', () => {
         const elements = document.getElementsByClassName('lux')
         for (let i = 0; i < elements.length; i++) {
@@ -78,14 +88,13 @@ Vue app to the appropriate element(s) in the DOM.
     })
     ```
 
-1. Add lux components as needed in your views or ViewComponents.
-1. Add classes or CSS variables from lux to your styling.
-
+1.  Add lux components as needed in your views or ViewComponents.
+1.  Add classes or CSS variables from lux to your styling.
 
 #### Adding Lux to a static HTML page
 
 Importmaps are a nice way to add vue and
-lux to a static site.  An example of this
+lux to a static site. An example of this
 approach is the [Pulibrary github blog](https://github.com/pulibrary/pulibrary.github.io).
 
 This approach is simple, but there is a drawback.
@@ -93,8 +102,8 @@ The user has to download all of lux, rather than
 just the components you need (i.e. there is no
 tree shaking).
 
-1. In your HTML, import Vue and lux from a
-CDN, like so:
+1.  In your HTML, import Vue and lux from a
+    CDN, like so:
 
     ```html
     <script type="importmap">
@@ -107,10 +116,10 @@ CDN, like so:
     </script>
     ```
 
-1. Add some javascript that creates and mounts a
-Vue application and installs lux as a vue plugin.
+1.  Add some javascript that creates and mounts a
+    Vue application and installs lux as a vue plugin.
 
-    ```ts
+    ```text
     import { createApp } from 'vue';
     import lux from 'lux-design-system';
 
@@ -121,7 +130,7 @@ Vue application and installs lux as a vue plugin.
 
     If you are only using lux for a header and footer:
 
-    ```ts
+    ```text
     import { createApp } from 'vue';
     import lux from 'lux-design-system';
 
@@ -134,47 +143,59 @@ Vue application and installs lux as a vue plugin.
     .mount('#lux-footer-container');
     ```
 
-1. Import the CSS as from a CDN.
+1.  Import the CSS as from a CDN.
 
     ```html
-    <link rel="stylesheet" href="https://unpkg.com/lux-design-system@6.3.1/dist/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/lux-design-system@6.3.1/dist/style.css" />
     ```
 
-1. Add lux components as needed in your HTML.  If you are just adding a
-   header and footer:
+1.  Add lux components as needed in your HTML. If you are just adding a
+    header and footer:
 
-   ```html
-   <div id="lux-header-container">
-    <lux-library-header app-name="Research Guides" abbr-name="Guides" app-url="https://libguides.princeton.edu/" theme="dark">
-      <lux-menu-bar type="main-menu" :menu-items="[
-          {name: 'Help', component: 'Help', href: 'https://library.princeton.edu/ask-us'},
-          {name: 'Your Accounts', component: 'Account', href: 'https://library.princeton.edu/accounts'}
-        ]"
-      ></lux-menu-bar>
-    </lux-library-header>
+    ```html
+    <div id="lux-header-container">
+      <lux-library-header
+        app-name="Research Guides"
+        abbr-name="Guides"
+        app-url="https://libguides.princeton.edu/"
+        theme="dark"
+      >
+        <lux-menu-bar
+          type="main-menu"
+          :menu-items="[
+           {name: 'Help', component: 'Help', href: 'https://library.princeton.edu/ask-us'},
+           {name: 'Your Accounts', component: 'Account', href: 'https://library.princeton.edu/accounts'}
+         ]"
+        ></lux-menu-bar>
+      </lux-library-header>
 
-    <!-- the rest of your page -->
+      <!-- the rest of your page -->
 
-    <div id="lux-footer-container">
-      <lux-library-footer></lux-library-footer>
+      <div id="lux-footer-container">
+        <lux-library-footer></lux-library-footer>
+      </div>
     </div>
-   ```
+    ```
 
-1. Add classes or CSS variables from lux to your styling.
+1.  Add classes or CSS variables from lux to your styling.
 
 ##### Adding Lux to a static HTML page using an IIFE file
+
 If you can't use an import map and have to use `<script src>` then from cdn use the IIFE file - `https://unpkg.com/lux-design-system@<versionNumber>/dist/lux-styleguidist.iife.js`.
 
 Add the following `<script>` tags after the `<head>` tag:
+
 ```html
-  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-  <script src="https://unpkg.com/lux-design-system@6.3.1/dist/lux-styleguidist.iife.js"></script>
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+<script src="https://unpkg.com/lux-design-system@6.3.1/dist/lux-styleguidist.iife.js"></script>
 ```
+
 After `<body>` tag add the following `<script>` tag:
+
 ```html
 <script>
-    const { createApp } = Vue
-    createApp().use(Lux.default).mount('#app')
+  const { createApp } = Vue;
+  createApp().use(Lux.default).mount("#app");
 </script>
 ```
 
@@ -186,5 +207,5 @@ An example of this approach is the [DACS handbook](https://github.com/pulibrary/
 To do this, add the CSS from a CDN to your HTML:
 
 ```html
-    <link rel="stylesheet" href="https://unpkg.com/lux-design-system@6.3.1/dist/style.css">
+<link rel="stylesheet" href="https://unpkg.com/lux-design-system@6.3.1/dist/style.css" />
 ```

@@ -371,13 +371,16 @@ $color-placeholder: tint($color-grayscale, 50%);
 
     &:hover,
     &[hover] {
-      box-shadow: 0 1px 5px 0 color-mix(in srgb, var(--color-rich-black) 7%, transparent),
+      box-shadow:
+        0 1px 5px 0 color-mix(in srgb, var(--color-rich-black) 7%, transparent),
         0 0 0 1px tint($color-rich-black, 60%);
     }
     &:focus,
     &[focus] {
       transition: box-shadow 0.2s ease;
-      box-shadow: inset 0 0 0 1px var(--color-bleu-de-france), 0 0 0 1px var(--color-bleu-de-france);
+      box-shadow:
+        inset 0 0 0 1px var(--color-bleu-de-france),
+        0 0 0 1px var(--color-bleu-de-france);
       outline: 0;
     }
   }
@@ -387,7 +390,8 @@ $color-placeholder: tint($color-grayscale, 50%);
   @include reset;
   background: var(--color-white);
   border-radius: var(--border-radius-default);
-  box-shadow: inset 0 1px 0 0 color-mix(in srgb, var(--color-rich-black) 7%, transparent),
+  box-shadow:
+    inset 0 1px 0 0 color-mix(in srgb, var(--color-rich-black) 7%, transparent),
     0 0 0 1px tint($color-rich-black, 80%);
 }
 

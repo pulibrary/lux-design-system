@@ -1,7 +1,7 @@
 @use "sass:list";
 @use "sass:meta";
-@use 'sass:color';
-@use 'sass:math';
+@use "sass:color";
+@use "sass:math";
 $color-grayscale-light: rgb(186 190 197);
 $color-tan: rgb(188 139 82);
 $color-bleu-de-france-dark: rgb(45 112 180);
@@ -56,11 +56,21 @@ $duration-quickly: 0.08s;
 $duration-slowly: 0.5s;
 $z-index-modal: 9999;
 $z-index-sticky: 100;
-$media-query-medium: (min-width: 600px);
-$media-query-large: (min-width: 900px);
-$media-query-x-large: (min-width: 1200px);
-$media-query-xx-large: (min-width: 1800px);
-$media-query-xxx-large: (min-width: 2300px);
+$media-query-medium: (
+  min-width: 600px,
+);
+$media-query-large: (
+  min-width: 900px,
+);
+$media-query-x-large: (
+  min-width: 1200px,
+);
+$media-query-xx-large: (
+  min-width: 1800px,
+);
+$media-query-xxx-large: (
+  min-width: 2300px,
+);
 $box-shadow-small: 0 0 0 1px rgb(92 106 196 / 10%);
 $box-shadow-small-inset: inset 0 0 0 1px rgb(0 0 0 / 5%);
 $box-shadow-selected: 0 0 0 1px #e77500;
@@ -101,7 +111,7 @@ $line-height-heading: 1.5;
   $dimension: if(math.unit($responsive) == "vh", "height", "width");
   $min-breakpoint: calc($min / $responsive-unitless * 100);
   font-size: $responsive;
-  
+
   @if $fallback {
     font-size: $fallback;
   }
@@ -164,7 +174,6 @@ $line-height-heading: 1.5;
 // @param  {Number} $percentage of `$color` in returned color
 // @return {Color}
 
-
 @function tint($color, $percentage) {
   @return color.mix(white, $color, $percentage);
 }
@@ -185,9 +194,42 @@ $line-height-heading: 1.5;
 // @param  {Color} $color of background
 // @return {Boolean}
 @function color-difference($foreground, $background) {
-  $r: (max(color.channel($foreground, "red", $space: rgb), color.channel($background, "red", $space: rgb))) - (min(color.channel($foreground, "red", $space: rgb), color.channel($background, "red", $space: rgb)));
-  $g: (max(color.channel($foreground, "green", $space: rgb), color.channel($background, "green", $space: rgb))) - (min(color.channel($foreground, "green", $space: rgb), color.channel($background, "green", $space: rgb)));
-  $b: (max(color.channel($foreground, "blue", $space: rgb), color.channel($background, "blue", $space: rgb))) - (min(color.channel($foreground, "blue", $space: rgb), color.channel($background, "blue", $space: rgb)));
+  $r: (
+      max(
+        color.channel($foreground, "red", $space: rgb),
+        color.channel($background, "red", $space: rgb)
+      )
+    ) -
+    (
+      min(
+        color.channel($foreground, "red", $space: rgb),
+        color.channel($background, "red", $space: rgb)
+      )
+    );
+  $g: (
+      max(
+        color.channel($foreground, "green", $space: rgb),
+        color.channel($background, "green", $space: rgb)
+      )
+    ) -
+    (
+      min(
+        color.channel($foreground, "green", $space: rgb),
+        color.channel($background, "green", $space: rgb)
+      )
+    );
+  $b: (
+      max(
+        color.channel($foreground, "blue", $space: rgb),
+        color.channel($background, "blue", $space: rgb)
+      )
+    ) -
+    (
+      min(
+        color.channel($foreground, "blue", $space: rgb),
+        color.channel($background, "blue", $space: rgb)
+      )
+    );
   $sum-rgb: $r + $g + $b;
 
   @if $sum-rgb < 350 {
