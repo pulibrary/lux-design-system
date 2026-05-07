@@ -4,47 +4,47 @@
   </component>
 </template>
 
-<script>
+<script setup>
 /**
  * Loaders indicate to the user that the component is waiting for some task to finish
  * before updating the view.
  */
-export default {
+defineOptions({
   name: "LuxLoader",
   status: "ready",
   release: "1.0.0",
   type: "Element",
-  props: {
-    /**
-     * Sets the diameter of the circle. `x-small, small, medium, large, x-large`
-     */
-    size: {
-      type: String,
-      default: "medium",
-      validator: value => {
-        return value.match(/(x-small|small|medium|large|x-large)/)
-      },
-    },
-    /**
-     * Determines whether the loader fills the entire screen (with overlay) or the container it's in (no overlay).
-     */
-    fullscreen: {
-      type: Boolean,
-      default: false,
-    },
-    /**
-     * The html element name used for the wrapper.
-     * `div, section`
-     */
-    wrapper: {
-      type: String,
-      default: "div",
-      validator: value => {
-        return value.match(/(div|span)/)
-      },
+})
+defineProps({
+  /**
+   * Sets the diameter of the circle. `x-small, small, medium, large, x-large`
+   */
+  size: {
+    type: String,
+    default: "medium",
+    validator: value => {
+      return value.match(/(x-small|small|medium|large|x-large)/)
     },
   },
-}
+  /**
+   * Determines whether the loader fills the entire screen (with overlay) or the container it's in (no overlay).
+   */
+  fullscreen: {
+    type: Boolean,
+    default: false,
+  },
+  /**
+   * The html element name used for the wrapper.
+   * `div, section`
+   */
+  wrapper: {
+    type: String,
+    default: "div",
+    validator: value => {
+      return value.match(/(div|span)/)
+    },
+  },
+})
 </script>
 
 <style lang="scss" scoped>
