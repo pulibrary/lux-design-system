@@ -28,77 +28,77 @@
   </ul>
 </template>
 
-<script>
+<script setup>
 /**
  * Tags are compact elements used for items that need to be labeled or categorized
  * using keywords that describe them. Tags are also used to represent applied filters.
  *
  * Multiple or single tags can be used to categorize items.
  */
-export default {
+defineOptions({
   name: "LuxTag",
   status: "ready",
   release: "1.0.0",
   type: "Element",
-  props: {
-    /**
-     * The type of tag. The `filter` option includes
-     * a remove icon inside the tag.
-     */
-    type: {
-      type: String,
-      default: "tag",
-      validator: value => {
-        return value.match(/(tag|filter)/)
-      },
-    },
-    /**
-     * Tag items are tags to be displayed to the user.
-     * You can pass a `name` and `href` in a tag-items array.
-     */
-    tagItems: {
-      required: true,
-      type: Array,
-    },
-    /**
-     * Sets the horizontal alignment of the item. `start`, `center`, or `end`.
-     */
-    horizontal: {
-      type: String,
-      validator: value => {
-        return value.match(/(start|center|end)/)
-      },
-    },
-    /**
-     * Sets the size of the item.
-     */
-    size: {
-      type: String,
-      default: "medium",
-      validator: value => {
-        return value.match(/(small|medium|large)/)
-      },
-    },
-    /**
-     * Sets the label of the list.
-     */
-    label: {
-      type: String,
-      default: "",
+})
+defineProps({
+  /**
+   * The type of tag. The `filter` option includes
+   * a remove icon inside the tag.
+   */
+  type: {
+    type: String,
+    default: "tag",
+    validator: value => {
+      return value.match(/(tag|filter)/)
     },
   },
-  methods: {
-    isPill(pill) {
-      return pill === "pill" ? true : false
-    },
-    componentType(item) {
-      if (item.hasOwnProperty("href")) {
-        return "a"
-      } else {
-        return "span"
-      }
+  /**
+   * Tag items are tags to be displayed to the user.
+   * You can pass a `name` and `href` in a tag-items array.
+   */
+  tagItems: {
+    required: true,
+    type: Array,
+  },
+  /**
+   * Sets the horizontal alignment of the item. `start`, `center`, or `end`.
+   */
+  horizontal: {
+    type: String,
+    validator: value => {
+      return value.match(/(start|center|end)/)
     },
   },
+  /**
+   * Sets the size of the item.
+   */
+  size: {
+    type: String,
+    default: "medium",
+    validator: value => {
+      return value.match(/(small|medium|large)/)
+    },
+  },
+  /**
+   * Sets the label of the list.
+   */
+  label: {
+    type: String,
+    default: "",
+  },
+})
+
+function isPill(pill) {
+  return pill === "pill"
+}
+
+function componentType(item) {
+  if (item.hasOwnProperty("href")) {
+    return "a"
+  } else {
+    return "span"
+  }
 }
 </script>
 
