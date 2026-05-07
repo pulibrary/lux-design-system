@@ -83,7 +83,7 @@
   </component>
 </template>
 
-<script>
+<script setup>
 import LuxLibraryContactInfoOld from "./_LuxLibraryContactInfoOld.vue"
 import LuxUniversityCopyright from "./_LuxUniversityCopyright.vue"
 import LuxUniversityAccessibilityOld from "./_LuxUniversityAccessibilityOld.vue"
@@ -93,7 +93,7 @@ import LuxUniversityCopyrightOld from "./_LuxUniversityCopyrightOld.vue"
  * Don't forget to create a fallback for this component by providing the HTML
  * rendering in _<noscript></noscript>_ tags.
  */
-export default {
+defineOptions({
   name: "LuxSpecialCollectionsFooter",
   status: "ready",
   release: "1.0.0",
@@ -103,23 +103,23 @@ export default {
     LuxUniversityCopyright,
     LuxUniversityAccessibilityOld,
   },
-  props: {
-    /**
-     * The html element name used for the container
-     */
-    type: {
-      type: String,
-      default: "div",
-    },
-    /**
-     * The maximum width of the wrapper. Default is set to 1170.
-     */
-    maxWidth: {
-      type: Number,
-      default: 1170,
-    },
+})
+defineProps({
+  /**
+   * The html element name used for the container
+   */
+  type: {
+    type: String,
+    default: "div",
   },
-}
+  /**
+   * The maximum width of the wrapper. Default is set to 1170.
+   */
+  maxWidth: {
+    type: Number,
+    default: 1170,
+  },
+})
 </script>
 
 <style lang="scss" scoped>
