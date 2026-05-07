@@ -8,7 +8,7 @@ that demonstrates [tree-shaking](https://developer.mozilla.org/en-US/docs/Glossa
 1. Add lux-design-system to your dependencies in package.json
 1. In your main.js, import the LUX css:
 
-   ```ts
+   ```text
    import "lux-design-system/dist/style.css";
    ```
 
@@ -27,7 +27,7 @@ Some examples of this approach include [approvals](https://github.com/pulibrary/
 
 1.  In your entrypoints/application.js file, add the import statements for lux and vue:
 
-    ```ts
+    ```text
     import { createApp } from "vue";
     import "lux-design-system/dist/style.css";
 
@@ -54,39 +54,39 @@ Some examples of this approach include [approvals](https://github.com/pulibrary/
 1.  In your entrypoints/application.js, create a factory function
     for creating vue apps:
 
-        ```ts
-        const app = createApp({});
-        const createMyApp = () => createApp(app);
-        ```
+    ```text
+    const app = createApp({});
+    const createMyApp = () => createApp(app);
+    ```
 
 1.  In your entrypoints/application.js, use the lux plugin (if you chose option 1 above) or add the specific components your
     Rails app uses (if you chose option 2 above). Then mount the
     Vue app to the appropriate element(s) in the DOM.
 
-        ```ts
-        document.addEventListener('DOMContentLoaded', () => {
-            const elements = document.getElementsByClassName('lux')
-            for (let i = 0; i < elements.length; i++) {
-                // Option 1: use all of lux
-                createMyApp()
-                    .use(lux)
-                    .mount(elements[i]);
+    ```text
+    document.addEventListener('DOMContentLoaded', () => {
+        const elements = document.getElementsByClassName('lux')
+        for (let i = 0; i < elements.length; i++) {
+            // Option 1: use all of lux
+            createMyApp()
+                .use(lux)
+                .mount(elements[i]);
 
-                // OR option 2: use specific lux components
-                createMyApp()
-                    .component("lux-library-footer", LuxLibraryFooter)
-                    .component("lux-library-header", LuxLibraryHeader)
-                    .component("lux-menu-bar", LuxMenuBar)
-                    .component("lux-logo-university", LuxLogoUniversity)
-                    .component("lux-logo-library-icon", LuxLogoLibraryIcon)
-                    .component("lux-library-logo", LuxLibraryLogo)
-                    .component("lux-logo-library", LuxLogoLibrary)
-                    .component("lux-wrapper", LuxWrapper)
-                    .component("lux-spacer", LuxSpacer)
-                    .mount(elements[i]);
-            }
-        })
-        ```
+            // OR option 2: use specific lux components
+            createMyApp()
+                .component("lux-library-footer", LuxLibraryFooter)
+                .component("lux-library-header", LuxLibraryHeader)
+                .component("lux-menu-bar", LuxMenuBar)
+                .component("lux-logo-university", LuxLogoUniversity)
+                .component("lux-logo-library-icon", LuxLogoLibraryIcon)
+                .component("lux-library-logo", LuxLibraryLogo)
+                .component("lux-logo-library", LuxLogoLibrary)
+                .component("lux-wrapper", LuxWrapper)
+                .component("lux-spacer", LuxSpacer)
+                .mount(elements[i]);
+        }
+    })
+    ```
 
 1.  Add lux components as needed in your views or ViewComponents.
 1.  Add classes or CSS variables from lux to your styling.
@@ -105,43 +105,43 @@ tree shaking).
 1.  In your HTML, import Vue and lux from a
     CDN, like so:
 
-        ```html
-        <script type="importmap">
-          {
-            "imports": {
-              "vue": "https://unpkg.com/vue@3.2.47/dist/vue.esm-browser.prod.js",
-              "lux-design-system": "https://unpkg.com/lux-design-system@6.3.1/dist/lux-styleguidist.mjs"
-            }
-          }
-        </script>
-        ```
+    ```html
+    <script type="importmap">
+      {
+        "imports": {
+          "vue": "https://unpkg.com/vue@3.2.47/dist/vue.esm-browser.prod.js",
+          "lux-design-system": "https://unpkg.com/lux-design-system@6.3.1/dist/lux-styleguidist.mjs"
+        }
+      }
+    </script>
+    ```
 
 1.  Add some javascript that creates and mounts a
     Vue application and installs lux as a vue plugin.
 
-        ```ts
-        import { createApp } from 'vue';
-        import lux from 'lux-design-system';
+    ```text
+    import { createApp } from 'vue';
+    import lux from 'lux-design-system';
 
-        const app = createApp({});
-        app.use(lux)
-        .mount('#app');
-        ```
+    const app = createApp({});
+    app.use(lux)
+    .mount('#app');
+    ```
 
-        If you are only using lux for a header and footer:
+    If you are only using lux for a header and footer:
 
-        ```ts
-        import { createApp } from 'vue';
-        import lux from 'lux-design-system';
+    ```text
+    import { createApp } from 'vue';
+    import lux from 'lux-design-system';
 
-        const headerApp = createApp({});
-        headerApp.use(lux)
-        .mount('#lux-header-container')
+    const headerApp = createApp({});
+    headerApp.use(lux)
+    .mount('#lux-header-container')
 
-        const footerApp = createApp({});
-        footerApp.use(lux)
-        .mount('#lux-footer-container');
-        ```
+    const footerApp = createApp({});
+    footerApp.use(lux)
+    .mount('#lux-footer-container');
+    ```
 
 1.  Import the CSS as from a CDN.
 
