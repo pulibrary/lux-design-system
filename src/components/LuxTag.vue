@@ -90,7 +90,7 @@ defineProps({
 })
 
 function isPill(pill) {
-  return pill === "pill" ? true : false
+  return pill === "pill"
 }
 
 function componentType(item) {
