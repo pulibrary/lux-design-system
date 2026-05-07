@@ -68,7 +68,8 @@
   </component>
 </template>
 
-<script>
+<script setup>
+import { computed, defineOptions, nextTick, onMounted, useTemplateRef } from "vue"
 import LuxIconAlert from "./icons/LuxIconAlert.vue"
 import LuxIconApproved from "./icons/LuxIconApproved.vue"
 import LuxIconBase from "./icons/LuxIconBase.vue"
@@ -80,233 +81,221 @@ import LuxIconCalendar from "./icons/LuxIconCalendar.vue"
  * input is short. Form Input has a range of options and supports several text
  * formats including numbers. For longer input, use the `FormTextarea` element.
  */
-export default {
+defineOptions({
   name: "LuxInputText",
   status: "ready",
   release: "1.0.0",
   type: "Element",
-  emits: [
-    "inputvaluechange",
-    "inputblur",
-    "inputfocus",
-    "update:value",
-    "input",
-    "keyup",
-    "change",
-    "blur",
-    "focus",
-  ],
-  computed: {
-    hasError() {
-      return this.errormessage.length
-    },
-  },
-  props: {
-    /**
-     * The type of the form input field.
-     * `text, number, email`
-     */
-    type: {
-      type: String,
-      default: "text",
-      validator: value => {
-        return value.match(/(text|number|email|textarea)/)
-      },
-    },
-    /**
-     * Text value of the form input field.
-     */
-    value: {
-      type: [String, Number],
-      default: "",
-    },
-    /**
-     * The placeholder value for the form input field.
-     */
-    placeholder: {
-      type: String,
-      default: null,
-    },
-    /**
-     * The label of the form input field.
-     */
-    label: {
-      type: String,
-      default: "",
-    },
-    /**
-     * Visually hides the label of the form input field.
-     */
-    hideLabel: {
-      type: Boolean,
-      default: false,
-    },
-    /**
-     * The validation message a user should get.
-     */
-    errormessage: {
-      type: String,
-      default: "",
-    },
-    /**
-     * The helper text a user should get.
-     */
-    helper: {
-      type: String,
-      default: "",
-    },
-    /**
-     * The html element name used for the wrapper.
-     * `div, section`
-     */
-    wrapper: {
-      type: String,
-      default: "div",
-      validator: value => {
-        return value.match(/(div|section)/)
-      },
-    },
-    /**
-     * Unique identifier of the form input field.
-     */
-    id: {
-      type: String,
-      default: "",
-      required: true,
-    },
-    /**
-     * The name attribute for the form input field.
-     */
-    name: {
-      type: String,
-      default: "",
-      required: true,
-    },
-    /**
-     * The width of the form input field.
-     * `auto, expand`
-     */
-    width: {
-      type: String,
-      default: "auto",
-      validator: value => {
-        return value.match(/(auto|expand)/)
-      },
-    },
-    /**
-     * Sets the size of the input area `small, medium, large`
-     */
-    size: {
-      type: String,
-      default: "medium",
-      validator: value => {
-        return value.match(/(small|medium|large)/)
-      },
-    },
-    /**
-     * The number of visible text lines for textarea.
-     */
-    rows: {
-      type: String,
-      default: "5",
-    },
-    /**
-     * The maximum number of characters that the user can enter in textarea.
-     */
-    maxlength: {
-      type: Number,
-      default: 256,
-    },
-    /**
-     * Whether the form input field is disabled or not.
-     * `true, false`
-     */
-    disabled: {
-      type: Boolean,
-      default: false,
-    },
-    /**
-     * Whether the form input field is readonly or not.
-     * `true, false`
-     */
-    readonly: {
-      type: Boolean,
-      default: false,
-    },
-    /**
-     * Whether the form input field is required or not.
-     * `true, false`
-     */
-    required: {
-      type: Boolean,
-      default: false,
-    },
-    /**
-     * Manually trigger input field’s hover state.
-     * `true, false`
-     */
-    hover: {
-      type: Boolean,
-      default: false,
-    },
-    /**
-     * Manually trigger input field’s focus state.
-     * `true, false`
-     */
-    focused: {
-      type: Boolean,
-      default: false,
-    },
-    /**
-     * Appends icon inside container. Option:
-     * `alert`, `approved`, `denied`
-     */
-    icon: {
-      type: String,
-      default: "",
-    },
-  },
-  methods: {
-    inputFired(event) {
-      this.$emit("input", event)
-      this.inputvaluechange(event.target.value)
-    },
-    inputvaluechange(value) {
-      this.$emit("update:value", value)
-    },
-    inputblur(value) {
-      this.$emit("inputblur", value)
-    },
-    focusFired(event) {
-      this.$emit("focus", event)
-      this.inputfocus(event.target.value)
-    },
-    inputfocus(value) {
-      this.$emit("inputfocus", value)
-    },
-  },
-  mounted: function () {
-    let vm = this
+})
 
-    vm.$nextTick(function () {
-      if (vm.focused) {
-        if (vm.type == "text") {
-          this.$refs.textInput.focus()
-        }
-        if (vm.type == "textarea") {
-          this.$refs.textArea.focus()
-        }
-      }
-    })
+const props = defineProps({
+  /**
+   * The type of the form input field.
+   * `text, number, email`
+   */
+  type: {
+    type: String,
+    default: "text",
+    validator: value => {
+      return value.match(/(text|number|email|textarea)/)
+    },
   },
-  components: {
-    LuxIconAlert,
-    LuxIconApproved,
-    LuxIconDenied,
-    LuxIconBase,
-    LuxIconCalendar,
+  /**
+   * Text value of the form input field.
+   */
+  value: {
+    type: [String, Number],
+    default: "",
   },
+  /**
+   * The placeholder value for the form input field.
+   */
+  placeholder: {
+    type: String,
+    default: null,
+  },
+  /**
+   * The label of the form input field.
+   */
+  label: {
+    type: String,
+    default: "",
+  },
+  /**
+   * Visually hides the label of the form input field.
+   */
+  hideLabel: {
+    type: Boolean,
+    default: false,
+  },
+  /**
+   * The validation message a user should get.
+   */
+  errormessage: {
+    type: String,
+    default: "",
+  },
+  /**
+   * The helper text a user should get.
+   */
+  helper: {
+    type: String,
+    default: "",
+  },
+  /**
+   * The html element name used for the wrapper.
+   * `div, section`
+   */
+  wrapper: {
+    type: String,
+    default: "div",
+    validator: value => {
+      return value.match(/(div|section)/)
+    },
+  },
+  /**
+   * Unique identifier of the form input field.
+   */
+  id: {
+    type: String,
+    default: "",
+    required: true,
+  },
+  /**
+   * The name attribute for the form input field.
+   */
+  name: {
+    type: String,
+    default: "",
+    required: true,
+  },
+  /**
+   * The width of the form input field.
+   * `auto, expand`
+   */
+  width: {
+    type: String,
+    default: "auto",
+    validator: value => {
+      return value.match(/(auto|expand)/)
+    },
+  },
+  /**
+   * Sets the size of the input area `small, medium, large`
+   */
+  size: {
+    type: String,
+    default: "medium",
+    validator: value => {
+      return value.match(/(small|medium|large)/)
+    },
+  },
+  /**
+   * The number of visible text lines for textarea.
+   */
+  rows: {
+    type: String,
+    default: "5",
+  },
+  /**
+   * The maximum number of characters that the user can enter in textarea.
+   */
+  maxlength: {
+    type: Number,
+    default: 256,
+  },
+  /**
+   * Whether the form input field is disabled or not.
+   * `true, false`
+   */
+  disabled: {
+    type: Boolean,
+    default: false,
+  },
+  /**
+   * Whether the form input field is readonly or not.
+   * `true, false`
+   */
+  readonly: {
+    type: Boolean,
+    default: false,
+  },
+  /**
+   * Whether the form input field is required or not.
+   * `true, false`
+   */
+  required: {
+    type: Boolean,
+    default: false,
+  },
+  /**
+   * Manually trigger input field’s hover state.
+   * `true, false`
+   */
+  hover: {
+    type: Boolean,
+    default: false,
+  },
+  /**
+   * Manually trigger input field’s focus state.
+   * `true, false`
+   */
+  focused: {
+    type: Boolean,
+    default: false,
+  },
+  /**
+   * Appends icon inside container. Option:
+   * `alert`, `approved`, `denied`
+   */
+  icon: {
+    type: String,
+    default: "",
+  },
+})
+
+const emit = defineEmits([
+  "inputvaluechange",
+  "inputblur",
+  "inputfocus",
+  "update:value",
+  "input",
+  "keyup",
+  "change",
+  "blur",
+  "focus",
+])
+function inputvaluechange(value) {
+  emit("update:value", value)
 }
+function inputFired(event) {
+  emit("input", event)
+  inputvaluechange(event.target.value)
+}
+
+function inputblur(value) {
+  emit("inputblur", value)
+}
+function focusFired(event) {
+  emit("focus", event)
+  this.inputfocus(event.target.value)
+}
+function inputfocus(value) {
+  emit("inputfocus", value)
+}
+
+const hasError = computed(() => props.errormessage.length)
+
+const textInputRef = useTemplateRef("textInput")
+const textAreaRef = useTemplateRef("textArea")
+onMounted(async () => {
+  await nextTick()
+  if (props.type == "text") {
+    textInputRef.value.focus()
+  } else if (props.type == "textarea") {
+    textAreaRef.value.focus()
+  }
+})
 </script>
 
 <style lang="scss" scoped>
