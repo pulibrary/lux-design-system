@@ -9,8 +9,8 @@
         :hide-label="true"
         size="large"
         class="default-input"
-        :value="modelValue"
-        @input="$emit('update:modelValue', $event.target.value)"
+        :value="model"
+        @input="model = $event.target.value"
       ></lux-input-text>
       <lux-input-button
         type="submit"
@@ -23,7 +23,8 @@
   </component>
 </template>
 
-<script>
+<script setup>
+import { defineOptions } from "vue"
 import LuxInputButton from "./LuxInputButton.vue"
 import LuxInputText from "./LuxInputText.vue"
 
@@ -36,46 +37,41 @@ import LuxInputText from "./LuxInputText.vue"
  * The default searchbox implements `v-model`.  If you override
  * the default searchbox, you will have to implement it yourself.
  */
-export default {
+defineOptions({
   name: "LuxSearchBox",
   status: "ready",
   release: "1.0.0",
   type: "Pattern",
-  props: {
-    /**
-     * The html element name used for the container
-     */
-    type: {
-      type: String,
-      default: "div",
-    },
-    /**
-     * The name of the input, which will be part of
-     * the URL after the search is submitted.
-     */
-    name: {
-      type: String,
-      default: "query",
-    },
-    /**
-     * Whether the corners should be rounded (default)
-     * or square.
-     */
-    corners: {
-      type: String,
-      default: "rounded",
-      validator: value => ["rounded", "square"].includes(value),
-    },
-    modelValue: {
-      type: String,
-    },
+})
+
+const props = defineProps({
+  /**
+   * The html element name used for the container
+   */
+  type: {
+    type: String,
+    default: "div",
   },
-  emits: ["update:modelValue"],
-  components: {
-    LuxInputButton,
-    LuxInputText,
+  /**
+   * The name of the input, which will be part of
+   * the URL after the search is submitted.
+   */
+  name: {
+    type: String,
+    default: "query",
   },
-}
+  /**
+   * Whether the corners should be rounded (default)
+   * or square.
+   */
+  corners: {
+    type: String,
+    default: "rounded",
+    validator: value => ["rounded", "square"].includes(value),
+  },
+})
+
+const model = defineModel()
 </script>
 
 <style lang="scss" scoped>
@@ -85,7 +81,7 @@ export default {
 .lux-search-box {
   box-sizing: border-box;
   display: flex;
-  background: $color-white;
+  background: var(--color-white);
   margin-bottom: 1rem;
   border: 2px solid #212529;
 
