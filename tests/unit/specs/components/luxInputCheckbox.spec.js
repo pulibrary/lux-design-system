@@ -9,7 +9,7 @@ describe("LuxInputCheckbox.vue", () => {
       slots: {
         default: "Apply Changes.",
       },
-      propsData: {
+      props: {
         options: [
           {
             name: "opt 1",
@@ -86,7 +86,7 @@ describe("LuxInputCheckbox.vue", () => {
       slots: {
         default: "Apply Changes.",
       },
-      propsData: {
+      props: {
         groupLabel: "Multiple choice:",
         options: [
           {

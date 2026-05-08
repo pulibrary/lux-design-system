@@ -25,7 +25,7 @@ describe("LuxDataTable.vue", () => {
           "lux-icon-unsorted": LuxIconUnsorted,
         },
       },
-      propsData: {
+      props: {
         caption: "This is a caption.",
         columns: [
           { name: "id", display_name: "Select Items", align: "center", checkbox: true },

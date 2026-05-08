@@ -7,7 +7,7 @@ describe("LuxInputSelect.vue", () => {
 
   beforeEach(() => {
     wrapper = mount(LuxInputSelect, {
-      propsData: {
+      props: {
         id: "foo",
         name: "foo",
         value: "two",
