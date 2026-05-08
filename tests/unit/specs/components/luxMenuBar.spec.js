@@ -13,7 +13,7 @@ describe("LuxMenuBar.vue", () => {
       </div>
     `
     wrapper = mount(LuxMenuBar, {
-      propsData: {
+      props: {
         active: "Foo",
         menuItems: [
           {

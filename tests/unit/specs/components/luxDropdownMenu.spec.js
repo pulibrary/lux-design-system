@@ -32,7 +32,7 @@ describe("LuxDropdownMenu.vue", () => {
     expect(wrapper.find("form").exists()).toBe(false)
     // can't setProps here because the component must be regenerated to change its wrapper
     const wrapper2 = mount(LuxDropdownMenu, {
-      propsData: {
+      props: {
         element: "form",
         buttonLabel: "Dropdown",
         menuItems: [

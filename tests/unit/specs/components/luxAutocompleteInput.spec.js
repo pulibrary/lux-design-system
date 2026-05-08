@@ -8,7 +8,7 @@ describe("InputAutocomplete.vue", () => {
   beforeEach(() => {
     Element.prototype.scrollIntoView = vi.fn()
     wrapper = mount(LuxAutocompleteInput, {
-      propsData: {
+      props: {
         id: "foo",
         name: "bar",
         defaultValue: "Banana",

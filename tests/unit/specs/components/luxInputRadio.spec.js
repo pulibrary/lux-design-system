@@ -10,7 +10,7 @@ describe("LuxInputRadio.vue", () => {
       slots: {
         default: "Apply Changes.",
       },
-      propsData: {
+      props: {
         id: "foo",
         options: [
           {
@@ -82,7 +82,7 @@ describe("LuxInputRadio.vue", () => {
       slots: {
         default: "Apply Changes.",
       },
-      propsData: {
+      props: {
         id: "bar",
         groupLabel: "Multiple choice:",
         options: [

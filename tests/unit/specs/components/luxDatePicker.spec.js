@@ -24,7 +24,7 @@ describe("LuxDatePicker.vue", () => {
   beforeEach(() => {
     wrapper = mount(LuxDatePicker, {
       stubs: { wrapper: true, "input-text": true, transition: transitionStub() },
-      propsData: {
+      props: {
         id: "startDate",
         label: "Start Date",
         name: "start",

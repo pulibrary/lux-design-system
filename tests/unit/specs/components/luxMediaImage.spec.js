@@ -7,7 +7,7 @@ let wrapper
 describe("LuxMediaImage.vue", () => {
   beforeEach(() => {
     wrapper = mount(LuxMediaImage, {
-      propsData: {
+      props: {
         src: "",
         height: "medium",
         alt: "alt text",
@@ -35,7 +35,7 @@ describe("LuxMediaImage.vue", () => {
 
   it("displays image when src exists", () => {
     const wrapper2 = mount(LuxMediaImage, {
-      propsData: {
+      props: {
         src: "https://picsum.photos/400/300/?random",
         height: "medium",
         alt: "alt text",

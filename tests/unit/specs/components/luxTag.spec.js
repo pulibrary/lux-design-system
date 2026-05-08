@@ -7,7 +7,7 @@ describe("LuxTag.vue", () => {
 
   beforeEach(() => {
     wrapper = mount(LuxTag, {
-      propsData: {
+      props: {
         tagItems: [
           { name: "Foo", href: "/example/" },
           { name: "Bar", href: "/example/" },
