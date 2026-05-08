@@ -77,7 +77,7 @@
         <template v-if="item.children">
           <button
             aria-haspopup="true"
-            :aria-expanded="activeItem === index ? 'true' : 'false'"
+            :aria-expanded="activeItem === index"
             class="lux-submenu-toggle"
             :data-method="item.method"
             @click="setActiveItem(index)"
@@ -129,142 +129,127 @@
   </nav>
 </template>
 
-<script>
-/* eslint-disable vue/no-deprecated-model-definition */
-import _LuxHamburger from "./_LuxHamburger.vue"
-import _LuxMenuBarLabel from "./_LuxMenuBarLabel.vue"
+<script setup>
+import { computed, defineOptions, ref } from "vue"
+
+import LuxHamburger from "./_LuxHamburger.vue"
+import LuxMenuBarLabel from "./_LuxMenuBarLabel.vue"
 
 /**
  * Used as main page navigation in templates.
  */
-export default {
+defineOptions({
   name: "LuxMenuBar",
   status: "ready",
   release: "1.0.0",
   type: "Pattern",
-  model: {
-    prop: "active",
+})
+
+const props = defineProps({
+  /**
+   * The html element types used for the nav bar. Passing 'href' in menuItems
+   * will only work if type = "links".
+   * `links, buttons`
+   */
+  type: {
+    type: String,
+    default: "links",
+    validator: value => {
+      return value.match(/(links|buttons|main-menu)/)
+    },
   },
-  data: function () {
-    return {
-      isVisible: false,
-      activeItem: "",
+  /**
+   * State which tab is active when initiated (using name of the component).
+   */
+  active: {
+    required: false,
+    type: String,
+  },
+  /**
+   * Menu items are options to be displayed to the user.  They have several possible properties:
+   * <dl><dt><code>name</code></dt><dd>The text that is displayed for this menu item</dd>
+   * <dt><code>href</code></dt><dd>If the type is links or main-menu, the url that the menu item links to.</dd>
+   * <dt><code>target</code></dt><dd>If the type is links or main-menu, where to display the linked URL (for example, <code>_blank</code> for a new tab).</dd>
+   * <dt><code>children</code></dt><dd>An array of items that should display below the current item hierarchically.</dd>
+   * <dt><code>disabled</code></dt><dd>If the type is buttons, whether or not the button should be disabled.</dd>
+   * <dt><code>component</code></dt><dd>Optional. An identifier you can use in conjunction with the <code>active</code> prop.</dd>
+   * <dt><code>unsafe_name</code></dt><dd>Optional. If you need to include some arbitrary HTML in the menu item text, you can here and it will override the label provided in <code>name</code>.  Don't bind the <code>unsafe_name</code> property to any user-provided value, since it does not have Cross-Site Scripting protections (<code>name</code> does have these protections).</dd>
+   * <dt><code>method</code></dt><dd>Optional. For use in conjunction with Rails applications that use UJS to link to non-GET HTTP methods, like POST or DELETE.  To mimic a Rails link_to helper for an item, pass the HTTP method with a `method` property.</dd>
+   * </dl>
+   */
+  menuItems: {
+    required: true,
+    type: Array,
+  },
+  /**
+   * Whether the header is dark, shade, or light. Default is set to dark.
+   */
+  theme: {
+    type: String,
+    default: "dark",
+    validator: value => {
+      return value.match(/(dark|shade|light)/)
+    },
+  },
+})
+
+const emit = defineEmits(["input", "menu-item-clicked"])
+function menuItemClicked(value) {
+  emit("menu-item-clicked", value)
+}
+
+const isVisible = ref(false)
+
+const activeModel = defineModel("active")
+const localActive = computed({
+  get() {
+    return activeModel
+  },
+  set(val) {
+    emit("input", val)
+  },
+})
+const activeItem = ref("")
+function setActiveItem(index) {
+  if (activeItem.value === index) {
+    activeItem.value = ""
+  } else {
+    activeItem.value = index
+  }
+}
+function hide() {
+  activeItem.value = ""
+}
+
+function hideIfExitingMenu(event) {
+  const menuOfOldElement = event.currentTarget?.closest(".lux-has-children")
+  const menuOfNewElement = event.relatedTarget?.closest(".lux-has-children")
+  if (menuOfOldElement !== menuOfNewElement) {
+    hide()
+  }
+}
+
+const vClickOutside = {
+  beforeMount: function (el, binding) {
+    // Define Handler and cache it on the element
+    const bubble = binding.modifiers.bubble
+
+    const handler = e => {
+      if (el.ariaExpanded === "true" && (bubble || (!el.contains(e.target) && el !== e.target))) {
+        binding.value(e)
+      }
     }
-  },
-  props: {
-    /**
-     * The html element types used for the nav bar. Passing 'href' in menuItems
-     * will only work if type = "links".
-     * `links, buttons`
-     */
-    type: {
-      type: String,
-      default: "links",
-      validator: value => {
-        return value.match(/(links|buttons|main-menu)/)
-      },
-    },
-    /**
-     * State which tab is active when initiated (using name of the component).
-     */
-    active: {
-      required: false,
-      type: String,
-    },
-    /**
-     * Menu items are options to be displayed to the user.  They have several possible properties:
-     * <dl><dt><code>name</code></dt><dd>The text that is displayed for this menu item</dd>
-     * <dt><code>href</code></dt><dd>If the type is links or main-menu, the url that the menu item links to.</dd>
-     * <dt><code>target</code></dt><dd>If the type is links or main-menu, where to display the linked URL (for example, <code>_blank</code> for a new tab).</dd>
-     * <dt><code>children</code></dt><dd>An array of items that should display below the current item hierarchically.</dd>
-     * <dt><code>disabled</code></dt><dd>If the type is buttons, whether or not the button should be disabled.</dd>
-     * <dt><code>component</code></dt><dd>Optional. An identifier you can use in conjunction with the <code>active</code> prop.</dd>
-     * <dt><code>unsafe_name</code></dt><dd>Optional. If you need to include some arbitrary HTML in the menu item text, you can here and it will override the label provided in <code>name</code>.  Don't bind the <code>unsafe_name</code> property to any user-provided value, since it does not have Cross-Site Scripting protections (<code>name</code> does have these protections).</dd>
-     * <dt><code>method</code></dt><dd>Optional. For use in conjunction with Rails applications that use UJS to link to non-GET HTTP methods, like POST or DELETE.  To mimic a Rails link_to helper for an item, pass the HTTP method with a `method` property.</dd>
-     * </dl>
-     */
-    menuItems: {
-      required: true,
-      type: Array,
-    },
-    /**
-     * Whether the header is dark, shade, or light. Default is set to dark.
-     */
-    theme: {
-      type: String,
-      default: "dark",
-      validator: value => {
-        return value.match(/(dark|shade|light)/)
-      },
-    },
-  },
-  computed: {
-    localActive: {
-      get() {
-        return this.active
-      },
-      set(val) {
-        this.$emit("input", val)
-      },
-    },
-  },
-  methods: {
-    menuItemClicked(value) {
-      this.$emit("menu-item-clicked", value)
-    },
-    setActiveItem(index) {
-      if (this.activeItem === index) {
-        this.activeItem = ""
-      } else {
-        this.activeItem = index
-      }
-    },
+    el.__vueClickOutside__ = handler
 
-    hide: function (event) {
-      this.activeItem = ""
-    },
-
-    hideIfExitingMenu: function (event) {
-      const menuOfOldElement = event.currentTarget?.closest(".lux-has-children")
-      const menuOfNewElement = event.relatedTarget?.closest(".lux-has-children")
-      if (menuOfOldElement !== menuOfNewElement) {
-        this.hide(event)
-      }
-    },
-  },
-  components: {
-    "lux-hamburger": _LuxHamburger,
-    "lux-menu-bar-label": _LuxMenuBarLabel,
+    // add Event Listeners
+    document.addEventListener("click", handler)
   },
 
-  directives: {
-    "click-outside": {
-      beforeMount: function (el, binding) {
-        // Define Handler and cache it on the element
-        const bubble = binding.modifiers.bubble
-
-        const handler = e => {
-          if (
-            el.ariaExpanded === "true" &&
-            (bubble || (!el.contains(e.target) && el !== e.target))
-          ) {
-            binding.value(e)
-          }
-        }
-        el.__vueClickOutside__ = handler
-
-        // add Event Listeners
-        document.addEventListener("click", handler)
-      },
-
-      unmounted: function (el, binding) {
-        // Remove Event Listeners
-        document.removeEventListener("click", el.__vueClickOutside__)
-        el.__vueClickOutside__ = null
-      },
-    },
+  unmounted: function (el, binding) {
+    // Remove Event Listeners
+    document.removeEventListener("click", el.__vueClickOutside__)
+    el.__vueClickOutside__ = null
   },
-  emits: ["input", "menu-item-clicked"],
 }
 </script>
 
