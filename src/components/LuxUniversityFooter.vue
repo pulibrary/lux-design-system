@@ -20,7 +20,7 @@
   </component>
 </template>
 
-<script>
+<script setup>
 import LuxUniversityCopyright from "./_LuxUniversityCopyright.vue"
 import LuxLogoUniversityWhite from "./logos/LuxLogoUniversityWhite.vue"
 import LuxUniversityPrivacyNotice from "./_LuxUniversityPrivacyNotice.vue"
@@ -33,17 +33,11 @@ import LuxWrapper from "./LuxWrapper.vue"
  * Don't forget to create a fallback for this component by providing the HTML
  * rendering in _<noscript></noscript>_ tags.
  */
-export default {
+defineOptions({
   name: "LuxUniversityFooter",
   status: "ready",
   release: "1.0.0",
   type: "Pattern",
-  components: {
-    LuxLogoUniversityWhite,
-    LuxUniversityCopyright,
-    LuxUniversityPrivacyNotice,
-    LuxWrapper,
-  },
 
   methods: {
     value: function (theme) {
@@ -53,49 +47,48 @@ export default {
       return "dark"
     },
   },
-
-  props: {
-    /**
-     * The html element name used for the container
-     */
-    type: {
-      type: String,
-      default: "div",
-    },
-    /**
-     * The maximum width of the wrapper. Default is set to 1440.
-     */
-    maxWidth: {
-      type: Number,
-      default: 1440,
-    },
-    /**
-     * Whether the header is dark, shade, or light. Default is set to dark.
-     */
-    theme: {
-      type: String,
-      default: "dark",
-    },
-    /**
-     * Links are supplied via an array of objects containting `text` and `href` properties.  If no links are supplied then a default list is displayed.
-     * To remove all links pass an empty array.
-     */
-    links: {
-      required: false,
-      type: Array,
-      default(rawProps) {
-        return [
-          {
-            text: "Copyright Policy",
-            href: "https://library.princeton.edu/about/policies/copyright-and-permissions-policies",
-          },
-          { text: "Privacy Notice", href: "https://www.princeton.edu/privacy-notice" },
-          { text: "Accessibility Help", href: "https://accessibility.princeton.edu/help" },
-        ]
-      },
+})
+const props = defineProps({
+  /**
+   * The html element name used for the container
+   */
+  type: {
+    type: String,
+    default: "div",
+  },
+  /**
+   * The maximum width of the wrapper. Default is set to 1440.
+   */
+  maxWidth: {
+    type: Number,
+    default: 1440,
+  },
+  /**
+   * Whether the header is dark, shade, or light. Default is set to dark.
+   */
+  theme: {
+    type: String,
+    default: "dark",
+  },
+  /**
+   * Links are supplied via an array of objects containting `text` and `href` properties.  If no links are supplied then a default list is displayed.
+   * To remove all links pass an empty array.
+   */
+  links: {
+    required: false,
+    type: Array,
+    default(rawProps) {
+      return [
+        {
+          text: "Copyright Policy",
+          href: "https://library.princeton.edu/about/policies/copyright-and-permissions-policies",
+        },
+        { text: "Privacy Notice", href: "https://www.princeton.edu/privacy-notice" },
+        { text: "Accessibility Help", href: "https://accessibility.princeton.edu/help" },
+      ]
     },
   },
-}
+})
 </script>
 
 <style lang="scss" scoped>
