@@ -73,10 +73,10 @@ export default {
       type: Boolean,
       default: false,
     },
-    components: {
-      LuxIconBase,
-      LuxIconFile,
-    },
+  },
+  components: {
+    LuxIconBase,
+    LuxIconFile,
   },
 }
 </script>

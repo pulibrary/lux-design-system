@@ -5,13 +5,54 @@ exports[`LuxMediaImage.vue > has the expected html structure 1`] = `
   class="lux-media-image medium lux-default-thumbnail"
   data-v-327f7a2b=""
 >
-  <lux-icon-base-stub
+  <div
+    class="lux-icon"
     data-v-327f7a2b=""
-    height="50"
-    icon-color="rgb(225,225,225)"
-    icon-hide="true"
-    icon-name="file"
-    width="50"
-  />
+    data-v-6dc5806d=""
+  >
+    <svg
+      aria-hidden="true"
+      aria-labelledby="file"
+      color="rgb(225,225,225)"
+      data-v-6dc5806d=""
+      height="50"
+      overflow="visible"
+      role="img"
+      viewBox="0 0 24 24"
+      width="50"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <title
+        data-v-6dc5806d=""
+        id="file"
+        lang="en"
+      >
+        file
+      </title>
+      <!--v-if-->
+      <g
+        data-v-6dc5806d=""
+        fill="rgb(225,225,225)"
+      >
+        
+        <g
+          data-v-327f7a2b=""
+        >
+          <g>
+            <path
+              d="M20.5,24h-17C3.2,24,3,23.8,3,23.5v-23C3,0.2,3.2,0,3.5,0h11c0.1,0,0.3,0.1,0.4,0.1l6,6C20.9,6.2,21,6.4,21,6.5v17
+        C21,23.8,20.8,24,20.5,24z M4,23h16V6.7L14.3,1H4V23z"
+            />
+          </g>
+          <g>
+            <path
+              d="M20.5,7h-6C14.2,7,14,6.8,14,6.5v-6C14,0.2,14.2,0,14.5,0S15,0.2,15,0.5V6h5.5C20.8,6,21,6.2,21,6.5S20.8,7,20.5,7z"
+            />
+          </g>
+        </g>
+        
+      </g>
+    </svg>
+  </div>
 </div>
 `;
