@@ -38,12 +38,6 @@ defineOptions({
   status: "ready",
   release: "1.0.0",
   type: "Pattern",
-  components: {
-    LuxLogoUniversityWhite,
-    LuxUniversityCopyright,
-    LuxUniversityPrivacyNotice,
-    LuxWrapper,
-  },
 
   methods: {
     value: function (theme) {
