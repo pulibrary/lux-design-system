@@ -14,12 +14,6 @@ describe("LuxMediaImage.vue", () => {
         cover: true,
         contain: false,
       },
-      global: {
-        stubs: {
-          "lux-icon-base": true,
-          "lux-icon-file": true,
-        },
-      },
     })
   })
 
@@ -29,7 +23,7 @@ describe("LuxMediaImage.vue", () => {
     wrapper.setProps({ height: "large" })
     await nextTick()
     expect(mediaimg.classes()).toContain("large")
-    expect(wrapper.find('[icon-name="file"]').exists()).toBe(true)
+    expect(wrapper.find("title").text()).toContain("file")
     expect(wrapper.find("img").exists()).toBe(false)
   })
 
@@ -41,12 +35,6 @@ describe("LuxMediaImage.vue", () => {
         alt: "alt text",
         cover: false,
         contain: true,
-      },
-      global: {
-        stubs: {
-          "lux-icon-base": true,
-          "lux-icon-file": true,
-        },
       },
     })
     expect(wrapper2.find('[name="pul-icon-file"]').exists()).toBe(false)
