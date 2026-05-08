@@ -7,38 +7,37 @@
   </component>
 </template>
 
-<script>
+<script setup>
+import { defineOptions } from "vue"
 import LuxLogoLibrary from "./logos/LuxLogoLibrary.vue"
 
 /**
  * Used to identify that the site is a Princeton University site in the footer
  * and links to princeton.edu.
  */
-export default {
+defineOptions({
   name: "LuxLibraryLogo",
   status: "ready",
   release: "1.0.0",
   type: "Element",
-  props: {
-    /**
-     * The html element name used for the wrapper.
-     */
-    type: {
-      type: String,
-      default: "div",
-    },
-    /**
-     * Whether the theme is dark or light.
-     */
-    theme: {
-      type: String,
-      default: "dark",
-    },
+})
+
+const props = defineProps({
+  /**
+   * The html element name used for the wrapper.
+   */
+  type: {
+    type: String,
+    default: "div",
   },
-  components: {
-    LuxLogoLibrary,
+  /**
+   * Whether the theme is dark or light.
+   */
+  theme: {
+    type: String,
+    default: "dark",
   },
-}
+})
 </script>
 
 <style lang="scss" scoped>
