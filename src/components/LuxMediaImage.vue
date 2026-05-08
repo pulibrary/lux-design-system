@@ -19,7 +19,8 @@
   </div>
 </template>
 
-<script>
+<script setup>
+import { defineOptions, ref } from "vue"
 import LuxIconBase from "./icons/LuxIconBase.vue"
 import LuxIconFile from "./icons/LuxIconFile.vue"
 
@@ -27,58 +28,52 @@ import LuxIconFile from "./icons/LuxIconFile.vue"
  * Media-Image is a component that is used to display an image,
  * or an icon if the image can't be resolved.
  */
-export default {
+defineOptions({
   name: "LuxMediaImage",
   status: "ready",
   release: "1.0.0",
   type: "Element",
-  data: function () {
-    return {
-      source: this.src,
-    }
+})
+
+const props = defineProps({
+  /**
+   * The image displayed
+   */
+  src: {
+    type: String,
+    default: null,
   },
-  props: {
-    /**
-     * The image displayed
-     */
-    src: {
-      type: String,
-      default: null,
-    },
-    /**
-     * The alternative text describing the image. Do not include if image is decorative.
-     */
-    alt: {
-      type: String,
-      default: "",
-    },
-    /**
-     * Manually define the height of the image for a card
-     */
-    height: {
-      type: String,
-      default: "",
-    },
-    /**
-     * Whether the image fills the container maintaining aspect ratio and is cropped
-     */
-    cover: {
-      type: Boolean,
-      default: false,
-    },
-    /**
-     * Whether the full image is contained within the container maintaining aspect ratio. Note that this property is not recommened for use when the `height` prop is used as it will show the background of the container.
-     */
-    contain: {
-      type: Boolean,
-      default: false,
-    },
+  /**
+   * The alternative text describing the image. Do not include if image is decorative.
+   */
+  alt: {
+    type: String,
+    default: "",
   },
-  components: {
-    LuxIconBase,
-    LuxIconFile,
+  /**
+   * Manually define the height of the image for a card
+   */
+  height: {
+    type: String,
+    default: "",
   },
-}
+  /**
+   * Whether the image fills the container maintaining aspect ratio and is cropped
+   */
+  cover: {
+    type: Boolean,
+    default: false,
+  },
+  /**
+   * Whether the full image is contained within the container maintaining aspect ratio. Note that this property is not recommened for use when the `height` prop is used as it will show the background of the container.
+   */
+  contain: {
+    type: Boolean,
+    default: false,
+  },
+})
+
+const source = ref(props.src)
 </script>
 
 <style lang="scss" scoped>
