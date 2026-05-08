@@ -1,5 +1,6 @@
 import { mount } from "@vue/test-utils"
 import LuxLibraryHeader from "@/components/LuxLibraryHeader.vue"
+import { nextTick } from "vue"
 
 describe("LuxLibraryHeader.vue", () => {
   let wrapper
@@ -27,11 +28,18 @@ describe("LuxLibraryHeader.vue", () => {
       "Princeton University LibraryMy ApplicationMy AppSome menu bar"
     )
   })
-  it("gets the theme and defaults to dark unless the theme is light", () => {
-    expect(wrapper.vm.value(wrapper.vm.theme)).toEqual("light")
-    expect(wrapper.vm.value("light")).toEqual("light")
-    expect(wrapper.vm.value("dark")).toEqual("dark")
-    expect(wrapper.vm.value("shade")).toEqual("dark")
+  it("gets the theme and defaults to dark unless the theme is light", async () => {
+    wrapper.setProps({ theme: "light" })
+    await nextTick()
+    expect(wrapper.find(".light").exists()).toBe(true)
+
+    wrapper.setProps({ theme: "dark" })
+    await nextTick()
+    expect(wrapper.find(".dark").exists()).toBe(true)
+
+    wrapper.setProps({ theme: "shade" })
+    await nextTick()
+    expect(wrapper.find(".dark").exists()).toBe(true)
   })
   it("has a long and short name", () => {
     let full_name = wrapper.find(".full-name")

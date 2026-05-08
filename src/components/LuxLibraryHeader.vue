@@ -3,7 +3,7 @@
     <lux-wrapper class="lux-header-content" :maxWidth="maxWidth">
       <!-- @slot A custom logo to display in the Header.  If no logo is provided, it defaults to the Princeton University Library logo. -->
       <slot name="logo">
-        <lux-library-logo :theme="value(theme)"></lux-library-logo>
+        <lux-library-logo :theme="theme"></lux-library-logo>
       </slot>
       <a
         v-if="appName"
@@ -22,7 +22,8 @@
   </component>
 </template>
 
-<script>
+<script setup>
+import { computed, defineOptions } from "vue"
 import LuxLibraryLogo from "./LuxLibraryLogo.vue"
 import LuxSpacer from "./LuxSpacer.vue"
 import LuxWrapper from "./LuxWrapper.vue"
@@ -32,66 +33,59 @@ import LuxWrapper from "./LuxWrapper.vue"
  * Don't forget to create a fallback for this component by also providing the HTML
  * rendering in _<noscript></noscript>_ tags.
  */
-export default {
+defineOptions({
   name: "LuxLibraryHeader",
   status: "ready",
   release: "1.0.0",
   type: "Pattern",
-  props: {
-    /**
-     * The html element name used for the container
-     */
-    type: {
-      type: String,
-      default: "div",
-    },
-    /**
-     * The name of the application or site
-     */
-    appName: {
-      type: String,
-      default: "",
-    },
-    /**
-     * The abbreviation of the application or site's name
-     */
-    abbrName: {
-      type: String,
-      default: "",
-    },
-    /**
-     * The URL of landing page for the application or site
-     */
-    appUrl: {
-      type: String,
-      default: "",
-    },
-    /**
-     * The maximum width of the wrapper. Default is set to 1440.
-     */
-    maxWidth: {
-      type: Number,
-      default: 1440,
-    },
-    /**
-     * Whether the header is dark, shade, or light. Default is set to dark.
-     */
-    theme: {
-      type: String,
-      default: "dark",
-    },
+})
+
+const props = defineProps({
+  /**
+   * The html element name used for the container
+   */
+  type: {
+    type: String,
+    default: "div",
   },
-  methods: {
-    value: function (theme) {
-      return theme == "light" ? "light" : "dark"
-    },
+  /**
+   * The name of the application or site
+   */
+  appName: {
+    type: String,
+    default: "",
   },
-  components: {
-    LuxSpacer,
-    LuxWrapper,
-    LuxLibraryLogo,
+  /**
+   * The abbreviation of the application or site's name
+   */
+  abbrName: {
+    type: String,
+    default: "",
   },
-}
+  /**
+   * The URL of landing page for the application or site
+   */
+  appUrl: {
+    type: String,
+    default: "",
+  },
+  /**
+   * The maximum width of the wrapper. Default is set to 1440.
+   */
+  maxWidth: {
+    type: Number,
+    default: 1440,
+  },
+  /**
+   * Whether the header is dark, shade, or light. Default is set to dark.
+   */
+  theme: {
+    type: String,
+    default: "dark",
+  },
+})
+
+const theme = computed(() => (props.theme == "light" ? "light" : "dark"))
 </script>
 
 <style lang="scss" scoped>
