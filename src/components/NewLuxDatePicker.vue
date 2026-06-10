@@ -1,6 +1,11 @@
 <template>
   <div class="lux-datepicker-input-group">
-    <LuxInputText :value="dateString" :id="props.id" :name="props.name"></LuxInputText>
+    <LuxInputText
+      :value="dateString"
+      :id="inputId"
+      :name="props.name"
+      :label="props.label"
+    ></LuxInputText>
     <LuxInputButton
       type="button"
       variation="outline"
@@ -22,7 +27,7 @@
 <script setup>
 import LuxInputText from "./LuxInputText.vue"
 import LuxCalendar from "./_LuxCalendar.vue"
-import { ref, useId, useTemplateRef } from "vue"
+import { computed, ref, useId, useTemplateRef } from "vue"
 import { toString } from "@/utils/luxDate"
 import LuxDialog from "./LuxDialog.vue"
 import LuxIconBase from "./icons/LuxIconBase.vue"
@@ -43,6 +48,8 @@ const dialog = useTemplateRef("dialog")
 
 const dateString = ref(toString(new Date()))
 
+const backupInputId = useId()
+const inputId = computed(() => props.id || backupInputId)
 const dialogId = useId()
 
 function isOpen() {
