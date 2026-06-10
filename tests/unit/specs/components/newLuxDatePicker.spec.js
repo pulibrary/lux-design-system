@@ -37,4 +37,11 @@ describe("LuxDatePicker", () => {
     await nextTick()
     expect(button.attributes("aria-expanded")).toEqual("true")
   })
+  it("has an input that is associated with a visible label", () => {
+    const component = mount(NewLuxDatePicker, { props: { label: "What day should we celebrate?" } })
+    expect(component.find("label").attributes("for")).toEqual(
+      component.find("input").attributes("id")
+    )
+    expect(component.find("label").text()).toEqual("What day should we celebrate?")
+  })
 })
