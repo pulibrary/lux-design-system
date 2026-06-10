@@ -52,6 +52,8 @@ import {
   THURSDAY,
   FRIDAY,
   SATURDAY,
+  JANUARY,
+  DECEMBER,
   lastDayOfMonth,
 } from "@/utils/luxDate"
 import {
@@ -66,9 +68,6 @@ import {
 } from "vue"
 import LuxInputButton from "./LuxInputButton.vue"
 
-const JANUARY = 0
-const DECEMBER = 11
-
 const props = defineProps({
   month: { type: Number, default: 3 },
   year: { type: Number, default: 2026 },
@@ -79,50 +78,25 @@ const props = defineProps({
 })
 const emit = defineEmits(["selectedRange"])
 
-/*
-If it is an array:
-  to set it: we would
-    - check length
-    - know which index to add (default to the first element)
-    - use modulus % 2 to know which index to do next
-  to emit the event
-    - watch the array, and when it has 2 elements, emit it
-   
-// If it is two separate variables: 
-    - set the variables to undefined
-    - check if first is undefined.  If so, it goes there
-    - check if second is undefined.  If so, it goes there
-    - if both were defined, undefine both and put in first position
-
-    to emit the event
-      - watch the second variable, emit both variables when it is defined
-*/
-
-// The first date that the user has selected, which may or may not be the first one chronologically
-const firstSelectedDate = ref()
-const secondSelectedDate = ref()
-
 function emitTheRange() {
-  const dates = newFunction()
-  emit("selectedRange", dates)
+  emit("selectedRange", orderedDates())
 }
 
-function newFunction() {
-  const dates = [firstSelectedDate.value, secondSelectedDate.value]
+function orderedDates() {
+  const dates = [...selectedRange.value]
   dates.sort((a, b) => a - b)
   return dates
 }
 
 function selectDay(day) {
-  if (firstSelectedDate.value === undefined) {
-    firstSelectedDate.value = toDate(day)
-  } else if (secondSelectedDate.value === undefined) {
-    secondSelectedDate.value = toDate(day)
+  if (selectedRange.value?.[0] === undefined) {
+    selectedRange.value = [toDate(day), undefined]
+  } else if (selectedRange.value?.[1] === undefined) {
+    selectedRange.value = [selectedRange.value[0], toDate(day)]
     emitTheRange()
   } else {
     // reset to the beginning and start recording a new range
-    secondSelectedDate.value = undefined
-    firstSelectedDate.value = toDate(day)
+    selectedRange.value = [toDate(day), undefined]
   }
 }
 
@@ -130,13 +104,22 @@ function toDate(dayString) {
   return new Date(currentYear.value, currentMonth.value, parseInt(dayString))
 }
 
+const selectedRange = defineModel({ type: Array })
+
+const mostRecentlySelectedDay = computed(() => {
+  if (selectedRange.value?.length) {
+    return selectedRange.value[selectedRange.value.length - 1].getDate()
+  }
+  return null
+})
+
 const currentMonth = ref(props.month)
 const currentYear = ref(props.year)
 const calendarWeeks = computed(() => weeks(currentYear.value, currentMonth.value))
 const monthLabel = computed(() => monthName(currentMonth.value, props.locale))
 
 // The day selected with keyboard focus
-const focusedDay = ref(firstSelectedDate.value || new Date().getDate())
+const focusedDay = ref(mostRecentlySelectedDay.value || new Date().getDate())
 const keydownBehavior = event => {
   switch (event.key) {
     case "ArrowDown":
@@ -162,7 +145,9 @@ const keydownBehavior = event => {
 }
 onMounted(() => {
   document.addEventListener("keydown", keydownBehavior)
-  setTimeout(() => dayRefs[focusedDay.value].value[0].focus())
+  if (dayRefs[focusedDay.value].value) {
+    setTimeout(() => dayRefs[focusedDay.value].value[0].focus())
+  }
 })
 onDeactivated(() => document.removeEventListener("keydown", keydownBehavior))
 
@@ -221,9 +206,8 @@ function isToday(day) {
 function isSelected(day) {
   if (day) {
     const dateToCheck = toDate(day)
-    return (
-      dateToCheck.getTime() === firstSelectedDate.value?.getTime() ||
-      dateToCheck.getTime() === secondSelectedDate.value?.getTime()
+    return selectedRange.value?.some(
+      selectedDate => dateToCheck.getTime() == selectedDate.getTime()
     )
   } else {
     return false
@@ -231,9 +215,9 @@ function isSelected(day) {
 }
 
 function isInRange(day) {
-  if (day && firstSelectedDate.value && secondSelectedDate.value) {
+  if (day && selectedRange.value?.[0] && selectedRange.value?.[1]) {
     const dateToCheck = toDate(day)
-    const dates = [firstSelectedDate.value, secondSelectedDate.value]
+    const dates = [...selectedRange.value]
     dates.sort((a, b) => a - b)
     return dateToCheck.getTime() > dates[0].getTime() && dateToCheck.getTime() < dates[1].getTime()
   } else {

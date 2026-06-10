@@ -53,8 +53,8 @@ describe("_LuxCalendar", () => {
     const component = mount(_LuxRangeCalendar, {
       props: {
         month: 0,
-        year: 1,
-        modelValue: 1,
+        year: 2001,
+        modelValue: [new Date(2001, 0, 1)],
         "onUpdate:modelValue": e => component.setProps({ modelValue: e }),
       },
     })
@@ -66,15 +66,15 @@ describe("_LuxCalendar", () => {
 
     await nextTick()
 
-    expect(component.props("modelValue")).toEqual(5)
+    expect(component.props("modelValue")).toEqual([new Date(2001, 0, 1), new Date(2001, 0, 5)])
   })
   it("can be navigated by arrow keys", async () => {
     vi.useFakeTimers()
     const component = mount(_LuxRangeCalendar, {
       props: {
         month: 0,
-        year: 1,
-        modelValue: 1,
+        year: 2018,
+        modelValue: [new Date(2018, 0, 1)],
         "onUpdate:modelValue": e => component.setProps({ modelValue: e }),
       },
       attachTo: document.body,
@@ -113,7 +113,7 @@ describe("_LuxCalendar", () => {
       props: {
         month: 0,
         year: 2026,
-        modelValue: 31,
+        modelValue: [new Date(2026, 0, 31)],
         "onUpdate:modelValue": e => component.setProps({ modelValue: e }),
       },
       attachTo: document.body,

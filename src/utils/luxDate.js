@@ -8,6 +8,9 @@ export const THURSDAY = 4
 export const FRIDAY = 5
 export const SATURDAY = 6
 
+export const JANUARY = 0
+export const DECEMBER = 11
+
 // This is a Sunday that we can use for localization
 const PLACEHOLDER_SUNDAY = () => new Date(2026, 10, 1)
 const PLACEHOLDER_YEAR = 2026
