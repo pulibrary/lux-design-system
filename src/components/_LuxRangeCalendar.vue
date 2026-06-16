@@ -139,6 +139,7 @@ const keydownBehavior = event => {
       validateFocusedDay()
       break
     case "Enter":
+    case " ":
       selectDay(focusedDay.value)
       break
   }
@@ -207,7 +208,7 @@ function isSelected(day) {
   if (day) {
     const dateToCheck = toDate(day)
     return selectedRange.value?.some(
-      selectedDate => dateToCheck.getTime() == selectedDate.getTime()
+      selectedDate => dateToCheck.getTime() == selectedDate?.getTime()
     )
   } else {
     return false

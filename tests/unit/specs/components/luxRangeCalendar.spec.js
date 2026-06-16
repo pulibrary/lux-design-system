@@ -41,6 +41,38 @@ describe("_LuxCalendar", () => {
       [[new Date(2026, 3, 8), new Date(2026, 3, 20)]],
     ])
   })
+  it("emits an event when the user has selected a range with Enter", async () => {
+    vi.useFakeTimers()
+
+    const component = mount(_LuxRangeCalendar, {
+      props: { month: 3, year: 2026, modelValue: [new Date(2026, 3, 1)] },
+    })
+    await nextTick()
+    vi.runAllTimers()
+
+    await pressKey("ArrowDown")
+    await pressKey("Enter")
+
+    expect(component.emitted().selectedRange).toEqual([
+      [[new Date(2026, 3, 1), new Date(2026, 3, 8)]],
+    ])
+  })
+  it("emits an event when the user has selected a range with Space", async () => {
+    vi.useFakeTimers()
+
+    const component = mount(_LuxRangeCalendar, {
+      props: { month: 3, year: 2026, modelValue: [new Date(2026, 3, 1)] },
+    })
+    await nextTick()
+    vi.runAllTimers()
+
+    await pressKey("ArrowDown")
+    await pressKey(" ")
+
+    expect(component.emitted().selectedRange).toEqual([
+      [[new Date(2026, 3, 1), new Date(2026, 3, 8)]],
+    ])
+  })
   it("highlights today's date", () => {
     const todayAsDate = new Date()
     const component = mount(_LuxRangeCalendar, {
