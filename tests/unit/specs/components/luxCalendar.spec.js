@@ -37,6 +37,28 @@ describe("_LuxCalendar", () => {
 
     expect(component.emitted().selected).toEqual([[new Date(2026, 3, 8)]])
   })
+  it("emits an event on Enter", async () => {
+    vi.useFakeTimers()
+    const component = mount(_LuxCalendar, { props: { month: 3, year: 2026, modelValue: 1 } })
+    await nextTick()
+    vi.runAllTimers()
+
+    await pressKey("ArrowDown")
+    await pressKey("Enter")
+
+    expect(component.emitted().selected).toEqual([[new Date(2026, 3, 8)]])
+  })
+  it("emits an event on Space", async () => {
+    vi.useFakeTimers()
+    const component = mount(_LuxCalendar, { props: { month: 3, year: 2026, modelValue: 1 } })
+    await nextTick()
+    vi.runAllTimers()
+
+    await pressKey("ArrowDown")
+    await pressKey(" ")
+
+    expect(component.emitted().selected).toEqual([[new Date(2026, 3, 8)]])
+  })
   it("highlights today's date", () => {
     const todayAsDate = new Date()
     const component = mount(_LuxCalendar, {

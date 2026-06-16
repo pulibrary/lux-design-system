@@ -105,6 +105,7 @@ const keydownBehavior = event => {
       validateFocusedDay()
       break
     case "Enter":
+    case " ":
       emitDay(focusedDay.value)
       break
   }
