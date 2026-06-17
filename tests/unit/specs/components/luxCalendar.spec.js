@@ -2,6 +2,7 @@ import _LuxCalendar from "@/components/_LuxCalendar.vue"
 import { mount } from "@vue/test-utils"
 import { describe, expect, it, vi } from "vitest"
 import { nextTick } from "vue"
+import { MARCH, APRIL } from "@/utils/luxDate"
 
 function findDay(component, day) {
   return component.findAll("td").find(td => td.text() === String(day))
@@ -58,6 +59,17 @@ describe("_LuxCalendar", () => {
     await pressKey(" ")
 
     expect(component.emitted().selected).toEqual([[new Date(2026, 3, 8)]])
+  })
+  it("emits an event on Home", async () => {
+    vi.useFakeTimers()
+    const component = mount(_LuxCalendar, { props: { month: APRIL, year: 2026, modelValue: 1 } })
+    await nextTick()
+    vi.runAllTimers()
+
+    await pressKey("Home")
+
+    // Emit the first day of the week (the previous Sunday from the original date)
+    expect(component.emitted().selected).toEqual([[new Date(2026, MARCH, 29)]])
   })
   it("highlights today's date", () => {
     const todayAsDate = new Date()

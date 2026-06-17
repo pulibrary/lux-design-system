@@ -52,6 +52,8 @@ import {
   FRIDAY,
   SATURDAY,
   lastDayOfMonth,
+  firstDayOfWeek,
+  lastDayOfWeek,
 } from "@/utils/luxDate"
 import {
   computed,
@@ -108,6 +110,12 @@ const keydownBehavior = event => {
     case " ":
       emitDay(focusedDay.value)
       break
+    case "Home":
+      selectByDate(firstDayOfWeek(focusedAsDate()))
+      break
+    case "End":
+      selectByDate(lastDayOfWeek(focusedAsDate()))
+      break
   }
 }
 onMounted(() => {
@@ -162,6 +170,18 @@ function nextMonth() {
 function emitDay(day) {
   selectedDate.value = day
   emit("selected", new Date(currentYear.value, currentMonth.value, day))
+}
+
+function selectByDate(date) {
+  currentYear.value = date.getFullYear()
+  currentMonth.value = date.getMonth()
+  focusedDay.value = date.getDate()
+  selectedDate.value = date.getDate()
+  emit("selected", date)
+}
+
+function focusedAsDate() {
+  return new Date(currentYear.value, currentMonth.value, focusedDay.value)
 }
 
 function isToday(day) {

@@ -142,6 +142,12 @@ const keydownBehavior = event => {
     case " ":
       selectDay(focusedDay.value)
       break
+    case "Home":
+      selectByDate(firstDayOfWeek(focusedAsDate()))
+      break
+    case "End":
+      selectByDate(lastDayOfWeek(focusedAsDate()))
+      break
   }
 }
 onMounted(() => {
@@ -193,6 +199,17 @@ function nextMonth() {
   } else {
     currentMonth.value++
   }
+}
+
+function selectByDate(date) {
+  currentYear.value = date.getFullYear()
+  currentMonth.value = date.getMonth()
+  focusedDay.value = date.getDate()
+  selectDay(date.getDate())
+}
+
+function focusedAsDate() {
+  return new Date(currentYear.value, currentMonth.value, focusedDay.value)
 }
 
 function isToday(day) {
