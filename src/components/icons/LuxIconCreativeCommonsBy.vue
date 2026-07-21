@@ -17,9 +17,10 @@
     class="lux-icon-creative-commons-by"
   >
     <g>
-      <circle fill="#FFFFFF" cx="37.637" cy="28.806" r="28.276" />
+      <circle cx="37.637" cy="28.806" r="28.276" />
       <g>
         <path
+          :fill="theme === 'dark' ? '#FFFFFF' : '#000000'"
           d="M37.443-3.5c8.988,0,16.57,3.085,22.742,9.257C66.393,11.967,69.5,19.548,69.5,28.5c0,8.991-3.049,16.476-9.145,22.456
 			C53.879,57.319,46.242,60.5,37.443,60.5c-8.649,0-16.153-3.144-22.514-9.43C8.644,44.784,5.5,37.262,5.5,28.5
 			c0-8.761,3.144-16.342,9.429-22.742C21.101-0.415,28.604-3.5,37.443-3.5z M37.557,2.272c-7.276,0-13.428,2.553-18.457,7.657
@@ -37,6 +38,12 @@
 
 <script setup>
 import { defineOptions } from "vue"
+const props = defineProps({
+  theme: {
+    type: String,
+    default: "dark",
+  },
+})
 /**
  * Icons are used to visually communicate core parts of the product and
  * available actions. Please be aware that all elements must have closing tags (not "self-closing").
