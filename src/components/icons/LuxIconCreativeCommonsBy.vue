@@ -1,7 +1,5 @@
 <template>
   <svg
-    version="1.0"
-    id="Layer_1"
     xmlns="http://www.w3.org/2000/svg"
     xmlns:xlink="http://www.w3.org/1999/xlink"
     x="0px"
@@ -13,7 +11,7 @@
     :height="height"
     role="img"
     preserveAspectRatio="xMinYMid"
-    aria-labelledby="icon-creative-commons-by"
+    aria-label="attribution"
     class="lux-icon-creative-commons-by"
   >
     <g>
