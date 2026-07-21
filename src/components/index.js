@@ -9,6 +9,7 @@ import LuxInputText from "./LuxInputText.vue"
 import _LuxCardContent from "./_LuxCardContent.vue"
 import _LuxCardHeader from "./_LuxCardHeader.vue"
 import _LuxCardMedia from "./_LuxCardMedia.vue"
+import _LuxCreativeCommonsStatement from "./_LuxCreativeCommonsStatement.vue"
 import _LuxHamburger from "./_LuxHamburger.vue"
 import _LuxMenuBarLabel from "./_LuxMenuBarLabel.vue"
 import _LuxSubscribeNewsletter from "./_LuxSubscribeNewsletter.vue"
@@ -54,6 +55,7 @@ import LuxAutocompleteInput from "./LuxAutocompleteInput.vue"
 import LuxShowMore from "./LuxShowMore.vue"
 import LuxTag from "./LuxTag.vue"
 import LuxUniversityFooter from "./LuxUniversityFooter.vue"
+import LuxUniversityFooterCreativeCommons from "./LuxUniversityFooterCreativeCommons.vue"
 
 export {
   LuxInputButton,
@@ -66,6 +68,7 @@ export {
   _LuxCardContent,
   _LuxCardHeader,
   _LuxCardMedia,
+  _LuxCreativeCommonsStatement,
   _LuxHamburger,
   _LuxMenuBarLabel,
   _LuxSubscribeNewsletter,
@@ -111,4 +114,5 @@ export {
   LuxShowMore,
   LuxTag,
   LuxUniversityFooter,
+  LuxUniversityFooterCreativeCommons,
 }
