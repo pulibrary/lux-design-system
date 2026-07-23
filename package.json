@@ -37,10 +37,8 @@
   "dependencies": {
     "core-js": "^3.8.3",
     "register-service-worker": "^1.7.2",
-    "tar": "^7.5.20",
     "v-calendar": "^3.1.2",
-    "vue-draggable-plus": "^0.3.5",
-    "vue3-cookies": "^1.0.6"
+    "vue-draggable-plus": "^0.3.5"
   },
   "devDependencies": {
     "@babel/core": "^7.29.6",
@@ -52,25 +50,36 @@
     "@vue/cli-plugin-pwa": "~5.0.0",
     "@vue/cli-service": "~5.0.0",
     "@vue/test-utils": "^2.0.0-0",
+    "braces": "^3.0.3",
     "eslint": "^10.0.0",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-prettier": "^5.5.5",
     "eslint-plugin-vue": "^10.9.1",
     "happy-dom": "^20.9.0",
     "http-server": "^14.1.1",
+    "http-proxy-middleware": "^4.2.0",
+    "markdown-to-jsx": "^9.9.0",
+    "node-forge": "^1.4.0",
     "lint-staged": "^17.0.2",
     "prettier": "^3.8.3",
     "push-dir": "^0.4.1",
+    "postcss": "^8.5.22",
     "resize-observer-polyfill": "^1.5.1",
     "rollup-plugin-copy": "^3.5.0",
     "sass": "^1.84.0",
     "sass-loader": "^16.0.0",
+    "serialize-javascript": "^7.0.7",
     "stylelint": "^16.8.2",
     "stylelint-config-standard-scss": "^14.0.0",
     "vitest": "^4.1.5",
     "vue": "^3.5",
     "vue-cli-plugin-styleguidist": "~4.72.4",
-    "yorkie": "^2.0.0"
+    "tar": "^7.5.20",
+    "uuid": "^14.0.1",
+    "yorkie": "^2.0.0",
+    "vue3-cookies": "^1.0.6",
+    "webpack-dev-middleware": "^8.0.4",
+    "webpack-dev-server": "^6.0.0"
   },
   "gitHooks": {
     "pre-commit": "npm run design_tokens:docs:build && lint-staged"
