@@ -37,7 +37,7 @@
   "dependencies": {
     "core-js": "^3.8.3",
     "register-service-worker": "^1.7.2",
-    "tar": "^7.5.20",
+    "tar": "^7.5.21",
     "v-calendar": "^3.1.2",
     "vue-draggable-plus": "^0.3.5",
     "vue3-cookies": "^1.0.6"
