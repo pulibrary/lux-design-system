@@ -38,6 +38,7 @@ const badgeClass = computed(() => `lux-badge lux-badge-${props.color}`)
   display: flex;
   align-items: center;
   width: fit-content;
+  font-family: var(--font-family-text);
 }
 
 .lux-badge-blue {
@@ -48,6 +49,11 @@ const badgeClass = computed(() => `lux-badge lux-badge-${props.color}`)
 .lux-badge-green {
   background: var(--color-pistachio-green);
   color: var(--color-dark-green);
+}
+
+.lux-badge-purple {
+  background: var(--color-light-purple);
+  color: var(--color-dark-purple);
 }
 
 .lux-badge-red {
@@ -73,6 +79,7 @@ const badgeClass = computed(() => `lux-badge lux-badge-${props.color}`)
       <lux-badge color="blue">A Blue Badge</lux-badge>
       <lux-badge color="gray">A Gray Badge</lux-badge>
       <lux-badge color="red">A Red Badge</lux-badge>
+      <lux-badge color="purple">A Purple Badge</lux-badge>
     </div>
   ```
 </docs>

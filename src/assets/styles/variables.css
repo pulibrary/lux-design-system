@@ -52,6 +52,8 @@
   --color-very-dark-blue: rgb(0, 39, 80);
   --color-yellow: rgb(251, 227, 187);
   --color-dark-yellow: rgb(124, 68, 5);
+  --color-light-purple: #DBCBE6;
+  --color-dark-purple: #2d1f36;
   --font-size-large-min: 1.125em;
   --font-size-base-max: 1.125em;
   --font-size-x-large: 36px;

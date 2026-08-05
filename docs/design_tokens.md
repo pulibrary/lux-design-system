@@ -86,6 +86,8 @@
 |<div class="swatch" style="background-color: rgb(0, 39, 80);"></div>|<pre>--color-very-dark-blue</pre>|rgb(0, 39, 80);|
 |<div class="swatch" style="background-color: rgb(251, 227, 187);"></div>|<pre>--color-yellow</pre>|rgb(251, 227, 187);|
 |<div class="swatch" style="background-color: rgb(124, 68, 5);"></div>|<pre>--color-dark-yellow</pre>|rgb(124, 68, 5);|
+|<div class="swatch" style="background-color: #DBCBE6;"></div>|<pre>--color-light-purple</pre>|#DBCBE6;|
+|<div class="swatch" style="background-color: #2d1f36;"></div>|<pre>--color-dark-purple</pre>|#2d1f36;|
 
 ## Font sizes
 
