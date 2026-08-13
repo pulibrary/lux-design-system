@@ -69,6 +69,7 @@
 |<div class="swatch" style="background-color: #121212;"></div>|<pre>--color-gray-100</pre>|#121212;|
 |<div class="swatch" style="background-color: rgb(33, 37, 41);"></div>|<pre>--color-gray-90</pre>|rgb(33, 37, 41);|
 |<div class="swatch" style="background-color: #717171;"></div>|<pre>--color-gray-80</pre>|#717171;|
+|<div class="swatch" style="background-color: rgb(238, 238, 238);"></div>|<pre>--color-gray-20</pre>|rgb(238, 238, 238);|
 |<div class="swatch" style="background-color: rgb(247, 247, 247);"></div>|<pre>--color-gray-10</pre>|rgb(247, 247, 247);|
 |<div class="swatch" style="background-color: rgb(223, 240, 216);"></div>|<pre>--color-light-pistachio-green</pre>|rgb(223, 240, 216);|
 |<div class="swatch" style="background-color: rgb(208, 233, 198);"></div>|<pre>--color-pistachio-green</pre>|rgb(208, 233, 198);|
