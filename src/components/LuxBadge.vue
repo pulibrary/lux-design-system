@@ -62,8 +62,8 @@ const badgeClass = computed(() => `lux-badge lux-badge-${props.color}`)
 }
 
 .lux-badge-gray {
-  background: var(--color-gray-10);
-  color: var(--color-gray-90);
+  background: var(--color-gray-20);
+  color: black;
 }
 
 .lux-badge-yellow {
