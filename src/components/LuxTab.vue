@@ -33,27 +33,27 @@
 import { inject, onMounted } from "vue"
 const registerTab = inject("registerTab")
 
-registerTab?.(props.title)
-
 defineOptions({
   name: "LuxTab",
   status: "ready",
   release: "1.0.0",
   type: "Element",
 })
-defineProps({
+const props = defineProps({
   /**
-   * The type of tag. The `filter` option includes
-   * a remove icon inside the tag.
+   * The title of the tab.
    */
   title: {
     type: String,
     required: true,
   },
 })
+
+registerTab?.(props.title)
 </script>
 
 <style lang="scss">
+/*
 @use "sass:color";
 @use "/src/assets/styles/spacing.scss" as *;
 @use "/src/assets/styles/system.scss" as *;
@@ -206,6 +206,7 @@ defineProps({
     border-color: var(--color-red);
   }
 }
+  */
 </style>
 
 <docs>
