@@ -29,6 +29,12 @@
 /**
 
  */
+
+import { inject, onMounted } from "vue"
+const registerTab = inject("registerTab")
+
+registerTab?.(props.title)
+
 defineOptions({
   name: "LuxTab",
   status: "ready",
@@ -40,9 +46,9 @@ defineProps({
    * The type of tag. The `filter` option includes
    * a remove icon inside the tag.
    */
-  count: {
-    type: Number,
-    default: 3,
+  title: {
+    type: String,
+    required: true,
   },
 })
 </script>
@@ -205,19 +211,7 @@ defineProps({
 <docs>
 ```jsx
     <div>
-      <lux-tab type="tag" :tag-items="[
-        {name: 'Cats', href: '/tags/cats', color: 'red', icon: 'denied', style: 'pill'},
-        {name: 'Cats', href: '/tags/cats', color: 'yellow', icon: 'alert'},
-        {name: 'Cats', href: '/tags/cats', color: 'green', icon: 'approved'},
-        {name: 'Cats', href: '/tags/cats', color: 'blue'},
-        {name: 'Cats', color: 'blue'}
-        ]"
-        horizontal="end"/>
-  
-       <lux-tab type="filter" label="filtered by" :tag-items="[
-        {name: 'Cats', href: '/tags/cats'},
-        {name: 'Dogs', href: '/tags/dogs'}
-        ]"/>
+      <lux-tab :count="4" />
     </div>
 ```
 </docs>
