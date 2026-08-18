@@ -1,55 +1,22 @@
 <template>
-  <div class="tabs-container">
-    <!-- Dynamic Tab Headers -->
-    <div class="tab-list">
-      <button
-        v-for="i in props.count"
-        :key="i"
-        :class="{ active: activeTab === i }"
-        @click="activeTab = i"
-      >
-        Tab {{ i }}
-      </button>
-    </div>
-
-    <!-- Dynamic Tab Contents -->
-    <div class="tab-content">
-      <div v-for="i in props.count" :key="i" v-show="activeTab === i">
-        <!-- Named slots allow custom HTML inside each tab body -->
-        <slot :name="`tab-${i}`">
-          <h3>Default Header {{ i }}</h3>
-          <p>This is the default content for tab {{ i }}.</p>
-        </slot>
-      </div>
-    </div>
+  <div class="lux-tab-panel" v-if="isActive">
+    <slot />
   </div>
 </template>
 
 <script setup>
-/**
+import { inject, computed } from "vue"
 
- */
-
-import { inject, onMounted } from "vue"
-const registerTab = inject("registerTab")
-
-defineOptions({
-  name: "LuxTab",
-  status: "ready",
-  release: "1.0.0",
-  type: "Element",
-})
 const props = defineProps({
-  /**
-   * The title of the tab.
-   */
-  title: {
-    type: String,
-    required: true,
-  },
+  title: { type: String, required: true },
 })
 
-registerTab?.(props.title)
+const registerTab = inject("registerTab", null)
+
+const activeIndex = inject("activeIndex", null)
+const myIndex = registerTab ? registerTab(props.title) : 0
+
+const isActive = computed(() => myIndex === activeIndex?.value)
 </script>
 
 <style lang="scss">
@@ -57,6 +24,11 @@ registerTab?.(props.title)
 @use "sass:color";
 @use "/src/assets/styles/spacing.scss" as *;
 @use "/src/assets/styles/system.scss" as *;
+
+
+.lux-tab-panel {
+  flex: 0 0 auto;
+}
 
 .lux-tab {
   font-family: var(--font-family-heading);
