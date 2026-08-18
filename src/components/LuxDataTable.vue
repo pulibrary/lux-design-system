@@ -54,6 +54,7 @@
           <lux-hyperlink v-else-if="lineItem[col.name].link" :href="lineItem[col.name].link">
             {{ lineItem[col.name].value }}
           </lux-hyperlink>
+          <span v-else-if="lineItem[col.name].unsafe_value"></span>
           <span v-else>
             {{ lineItem[col.name].value }}
           </span>
