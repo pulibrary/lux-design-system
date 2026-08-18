@@ -20,15 +20,17 @@ const isActive = computed(() => myIndex === activeIndex?.value)
 </script>
 
 <style lang="scss">
+.lux-tab-panel {
+  flex: 0 0 auto;
+}
+
 /*
 @use "sass:color";
 @use "/src/assets/styles/spacing.scss" as *;
 @use "/src/assets/styles/system.scss" as *;
 
 
-.lux-tab-panel {
-  flex: 0 0 auto;
-}
+
 
 .lux-tab {
   font-family: var(--font-family-heading);

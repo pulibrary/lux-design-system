@@ -1,13 +1,10 @@
 <template>
   <div>
     <ul class="tabs__header">
-      <li
-        v-for="(title, idx) in tabs"
-        :key="title"
-        :class="{ active: idx === activeIndex }"
-        @click="activeIndex = idx"
-      >
-        {{ title }}
+      <li v-for="(title, idx) in tabs" :key="title" :class="{ active: idx === activeIndex }">
+        <button @click="activeIndex = idx">
+          {{ title }}
+        </button>
       </li>
     </ul>
 
@@ -39,8 +36,11 @@ const activeIndex = activeIndexRef
 </script>
 
 <style>
-.tabs-body {
+.tabs__header {
   display: flex;
+  list-style-type: none;
+  gap: 8px;
+  margin: 12px;
 }
 </style>
 
