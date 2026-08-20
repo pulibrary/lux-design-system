@@ -29,3 +29,6 @@ const isActive = computed(() => myIndex === activeIndex?.value)
   border: 1px solid var(--color-grayscale-light);
 }
 </style>
+
+/** * LuxTab should be used as a child of LuxTabWrapper. It will register itself with the parent and
+* show/hide its content based on the active tab index. */
