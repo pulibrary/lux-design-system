@@ -25,15 +25,7 @@ const isActive = computed(() => myIndex === activeIndex?.value)
 @use "/src/assets/styles/system.scss" as *;
 
 .lux-tab-panel {
-  padding: 1rem 1rem 1rem 1rem;
+  padding: 1rem;
   border: 1px solid var(--color-grayscale-light);
 }
 </style>
-
-<docs>
-```jsx
-    <div>
-      <lux-tab :count="4" />
-    </div>
-```
-</docs>

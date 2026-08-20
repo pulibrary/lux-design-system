@@ -51,7 +51,7 @@ const activeIndex = activeIndexRef
 .tabs-header button {
   background: none;
   border: none;
-  padding: 8px 16px;
+  padding: var(--space-x-small) var(--space-small);
   cursor: pointer;
   border-radius: 0.375rem;
 }
