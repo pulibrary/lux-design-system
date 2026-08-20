@@ -20,6 +20,17 @@
 </template>
 
 <script setup>
+/**
+ * LuxTabWrapper should be used as a parent of LuxTab. Each LuxTab will register itself with the parent and show/hide its content based on the active tab index.
+ *
+ */
+defineOptions({
+  name: "LuxTabWrapper",
+  status: "ready",
+  release: "7.10.0",
+  type: "Element",
+})
+
 import { ref, provide } from "vue"
 
 const tabs = ref([])
