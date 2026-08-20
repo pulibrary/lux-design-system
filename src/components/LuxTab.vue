@@ -5,6 +5,18 @@
 </template>
 
 <script setup>
+/**
+ * Tabs are used to organize content into separate views, allowing users to switch between them.
+ *
+ * Each LuxTab should be used as a child of LuxTabWrapper.
+ */
+defineOptions({
+  name: "LuxTab",
+  status: "ready",
+  release: "7.10.0",
+  type: "Element",
+})
+
 import { inject, computed } from "vue"
 
 const props = defineProps({
