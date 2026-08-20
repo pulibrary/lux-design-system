@@ -54,6 +54,8 @@ import LuxDropdownMenu from "./LuxDropdownMenu.vue"
 import LuxAutocompleteInput from "./LuxAutocompleteInput.vue"
 import LuxShowMore from "./LuxShowMore.vue"
 import LuxTag from "./LuxTag.vue"
+import LuxTab from "./LuxTab.vue"
+import LuxTabWrapper from "./LuxTabWrapper.vue"
 import LuxUniversityFooter from "./LuxUniversityFooter.vue"
 import LuxUniversityFooterCreativeCommons from "./LuxUniversityFooterCreativeCommons.vue"
 
@@ -112,6 +114,8 @@ export {
   LuxDropdownMenu,
   LuxAutocompleteInput,
   LuxShowMore,
+  LuxTab,
+  LuxTabWrapper,
   LuxTag,
   LuxUniversityFooter,
   LuxUniversityFooterCreativeCommons,
