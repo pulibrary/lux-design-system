@@ -1,8 +1,13 @@
 <template>
   <div>
-    <ul class="tabs__header">
-      <li v-for="(title, idx) in tabs" :key="title" :class="{ active: idx === activeIndex }">
-        <button @click="activeIndex = idx">
+    <ul class="tabs-header">
+      <li v-for="(title, idx) in tabs" :key="title">
+        <button
+          type="button"
+          role="tab"
+          :aria-selected="activeIndex === idx"
+          @click="activeIndex = idx"
+        >
           {{ title }}
         </button>
       </li>
@@ -35,12 +40,40 @@ provide("registerTab", registerTab)
 const activeIndex = activeIndexRef
 </script>
 
-<style>
-.tabs__header {
+<style lang="scss">
+.tabs-header {
   display: flex;
   list-style-type: none;
-  gap: 8px;
-  margin: 12px;
+  gap: 10px;
+  border-bottom: 1px solid var(--color-grayscale-light);
+}
+
+.tabs-header button {
+  background: none;
+  border: none;
+  padding: 8px 16px;
+  cursor: pointer;
+  border-radius: 0.375rem;
+}
+
+.tabs-header button[aria-selected="true"] {
+  border-bottom: 2px solid var(--color-princeton-orange-on-white);
+  border-color: var(--color-princeton-orange-on-white);
+  font-weight: bold;
+  border-radius: 0px;
+}
+
+.tabs-header button:focus,
+.tabs-header button:focus-visible,
+.tabs-header button:hover {
+  outline: 0.25rem solid var(--color-princeton-orange-on-white) !important;
+  border-radius: 10px;
+  background-color: var(--color-grayscale-lighter);
+  border-bottom: 2px solid transparent;
+}
+
+.tabs-body {
+  padding-top: 1rem;
 }
 </style>
 
