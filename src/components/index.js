@@ -22,6 +22,7 @@ import _LuxUniversityCopyrightOld from "./_LuxUniversityCopyrightOld.vue"
 import _LuxUniversityPrivacyNotice from "./_LuxUniversityPrivacyNotice.vue"
 import LuxBanner from "./LuxBanner.vue"
 import LuxCard from "./LuxCard.vue"
+import LuxCopyToClipboard from "./LuxCopyToClipboard.vue"
 import LuxDataTable from "./LuxDataTable.vue"
 import LuxDatePicker from "./LuxDatePicker.vue"
 import LuxGridContainer from "./LuxGridContainer.vue"
@@ -83,6 +84,7 @@ export {
   _LuxUniversityPrivacyNotice,
   LuxBanner,
   LuxCard,
+  LuxCopyToClipboard,
   LuxDataTable,
   LuxDatePicker,
   LuxGridContainer,

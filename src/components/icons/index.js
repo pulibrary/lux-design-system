@@ -8,11 +8,13 @@ import LuxIconAscending from "./LuxIconAscending.vue"
 import LuxIconBase from "./LuxIconBase.vue"
 import LuxIconBookmark from "./LuxIconBookmark.vue"
 import LuxIconCalendar from "./LuxIconCalendar.vue"
+import LuxIconCheck from "./LuxIconCheck.vue"
 import LuxIconCreativeCommons from "./LuxIconCreativeCommons.vue"
 import LuxIconCreativeCommonsBy from "./LuxIconCreativeCommonsBy.vue"
 import LuxIconClock from "./LuxIconClock.vue"
 import LuxIconClose from "./LuxIconClose.vue"
 import LuxIconConsulting from "./LuxIconConsulting.vue"
+import LuxIconCopy from "./LuxIconCopy.vue"
 import LuxIconDelivery from "./LuxIconDelivery.vue"
 import LuxIconDenied from "./LuxIconDenied.vue"
 import LuxIconDerivativesHealthy from "./LuxIconDerivativesHealthy.vue"
@@ -63,9 +65,11 @@ export {
   LuxIconCreativeCommons,
   LuxIconCreativeCommonsBy,
   LuxIconCalendar,
+  LuxIconCheck,
   LuxIconClock,
   LuxIconClose,
   LuxIconConsulting,
+  LuxIconCopy,
   LuxIconDelivery,
   LuxIconDenied,
   LuxIconDerivativesHealthy,
