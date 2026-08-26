@@ -49,7 +49,13 @@ watch(
   }
 )
 
-const { text, copy, copied, isSupported } = useClipboard({ copiedDuring: 3000 })
+const isSupported = navigator.clipboard
+const copied = ref(false)
+const copy = async text => {
+  await navigator.clipboard.writeText(text)
+  copied.value = true
+  setTimeout(() => copied.value = false, 3000)
+}
 const isHover = ref(false)
 </script>
 
@@ -82,7 +88,7 @@ const isHover = ref(false)
   .tooltip-text {
     background-color: #333;
     color: #fff;
-    font-size: 12px;
+    font-size: var(--font-size-x-small);
     padding: 8px 12px;
     border-radius: 4px;
     white-space: nowrap;
