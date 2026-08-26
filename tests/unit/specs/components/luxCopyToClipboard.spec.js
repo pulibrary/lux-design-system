@@ -2,12 +2,6 @@ import { nextTick } from "vue"
 import { mount } from "@vue/test-utils"
 import LuxCopyToClipboard from "@/components/LuxCopyToClipboard.vue"
 
-const transitionStub = () => ({
-  render: function (h) {
-    return this.$options._renderChildren
-  },
-})
-
 describe("luxCopyToClipboard.vue", () => {
   let wrapper
 

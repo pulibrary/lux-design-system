@@ -25,7 +25,6 @@
 
 <script setup>
 import { ref, watch } from "vue"
-import { useClipboard } from "@vueuse/core"
 import LuxIconBase from "./icons/LuxIconBase.vue"
 import LuxIconCheck from "./icons/LuxIconCheck.vue"
 import LuxIconCopy from "./icons/LuxIconCopy.vue"
@@ -54,7 +53,7 @@ const copied = ref(false)
 const copy = async text => {
   await navigator.clipboard.writeText(text)
   copied.value = true
-  setTimeout(() => copied.value = false, 3000)
+  setTimeout(() => (copied.value = false), 3000)
 }
 const isHover = ref(false)
 </script>
