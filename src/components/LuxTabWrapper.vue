@@ -1,6 +1,6 @@
 <template>
   <div>
-    <ul class="tabs-header">
+    <ul class="tabs-header" role="tablist">
       <li v-for="(title, idx) in tabs" :key="title">
         <button
           type="button"
