@@ -1,17 +1,17 @@
 <template>
   <div>
-    <ul class="tabs-header" role="tablist">
-      <li v-for="(title, idx) in tabs" :key="title">
-        <button
-          type="button"
-          role="tab"
-          :aria-selected="activeIndex === idx"
-          @click="activeIndex = idx"
-        >
-          {{ title }}
-        </button>
-      </li>
-    </ul>
+    <div class="tabs-header" role="tablist">
+      <button
+        v-for="(title, idx) in tabs"
+        :key="title"
+        type="button"
+        role="tab"
+        :aria-selected="activeIndex === idx"
+        @click="activeIndex = idx"
+      >
+        {{ title }}
+      </button>
+    </div>
 
     <div class="tabs-body">
       <slot />
