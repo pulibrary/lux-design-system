@@ -8,12 +8,12 @@
       aria-label="copy"
     >
       <!-- `copied` will be reset in 3s -->
-      <lux-icon-base v-if="!copied" width="20" height="20" class="frames"
-        ><lux-icon-copy></lux-icon-copy
-      ></lux-icon-base>
-      <lux-icon-base v-else width="24" height="24" class="check"
-        ><lux-icon-check></lux-icon-check
-      ></lux-icon-base>
+      <lux-icon-base v-if="!copied" width="20" height="20" class="frames" iconName="copy">
+        <lux-icon-copy></lux-icon-copy>
+      </lux-icon-base>
+      <lux-icon-base v-else width="24" height="24" class="check" iconName="copied to clipboard">
+        <lux-icon-check></lux-icon-check>
+      </lux-icon-base>
     </button>
   </div>
   <p v-else>Your browser does not support Clipboard API</p>
