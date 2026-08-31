@@ -48,10 +48,14 @@ describe("LuxDropdownMenu.vue", () => {
     expect(wrapper2.find("form").exists()).toBe(true)
   })
 
-  it("should hide menu on button click", () => {
+  it("should toggle menu on button click", () => {
     expect(wrapper.vm.isVisible).toBe(false)
+
     wrapper.vm.buttonClicked()
     expect(wrapper.vm.isVisible).toBe(true)
+
+    wrapper.vm.buttonClicked()
+    expect(wrapper.vm.isVisible).toBe(false)
   })
 
   it("should hide menu on menu item click", () => {

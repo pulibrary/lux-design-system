@@ -96,7 +96,7 @@ function hide() {
   isVisible.value = false
 }
 function buttonClicked(value) {
-  isVisible.value = !this.isVisible.value
+  isVisible.value = !isVisible.value
   emit("button-clicked", value)
 }
 function menuItemClicked(value) {
