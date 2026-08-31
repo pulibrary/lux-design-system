@@ -199,5 +199,36 @@ describe("LuxMenuBar.vue", () => {
 
       expect(wrapper.get("button.lux-nav-item").text()).toEqual("Baz")
     })
+    it("sets the specified target in a submenu item", async () => {
+      wrapper.setProps({
+        menuItems: [
+          {
+            name: "Foo",
+            component: "Foo",
+            children: [{ name: "Baz", component: "Baz", href: "/example/", target: "_blank" }],
+          },
+        ],
+      })
+      await nextTick()
+      wrapper.find("button.lux-submenu-toggle").trigger("click")
+      await nextTick()
+      const menuItem = wrapper.find(".lux-nav-item")
+      expect(menuItem.attributes("target")).toEqual("_blank")
+    })
+    it("sets the specified target in a main menu item", async () => {
+      wrapper.setProps({
+        menuItems: [
+          {
+            name: "Foo",
+            component: "Foo",
+            href: "/example/",
+            target: "_blank",
+          },
+        ],
+      })
+      await nextTick()
+      const menuItem = wrapper.find(".lux-nav-item")
+      expect(menuItem.attributes("target")).toEqual("_blank")
+    })
   })
 })
