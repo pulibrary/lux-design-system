@@ -118,7 +118,8 @@
             :key="index"
             :href="item.href"
             :data-method="item.method"
-            class="lux-nav-item"
+            :target="item.target"
+            class="lux-nav-item lux-nav-item-main"
             @click="menuItemClicked(item)"
           >
             <lux-menu-bar-label :item="item"></lux-menu-bar-label>
@@ -465,10 +466,23 @@ const vClickOutside = {
     @media #{mq.$media-query-medium-max} {
       font-size: var(--font-size-base);
     }
+  }
 
+  .lux-nav-item {
     &[target="_blank"]:after {
       content: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAQElEQVR42qXKwQkAIAxDUUdxtO6/RBQkQZvSi8I/pL4BoGw/XPkh4XigPmsUgh0626AjRsgxHTkUThsG2T/sIlzdTsp52kSS1wAAAABJRU5ErkJggg==);
       margin: 0px 3px 0px 5px;
+    }
+  }
+
+  .lux-nav-item-main {
+    &[target="_blank"]:after {
+      filter: invert(1);
+    }
+    @media #{mq.$media-query-medium-max} {
+      &[target="_blank"]:after {
+        filter: none;
+      }
     }
   }
 
@@ -717,7 +731,11 @@ const vClickOutside = {
   :deep(.hamburger-inner:before) {
     background-color: var(--color-gray-100);
   }
-
+  .lux-nav-item-main {
+    &[target="_blank"]:after {
+      filter: none;
+    }
+  }
   @media (max-width: 899px) {
     &.lux-main-menu a {
       color: var(--color-rich-black);
