@@ -71,7 +71,7 @@ const JANUARY = 0
 const DECEMBER = 11
 
 const props = defineProps({
-  month: { type: Number, default: 3 },
+  month: { type: Number, default: 7 },
   year: { type: Number, default: 2026 },
   /**
    * The locale to use for the calendar (e.g. en-US, cs-CZ).  If none is specified, use the user's browser default locale.
