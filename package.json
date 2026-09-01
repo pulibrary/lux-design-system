@@ -32,7 +32,8 @@
     "styleguide:build": "npm run design_tokens:docs:build && vue-cli-service styleguidist:build",
     "design_tokens:docs:build": "node src/utils/generateDesignTokenDocs.mjs",
     "start": "npm run build; npx http-server --port 5002",
-    "start:dev": "npm run build; npx http-server --port 5000"
+    "start:dev": "npm run build; npx http-server --port 5000",
+    "prepare": "simple-git-hooks"
   },
   "dependencies": {
     "core-js": "^3.8.3",
@@ -63,13 +64,14 @@
     "rollup-plugin-copy": "^3.5.0",
     "sass": "^1.84.0",
     "sass-loader": "^16.0.0",
+    "simple-git-hooks": "^2.14.0",
     "stylelint": "^16.8.2",
     "stylelint-config-standard-scss": "^14.0.0",
     "vitest": "^4.1.5",
     "vue": "^3.5",
     "vue-cli-plugin-styleguidist": "~4.72.4"
   },
-  "gitHooks": {
-    "pre-commit": "npm run design_tokens:docs:build && lint-staged"
+  "simple-git-hooks": {
+    "pre-commit": "npm run design_tokens:docs:build && npx lint-staged"
   }
 }
