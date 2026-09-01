@@ -53,6 +53,16 @@ git pull
 npm run release
 ```
 
+**Note** You may get prompted for a One Time Password (OTP) without the opportunity to set up anything to give you the OTP. This will cause the `npm publish` at the end of the `npm run release` to fail.
+<img width="1819" height="876" alt="Screenshot 2026-09-01 at 7 22 14 AM" src="https://github.com/user-attachments/assets/af7bb30c-495d-4986-8615-3bb2a3690222" />
+
+After you receive that failure you can run publish separately, which will give you another web login with a check box to allow publish for 5 minutes.  This publish will succeed.
+```
+npm publish
+```
+<img width="1194" height="697" alt="Screenshot 2026-09-01 at 7 23 19 AM" src="https://github.com/user-attachments/assets/5d4bfa76-7a8f-47cd-b6ca-ecc766c5aa88" />
+
+
 ### Tips
 
 - If you have a passphrase on your ssh key, run ssh-add ~/.ssh/id_ed25519 (or wherever your key is located).
