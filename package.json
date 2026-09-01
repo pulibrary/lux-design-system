@@ -43,12 +43,10 @@
     "vue3-cookies": "^1.0.6"
   },
   "devDependencies": {
-    "@babel/core": "^7.29.6",
     "@playwright/test": "^1.61.1",
     "@rollup/plugin-replace": "^6.0.2",
     "@types/node": "^24.10.0",
     "@vitejs/plugin-vue": "^6.0.6",
-    "@vue/cli-plugin-babel": "~5.0.0",
     "@vue/cli-plugin-pwa": "~5.0.0",
     "@vue/cli-service": "~5.0.0",
     "@vue/test-utils": "^2.0.0-0",
