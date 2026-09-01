@@ -11,6 +11,7 @@
 
 ```
 npm install
+npm run prepare
 ```
 
 ### Serve the styleguide documentation locally
