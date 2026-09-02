@@ -22,6 +22,7 @@
   },
   "version": "7.12.0",
   "scripts": {
+    "docs:gen": "vue-docgen",
     "serve": "vue-cli-service serve",
     "build": "vite build",
     "test": "TZ=UTC vitest",
@@ -33,7 +34,10 @@
     "design_tokens:docs:build": "node src/utils/generateDesignTokenDocs.mjs",
     "start": "npm run build; npx http-server --port 5002",
     "start:dev": "npm run build; npx http-server --port 5000",
-    "prepare": "simple-git-hooks"
+    "prepare": "simple-git-hooks",
+    "docs:dev": "vitepress dev docs",
+    "docs:build": "vitepress build docs",
+    "docs:preview": "vitepress preview docs"
   },
   "dependencies": {
     "core-js": "^3.8.3",
@@ -67,9 +71,11 @@
     "simple-git-hooks": "^2.14.0",
     "stylelint": "^16.8.2",
     "stylelint-config-standard-scss": "^14.0.0",
+    "vitepress": "^1.6.4",
     "vitest": "^4.1.5",
     "vue": "^3.5",
-    "vue-cli-plugin-styleguidist": "~4.72.4"
+    "vue-docgen-cli": "^4.79.0",
+    "vue-live": "^2.5.4"
   },
   "simple-git-hooks": {
     "pre-commit": "npm run design_tokens:docs:build && npx lint-staged"
