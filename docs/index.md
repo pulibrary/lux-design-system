@@ -5,7 +5,7 @@ layout: home
 hero:
   name: "Lux Design System"
   text: "Design system for Princeton University Library"
-  tagline: My great project tagline
+  tagline: 
   actions:
     - theme: brand
       text: Markdown Examples
