@@ -7,7 +7,7 @@ executors:
     docker:
       - image: mcr.microsoft.com/playwright:v1.62.1-noble
 jobs:
-  styleguide:
+  vitestpress:
     working_directory: ~/project
     docker:
       - image: cimg/node:24.19.0
@@ -17,8 +17,8 @@ jobs:
           node-version: "24.19.0"
       - node/install-packages
       - run:
-          command: npm run styleguide:build
-          name: Confirm that we can build the styleguide
+          command: npm run docs:build
+          name: Confirm that we can build the vitestpress docs
   package:
     working_directory: ~/project
     docker:
@@ -50,5 +50,5 @@ workflows:
                 - 24.19.0
                 - 22.16.0
       - playwright
-      - styleguide
+      - vitestpress
       - package
