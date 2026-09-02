@@ -128,7 +128,7 @@ onMounted(() => {
 </script>
 
 <style lang="scss">
-//@use "/src/assets/styles/mixins.scss" as *;
+@use "../assets/styles/mixins.scss" as *;
 
 .lux-alert-fullscreen {
   position: fixed !important;
@@ -140,7 +140,7 @@ onMounted(() => {
 }
 
 .lux-alert {
-  //@include reset;
+  @include reset;
   font-family: var(--font-family-text);
   padding: 0.75rem 1.25rem;
   margin-bottom: 1rem;
@@ -209,14 +209,3 @@ button.lux-close {
   opacity: 0;
 }
 </style>
-
-<docs>
-  ```jsx
-    <div>
-      <lux-alert status="warning" autoclear>How to disappear completely...</lux-alert>
-      <lux-alert status="error"></lux-alert>
-      <lux-alert status="success">Like a boss!</lux-alert>
-      <lux-alert status="info" dismissible>Here's some dismissible info for you.</lux-alert>
-    </div>
-  ```
-</docs>
