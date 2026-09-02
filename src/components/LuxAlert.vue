@@ -128,7 +128,7 @@ onMounted(() => {
 </script>
 
 <style lang="scss">
-@use "/src/assets/styles/mixins.scss" as *;
+//@use "/src/assets/styles/mixins.scss" as *;
 
 .lux-alert-fullscreen {
   position: fixed !important;
@@ -140,7 +140,7 @@ onMounted(() => {
 }
 
 .lux-alert {
-  @include reset;
+  //@include reset;
   font-family: var(--font-family-text);
   padding: 0.75rem 1.25rem;
   margin-bottom: 1rem;
