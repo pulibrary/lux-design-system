@@ -25,6 +25,16 @@
 | default | the alert text |          |
 
 ---
+<div>
+  <lux-alert status="warning" autoclear>
+    How to disappear completely...
+  </lux-alert>
+  <lux-alert status="error"></lux-alert>
+  <lux-alert status="success">Like a boss!</lux-alert>
+  <lux-alert status="info" dismissible>
+    Here's some dismissible info for you.
+  </lux-alert>
+</div>
 
 ```jsx
 <div>
