@@ -32,4 +32,4 @@ tmp
 /playwright/.auth/
 
 # vitepress
-docs/.vitepress/
+docs/.vitepress/cache
