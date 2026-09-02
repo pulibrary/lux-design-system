@@ -1,6 +1,8 @@
 <script setup>
   import LuxAlert from "../src/components/LuxAlert.vue"
 </script>
+<!-- If .vitepress/theme/index.js works and imports the compoenent then we dont need the import
+in the script tag -->
 # LuxAlert
 
 > Alerts are used to provide timely information to a user in response to some event.
