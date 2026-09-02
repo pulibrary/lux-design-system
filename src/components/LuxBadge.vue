@@ -71,15 +71,3 @@ const badgeClass = computed(() => `lux-badge lux-badge-${props.color}`)
   color: var(--color-dark-yellow);
 }
 </style>
-<docs>
-  ```jsx
-    <div>
-      <lux-badge>A Green Badge</lux-badge>
-      <lux-badge color="yellow">A Yellow Badge</lux-badge>
-      <lux-badge color="blue">A Blue Badge</lux-badge>
-      <lux-badge color="gray">A Gray Badge</lux-badge>
-      <lux-badge color="red">A Red Badge</lux-badge>
-      <lux-badge color="purple">A Purple Badge</lux-badge>
-    </div>
-  ```
-</docs>
