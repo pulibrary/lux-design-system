@@ -110,17 +110,3 @@ const iconTitleId = computed(() => {
   }
 }
 </style>
-
-<docs>
-  ```jsx
-  <div>
-    <lux-icon-base width="30" height="30" icon-name="file">
-      <lux-icon-file></lux-icon-file>
-    </lux-icon-base>
-    <!-- You can also surround the icon in a circle of the color you choose -->
-    <lux-icon-base width="40" height="40" icon-name="person" icon-color="white" circle-color="var(--color-rich-black)">
-      <lux-icon-person></lux-icon-person>
-    </lux-icon-base>
-  </div>
-  ```
-</docs>
