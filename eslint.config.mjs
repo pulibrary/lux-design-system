@@ -33,6 +33,7 @@ export default defineConfig([
     },
     files: ["**/*.vue"],
     ignores: ["dist/*"],
+    ignores: ["docs/*"],
   },
   {
     rules: {
@@ -43,5 +44,6 @@ export default defineConfig([
     },
     files: ["**/*.(m)js?(x)"],
     ignores: ["dist/*"],
+    ignores: ["docs/*/**"],
   },
 ])
