@@ -18,8 +18,8 @@
   </div>
   <p v-else>Your browser does not support Clipboard API</p>
   <div v-if="isSupported" class="copy-paste-tooltip">
-    <span v-if="!copied" class="tooltip-text" v-show="isHover">Copy</span>
-    <span v-else class="tooltip-text" v-show="isHover">Copied</span>
+    <span v-if="!copied" class="tooltip-text" v-show="isHover">{{ tooltipText }}</span>
+    <span v-else class="tooltip-text" v-show="isHover">{{ copiedTooltipText }}</span>
   </div>
 </template>
 
@@ -37,6 +37,14 @@ const props = defineProps({
   clipboardValue: {
     type: String,
     required: true,
+  },
+  tooltipText: {
+    type: String,
+    default: "Copy",
+  },
+  copiedTooltipText: {
+    type: String,
+    default: "Copied",
   },
 })
 
@@ -116,6 +124,12 @@ const isHover = ref(false)
       <div style="display: flex; align-items: center; gap: 0.5rem;">
       <div>example to be copied</div>
       <lux-copy-to-clipboard id="example-clip" clipboard-value="example to be copied"> </lux-copy-to-clipboard>
+      </div>
+      <p> You can change the tooltip text by passing in the props <code>tooltip-text</code> and <code>copied-tooltip-text</code></p>
+      <!-- Copy to clipboard -->
+      <div style="display: flex; align-items: center; gap: 0.5rem;">
+      <div>example to be copied</div>
+      <lux-copy-to-clipboard id="example-clip" clipboard-value="example to be copied" tooltip-text="Copy example" copied-tooltip-text="Copied example"> </lux-copy-to-clipboard>
       </div>
     </div>
   ```
