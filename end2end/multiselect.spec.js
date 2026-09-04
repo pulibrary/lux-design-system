@@ -25,6 +25,7 @@ test("Shows the asynchronous results for a MultiSelect", async ({ page }) => {
   await expect(page.locator("body")).not.toContainText("Loading results")
   await page.getByLabel("Wikipedia pages").press("ArrowDown")
   await page.getByLabel("Wikipedia pages").press("ArrowDown")
+  await page.getByLabel("Wikipedia pages").press("ArrowDown")
   await page.getByLabel("Wikipedia pages").press("Enter")
   await expect(page.locator("lux-autocomplete-results")).not.toBeVisible()
   await expect(page.locator(".selected-items")).toContainText("Frog legs")

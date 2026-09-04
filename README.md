@@ -41,6 +41,16 @@ On first installation you must run `npx playwright install` to get the browsers 
   npx playwright test --ui`
   ```
 
+#### Running examples locally (outside of playwright)
+Start a local server on the same port as playwright
+```
+npx http-server . -p 5002
+```
+The look at the examples:
+  * [Multi Select](http://localhost:5002/examples/multiselect.html)
+  * [Static Single Select](http://localhost:5002/examples/singleselect.html)
+  * [Dynamic Single Select](http://localhost:5002/examples/singleselectasync.html)
+
 ## Release a new version
 
 This requires you to have an account on npm with 2fa enabled. You will also
