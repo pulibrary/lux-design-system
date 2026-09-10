@@ -278,7 +278,7 @@ function inputblur(value) {
 }
 function focusFired(event) {
   emit("focus", event)
-  this.inputfocus(event.target.value)
+  inputfocus(event.target.value)
 }
 function inputfocus(value) {
   emit("inputfocus", value)
@@ -290,10 +290,12 @@ const textInputRef = useTemplateRef("textInput")
 const textAreaRef = useTemplateRef("textArea")
 onMounted(async () => {
   await nextTick()
-  if (props.type == "text") {
-    textInputRef.value.focus()
-  } else if (props.type == "textarea") {
-    textAreaRef.value.focus()
+  if (props.focused) {
+    if (props.type == "text") {
+      textInputRef.value.focus()
+    } else if (props.type == "textarea") {
+      textAreaRef.value.focus()
+    }
   }
 })
 </script>
