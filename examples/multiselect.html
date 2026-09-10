@@ -5,12 +5,13 @@ To run it:
 2. In your browser, visit http://localhost:5000/examples/multiselect.html
 -->
 <html>
-  <head>
-    <link rel="stylesheet" href="/dist/style.css" />
-  </head>
 
-  <body>
-    <script type="importmap">
+<head>
+  <link rel="stylesheet" href="/dist/style.css" />
+</head>
+
+<body>
+  <script type="importmap">
       {
         "imports": {
           "vue": "https://unpkg.com/vue@3.5.22/dist/vue.esm-browser.prod.js",
@@ -18,41 +19,103 @@ To run it:
         }
       }
     </script>
-    <script type="module">
-      import { createApp } from "vue";
-      import lux from "lux-design-system";
+  <script type="module">
+    import {createApp} from "vue";
+    import lux from "lux-design-system";
 
-      const app = createApp({});
+    const app = createApp({});
 
-      // If you are not running a full Vue application, just embedding the component into a static HTML,
-      // ruby web app, or similar: one way to bind your logic to the async-load-items-function prop is
-      // to add it to the vue application's globalProperties.
-      app.config.globalProperties.searchWikipedia = async query => {
-        if (query.length === 0) return ["none"];
-        const result = await fetch(
-          `https://en.wikipedia.org/w/rest.php/v1/search/title?q=${query}&limit=100`
-        );
-        const json = await result.json();
-        return (
-          json.pages?.map(page => {
-            return { label: page.title, id: page.id };
-          }) || []
-        );
-      };
-      app.use(lux).mount("#app");
-    </script>
-    <div id="app">
-      <lux-input-multiselect
-        label="Wikipedia pages"
-        selected-items-label="Selected pages"
-        none-selected-label="No pages selected"
-        :async-load-items-function="searchWikipedia"
-        :default-values="[{label: 'frog', id: '123'}]"
-      >
-        <template v-slot:hidden-input="{ selectedItems }">
-          <input type="hidden" name="all_selected" :value="JSON.stringify(selectedItems)" />
-        </template>
-      </lux-input-multiselect>
-    </div>
-  </body>
+    // Provides a fake version of fetch against the wikipedia API, so our tests
+    // are reliable.
+    const fakeWikipedia = async (query) => {
+      if (query == "Frog") {
+        return {
+          "json": async => {
+            return {
+              "pages": [
+                {
+                  "title": "Frog",
+                  "id": 38498
+                },
+                {
+                  "title": "Frogman",
+                  "id": 297113
+                },
+                {
+                  "title": "Frog legs",
+                  "id": 543812
+                },
+                {
+                  "title": "The Frog Princess",
+                  "id": 1888283
+                },
+              ]
+            }
+          }
+        }
+      } else if (query == "Cat") {
+        return {
+          "json": async => {
+            return {
+              "pages": [
+                {
+                  "title": "Cat",
+                  "id": 6678
+                },
+                {
+                  "title": "Catholic Church",
+                  "id": 606848
+                },
+                {
+                  "title": "Catherine, Princess of Wales",
+                  "id": 1677192
+                },
+                {
+                  "title": "Catherine the Great",
+                  "id": 44240
+                },
+              ]
+            }
+          }
+        }
+      } else {
+        return {
+          "json": async => {
+            return {"pages": []}
+          }
+        }
+      }
+    }
+
+    // If you are not running a full Vue application, just embedding the component into a static HTML,
+    // ruby web app, or similar: one way to bind your logic to the async-load-items-function prop is
+    // to add it to the vue application's globalProperties.
+    app.config.globalProperties.searchWikipedia = async query => {
+      if (query.length === 0) return ["none"];
+      // This is how you'd do it for real - we've stubbed it here for reliable
+      // tests.
+      // const result = await fetch(
+      //   `https://en.wikipedia.org/w/rest.php/v1/search/title?q=${query}&limit=100`
+      // );
+      const result = await fakeWikipedia(query);
+      const json = await result.json();
+      return (
+        json.pages?.map(page => {
+          return {label: page.title, id: page.id};
+        }) || []
+      );
+    };
+    app.use(lux).mount("#app");
+  </script>
+  <div id="app">
+    <lux-input-multiselect label="Wikipedia pages" selected-items-label="Selected pages"
+      none-selected-label="No pages selected" :async-load-items-function="searchWikipedia"
+      :default-values="[{label: 'frog', id: '123'}]">
+      <template v-slot:hidden-input="{ selectedItems }">
+        <input type="hidden" name="all_selected" :value="JSON.stringify(selectedItems)" />
+      </template>
+    </lux-input-multiselect>
+  </div>
+</body>
+
 </html>
