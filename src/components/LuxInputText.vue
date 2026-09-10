@@ -278,7 +278,7 @@ function inputblur(value) {
 }
 function focusFired(event) {
   emit("focus", event)
-  this.inputfocus(event.target.value)
+  inputfocus(event.target.value)
 }
 function inputfocus(value) {
   emit("inputfocus", value)
@@ -289,6 +289,7 @@ const hasError = computed(() => props.errormessage.length)
 const textInputRef = useTemplateRef("textInput")
 const textAreaRef = useTemplateRef("textArea")
 onMounted(async () => {
+  if (!props.focused) return
   await nextTick()
   if (props.type == "text") {
     textInputRef.value.focus()
