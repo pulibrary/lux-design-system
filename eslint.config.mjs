@@ -11,6 +11,8 @@ export default defineConfig([
     "playwright-report/**/*",
     "styleguide/**/*",
     "test-results/**/*",
+    "docs/.vitepress/cache/**/*",
+    "docs/.vitepress/dist/**/*",
   ]),
   pluginVue.configs["flat/essential"],
   pluginPrettier,
@@ -32,8 +34,6 @@ export default defineConfig([
       "vue/no-deprecated-v-on-native-modifier": process.env.NODE_ENV === "production" ? "warn" : 1,
     },
     files: ["**/*.vue"],
-    ignores: ["dist/*"],
-    ignores: ["docs/*"],
   },
   {
     rules: {
@@ -43,7 +43,5 @@ export default defineConfig([
       "vue/no-deprecated-v-on-native-modifier": process.env.NODE_ENV === "production" ? "warn" : 1,
     },
     files: ["**/*.(m)js?(x)"],
-    ignores: ["dist/*"],
-    ignores: ["docs/*/**"],
   },
 ])

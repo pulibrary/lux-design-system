@@ -1,3 +1,3 @@
 module.exports = {
-  "*.{js,jsx,ts,tsx,vue}": "npm run lint --fix",
+  "*.{js,jsx,ts,tsx,vue}": "eslint --fix",
 }
