@@ -6,11 +6,11 @@ export default {
       {
         text: "Guide",
         items: [
-          { text: "Lux Usage", link: "/lux_usage" },
-          { text: "Design Principles", link: "/design_principles" },
-          { text: "Adding Lux", link: "/adding_lux" },
+          { text: "Adding Lux to Your Project", link: "/adding_lux" },
           { text: "Adding Icons", link: "/adding_icons" },
+          { text: "Design Principles", link: "/design_principles" },
           { text: "Design Tokens", link: "/design_tokens" },
+          { text: "Lux Usage", link: "/lux_usage" },
         ],
       },
       {
