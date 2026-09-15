@@ -1,0 +1,39 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`InputAutocomplete.vue > has the expected html structure 1`] = `
+<div
+  class="lux-autocomplete"
+>
+  <!--v-if-->
+  <div
+    class="lux-autocomplete-input"
+  >
+    <input
+      autocomplete="off"
+      class="displayInput"
+      id="displayInput-v-0"
+      role="combobox"
+      type="text"
+    />
+    <ul
+      class="lux-autocomplete-results"
+    >
+      
+      <li
+        class="lux-autocomplete-result"
+        id="lux-autocomplete-v-0result-0"
+      >
+        Banana
+      </li>
+      
+    </ul>
+    <input
+      data-input-value=""
+      id="foo"
+      name="bar"
+      type="hidden"
+      value="2"
+    />
+  </div>
+</div>
+`;

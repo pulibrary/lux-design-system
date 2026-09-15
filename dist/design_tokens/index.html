@@ -1,0 +1,1270 @@
+<!--
+  ---------------------------------------------------------------
+  docmd : the zero-config documentation engine.
+  @website https://docmd.io
+  [docmd-source] - Please do not remove this header.
+  ---------------------------------------------------------------
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="generator" content="docmd v0.9.5">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <script>
+      var root = "../";
+      if (root && !root.endsWith('/')) root += '/';
+      if (root === '') root = './';
+      window.DOCMD_ROOT = root;
+
+      window.DOCMD_SITE_ROOT = "/";
+
+      window.DOCMD_APPEARANCE = "system";
+      window.DOCMD_VERSION_ROOT = "/";
+      window.DOCMD_BASE = "/";
+      window.DOCMD_LOCALE = "";
+      window.DOCMD_DEFAULT_LOCALE = "";
+    </script>
+    <script>/**
+ * --------------------------------------------------------------------
+ * docmd : the zero-config documentation engine.
+ *
+ * @package     @docmd/core (and ecosystem)
+ * @website     https://docmd.io
+ * @repository  https://github.com/docmd-io/docmd
+ * @license     MIT
+ * @copyright   Copyright (c) 2025-present docmd.io
+ *
+ * [docmd-source] - Please do not remove this header.
+ * --------------------------------------------------------------------
+ */
+
+(function () {
+  try {
+    // 1. Determine Theme
+    //
+    // Resolve from three sources, in priority order:
+    //   1. localStorage explicit user choice (light / dark)
+    //   2. window.DOCMD_APPEARANCE  (current canonical name, set by EJS templates)
+    //   3. window.DOCMD_DEFAULT_MODE (legacy alias kept for pre-0.8.7 outputs)
+    //   4. 'light' as the final fallback
+    //
+    // Note: localStorage is only honoured when it holds an explicit
+    // 'light' or 'dark' value. A stored 'system' value (from a prior
+    // session where the user picked "follow system") must NOT win over
+    // a freshly resolved config value — the resolved value will itself
+    // be 'system' in that case and the OS preference check below takes
+    // over, so this is a no-op for the in-session behaviour but keeps
+    // any future storage migration simple.
+    var localValue = localStorage.getItem('docmd-theme');
+    var configValue = window.DOCMD_APPEARANCE
+      || window.DOCMD_DEFAULT_MODE
+      || 'light';
+    var theme = (localValue === 'light' || localValue === 'dark')
+      ? localValue
+      : configValue;
+
+    if (theme === 'system') {
+      theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    }
+
+    // 2. Apply to Root
+    document.documentElement.setAttribute('data-theme', theme);
+
+    // 3. Highlight.js Toggle Strategy
+    var lightLink = document.getElementById('hljs-light');
+    var darkLink = document.getElementById('hljs-dark');
+
+    if (lightLink && darkLink) {
+      if (theme === 'dark') {
+        lightLink.disabled = true;
+        darkLink.disabled = false;
+      } else {
+        lightLink.disabled = false;
+        darkLink.disabled = true;
+      }
+    }
+
+    document.documentElement.style.visibility = "visible";
+  } catch (e) {
+    document.documentElement.style.visibility = "visible";
+    console.error('Theme init failed', e);
+  }
+})();</script>
+    <style>
+      html {
+        visibility: hidden;
+      }
+    </style>
+    <title>
+       : LUX Design System
+    </title>
+    
+    
+
+    <link id="site-favicon" rel="icon" href="../assets/favicon.ico?v=mu30x36a">
+    <link rel="stylesheet" href="../assets/css/docmd-main.css?v=mu30x36a">
+    
+    <link rel="stylesheet" href="../assets/css/docmd-highlight-light.css?v=mu30x36a" id="hljs-light" >
+    <link rel="stylesheet" href="../assets/css/docmd-highlight-dark.css?v=mu30x36a" id="hljs-dark" disabled>
+    
+    
+<meta name="description" content="">
+<meta property="og:title" content="Untitled - LUX Design System">
+<meta property="og:description" content="">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Untitled - LUX Design System">
+<meta name="twitter:description" content="">
+
+
+
+
+<link rel="stylesheet" href="../assets/css/docmd-git.css?v=mu30x36a" >
+<link rel="stylesheet" href="../assets/css/docmd-openapi.css?v=mu30x36a" >
+<link rel="stylesheet" href="../assets/css/docmd-ai.css?v=mu30x36a" >
+
+    
+    
+  </head>
+  <body
+    class="sidebar-collapsible"
+    data-default-collapsed="false"
+    data-copy-code-enabled="true" data-spa-enabled="true" data-source-file="docs/design_tokens.md">
+
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    
+    
+
+    
+    
+      <aside class="sidebar">
+        <div class="sidebar-header">
+          
+<h1><a href="../">
+                LUX Design System
+              </a></h1>
+          
+          <span class="mobile-view sidebar-menu-button float-right">
+            
+<svg class="lucide-icon icon-menu " width="1em" height="1em" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"
+  class="lucide lucide-menu"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M4 5h16" />
+  <path d="M4 12h16" />
+  <path d="M4 19h16" />
+</svg>
+
+          </span>
+        </div>
+        <div class="sidebar-top-group">
+          
+          
+          
+          
+        </div>
+        
+
+<nav class="sidebar-nav" aria-label="Main Navigation">
+  <ul>
+    
+      <li class="active-parent collapsible expanded nav-group"  aria-expanded="true" >
+      
+        <span class="nav-label nav-group">
+          
+          <span class="nav-item-title">
+            Home
+          </span>
+          
+            <span class="collapse-icon-wrapper">
+<svg class="lucide-icon icon-chevron-right collapse-icon" width="1em" height="1em" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"
+  class="lucide lucide-chevron-right"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="m9 18 6-6-6-6" />
+</svg>
+</span>
+          
+        </span>
+        
+
+        
+          <ul class="submenu">
+            
+      <li class="" >
+      
+        <a href="../adding_lux/" class=" "
+          >
+          
+          <span class="nav-item-title">
+            Adding Lux
+            </span>
+          
+          
+        </a>
+        
+
+        
+      </li>
+    
+      <li class="" >
+      
+        <a href="../adding_icons/" class=" "
+          >
+          
+          <span class="nav-item-title">
+            Adding Icons
+            </span>
+          
+          
+        </a>
+        
+
+        
+      </li>
+    
+      <li class="" >
+      
+        <a href="../design_principles/" class=" "
+          >
+          
+          <span class="nav-item-title">
+            Design Principles
+            </span>
+          
+          
+        </a>
+        
+
+        
+      </li>
+    
+      <li class="active" >
+      
+        <a href="../design_tokens/" class="active "
+          >
+          
+          <span class="nav-item-title">
+            Design Tokens
+            </span>
+          
+          
+        </a>
+        
+
+        
+      </li>
+    
+      <li class="" >
+      
+        <a href="../lux_usage/" class=" "
+          >
+          
+          <span class="nav-item-title">
+            Lux Usage
+            </span>
+          
+          
+        </a>
+        
+
+        
+      </li>
+    
+          </ul>
+        
+      </li>
+    
+      <li class="collapsible nav-group"  aria-expanded="false" >
+      
+        <span class="nav-label nav-group">
+          
+          <span class="nav-item-title">
+            Components
+          </span>
+          
+            <span class="collapse-icon-wrapper">
+<svg class="lucide-icon icon-chevron-right collapse-icon" width="1em" height="1em" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"
+  class="lucide lucide-chevron-right"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="m9 18 6-6-6-6" />
+</svg>
+</span>
+          
+        </span>
+        
+
+        
+          <ul class="submenu">
+            
+      <li class="" >
+      
+        <a href="../src/components/LuxAlert/" class=" "
+          >
+          
+          <span class="nav-item-title">
+            LuxAlert
+            </span>
+          
+          
+        </a>
+        
+
+        
+      </li>
+    
+      <li class="" >
+      
+        <a href="../src/components/LuxAutocompleteInput/" class=" "
+          >
+          
+          <span class="nav-item-title">
+            LuxAutocompleteInput
+            </span>
+          
+          
+        </a>
+        
+
+        
+      </li>
+    
+      <li class="" >
+      
+        <a href="../src/components/LuxBadge/" class=" "
+          >
+          
+          <span class="nav-item-title">
+            LuxBadge
+            </span>
+          
+          
+        </a>
+        
+
+        
+      </li>
+    
+          </ul>
+        
+      </li>
+    
+  </ul>
+</nav>
+        <div class="sidebar-bottom-group mt-auto">
+          
+          
+          
+          
+        </div>
+      </aside>
+      
+      <div class="main-content-wrapper">
+        
+        
+        
+          <header class="page-header">
+            <div class="header-left">
+              
+                <button id="sidebar-toggle-button" class="sidebar-toggle-button"
+                  aria-label="Toggle Sidebar">
+                  
+<svg class="lucide-icon icon-chevron-left " width="1em" height="1em" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"
+  class="lucide lucide-chevron-left"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="m15 18-6-6 6-6" />
+</svg>
+
+                </button>
+              
+              <div class="header-titles-wrapper">
+                <span class="header-title">
+                  
+                </span>
+              </div>
+            </div>
+            <div class="header-right">
+              
+                
+
+
+<div class="docmd-options-menu">
+    
+    <button class="docmd-search-trigger" aria-label="Search">
+        
+<svg class="lucide-icon icon-search " width="1em" height="1em" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"
+  class="lucide lucide-search"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="m21 21-4.34-4.34" />
+  <circle cx="11" cy="11" r="8" />
+</svg>
+
+        <span class="search-label">Search</span>
+        <span class="search-keys"><kbd class="docmd-kbd">⌘</kbd><kbd class="docmd-kbd">K</kbd></span>
+    </button>
+    
+
+    
+
+    
+
+    
+    <button class="theme-toggle-button" aria-label="Toggle theme">
+        
+<svg class="lucide-icon icon-sun icon-sun" width="1em" height="1em" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"
+  class="lucide lucide-sun"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <circle cx="12" cy="12" r="4" />
+  <path d="M12 2v2" />
+  <path d="M12 20v2" />
+  <path d="m4.93 4.93 1.41 1.41" />
+  <path d="m17.66 17.66 1.41 1.41" />
+  <path d="M2 12h2" />
+  <path d="M20 12h2" />
+  <path d="m6.34 17.66-1.41 1.41" />
+  <path d="m19.07 4.93-1.41 1.41" />
+</svg>
+ 
+<svg class="lucide-icon icon-moon icon-moon" width="1em" height="1em" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"
+  class="lucide lucide-moon"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401" />
+</svg>
+
+    </button>
+    
+
+    
+</div>
+
+              
+            </div>
+          </header>
+        
+        <div class="content-theme-cover">
+          <main class="content-area" id="main-content">
+            <div class="content-layout">
+              <div class="main-content">
+                <div class="docmd-breadcrumbs-row">
+                  <div id="docmd-raw-markdown" data-content="%0A%3C!--%20this%20documentation%20is%20automatically%20generated%2C%20please%20edit%20variables.css%20or%20generateDesignTokenDocs.mjs%20to%20make%20changes%20--%3E%0A%3Cstyle%3E%0A%20%20.swatch%20%7B%0A%20%20%20%20height%3A%20100px%3B%0A%20%20%20%20width%3A%20100px%3B%0A%20%20%20%20border%3A%201px%20solid%20black%3B%0A%20%20%20%20border-radius%3A%20var(--border-radius-default)%3B%0A%20%20%7D%0A%20%20.spacing%20%7B%0A%20%20%20%20background%3A%20var(--color-grayscale-lighter)%3B%0A%20%20%20%20width%3A%20100%25%3B%0A%20%20%20%20box-shadow%3A%20inset%200%200%200%201px%20rgba(0%2C0%2C0%2C0.05)%3B%0A%20%20%20%20margin-bottom%3A%208px%3B%0A%20%20%20%20border-radius%3A%20var(--border-radius-default)%3B%0A%20%20%7D%0A%20%20.row%20%7B%0A%20%20%20%20display%3A%20flex%3B%0A%20%20%20%20flex-wrap%3A%20wrap%3B%0A%20%20%7D%0A%20%20.border-radius%20%7B%0A%20%20%20%20border%3A%20var(--color-princeton-orange-on-white)%202px%20solid%3B%0A%20%20%20%20display%3A%20flex%3B%0A%20%20%20%20align-items%3A%20center%3B%0A%20%20%20%20justify-content%3A%20center%3B%0A%20%20%20%20width%3A%20200px%3B%0A%20%20%20%20height%3A%20200px%3B%0A%20%20%20%20margin%3A%208px%3B%0A%20%20%7D%0A%3C%2Fstyle%3E%0A%0A%23%23%20Colors%0A%0A%7CColor%7CVariable%7CValue%7C%0A%7C---%7C---%7C---%7C%0A%7C%3Cdiv%20class%3D%22swatch%22%20style%3D%22background-color%3A%20rgb(3%2C%2083%2C%20164)%3B%22%3E%3C%2Fdiv%3E%7C%3Cpre%3E--color-cold-blue%3C%2Fpre%3E%7Crgb(3%2C%2083%2C%20164)%3B%7C%0A%7C%3Cdiv%20class%3D%22swatch%22%20style%3D%22background-color%3A%20rgb(197%2C%20200%2C%20206)%3B%22%3E%3C%2Fdiv%3E%7C%3Cpre%3E--color-grayscale-light%3C%2Fpre%3E%7Crgb(197%2C%20200%2C%20206)%3B%7C%0A%7C%3Cdiv%20class%3D%22swatch%22%20style%3D%22background-color%3A%20rgb(255%2C%20252%2C%20250)%3B%22%3E%3C%2Fdiv%3E%7C%3Cpre%3E--color-princeton-salmon-lighter%3C%2Fpre%3E%7Crgb(255%2C%20252%2C%20250)%3B%7C%0A%7C%3Cdiv%20class%3D%22swatch%22%20style%3D%22background-color%3A%20rgb(188%2C%20139%2C%2082)%3B%22%3E%3C%2Fdiv%3E%7C%3Cpre%3E--color-tan%3C%2Fpre%3E%7Crgb(188%2C%20139%2C%2082)%3B%7C%0A%7C%3Cdiv%20class%3D%22swatch%22%20style%3D%22background-color%3A%20rgb(45%2C%20112%2C%20180)%3B%22%3E%3C%2Fdiv%3E%7C%3Cpre%3E--color-bleu-de-france-dark%3C%2Fpre%3E%7Crgb(45%2C%20112%2C%20180)%3B%7C%0A%7C%3Cdiv%20class%3D%22swatch%22%20style%3D%22background-color%3A%20rgb(108%2C%20163%2C%20218)%3B%22%3E%3C%2Fdiv%3E%7C%3Cpre%3E--color-bleu-de-france-light%3C%2Fpre%3E%7Crgb(108%2C%20163%2C%20218)%3B%7C%0A%7C%3Cdiv%20class%3D%22swatch%22%20style%3D%22background-color%3A%20rgb(124%2C%20181%2C%2024)%3B%22%3E%3C%2Fdiv%3E%7C%3Cpre%3E--color-green%3C%2Fpre%3E%7Crgb(124%2C%20181%2C%2024)%3B%7C%0A%7C%3Cdiv%20class%3D%22swatch%22%20style%3D%22background-color%3A%20rgb(231%2C%20117%2C%200)%3B%22%3E%3C%2Fdiv%3E%7C%3Cpre%3E--color-princeton-orange-on-white%3C%2Fpre%3E%7Crgb(231%2C%20117%2C%200)%3B%7C%0A%7C%3Cdiv%20class%3D%22swatch%22%20style%3D%22background-color%3A%20rgb(92%2C%2084%2C%2051)%3B%22%3E%3C%2Fdiv%3E%7C%3Cpre%3E--color-grayscale-warm-darker%3C%2Fpre%3E%7Crgb(92%2C%2084%2C%2051)%3B%7C%0A%7C%3Cdiv%20class%3D%22swatch%22%20style%3D%22background-color%3A%20rgb(219%2C%20193%2C%20163)%3B%22%3E%3C%2Fdiv%3E%7C%3Cpre%3E--color-tan-lighter%3C%2Fpre%3E%7Crgb(219%2C%20193%2C%20163)%3B%7C%0A%7C%3Cdiv%20class%3D%22swatch%22%20style%3D%22background-color%3A%20rgb(107%2C%20115%2C%20128)%3B%22%3E%3C%2Fdiv%3E%7C%3Cpre%3E--color-grayscale-dark%3C%2Fpre%3E%7Crgb(107%2C%20115%2C%20128)%3B%7C%0A%7C%3Cdiv%20class%3D%22swatch%22%20style%3D%22background-color%3A%20rgb(149%2C%20156%2C%20167)%3B%22%3E%3C%2Fdiv%3E%7C%3Cpre%3E--color-grayscale%3C%2Fpre%3E%7Crgb(149%2C%20156%2C%20167)%3B%7C%0A%7C%3Cdiv%20class%3D%22swatch%22%20style%3D%22background-color%3A%20rgb(255%2C%20255%2C%20255)%3B%22%3E%3C%2Fdiv%3E%7C%3Cpre%3E--color-white%3C%2Fpre%3E%7Crgb(255%2C%20255%2C%20255)%3B%7C%0A%7C%3Cdiv%20class%3D%22swatch%22%20style%3D%22background-color%3A%20rgb(245%2C%20245%2C%20245)%3B%22%3E%3C%2Fdiv%3E%7C%3Cpre%3E--color-grayscale-lighter%3C%2Fpre%3E%7Crgb(245%2C%20245%2C%20245)%3B%7C%0A%7C%3Cdiv%20class%3D%22swatch%22%20style%3D%22background-color%3A%20rgb(210%2C%20202%2C%20173)%3B%22%3E%3C%2Fdiv%3E%7C%3Cpre%3E--color-grayscale-warm-light%3C%2Fpre%3E%7Crgb(210%2C%20202%2C%20173)%3B%7C%0A%7C%3Cdiv%20class%3D%22swatch%22%20style%3D%22background-color%3A%20rgb(255%2C%20186%2C%2010)%3B%22%3E%3C%2Fdiv%3E%7C%3Cpre%3E--color-yellow%3C%2Fpre%3E%7Crgb(255%2C%20186%2C%2010)%3B%7C%0A%7C%3Cdiv%20class%3D%22swatch%22%20style%3D%22background-color%3A%20rgb(44%2C%20110%2C%20175)%3B%22%3E%3C%2Fdiv%3E%7C%3Cpre%3E--color-bleu-de-france%3C%2Fpre%3E%7Crgb(44%2C%20110%2C%20175)%3B%7C%0A%7C%3Cdiv%20class%3D%22swatch%22%20style%3D%22background-color%3A%20rgb(158%2C%20113%2C%2061)%3B%22%3E%3C%2Fdiv%3E%7C%3Cpre%3E--color-tan-dark%3C%2Fpre%3E%7Crgb(158%2C%20113%2C%2061)%3B%7C%0A%7C%3Cdiv%20class%3D%22swatch%22%20style%3D%22background-color%3A%20rgb(35%2C%2087%2C%20139)%3B%22%3E%3C%2Fdiv%3E%7C%3Cpre%3E--color-bleu-de-france-darker%3C%2Fpre%3E%7Crgb(35%2C%2087%2C%20139)%3B%7C%0A%7C%3Cdiv%20class%3D%22swatch%22%20style%3D%22background-color%3A%20rgb(149%2C%20189%2C%20228)%3B%22%3E%3C%2Fdiv%3E%7C%3Cpre%3E--color-bleu-de-france-lighter%3C%2Fpre%3E%7Crgb(149%2C%20189%2C%20228)%3B%7C%0A%7C%3Cdiv%20class%3D%22swatch%22%20style%3D%22background-color%3A%20rgb(201%2C%2040%2C%2019)%3B%22%3E%3C%2Fdiv%3E%7C%3Cpre%3E--color-red%3C%2Fpre%3E%7Crgb(201%2C%2040%2C%2019)%3B%7C%0A%7C%3Cdiv%20class%3D%22swatch%22%20style%3D%22background-color%3A%20rgb(255%2C%20227%2C%20199)%3B%22%3E%3C%2Fdiv%3E%7C%3Cpre%3E--color-princeton-salmon-light%3C%2Fpre%3E%7Crgb(255%2C%20227%2C%20199)%3B%7C%0A%7C%3Cdiv%20class%3D%22swatch%22%20style%3D%22background-color%3A%20rgb(65%2C%2070%2C%2078)%3B%22%3E%3C%2Fdiv%3E%7C%3Cpre%3E--color-grayscale-darker%3C%2Fpre%3E%7Crgb(65%2C%2070%2C%2078)%3B%7C%0A%7C%3Cdiv%20class%3D%22swatch%22%20style%3D%22background-color%3A%20rgb(0%2C%2017%2C%2035)%3B%22%3E%3C%2Fdiv%3E%7C%3Cpre%3E--color-rich-black%3C%2Fpre%3E%7Crgb(0%2C%2017%2C%2035)%3B%7C%0A%7C%3Cdiv%20class%3D%22swatch%22%20style%3D%22background-color%3A%20rgb(186%2C%20175%2C%20130)%3B%22%3E%3C%2Fdiv%3E%7C%3Cpre%3E--color-grayscale-warm%3C%2Fpre%3E%7Crgb(186%2C%20175%2C%20130)%3B%7C%0A%7C%3Cdiv%20class%3D%22swatch%22%20style%3D%22background-color%3A%20rgb(151%2C%20138%2C%2083)%3B%22%3E%3C%2Fdiv%3E%7C%3Cpre%3E--color-grayscale-warm-dark%3C%2Fpre%3E%7Crgb(151%2C%20138%2C%2083)%3B%7C%0A%7C%3Cdiv%20class%3D%22swatch%22%20style%3D%22background-color%3A%20rgb(202%2C%20163%2C%20119)%3B%22%3E%3C%2Fdiv%3E%7C%3Cpre%3E--color-tan-light%3C%2Fpre%3E%7Crgb(202%2C%20163%2C%20119)%3B%7C%0A%7C%3Cdiv%20class%3D%22swatch%22%20style%3D%22background-color%3A%20rgb(250%2C%20249%2C%20245)%3B%22%3E%3C%2Fdiv%3E%7C%3Cpre%3E--color-grayscale-warm-lighter%3C%2Fpre%3E%7Crgb(250%2C%20249%2C%20245)%3B%7C%0A%7C%3Cdiv%20class%3D%22swatch%22%20style%3D%22background-color%3A%20rgb(121%2C%2087%2C%2047)%3B%22%3E%3C%2Fdiv%3E%7C%3Cpre%3E--color-tan-darker%3C%2Fpre%3E%7Crgb(121%2C%2087%2C%2047)%3B%7C%0A%7C%3Cdiv%20class%3D%22swatch%22%20style%3D%22background-color%3A%20rgb(255%2C%20201%2C%20148)%3B%22%3E%3C%2Fdiv%3E%7C%3Cpre%3E--color-princeton-salmon%3C%2Fpre%3E%7Crgb(255%2C%20201%2C%20148)%3B%7C%0A%7C%3Cdiv%20class%3D%22swatch%22%20style%3D%22background-color%3A%20rgb(245%2C%20128%2C%2037)%3B%22%3E%3C%2Fdiv%3E%7C%3Cpre%3E--color-princeton-orange-on-black%3C%2Fpre%3E%7Crgb(245%2C%20128%2C%2037)%3B%7C%0A%7C%3Cdiv%20class%3D%22swatch%22%20style%3D%22background-color%3A%20%23e77500%3B%22%3E%3C%2Fdiv%3E%7C%3Cpre%3E--color-princeton-orange-50%3C%2Fpre%3E%7C%23e77500%3B%7C%0A%7C%3Cdiv%20class%3D%22swatch%22%20style%3D%22background-color%3A%20%23fcf1e5%3B%22%3E%3C%2Fdiv%3E%7C%3Cpre%3E--color-princeton-orange-10%3C%2Fpre%3E%7C%23fcf1e5%3B%7C%0A%7C%3Cdiv%20class%3D%22swatch%22%20style%3D%22background-color%3A%20%23121212%3B%22%3E%3C%2Fdiv%3E%7C%3Cpre%3E--color-gray-100%3C%2Fpre%3E%7C%23121212%3B%7C%0A%7C%3Cdiv%20class%3D%22swatch%22%20style%3D%22background-color%3A%20rgb(33%2C%2037%2C%2041)%3B%22%3E%3C%2Fdiv%3E%7C%3Cpre%3E--color-gray-90%3C%2Fpre%3E%7Crgb(33%2C%2037%2C%2041)%3B%7C%0A%7C%3Cdiv%20class%3D%22swatch%22%20style%3D%22background-color%3A%20%23717171%3B%22%3E%3C%2Fdiv%3E%7C%3Cpre%3E--color-gray-80%3C%2Fpre%3E%7C%23717171%3B%7C%0A%7C%3Cdiv%20class%3D%22swatch%22%20style%3D%22background-color%3A%20rgb(238%2C%20238%2C%20238)%3B%22%3E%3C%2Fdiv%3E%7C%3Cpre%3E--color-gray-20%3C%2Fpre%3E%7Crgb(238%2C%20238%2C%20238)%3B%7C%0A%7C%3Cdiv%20class%3D%22swatch%22%20style%3D%22background-color%3A%20rgb(247%2C%20247%2C%20247)%3B%22%3E%3C%2Fdiv%3E%7C%3Cpre%3E--color-gray-10%3C%2Fpre%3E%7Crgb(247%2C%20247%2C%20247)%3B%7C%0A%7C%3Cdiv%20class%3D%22swatch%22%20style%3D%22background-color%3A%20rgb(223%2C%20240%2C%20216)%3B%22%3E%3C%2Fdiv%3E%7C%3Cpre%3E--color-light-pistachio-green%3C%2Fpre%3E%7Crgb(223%2C%20240%2C%20216)%3B%7C%0A%7C%3Cdiv%20class%3D%22swatch%22%20style%3D%22background-color%3A%20rgb(208%2C%20233%2C%20198)%3B%22%3E%3C%2Fdiv%3E%7C%3Cpre%3E--color-pistachio-green%3C%2Fpre%3E%7Crgb(208%2C%20233%2C%20198)%3B%7C%0A%7C%3Cdiv%20class%3D%22swatch%22%20style%3D%22background-color%3A%20rgb(60%2C%20118%2C%2061)%3B%22%3E%3C%2Fdiv%3E%7C%3Cpre%3E--color-forest-green%3C%2Fpre%3E%7Crgb(60%2C%20118%2C%2061)%3B%7C%0A%7C%3Cdiv%20class%3D%22swatch%22%20style%3D%22background-color%3A%20rgb(0%2C%2080%2C%2016)%3B%22%3E%3C%2Fdiv%3E%7C%3Cpre%3E--color-dark-green%3C%2Fpre%3E%7Crgb(0%2C%2080%2C%2016)%3B%7C%0A%7C%3Cdiv%20class%3D%22swatch%22%20style%3D%22background-color%3A%20rgb(242%2C%20222%2C%20222)%3B%22%3E%3C%2Fdiv%3E%7C%3Cpre%3E--color-light-pink%3C%2Fpre%3E%7Crgb(242%2C%20222%2C%20222)%3B%7C%0A%7C%3Cdiv%20class%3D%22swatch%22%20style%3D%22background-color%3A%20rgb(235%2C%20204%2C%20204)%3B%22%3E%3C%2Fdiv%3E%7C%3Cpre%3E--color-dusty-pink%3C%2Fpre%3E%7Crgb(235%2C%20204%2C%20204)%3B%7C%0A%7C%3Cdiv%20class%3D%22swatch%22%20style%3D%22background-color%3A%20rgb(169%2C%2068%2C%2066)%3B%22%3E%3C%2Fdiv%3E%7C%3Cpre%3E--color-brick-red%3C%2Fpre%3E%7Crgb(169%2C%2068%2C%2066)%3B%7C%0A%7C%3Cdiv%20class%3D%22swatch%22%20style%3D%22background-color%3A%20rgb(252%2C%20248%2C%20227)%3B%22%3E%3C%2Fdiv%3E%7C%3Cpre%3E--color-light-sand-yellow%3C%2Fpre%3E%7Crgb(252%2C%20248%2C%20227)%3B%7C%0A%7C%3Cdiv%20class%3D%22swatch%22%20style%3D%22background-color%3A%20rgb(250%2C%20242%2C%20204)%3B%22%3E%3C%2Fdiv%3E%7C%3Cpre%3E--color-sand-yellow%3C%2Fpre%3E%7Crgb(250%2C%20242%2C%20204)%3B%7C%0A%7C%3Cdiv%20class%3D%22swatch%22%20style%3D%22background-color%3A%20rgb(138%2C%20109%2C%2059)%3B%22%3E%3C%2Fdiv%3E%7C%3Cpre%3E--color-golden-brown%3C%2Fpre%3E%7Crgb(138%2C%20109%2C%2059)%3B%7C%0A%7C%3Cdiv%20class%3D%22swatch%22%20style%3D%22background-color%3A%20rgb(217%2C%20237%2C%20247)%3B%22%3E%3C%2Fdiv%3E%7C%3Cpre%3E--color-light-blue%3C%2Fpre%3E%7Crgb(217%2C%20237%2C%20247)%3B%7C%0A%7C%3Cdiv%20class%3D%22swatch%22%20style%3D%22background-color%3A%20rgb(188%2C%20223%2C%20241)%3B%22%3E%3C%2Fdiv%3E%7C%3Cpre%3E--color-sky-blue%3C%2Fpre%3E%7Crgb(188%2C%20223%2C%20241)%3B%7C%0A%7C%3Cdiv%20class%3D%22swatch%22%20style%3D%22background-color%3A%20rgb(49%2C%20112%2C%20143)%3B%22%3E%3C%2Fdiv%3E%7C%3Cpre%3E--color-cerulean-blue%3C%2Fpre%3E%7Crgb(49%2C%20112%2C%20143)%3B%7C%0A%7C%3Cdiv%20class%3D%22swatch%22%20style%3D%22background-color%3A%20rgb(0%2C%2039%2C%2080)%3B%22%3E%3C%2Fdiv%3E%7C%3Cpre%3E--color-very-dark-blue%3C%2Fpre%3E%7Crgb(0%2C%2039%2C%2080)%3B%7C%0A%7C%3Cdiv%20class%3D%22swatch%22%20style%3D%22background-color%3A%20rgb(251%2C%20227%2C%20187)%3B%22%3E%3C%2Fdiv%3E%7C%3Cpre%3E--color-yellow%3C%2Fpre%3E%7Crgb(251%2C%20227%2C%20187)%3B%7C%0A%7C%3Cdiv%20class%3D%22swatch%22%20style%3D%22background-color%3A%20rgb(124%2C%2068%2C%205)%3B%22%3E%3C%2Fdiv%3E%7C%3Cpre%3E--color-dark-yellow%3C%2Fpre%3E%7Crgb(124%2C%2068%2C%205)%3B%7C%0A%7C%3Cdiv%20class%3D%22swatch%22%20style%3D%22background-color%3A%20%23DBCBE6%3B%22%3E%3C%2Fdiv%3E%7C%3Cpre%3E--color-light-purple%3C%2Fpre%3E%7C%23DBCBE6%3B%7C%0A%7C%3Cdiv%20class%3D%22swatch%22%20style%3D%22background-color%3A%20%232d1f36%3B%22%3E%3C%2Fdiv%3E%7C%3Cpre%3E--color-dark-purple%3C%2Fpre%3E%7C%232d1f36%3B%7C%0A%0A%23%23%20Font%20sizes%0A%0A%7CVariable%7CValue%7C%0A%7C---%7C---%7C%0A%20%20%20%20%7C%3Cspan%20style%3D%22font-size%3A%201.125em%3B%22%3E--font-size-large-min%3C%2Fspan%3E%7C1.125em%3B%7C%0A%7C%3Cspan%20style%3D%22font-size%3A%201.125em%3B%22%3E--font-size-base-max%3C%2Fspan%3E%7C1.125em%3B%7C%0A%7C%3Cspan%20style%3D%22font-size%3A%2036px%3B%22%3E--font-size-x-large%3C%2Fspan%3E%7C36px%3B%7C%0A%7C%3Cspan%20style%3D%22font-size%3A%2064px%3B%22%3E--font-size-xxx-large%3C%2Fspan%3E%7C64px%3B%7C%0A%7C%3Cspan%20style%3D%22font-size%3A%2048px%3B%22%3E--font-size-xx-large%3C%2Fspan%3E%7C48px%3B%7C%0A%7C%3Cspan%20style%3D%22font-size%3A%201.777em%3B%22%3E--font-size-x-large-max%3C%2Fspan%3E%7C1.777em%3B%7C%0A%7C%3Cspan%20style%3D%22font-size%3A%203.157em%3B%22%3E--font-size-xxx-large-max%3C%2Fspan%3E%7C3.157em%3B%7C%0A%7C%3Cspan%20style%3D%22font-size%3A%2024px%3B%22%3E--font-size-large%3C%2Fspan%3E%7C24px%3B%7C%0A%7C%3Cspan%20style%3D%22font-size%3A%202.369em%3B%22%3E--font-size-xx-large-max%3C%2Fspan%3E%7C2.369em%3B%7C%0A%7C%3Cspan%20style%3D%22font-size%3A%201.333em%3B%22%3E--font-size-large-max%3C%2Fspan%3E%7C1.333em%3B%7C%0A%7C%3Cspan%20style%3D%22font-size%3A%2010px%3B%22%3E--font-size-xx-small%3C%2Fspan%3E%7C10px%3B%7C%0A%7C%3Cspan%20style%3D%22font-size%3A%2012px%3B%22%3E--font-size-x-small%3C%2Fspan%3E%7C12px%3B%7C%0A%7C%3Cspan%20style%3D%22font-size%3A%201em%3B%22%3E--font-size-base-min%3C%2Fspan%3E%7C1em%3B%7C%0A%7C%3Cspan%20style%3D%22font-size%3A%2014px%3B%22%3E--font-size-small%3C%2Fspan%3E%7C14px%3B%7C%0A%7C%3Cspan%20style%3D%22font-size%3A%201.266em%3B%22%3E--font-size-x-large-min%3C%2Fspan%3E%7C1.266em%3B%7C%0A%7C%3Cspan%20style%3D%22font-size%3A%201.602em%3B%22%3E--font-size-xxx-large-min%3C%2Fspan%3E%7C1.602em%3B%7C%0A%7C%3Cspan%20style%3D%22font-size%3A%201.424em%3B%22%3E--font-size-xx-large-min%3C%2Fspan%3E%7C1.424em%3B%7C%0A%7C%3Cspan%20style%3D%22font-size%3A%2016px%3B%22%3E--font-size-base%3C%2Fspan%3E%7C16px%3B%7C%0A%0A%23%23%20Spacing%0A%0A%3Cdiv%20class%3D%22spacing%22%20style%3D%22height%3A%20128px%3B%3Bline-height%3A%20128px%3B%22%3E--space-xx-large%20(128px%3B)%3C%2Fdiv%3E%0A%3Cdiv%20class%3D%22spacing%22%20style%3D%22height%3A%20100px%3B%3Bline-height%3A%20100px%3B%22%3E--space-x-larger%20(100px%3B)%3C%2Fdiv%3E%0A%3Cdiv%20class%3D%22spacing%22%20style%3D%22height%3A%2064px%3B%3Bline-height%3A%2064px%3B%22%3E--space-x-large%20(64px%3B)%3C%2Fdiv%3E%0A%3Cdiv%20class%3D%22spacing%22%20style%3D%22height%3A%2048px%3B%3Bline-height%3A%2048px%3B%22%3E--space-large%20(48px%3B)%3C%2Fdiv%3E%0A%3Cdiv%20class%3D%22spacing%22%20style%3D%22height%3A%2024px%3B%3Bline-height%3A%2024px%3B%22%3E--space-base%20(24px%3B)%3C%2Fdiv%3E%0A%3Cdiv%20class%3D%22spacing%22%20style%3D%22height%3A%2016px%3B%3Bline-height%3A%2016px%3B%22%3E--space-small%20(16px%3B)%3C%2Fdiv%3E%0A%3Cdiv%20class%3D%22spacing%22%20style%3D%22height%3A%208px%3B%3Bline-height%3A%208px%3B%22%3E--space-x-small%20(8px%3B)%3C%2Fdiv%3E%0A%3Cdiv%20class%3D%22spacing%22%20style%3D%22height%3A%204px%3B%3Bline-height%3A%204px%3B%22%3E--space-xx-small%20(4px%3B)%3C%2Fdiv%3E%0A%0A%23%23%20Border%20Radius%0A%0A%3Cdiv%20class%3D%22row%22%3E%3Cdiv%20class%3D%22border-radius%22%20style%3D%22border-radius%3A%203px%3B%22%3E--border-radius-default%20(3px%3B)%3C%2Fdiv%3E%0A%3Cdiv%20class%3D%22border-radius%22%20style%3D%22border-radius%3A%2050%25%3B%22%3E--border-radius-circle%20(50%25%3B)%3C%2Fdiv%3E%0A%3Cdiv%20class%3D%22border-radius%22%20style%3D%22border-radius%3A%2016px%3B%22%3E--border-radius-pill%20(16px%3B)%3C%2Fdiv%3E%0A%3C%2Fdiv%3E" style="display: none;"></div>
+                  
+                    <nav aria-label="breadcrumb" class="docmd-breadcrumbs">
+                      <ol>
+                        
+                        
+                          <li class="breadcrumb-item " >
+                            
+                              <span>Home</span>
+                            
+                            
+                              <span class="breadcrumb-separator">
+<svg class="lucide-icon icon-chevron-right " width="1em" height="1em" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"
+  class="lucide lucide-chevron-right"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="m9 18 6-6-6-6" />
+</svg>
+</span>
+                            
+                          </li>
+                        
+                          <li class="breadcrumb-item active" aria-current=&quot;page&quot;>
+                            
+                              <span>Design Tokens</span>
+                            
+                            
+                          </li>
+                        
+                      </ol>
+                    </nav>
+                  
+
+                  
+                    <div class="docmd-copy-widgets">
+                      
+                        <button class="docmd-copy-btn docmd-copy-raw-btn" data-copied="Copied!" title="Copy Markdown" aria-label="Copy Markdown">
+                          <span class="docmd-btn-icon">
+<svg class="lucide-icon icon-copy " width="1em" height="1em" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"
+  class="lucide lucide-copy"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <rect width="14" height="14" x="8" y="8" rx="2" ry="2" />
+  <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2" />
+</svg>
+</span>
+                        </button>
+                      
+                      
+                        <button class="docmd-copy-btn docmd-copy-context-btn" data-copied="Copied!" title="Copy Context">
+                          <span class="docmd-btn-icon">
+<svg class="lucide-icon icon-message-square " width="1em" height="1em" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"
+  class="lucide lucide-message-square"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M22 17a2 2 0 0 1-2 2H6.828a2 2 0 0 0-1.414.586l-2.202 2.202A.71.71 0 0 1 2 21.286V5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2z" />
+</svg>
+</span>
+                          <span class="docmd-btn-text">Copy Context</span>
+                        </button>
+                      
+                    </div>
+                  
+                </div>
+                
+                <!-- this documentation is automatically generated, please edit variables.css or generateDesignTokenDocs.mjs to make changes -->
+<style>
+  .swatch {
+    height: 100px;
+    width: 100px;
+    border: 1px solid black;
+    border-radius: var(--border-radius-default);
+  }
+  .spacing {
+    background: var(--color-grayscale-lighter);
+    width: 100%;
+    box-shadow: inset 0 0 0 1px rgba(0,0,0,0.05);
+    margin-bottom: 8px;
+    border-radius: var(--border-radius-default);
+  }
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .border-radius {
+    border: var(--color-princeton-orange-on-white) 2px solid;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 200px;
+    height: 200px;
+    margin: 8px;
+  }
+</style>
+<h2 id="colors" class="docmd-heading"><a href="#colors" class="heading-anchor" aria-label="Permalink to this section"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-link2-icon lucide-link-2"><path d="M9 17H7A5 5 0 0 1 7 7h2m6 0h2a5 5 0 1 1 0 10h-2m-7-5h8"/></svg></a>Colors</h2>
+<div class="table-wrapper"><table>
+<thead>
+<tr>
+<th>Color</th>
+<th>Variable</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><div class="swatch" style="background-color: rgb(3, 83, 164);"></div></td>
+<td><pre>–color-cold-blue</pre></td>
+<td>rgb(3, 83, 164);</td>
+</tr>
+<tr>
+<td><div class="swatch" style="background-color: rgb(197, 200, 206);"></div></td>
+<td><pre>–color-grayscale-light</pre></td>
+<td>rgb(197, 200, 206);</td>
+</tr>
+<tr>
+<td><div class="swatch" style="background-color: rgb(255, 252, 250);"></div></td>
+<td><pre>–color-princeton-salmon-lighter</pre></td>
+<td>rgb(255, 252, 250);</td>
+</tr>
+<tr>
+<td><div class="swatch" style="background-color: rgb(188, 139, 82);"></div></td>
+<td><pre>–color-tan</pre></td>
+<td>rgb(188, 139, 82);</td>
+</tr>
+<tr>
+<td><div class="swatch" style="background-color: rgb(45, 112, 180);"></div></td>
+<td><pre>–color-bleu-de-france-dark</pre></td>
+<td>rgb(45, 112, 180);</td>
+</tr>
+<tr>
+<td><div class="swatch" style="background-color: rgb(108, 163, 218);"></div></td>
+<td><pre>–color-bleu-de-france-light</pre></td>
+<td>rgb(108, 163, 218);</td>
+</tr>
+<tr>
+<td><div class="swatch" style="background-color: rgb(124, 181, 24);"></div></td>
+<td><pre>–color-green</pre></td>
+<td>rgb(124, 181, 24);</td>
+</tr>
+<tr>
+<td><div class="swatch" style="background-color: rgb(231, 117, 0);"></div></td>
+<td><pre>–color-princeton-orange-on-white</pre></td>
+<td>rgb(231, 117, 0);</td>
+</tr>
+<tr>
+<td><div class="swatch" style="background-color: rgb(92, 84, 51);"></div></td>
+<td><pre>–color-grayscale-warm-darker</pre></td>
+<td>rgb(92, 84, 51);</td>
+</tr>
+<tr>
+<td><div class="swatch" style="background-color: rgb(219, 193, 163);"></div></td>
+<td><pre>–color-tan-lighter</pre></td>
+<td>rgb(219, 193, 163);</td>
+</tr>
+<tr>
+<td><div class="swatch" style="background-color: rgb(107, 115, 128);"></div></td>
+<td><pre>–color-grayscale-dark</pre></td>
+<td>rgb(107, 115, 128);</td>
+</tr>
+<tr>
+<td><div class="swatch" style="background-color: rgb(149, 156, 167);"></div></td>
+<td><pre>–color-grayscale</pre></td>
+<td>rgb(149, 156, 167);</td>
+</tr>
+<tr>
+<td><div class="swatch" style="background-color: rgb(255, 255, 255);"></div></td>
+<td><pre>–color-white</pre></td>
+<td>rgb(255, 255, 255);</td>
+</tr>
+<tr>
+<td><div class="swatch" style="background-color: rgb(245, 245, 245);"></div></td>
+<td><pre>–color-grayscale-lighter</pre></td>
+<td>rgb(245, 245, 245);</td>
+</tr>
+<tr>
+<td><div class="swatch" style="background-color: rgb(210, 202, 173);"></div></td>
+<td><pre>–color-grayscale-warm-light</pre></td>
+<td>rgb(210, 202, 173);</td>
+</tr>
+<tr>
+<td><div class="swatch" style="background-color: rgb(255, 186, 10);"></div></td>
+<td><pre>–color-yellow</pre></td>
+<td>rgb(255, 186, 10);</td>
+</tr>
+<tr>
+<td><div class="swatch" style="background-color: rgb(44, 110, 175);"></div></td>
+<td><pre>–color-bleu-de-france</pre></td>
+<td>rgb(44, 110, 175);</td>
+</tr>
+<tr>
+<td><div class="swatch" style="background-color: rgb(158, 113, 61);"></div></td>
+<td><pre>–color-tan-dark</pre></td>
+<td>rgb(158, 113, 61);</td>
+</tr>
+<tr>
+<td><div class="swatch" style="background-color: rgb(35, 87, 139);"></div></td>
+<td><pre>–color-bleu-de-france-darker</pre></td>
+<td>rgb(35, 87, 139);</td>
+</tr>
+<tr>
+<td><div class="swatch" style="background-color: rgb(149, 189, 228);"></div></td>
+<td><pre>–color-bleu-de-france-lighter</pre></td>
+<td>rgb(149, 189, 228);</td>
+</tr>
+<tr>
+<td><div class="swatch" style="background-color: rgb(201, 40, 19);"></div></td>
+<td><pre>–color-red</pre></td>
+<td>rgb(201, 40, 19);</td>
+</tr>
+<tr>
+<td><div class="swatch" style="background-color: rgb(255, 227, 199);"></div></td>
+<td><pre>–color-princeton-salmon-light</pre></td>
+<td>rgb(255, 227, 199);</td>
+</tr>
+<tr>
+<td><div class="swatch" style="background-color: rgb(65, 70, 78);"></div></td>
+<td><pre>–color-grayscale-darker</pre></td>
+<td>rgb(65, 70, 78);</td>
+</tr>
+<tr>
+<td><div class="swatch" style="background-color: rgb(0, 17, 35);"></div></td>
+<td><pre>–color-rich-black</pre></td>
+<td>rgb(0, 17, 35);</td>
+</tr>
+<tr>
+<td><div class="swatch" style="background-color: rgb(186, 175, 130);"></div></td>
+<td><pre>–color-grayscale-warm</pre></td>
+<td>rgb(186, 175, 130);</td>
+</tr>
+<tr>
+<td><div class="swatch" style="background-color: rgb(151, 138, 83);"></div></td>
+<td><pre>–color-grayscale-warm-dark</pre></td>
+<td>rgb(151, 138, 83);</td>
+</tr>
+<tr>
+<td><div class="swatch" style="background-color: rgb(202, 163, 119);"></div></td>
+<td><pre>–color-tan-light</pre></td>
+<td>rgb(202, 163, 119);</td>
+</tr>
+<tr>
+<td><div class="swatch" style="background-color: rgb(250, 249, 245);"></div></td>
+<td><pre>–color-grayscale-warm-lighter</pre></td>
+<td>rgb(250, 249, 245);</td>
+</tr>
+<tr>
+<td><div class="swatch" style="background-color: rgb(121, 87, 47);"></div></td>
+<td><pre>–color-tan-darker</pre></td>
+<td>rgb(121, 87, 47);</td>
+</tr>
+<tr>
+<td><div class="swatch" style="background-color: rgb(255, 201, 148);"></div></td>
+<td><pre>–color-princeton-salmon</pre></td>
+<td>rgb(255, 201, 148);</td>
+</tr>
+<tr>
+<td><div class="swatch" style="background-color: rgb(245, 128, 37);"></div></td>
+<td><pre>–color-princeton-orange-on-black</pre></td>
+<td>rgb(245, 128, 37);</td>
+</tr>
+<tr>
+<td><div class="swatch" style="background-color: #e77500;"></div></td>
+<td><pre>–color-princeton-orange-50</pre></td>
+<td>#e77500;</td>
+</tr>
+<tr>
+<td><div class="swatch" style="background-color: #fcf1e5;"></div></td>
+<td><pre>–color-princeton-orange-10</pre></td>
+<td>#fcf1e5;</td>
+</tr>
+<tr>
+<td><div class="swatch" style="background-color: #121212;"></div></td>
+<td><pre>–color-gray-100</pre></td>
+<td>#121212;</td>
+</tr>
+<tr>
+<td><div class="swatch" style="background-color: rgb(33, 37, 41);"></div></td>
+<td><pre>–color-gray-90</pre></td>
+<td>rgb(33, 37, 41);</td>
+</tr>
+<tr>
+<td><div class="swatch" style="background-color: #717171;"></div></td>
+<td><pre>–color-gray-80</pre></td>
+<td>#717171;</td>
+</tr>
+<tr>
+<td><div class="swatch" style="background-color: rgb(238, 238, 238);"></div></td>
+<td><pre>–color-gray-20</pre></td>
+<td>rgb(238, 238, 238);</td>
+</tr>
+<tr>
+<td><div class="swatch" style="background-color: rgb(247, 247, 247);"></div></td>
+<td><pre>–color-gray-10</pre></td>
+<td>rgb(247, 247, 247);</td>
+</tr>
+<tr>
+<td><div class="swatch" style="background-color: rgb(223, 240, 216);"></div></td>
+<td><pre>–color-light-pistachio-green</pre></td>
+<td>rgb(223, 240, 216);</td>
+</tr>
+<tr>
+<td><div class="swatch" style="background-color: rgb(208, 233, 198);"></div></td>
+<td><pre>–color-pistachio-green</pre></td>
+<td>rgb(208, 233, 198);</td>
+</tr>
+<tr>
+<td><div class="swatch" style="background-color: rgb(60, 118, 61);"></div></td>
+<td><pre>–color-forest-green</pre></td>
+<td>rgb(60, 118, 61);</td>
+</tr>
+<tr>
+<td><div class="swatch" style="background-color: rgb(0, 80, 16);"></div></td>
+<td><pre>–color-dark-green</pre></td>
+<td>rgb(0, 80, 16);</td>
+</tr>
+<tr>
+<td><div class="swatch" style="background-color: rgb(242, 222, 222);"></div></td>
+<td><pre>–color-light-pink</pre></td>
+<td>rgb(242, 222, 222);</td>
+</tr>
+<tr>
+<td><div class="swatch" style="background-color: rgb(235, 204, 204);"></div></td>
+<td><pre>–color-dusty-pink</pre></td>
+<td>rgb(235, 204, 204);</td>
+</tr>
+<tr>
+<td><div class="swatch" style="background-color: rgb(169, 68, 66);"></div></td>
+<td><pre>–color-brick-red</pre></td>
+<td>rgb(169, 68, 66);</td>
+</tr>
+<tr>
+<td><div class="swatch" style="background-color: rgb(252, 248, 227);"></div></td>
+<td><pre>–color-light-sand-yellow</pre></td>
+<td>rgb(252, 248, 227);</td>
+</tr>
+<tr>
+<td><div class="swatch" style="background-color: rgb(250, 242, 204);"></div></td>
+<td><pre>–color-sand-yellow</pre></td>
+<td>rgb(250, 242, 204);</td>
+</tr>
+<tr>
+<td><div class="swatch" style="background-color: rgb(138, 109, 59);"></div></td>
+<td><pre>–color-golden-brown</pre></td>
+<td>rgb(138, 109, 59);</td>
+</tr>
+<tr>
+<td><div class="swatch" style="background-color: rgb(217, 237, 247);"></div></td>
+<td><pre>–color-light-blue</pre></td>
+<td>rgb(217, 237, 247);</td>
+</tr>
+<tr>
+<td><div class="swatch" style="background-color: rgb(188, 223, 241);"></div></td>
+<td><pre>–color-sky-blue</pre></td>
+<td>rgb(188, 223, 241);</td>
+</tr>
+<tr>
+<td><div class="swatch" style="background-color: rgb(49, 112, 143);"></div></td>
+<td><pre>–color-cerulean-blue</pre></td>
+<td>rgb(49, 112, 143);</td>
+</tr>
+<tr>
+<td><div class="swatch" style="background-color: rgb(0, 39, 80);"></div></td>
+<td><pre>–color-very-dark-blue</pre></td>
+<td>rgb(0, 39, 80);</td>
+</tr>
+<tr>
+<td><div class="swatch" style="background-color: rgb(251, 227, 187);"></div></td>
+<td><pre>–color-yellow</pre></td>
+<td>rgb(251, 227, 187);</td>
+</tr>
+<tr>
+<td><div class="swatch" style="background-color: rgb(124, 68, 5);"></div></td>
+<td><pre>–color-dark-yellow</pre></td>
+<td>rgb(124, 68, 5);</td>
+</tr>
+<tr>
+<td><div class="swatch" style="background-color: #DBCBE6;"></div></td>
+<td><pre>–color-light-purple</pre></td>
+<td>#DBCBE6;</td>
+</tr>
+<tr>
+<td><div class="swatch" style="background-color: #2d1f36;"></div></td>
+<td><pre>–color-dark-purple</pre></td>
+<td>#2d1f36;</td>
+</tr>
+</tbody>
+</table>
+</div><h2 id="font-sizes" class="docmd-heading"><a href="#font-sizes" class="heading-anchor" aria-label="Permalink to this section"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-link2-icon lucide-link-2"><path d="M9 17H7A5 5 0 0 1 7 7h2m6 0h2a5 5 0 1 1 0 10h-2m-7-5h8"/></svg></a>Font sizes</h2>
+<div class="table-wrapper"><table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Value</th>
+</tr>
+</thead>
+</table>
+</div><pre><code>|&lt;span style=&quot;font-size: 1.125em;&quot;&gt;--font-size-large-min&lt;/span&gt;|1.125em;|
+</code></pre>
+<p>|<span style="font-size: 1.125em;">–font-size-base-max</span>|1.125em;|<br>
+|<span style="font-size: 36px;">–font-size-x-large</span>|36px;|<br>
+|<span style="font-size: 64px;">–font-size-xxx-large</span>|64px;|<br>
+|<span style="font-size: 48px;">–font-size-xx-large</span>|48px;|<br>
+|<span style="font-size: 1.777em;">–font-size-x-large-max</span>|1.777em;|<br>
+|<span style="font-size: 3.157em;">–font-size-xxx-large-max</span>|3.157em;|<br>
+|<span style="font-size: 24px;">–font-size-large</span>|24px;|<br>
+|<span style="font-size: 2.369em;">–font-size-xx-large-max</span>|2.369em;|<br>
+|<span style="font-size: 1.333em;">–font-size-large-max</span>|1.333em;|<br>
+|<span style="font-size: 10px;">–font-size-xx-small</span>|10px;|<br>
+|<span style="font-size: 12px;">–font-size-x-small</span>|12px;|<br>
+|<span style="font-size: 1em;">–font-size-base-min</span>|1em;|<br>
+|<span style="font-size: 14px;">–font-size-small</span>|14px;|<br>
+|<span style="font-size: 1.266em;">–font-size-x-large-min</span>|1.266em;|<br>
+|<span style="font-size: 1.602em;">–font-size-xxx-large-min</span>|1.602em;|<br>
+|<span style="font-size: 1.424em;">–font-size-xx-large-min</span>|1.424em;|<br>
+|<span style="font-size: 16px;">–font-size-base</span>|16px;|</p>
+<h2 id="spacing" class="docmd-heading"><a href="#spacing" class="heading-anchor" aria-label="Permalink to this section"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-link2-icon lucide-link-2"><path d="M9 17H7A5 5 0 0 1 7 7h2m6 0h2a5 5 0 1 1 0 10h-2m-7-5h8"/></svg></a>Spacing</h2>
+<div class="spacing" style="height: 128px;;line-height: 128px;">--space-xx-large (128px;)</div>
+<div class="spacing" style="height: 100px;;line-height: 100px;">--space-x-larger (100px;)</div>
+<div class="spacing" style="height: 64px;;line-height: 64px;">--space-x-large (64px;)</div>
+<div class="spacing" style="height: 48px;;line-height: 48px;">--space-large (48px;)</div>
+<div class="spacing" style="height: 24px;;line-height: 24px;">--space-base (24px;)</div>
+<div class="spacing" style="height: 16px;;line-height: 16px;">--space-small (16px;)</div>
+<div class="spacing" style="height: 8px;;line-height: 8px;">--space-x-small (8px;)</div>
+<div class="spacing" style="height: 4px;;line-height: 4px;">--space-xx-small (4px;)</div>
+<h2 id="border-radius" class="docmd-heading"><a href="#border-radius" class="heading-anchor" aria-label="Permalink to this section"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-link2-icon lucide-link-2"><path d="M9 17H7A5 5 0 0 1 7 7h2m6 0h2a5 5 0 1 1 0 10h-2m-7-5h8"/></svg></a>Border Radius</h2>
+<div class="row"><div class="border-radius" style="border-radius: 3px;">--border-radius-default (3px;)</div>
+<div class="border-radius" style="border-radius: 50%;">--border-radius-circle (50%;)</div>
+<div class="border-radius" style="border-radius: 16px;">--border-radius-pill (16px;)</div>
+</div>
+                
+                  <div class="page-navigation">
+                    
+                      <a href="../design_principles/" class="prev-page">
+                        
+<svg class="lucide-icon icon-arrow-left page-nav-icon" width="1em" height="1em" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"
+  class="lucide lucide-arrow-left"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="m12 19-7-7 7-7" />
+  <path d="M19 12H5" />
+</svg>
+
+                        <span><small>Previous</small><strong>
+                            Design Principles
+                          </strong></span>
+                      </a>
+                    
+                    
+                      <a href="../lux_usage/" class="next-page">
+                        <span><small>Next</small>
+                          <strong>
+                            Lux Usage
+                          </strong></span>
+                        
+<svg class="lucide-icon icon-arrow-right page-nav-icon" width="1em" height="1em" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"
+  class="lucide lucide-arrow-right"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M5 12h14" />
+  <path d="m12 5 7 7-7 7" />
+</svg>
+
+                      </a>
+                    
+                  </div>
+                
+              </div>
+              
+              <div class="toc-sidebar">
+                
+
+
+  <div class="toc-container">
+    <h2 class="toc-title">On This Page<span class="mobile-view toc-menu-button float-right">
+<svg class="lucide-icon icon-chevron-down " width="1em" height="1em" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"
+  class="lucide lucide-chevron-down"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="m6 9 6 6 6-6" />
+</svg>
+</span></h2>
+    <ul class="toc-list">
+      
+        <li class="toc-item toc-level-2">
+          <a href="#colors" class="toc-link">Colors</a>
+        </li>
+      
+        <li class="toc-item toc-level-2">
+          <a href="#font-sizes" class="toc-link">Font sizes</a>
+        </li>
+      
+        <li class="toc-item toc-level-2">
+          <a href="#spacing" class="toc-link">Spacing</a>
+        </li>
+      
+        <li class="toc-item toc-level-2">
+          <a href="#border-radius" class="toc-link">Border Radius</a>
+        </li>
+      
+    </ul>
+  </div>
+
+              </div>
+              
+            </div>
+            <div class="page-footer-actions">
+              
+              
+                <span class="git-last-updated" data-timestamp="1786645971000">
+                  <svg class="git-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <polyline points="12 6 12 12 16 14"></polyline>
+                  </svg>
+                  <span class="git-label">Last updated:</span>
+                  <span class="git-time" data-timestamp="1786645971000"></span>
+                  
+                  <div class="git-commit-tooltip" role="tooltip">
+                    <div class="git-tooltip-title">Recent commits</div>
+                    <ul class="git-commit-list">
+                      
+                        <li class="git-commit-item">
+                          <div class="git-commit-avatar" title="Jane Sandberg">
+                            
+                              <img src="https://www.gravatar.com/avatar/4cf6cbd9ac5ccc3f3039e3d6cafd0690?d=mp&amp;s=64" alt="Jane Sandberg">
+                            
+                          </div>
+                          <div class="git-commit-details">
+                            <div class="git-commit-message" title="Automatic updates to design token documentation">Automatic updates to design token doc...</div>
+                            <div class="git-commit-meta">
+                              <span class="git-commit-author">Jane Sandberg</span>
+                              <span class="git-commit-date" data-timestamp="1786645971000"></span>
+                            </div>
+                          </div>
+                        </li>
+                      
+                        <li class="git-commit-item">
+                          <div class="git-commit-avatar" title="Jane Sandberg">
+                            
+                              <img src="https://www.gravatar.com/avatar/4cf6cbd9ac5ccc3f3039e3d6cafd0690?d=mp&amp;s=64" alt="Jane Sandberg">
+                            
+                          </div>
+                          <div class="git-commit-details">
+                            <div class="git-commit-message" title="[LuxBadge] Add purple option">[LuxBadge] Add purple option</div>
+                            <div class="git-commit-meta">
+                              <span class="git-commit-author">Jane Sandberg</span>
+                              <span class="git-commit-date" data-timestamp="1785963626000"></span>
+                            </div>
+                          </div>
+                        </li>
+                      
+                        <li class="git-commit-item">
+                          <div class="git-commit-avatar" title="Jane Sandberg">
+                            
+                              <img src="https://www.gravatar.com/avatar/4cf6cbd9ac5ccc3f3039e3d6cafd0690?d=mp&amp;s=64" alt="Jane Sandberg">
+                            
+                          </div>
+                          <div class="git-commit-details">
+                            <div class="git-commit-message" title="Upgrade to eslint 10 and prettier 3">Upgrade to eslint 10 and prettier 3</div>
+                            <div class="git-commit-meta">
+                              <span class="git-commit-author">Jane Sandberg</span>
+                              <span class="git-commit-date" data-timestamp="1778105402000"></span>
+                            </div>
+                          </div>
+                        </li>
+                      
+                        <li class="git-commit-item">
+                          <div class="git-commit-avatar" title="Christina Chortaria">
+                            
+                              <img src="https://www.gravatar.com/avatar/10775ba44fb255c4f5883ee16f40db54?d=mp&amp;s=64" alt="Christina Chortaria">
+                            
+                          </div>
+                          <div class="git-commit-details">
+                            <div class="git-commit-message" title="Remove duplicate css var --color-light-blue: rgb(203, 221, 230);">Remove duplicate css var --color-ligh...</div>
+                            <div class="git-commit-meta">
+                              <span class="git-commit-author">Christina Chortaria</span>
+                              <span class="git-commit-date" data-timestamp="1778072107000"></span>
+                            </div>
+                          </div>
+                        </li>
+                      
+                        <li class="git-commit-item">
+                          <div class="git-commit-avatar" title="Jane Sandberg">
+                            
+                              <img src="https://www.gravatar.com/avatar/4cf6cbd9ac5ccc3f3039e3d6cafd0690?d=mp&amp;s=64" alt="Jane Sandberg">
+                            
+                          </div>
+                          <div class="git-commit-details">
+                            <div class="git-commit-message" title="Check in automatic changes to the design tokens docs">Check in automatic changes to the des...</div>
+                            <div class="git-commit-meta">
+                              <span class="git-commit-author">Jane Sandberg</span>
+                              <span class="git-commit-date" data-timestamp="1762356134000"></span>
+                            </div>
+                          </div>
+                        </li>
+                      
+                    </ul>
+                  </div>
+                  
+                </span>
+              
+              <span class="git-spacer"></span>
+              
+            </div>
+          </main>
+          
+
+
+<footer class="page-footer">
+  <div class="footer-content">
+    <div class="user-footer">© 2026</div>
+    
+      <div class="branding-footer">
+        Built with <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path><path d="M12 5 9.04 7.96a2.17 2.17 0 0 0 0 3.08c.82.82 2.13.85 3 .07l2.07-1.9a2.82 2.82 0 0 1 3.79 0l2.96 2.66"></path><path d="m18 15-2-2"></path><path d="m15 18-2-2"></path></svg> <a href="https://docmd.io" target="_blank" rel="noopener">docmd.</a>
+      </div>
+    
+  </div>
+</footer>
+
+        </div>
+      </div>
+      
+      <script src="../assets/js/docmd-main.js?v=mu30x36a"></script>
+      
+      <script src="../assets/js/docmd-git.js?v=mu30x36a"></script>
+      <script src="../assets/js/docmd-image-lightbox.js?v=mu30x36a" ></script>
+<script src="../assets/js/vendor/minisearch.js?v=mu30x36a" ></script>
+<script src="../assets/js/docmd-search.js?v=mu30x36a" ></script>
+<script src="../assets/js/docmd-git.js?v=mu30x36a" ></script>
+<script src="../assets/js/docmd-ai.js?v=mu30x36a" ></script>
+
+  <!-- Search Modal (Injected by @docmd/plugin-search) -->
+  <div id="docmd-search-modal" class="docmd-search-modal" style="display: none;" data-show-confidence="false" data-show-filters="true"
+       data-search-placeholder="Search documentation..."
+       data-search-no-results="No results found."
+       data-search-error="Failed to load search index."
+       data-search-offline="Search requires a web server. Open this site via http://localhost instead of file:// to enable search."
+       data-search-offline-build="Search is disabled because these docs were built with the --offline flag. Rebuild the site without the flag to enable search."
+       data-search-initial="Type to start searching..."
+       data-search-navigate="to navigate"
+       data-search-escape="to close">
+      <div class="docmd-search-box">
+          <div class="docmd-search-header">
+              <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-icon icon-search"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"></path></svg>
+              <input type="text" id="docmd-search-input" placeholder="Search documentation..." autocomplete="off" spellcheck="false">
+              <button onclick="window.closeDocmdSearch()" class="docmd-search-close" aria-label="Close search">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-icon icon-x"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg>
+              </button>
+          </div>
+          <div id="docmd-search-results" class="docmd-search-results"></div>
+          <div class="docmd-search-footer">
+              <span><kbd class="docmd-kbd">↑</kbd> <kbd class="docmd-kbd">↓</kbd> to navigate</span>
+              <span><kbd class="docmd-kbd">ESC</kbd> to close</span>
+          </div>
+      </div>
+  </div>
+
+    <script>
+      (function() {
+        var searchDebounceTimer;
+
+        document.addEventListener('click', function(e) {
+          var link = e.target.closest('a');
+          if (!link || !window.gtag) return;
+          
+          var url = link.href;
+          var hostname = window.location.hostname;
+          var isExternal = link.hostname && link.hostname !== hostname;
+          var isDownload = link.hasAttribute('download') || url.match(/\.(pdf|zip|tar|gz|exe|pkg)$/i);
+          
+          if (isExternal) {
+            gtag('event', 'click_external', { 'url': url, 'link_text': link.innerText.trim() });
+          } else if (isDownload) {
+            gtag('event', 'download', { 'file_name': url.split('/').pop(), 'url': url });
+          }
+
+          // TOC tracking
+          if (link.classList.contains('toc-link')) {
+            gtag('event', 'toc_click', { 'target_id': link.getAttribute('href'), 'title': link.innerText.trim() });
+          }
+
+          // Permalink tracking
+          if (link.classList.contains('heading-anchor')) {
+            gtag('event', 'permalink_click', { 'url': url });
+          }
+        });
+
+        
+        // Search Keyword Tracking
+        document.addEventListener('input', function(e) {
+          if (e.target.id === 'docmd-search-input' && window.gtag) {
+            var query = e.target.value.trim();
+            if (query.length < 3) return;
+            
+            clearTimeout(searchDebounceTimer);
+            searchDebounceTimer = setTimeout(function() {
+              gtag('event', 'search', { 'search_term': query });
+            }, 1000);
+          }
+        });
+        
+      })();
+    </script>
+
+<script>window.__git_config={"repo":null,"branch":"main","editLink":false,"lastUpdated":true,"commitHistory":true,"maxCommits":5,"dateFormat":"relative"};window.__git_i18n={"lastUpdated":"Last updated","recentCommits":"Recent commits","viewCommitHistory":"View commit history","editOnGitHub":"Edit on GitHub","editOnGitLab":"Edit on GitLab","editOnBitbucket":"Edit on Bitbucket","editThisPage":"Edit this page","justNow":"just now","minutesAgo":"{n}m ago","hoursAgo":"{n}h ago","daysAgo":"{n}d ago"}</script>
+<div id="docmd-ai-root"></div><script>window.__docmd_ai_config={"endpoint":"","cloud":{},"captcha":true,"position":"bottom-center","siteTitle":"LUX Design System","siteBase":"/","siteUrl":"","versions":null,"i18n":null,"navigation":[{"title":"Home","collapsible":true,"children":[{"title":"Adding Lux","path":"/adding_lux/"},{"title":"Adding Icons","path":"/adding_icons/"},{"title":"Design Principles","path":"/design_principles/"},{"title":"Design Tokens","path":"/design_tokens/"},{"title":"Lux Usage","path":"/lux_usage/"}]},{"title":"Components","collapsible":true,"children":[{"title":"LuxAlert","path":"/src/components/LuxAlert/"},{"title":"LuxAutocompleteInput","path":"/src/components/LuxAutocompleteInput/"},{"title":"LuxBadge","path":"/src/components/LuxBadge/"}]}],"searchCapabilities":{"keyword":true,"semantic":false},"isWorkspace":false,"workspaceProjects":[],"contextLimit":5};</script>
+      
+      
+      
+  </body>
+</html>

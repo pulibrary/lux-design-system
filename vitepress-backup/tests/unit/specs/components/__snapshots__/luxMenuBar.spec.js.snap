@@ -1,0 +1,98 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`LuxMenuBar.vue > has the expected html structure 1`] = `
+<nav
+  class="lux-nav dark"
+  data-v-f328bb9a=""
+>
+  <ul
+    data-v-f328bb9a=""
+  >
+    
+    <li
+      data-v-f328bb9a=""
+    >
+      
+      <a
+        aria-haspopup="true"
+        class="lux-has-children lux-nav-item"
+        data-v-f328bb9a=""
+        href="/example/"
+      >
+        
+        Foo
+        
+      </a>
+      <ul
+        aria-label="submenu"
+        class="lux-nav-children"
+        data-v-f328bb9a=""
+      >
+        
+        <li
+          data-v-f328bb9a=""
+        >
+          <a
+            class="lux-nav-item"
+            data-v-f328bb9a=""
+            href="/example/"
+          >
+            Baz
+          </a>
+        </li>
+        
+      </ul>
+      
+    </li>
+    <li
+      data-v-f328bb9a=""
+    >
+      
+      <a
+        aria-haspopup="true"
+        class="lux-has-children lux-nav-item"
+        data-v-f328bb9a=""
+        href="/example/"
+      >
+        
+        Foo1
+        
+      </a>
+      <ul
+        aria-label="submenu"
+        class="lux-nav-children"
+        data-v-f328bb9a=""
+      >
+        
+        <li
+          data-v-f328bb9a=""
+        >
+          <a
+            class="lux-nav-item"
+            data-v-f328bb9a=""
+            href="/example/"
+          >
+            Baz1
+          </a>
+        </li>
+        
+      </ul>
+      
+    </li>
+    <li
+      data-v-f328bb9a=""
+    >
+      <a
+        class="lux-nav-item"
+        data-v-f328bb9a=""
+        href="/example/"
+      >
+        
+        Bar
+        
+      </a>
+    </li>
+    
+  </ul>
+</nav>
+`;

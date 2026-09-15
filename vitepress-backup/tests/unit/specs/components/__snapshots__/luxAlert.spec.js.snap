@@ -1,0 +1,23 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`LuxAlert.vue > has the expected html structure 1`] = `
+<transition-stub
+  appear="false"
+  css="true"
+  name="fade"
+  persisted="false"
+>
+  <div
+    class="lux-alert lux-alert-info"
+    role="alert"
+  >
+    <span>
+      <!-- @slot the alert text -->
+      
+      Here's some info for you.
+      
+    </span>
+    <!--v-if-->
+  </div>
+</transition-stub>
+`;

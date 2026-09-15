@@ -1,0 +1,46 @@
+[
+    {
+        "title": "Home",
+        "collapsible": true,
+        "children": [
+            {
+                "title": "Adding Lux",
+                "path": "/adding_lux"
+            },
+            {
+                "title": "Adding Icons",
+                "path": "/adding_icons"
+            },
+            {
+                "title": "Design Principles",
+                "path": "/design_principles"
+            },
+            {
+                "title": "Design Tokens",
+                "path": "/design_tokens"
+            },
+            {
+                "title": "Lux Usage",
+                "path": "/lux_usage"
+            }
+        ]
+    },
+    {
+        "title": "Components",
+        "collapsible": true,
+        "children": [
+            {
+                "title": "LuxAlert",
+                "path": "/src/components/LuxAlert"
+            },
+            {
+                "title": "LuxAutocompleteInput",
+                "path": "/src/components/LuxAutocompleteInput"
+            },
+            {
+                "title": "LuxBadge",
+                "path": "/src/components/LuxBadge"
+            }
+        ]
+    }
+]

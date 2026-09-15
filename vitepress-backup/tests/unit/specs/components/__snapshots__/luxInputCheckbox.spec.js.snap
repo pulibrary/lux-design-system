@@ -1,0 +1,50 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`LuxInputCheckbox.vue > has the expected html structure 1`] = `
+<div
+  class="lux-input"
+  data-v-44d49ccc=""
+>
+  <!--v-if-->
+  
+  <div
+    class="lux-checkbox lux-inline"
+    data-v-44d49ccc=""
+  >
+    <input
+      checked=""
+      data-v-44d49ccc=""
+      id="checkbox-opt1"
+      name=""
+      type="checkbox"
+      value="one"
+    />
+    <label
+      data-v-44d49ccc=""
+      for="checkbox-opt1"
+    >
+      one
+    </label>
+  </div>
+  <div
+    class="lux-checkbox lux-inline"
+    data-v-44d49ccc=""
+  >
+    <input
+      data-v-44d49ccc=""
+      id="checkbox-opt2"
+      name=""
+      type="checkbox"
+      value="two"
+    />
+    <label
+      data-v-44d49ccc=""
+      for="checkbox-opt2"
+    >
+      two
+    </label>
+  </div>
+  
+  <!--v-if-->
+</div>
+`;

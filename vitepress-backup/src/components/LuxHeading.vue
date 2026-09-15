@@ -1,0 +1,107 @@
+<template>
+  <component
+    :is="props.level"
+    class="lux-heading"
+    :class="[{ 'lux-hidden': props.hidden }, props.size]"
+  >
+    <!-- @slot The text of your heading. -->
+    <slot />
+  </component>
+</template>
+
+<script setup>
+import { defineOptions } from "vue"
+/**
+ * Headings are used as the titles of each major section of a page in the
+ * interface. For example, templates generally use headings as their title.
+ * Heading element provides an option to change the level of the heading.
+ */
+defineOptions({
+  name: "LuxHeading",
+  status: "ready",
+  release: "1.0.0",
+  type: "Element",
+})
+
+const props = defineProps({
+  /**
+   * The heading level used for the heading.
+   * `h1, h2, h3, h4, h5, h6`
+   */
+  level: {
+    type: String,
+    default: "h1",
+    validator: value => {
+      return value.match(/(h1|h2|h3|h4|h5|h6)/)
+    },
+  },
+  /**
+   * The size of the heading.
+   * `h1, h2, h3, h4, h5, h6`
+   */
+  size: {
+    type: String,
+    default: "h1",
+    validator: value => {
+      return value.match(/(h1|h2|h3|h4|h5|h6)/)
+    },
+  },
+  /**
+   * Whether the heading is visually hidden or not.
+   * `true, false`
+   */
+  hidden: {
+    type: Boolean,
+    default: false,
+  },
+})
+</script>
+
+<style lang="scss">
+@use "../assets/styles/mixins.scss" as *;
+@use "../assets/styles/spacing.scss" as *;
+
+.lux-heading {
+  @include reset;
+  @include stack-space(var(--space-base));
+  font-family: var(--font-family-heading);
+  line-height: var(--line-height-heading);
+  color: var(--color-rich-black);
+}
+
+.lux-hidden {
+  @include visually-hidden;
+}
+
+.h1 {
+  letter-spacing: var(--letter-spacing-x-small);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-xxx-large);
+}
+
+.h2 {
+  letter-spacing: var(--letter-spacing-small);
+  font-weight: var(--font-weight-bold);
+  font-size: 42px;
+}
+
+.h3 {
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-x-large);
+}
+
+.h4 {
+  font-weight: var(--font-weight-semi-bold);
+  font-size: var(--font-size-x-large);
+}
+
+.h5 {
+  font-weight: var(--font-weight-semi-bold);
+  font-size: var(--font-size-base);
+}
+
+.h6 {
+  font-size: var(--font-size-small);
+  font-weight: var(--font-weight-regular);
+}
+</style>

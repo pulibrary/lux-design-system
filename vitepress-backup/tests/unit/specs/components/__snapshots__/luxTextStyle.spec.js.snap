@@ -1,0 +1,12 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`LuxTextStyle.vue > has the expected html structure 1`] = `
+<p
+  class="lux-text-style default var(--color-rich-black)"
+>
+  <!-- @slot The text you'd like to style -->
+  
+  foo
+  
+</p>
+`;

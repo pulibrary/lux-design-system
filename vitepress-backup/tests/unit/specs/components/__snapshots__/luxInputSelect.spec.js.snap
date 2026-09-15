@@ -1,0 +1,30 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`LuxInputSelect.vue > has the expected html structure 1`] = `
+<div
+  class="lux-select"
+  data-v-ea76d866=""
+>
+  <!--v-if-->
+  <select
+    class="lux-select medium"
+    data-v-ea76d866=""
+    errormessage=""
+    id="foo"
+    name="foo"
+    value="two"
+  >
+    
+    <option
+      data-v-ea76d866=""
+      value="one"
+    />
+    <option
+      data-v-ea76d866=""
+      value="two"
+    />
+    
+  </select>
+  <!--v-if-->
+</div>
+`;

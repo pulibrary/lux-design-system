@@ -1,0 +1,927 @@
+<!--
+  ---------------------------------------------------------------
+  docmd : the zero-config documentation engine.
+  @website https://docmd.io
+  [docmd-source] - Please do not remove this header.
+  ---------------------------------------------------------------
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="generator" content="docmd v0.9.5">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <script>
+      var root = "../../../";
+      if (root && !root.endsWith('/')) root += '/';
+      if (root === '') root = './';
+      window.DOCMD_ROOT = root;
+
+      window.DOCMD_SITE_ROOT = "/";
+
+      window.DOCMD_APPEARANCE = "system";
+      window.DOCMD_VERSION_ROOT = "/";
+      window.DOCMD_BASE = "/";
+      window.DOCMD_LOCALE = "";
+      window.DOCMD_DEFAULT_LOCALE = "";
+    </script>
+    <script>/**
+ * --------------------------------------------------------------------
+ * docmd : the zero-config documentation engine.
+ *
+ * @package     @docmd/core (and ecosystem)
+ * @website     https://docmd.io
+ * @repository  https://github.com/docmd-io/docmd
+ * @license     MIT
+ * @copyright   Copyright (c) 2025-present docmd.io
+ *
+ * [docmd-source] - Please do not remove this header.
+ * --------------------------------------------------------------------
+ */
+
+(function () {
+  try {
+    // 1. Determine Theme
+    //
+    // Resolve from three sources, in priority order:
+    //   1. localStorage explicit user choice (light / dark)
+    //   2. window.DOCMD_APPEARANCE  (current canonical name, set by EJS templates)
+    //   3. window.DOCMD_DEFAULT_MODE (legacy alias kept for pre-0.8.7 outputs)
+    //   4. 'light' as the final fallback
+    //
+    // Note: localStorage is only honoured when it holds an explicit
+    // 'light' or 'dark' value. A stored 'system' value (from a prior
+    // session where the user picked "follow system") must NOT win over
+    // a freshly resolved config value — the resolved value will itself
+    // be 'system' in that case and the OS preference check below takes
+    // over, so this is a no-op for the in-session behaviour but keeps
+    // any future storage migration simple.
+    var localValue = localStorage.getItem('docmd-theme');
+    var configValue = window.DOCMD_APPEARANCE
+      || window.DOCMD_DEFAULT_MODE
+      || 'light';
+    var theme = (localValue === 'light' || localValue === 'dark')
+      ? localValue
+      : configValue;
+
+    if (theme === 'system') {
+      theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    }
+
+    // 2. Apply to Root
+    document.documentElement.setAttribute('data-theme', theme);
+
+    // 3. Highlight.js Toggle Strategy
+    var lightLink = document.getElementById('hljs-light');
+    var darkLink = document.getElementById('hljs-dark');
+
+    if (lightLink && darkLink) {
+      if (theme === 'dark') {
+        lightLink.disabled = true;
+        darkLink.disabled = false;
+      } else {
+        lightLink.disabled = false;
+        darkLink.disabled = true;
+      }
+    }
+
+    document.documentElement.style.visibility = "visible";
+  } catch (e) {
+    document.documentElement.style.visibility = "visible";
+    console.error('Theme init failed', e);
+  }
+})();</script>
+    <style>
+      html {
+        visibility: hidden;
+      }
+    </style>
+    <title>
+      LuxShowMore : LUX Design System
+    </title>
+    
+    
+
+    <link id="site-favicon" rel="icon" href="../../../assets/favicon.ico?v=mu30x36a">
+    <link rel="stylesheet" href="../../../assets/css/docmd-main.css?v=mu30x36a">
+    
+    <link rel="stylesheet" href="../../../assets/css/docmd-highlight-light.css?v=mu30x36a" id="hljs-light" >
+    <link rel="stylesheet" href="../../../assets/css/docmd-highlight-dark.css?v=mu30x36a" id="hljs-dark" disabled>
+    
+    
+<meta name="description" content="">
+<meta property="og:title" content="LuxShowMore - LUX Design System">
+<meta property="og:description" content="">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="LuxShowMore - LUX Design System">
+<meta name="twitter:description" content="">
+
+
+
+
+<link rel="stylesheet" href="../../../assets/css/docmd-git.css?v=mu30x36a" >
+<link rel="stylesheet" href="../../../assets/css/docmd-openapi.css?v=mu30x36a" >
+<link rel="stylesheet" href="../../../assets/css/docmd-ai.css?v=mu30x36a" >
+
+    
+    
+  </head>
+  <body
+    class="sidebar-collapsible"
+    data-default-collapsed="false"
+    data-copy-code-enabled="true" data-spa-enabled="true" data-source-file="docs/src/components/LuxShowMore.md">
+
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    
+    
+
+    
+    
+      <aside class="sidebar">
+        <div class="sidebar-header">
+          
+<h1><a href="../../../">
+                LUX Design System
+              </a></h1>
+          
+          <span class="mobile-view sidebar-menu-button float-right">
+            
+<svg class="lucide-icon icon-menu " width="1em" height="1em" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"
+  class="lucide lucide-menu"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M4 5h16" />
+  <path d="M4 12h16" />
+  <path d="M4 19h16" />
+</svg>
+
+          </span>
+        </div>
+        <div class="sidebar-top-group">
+          
+          
+          
+          
+        </div>
+        
+
+<nav class="sidebar-nav" aria-label="Main Navigation">
+  <ul>
+    
+      <li class="collapsible nav-group"  aria-expanded="false" >
+      
+        <span class="nav-label nav-group">
+          
+          <span class="nav-item-title">
+            Home
+          </span>
+          
+            <span class="collapse-icon-wrapper">
+<svg class="lucide-icon icon-chevron-right collapse-icon" width="1em" height="1em" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"
+  class="lucide lucide-chevron-right"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="m9 18 6-6-6-6" />
+</svg>
+</span>
+          
+        </span>
+        
+
+        
+          <ul class="submenu">
+            
+      <li class="" >
+      
+        <a href="../../../adding_lux/" class=" "
+          >
+          
+          <span class="nav-item-title">
+            Adding Lux
+            </span>
+          
+          
+        </a>
+        
+
+        
+      </li>
+    
+      <li class="" >
+      
+        <a href="../../../adding_icons/" class=" "
+          >
+          
+          <span class="nav-item-title">
+            Adding Icons
+            </span>
+          
+          
+        </a>
+        
+
+        
+      </li>
+    
+      <li class="" >
+      
+        <a href="../../../design_principles/" class=" "
+          >
+          
+          <span class="nav-item-title">
+            Design Principles
+            </span>
+          
+          
+        </a>
+        
+
+        
+      </li>
+    
+      <li class="" >
+      
+        <a href="../../../design_tokens/" class=" "
+          >
+          
+          <span class="nav-item-title">
+            Design Tokens
+            </span>
+          
+          
+        </a>
+        
+
+        
+      </li>
+    
+      <li class="" >
+      
+        <a href="../../../lux_usage/" class=" "
+          >
+          
+          <span class="nav-item-title">
+            Lux Usage
+            </span>
+          
+          
+        </a>
+        
+
+        
+      </li>
+    
+          </ul>
+        
+      </li>
+    
+      <li class="collapsible nav-group"  aria-expanded="false" >
+      
+        <span class="nav-label nav-group">
+          
+          <span class="nav-item-title">
+            Components
+          </span>
+          
+            <span class="collapse-icon-wrapper">
+<svg class="lucide-icon icon-chevron-right collapse-icon" width="1em" height="1em" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"
+  class="lucide lucide-chevron-right"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="m9 18 6-6-6-6" />
+</svg>
+</span>
+          
+        </span>
+        
+
+        
+          <ul class="submenu">
+            
+      <li class="" >
+      
+        <a href="../../../src/components/LuxAlert/" class=" "
+          >
+          
+          <span class="nav-item-title">
+            LuxAlert
+            </span>
+          
+          
+        </a>
+        
+
+        
+      </li>
+    
+      <li class="" >
+      
+        <a href="../../../src/components/LuxAutocompleteInput/" class=" "
+          >
+          
+          <span class="nav-item-title">
+            LuxAutocompleteInput
+            </span>
+          
+          
+        </a>
+        
+
+        
+      </li>
+    
+      <li class="" >
+      
+        <a href="../../../src/components/LuxBadge/" class=" "
+          >
+          
+          <span class="nav-item-title">
+            LuxBadge
+            </span>
+          
+          
+        </a>
+        
+
+        
+      </li>
+    
+          </ul>
+        
+      </li>
+    
+  </ul>
+</nav>
+        <div class="sidebar-bottom-group mt-auto">
+          
+          
+          
+          
+        </div>
+      </aside>
+      
+      <div class="main-content-wrapper">
+        
+        
+        
+          <header class="page-header">
+            <div class="header-left">
+              
+                <button id="sidebar-toggle-button" class="sidebar-toggle-button"
+                  aria-label="Toggle Sidebar">
+                  
+<svg class="lucide-icon icon-chevron-left " width="1em" height="1em" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"
+  class="lucide lucide-chevron-left"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="m15 18-6-6 6-6" />
+</svg>
+
+                </button>
+              
+              <div class="header-titles-wrapper">
+                <span class="header-title">
+                  LuxShowMore
+                </span>
+              </div>
+            </div>
+            <div class="header-right">
+              
+                
+
+
+<div class="docmd-options-menu">
+    
+    <button class="docmd-search-trigger" aria-label="Search">
+        
+<svg class="lucide-icon icon-search " width="1em" height="1em" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"
+  class="lucide lucide-search"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="m21 21-4.34-4.34" />
+  <circle cx="11" cy="11" r="8" />
+</svg>
+
+        <span class="search-label">Search</span>
+        <span class="search-keys"><kbd class="docmd-kbd">⌘</kbd><kbd class="docmd-kbd">K</kbd></span>
+    </button>
+    
+
+    
+
+    
+
+    
+    <button class="theme-toggle-button" aria-label="Toggle theme">
+        
+<svg class="lucide-icon icon-sun icon-sun" width="1em" height="1em" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"
+  class="lucide lucide-sun"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <circle cx="12" cy="12" r="4" />
+  <path d="M12 2v2" />
+  <path d="M12 20v2" />
+  <path d="m4.93 4.93 1.41 1.41" />
+  <path d="m17.66 17.66 1.41 1.41" />
+  <path d="M2 12h2" />
+  <path d="M20 12h2" />
+  <path d="m6.34 17.66-1.41 1.41" />
+  <path d="m19.07 4.93-1.41 1.41" />
+</svg>
+ 
+<svg class="lucide-icon icon-moon icon-moon" width="1em" height="1em" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"
+  class="lucide lucide-moon"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401" />
+</svg>
+
+    </button>
+    
+
+    
+</div>
+
+              
+            </div>
+          </header>
+        
+        <div class="content-theme-cover">
+          <main class="content-area" id="main-content">
+            <div class="content-layout">
+              <div class="main-content">
+                <div class="docmd-breadcrumbs-row">
+                  <div id="docmd-raw-markdown" data-content="%23%20LuxShowMore%0A%0A%3E%20LuxShowMore%20is%20used%20for%20long%20texts%20that%20are%20useful%20for%20some%20users%2C%20but%0A%3E%20disruptive%20for%20others.%20For%20example%2C%20some%20users%20find%20it%20helpful%20to%20have%0A%3E%20lengthy%20journal%20article%20abstracts%20available%20on%20a%20search%20results%20page%2C%0A%3E%20while%20for%20others%20the%20abstracts%20are%20unhelpful%20and%20cause%20substantial%0A%3E%20unnecessary%20scrolling.%0A%0A%23%23%20Props%0A%0A%7C%20Prop%20name%20%20%20%20%20%20%7C%20Description%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%7C%20Type%20%20%20%7C%20Values%20%7C%20Default%20%7C%0A%7C%20--------------%20%7C%20-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------%20%7C%20------%20%7C%20------%20%7C%20-------%20%7C%0A%7C%20showLabel%20%20%20%20%20%20%7C%20A%20description%20of%20the%20action%20of%20showing%20the%20full%20content.%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%7C%20string%20%7C%20-%20%20%20%20%20%20%7C%20%20%20%20%20%20%20%20%20%7C%0A%7C%20hideLabel%20%20%20%20%20%20%7C%20A%20description%20of%20the%20action%20of%20hiding%20the%20full%20content.%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%7C%20string%20%7C%20-%20%20%20%20%20%20%7C%20%20%20%20%20%20%20%20%20%7C%0A%7C%20contentId%20%20%20%20%20%20%7C%20Used%20for%20setting%20focus%20and%20aria-controls.%20It%20must%20be%20unique%20in%20your%20page.%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%7C%20string%20%7C%20-%20%20%20%20%20%20%7C%20%20%20%20%20%20%20%20%20%7C%0A%7C%20descriptionId%20%20%7C%20The%20ID%20of%20an%20element%20in%20the%20DOM%20that%20provides%20further%20description%20of%20the%20full%20content.%3Cbr%2F%3E%3Cbr%2F%3EUse%20this%20prop%20if%20you%20have%20multiple%20disclosures%20in%20your%20page%20with%20the%20same%20%60showLabel%60%20or%20%60hideLabel%60.%20%7C%20string%20%7C%20-%20%20%20%20%20%20%7C%20%20%20%20%20%20%20%20%20%7C%0A%7C%20characterLimit%20%7C%20How%20many%20characters%20to%20allow%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%7C%20number%20%7C%20-%20%20%20%20%20%20%7C%20%20%20%20%20%20%20%20%20%7C%0A%0A%23%23%20Slots%0A%0A%7C%20Name%20%20%20%20%7C%20Description%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%7C%20Bindings%20%7C%0A%7C%20-------%20%7C%20---------------------------------------------------------------------------------%20%7C%20--------%20%7C%0A%7C%20default%20%7C%20The%20full%20content%20that%20should%20be%20shown%20when%20the%20user%20presses%20the%20Show%20More%20button.%20%7C%20%20%20%20%20%20%20%20%20%20%7C%0A%0A---%0A%0A%60%60%60jsx%0A%20%20%20%20%3Clux-heading%20level%3D%22h3%22%20size%3D%22h4%22%3EExample%201%3C%2Flux-heading%3E%0A%20%20%20%20%3C!--%20It%20shows%20a%20snippet%20of%20the%20provided%20text%20when%20collapsed%20--%3E%0A%20%20%20%20%3Clux-show-more%20showLabel%3D%22More%20text%22%20hideLabel%3D%22Less%20text%22%20contentId%3D%22moby%22%20character-limit%3D%2220%22%3E%0A%20%20%20%20%20%20Call%20me%20Ishmael.%20Some%20years%20ago-%20never%20mind%20how%20long%20precisely-%20having%20little%20or%20no%20money%20in%20my%20purse%2C%0A%20%20%20%20%20%20and%20nothing%20particular%20to%20interest%20me%20on%20shore%2C%20I%20thought%20I%20would%20sail%20about%20a%20little%20and%20see%20the%20watery%0A%20%20%20%20%20%20part%20of%20the%20world.%20It%20is%20a%20way%20I%20have%20of%20driving%20off%20the%20spleen%20and%20regulating%20the%20circulation.%0A%20%20%20%20%3C%2Flux-show-more%3E%0A%0A%0A%20%20%20%20%3Clux-heading%20level%3D%22h3%22%20size%3D%22h4%22%3EExample%202%3C%2Flux-heading%3E%0A%20%20%20%20%3C!--%20The%20content%20can%20contain%20HTML%2C%20but%20it%20will%20be%20stripped%20out%20of%20the%20snippet%20view%20--%3E%0A%20%20%20%20%3Clux-show-more%20showLabel%3D%22Show%20full%20proem%22%20hideLabel%3D%22Hide%20full%20proem%22%20contentId%3D%22illiad%22%20character-limit%3D%2280%22%3E%0A%20%20%20%20%20%20%CE%BC%E1%BF%86%CE%BD%CE%B9%CE%BD%20%E1%BC%84%CE%B5%CE%B9%CE%B4%CE%B5%20%CE%B8%CE%B5%E1%BD%B0%20%CE%A0%CE%B7%CE%BB%CE%B7%CF%8A%CE%AC%CE%B4%CE%B5%CF%89%20%E1%BC%88%CF%87%CE%B9%CE%BB%E1%BF%86%CE%BF%CF%82%3Cbr%20%2F%3E%0A%20%20%20%20%20%20%CE%BF%E1%BD%90%CE%BB%CE%BF%CE%BC%CE%AD%CE%BD%CE%B7%CE%BD%2C%20%E1%BC%A3%20%CE%BC%CF%85%CF%81%CE%AF%E2%80%99%20%E1%BC%88%CF%87%CE%B1%CE%B9%CE%BF%E1%BF%96%CF%82%20%E1%BC%84%CE%BB%CE%B3%CE%B5%E2%80%99%20%E1%BC%94%CE%B8%CE%B7%CE%BA%CE%B5%2C%3Cbr%20%2F%3E%0A%20%20%20%20%20%20%CF%80%CE%BF%CE%BB%CE%BB%E1%BD%B0%CF%82%20%CE%B4%E2%80%99%20%E1%BC%B0%CF%86%CE%B8%CE%AF%CE%BC%CE%BF%CF%85%CF%82%20%CF%88%CF%85%CF%87%E1%BD%B0%CF%82%20%E1%BC%8C%CF%8A%CE%B4%CE%B9%20%CF%80%CF%81%CE%BF%CE%90%CE%B1%CF%88%CE%B5%CE%BD%3Cbr%20%2F%3E%0A%20%20%20%20%20%20%E1%BC%A1%CF%81%CF%8E%CF%89%CE%BD%2C%20%CE%B1%E1%BD%90%CF%84%CE%BF%E1%BD%BA%CF%82%20%CE%B4%E1%BD%B2%20%E1%BC%91%CE%BB%CF%8E%CF%81%CE%B9%CE%B1%20%CF%84%CE%B5%E1%BF%A6%CF%87%CE%B5%20%CE%BA%CF%8D%CE%BD%CE%B5%CF%83%CF%83%CE%B9%CE%BD%3Cbr%20%2F%3E%0A%20%20%20%20%20%20%CE%BF%E1%BC%B0%CF%89%CE%BD%CE%BF%E1%BF%96%CF%83%CE%AF%20%CF%84%CE%B5%20%CE%B4%CE%B1%E1%BF%96%CF%84%CE%B1%2C%20%CE%94%CE%B9%E1%BD%B8%CF%82%20%CE%B4%E2%80%99%20%E1%BC%90%CF%84%CE%B5%CE%BB%CE%B5%CE%AF%CE%B5%CF%84%CE%BF%20%CE%B2%CE%BF%CF%85%CE%BB%CE%AE%2C%3Cbr%20%2F%3E%0A%20%20%20%20%20%20%E1%BC%90%CE%BE%20%CE%BF%E1%BD%97%20%CE%B4%E1%BD%B4%20%CF%84%E1%BD%B0%20%CF%80%CF%81%E1%BF%B6%CF%84%CE%B1%20%CE%B4%CE%B9%CE%B1%CF%83%CF%84%CE%AE%CF%84%CE%B7%CE%BD%20%E1%BC%90%CF%81%CE%AF%CF%83%CE%B1%CE%BD%CF%84%CE%B5%3Cbr%20%2F%3E%0A%20%20%20%20%20%20%E1%BC%88%CF%84%CF%81%CE%B5%CE%90%CE%B4%CE%B7%CF%82%20%CF%84%CE%B5%20%E1%BC%84%CE%BD%CE%B1%CE%BE%20%E1%BC%80%CE%BD%CE%B4%CF%81%E1%BF%B6%CE%BD%20%CE%BA%CE%B1%E1%BD%B6%20%CE%B4%E1%BF%96%CE%BF%CF%82%20%E1%BC%88%CF%87%CE%B9%CE%BB%CE%BB%CE%B5%CF%8D%CF%82.%3Cbr%20%2F%3E%0A%20%20%20%20%3C%2Flux-show-more%3E%0A%0A%20%20%20%20%3Clux-heading%20level%3D%22h3%22%20size%3D%22h4%22%3EExample%203%3C%2Flux-heading%3E%0A%20%20%20%20%3C!--%20The%20content%20can%20even%20contain%20components%20--%3E%0A%20%20%20%20%3Clux-show-more%20showLabel%3D%22Show%20full%20table%22%20hideLabel%3D%22Hide%20full%20table%22%20contentId%3D%22table%22%20character-limit%3D%2220%22%3E%0A%20%20%20%20%20%20There%20are%20three%20entries%3A%0A%20%20%20%20%20%20%3Clux-data-table%0A%20%20%20%20%20%20%20%20%3Acolumns%3D%22%5B%0A%20%20%20%20%20%20%20%20%20%20&#039;name&#039;%2C%0A%20%20%20%20%20%20%20%20%20%20%7B%20&#039;name&#039;%3A%20&#039;email&#039;%2C%20&#039;display_name&#039;%3A%20&#039;Email%20Address&#039;%2C%20&#039;align&#039;%3A%20&#039;center&#039;%2C%20&#039;sortable&#039;%3A%20true%20%7D%2C%0A%20%20%20%20%20%20%20%20%5D%22%0A%20%20%20%20%20%20%20%20%3Ajson-data%3D%22%5B%0A%20%20%20%20%20%20%20%20%20%20%7B&#039;id&#039;%3A%201%2C&#039;name&#039;%3A%20%7B%20value%3A%20&#039;foo&#039;%2C%20link%3A%20&#039;https%3A%2F%2Flibrary.princeton.edu&#039;%7D%2C&#039;email&#039;%3A%20&#039;foo%40xxx.xxx&#039;%2C%7D%2C%0A%20%20%20%20%20%20%20%20%20%20%7B&#039;id&#039;%3A%202%2C&#039;name&#039;%3A%20&#039;bar&#039;%2C&#039;email&#039;%3A%20&#039;bar%40xxx.xxx&#039;%20%7D%2C%0A%20%20%20%20%20%20%20%20%20%20%7B&#039;id&#039;%3A%203%2C&#039;name&#039;%3A%20&#039;fez&#039;%2C&#039;email&#039;%3A%20&#039;fez%40xxx.xxx&#039;%20%7D%2C%0A%20%20%20%20%20%20%20%20%5D%22%2F%3E%0A%20%20%20%20%3C%2Flux-show-more%3E%0A%60%60%60%0A%0A%23%23%23%20How%20to%20use%20LuxShowMore%0A%0A-%20Supply%20a%20%60contentId%60%20prop%2C%20which%20is%20used%20for%20setting%20focus%20and%20aria-controls.%20It%20must%20be%20unique%20in%20your%20page.%0A-%20Supply%20clear%20text%20for%20the%20%60showLabel%60%20and%20%60hideLabel%60%20props%20that%20orients%20the%20user%20to%20what%20the%20content%0A%20%20is.%20The%20%60hideLabel%60%20text%20should%20provide%20a%20concise%20re-orientation%20to%20what%20the%20content%20is%20and%20how%20to%20dismiss%20it%20in%20the%0A%20%20event%20that%20a%20user%20gets%20disoriented%20or%20distracted%20by%20the%20full%20content.%0A-%20If%20you%20use%20this%20component%20multiple%20times%20on%20the%20same%20page%2C%20make%20it%20clear%20to%20the%20user%20what%20each%20instance%20does%2C%20and%0A%20%20how%20it%20might%20differ%20from%20other%20instances%20of%20the%20component.%20For%20example%2C%20please%20don&#039;t%20use%20this%20component%2010%20times%20in%20a%20page%0A%20%20and%20use%20%22Show%20more%22%20as%20the%20label%20for%20each%20one.%20You%20can%20do%20this%20in%20one%20of%20two%20ways%3A%0A%20%20_%20Use%20distinct%20%60showLabel%60%20and%20%60hideLabel%60%20props%20for%20each%20instance%0A%20%20_%20Provide%20a%20%60descriptionId%60%20prop.%0A%0A%23%23%23%20Accessibility%20considerations%0A%0A-%20Once%20the%20disclosure%20is%20opened%2C%20this%20component%20waits%20for%20a%20short%20amount%20of%20time%20for%20a%20screen%20reader&#039;s%20virtual%20buffer%20to%20update%2C%20then%20sets%20focus%20on%20the%20expanded%20content.%0A-%20This%20component%20implements%20the%20%60aria-controls%60%20and%20%60aria-expanded%60%20properties.%0A-%20If%20you%20use%20this%20component%20multiple%20times%20in%20the%20same%20page%2C%20try%20navigating%20your%20page%20via%20buttons%20on%20a%20screen%20reader%20(%3Ckbd%3EControl%2BOption%2BCommand%2BJ%3C%2Fkbd%3E%20on%20Voice%20Over).%0A%20%20Make%20sure%20that%20each%20instance%20has%20a%20specific%20and%20unique%20label.%0A" style="display: none;"></div>
+                  
+                    <div class="docmd-breadcrumbs-spacer"></div>
+                  
+
+                  
+                    <div class="docmd-copy-widgets">
+                      
+                        <button class="docmd-copy-btn docmd-copy-raw-btn" data-copied="Copied!" title="Copy Markdown" aria-label="Copy Markdown">
+                          <span class="docmd-btn-icon">
+<svg class="lucide-icon icon-copy " width="1em" height="1em" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"
+  class="lucide lucide-copy"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <rect width="14" height="14" x="8" y="8" rx="2" ry="2" />
+  <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2" />
+</svg>
+</span>
+                        </button>
+                      
+                      
+                        <button class="docmd-copy-btn docmd-copy-context-btn" data-copied="Copied!" title="Copy Context">
+                          <span class="docmd-btn-icon">
+<svg class="lucide-icon icon-message-square " width="1em" height="1em" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"
+  class="lucide lucide-message-square"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M22 17a2 2 0 0 1-2 2H6.828a2 2 0 0 0-1.414.586l-2.202 2.202A.71.71 0 0 1 2 21.286V5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2z" />
+</svg>
+</span>
+                          <span class="docmd-btn-text">Copy Context</span>
+                        </button>
+                      
+                    </div>
+                  
+                </div>
+                
+                <h1 id="luxshowmore" class="docmd-heading"><a href="#luxshowmore" class="heading-anchor" aria-label="Permalink to this section"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-link2-icon lucide-link-2"><path d="M9 17H7A5 5 0 0 1 7 7h2m6 0h2a5 5 0 1 1 0 10h-2m-7-5h8"/></svg></a>LuxShowMore</h1>
+<blockquote>
+<p>LuxShowMore is used for long texts that are useful for some users, but<br>
+disruptive for others. For example, some users find it helpful to have<br>
+lengthy journal article abstracts available on a search results page,<br>
+while for others the abstracts are unhelpful and cause substantial<br>
+unnecessary scrolling.</p>
+</blockquote>
+<h2 id="luxshowmore-props" class="docmd-heading"><a href="#luxshowmore-props" class="heading-anchor" aria-label="Permalink to this section"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-link2-icon lucide-link-2"><path d="M9 17H7A5 5 0 0 1 7 7h2m6 0h2a5 5 0 1 1 0 10h-2m-7-5h8"/></svg></a>Props</h2>
+<div class="table-wrapper"><table>
+<thead>
+<tr>
+<th>Prop name</th>
+<th>Description</th>
+<th>Type</th>
+<th>Values</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>showLabel</td>
+<td>A description of the action of showing the full content.</td>
+<td>string</td>
+<td>-</td>
+<td></td>
+</tr>
+<tr>
+<td>hideLabel</td>
+<td>A description of the action of hiding the full content.</td>
+<td>string</td>
+<td>-</td>
+<td></td>
+</tr>
+<tr>
+<td>contentId</td>
+<td>Used for setting focus and aria-controls. It must be unique in your page.</td>
+<td>string</td>
+<td>-</td>
+<td></td>
+</tr>
+<tr>
+<td>descriptionId</td>
+<td>The ID of an element in the DOM that provides further description of the full content.<br/><br/>Use this prop if you have multiple disclosures in your page with the same <code>showLabel</code> or <code>hideLabel</code>.</td>
+<td>string</td>
+<td>-</td>
+<td></td>
+</tr>
+<tr>
+<td>characterLimit</td>
+<td>How many characters to allow</td>
+<td>number</td>
+<td>-</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div><h2 id="luxshowmore-slots" class="docmd-heading"><a href="#luxshowmore-slots" class="heading-anchor" aria-label="Permalink to this section"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-link2-icon lucide-link-2"><path d="M9 17H7A5 5 0 0 1 7 7h2m6 0h2a5 5 0 1 1 0 10h-2m-7-5h8"/></svg></a>Slots</h2>
+<div class="table-wrapper"><table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Bindings</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>default</td>
+<td>The full content that should be shown when the user presses the Show More button.</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div><hr>
+<pre class="hljs"><code class="language-jsx">    <span class="hljs-operator">&lt;</span>lux<span class="hljs-operator">-</span>heading level<span class="hljs-operator">=</span><span class="hljs-string">&quot;h3&quot;</span> size<span class="hljs-operator">=</span><span class="hljs-string">&quot;h4&quot;</span><span class="hljs-operator">&gt;</span>Example <span class="hljs-number">1</span><span class="hljs-operator">&lt;/</span>lux<span class="hljs-operator">-</span>heading<span class="hljs-operator">&gt;</span>
+    <span class="hljs-comment">&lt;!-- It shows a snippet of the provided text when collapsed --&gt;</span>
+    <span class="hljs-operator">&lt;</span>lux<span class="hljs-operator">-</span>show<span class="hljs-operator">-</span>more showLabel<span class="hljs-operator">=</span><span class="hljs-string">&quot;More text&quot;</span> hideLabel<span class="hljs-operator">=</span><span class="hljs-string">&quot;Less text&quot;</span> contentId<span class="hljs-operator">=</span><span class="hljs-string">&quot;moby&quot;</span> character<span class="hljs-operator">-</span>limit<span class="hljs-operator">=</span><span class="hljs-string">&quot;20&quot;</span><span class="hljs-operator">&gt;</span>
+      Call me Ishmael. Some years ago<span class="hljs-operator">-</span> never mind how long precisely<span class="hljs-operator">-</span> having little or no money <span class="hljs-keyword">in</span> my purse,
+      and nothing particular to interest me on shore, I thought I would sail about a little and see the watery
+      part <span class="hljs-keyword">of</span> the world. It is a way I have <span class="hljs-keyword">of</span> driving off the spleen and regulating the circulation.
+    <span class="hljs-operator">&lt;/</span>lux<span class="hljs-operator">-</span>show<span class="hljs-operator">-</span>more<span class="hljs-operator">&gt;</span>
+
+
+    <span class="hljs-operator">&lt;</span>lux<span class="hljs-operator">-</span>heading level<span class="hljs-operator">=</span><span class="hljs-string">&quot;h3&quot;</span> size<span class="hljs-operator">=</span><span class="hljs-string">&quot;h4&quot;</span><span class="hljs-operator">&gt;</span>Example <span class="hljs-number">2</span><span class="hljs-operator">&lt;/</span>lux<span class="hljs-operator">-</span>heading<span class="hljs-operator">&gt;</span>
+    <span class="hljs-comment">&lt;!-- The content can contain HTML, but it will be stripped out of the snippet view --&gt;</span>
+    <span class="hljs-operator">&lt;</span>lux<span class="hljs-operator">-</span>show<span class="hljs-operator">-</span>more showLabel<span class="hljs-operator">=</span><span class="hljs-string">&quot;Show full proem&quot;</span> hideLabel<span class="hljs-operator">=</span><span class="hljs-string">&quot;Hide full proem&quot;</span> contentId<span class="hljs-operator">=</span><span class="hljs-string">&quot;illiad&quot;</span> character<span class="hljs-operator">-</span>limit<span class="hljs-operator">=</span><span class="hljs-string">&quot;80&quot;</span><span class="hljs-operator">&gt;</span>
+      μῆνιν ἄειδε θεὰ Πηληϊάδεω Ἀχιλῆος<span class="hljs-operator">&lt;</span>br <span class="hljs-operator">/&gt;</span>
+      οὐλομένην, ἣ μυρί’ Ἀχαιοῖς ἄλγε’ ἔθηκε,<span class="hljs-operator">&lt;</span>br <span class="hljs-operator">/&gt;</span>
+      πολλὰς δ’ ἰφθίμους ψυχὰς Ἄϊδι προΐαψεν<span class="hljs-operator">&lt;</span>br <span class="hljs-operator">/&gt;</span>
+      ἡρώων, αὐτοὺς δὲ ἑλώρια τεῦχε κύνεσσιν<span class="hljs-operator">&lt;</span>br <span class="hljs-operator">/&gt;</span>
+      οἰωνοῖσί τε δαῖτα, Διὸς δ’ ἐτελείετο βουλή,<span class="hljs-operator">&lt;</span>br <span class="hljs-operator">/&gt;</span>
+      ἐξ οὗ δὴ τὰ πρῶτα διαστήτην ἐρίσαντε<span class="hljs-operator">&lt;</span>br <span class="hljs-operator">/&gt;</span>
+      Ἀτρεΐδης τε ἄναξ ἀνδρῶν καὶ δῖος Ἀχιλλεύς.<span class="hljs-operator">&lt;</span>br <span class="hljs-operator">/&gt;</span>
+    <span class="hljs-operator">&lt;/</span>lux<span class="hljs-operator">-</span>show<span class="hljs-operator">-</span>more<span class="hljs-operator">&gt;</span>
+
+    <span class="hljs-operator">&lt;</span>lux<span class="hljs-operator">-</span>heading level<span class="hljs-operator">=</span><span class="hljs-string">&quot;h3&quot;</span> size<span class="hljs-operator">=</span><span class="hljs-string">&quot;h4&quot;</span><span class="hljs-operator">&gt;</span>Example <span class="hljs-number">3</span><span class="hljs-operator">&lt;/</span>lux<span class="hljs-operator">-</span>heading<span class="hljs-operator">&gt;</span>
+    <span class="hljs-comment">&lt;!-- The content can even contain components --&gt;</span>
+    <span class="hljs-operator">&lt;</span>lux<span class="hljs-operator">-</span>show<span class="hljs-operator">-</span>more showLabel<span class="hljs-operator">=</span><span class="hljs-string">&quot;Show full table&quot;</span> hideLabel<span class="hljs-operator">=</span><span class="hljs-string">&quot;Hide full table&quot;</span> contentId<span class="hljs-operator">=</span><span class="hljs-string">&quot;table&quot;</span> character<span class="hljs-operator">-</span>limit<span class="hljs-operator">=</span><span class="hljs-string">&quot;20&quot;</span><span class="hljs-operator">&gt;</span>
+      There are three entries<span class="hljs-operator">:</span>
+      <span class="hljs-operator">&lt;</span>lux<span class="hljs-operator">-</span>data<span class="hljs-operator">-</span>table
+        <span class="hljs-operator">:</span>columns<span class="hljs-operator">=</span><span class="hljs-string">&quot;[
+          &#039;name&#039;,
+          { &#039;name&#039;: &#039;email&#039;, &#039;display_name&#039;: &#039;Email Address&#039;, &#039;align&#039;: &#039;center&#039;, &#039;sortable&#039;: true },
+        ]&quot;</span>
+        <span class="hljs-operator">:</span>json<span class="hljs-operator">-</span>data<span class="hljs-operator">=</span><span class="hljs-string">&quot;[
+          {&#039;id&#039;: 1,&#039;name&#039;: { value: &#039;foo&#039;, link: &#039;https://library.princeton.edu&#039;},&#039;email&#039;: &#039;foo@xxx.xxx&#039;,},
+          {&#039;id&#039;: 2,&#039;name&#039;: &#039;bar&#039;,&#039;email&#039;: &#039;bar@xxx.xxx&#039; },
+          {&#039;id&#039;: 3,&#039;name&#039;: &#039;fez&#039;,&#039;email&#039;: &#039;fez@xxx.xxx&#039; },
+        ]&quot;</span><span class="hljs-operator">/&gt;</span>
+    <span class="hljs-operator">&lt;/</span>lux<span class="hljs-operator">-</span>show<span class="hljs-operator">-</span>more<span class="hljs-operator">&gt;</span>
+</code></pre>
+<h3 id="luxshowmore-slots-how-to-use-luxshowmore" class="docmd-heading"><a href="#luxshowmore-slots-how-to-use-luxshowmore" class="heading-anchor" aria-label="Permalink to this section"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-link2-icon lucide-link-2"><path d="M9 17H7A5 5 0 0 1 7 7h2m6 0h2a5 5 0 1 1 0 10h-2m-7-5h8"/></svg></a>How to use LuxShowMore</h3>
+<ul>
+<li>Supply a <code>contentId</code> prop, which is used for setting focus and aria-controls. It must be unique in your page.</li>
+<li>Supply clear text for the <code>showLabel</code> and <code>hideLabel</code> props that orients the user to what the content<br>
+is. The <code>hideLabel</code> text should provide a concise re-orientation to what the content is and how to dismiss it in the<br>
+event that a user gets disoriented or distracted by the full content.</li>
+<li>If you use this component multiple times on the same page, make it clear to the user what each instance does, and<br>
+how it might differ from other instances of the component. For example, please don’t use this component 10 times in a page<br>
+and use “Show more” as the label for each one. You can do this in one of two ways:<br>
+_ Use distinct <code>showLabel</code> and <code>hideLabel</code> props for each instance<br>
+_ Provide a <code>descriptionId</code> prop.</li>
+</ul>
+<h3 id="luxshowmore-slots-accessibility-considerations" class="docmd-heading"><a href="#luxshowmore-slots-accessibility-considerations" class="heading-anchor" aria-label="Permalink to this section"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-link2-icon lucide-link-2"><path d="M9 17H7A5 5 0 0 1 7 7h2m6 0h2a5 5 0 1 1 0 10h-2m-7-5h8"/></svg></a>Accessibility considerations</h3>
+<ul>
+<li>Once the disclosure is opened, this component waits for a short amount of time for a screen reader’s virtual buffer to update, then sets focus on the expanded content.</li>
+<li>This component implements the <code>aria-controls</code> and <code>aria-expanded</code> properties.</li>
+<li>If you use this component multiple times in the same page, try navigating your page via buttons on a screen reader (<kbd>Control+Option+Command+J</kbd> on Voice Over).<br>
+Make sure that each instance has a specific and unique label.</li>
+</ul>
+
+                
+                  <div class="page-navigation">
+                    
+                      <div class="prev-page-placeholder">
+                      </div>
+                    
+                    
+                      <a href="../../../adding_lux/" class="next-page">
+                        <span><small>Next</small>
+                          <strong>
+                            Adding Lux
+                          </strong></span>
+                        
+<svg class="lucide-icon icon-arrow-right page-nav-icon" width="1em" height="1em" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"
+  class="lucide lucide-arrow-right"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M5 12h14" />
+  <path d="m12 5 7 7-7 7" />
+</svg>
+
+                      </a>
+                    
+                  </div>
+                
+              </div>
+              
+              <div class="toc-sidebar">
+                
+
+
+  <div class="toc-container">
+    <h2 class="toc-title">On This Page<span class="mobile-view toc-menu-button float-right">
+<svg class="lucide-icon icon-chevron-down " width="1em" height="1em" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"
+  class="lucide lucide-chevron-down"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="m6 9 6 6 6-6" />
+</svg>
+</span></h2>
+    <ul class="toc-list">
+      
+        <li class="toc-item toc-level-1">
+          <a href="#luxshowmore" class="toc-link">LuxShowMore</a>
+        </li>
+      
+        <li class="toc-item toc-level-2">
+          <a href="#luxshowmore-props" class="toc-link">Props</a>
+        </li>
+      
+        <li class="toc-item toc-level-2">
+          <a href="#luxshowmore-slots" class="toc-link">Slots</a>
+        </li>
+      
+        <li class="toc-item toc-level-3">
+          <a href="#luxshowmore-slots-how-to-use-luxshowmore" class="toc-link">How to use LuxShowMore</a>
+        </li>
+      
+        <li class="toc-item toc-level-3">
+          <a href="#luxshowmore-slots-accessibility-considerations" class="toc-link">Accessibility considerations</a>
+        </li>
+      
+    </ul>
+  </div>
+
+              </div>
+              
+            </div>
+            <div class="page-footer-actions">
+              
+              
+                <span class="git-last-updated" data-timestamp="1788364065000">
+                  <svg class="git-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <polyline points="12 6 12 12 16 14"></polyline>
+                  </svg>
+                  <span class="git-label">Last updated:</span>
+                  <span class="git-time" data-timestamp="1788364065000"></span>
+                  
+                  <div class="git-commit-tooltip" role="tooltip">
+                    <div class="git-tooltip-title">Recent commits</div>
+                    <ul class="git-commit-list">
+                      
+                        <li class="git-commit-item">
+                          <div class="git-commit-avatar" title="Christina Chortaria">
+                            
+                              <img src="https://www.gravatar.com/avatar/10775ba44fb255c4f5883ee16f40db54?d=mp&amp;s=64" alt="Christina Chortaria">
+                            
+                          </div>
+                          <div class="git-commit-details">
+                            <div class="git-commit-message" title="Move to vitepress Run first init">Move to vitepress Run first init</div>
+                            <div class="git-commit-meta">
+                              <span class="git-commit-author">Christina Chortaria</span>
+                              <span class="git-commit-date" data-timestamp="1788364065000"></span>
+                            </div>
+                          </div>
+                        </li>
+                      
+                    </ul>
+                  </div>
+                  
+                </span>
+              
+              <span class="git-spacer"></span>
+              
+            </div>
+          </main>
+          
+
+
+<footer class="page-footer">
+  <div class="footer-content">
+    <div class="user-footer">© 2026</div>
+    
+      <div class="branding-footer">
+        Built with <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path><path d="M12 5 9.04 7.96a2.17 2.17 0 0 0 0 3.08c.82.82 2.13.85 3 .07l2.07-1.9a2.82 2.82 0 0 1 3.79 0l2.96 2.66"></path><path d="m18 15-2-2"></path><path d="m15 18-2-2"></path></svg> <a href="https://docmd.io" target="_blank" rel="noopener">docmd.</a>
+      </div>
+    
+  </div>
+</footer>
+
+        </div>
+      </div>
+      
+      <script src="../../../assets/js/docmd-main.js?v=mu30x36a"></script>
+      
+      <script src="../../../assets/js/docmd-git.js?v=mu30x36a"></script>
+      <script src="../../../assets/js/docmd-image-lightbox.js?v=mu30x36a" ></script>
+<script src="../../../assets/js/vendor/minisearch.js?v=mu30x36a" ></script>
+<script src="../../../assets/js/docmd-search.js?v=mu30x36a" ></script>
+<script src="../../../assets/js/docmd-git.js?v=mu30x36a" ></script>
+<script src="../../../assets/js/docmd-ai.js?v=mu30x36a" ></script>
+
+  <!-- Search Modal (Injected by @docmd/plugin-search) -->
+  <div id="docmd-search-modal" class="docmd-search-modal" style="display: none;" data-show-confidence="false" data-show-filters="true"
+       data-search-placeholder="Search documentation..."
+       data-search-no-results="No results found."
+       data-search-error="Failed to load search index."
+       data-search-offline="Search requires a web server. Open this site via http://localhost instead of file:// to enable search."
+       data-search-offline-build="Search is disabled because these docs were built with the --offline flag. Rebuild the site without the flag to enable search."
+       data-search-initial="Type to start searching..."
+       data-search-navigate="to navigate"
+       data-search-escape="to close">
+      <div class="docmd-search-box">
+          <div class="docmd-search-header">
+              <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-icon icon-search"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"></path></svg>
+              <input type="text" id="docmd-search-input" placeholder="Search documentation..." autocomplete="off" spellcheck="false">
+              <button onclick="window.closeDocmdSearch()" class="docmd-search-close" aria-label="Close search">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-icon icon-x"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg>
+              </button>
+          </div>
+          <div id="docmd-search-results" class="docmd-search-results"></div>
+          <div class="docmd-search-footer">
+              <span><kbd class="docmd-kbd">↑</kbd> <kbd class="docmd-kbd">↓</kbd> to navigate</span>
+              <span><kbd class="docmd-kbd">ESC</kbd> to close</span>
+          </div>
+      </div>
+  </div>
+
+    <script>
+      (function() {
+        var searchDebounceTimer;
+
+        document.addEventListener('click', function(e) {
+          var link = e.target.closest('a');
+          if (!link || !window.gtag) return;
+          
+          var url = link.href;
+          var hostname = window.location.hostname;
+          var isExternal = link.hostname && link.hostname !== hostname;
+          var isDownload = link.hasAttribute('download') || url.match(/\.(pdf|zip|tar|gz|exe|pkg)$/i);
+          
+          if (isExternal) {
+            gtag('event', 'click_external', { 'url': url, 'link_text': link.innerText.trim() });
+          } else if (isDownload) {
+            gtag('event', 'download', { 'file_name': url.split('/').pop(), 'url': url });
+          }
+
+          // TOC tracking
+          if (link.classList.contains('toc-link')) {
+            gtag('event', 'toc_click', { 'target_id': link.getAttribute('href'), 'title': link.innerText.trim() });
+          }
+
+          // Permalink tracking
+          if (link.classList.contains('heading-anchor')) {
+            gtag('event', 'permalink_click', { 'url': url });
+          }
+        });
+
+        
+        // Search Keyword Tracking
+        document.addEventListener('input', function(e) {
+          if (e.target.id === 'docmd-search-input' && window.gtag) {
+            var query = e.target.value.trim();
+            if (query.length < 3) return;
+            
+            clearTimeout(searchDebounceTimer);
+            searchDebounceTimer = setTimeout(function() {
+              gtag('event', 'search', { 'search_term': query });
+            }, 1000);
+          }
+        });
+        
+      })();
+    </script>
+
+<script>window.__git_config={"repo":null,"branch":"main","editLink":false,"lastUpdated":true,"commitHistory":true,"maxCommits":5,"dateFormat":"relative"};window.__git_i18n={"lastUpdated":"Last updated","recentCommits":"Recent commits","viewCommitHistory":"View commit history","editOnGitHub":"Edit on GitHub","editOnGitLab":"Edit on GitLab","editOnBitbucket":"Edit on Bitbucket","editThisPage":"Edit this page","justNow":"just now","minutesAgo":"{n}m ago","hoursAgo":"{n}h ago","daysAgo":"{n}d ago"}</script>
+<div id="docmd-ai-root"></div><script>window.__docmd_ai_config={"endpoint":"","cloud":{},"captcha":true,"position":"bottom-center","siteTitle":"LUX Design System","siteBase":"/","siteUrl":"","versions":null,"i18n":null,"navigation":[{"title":"Home","collapsible":true,"children":[{"title":"Adding Lux","path":"/adding_lux/"},{"title":"Adding Icons","path":"/adding_icons/"},{"title":"Design Principles","path":"/design_principles/"},{"title":"Design Tokens","path":"/design_tokens/"},{"title":"Lux Usage","path":"/lux_usage/"}]},{"title":"Components","collapsible":true,"children":[{"title":"LuxAlert","path":"/src/components/LuxAlert/"},{"title":"LuxAutocompleteInput","path":"/src/components/LuxAutocompleteInput/"},{"title":"LuxBadge","path":"/src/components/LuxBadge/"}]}],"searchCapabilities":{"keyword":true,"semantic":false},"isWorkspace":false,"workspaceProjects":[],"contextLimit":5};</script>
+      
+      
+      
+  </body>
+</html>

@@ -1,0 +1,1071 @@
+<!--
+  ---------------------------------------------------------------
+  docmd : the zero-config documentation engine.
+  @website https://docmd.io
+  [docmd-source] - Please do not remove this header.
+  ---------------------------------------------------------------
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="generator" content="docmd v0.9.5">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <script>
+      var root = "../";
+      if (root && !root.endsWith('/')) root += '/';
+      if (root === '') root = './';
+      window.DOCMD_ROOT = root;
+
+      window.DOCMD_SITE_ROOT = "/";
+
+      window.DOCMD_APPEARANCE = "system";
+      window.DOCMD_VERSION_ROOT = "/";
+      window.DOCMD_BASE = "/";
+      window.DOCMD_LOCALE = "";
+      window.DOCMD_DEFAULT_LOCALE = "";
+    </script>
+    <script>/**
+ * --------------------------------------------------------------------
+ * docmd : the zero-config documentation engine.
+ *
+ * @package     @docmd/core (and ecosystem)
+ * @website     https://docmd.io
+ * @repository  https://github.com/docmd-io/docmd
+ * @license     MIT
+ * @copyright   Copyright (c) 2025-present docmd.io
+ *
+ * [docmd-source] - Please do not remove this header.
+ * --------------------------------------------------------------------
+ */
+
+(function () {
+  try {
+    // 1. Determine Theme
+    //
+    // Resolve from three sources, in priority order:
+    //   1. localStorage explicit user choice (light / dark)
+    //   2. window.DOCMD_APPEARANCE  (current canonical name, set by EJS templates)
+    //   3. window.DOCMD_DEFAULT_MODE (legacy alias kept for pre-0.8.7 outputs)
+    //   4. 'light' as the final fallback
+    //
+    // Note: localStorage is only honoured when it holds an explicit
+    // 'light' or 'dark' value. A stored 'system' value (from a prior
+    // session where the user picked "follow system") must NOT win over
+    // a freshly resolved config value — the resolved value will itself
+    // be 'system' in that case and the OS preference check below takes
+    // over, so this is a no-op for the in-session behaviour but keeps
+    // any future storage migration simple.
+    var localValue = localStorage.getItem('docmd-theme');
+    var configValue = window.DOCMD_APPEARANCE
+      || window.DOCMD_DEFAULT_MODE
+      || 'light';
+    var theme = (localValue === 'light' || localValue === 'dark')
+      ? localValue
+      : configValue;
+
+    if (theme === 'system') {
+      theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    }
+
+    // 2. Apply to Root
+    document.documentElement.setAttribute('data-theme', theme);
+
+    // 3. Highlight.js Toggle Strategy
+    var lightLink = document.getElementById('hljs-light');
+    var darkLink = document.getElementById('hljs-dark');
+
+    if (lightLink && darkLink) {
+      if (theme === 'dark') {
+        lightLink.disabled = true;
+        darkLink.disabled = false;
+      } else {
+        lightLink.disabled = false;
+        darkLink.disabled = true;
+      }
+    }
+
+    document.documentElement.style.visibility = "visible";
+  } catch (e) {
+    document.documentElement.style.visibility = "visible";
+    console.error('Theme init failed', e);
+  }
+})();</script>
+    <style>
+      html {
+        visibility: hidden;
+      }
+    </style>
+    <title>
+       : LUX Design System
+    </title>
+    
+    
+
+    <link id="site-favicon" rel="icon" href="../assets/favicon.ico?v=mu30x36a">
+    <link rel="stylesheet" href="../assets/css/docmd-main.css?v=mu30x36a">
+    
+    <link rel="stylesheet" href="../assets/css/docmd-highlight-light.css?v=mu30x36a" id="hljs-light" >
+    <link rel="stylesheet" href="../assets/css/docmd-highlight-dark.css?v=mu30x36a" id="hljs-dark" disabled>
+    
+    
+<meta name="description" content="">
+<meta property="og:title" content="Untitled - LUX Design System">
+<meta property="og:description" content="">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Untitled - LUX Design System">
+<meta name="twitter:description" content="">
+
+
+
+
+<link rel="stylesheet" href="../assets/css/docmd-git.css?v=mu30x36a" >
+<link rel="stylesheet" href="../assets/css/docmd-openapi.css?v=mu30x36a" >
+<link rel="stylesheet" href="../assets/css/docmd-ai.css?v=mu30x36a" >
+
+    
+    
+  </head>
+  <body
+    class="sidebar-collapsible"
+    data-default-collapsed="false"
+    data-copy-code-enabled="true" data-spa-enabled="true" data-source-file="docs/adding_lux.md">
+
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    
+    
+
+    
+    
+      <aside class="sidebar">
+        <div class="sidebar-header">
+          
+<h1><a href="../">
+                LUX Design System
+              </a></h1>
+          
+          <span class="mobile-view sidebar-menu-button float-right">
+            
+<svg class="lucide-icon icon-menu " width="1em" height="1em" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"
+  class="lucide lucide-menu"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M4 5h16" />
+  <path d="M4 12h16" />
+  <path d="M4 19h16" />
+</svg>
+
+          </span>
+        </div>
+        <div class="sidebar-top-group">
+          
+          
+          
+          
+        </div>
+        
+
+<nav class="sidebar-nav" aria-label="Main Navigation">
+  <ul>
+    
+      <li class="active-parent collapsible expanded nav-group"  aria-expanded="true" >
+      
+        <span class="nav-label nav-group">
+          
+          <span class="nav-item-title">
+            Home
+          </span>
+          
+            <span class="collapse-icon-wrapper">
+<svg class="lucide-icon icon-chevron-right collapse-icon" width="1em" height="1em" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"
+  class="lucide lucide-chevron-right"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="m9 18 6-6-6-6" />
+</svg>
+</span>
+          
+        </span>
+        
+
+        
+          <ul class="submenu">
+            
+      <li class="active" >
+      
+        <a href="../adding_lux/" class="active "
+          >
+          
+          <span class="nav-item-title">
+            Adding Lux
+            </span>
+          
+          
+        </a>
+        
+
+        
+      </li>
+    
+      <li class="" >
+      
+        <a href="../adding_icons/" class=" "
+          >
+          
+          <span class="nav-item-title">
+            Adding Icons
+            </span>
+          
+          
+        </a>
+        
+
+        
+      </li>
+    
+      <li class="" >
+      
+        <a href="../design_principles/" class=" "
+          >
+          
+          <span class="nav-item-title">
+            Design Principles
+            </span>
+          
+          
+        </a>
+        
+
+        
+      </li>
+    
+      <li class="" >
+      
+        <a href="../design_tokens/" class=" "
+          >
+          
+          <span class="nav-item-title">
+            Design Tokens
+            </span>
+          
+          
+        </a>
+        
+
+        
+      </li>
+    
+      <li class="" >
+      
+        <a href="../lux_usage/" class=" "
+          >
+          
+          <span class="nav-item-title">
+            Lux Usage
+            </span>
+          
+          
+        </a>
+        
+
+        
+      </li>
+    
+          </ul>
+        
+      </li>
+    
+      <li class="collapsible nav-group"  aria-expanded="false" >
+      
+        <span class="nav-label nav-group">
+          
+          <span class="nav-item-title">
+            Components
+          </span>
+          
+            <span class="collapse-icon-wrapper">
+<svg class="lucide-icon icon-chevron-right collapse-icon" width="1em" height="1em" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"
+  class="lucide lucide-chevron-right"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="m9 18 6-6-6-6" />
+</svg>
+</span>
+          
+        </span>
+        
+
+        
+          <ul class="submenu">
+            
+      <li class="" >
+      
+        <a href="../src/components/LuxAlert/" class=" "
+          >
+          
+          <span class="nav-item-title">
+            LuxAlert
+            </span>
+          
+          
+        </a>
+        
+
+        
+      </li>
+    
+      <li class="" >
+      
+        <a href="../src/components/LuxAutocompleteInput/" class=" "
+          >
+          
+          <span class="nav-item-title">
+            LuxAutocompleteInput
+            </span>
+          
+          
+        </a>
+        
+
+        
+      </li>
+    
+      <li class="" >
+      
+        <a href="../src/components/LuxBadge/" class=" "
+          >
+          
+          <span class="nav-item-title">
+            LuxBadge
+            </span>
+          
+          
+        </a>
+        
+
+        
+      </li>
+    
+          </ul>
+        
+      </li>
+    
+  </ul>
+</nav>
+        <div class="sidebar-bottom-group mt-auto">
+          
+          
+          
+          
+        </div>
+      </aside>
+      
+      <div class="main-content-wrapper">
+        
+        
+        
+          <header class="page-header">
+            <div class="header-left">
+              
+                <button id="sidebar-toggle-button" class="sidebar-toggle-button"
+                  aria-label="Toggle Sidebar">
+                  
+<svg class="lucide-icon icon-chevron-left " width="1em" height="1em" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"
+  class="lucide lucide-chevron-left"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="m15 18-6-6 6-6" />
+</svg>
+
+                </button>
+              
+              <div class="header-titles-wrapper">
+                <span class="header-title">
+                  
+                </span>
+              </div>
+            </div>
+            <div class="header-right">
+              
+                
+
+
+<div class="docmd-options-menu">
+    
+    <button class="docmd-search-trigger" aria-label="Search">
+        
+<svg class="lucide-icon icon-search " width="1em" height="1em" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"
+  class="lucide lucide-search"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="m21 21-4.34-4.34" />
+  <circle cx="11" cy="11" r="8" />
+</svg>
+
+        <span class="search-label">Search</span>
+        <span class="search-keys"><kbd class="docmd-kbd">⌘</kbd><kbd class="docmd-kbd">K</kbd></span>
+    </button>
+    
+
+    
+
+    
+
+    
+    <button class="theme-toggle-button" aria-label="Toggle theme">
+        
+<svg class="lucide-icon icon-sun icon-sun" width="1em" height="1em" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"
+  class="lucide lucide-sun"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <circle cx="12" cy="12" r="4" />
+  <path d="M12 2v2" />
+  <path d="M12 20v2" />
+  <path d="m4.93 4.93 1.41 1.41" />
+  <path d="m17.66 17.66 1.41 1.41" />
+  <path d="M2 12h2" />
+  <path d="M20 12h2" />
+  <path d="m6.34 17.66-1.41 1.41" />
+  <path d="m19.07 4.93-1.41 1.41" />
+</svg>
+ 
+<svg class="lucide-icon icon-moon icon-moon" width="1em" height="1em" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"
+  class="lucide lucide-moon"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401" />
+</svg>
+
+    </button>
+    
+
+    
+</div>
+
+              
+            </div>
+          </header>
+        
+        <div class="content-theme-cover">
+          <main class="content-area" id="main-content">
+            <div class="content-layout">
+              <div class="main-content">
+                <div class="docmd-breadcrumbs-row">
+                  <div id="docmd-raw-markdown" data-content="%23%23%23%20Adding%20Lux%20to%20your%20project%0A%0A%23%23%23%23%20Adding%20Lux%20to%20a%20vue%2Bvite%20application%0A%0A%5BAn%20example%20Vue%2BVite%20application%5D(https%3A%2F%2Fgithub.com%2Fpulibrary%2Fvue-app-with-lux)%0Athat%20demonstrates%20%5Btree-shaking%5D(https%3A%2F%2Fdeveloper.mozilla.org%2Fen-US%2Fdocs%2FGlossary%2FTree_shaking).%0A%0A1.%20Add%20lux-design-system%20to%20your%20dependencies%20in%20package.json%0A1.%20In%20your%20main.js%2C%20import%20the%20LUX%20css%3A%0A%0A%20%20%20%60%60%60text%0A%20%20%20import%20%22lux-design-system%2Fdist%2Fstyle.css%22%3B%0A%20%20%20%60%60%60%0A%0A1.%20You%20can%20now%20import%20individual%20lux%20components%20into%0A%20%20%20your%20application&#039;s%20components.%0A%0AThe%20nice%20thing%20about%20this%20approach%20is%20that%20Vite%20will%0Atree-shake%20lux.%20This%20way%2C%20your%20application%20bundle%0Awill%20only%20include%20the%20lux%20components%20that%20you%0Aactually%20use%2C%20which%20means%20faster%20download%20times%20for%20the%20user.%0A%0A%23%23%23%23%20Adding%20Lux%20to%20a%20vite%2Brails%20project%0A%0ASome%20examples%20of%20this%20approach%20include%20%5Bapprovals%5D(https%3A%2F%2Fgithub.com%2Fpulibrary%2Fapprovals)%20and%0A%5BDSS%5D(https%3A%2F%2Fgithub.com%2Fpulibrary%2FDSS).%0A%0A1.%20%20In%20your%20entrypoints%2Fapplication.js%20file%2C%20add%20the%20import%20statements%20for%20lux%20and%20vue%3A%0A%0A%20%20%20%20%60%60%60text%0A%20%20%20%20import%20%7B%20createApp%20%7D%20from%20%22vue%22%3B%0A%20%20%20%20import%20%22lux-design-system%2Fdist%2Fstyle.css%22%3B%0A%0A%20%20%20%20%2F%2F%20Option%201%3A%20import%20the%20default%20export%20from%0A%20%20%20%20%2F%2F%20lux%20to%20import%20all%20of%20lux%20into%20your%20project%0A%20%20%20%20import%20lux%20from%20%22lux-design-system%22%3B%0A%0A%20%20%20%20%2F%2F%20Option%202%3A%20import%20only%20the%20components%20you%0A%20%20%20%20%2F%2F%20need%20from%20lux%2C%20to%20enable%20tree-shaking%20and%0A%20%20%20%20%2F%2F%20a%20smaller%20bundle%20size%0A%20%20%20%20import%20%7B%0A%20%20%20%20%20%20LuxLibraryFooter%2C%0A%20%20%20%20%20%20LuxLibraryHeader%2C%0A%20%20%20%20%20%20LuxMenuBar%2C%0A%20%20%20%20%20%20LuxLogoUniversity%2C%0A%20%20%20%20%20%20LuxLogoLibraryIcon%2C%0A%20%20%20%20%20%20LuxLibraryLogo%2C%0A%20%20%20%20%20%20LuxLogoLibrary%2C%0A%20%20%20%20%20%20LuxWrapper%2C%0A%20%20%20%20%20%20LuxSpacer%2C%0A%20%20%20%20%7D%20from%20%22lux-design-system%22%3B%0A%20%20%20%20%60%60%60%0A%0A1.%20%20In%20your%20entrypoints%2Fapplication.js%2C%20create%20a%20factory%20function%0A%20%20%20%20for%20creating%20vue%20apps%3A%0A%0A%20%20%20%20%60%60%60text%0A%20%20%20%20const%20app%20%3D%20createApp(%7B%7D)%3B%0A%20%20%20%20const%20createMyApp%20%3D%20()%20%3D%3E%20createApp(app)%3B%0A%20%20%20%20%60%60%60%0A%0A1.%20%20In%20your%20entrypoints%2Fapplication.js%2C%20use%20the%20lux%20plugin%20(if%20you%20chose%20option%201%20above)%20or%20add%20the%20specific%20components%20your%0A%20%20%20%20Rails%20app%20uses%20(if%20you%20chose%20option%202%20above).%20Then%20mount%20the%0A%20%20%20%20Vue%20app%20to%20the%20appropriate%20element(s)%20in%20the%20DOM.%0A%0A%20%20%20%20%60%60%60text%0A%20%20%20%20document.addEventListener(&#039;DOMContentLoaded&#039;%2C%20()%20%3D%3E%20%7B%0A%20%20%20%20%20%20%20%20const%20elements%20%3D%20document.getElementsByClassName(&#039;lux&#039;)%0A%20%20%20%20%20%20%20%20for%20(let%20i%20%3D%200%3B%20i%20%3C%20elements.length%3B%20i%2B%2B)%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%2F%2F%20Option%201%3A%20use%20all%20of%20lux%0A%20%20%20%20%20%20%20%20%20%20%20%20createMyApp()%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20.use(lux)%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20.mount(elements%5Bi%5D)%3B%0A%0A%20%20%20%20%20%20%20%20%20%20%20%20%2F%2F%20OR%20option%202%3A%20use%20specific%20lux%20components%0A%20%20%20%20%20%20%20%20%20%20%20%20createMyApp()%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20.component(%22lux-library-footer%22%2C%20LuxLibraryFooter)%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20.component(%22lux-library-header%22%2C%20LuxLibraryHeader)%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20.component(%22lux-menu-bar%22%2C%20LuxMenuBar)%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20.component(%22lux-logo-university%22%2C%20LuxLogoUniversity)%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20.component(%22lux-logo-library-icon%22%2C%20LuxLogoLibraryIcon)%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20.component(%22lux-library-logo%22%2C%20LuxLibraryLogo)%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20.component(%22lux-logo-library%22%2C%20LuxLogoLibrary)%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20.component(%22lux-wrapper%22%2C%20LuxWrapper)%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20.component(%22lux-spacer%22%2C%20LuxSpacer)%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20.mount(elements%5Bi%5D)%3B%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%7D)%0A%20%20%20%20%60%60%60%0A%0A1.%20%20Add%20lux%20components%20as%20needed%20in%20your%20views%20or%20ViewComponents.%0A1.%20%20Add%20classes%20or%20CSS%20variables%20from%20lux%20to%20your%20styling.%0A%0A%23%23%23%23%20Adding%20Lux%20to%20a%20static%20HTML%20page%0A%0AImportmaps%20are%20a%20nice%20way%20to%20add%20vue%20and%0Alux%20to%20a%20static%20site.%20An%20example%20of%20this%0Aapproach%20is%20the%20%5BPulibrary%20github%20blog%5D(https%3A%2F%2Fgithub.com%2Fpulibrary%2Fpulibrary.github.io).%0A%0AThis%20approach%20is%20simple%2C%20but%20there%20is%20a%20drawback.%0AThe%20user%20has%20to%20download%20all%20of%20lux%2C%20rather%20than%0Ajust%20the%20components%20you%20need%20(i.e.%20there%20is%20no%0Atree%20shaking).%0A%0A1.%20%20In%20your%20HTML%2C%20import%20Vue%20and%20lux%20from%20a%0A%20%20%20%20CDN%2C%20like%20so%3A%0A%0A%20%20%20%20%60%60%60html%0A%20%20%20%20%3Cscript%20type%3D%22importmap%22%3E%0A%20%20%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20%22imports%22%3A%20%7B%0A%20%20%20%20%20%20%20%20%20%20%22vue%22%3A%20%22https%3A%2F%2Funpkg.com%2Fvue%403.2.47%2Fdist%2Fvue.esm-browser.prod.js%22%2C%0A%20%20%20%20%20%20%20%20%20%20%22lux-design-system%22%3A%20%22https%3A%2F%2Funpkg.com%2Flux-design-system%406.3.1%2Fdist%2Flux-styleguidist.mjs%22%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%7D%0A%20%20%20%20%3C%2Fscript%3E%0A%20%20%20%20%60%60%60%0A%0A1.%20%20Add%20some%20javascript%20that%20creates%20and%20mounts%20a%0A%20%20%20%20Vue%20application%20and%20installs%20lux%20as%20a%20vue%20plugin.%0A%0A%20%20%20%20%60%60%60text%0A%20%20%20%20import%20%7B%20createApp%20%7D%20from%20&#039;vue&#039;%3B%0A%20%20%20%20import%20lux%20from%20&#039;lux-design-system&#039;%3B%0A%0A%20%20%20%20const%20app%20%3D%20createApp(%7B%7D)%3B%0A%20%20%20%20app.use(lux)%0A%20%20%20%20.mount(&#039;%23app&#039;)%3B%0A%20%20%20%20%60%60%60%0A%0A%20%20%20%20If%20you%20are%20only%20using%20lux%20for%20a%20header%20and%20footer%3A%0A%0A%20%20%20%20%60%60%60text%0A%20%20%20%20import%20%7B%20createApp%20%7D%20from%20&#039;vue&#039;%3B%0A%20%20%20%20import%20lux%20from%20&#039;lux-design-system&#039;%3B%0A%0A%20%20%20%20const%20headerApp%20%3D%20createApp(%7B%7D)%3B%0A%20%20%20%20headerApp.use(lux)%0A%20%20%20%20.mount(&#039;%23lux-header-container&#039;)%0A%0A%20%20%20%20const%20footerApp%20%3D%20createApp(%7B%7D)%3B%0A%20%20%20%20footerApp.use(lux)%0A%20%20%20%20.mount(&#039;%23lux-footer-container&#039;)%3B%0A%20%20%20%20%60%60%60%0A%0A1.%20%20Import%20the%20CSS%20as%20from%20a%20CDN.%0A%0A%20%20%20%20%60%60%60html%0A%20%20%20%20%3Clink%20rel%3D%22stylesheet%22%20href%3D%22https%3A%2F%2Funpkg.com%2Flux-design-system%406.3.1%2Fdist%2Fstyle.css%22%20%2F%3E%0A%20%20%20%20%60%60%60%0A%0A1.%20%20Add%20lux%20components%20as%20needed%20in%20your%20HTML.%20If%20you%20are%20just%20adding%20a%0A%20%20%20%20header%20and%20footer%3A%0A%0A%20%20%20%20%60%60%60html%0A%20%20%20%20%3Cdiv%20id%3D%22lux-header-container%22%3E%0A%20%20%20%20%20%20%3Clux-library-header%0A%20%20%20%20%20%20%20%20app-name%3D%22Research%20Guides%22%0A%20%20%20%20%20%20%20%20abbr-name%3D%22Guides%22%0A%20%20%20%20%20%20%20%20app-url%3D%22https%3A%2F%2Flibguides.princeton.edu%2F%22%0A%20%20%20%20%20%20%20%20theme%3D%22dark%22%0A%20%20%20%20%20%20%3E%0A%20%20%20%20%20%20%20%20%3Clux-menu-bar%0A%20%20%20%20%20%20%20%20%20%20type%3D%22main-menu%22%0A%20%20%20%20%20%20%20%20%20%20%3Amenu-items%3D%22%5B%0A%20%20%20%20%20%20%20%20%20%20%20%7Bname%3A%20&#039;Help&#039;%2C%20component%3A%20&#039;Help&#039;%2C%20href%3A%20&#039;https%3A%2F%2Flibrary.princeton.edu%2Fask-us&#039;%7D%2C%0A%20%20%20%20%20%20%20%20%20%20%20%7Bname%3A%20&#039;Your%20Accounts&#039;%2C%20component%3A%20&#039;Account&#039;%2C%20href%3A%20&#039;https%3A%2F%2Flibrary.princeton.edu%2Faccounts&#039;%7D%0A%20%20%20%20%20%20%20%20%20%5D%22%0A%20%20%20%20%20%20%20%20%3E%3C%2Flux-menu-bar%3E%0A%20%20%20%20%20%20%3C%2Flux-library-header%3E%0A%0A%20%20%20%20%20%20%3C!--%20the%20rest%20of%20your%20page%20--%3E%0A%0A%20%20%20%20%20%20%3Cdiv%20id%3D%22lux-footer-container%22%3E%0A%20%20%20%20%20%20%20%20%3Clux-library-footer%3E%3C%2Flux-library-footer%3E%0A%20%20%20%20%20%20%3C%2Fdiv%3E%0A%20%20%20%20%3C%2Fdiv%3E%0A%20%20%20%20%60%60%60%0A%0A1.%20%20Add%20classes%20or%20CSS%20variables%20from%20lux%20to%20your%20styling.%0A%0A%23%23%23%23%23%20Adding%20Lux%20to%20a%20static%20HTML%20page%20using%20an%20IIFE%20file%0A%0AIf%20you%20can&#039;t%20use%20an%20import%20map%20and%20have%20to%20use%20%60%3Cscript%20src%3E%60%20then%20from%20cdn%20use%20the%20IIFE%20file%20-%20%60https%3A%2F%2Funpkg.com%2Flux-design-system%40%3CversionNumber%3E%2Fdist%2Flux-styleguidist.iife.js%60.%0A%0AAdd%20the%20following%20%60%3Cscript%3E%60%20tags%20after%20the%20%60%3Chead%3E%60%20tag%3A%0A%0A%60%60%60html%0A%3Cscript%20src%3D%22https%3A%2F%2Funpkg.com%2Fvue%403%2Fdist%2Fvue.global.js%22%3E%3C%2Fscript%3E%0A%3Cscript%20src%3D%22https%3A%2F%2Funpkg.com%2Flux-design-system%406.3.1%2Fdist%2Flux-styleguidist.iife.js%22%3E%3C%2Fscript%3E%0A%60%60%60%0A%0AAfter%20%60%3Cbody%3E%60%20tag%20add%20the%20following%20%60%3Cscript%3E%60%20tag%3A%0A%0A%60%60%60html%0A%3Cscript%3E%0A%20%20const%20%7B%20createApp%20%7D%20%3D%20Vue%3B%0A%20%20createApp().use(Lux.default).mount(%22%23app%22)%3B%0A%3C%2Fscript%3E%0A%60%60%60%0A%0A%23%23%23%23%20Adding%20only%20the%20Lux%20CSS%0A%0AYou%20can%20just%20bring%20in%20the%20lux%20CSS%20(including%20all%20the%20CSS%20variables)%20from%20a%20CDN.%0AAn%20example%20of%20this%20approach%20is%20the%20%5BDACS%20handbook%5D(https%3A%2F%2Fgithub.com%2Fpulibrary%2Fdacs_handbook).%0A%0ATo%20do%20this%2C%20add%20the%20CSS%20from%20a%20CDN%20to%20your%20HTML%3A%0A%0A%60%60%60html%0A%3Clink%20rel%3D%22stylesheet%22%20href%3D%22https%3A%2F%2Funpkg.com%2Flux-design-system%406.3.1%2Fdist%2Fstyle.css%22%20%2F%3E%0A%60%60%60%0A" style="display: none;"></div>
+                  
+                    <nav aria-label="breadcrumb" class="docmd-breadcrumbs">
+                      <ol>
+                        
+                        
+                          <li class="breadcrumb-item " >
+                            
+                              <span>Home</span>
+                            
+                            
+                              <span class="breadcrumb-separator">
+<svg class="lucide-icon icon-chevron-right " width="1em" height="1em" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"
+  class="lucide lucide-chevron-right"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="m9 18 6-6-6-6" />
+</svg>
+</span>
+                            
+                          </li>
+                        
+                          <li class="breadcrumb-item active" aria-current=&quot;page&quot;>
+                            
+                              <span>Adding Lux</span>
+                            
+                            
+                          </li>
+                        
+                      </ol>
+                    </nav>
+                  
+
+                  
+                    <div class="docmd-copy-widgets">
+                      
+                        <button class="docmd-copy-btn docmd-copy-raw-btn" data-copied="Copied!" title="Copy Markdown" aria-label="Copy Markdown">
+                          <span class="docmd-btn-icon">
+<svg class="lucide-icon icon-copy " width="1em" height="1em" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"
+  class="lucide lucide-copy"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <rect width="14" height="14" x="8" y="8" rx="2" ry="2" />
+  <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2" />
+</svg>
+</span>
+                        </button>
+                      
+                      
+                        <button class="docmd-copy-btn docmd-copy-context-btn" data-copied="Copied!" title="Copy Context">
+                          <span class="docmd-btn-icon">
+<svg class="lucide-icon icon-message-square " width="1em" height="1em" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"
+  class="lucide lucide-message-square"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M22 17a2 2 0 0 1-2 2H6.828a2 2 0 0 0-1.414.586l-2.202 2.202A.71.71 0 0 1 2 21.286V5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2z" />
+</svg>
+</span>
+                          <span class="docmd-btn-text">Copy Context</span>
+                        </button>
+                      
+                    </div>
+                  
+                </div>
+                
+                <h3 id="adding-lux-to-your-project" class="docmd-heading"><a href="#adding-lux-to-your-project" class="heading-anchor" aria-label="Permalink to this section"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-link2-icon lucide-link-2"><path d="M9 17H7A5 5 0 0 1 7 7h2m6 0h2a5 5 0 1 1 0 10h-2m-7-5h8"/></svg></a>Adding Lux to your project</h3>
+<h4 id="adding-lux-to-your-project-adding-lux-to-a-vuevite-application" class="docmd-heading"><a href="#adding-lux-to-your-project-adding-lux-to-a-vuevite-application" class="heading-anchor" aria-label="Permalink to this section"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-link2-icon lucide-link-2"><path d="M9 17H7A5 5 0 0 1 7 7h2m6 0h2a5 5 0 1 1 0 10h-2m-7-5h8"/></svg></a>Adding Lux to a vue+vite application</h4>
+<p><a href="https://github.com/pulibrary/vue-app-with-lux">An example Vue+Vite application</a><br>
+that demonstrates <a href="https://developer.mozilla.org/en-US/docs/Glossary/Tree_shaking">tree-shaking</a>.</p>
+<ol>
+<li><p>Add lux-design-system to your dependencies in package.json</p>
+</li>
+<li><p>In your main.js, import the LUX css:</p>
+<pre class="hljs"><code class="language-text"><span class="hljs-keyword">import</span> <span class="hljs-string">&quot;lux-design-system/dist/style.css&quot;</span>;
+</code></pre>
+</li>
+<li><p>You can now import individual lux components into<br>
+your application’s components.</p>
+</li>
+</ol>
+<p>The nice thing about this approach is that Vite will<br>
+tree-shake lux. This way, your application bundle<br>
+will only include the lux components that you<br>
+actually use, which means faster download times for the user.</p>
+<h4 id="adding-lux-to-your-project-adding-lux-to-a-viterails-project" class="docmd-heading"><a href="#adding-lux-to-your-project-adding-lux-to-a-viterails-project" class="heading-anchor" aria-label="Permalink to this section"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-link2-icon lucide-link-2"><path d="M9 17H7A5 5 0 0 1 7 7h2m6 0h2a5 5 0 1 1 0 10h-2m-7-5h8"/></svg></a>Adding Lux to a vite+rails project</h4>
+<p>Some examples of this approach include <a href="https://github.com/pulibrary/approvals">approvals</a> and<br>
+<a href="https://github.com/pulibrary/DSS">DSS</a>.</p>
+<ol>
+<li><p>In your entrypoints/application.js file, add the import statements for lux and vue:</p>
+<pre class="hljs"><code class="language-text"><span class="hljs-keyword">import</span> { createApp } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
+<span class="hljs-keyword">import</span> <span class="hljs-string">&quot;lux-design-system/dist/style.css&quot;</span>;
+
+<span class="hljs-comment">// Option 1: import the default export from</span>
+<span class="hljs-comment">// lux to import all of lux into your project</span>
+<span class="hljs-keyword">import</span> lux <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;lux-design-system&quot;</span>;
+
+<span class="hljs-comment">// Option 2: import only the components you</span>
+<span class="hljs-comment">// need from lux, to enable tree-shaking and</span>
+<span class="hljs-comment">// a smaller bundle size</span>
+<span class="hljs-keyword">import</span> {
+  LuxLibraryFooter,
+  LuxLibraryHeader,
+  LuxMenuBar,
+  LuxLogoUniversity,
+  LuxLogoLibraryIcon,
+  LuxLibraryLogo,
+  LuxLogoLibrary,
+  LuxWrapper,
+  LuxSpacer,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;lux-design-system&quot;</span>;
+</code></pre>
+</li>
+<li><p>In your entrypoints/application.js, create a factory function<br>
+for creating vue apps:</p>
+<pre class="hljs"><code class="language-text"><span class="hljs-keyword">const</span> app <span class="hljs-operator">=</span> <span class="hljs-title function_">createApp</span>({});
+<span class="hljs-keyword">const</span> createMyApp <span class="hljs-operator">=</span> () <span class="hljs-operator">=&gt;</span> <span class="hljs-title function_">createApp</span>(app);
+</code></pre>
+</li>
+<li><p>In your entrypoints/application.js, use the lux plugin (if you chose option 1 above) or add the specific components your<br>
+Rails app uses (if you chose option 2 above). Then mount the<br>
+Vue app to the appropriate element(s) in the DOM.</p>
+<pre class="hljs"><code class="language-text">document.<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">&#039;DOMContentLoaded&#039;</span>, () <span class="hljs-operator">=&gt;</span> {
+    <span class="hljs-keyword">const</span> elements <span class="hljs-operator">=</span> document.<span class="hljs-title function_">getElementsByClassName</span>(<span class="hljs-string">&#039;lux&#039;</span>)
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i <span class="hljs-operator">&lt;</span> elements.<span class="hljs-attr">length</span>; i<span class="hljs-operator">++</span>) {
+        <span class="hljs-comment">// Option 1: use all of lux</span>
+        <span class="hljs-title function_">createMyApp</span>()
+            .<span class="hljs-keyword">use</span>(lux)
+            .<span class="hljs-title function_">mount</span>(elements[i]);
+
+        <span class="hljs-comment">// OR option 2: use specific lux components</span>
+        <span class="hljs-title function_">createMyApp</span>()
+            .<span class="hljs-title function_">component</span>(<span class="hljs-string">&quot;lux-library-footer&quot;</span>, LuxLibraryFooter)
+            .<span class="hljs-title function_">component</span>(<span class="hljs-string">&quot;lux-library-header&quot;</span>, LuxLibraryHeader)
+            .<span class="hljs-title function_">component</span>(<span class="hljs-string">&quot;lux-menu-bar&quot;</span>, LuxMenuBar)
+            .<span class="hljs-title function_">component</span>(<span class="hljs-string">&quot;lux-logo-university&quot;</span>, LuxLogoUniversity)
+            .<span class="hljs-title function_">component</span>(<span class="hljs-string">&quot;lux-logo-library-icon&quot;</span>, LuxLogoLibraryIcon)
+            .<span class="hljs-title function_">component</span>(<span class="hljs-string">&quot;lux-library-logo&quot;</span>, LuxLibraryLogo)
+            .<span class="hljs-title function_">component</span>(<span class="hljs-string">&quot;lux-logo-library&quot;</span>, LuxLogoLibrary)
+            .<span class="hljs-title function_">component</span>(<span class="hljs-string">&quot;lux-wrapper&quot;</span>, LuxWrapper)
+            .<span class="hljs-title function_">component</span>(<span class="hljs-string">&quot;lux-spacer&quot;</span>, LuxSpacer)
+            .<span class="hljs-title function_">mount</span>(elements[i]);
+    }
+})
+</code></pre>
+</li>
+<li><p>Add lux components as needed in your views or ViewComponents.</p>
+</li>
+<li><p>Add classes or CSS variables from lux to your styling.</p>
+</li>
+</ol>
+<h4 id="adding-lux-to-your-project-adding-lux-to-a-static-html-page" class="docmd-heading"><a href="#adding-lux-to-your-project-adding-lux-to-a-static-html-page" class="heading-anchor" aria-label="Permalink to this section"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-link2-icon lucide-link-2"><path d="M9 17H7A5 5 0 0 1 7 7h2m6 0h2a5 5 0 1 1 0 10h-2m-7-5h8"/></svg></a>Adding Lux to a static HTML page</h4>
+<p>Importmaps are a nice way to add vue and<br>
+lux to a static site. An example of this<br>
+approach is the <a href="https://github.com/pulibrary/pulibrary.github.io">Pulibrary github blog</a>.</p>
+<p>This approach is simple, but there is a drawback.<br>
+The user has to download all of lux, rather than<br>
+just the components you need (i.e. there is no<br>
+tree shaking).</p>
+<ol>
+<li><p>In your HTML, import Vue and lux from a<br>
+CDN, like so:</p>
+<pre class="hljs"><code class="language-html"><span class="hljs-operator">&lt;</span>script <span class="hljs-keyword">type</span><span class="hljs-operator">=</span><span class="hljs-string">&quot;importmap&quot;</span><span class="hljs-operator">&gt;</span>
+  {
+    <span class="hljs-string">&quot;imports&quot;</span><span class="hljs-operator">:</span> {
+      <span class="hljs-string">&quot;vue&quot;</span><span class="hljs-operator">:</span> <span class="hljs-string">&quot;https://unpkg.com/vue@3.2.47/dist/vue.esm-browser.prod.js&quot;</span>,
+      <span class="hljs-string">&quot;lux-design-system&quot;</span><span class="hljs-operator">:</span> <span class="hljs-string">&quot;https://unpkg.com/lux-design-system@6.3.1/dist/lux-styleguidist.mjs&quot;</span>
+    }
+  }
+<span class="hljs-operator">&lt;/</span>script<span class="hljs-operator">&gt;</span>
+</code></pre>
+</li>
+<li><p>Add some javascript that creates and mounts a<br>
+Vue application and installs lux as a vue plugin.</p>
+<pre class="hljs"><code class="language-text"><span class="hljs-keyword">import</span> { createApp } <span class="hljs-keyword">from</span> <span class="hljs-string">&#039;vue&#039;</span>;
+<span class="hljs-keyword">import</span> lux <span class="hljs-keyword">from</span> <span class="hljs-string">&#039;lux-design-system&#039;</span>;
+
+<span class="hljs-keyword">const</span> app <span class="hljs-operator">=</span> <span class="hljs-title function_">createApp</span>({});
+app.<span class="hljs-keyword">use</span>(lux)
+.<span class="hljs-title function_">mount</span>(<span class="hljs-string">&#039;#app&#039;</span>);
+</code></pre>
+<p>If you are only using lux for a header and footer:</p>
+<pre class="hljs"><code class="language-text"><span class="hljs-keyword">import</span> { createApp } <span class="hljs-keyword">from</span> <span class="hljs-string">&#039;vue&#039;</span>;
+<span class="hljs-keyword">import</span> lux <span class="hljs-keyword">from</span> <span class="hljs-string">&#039;lux-design-system&#039;</span>;
+
+<span class="hljs-keyword">const</span> headerApp <span class="hljs-operator">=</span> <span class="hljs-title function_">createApp</span>({});
+headerApp.<span class="hljs-keyword">use</span>(lux)
+.<span class="hljs-title function_">mount</span>(<span class="hljs-string">&#039;#lux-header-container&#039;</span>)
+
+<span class="hljs-keyword">const</span> footerApp <span class="hljs-operator">=</span> <span class="hljs-title function_">createApp</span>({});
+footerApp.<span class="hljs-keyword">use</span>(lux)
+.<span class="hljs-title function_">mount</span>(<span class="hljs-string">&#039;#lux-footer-container&#039;</span>);
+</code></pre>
+</li>
+<li><p>Import the CSS as from a CDN.</p>
+<pre class="hljs"><code class="language-html"><span class="hljs-operator">&lt;</span>link rel<span class="hljs-operator">=</span><span class="hljs-string">&quot;stylesheet&quot;</span> href<span class="hljs-operator">=</span><span class="hljs-string">&quot;https://unpkg.com/lux-design-system@6.3.1/dist/style.css&quot;</span> <span class="hljs-operator">/&gt;</span>
+</code></pre>
+</li>
+<li><p>Add lux components as needed in your HTML. If you are just adding a<br>
+header and footer:</p>
+<pre class="hljs"><code class="language-html"><span class="hljs-operator">&lt;</span>div <span class="hljs-keyword">id</span><span class="hljs-operator">=</span><span class="hljs-string">&quot;lux-header-container&quot;</span><span class="hljs-operator">&gt;</span>
+  <span class="hljs-operator">&lt;</span>lux<span class="hljs-operator">-</span>library<span class="hljs-operator">-</span>header
+    app<span class="hljs-operator">-</span>name<span class="hljs-operator">=</span><span class="hljs-string">&quot;Research Guides&quot;</span>
+    abbr<span class="hljs-operator">-</span>name<span class="hljs-operator">=</span><span class="hljs-string">&quot;Guides&quot;</span>
+    app<span class="hljs-operator">-</span>url<span class="hljs-operator">=</span><span class="hljs-string">&quot;https://libguides.princeton.edu/&quot;</span>
+    theme<span class="hljs-operator">=</span><span class="hljs-string">&quot;dark&quot;</span>
+  <span class="hljs-operator">&gt;</span>
+    <span class="hljs-operator">&lt;</span>lux<span class="hljs-operator">-</span>menu<span class="hljs-operator">-</span>bar
+      <span class="hljs-keyword">type</span><span class="hljs-operator">=</span><span class="hljs-string">&quot;main-menu&quot;</span>
+      <span class="hljs-operator">:</span>menu<span class="hljs-operator">-</span>items<span class="hljs-operator">=</span><span class="hljs-string">&quot;[
+       {name: &#039;Help&#039;, component: &#039;Help&#039;, href: &#039;https://library.princeton.edu/ask-us&#039;},
+       {name: &#039;Your Accounts&#039;, component: &#039;Account&#039;, href: &#039;https://library.princeton.edu/accounts&#039;}
+     ]&quot;</span>
+    <span class="hljs-operator">&gt;&lt;/</span>lux<span class="hljs-operator">-</span>menu<span class="hljs-operator">-</span>bar<span class="hljs-operator">&gt;</span>
+  <span class="hljs-operator">&lt;/</span>lux<span class="hljs-operator">-</span>library<span class="hljs-operator">-</span>header<span class="hljs-operator">&gt;</span>
+
+  <span class="hljs-comment">&lt;!-- the rest of your page --&gt;</span>
+
+  <span class="hljs-operator">&lt;</span>div <span class="hljs-keyword">id</span><span class="hljs-operator">=</span><span class="hljs-string">&quot;lux-footer-container&quot;</span><span class="hljs-operator">&gt;</span>
+    <span class="hljs-operator">&lt;</span>lux<span class="hljs-operator">-</span>library<span class="hljs-operator">-</span>footer<span class="hljs-operator">&gt;&lt;/</span>lux<span class="hljs-operator">-</span>library<span class="hljs-operator">-</span>footer<span class="hljs-operator">&gt;</span>
+  <span class="hljs-operator">&lt;/</span>div<span class="hljs-operator">&gt;</span>
+<span class="hljs-operator">&lt;/</span>div<span class="hljs-operator">&gt;</span>
+</code></pre>
+</li>
+<li><p>Add classes or CSS variables from lux to your styling.</p>
+</li>
+</ol>
+<h5 id="adding-lux-to-your-project-adding-lux-to-a-static-html-page-adding-lux-to-a-static-html-page-using-an-iife-file">Adding Lux to a static HTML page using an IIFE file</h5>
+<p>If you can’t use an import map and have to use <code>&lt;script src&gt;</code> then from cdn use the IIFE file - <code>https://unpkg.com/lux-design-system@&lt;versionNumber&gt;/dist/lux-styleguidist.iife.js</code>.</p>
+<p>Add the following <code>&lt;script&gt;</code> tags after the <code>&lt;head&gt;</code> tag:</p>
+<pre class="hljs"><code class="language-html"><span class="hljs-operator">&lt;</span>script src<span class="hljs-operator">=</span><span class="hljs-string">&quot;https://unpkg.com/vue@3/dist/vue.global.js&quot;</span><span class="hljs-operator">&gt;&lt;/</span>script<span class="hljs-operator">&gt;</span>
+<span class="hljs-operator">&lt;</span>script src<span class="hljs-operator">=</span><span class="hljs-string">&quot;https://unpkg.com/lux-design-system@6.3.1/dist/lux-styleguidist.iife.js&quot;</span><span class="hljs-operator">&gt;&lt;/</span>script<span class="hljs-operator">&gt;</span>
+</code></pre>
+<p>After <code>&lt;body&gt;</code> tag add the following <code>&lt;script&gt;</code> tag:</p>
+<pre class="hljs"><code class="language-html"><span class="hljs-operator">&lt;</span>script<span class="hljs-operator">&gt;</span>
+  <span class="hljs-keyword">const</span> { createApp } <span class="hljs-operator">=</span> Vue;
+  <span class="hljs-title function_">createApp</span>().<span class="hljs-keyword">use</span>(Lux.<span class="hljs-keyword">default</span>).<span class="hljs-title function_">mount</span>(<span class="hljs-string">&quot;#app&quot;</span>);
+<span class="hljs-operator">&lt;/</span>script<span class="hljs-operator">&gt;</span>
+</code></pre>
+<h4 id="adding-lux-to-your-project-adding-only-the-lux-css" class="docmd-heading"><a href="#adding-lux-to-your-project-adding-only-the-lux-css" class="heading-anchor" aria-label="Permalink to this section"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-link2-icon lucide-link-2"><path d="M9 17H7A5 5 0 0 1 7 7h2m6 0h2a5 5 0 1 1 0 10h-2m-7-5h8"/></svg></a>Adding only the Lux CSS</h4>
+<p>You can just bring in the lux CSS (including all the CSS variables) from a CDN.<br>
+An example of this approach is the <a href="https://github.com/pulibrary/dacs_handbook">DACS handbook</a>.</p>
+<p>To do this, add the CSS from a CDN to your HTML:</p>
+<pre class="hljs"><code class="language-html"><span class="hljs-operator">&lt;</span>link rel<span class="hljs-operator">=</span><span class="hljs-string">&quot;stylesheet&quot;</span> href<span class="hljs-operator">=</span><span class="hljs-string">&quot;https://unpkg.com/lux-design-system@6.3.1/dist/style.css&quot;</span> <span class="hljs-operator">/&gt;</span>
+</code></pre>
+
+                
+                  <div class="page-navigation">
+                    
+                      <div class="prev-page-placeholder">
+                      </div>
+                    
+                    
+                      <a href="../adding_icons/" class="next-page">
+                        <span><small>Next</small>
+                          <strong>
+                            Adding Icons
+                          </strong></span>
+                        
+<svg class="lucide-icon icon-arrow-right page-nav-icon" width="1em" height="1em" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"
+  class="lucide lucide-arrow-right"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M5 12h14" />
+  <path d="m12 5 7 7-7 7" />
+</svg>
+
+                      </a>
+                    
+                  </div>
+                
+              </div>
+              
+              <div class="toc-sidebar">
+                
+
+
+  <div class="toc-container">
+    <h2 class="toc-title">On This Page<span class="mobile-view toc-menu-button float-right">
+<svg class="lucide-icon icon-chevron-down " width="1em" height="1em" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"
+  class="lucide lucide-chevron-down"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="m6 9 6 6 6-6" />
+</svg>
+</span></h2>
+    <ul class="toc-list">
+      
+        <li class="toc-item toc-level-3">
+          <a href="#adding-lux-to-your-project" class="toc-link">Adding Lux to your project</a>
+        </li>
+      
+        <li class="toc-item toc-level-4">
+          <a href="#adding-lux-to-your-project-adding-lux-to-a-vuevite-application" class="toc-link">Adding Lux to a vue+vite application</a>
+        </li>
+      
+        <li class="toc-item toc-level-4">
+          <a href="#adding-lux-to-your-project-adding-lux-to-a-viterails-project" class="toc-link">Adding Lux to a vite+rails project</a>
+        </li>
+      
+        <li class="toc-item toc-level-4">
+          <a href="#adding-lux-to-your-project-adding-lux-to-a-static-html-page" class="toc-link">Adding Lux to a static HTML page</a>
+        </li>
+      
+        <li class="toc-item toc-level-4">
+          <a href="#adding-lux-to-your-project-adding-only-the-lux-css" class="toc-link">Adding only the Lux CSS</a>
+        </li>
+      
+    </ul>
+  </div>
+
+              </div>
+              
+            </div>
+            <div class="page-footer-actions">
+              
+              
+                <span class="git-last-updated" data-timestamp="1778167653000">
+                  <svg class="git-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <polyline points="12 6 12 12 16 14"></polyline>
+                  </svg>
+                  <span class="git-label">Last updated:</span>
+                  <span class="git-time" data-timestamp="1778167653000"></span>
+                  
+                  <div class="git-commit-tooltip" role="tooltip">
+                    <div class="git-tooltip-title">Recent commits</div>
+                    <ul class="git-commit-list">
+                      
+                        <li class="git-commit-item">
+                          <div class="git-commit-avatar" title="Jane Sandberg">
+                            
+                              <img src="https://www.gravatar.com/avatar/4cf6cbd9ac5ccc3f3039e3d6cafd0690?d=mp&amp;s=64" alt="Jane Sandberg">
+                            
+                          </div>
+                          <div class="git-commit-details">
+                            <div class="git-commit-message" title="Make indentation in documentation more compatible with styleguidist">Make indentation in documentation mor...</div>
+                            <div class="git-commit-meta">
+                              <span class="git-commit-author">Jane Sandberg</span>
+                              <span class="git-commit-date" data-timestamp="1778167653000"></span>
+                            </div>
+                          </div>
+                        </li>
+                      
+                        <li class="git-commit-item">
+                          <div class="git-commit-avatar" title="Jane Sandberg">
+                            
+                              <img src="https://www.gravatar.com/avatar/4cf6cbd9ac5ccc3f3039e3d6cafd0690?d=mp&amp;s=64" alt="Jane Sandberg">
+                            
+                          </div>
+                          <div class="git-commit-details">
+                            <div class="git-commit-message" title="Upgrade to eslint 10 and prettier 3">Upgrade to eslint 10 and prettier 3</div>
+                            <div class="git-commit-meta">
+                              <span class="git-commit-author">Jane Sandberg</span>
+                              <span class="git-commit-date" data-timestamp="1778105402000"></span>
+                            </div>
+                          </div>
+                        </li>
+                      
+                        <li class="git-commit-item">
+                          <div class="git-commit-avatar" title="Jane Sandberg">
+                            
+                              <img src="https://www.gravatar.com/avatar/4cf6cbd9ac5ccc3f3039e3d6cafd0690?d=mp&amp;s=64" alt="Jane Sandberg">
+                            
+                          </div>
+                          <div class="git-commit-details">
+                            <div class="git-commit-message" title="[docs] Include Adding Lux docs in the styleguide site">[docs] Include Adding Lux docs in the...</div>
+                            <div class="git-commit-meta">
+                              <span class="git-commit-author">Jane Sandberg</span>
+                              <span class="git-commit-date" data-timestamp="1745434812000"></span>
+                            </div>
+                          </div>
+                        </li>
+                      
+                        <li class="git-commit-item">
+                          <div class="git-commit-avatar" title="Jane Sandberg">
+                            
+                              <img src="https://www.gravatar.com/avatar/d168bb77253f48e1a11f8022d5ae7f79?d=mp&amp;s=64" alt="Jane Sandberg">
+                            
+                          </div>
+                          <div class="git-commit-details">
+                            <div class="git-commit-message" title="Update documentation to refer to a recent release">Update documentation to refer to a re...</div>
+                            <div class="git-commit-meta">
+                              <span class="git-commit-author">Jane Sandberg</span>
+                              <span class="git-commit-date" data-timestamp="1725399984000"></span>
+                            </div>
+                          </div>
+                        </li>
+                      
+                        <li class="git-commit-item">
+                          <div class="git-commit-avatar" title="Jane Sandberg">
+                            
+                              <img src="https://www.gravatar.com/avatar/4cf6cbd9ac5ccc3f3039e3d6cafd0690?d=mp&amp;s=64" alt="Jane Sandberg">
+                            
+                          </div>
+                          <div class="git-commit-details">
+                            <div class="git-commit-message" title="Improve recommendations for adding Lux to a static HTML page">Improve recommendations for adding Lu...</div>
+                            <div class="git-commit-meta">
+                              <span class="git-commit-author">Jane Sandberg</span>
+                              <span class="git-commit-date" data-timestamp="1723238480000"></span>
+                            </div>
+                          </div>
+                        </li>
+                      
+                    </ul>
+                  </div>
+                  
+                </span>
+              
+              <span class="git-spacer"></span>
+              
+            </div>
+          </main>
+          
+
+
+<footer class="page-footer">
+  <div class="footer-content">
+    <div class="user-footer">© 2026</div>
+    
+      <div class="branding-footer">
+        Built with <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path><path d="M12 5 9.04 7.96a2.17 2.17 0 0 0 0 3.08c.82.82 2.13.85 3 .07l2.07-1.9a2.82 2.82 0 0 1 3.79 0l2.96 2.66"></path><path d="m18 15-2-2"></path><path d="m15 18-2-2"></path></svg> <a href="https://docmd.io" target="_blank" rel="noopener">docmd.</a>
+      </div>
+    
+  </div>
+</footer>
+
+        </div>
+      </div>
+      
+      <script src="../assets/js/docmd-main.js?v=mu30x36a"></script>
+      
+      <script src="../assets/js/docmd-git.js?v=mu30x36a"></script>
+      <script src="../assets/js/docmd-image-lightbox.js?v=mu30x36a" ></script>
+<script src="../assets/js/vendor/minisearch.js?v=mu30x36a" ></script>
+<script src="../assets/js/docmd-search.js?v=mu30x36a" ></script>
+<script src="../assets/js/docmd-git.js?v=mu30x36a" ></script>
+<script src="../assets/js/docmd-ai.js?v=mu30x36a" ></script>
+
+  <!-- Search Modal (Injected by @docmd/plugin-search) -->
+  <div id="docmd-search-modal" class="docmd-search-modal" style="display: none;" data-show-confidence="false" data-show-filters="true"
+       data-search-placeholder="Search documentation..."
+       data-search-no-results="No results found."
+       data-search-error="Failed to load search index."
+       data-search-offline="Search requires a web server. Open this site via http://localhost instead of file:// to enable search."
+       data-search-offline-build="Search is disabled because these docs were built with the --offline flag. Rebuild the site without the flag to enable search."
+       data-search-initial="Type to start searching..."
+       data-search-navigate="to navigate"
+       data-search-escape="to close">
+      <div class="docmd-search-box">
+          <div class="docmd-search-header">
+              <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-icon icon-search"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"></path></svg>
+              <input type="text" id="docmd-search-input" placeholder="Search documentation..." autocomplete="off" spellcheck="false">
+              <button onclick="window.closeDocmdSearch()" class="docmd-search-close" aria-label="Close search">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-icon icon-x"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg>
+              </button>
+          </div>
+          <div id="docmd-search-results" class="docmd-search-results"></div>
+          <div class="docmd-search-footer">
+              <span><kbd class="docmd-kbd">↑</kbd> <kbd class="docmd-kbd">↓</kbd> to navigate</span>
+              <span><kbd class="docmd-kbd">ESC</kbd> to close</span>
+          </div>
+      </div>
+  </div>
+
+    <script>
+      (function() {
+        var searchDebounceTimer;
+
+        document.addEventListener('click', function(e) {
+          var link = e.target.closest('a');
+          if (!link || !window.gtag) return;
+          
+          var url = link.href;
+          var hostname = window.location.hostname;
+          var isExternal = link.hostname && link.hostname !== hostname;
+          var isDownload = link.hasAttribute('download') || url.match(/\.(pdf|zip|tar|gz|exe|pkg)$/i);
+          
+          if (isExternal) {
+            gtag('event', 'click_external', { 'url': url, 'link_text': link.innerText.trim() });
+          } else if (isDownload) {
+            gtag('event', 'download', { 'file_name': url.split('/').pop(), 'url': url });
+          }
+
+          // TOC tracking
+          if (link.classList.contains('toc-link')) {
+            gtag('event', 'toc_click', { 'target_id': link.getAttribute('href'), 'title': link.innerText.trim() });
+          }
+
+          // Permalink tracking
+          if (link.classList.contains('heading-anchor')) {
+            gtag('event', 'permalink_click', { 'url': url });
+          }
+        });
+
+        
+        // Search Keyword Tracking
+        document.addEventListener('input', function(e) {
+          if (e.target.id === 'docmd-search-input' && window.gtag) {
+            var query = e.target.value.trim();
+            if (query.length < 3) return;
+            
+            clearTimeout(searchDebounceTimer);
+            searchDebounceTimer = setTimeout(function() {
+              gtag('event', 'search', { 'search_term': query });
+            }, 1000);
+          }
+        });
+        
+      })();
+    </script>
+
+<script>window.__git_config={"repo":null,"branch":"main","editLink":false,"lastUpdated":true,"commitHistory":true,"maxCommits":5,"dateFormat":"relative"};window.__git_i18n={"lastUpdated":"Last updated","recentCommits":"Recent commits","viewCommitHistory":"View commit history","editOnGitHub":"Edit on GitHub","editOnGitLab":"Edit on GitLab","editOnBitbucket":"Edit on Bitbucket","editThisPage":"Edit this page","justNow":"just now","minutesAgo":"{n}m ago","hoursAgo":"{n}h ago","daysAgo":"{n}d ago"}</script>
+<div id="docmd-ai-root"></div><script>window.__docmd_ai_config={"endpoint":"","cloud":{},"captcha":true,"position":"bottom-center","siteTitle":"LUX Design System","siteBase":"/","siteUrl":"","versions":null,"i18n":null,"navigation":[{"title":"Home","collapsible":true,"children":[{"title":"Adding Lux","path":"/adding_lux/"},{"title":"Adding Icons","path":"/adding_icons/"},{"title":"Design Principles","path":"/design_principles/"},{"title":"Design Tokens","path":"/design_tokens/"},{"title":"Lux Usage","path":"/lux_usage/"}]},{"title":"Components","collapsible":true,"children":[{"title":"LuxAlert","path":"/src/components/LuxAlert/"},{"title":"LuxAutocompleteInput","path":"/src/components/LuxAutocompleteInput/"},{"title":"LuxBadge","path":"/src/components/LuxBadge/"}]}],"searchCapabilities":{"keyword":true,"semantic":false},"isWorkspace":false,"workspaceProjects":[],"contextLimit":5};</script>
+      
+      
+      
+  </body>
+</html>

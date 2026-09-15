@@ -1,0 +1,60 @@
+<template>
+  <component :is="props.type" class="lux-accessibility">
+    <a href="https://accessibility.princeton.edu/help">Accessibility</a>
+  </component>
+</template>
+
+<script setup>
+import { defineOptions } from "vue"
+
+/**
+ * Used to show the University’s Accessibility site in the footer.
+ */
+defineOptions({
+  name: "LuxUniversityAccessibilityOld",
+  status: "ready",
+  release: "5.2.0",
+  type: "Element",
+})
+
+const props = defineProps({
+  /**
+   * The html element name used for the wrapper.
+   */
+  type: {
+    type: String,
+    default: "span",
+  },
+})
+</script>
+
+<style lang="scss" scoped>
+@use "/src/assets/styles/spacing.scss" as *;
+@use "/src/assets/styles/mixins.scss" as *;
+
+.lux-accessibility {
+  @include reset;
+  font-family: var(--font-family-heading);
+  font-size: var(--font-size-x-small);
+  line-height: var(--line-height-heading);
+  color: var(--color-rich-black);
+
+  a {
+    color: var(--color-rich-black);
+    text-decoration: none;
+
+    &:hover,
+    &:focus {
+      text-decoration: underline;
+    }
+  }
+}
+</style>
+
+<docs>
+  ```jsx
+  <div>
+    <lux-university-accessibility-old type="span"></lux-university-accessibility-old>
+  </div>
+  ```
+</docs>

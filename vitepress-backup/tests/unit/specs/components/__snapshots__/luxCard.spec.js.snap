@@ -1,0 +1,14 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`LuxCard.vue > has the expected html structure 1`] = `
+<article
+  class="lux-card medium"
+  data-v-d3ace9c3=""
+  id="MyCard"
+  style="max-width: px;"
+>
+  <!-- @slot The heading, media, and other contents of your card.  -->
+  
+  
+</article>
+`;

@@ -1,0 +1,58 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`LuxDatePicker.vue > has the expected html structure 1`] = `
+<div
+  class="lux-date-picker medium"
+>
+  
+  
+  <div
+    class="lux-input"
+    data-v-f2a652b7=""
+  >
+    <label
+      class=""
+      data-v-f2a652b7=""
+      for="startDate"
+    >
+      Start Date
+    </label>
+    <div
+      class="lux-input-field medium"
+      data-v-f2a652b7=""
+    >
+      <input
+        autocomplete="off"
+        class="lux-input"
+        data-v-f2a652b7=""
+        errormessage=""
+        hover="false"
+        id="startDate"
+        maxlength="256"
+        name="start"
+        placeholder=""
+        type="text"
+        value=""
+      />
+      <!--v-if-->
+    </div>
+    <!--v-if-->
+    <!--v-if-->
+  </div>
+  
+  <div
+    class="vc-popover-content-wrapper is-interactive"
+  >
+    <transition-stub
+      appear="true"
+      css="true"
+      name="vc-slide-fade"
+      persisted="false"
+    >
+      <!---->
+    </transition-stub>
+  </div>
+  
+  <!--v-if-->
+</div>
+`;
