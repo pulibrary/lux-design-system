@@ -23,6 +23,7 @@ export default {
           { text: "LuxCard", link: "/src/components/LuxCard" },
           { text: "LuxCopyToClipboard", link: "/src/components/LuxCopyToClipboard" },
           { text: "LuxDataTable", link: "/src/components/LuxDataTable" },
+          { text: "LuxDatePicker", link: "/src/components/LuxDatePicker" },
           { text: "LuxDialog", link: "/src/components/LuxDialog" },
           { text: "LuxDropdownMenu", link: "/src/components/LuxDropdownMenu" },
           { text: "LuxGridContainer", link: "/src/components/LuxGridContainer" },
