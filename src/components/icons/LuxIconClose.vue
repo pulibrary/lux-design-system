@@ -24,29 +24,3 @@ defineOptions({
   type: "Element",
 })
 </script>
-
-<docs>
-  ```jsx
-  <div>
-    <!-- you can pass in a smaller `width` and `height` as props -->
-    <lux-icon-base width="12" height="12" icon-name="close" >
-      <lux-icon-close></lux-icon-close>
-    </lux-icon-base>
-
-    <!-- or you can use the default, which is 18 -->
-    <lux-icon-base icon-name="close">
-      <lux-icon-close></lux-icon-close>
-    </lux-icon-base>
-
-    <!-- or make it a little bigger too, with colors :) -->
-    <lux-icon-base width="30" height="30" icon-name="close" icon-color="red">
-      <lux-icon-close></lux-icon-close>
-    </lux-icon-base>
-
-    <!-- or in a circle -->
-    <lux-icon-base width="30" height="30" icon-name="close" icon-color="white" circle-color="purple">
-      <lux-icon-close></lux-icon-close>
-    </lux-icon-base>
-  </div>
-  ```
-</docs>
