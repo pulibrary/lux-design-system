@@ -1,33 +1,19 @@
 # LuxCard
 
-> Cards are used to apply a container around a related grouping of information.
-
 ## Props
 
-| Prop name      | Description                                                                              | Type    | Values | Default  |
-| -------------- | ---------------------------------------------------------------------------------------- | ------- | ------ | -------- |
-| id             | Sets the id to reference this card with.                                                 | string  | -      | ""       |
-| cardUrl        | Sets the URL linking to the card content -- this does not seem to be used                | string  | -      | ""       |
-| cardPixelWidth | Sets arbitrary card width. It's recommended to use size over this setting.               | string  | -      | ""       |
-| size           | Sets the size of the card `small, medium, large, full-width`                             | string  | -      | "medium" |
-| selected       | Indicates whether the card is selected.                                                  | boolean | -      | false    |
-| edited         | Indicates whether the object a card represents has been altered from its persisted form. | boolean | -      | false    |
-| disabled       | Indicates the user cannot interact with the card.                                        | boolean | -      | false    |
-| cardTitle      | The title of the card -- this prop is not used                                           | string  | -      | ""       |
+| Prop Name | Description | Type | Default |
+| :--- | :--- | :--- | :--- |
+| `id` | Sets the id to reference this card with. | `String` | `""` |
+| `cardUrl` | Sets the URL linking to the card content -- this does not seem to be used | `String` | `""` |
+| `cardPixelWidth` | Sets arbitrary card width. It's recommended to use size over this setting. | `any` | `""` |
+| `size` | Sets the size of the card `small, medium, large, full-width` | `String` | `"medium"` |
+| `selected` | Indicates whether the card is selected. | `Boolean` | `false` |
+| `edited` | Indicates whether the object a card represents has been altered from its persisted form. | `Boolean` | `false` |
+| `disabled` | Indicates the user cannot interact with the card. | `Boolean` | `false` |
+| `cardTitle` | The title of the card -- this prop is not used | `String` | `""` |
 
-## Events
-
-| Event name | Properties | Description |
-| ---------- | ---------- | ----------- |
-| card-click |            |
-
-## Slots
-
-| Name    | Description                                          | Bindings |
-| ------- | ---------------------------------------------------- | -------- |
-| default | The heading, media, and other contents of your card. |          |
-
----
+## Usage
 
 ```
     <div>
@@ -60,4 +46,4 @@
         </lux-card-content>
       </lux-card>
     </div>
-```
+  ```

@@ -1,23 +1,15 @@
 # LuxSpacer
 
-> Used to fill available space or make space between two components.
-
 ## Props
 
-| Prop name | Description                                 | Type   | Values | Default |
-| --------- | ------------------------------------------- | ------ | ------ | ------- |
-| type      | The html element name used for the wrapper. | string | -      | "div"   |
+| Prop Name | Description | Type | Default |
+| :--- | :--- | :--- | :--- |
+| `type` | The html element name used for the wrapper. | `String` | `"div"` |
 
-## Slots
-
-| Name    | Description                                   | Bindings |
-| ------- | --------------------------------------------- | -------- |
-| default | Optional: some content that should be spaced. |          |
-
----
+## Usage
 
 ```jsx
-<div>
-  <lux-spacer></lux-spacer>
-</div>
+    <div>
+        <lux-spacer></lux-spacer>
+    </div>
 ```

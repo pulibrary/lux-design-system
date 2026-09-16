@@ -1,36 +1,20 @@
 # LuxInputButton
 
-> Buttons are used to toggle something in the interface or trigger new
-> content in the same context.
-
 ## Props
 
-| Prop name        | Description                                                                                                                                                                                                     | Type    | Values | Default  |
-| ---------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------- | ------ | -------- |
-| variation        | The button's variations `solid, outline, text, dropdown, icon`                                                                                                                                                  | string  | -      | "solid"  |
-| type             | The button's type attribute `button, submit`                                                                                                                                                                    | string  | -      | "button" |
-| size             | Sets the size of the button `small, medium, large`                                                                                                                                                              | string  | -      | "medium" |
-| block            | Whether the button extends the full available width or not                                                                                                                                                      | boolean | -      | false    |
-| disabled         | Whether the button is disabled or not<br/>`true, false`                                                                                                                                                         | boolean | -      | false    |
-| focused          | Whether the button is focused or not<br/>`true, false`                                                                                                                                                          | boolean | -      | false    |
-| customAlertEvent | Clicking this button can emit a custom event that should trigger an alert.<br/>You must supply an alertStatus and alertMessage, like so:<br/>{ 'alertStatus': 'success', 'alertMessage': 'This is my message.'} | object  | -      | null     |
-| hideLabel        | Visually hides the button text.                                                                                                                                                                                 | boolean | -      | false    |
-| icon             | Indicates what icon to use. Values should be hyphenated and do not use the "lux-icon-" prefix.<br/>For example, instead of `lux-icon-search`, simply use `search`.                                              | string  | -      | ""       |
+| Prop Name | Description | Type | Default |
+| :--- | :--- | :--- | :--- |
+| `variation` | The button's variations `solid, outline, text, dropdown, icon` | `String` | `"solid"` |
+| `type` | The button's type attribute `button, submit` | `String` | `"button"` |
+| `size` | Sets the size of the button `small, medium, large` | `String` | `"medium"` |
+| `block` | Whether the button extends the full available width or not | `Boolean` | `false` |
+| `disabled` | Whether the button is disabled or not `true, false` | `Boolean` | `false` |
+| `focused` | Whether the button is focused or not `true, false` | `Boolean` | `false` |
+| `customAlertEvent` | Clicking this button can emit a custom event that should trigger an alert. You must supply an alertStatus and alertMessage, like so: { 'alertStatus': 'success', 'alertMessage': 'This is my message.'} | `Object` | `null` |
+| `hideLabel` | Visually hides the button text. | `Boolean` | `false` |
+| `icon` | Indicates what icon to use. Values should be hyphenated and do not use the "lux-icon-" prefix. For example, instead of `lux-icon-search`, simply use `search`. | `String` | `""` |
 
-## Events
-
-| Event name     | Properties | Description |
-| -------------- | ---------- | ----------- |
-| button-clicked |            |
-| system-alert   |            |
-
-## Slots
-
-| Name    | Description              | Bindings |
-| ------- | ------------------------ | -------- |
-| default | The text of your button. |          |
-
----
+## Usage
 
 ```jsx
     <div>
@@ -48,4 +32,4 @@
 
       <lux-input-button type="button" variation="text">Manage Files</lux-input-button>
     </div>
-```
+  ```
