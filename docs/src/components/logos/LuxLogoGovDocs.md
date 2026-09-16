@@ -1,18 +1,16 @@
 # LuxLogoGovDocs
 
-> Government Docs site logo.
-
 ## Props
 
-| Prop name | Description             | Type           | Values | Default |
-| --------- | ----------------------- | -------------- | ------ | ------- |
-| width     | The width of the logo.  | number\|string | -      | 32      |
-| height    | The height of the logo. | number\|string | -      | 32      |
+| Prop Name | Description | Type | Default |
+| :--- | :--- | :--- | :--- |
+| `width` | The width of the logo. | `[Number, String]` | `32` |
+| `height` | The height of the logo. | `[Number, String]` | `32` |
 
----
+## Usage
 
 ```jsx
-<div>
-  <lux-logo-gov-docs></lux-logo-gov-docs>
-</div>
-```
+  <div>
+    <lux-logo-gov-docs></lux-logo-gov-docs>
+  </div>
+  ```
