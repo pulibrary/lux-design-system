@@ -1,18 +1,16 @@
 # LuxLogoUniversityWhite
 
-> Official Princeton University Logo - black & white
-
 ## Props
 
-| Prop name | Description             | Type           | Values | Default |
-| --------- | ----------------------- | -------------- | ------ | ------- |
-| width     | The width of the logo.  | number\|string | -      | 263     |
-| height    | The height of the logo. | number\|string | -      | 72      |
+| Prop Name | Description | Type | Default |
+| :--- | :--- | :--- | :--- |
+| `width` | The width of the logo. | `[Number, String]` | `263` |
+| `height` | The height of the logo. | `[Number, String]` | `72` |
 
----
+## Usage
 
 ```jsx
-<div>
-  <lux-logo-university-white style="background-color:#000000"></lux-logo-university-white>
-</div>
-```
+  <div>
+    <lux-logo-university-white style="background-color:#000000"></lux-logo-university-white>
+  </div>
+  ```
