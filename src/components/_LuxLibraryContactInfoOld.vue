@@ -58,7 +58,7 @@ const props = defineProps({
 </script>
 
 <style lang="scss" scoped>
-@use "/src/assets/styles/mixins.scss" as *;
+@use "../assets/styles/mixins.scss" as *;
 
 .lux-library-contact {
   @include reset;

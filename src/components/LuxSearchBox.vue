@@ -75,8 +75,8 @@ const model = defineModel()
 </script>
 
 <style lang="scss" scoped>
-@use "/src/assets/styles/system.scss" as *;
-@use "/src/assets/styles/mixins.scss" as *;
+@use "../assets/styles/system.scss" as *;
+@use "../assets/styles/mixins.scss" as *;
 
 .lux-search-box {
   box-sizing: border-box;
