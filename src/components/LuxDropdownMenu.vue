@@ -128,9 +128,9 @@ const vClickOutside = {
 </script>
 
 <style lang="scss" scoped>
-@use "/src/assets/styles/system.scss" as *;
-@use "/src/assets/styles/spacing.scss" as *;
-@use "/src/assets/styles/mixins.scss" as *;
+@use "../assets/styles/system.scss" as *;
+@use "../assets/styles/spacing.scss" as *;
+@use "../assets/styles/mixins.scss" as *;
 
 .lux-dropdown-menu {
   margin: 0 0.25rem 1rem;
