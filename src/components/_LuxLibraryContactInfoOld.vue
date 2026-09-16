@@ -59,7 +59,7 @@ const props = defineProps({
 </script>
 
 <style lang="scss" scoped>
-@use "/src/assets/styles/mixins.scss" as *;
+@use "../assets/styles/mixins.scss" as *;
 
 .lux-logo-you-tube {
   transform: translate(0, 3px);
