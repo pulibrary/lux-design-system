@@ -1,17 +1,15 @@
 # LuxDataTable
 
-> Used to display data to end users.
-
 ## Props
 
-| Prop name    | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            | Type   | Values | Default |
-| ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------ | ------ | ------- |
-| caption      | caption provides context for the data that is helpful to users, particularly those who use screenreaders.<br/>`e.g. [name, title, age]`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                | string | -      |         |
-| summaryLabel | summaryLabel provides context to the data values in tfoot element cells.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               | string | -      |         |
-| columns      | columns define the columns and order for which the data should be displayed.<br/>Columns entries can be simple strings, or they may be more complicated objects<br/>that can define `name`, `display_name`,`align`, `sortable`, and `checkbox` properties.<br/>Sorting on `numeric` or `currency` values requires a column to have<br/>a `datatype='number'` or `datatype='currency'` property.<br/>Sorting on `date` values requires a column to have<br/>a `datatype='date'` property.<br/>Use `checkbox=true` to create a checkbox whose value is the value for that<br/>column value for the row in the table.<br/>`e.g. ['name', 'email', 'age']` | array  | -      |         |
-| jsonData     | jsonData is supplied via Array with an object representing each row.<br/>Applying links to data cell content can be achieved by supplying an object<br/>that contains a `value` and `link` property. Date sorting uses the JavaScript<br/>`datestring` parameter. Shorthand dates are supported in most browsers, but can be implementation-specific.<br/>(e.g., `{ value: 'content', link: 'https://url.com'}`)<br/>See above example for exact structure.                                                                                                                                                                                            | array  | -      |         |
+| Prop Name | Description | Type | Default |
+| :--- | :--- | :--- | :--- |
+| `caption` | caption provides context for the data that is helpful to users, particularly those who use screenreaders. `e.g. [name, title, age]` | `String` | `-` |
+| `summaryLabel` | summaryLabel provides context to the data values in tfoot element cells. | `String` | `-` |
+| `columns` | columns define the columns and order for which the data should be displayed. Columns entries can be simple strings, or they may be more complicated objects that can define `name`, `display_name`,`align`, `sortable`, and `checkbox` properties. Sorting on `numeric` or `currency` values requires a column to have a `datatype='number'` or `datatype='currency'` property. Sorting on `date` values requires a column to have a `datatype='date'` property. Use `checkbox=true` to create a checkbox whose value is the value for that column value for the row in the table. `e.g. ['name', 'email', 'age']` | `Array` | `-` |
+| `jsonData` | jsonData is supplied via Array with an object representing each row. Applying links to data cell content can be achieved by supplying an object that contains a `value` and `link` property. Date sorting uses the JavaScript `datestring` parameter. Shorthand dates are supported in most browsers, but can be implementation-specific. (e.g., `{ value: 'content', link: 'https://url.com'}`) See above example for exact structure. | `Array` | `-` |
 
----
+## Usage
 
 ```jsx
     <lux-data-table caption="Staff Emails" summary-label="Average"
@@ -28,4 +26,4 @@
         {'id': 3,'name': 'fez','email': 'fez@xxx.xxx', 'age': 19, 'birthday': 'May 14, 2000' },
         {'id': 4,'name': 'hey','email': 'hey@xxx.xxx', 'age': 19 , 'birthday': 'May 5, 2000'},
       ]"/>
-```
+  ```
