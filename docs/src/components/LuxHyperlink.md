@@ -1,25 +1,16 @@
 # LuxHyperlink
 
-> Used to create hyperlinks as text or buttons. Can also be used on Card component
-> sub-elements to make the entire card click-able.
-
 ## Props
 
-| Prop name | Description                                                                                               | Type    | Values | Default  |
-| --------- | --------------------------------------------------------------------------------------------------------- | ------- | ------ | -------- |
-| href      | The href value of the link.                                                                               | string  | -      | ""       |
-| variation | Whether the link appears as text or as a button. Options include `button solid`<br/>and `button outline`. | string  | -      | "link"   |
-| size      | Sets the size of the button `small`, `medium`, `large`                                                    | string  | -      | "medium" |
-| newTab    | Should the link open in a new tab? This can be<br/>disconcerting, so don't use it unless necessary.       | boolean | -      | false    |
-| underline | Should the link have an underline?                                                                        | boolean | -      | false    |
+| Prop Name | Description | Type | Default |
+| :--- | :--- | :--- | :--- |
+| `href` | The href value of the link. | `String` | `""` |
+| `variation` | Whether the link appears as text or as a button. Options include `button solid` and `button outline`. | `String` | `"link"` |
+| `size` | Sets the size of the button `small`, `medium`, `large` | `String` | `"medium"` |
+| `newTab` | Should the link open in a new tab?  This can be disconcerting, so don't use it unless necessary. | `Boolean` | `false` |
+| `underline` | Should the link have an underline? | `Boolean` | `false` |
 
-## Slots
-
-| Name    | Description                 | Bindings |
-| ------- | --------------------------- | -------- |
-| default | The text of your hyperlink. |          |
-
----
+## Usage
 
 ```jsx
     <div>
@@ -35,4 +26,4 @@
         </lux-icon-base>
       </lux-hyperlink>
     </div>
-```
+  ```

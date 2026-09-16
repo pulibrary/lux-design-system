@@ -1,28 +1,16 @@
 # LuxShowMore
 
-> LuxShowMore is used for long texts that are useful for some users, but
-> disruptive for others. For example, some users find it helpful to have
-> lengthy journal article abstracts available on a search results page,
-> while for others the abstracts are unhelpful and cause substantial
-> unnecessary scrolling.
-
 ## Props
 
-| Prop name      | Description                                                                                                                                                                                           | Type   | Values | Default |
-| -------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------ | ------ | ------- |
-| showLabel      | A description of the action of showing the full content.                                                                                                                                              | string | -      |         |
-| hideLabel      | A description of the action of hiding the full content.                                                                                                                                               | string | -      |         |
-| contentId      | Used for setting focus and aria-controls. It must be unique in your page.                                                                                                                             | string | -      |         |
-| descriptionId  | The ID of an element in the DOM that provides further description of the full content.<br/><br/>Use this prop if you have multiple disclosures in your page with the same `showLabel` or `hideLabel`. | string | -      |         |
-| characterLimit | How many characters to allow                                                                                                                                                                          | number | -      |         |
+| Prop Name | Description | Type | Default |
+| :--- | :--- | :--- | :--- |
+| `showLabel` | A description of the action of showing the full content. | `String` | `-` |
+| `hideLabel` | A description of the action of hiding the full content. | `String` | `-` |
+| `contentId` | Used for setting focus and aria-controls.  It must be unique in your page. | `String` | `-` |
+| `descriptionId` | The ID of an element in the DOM that provides further description of the full content. Use this prop if you have multiple disclosures in your page with the same `showLabel` or `hideLabel`. | `String` | `-` |
+| `characterLimit` | How many characters to allow | `Number` | `-` |
 
-## Slots
-
-| Name    | Description                                                                       | Bindings |
-| ------- | --------------------------------------------------------------------------------- | -------- |
-| default | The full content that should be shown when the user presses the Show More button. |          |
-
----
+## Usage
 
 ```jsx
     <lux-heading level="h3" size="h4">Example 1</lux-heading>
@@ -61,23 +49,22 @@
           {'id': 3,'name': 'fez','email': 'fez@xxx.xxx' },
         ]"/>
     </lux-show-more>
-```
-
+  ```
 ### How to use LuxShowMore
 
-- Supply a `contentId` prop, which is used for setting focus and aria-controls. It must be unique in your page.
-- Supply clear text for the `showLabel` and `hideLabel` props that orients the user to what the content
-  is. The `hideLabel` text should provide a concise re-orientation to what the content is and how to dismiss it in the
-  event that a user gets disoriented or distracted by the full content.
-- If you use this component multiple times on the same page, make it clear to the user what each instance does, and
-  how it might differ from other instances of the component. For example, please don't use this component 10 times in a page
-  and use "Show more" as the label for each one. You can do this in one of two ways:
-  _ Use distinct `showLabel` and `hideLabel` props for each instance
-  _ Provide a `descriptionId` prop.
+* Supply a `contentId` prop, which is used for setting focus and aria-controls.  It must be unique in your page.
+* Supply clear text for the `showLabel` and `hideLabel` props that orients the user to what the content
+is.  The `hideLabel` text should provide a concise re-orientation to what the content is and how to dismiss it in the
+event that a user gets disoriented or distracted by the full content.
+* If you use this component multiple times on the same page, make it clear to the user what each instance does, and
+how it might differ from other instances of the component.  For example, please don't use this component 10 times in a page
+and use "Show more" as the label for each one.  You can do this in one of two ways:
+    * Use distinct `showLabel` and `hideLabel` props for each instance
+    * Provide a `descriptionId` prop.
 
 ### Accessibility considerations
 
-- Once the disclosure is opened, this component waits for a short amount of time for a screen reader's virtual buffer to update, then sets focus on the expanded content.
-- This component implements the `aria-controls` and `aria-expanded` properties.
-- If you use this component multiple times in the same page, try navigating your page via buttons on a screen reader (<kbd>Control+Option+Command+J</kbd> on Voice Over).
+* Once the disclosure is opened, this component waits for a short amount of time for a screen reader's virtual buffer to update, then sets focus on the expanded content.
+* This component implements the `aria-controls` and `aria-expanded` properties.
+* If you use this component multiple times in the same page, try navigating your page via buttons on a screen reader (<kbd>Control+Option+Command+J</kbd> on Voice Over).
   Make sure that each instance has a specific and unique label.
