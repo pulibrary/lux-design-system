@@ -22,7 +22,6 @@
   },
   "version": "7.14.0",
   "scripts": {
-    "docs:gen": "vue-docgen",
     "build": "vite build",
     "test": "TZ=UTC vitest",
     "lint": "eslint --ext .mjs,.js,.vue . --fix",
@@ -32,8 +31,8 @@
     "start": "npm run build; npx http-server --port 5002",
     "start:dev": "npm run build; npx http-server --port 5000",
     "prepare": "simple-git-hooks",
-    "docs:dev": "vitepress dev docs",
-    "docs:build": "vitepress build docs",
+    "docs:dev": "node src/utils/generateDocs.js && vitepress dev docs",
+    "docs:build": "node src/utils/generateDocs.js && vitepress build docs",
     "docs:preview": "vitepress preview docs"
   },
   "dependencies": {
@@ -45,6 +44,7 @@
     "vue3-cookies": "^1.0.6"
   },
   "devDependencies": {
+    "@babel/parser": "^8.0.5",
     "@playwright/test": "^1.61.1",
     "@rollup/plugin-replace": "^6.0.2",
     "@types/node": "^24.10.0",

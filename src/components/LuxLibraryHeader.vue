@@ -89,8 +89,8 @@ const theme = computed(() => (props.theme == "light" ? "light" : "dark"))
 </script>
 
 <style lang="scss" scoped>
-@use "/src/assets/styles/mixins.scss" as *;
-@use "/src/assets/styles/focus.scss" as *;
+@use "../assets/styles/mixins.scss" as *;
+@use "../assets/styles/focus.scss" as *;
 /**
    * Styles in a top-level App component and in layout components may be global,
    * but all other components should always be scoped (using either scoped

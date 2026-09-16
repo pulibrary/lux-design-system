@@ -58,8 +58,8 @@ const props = defineProps({
 </script>
 
 <style lang="scss">
-@use "/src/assets/styles/mixins.scss" as *;
-@use "/src/assets/styles/spacing.scss" as *;
+@use "../assets/styles/mixins.scss" as *;
+@use "../assets/styles/spacing.scss" as *;
 
 .lux-heading {
   @include reset;
