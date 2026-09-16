@@ -1,16 +1,12 @@
 # LuxIconBookmark
 
-> Icons are used to visually communicate core parts of the product and
-> available actions. Please be aware that all elements must have closing tags (not "self-closing").
-> To add additional icons, please consult [the instructions](/#/Adding%20Icons).
-
 ## Props
 
-| Prop name | Description                                                                                                                          | Type   | Values | Default        |
-| --------- | ------------------------------------------------------------------------------------------------------------------------------------ | ------ | ------ | -------------- |
-| lineColor | The outline/stroke color for the bookmark icon. If not specified,<br/>it will use the iconColor of the parent LuxIconBase component. | string | -      | "currentColor" |
+| Prop Name | Description | Type | Default |
+| :--- | :--- | :--- | :--- |
+| `lineColor` | The outline/stroke color for the bookmark icon.  If not specified, it will use the iconColor of the parent LuxIconBase component. | `String` | `"currentColor"` |
 
----
+## Usage
 
 ```jsx
   <div>
@@ -34,4 +30,4 @@
       <lux-icon-bookmark line-color="black"></lux-icon-bookmark>
     </lux-icon-base>
   </div>
-```
+  ```
