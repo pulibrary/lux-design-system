@@ -15,7 +15,7 @@ defineProps({
     "/></li>
     <li><lux-menu-bar-label :item="
     {unsafe_name: 'Bookmarks <strong>(1 / 3)</strong>', href: '/logout'}
-    "/></li>
+    "/></li></ul>
   ```
   Security considerations:
   <ul>
