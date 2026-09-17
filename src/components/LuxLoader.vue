@@ -48,8 +48,8 @@ defineProps({
 </script>
 
 <style lang="scss" scoped>
-@use "/src/assets/styles/spacing.scss" as *;
-@use "/src/assets/styles/system.scss" as *;
+@use "../assets/styles/spacing.scss" as *;
+@use "../assets/styles/system.scss" as *;
 
 .lux-loader {
   @include reset;
