@@ -64,7 +64,7 @@ const props = defineProps({
 
 <style lang="scss">
 @use "sass:math";
-@use "/src/assets/styles/media_queries.scss" as *;
+@use "../assets/styles/media_queries.scss" as *;
 $grid-columns: 12;
 
 * {
