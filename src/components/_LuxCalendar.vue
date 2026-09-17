@@ -59,7 +59,7 @@ import { computed, onDeactivated, onMounted, ref, watch, useTemplateRef, useId }
   lastDayOfMonth,
   firstDayOfWeek,
   lastDayOfWeek,
-} from "@/utils/luxDate"
+} from "../utils/luxDate"
 import {
   computed,
   defineModel,
