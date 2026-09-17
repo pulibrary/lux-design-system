@@ -11,9 +11,7 @@
 
 ## Usage
 
-```jsx
-    <div>
-      <lux-wrapper>Wrapper can be used to wrap any components together.</lux-wrapper>
-      <lux-wrapper :max-width="1400">Wrapper can be used to wrap any components together.</lux-wrapper>
-    </div>
-  ```
+<div>
+  <lux-wrapper>Wrapper can be used to wrap any components together.</lux-wrapper>
+  <lux-wrapper :max-width="1400">Wrapper can be used to wrap any components together.</lux-wrapper>
+</div>

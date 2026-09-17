@@ -9,8 +9,6 @@
 
 ## Usage
 
-```jsx
-  <div>
-    <lux-subscribe-newsletter type="div"></lux-subscribe-newsletter>
-  </div>
-  ```
+<div>
+  <lux-subscribe-newsletter type="div"></lux-subscribe-newsletter>
+</div>

@@ -9,8 +9,6 @@
 
 ## Usage
 
-```jsx
-  <div>
-    <lux-logo-gov-docs></lux-logo-gov-docs>
-  </div>
-  ```
+<div>
+  <lux-logo-gov-docs></lux-logo-gov-docs>
+</div>

@@ -8,11 +8,9 @@
 
 ## Usage
 
-```jsx
-  <div>
-    <lux-card-header>
-      <lux-heading level="h2" size="h3">Title</lux-heading>
-      <lux-text-style>Secondary title</lux-text-style>
-    </lux-card-header>
-  </div>
-  ```
+<div>
+  <lux-card-header>
+    <lux-heading level="h2" size="h3">Title</lux-heading>
+    <lux-text-style>Secondary title</lux-text-style>
+  </lux-card-header>
+</div>

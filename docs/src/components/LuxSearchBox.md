@@ -10,17 +10,15 @@
 
 ## Usage
 
-```jsx
-    <div>
-    <lux-search-box corners="square">
-        <lux-input-text id="foo" name="value" label="Search" :hide-label="true" placeholder="Find all the things" size="large"></lux-input-text>
-        <lux-input-button type="button" variation="icon" size="medium" icon="search"></lux-input-button>
-    </lux-search-box>
-    </div>
+<div>
+<lux-search-box corners="square">
+    <lux-input-text id="foo" name="value" label="Search" :hide-label="true" placeholder="Find all the things" size="large"></lux-input-text>
+    <lux-input-button type="button" variation="icon" size="medium" icon="search"></lux-input-button>
+</lux-search-box>
+</div>
 
-    <div>
-      <!-- rounded is the default -->
-      <lux-search-box corners="rounded">
-      </lux-search-box>
-    </div>
-```
+<div>
+  <!-- rounded is the default -->
+  <lux-search-box corners="rounded">
+  </lux-search-box>
+</div>

@@ -8,8 +8,6 @@
 
 ## Usage
 
-```jsx
-  <div>
-    <lux-university-accessibility-old type="span"></lux-university-accessibility-old>
-  </div>
-  ```
+<div>
+  <lux-university-accessibility-old type="span"></lux-university-accessibility-old>
+</div>

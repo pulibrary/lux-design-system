@@ -21,8 +21,6 @@
 
 ## Usage
 
-```jsx
-    <div>
-      <lux-input-select label="Select..." id="myChoice" name="myChoice" value="bar" :options="[{label: 'opt 1', value: 'foo'}, {label: 'opt 2', value: 'bar'}]"></lux-input-select>
-    </div>
-  ```
+<div>
+  <lux-input-select label="Select..." id="myChoice" name="myChoice" value="bar" :options="[{label: 'opt 1', value: 'foo'}, {label: 'opt 2', value: 'bar'}]"></lux-input-select>
+</div>
