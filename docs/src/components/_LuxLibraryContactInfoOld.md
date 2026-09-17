@@ -8,8 +8,6 @@
 
 ## Usage
 
-```jsx
-   <div>
-    <lux-library-contact-info-old type="div"></lux-library-contact-info-old>
-  </div>
-  ```
+<div>
+  <lux-library-contact-info-old type="div"></lux-library-contact-info-old>
+</div>

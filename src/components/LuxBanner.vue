@@ -76,7 +76,7 @@ const bannerMessage = "This is the announcement description."
 </script>
 
 <style lang="scss">
-@use "../assets/styles/mixins.scss" as *;
+@use "/src/assets/styles/mixins.scss" as *;
 
 .lux-banner-fullscreen {
   position: fixed;
