@@ -60,7 +60,7 @@ import {
 import { computed, onDeactivated, onMounted, ref, watch, useTemplateRef, useId } from "vue"
 =======
   lastDayOfMonth,
-} from "@/utils/luxDate"
+} from "../utils/luxDate"
 import {
   computed,
   defineModel,
