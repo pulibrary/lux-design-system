@@ -9,8 +9,6 @@
 
 ## Usage
 
-```jsx
-    <div>
-      <lux-grid-container>Grid container can be used to contain grid items together.</lux-grid-container>
-    </div>
-  ```
+<div>
+  <lux-grid-container>Grid container can be used to contain grid items together.</lux-grid-container>
+</div>

@@ -10,8 +10,6 @@
 
 ## Usage
 
-```jsx
-  <div>
-    <lux-library-footer theme="dark"></lux-library-footer>
-  </div>
-  ```
+<div>
+  <lux-library-footer theme="dark"></lux-library-footer>
+</div>

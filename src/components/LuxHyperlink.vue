@@ -77,7 +77,7 @@ const props = defineProps({
 </script>
 
 <style lang="scss" scoped>
-@use "../assets/styles/spacing.scss" as *;
+@use "/src/assets/styles/spacing.scss" as *;
 
 .lux-link {
   pointer-events: auto;

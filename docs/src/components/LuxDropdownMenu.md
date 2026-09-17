@@ -13,13 +13,11 @@
 
 ## Usage
 
-```jsx
-    <lux-dropdown-menu type="links" button-label="Select Options" :menu-items="[
-      {name: 'Vegetable'},
-      {name: 'Fruit', children: [
-        {name: 'Apple'},
-        {name: 'Pear'},
-      ]},
-    ]">
-    </lux-dropdown-menu>
-```
+<lux-dropdown-menu type="links" button-label="Select Options" :menu-items="[
+  {name: 'Vegetable'},
+  {name: 'Fruit', children: [
+    {name: 'Apple'},
+    {name: 'Pear'},
+  ]},
+]">
+</lux-dropdown-menu>

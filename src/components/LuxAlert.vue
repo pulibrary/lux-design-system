@@ -128,7 +128,7 @@ onMounted(() => {
 </script>
 
 <style lang="scss">
-@use "../assets/styles/mixins.scss" as *;
+@use "/src/assets/styles/mixins.scss" as *;
 
 .lux-alert-fullscreen {
   position: fixed !important;

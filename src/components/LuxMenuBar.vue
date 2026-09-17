@@ -255,10 +255,10 @@ const vClickOutside = {
 </script>
 
 <style lang="scss" scoped>
-@use "../assets/styles/spacing.scss" as *;
-@use "../assets/styles/system.scss" as *;
-@use "../assets/styles/media_queries.scss" as mq;
-@use "../assets/styles/focus.scss" as *;
+@use "/src/assets/styles/spacing.scss" as *;
+@use "/src/assets/styles/system.scss" as *;
+@use "/src/assets/styles/media_queries.scss" as mq;
+@use "/src/assets/styles/focus.scss" as *;
 
 // CSS variables that are specific to this component
 :root {

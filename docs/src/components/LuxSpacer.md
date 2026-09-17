@@ -8,8 +8,6 @@
 
 ## Usage
 
-```jsx
-    <div>
-        <lux-spacer></lux-spacer>
-    </div>
-```
+<div>
+    <lux-spacer></lux-spacer>
+</div>

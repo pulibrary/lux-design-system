@@ -9,11 +9,9 @@
 
 ## Usage
 
-```jsx
-  <div>
-    <lux-banner dismissible>
-      <h2>Fall Semester Announcements</h2>
-      <p>We’re currently in beta for students and will be introducing faculty, advisor and staff functionality in the coming months.</p>
-    </lux-banner>
-  </div>
-  ```
+<div>
+  <lux-banner dismissible>
+    <h2>Fall Semester Announcements</h2>
+    <p>We’re currently in beta for students and will be introducing faculty, advisor and staff functionality in the coming months.</p>
+  </lux-banner>
+</div>

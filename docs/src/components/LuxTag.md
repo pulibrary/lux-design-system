@@ -12,20 +12,18 @@
 
 ## Usage
 
-```jsx
-    <div>
-      <lux-tag type="tag" :tag-items="[
-        {name: 'Cats', href: '/tags/cats', color: 'red', icon: 'denied', style: 'pill'},
-        {name: 'Cats', href: '/tags/cats', color: 'yellow', icon: 'alert'},
-        {name: 'Cats', href: '/tags/cats', color: 'green', icon: 'approved'},
-        {name: 'Cats', href: '/tags/cats', color: 'blue'},
-        {name: 'Cats', color: 'blue'}
-        ]"
-        horizontal="end"/>
-  
-       <lux-tag type="filter" label="filtered by" :tag-items="[
-        {name: 'Cats', href: '/tags/cats'},
-        {name: 'Dogs', href: '/tags/dogs'}
-        ]"/>
-    </div>
-```
+<div>
+  <lux-tag type="tag" :tag-items="[
+    {name: 'Cats', href: '/tags/cats', color: 'red', icon: 'denied', style: 'pill'},
+    {name: 'Cats', href: '/tags/cats', color: 'yellow', icon: 'alert'},
+    {name: 'Cats', href: '/tags/cats', color: 'green', icon: 'approved'},
+    {name: 'Cats', href: '/tags/cats', color: 'blue'},
+    {name: 'Cats', color: 'blue'}
+    ]"
+    horizontal="end"/>
+
+   <lux-tag type="filter" label="filtered by" :tag-items="[
+    {name: 'Cats', href: '/tags/cats'},
+    {name: 'Dogs', href: '/tags/dogs'}
+    ]"/>
+</div>
