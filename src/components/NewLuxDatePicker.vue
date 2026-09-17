@@ -28,7 +28,7 @@
 import LuxInputText from "./LuxInputText.vue"
 import LuxCalendar from "./_LuxCalendar.vue"
 import { computed, ref, useId, useTemplateRef } from "vue"
-import { toString } from "../utils/luxDate"
+import { toString } from "@/utils/luxDate"
 import LuxDialog from "./LuxDialog.vue"
 import LuxIconBase from "./icons/LuxIconBase.vue"
 import LuxInputButton from "./LuxInputButton.vue"

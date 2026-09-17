@@ -302,10 +302,10 @@ onMounted(async () => {
 
 <style lang="scss" scoped>
 @use "sass:color";
-@use "../assets/styles/spacing.scss" as *;
-@use "../assets/styles/mixins.scss" as mi;
-@use "../assets/styles/system.scss" as *;
-@use "../assets/styles/focus.scss" as *;
+@use "/src/assets/styles/spacing.scss" as *;
+@use "/src/assets/styles/mixins.scss" as mi;
+@use "/src/assets/styles/system.scss" as *;
+@use "/src/assets/styles/focus.scss" as *;
 
 // Design Tokens with local scope
 $color-placeholder: tint(rgb(149, 156, 167), 50%);

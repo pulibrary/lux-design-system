@@ -10,9 +10,7 @@
 
 ## Usage
 
-```jsx
-    <div>
-      <lux-logo-library></lux-logo-library>
-      <lux-logo-library color="#000000"></lux-logo-library>
-    </div>
-  ```
+<div>
+  <lux-logo-library></lux-logo-library>
+  <lux-logo-library color="#000000"></lux-logo-library>
+</div>

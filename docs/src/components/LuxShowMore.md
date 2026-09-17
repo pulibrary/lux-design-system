@@ -12,44 +12,42 @@
 
 ## Usage
 
-```jsx
-    <lux-heading level="h3" size="h4">Example 1</lux-heading>
-    <!-- It shows a snippet of the provided text when collapsed -->
-    <lux-show-more showLabel="More text" hideLabel="Less text" contentId="moby" character-limit="20">
-      Call me Ishmael. Some years ago- never mind how long precisely- having little or no money in my purse,
-      and nothing particular to interest me on shore, I thought I would sail about a little and see the watery
-      part of the world. It is a way I have of driving off the spleen and regulating the circulation.
-    </lux-show-more>
+<lux-heading level="h3" size="h4">Example 1</lux-heading>
+<!-- It shows a snippet of the provided text when collapsed -->
+<lux-show-more showLabel="More text" hideLabel="Less text" contentId="moby" character-limit="20">
+  Call me Ishmael. Some years ago- never mind how long precisely- having little or no money in my purse,
+  and nothing particular to interest me on shore, I thought I would sail about a little and see the watery
+  part of the world. It is a way I have of driving off the spleen and regulating the circulation.
+</lux-show-more>
 
 
-    <lux-heading level="h3" size="h4">Example 2</lux-heading>
-    <!-- The content can contain HTML, but it will be stripped out of the snippet view -->
-    <lux-show-more showLabel="Show full proem" hideLabel="Hide full proem" contentId="illiad" character-limit="80">
-      μῆνιν ἄειδε θεὰ Πηληϊάδεω Ἀχιλῆος<br />
-      οὐλομένην, ἣ μυρί’ Ἀχαιοῖς ἄλγε’ ἔθηκε,<br />
-      πολλὰς δ’ ἰφθίμους ψυχὰς Ἄϊδι προΐαψεν<br />
-      ἡρώων, αὐτοὺς δὲ ἑλώρια τεῦχε κύνεσσιν<br />
-      οἰωνοῖσί τε δαῖτα, Διὸς δ’ ἐτελείετο βουλή,<br />
-      ἐξ οὗ δὴ τὰ πρῶτα διαστήτην ἐρίσαντε<br />
-      Ἀτρεΐδης τε ἄναξ ἀνδρῶν καὶ δῖος Ἀχιλλεύς.<br />
-    </lux-show-more>
+<lux-heading level="h3" size="h4">Example 2</lux-heading>
+<!-- The content can contain HTML, but it will be stripped out of the snippet view -->
+<lux-show-more showLabel="Show full proem" hideLabel="Hide full proem" contentId="illiad" character-limit="80">
+  μῆνιν ἄειδε θεὰ Πηληϊάδεω Ἀχιλῆος<br />
+  οὐλομένην, ἣ μυρί’ Ἀχαιοῖς ἄλγε’ ἔθηκε,<br />
+  πολλὰς δ’ ἰφθίμους ψυχὰς Ἄϊδι προΐαψεν<br />
+  ἡρώων, αὐτοὺς δὲ ἑλώρια τεῦχε κύνεσσιν<br />
+  οἰωνοῖσί τε δαῖτα, Διὸς δ’ ἐτελείετο βουλή,<br />
+  ἐξ οὗ δὴ τὰ πρῶτα διαστήτην ἐρίσαντε<br />
+  Ἀτρεΐδης τε ἄναξ ἀνδρῶν καὶ δῖος Ἀχιλλεύς.<br />
+</lux-show-more>
 
-    <lux-heading level="h3" size="h4">Example 3</lux-heading>
-    <!-- The content can even contain components -->
-    <lux-show-more showLabel="Show full table" hideLabel="Hide full table" contentId="table" character-limit="20">
-      There are three entries:
-      <lux-data-table
-        :columns="[
-          'name',
-          { 'name': 'email', 'display_name': 'Email Address', 'align': 'center', 'sortable': true },
-        ]"
-        :json-data="[
-          {'id': 1,'name': { value: 'foo', link: 'https://library.princeton.edu'},'email': 'foo@xxx.xxx',},
-          {'id': 2,'name': 'bar','email': 'bar@xxx.xxx' },
-          {'id': 3,'name': 'fez','email': 'fez@xxx.xxx' },
-        ]"/>
-    </lux-show-more>
-  ```
+<lux-heading level="h3" size="h4">Example 3</lux-heading>
+<!-- The content can even contain components -->
+<lux-show-more showLabel="Show full table" hideLabel="Hide full table" contentId="table" character-limit="20">
+  There are three entries:
+  <lux-data-table
+    :columns="[
+      'name',
+      { 'name': 'email', 'display_name': 'Email Address', 'align': 'center', 'sortable': true },
+    ]"
+    :json-data="[
+      {'id': 1,'name': { value: 'foo', link: 'https://library.princeton.edu'},'email': 'foo@xxx.xxx',},
+      {'id': 2,'name': 'bar','email': 'bar@xxx.xxx' },
+      {'id': 3,'name': 'fez','email': 'fez@xxx.xxx' },
+    ]"/>
+</lux-show-more>
 ### How to use LuxShowMore
 
 * Supply a `contentId` prop, which is used for setting focus and aria-controls.  It must be unique in your page.

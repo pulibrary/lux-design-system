@@ -8,12 +8,10 @@
 
 ## Usage
 
-```jsx
-  <div>
-    <lux-card-media>
-      <lux-icon-base width="50" height="50">
-        <lux-icon-globe></lux-icon-globe>
-      </lux-icon-base>
-    </lux-card-media>
-  </div>
-  ```
+<div>
+  <lux-card-media>
+    <lux-icon-base width="50" height="50">
+      <lux-icon-globe></lux-icon-globe>
+    </lux-icon-base>
+  </lux-card-media>
+</div>

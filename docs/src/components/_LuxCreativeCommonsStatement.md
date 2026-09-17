@@ -9,8 +9,6 @@
 
 ## Usage
 
-```jsx
-  <div>
-    <lux-creative-commons-statement theme="light" type="span"></lux-creative-commons-statement>
-  </div>
-  ```
+<div>
+  <lux-creative-commons-statement theme="light" type="span"></lux-creative-commons-statement>
+</div>

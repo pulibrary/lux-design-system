@@ -15,35 +15,33 @@
 
 ## Usage
 
-```
-    <div>
-      <!-- Card without sections -->
-      <lux-card id="a">
-        <lux-media-image src="https://picsum.photos/600/300/?random" height="medium" cover></lux-media-image>
-        <lux-heading level="h2">Title</lux-heading>
-        <lux-text-style variation="default">Design isn't just about the look and feel. Design is how it works.</lux-text-style>
-      </lux-card>
+<div>
+  <!-- Card without sections -->
+  <lux-card id="a">
+    <lux-media-image src="https://picsum.photos/600/300/?random" height="medium" cover></lux-media-image>
+    <lux-heading level="h2">Title</lux-heading>
+    <lux-text-style variation="default">Design isn't just about the look and feel. Design is how it works.</lux-text-style>
+  </lux-card>
 
-      <!-- Card with sections -->
-      <lux-card id="b" size="full-width">
-        <lux-card-media>
-          <lux-icon-base width="50" height="50" icon-hide="true">
-            <lux-icon-globe></lux-icon-globe>
-          </lux-icon-base>
-        </lux-card-media>
-        <lux-card-header>
-          <!-- Hyperlink is the text screen readers would read, we don't want to wrap the entire card -->
-          <lux-heading level="h2" size="h3"><lux-hyperlink href="#">Code4Lib - Trip ID 1234</lux-hyperlink></lux-heading>
-          <lux-text-style>Jan 9, 2019 to Jan 16, 2019</lux-text-style>
-        </lux-card-header>
-        <lux-card-content>
-          <lux-tag type="tag" :tag-items="[
-            {name: 'Pending', color: 'yellow', style: 'pill'}
-            ]"
-            horizontal="end"
-            size="small"/>
-          <lux-text-style type="span" variation="small">Last Updated on Dec 15, 2018</lux-text-style>
-        </lux-card-content>
-      </lux-card>
-    </div>
-  ```
+  <!-- Card with sections -->
+  <lux-card id="b" size="full-width">
+    <lux-card-media>
+      <lux-icon-base width="50" height="50" icon-hide="true">
+        <lux-icon-globe></lux-icon-globe>
+      </lux-icon-base>
+    </lux-card-media>
+    <lux-card-header>
+      <!-- Hyperlink is the text screen readers would read, we don't want to wrap the entire card -->
+      <lux-heading level="h2" size="h3"><lux-hyperlink href="#">Code4Lib - Trip ID 1234</lux-hyperlink></lux-heading>
+      <lux-text-style>Jan 9, 2019 to Jan 16, 2019</lux-text-style>
+    </lux-card-header>
+    <lux-card-content>
+      <lux-tag type="tag" :tag-items="[
+        {name: 'Pending', color: 'yellow', style: 'pill'}
+        ]"
+        horizontal="end"
+        size="small"/>
+      <lux-text-style type="span" variation="small">Last Updated on Dec 15, 2018</lux-text-style>
+    </lux-card-content>
+  </lux-card>
+</div>
