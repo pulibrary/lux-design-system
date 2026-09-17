@@ -16,15 +16,13 @@
 
 ## Usage
 
-```jsx
-  <div>
-    <lux-input-radio
-      id="foo"
-      vertical groupLabel="Where is my mind?"
-      :options="[
-        {name: 'radio-group-name', value: 'In the clouds', id: 'radio-opt1', required: true},
-        {name: 'radio-group-name', value: 'I don\'t know', id: 'radio-opt2', disabled: true}
-      ]">
-    </lux-input-radio>
-  </div>
-  ```
+<div>
+  <lux-input-radio
+    id="foo"
+    vertical groupLabel="Where is my mind?"
+    :options="[
+      {name: 'radio-group-name', value: 'In the clouds', id: 'radio-opt1', required: true},
+      {name: 'radio-group-name', value: 'I don\'t know', id: 'radio-opt2', disabled: true}
+    ]">
+  </lux-input-radio>
+</div>

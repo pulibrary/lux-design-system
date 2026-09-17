@@ -54,7 +54,7 @@ import {
   lastDayOfMonth,
   firstDayOfWeek,
   lastDayOfWeek,
-} from "../utils/luxDate"
+} from "@/utils/luxDate"
 import {
   computed,
   defineModel,

@@ -11,19 +11,17 @@
 
 ## Usage
 
-```jsx
-    <lux-data-table caption="Staff Emails" summary-label="Average"
-      :columns="[
-        { 'name': 'id', 'display_name': 'Select Items', 'align': 'center', 'checkbox': true },
-        'name',
-        { 'name': 'email', 'display_name': 'Email Address', 'align': 'center', 'sortable': true },
-        { 'name': 'birthday', 'datatype': 'date', 'sortable': true },
-        { 'name': 'age', 'datatype': 'number', 'summary_value': '33', 'sortable': true }
-      ]"
-      :json-data="[
-        {'id': 1,'name': { value: 'foo', link: 'https://library.princeton.edu'},'email': 'foo@xxx.xxx', 'age': 30, 'birthday': 'March 4, 1989' },
-        {'id': 2,'name': 'bar','email': 'bar@xxx.xxx', 'age': 44, 'birthday': 'October 4, 1975' },
-        {'id': 3,'name': 'fez','email': 'fez@xxx.xxx', 'age': 19, 'birthday': 'May 14, 2000' },
-        {'id': 4,'name': 'hey','email': 'hey@xxx.xxx', 'age': 19 , 'birthday': 'May 5, 2000'},
-      ]"/>
-  ```
+<lux-data-table caption="Staff Emails" summary-label="Average"
+  :columns="[
+    { 'name': 'id', 'display_name': 'Select Items', 'align': 'center', 'checkbox': true },
+    'name',
+    { 'name': 'email', 'display_name': 'Email Address', 'align': 'center', 'sortable': true },
+    { 'name': 'birthday', 'datatype': 'date', 'sortable': true },
+    { 'name': 'age', 'datatype': 'number', 'summary_value': '33', 'sortable': true }
+  ]"
+  :json-data="[
+    {'id': 1,'name': { value: 'foo', link: 'https://library.princeton.edu'},'email': 'foo@xxx.xxx', 'age': 30, 'birthday': 'March 4, 1989' },
+    {'id': 2,'name': 'bar','email': 'bar@xxx.xxx', 'age': 44, 'birthday': 'October 4, 1975' },
+    {'id': 3,'name': 'fez','email': 'fez@xxx.xxx', 'age': 19, 'birthday': 'May 14, 2000' },
+    {'id': 4,'name': 'hey','email': 'hey@xxx.xxx', 'age': 19 , 'birthday': 'May 5, 2000'},
+  ]"/>

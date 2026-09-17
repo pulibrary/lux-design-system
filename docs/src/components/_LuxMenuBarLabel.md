@@ -8,15 +8,13 @@
 
 ## Usage
 
-```jsx
-    <ul>
-    <li><lux-menu-bar-label :item="
-    {name: 'Logout', href: '/logout'}
-    "/></li>
-    <li><lux-menu-bar-label :item="
-    {unsafe_name: 'Bookmarks <strong>(1 / 3)</strong>', href: '/logout'}
-    "/></li>
-  ```
+<ul>
+<li><lux-menu-bar-label :item="
+{name: 'Logout', href: '/logout'}
+"/></li>
+<li><lux-menu-bar-label :item="
+{unsafe_name: 'Bookmarks <strong>(1 / 3)</strong>', href: '/logout'}
+"/></li>
   Security considerations:
   <ul>
     <li>You can add any arbitrary HTML to the <code>unsafe_name</code> property,

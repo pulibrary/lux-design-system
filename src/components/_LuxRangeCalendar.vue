@@ -55,7 +55,7 @@ import {
   JANUARY,
   DECEMBER,
   lastDayOfMonth,
-} from "../utils/luxDate"
+} from "@/utils/luxDate"
 import {
   computed,
   defineModel,
