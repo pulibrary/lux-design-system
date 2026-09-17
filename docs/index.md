@@ -9,6 +9,6 @@ hero:
   actions:
     - theme: brand
       text: Getting Started
-      link: /src/components
+      link: /adding_lux
     
 
