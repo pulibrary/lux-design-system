@@ -1,0 +1,9 @@
+// CSS variables cannot be used in media queries,
+// so we use SASS variables for these
+$media-query-small: "(max-width: 599px)";
+$media-query-medium: "(min-width: 600px)";
+$media-query-medium-max: "(max-width: 899px)";
+$media-query-large: "(min-width: 900px)";
+$media-query-x-large: "(min-width: 1200px)";
+$media-query-xx-large: "(min-width: 1800px)";
+$media-query-xxx-large: "(min-width: 2300px)";
