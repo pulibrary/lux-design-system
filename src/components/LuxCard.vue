@@ -94,9 +94,9 @@ function select(event) {
 </script>
 
 <style lang="scss">
-@use "../assets/styles/mixins.scss" as *;
-@use "../assets/styles/spacing.scss" as *;
-@use "../assets/styles/focus.scss" as *;
+@use "/src/assets/styles/mixins.scss" as *;
+@use "/src/assets/styles/spacing.scss" as *;
+@use "/src/assets/styles/focus.scss" as *;
 
 .lux-card {
   font-family: var(--font-family-text);

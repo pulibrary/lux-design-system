@@ -41,8 +41,8 @@ const props = defineProps({
 </script>
 
 <style lang="scss" scoped>
-@use "../assets/styles/focus.scss" as *;
-@use "../assets/styles/media_queries.scss" as *;
+@use "/src/assets/styles/focus.scss" as *;
+@use "/src/assets/styles/media_queries.scss" as *;
 
 .lux-library-logo {
   a {

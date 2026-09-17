@@ -104,9 +104,9 @@ const theme = computed(() => {
 </script>
 
 <style lang="scss" scoped>
-@use "../assets/styles/spacing.scss" as *;
-@use "../assets/styles/mixins.scss" as *;
-@use "../assets/styles/focus.scss" as *;
+@use "/src/assets/styles/spacing.scss" as *;
+@use "/src/assets/styles/mixins.scss" as *;
+@use "/src/assets/styles/focus.scss" as *;
 
 .contact-info-layout {
   @media (min-width: 900px) {

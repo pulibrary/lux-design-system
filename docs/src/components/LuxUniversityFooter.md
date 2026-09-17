@@ -11,8 +11,6 @@
 
 ## Usage
 
-```jsx
-  <div>
-    <lux-university-footer theme="dark"></lux-university-footer>
-  </div>
-  ```
+<div>
+  <lux-university-footer theme="dark"></lux-university-footer>
+</div>

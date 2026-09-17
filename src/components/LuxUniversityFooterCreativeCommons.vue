@@ -60,9 +60,9 @@ const props = defineProps({
 </script>
 
 <style lang="scss" scoped>
-@use "../assets/styles/spacing.scss" as *;
-@use "../assets/styles/system.scss" as *;
-@use "../assets/styles/focus.scss" as *;
+@use "/src/assets/styles/spacing.scss" as *;
+@use "/src/assets/styles/system.scss" as *;
+@use "/src/assets/styles/focus.scss" as *;
 
 .lux-university-footer-creative-commons {
   @include reset;

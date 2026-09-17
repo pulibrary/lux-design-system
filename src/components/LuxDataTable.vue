@@ -264,8 +264,8 @@ function sortTable(col) {
 
 <style lang="scss" scoped>
 @use "sass:color";
-@use "../assets/styles/system.scss" as *;
-@use "../assets/styles/spacing.scss" as *;
+@use "/src/assets/styles/system.scss" as *;
+@use "/src/assets/styles/spacing.scss" as *;
 
 .lux-data-table {
   border-collapse: collapse;

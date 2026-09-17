@@ -8,14 +8,12 @@
 
 ## Usage
 
-```jsx
-  <div>
-    <lux-card-content>
-      <lux-text-style type="span" variation="small">
-        <lux-icon-base width="18" height="18">
-          <lux-icon-approved></lux-icon-approved>
-        </lux-icon-base>
-      Approved</lux-text-style>
-    </lux-card-content>
-  </div>
-  ```
+<div>
+  <lux-card-content>
+    <lux-text-style type="span" variation="small">
+      <lux-icon-base width="18" height="18">
+        <lux-icon-approved></lux-icon-approved>
+      </lux-icon-base>
+    Approved</lux-text-style>
+  </lux-card-content>
+</div>

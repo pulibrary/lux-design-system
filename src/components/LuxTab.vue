@@ -33,8 +33,8 @@ const isActive = computed(() => myIndex === activeIndex?.value)
 
 <style lang="scss">
 @use "sass:color";
-@use "../assets/styles/spacing.scss" as *;
-@use "../assets/styles/system.scss" as *;
+@use "/src/assets/styles/spacing.scss" as *;
+@use "/src/assets/styles/system.scss" as *;
 
 .lux-tab-panel {
   padding: 1rem;
