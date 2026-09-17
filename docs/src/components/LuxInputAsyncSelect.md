@@ -14,12 +14,10 @@
 
 ## Usage
 
-```jsx
-    <div>
-      <lux-input-async-select
-          placeholder="Please choose your query"
-          label="Your query"
-          :asyncLoadItemsFunction="query => [{id: 'abc', label: query}]"
-          none-selected-label="No query selected" />
-    </div>
-  ```
+<div>
+  <lux-input-async-select
+      placeholder="Please choose your query"
+      label="Your query"
+      :asyncLoadItemsFunction="query => [{id: 'abc', label: query}]"
+      none-selected-label="No query selected" />
+</div>

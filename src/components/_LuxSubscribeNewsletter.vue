@@ -66,7 +66,7 @@ const props = defineProps({
 </script>
 
 <style lang="scss" scoped>
-@use "../assets/styles/mixins.scss" as *;
+@use "/src/assets/styles/mixins.scss" as *;
 
 .lux-subscribe-newsletter {
   #mc_embed_signup_scroll {

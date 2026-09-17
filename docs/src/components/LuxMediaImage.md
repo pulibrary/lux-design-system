@@ -12,8 +12,6 @@
 
 ## Usage
 
-```
-  <div>
-    <lux-media-image src="https://picsum.photos/400/300/?random" height="medium"></lux-media-image>
-  </div>
-  ```
+<div>
+  <lux-media-image src="https://picsum.photos/400/300/?random" height="medium"></lux-media-image>
+</div>

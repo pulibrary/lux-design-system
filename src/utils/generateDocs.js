@@ -44,6 +44,62 @@ function getCleanComment(node) {
     .join(" ")
 }
 
+function dedent(content) {
+  const lines = content.replace(/^\r?\n|\r?\n$/g, "").split(/\r?\n/)
+
+  const nonEmptyLines = lines.filter(line => line.trim() !== "")
+
+  if (nonEmptyLines.length === 0) {
+    return ""
+  }
+
+  const indentation = Math.min(
+    ...nonEmptyLines.map(line => {
+      const match = line.match(/^[ \t]*/)
+      return match ? match[0].length : 0
+    })
+  )
+
+  return lines
+    .map(line => {
+      if (line.trim() === "") {
+        return ""
+      }
+
+      return line.slice(indentation)
+    })
+    .join("\n")
+}
+
+function unwrapCodeBlocks(content = "") {
+  return content.replace(
+    /^([ \t]*)```([^\r\n]*)\r?\n([\s\S]*?)^\1```[ \t]*$/gm,
+    (match, fenceIndent, language, code) => {
+      const normalizedLanguage = language.trim().toLowerCase()
+
+      // Keep Vue fenced blocks unchanged.
+      if (normalizedLanguage === "vue") {
+        return match
+      }
+
+      // Remove indentation belonging to the fence itself.
+      const fenceAdjustedCode = code
+        .split(/\r?\n/)
+        .map(line => {
+          if (line.startsWith(fenceIndent)) {
+            return line.slice(fenceIndent.length)
+          }
+
+          return line
+        })
+        .join("\n")
+
+      // Remove common indentation while preserving relative indentation.
+      return dedent(fenceAdjustedCode)
+    }
+  )
+}
+
 function generateMarkdown(componentName, props, docsContent) {
   let markdown = `# ${componentName}\n\n## Props\n\n`
 
@@ -52,15 +108,16 @@ function generateMarkdown(componentName, props, docsContent) {
 
   if (props.length === 0) {
     markdown += "| - | No props documented for this component. | - | - |\n"
-    return markdown
-  }
-
-  for (const prop of props) {
-    markdown += `| \`${prop.name}\` | ${prop.description} | \`${prop.type}\` | \`${prop.default}\` |\n`
+  } else {
+    for (const prop of props) {
+      markdown += `| \`${prop.name}\` | ${prop.description} | \`${prop.type}\` | \`${prop.default}\` |\n`
+    }
   }
 
   if (docsContent) {
-    markdown += `\n## Usage\n\n${docsContent.trim()}\n`
+    const processedDocsContent = unwrapCodeBlocks(docsContent)
+
+    markdown += `\n## Usage\n\n${processedDocsContent.trim()}\n`
   }
 
   return markdown

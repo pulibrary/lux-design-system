@@ -11,6 +11,4 @@
 
 ## Usage
 
-```jsx
-    <new-lux-date-picker label="Presentation date"></new-lux-date-picker>
-  ```
+<new-lux-date-picker label="Presentation date"></new-lux-date-picker>

@@ -11,21 +11,19 @@
 
 ## Usage
 
-```jsx
-    <lux-menu-bar type="main-menu" active="Dashboard" :menu-items="[
-      {name: 'Dashboard', component: 'Dashboard', href: '/example/'},
-      {name: 'Posts', component: 'Posts', href: '/example/'},
-      {name: 'Requests', component: 'Requests', href: '/example/', children: [
-        {name: 'New Travel Request', component: 'New Travel Request', href: '/example/'},
-        {name: 'New Leave Request', component: 'New Leave Request', href: '/example/'}
-      ]},
-      {name: 'Users', component: 'Users', href: '/example/', children: [
-        {name: 'External Site', component: 'External Site', href: 'http://princeton.edu', target: '_blank'},
-        {name: 'Settings', component: 'Settings', href: '/example/'},
-        {name: 'Logout', component: 'Logout', href: '/example/'}
-      ]}
-    ]"/>
+<lux-menu-bar type="main-menu" active="Dashboard" :menu-items="[
+  {name: 'Dashboard', component: 'Dashboard', href: '/example/'},
+  {name: 'Posts', component: 'Posts', href: '/example/'},
+  {name: 'Requests', component: 'Requests', href: '/example/', children: [
+    {name: 'New Travel Request', component: 'New Travel Request', href: '/example/'},
+    {name: 'New Leave Request', component: 'New Leave Request', href: '/example/'}
+  ]},
+  {name: 'Users', component: 'Users', href: '/example/', children: [
+    {name: 'External Site', component: 'External Site', href: 'http://princeton.edu', target: '_blank'},
+    {name: 'Settings', component: 'Settings', href: '/example/'},
+    {name: 'Logout', component: 'Logout', href: '/example/'}
+  ]}
+]"/>
 
-    <lux-menu-bar type="links" active="Dashboard" :menu-items="[
-      {name: 'Logout', component: 'Logout', href: '/logout'}]" theme="light"/>
-  ```
+<lux-menu-bar type="links" active="Dashboard" :menu-items="[
+  {name: 'Logout', component: 'Logout', href: '/logout'}]" theme="light"/>

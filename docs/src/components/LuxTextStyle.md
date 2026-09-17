@@ -10,12 +10,10 @@
 
 ## Usage
 
-```
-  <div>
-    <lux-text-style variation="default">Design isn’t just about the look and feel. Design is how it works.</lux-text-style>
-    <lux-text-style variation="disabled">Design isn’t just about the look and feel.</lux-text-style>
-    <lux-text-style variation="strong">Design isn’t just about look and feel.</lux-text-style>
-    <lux-text-style variation="emphasis">Design is how it works.</lux-text-style>
-    <lux-text-style variation="strong" color="red">Design is how it works.</lux-text-style>
-  </div>
-  ```
+<div>
+  <lux-text-style variation="default">Design isn’t just about the look and feel. Design is how it works.</lux-text-style>
+  <lux-text-style variation="disabled">Design isn’t just about the look and feel.</lux-text-style>
+  <lux-text-style variation="strong">Design isn’t just about look and feel.</lux-text-style>
+  <lux-text-style variation="emphasis">Design is how it works.</lux-text-style>
+  <lux-text-style variation="strong" color="red">Design is how it works.</lux-text-style>
+</div>

@@ -12,18 +12,16 @@
 
 ## Usage
 
-```jsx
-    <div>
-      <lux-hyperlink href="#">Foo</lux-hyperlink>
-      <lux-hyperlink href="#" variation="button solid">Bar</lux-hyperlink>
-      <lux-hyperlink href="#" variation="button solid" size="large">Bar</lux-hyperlink>
-      <lux-hyperlink href="#" variation="button outline">Bar</lux-hyperlink>
-      <lux-hyperlink href="#" :newTab="true">I open in a new tab</lux-hyperlink>
-      <lux-hyperlink href="#" :underline="true">
-        I am underlined and have an arrow
-        <lux-icon-base width="14" height="14">
-          <lux-icon-arrow-right></lux-icon-arrow-right>
-        </lux-icon-base>
-      </lux-hyperlink>
-    </div>
-  ```
+<div>
+  <lux-hyperlink href="#">Foo</lux-hyperlink>
+  <lux-hyperlink href="#" variation="button solid">Bar</lux-hyperlink>
+  <lux-hyperlink href="#" variation="button solid" size="large">Bar</lux-hyperlink>
+  <lux-hyperlink href="#" variation="button outline">Bar</lux-hyperlink>
+  <lux-hyperlink href="#" :newTab="true">I open in a new tab</lux-hyperlink>
+  <lux-hyperlink href="#" :underline="true">
+    I am underlined and have an arrow
+    <lux-icon-base width="14" height="14">
+      <lux-icon-arrow-right></lux-icon-arrow-right>
+    </lux-icon-base>
+  </lux-hyperlink>
+</div>
