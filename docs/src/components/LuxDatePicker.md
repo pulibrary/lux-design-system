@@ -23,7 +23,7 @@
 ## Usage
 
 <div>
-  <lux-date-picker id="dateRange" name="daterange" label="Date Range" helper="Please enter both start and end dates." mode="range" :disabled-dates="[{ start: null, end: new Date(2019, 05, 01)}, { start: new Date(), end: null }]"  placeholder="01/10/2020" />
+  <lux-date-picker id="dateRange" name="daterange" label="Date Range" helper="Please enter both start and end dates." mode="range" :disabled-dates="[{ start: null, end: new Date(2019, 5, 1)}, { start: new Date(), end: null }]"  placeholder="1/10/2020" />
 
-  <lux-date-picker id="today" name="today" label="Today's Date" mode="single" :holidays="['2020-02-20','2020-02-21']" :defaultDate="new Date()" />
+  <lux-date-picker id="today" name="today" label="Today's Date" mode="single" :holidays="['2020-2-20','2020-2-21']" :defaultDate="new Date()" />
 </div>
