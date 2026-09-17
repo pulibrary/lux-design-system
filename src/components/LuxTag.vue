@@ -104,8 +104,8 @@ function componentType(item) {
 
 <style lang="scss">
 @use "sass:color";
-@use "/src/assets/styles/spacing.scss" as *;
-@use "/src/assets/styles/system.scss" as *;
+@use "../assets/styles/spacing.scss" as *;
+@use "../assets/styles/system.scss" as *;
 
 .lux-tag {
   font-family: var(--font-family-heading);
