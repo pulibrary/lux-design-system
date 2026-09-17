@@ -4,7 +4,9 @@ import { parse as parseSFC } from "@vue/compiler-sfc"
 import { parse as parseJS } from "@babel/parser"
 
 const componentsDir = path.resolve("src/components")
+const assetsDir = path.resolve("src/assets")
 const outputDir = path.resolve("docs/src/components")
+const outputAssetsDir = path.resolve("docs/src/assets")
 
 function getVueFiles(dir) {
   let results = []
@@ -26,6 +28,20 @@ function getVueFiles(dir) {
   }
 
   return results
+}
+
+function copyDirectory(sourceDir, targetDir) {
+  if (!fs.existsSync(sourceDir)) {
+    console.warn(`Assets directory not found: ${sourceDir}`)
+    return
+  }
+
+  fs.cpSync(sourceDir, targetDir, {
+    recursive: true,
+    force: true,
+  })
+
+  console.log(`Copied assets from ${sourceDir} to ${targetDir}`)
 }
 
 // Extract comments
@@ -130,6 +146,7 @@ function main() {
     console.warn(`No Vue files found in ${componentsDir}`)
     return
   }
+  copyDirectory(assetsDir, outputAssetsDir)
 
   for (const filePath of files) {
     try {
