@@ -35,9 +35,8 @@
     "start:dev": "npm run build; npx http-server --port 5000",
     "prepare": "simple-git-hooks",
     "docs:dev": "node src/utils/generateDocs.js && vitepress dev docs",
-    "docs:build": "npm run docs:theme; node src/utils/runGeneratorDocs.js && vitepress build docs",
-    "docs:preview": "vitepress preview docs",
-    "docs:theme": "node src/utils/generateDocsTheme.js"
+    "docs:build": "node src/utils/runGeneratorDocs.js && vitepress build docs",
+    "docs:preview": "vitepress preview docs"
   },
   "dependencies": {
     "core-js": "^3.8.3",
