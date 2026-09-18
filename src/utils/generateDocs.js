@@ -164,7 +164,8 @@ export class DocsGenerator {
       usage =
         `\n## Preview\n\n` +
         `${this.unwrapCodeBlocks(docsContent).trim()}\n\n` +
-        `### Code\n\n` +
+        `###\n\n` +
+        `::: details View Source Code\n` +
         `${this.preserveCodeBlocks(docsContent).trim()}\n`
     }
 
