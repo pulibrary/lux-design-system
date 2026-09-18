@@ -1,7 +1,3 @@
-import { defineConfig } from "vitepress"
-import fs from "fs"
-import path from "path"
-
 export const vueDocsPlugin = {
   name: "vue-docs",
   transform(code, id) {
@@ -10,26 +6,12 @@ export const vueDocsPlugin = {
   },
 }
 
-const projectRoot = process.cwd()
-const componentsDir = path.resolve(projectRoot, "src/components")
-
-function getComponentItems(subDir = "") {
-  const targetDir = path.join(componentsDir, subDir)
-  if (!fs.existsSync(targetDir)) return []
-
-  return fs
-    .readdirSync(targetDir, { withFileTypes: true })
-    .filter(entry => entry.isFile() && entry.name.toLowerCase().endsWith(".vue"))
-    .map(entry => {
-      const name = path.basename(entry.name, ".vue")
-      return { text: name, link: name } // Follows the VitePress sidebar link contract
-    })
-    .sort((a, b) => a.text.localeCompare(b.text))
-}
-
-export default defineConfig({
+export default {
   title: "LUX Design System",
   description: "PUL design system",
+  vite: {
+    plugins: [vueDocsPlugin],
+  },
   themeConfig: {
     sidebar: [
       {
@@ -38,23 +20,149 @@ export default defineConfig({
         items: [
           { text: "Adding Lux to Your Project", link: "adding_lux" },
           { text: "Adding Icons", link: "adding_icons" },
+          { text: "Design Principles", link: "design_principles" },
+          { text: "Design Tokens", link: "design_tokens" },
+          { text: "Lux Usage", link: "lux_usage" },
         ],
       },
       {
         text: "Components",
         base: "/src/components/",
-        items: getComponentItems(""),
+        items: [
+          { text: "_LuxCalendar", link: "_LuxCalendar" },
+          { text: "_LuxCardContent", link: "_LuxCardContent" },
+          { text: "_LuxCardHeader", link: "_LuxCardHeader" },
+          { text: "_LuxCardMedia", link: "_LuxCardMedia" },
+          { text: "_LuxCreativeCommonsStatement", link: "_LuxCreativeCommonsStatement" },
+          { text: "_LuxHamburger", link: "_LuxHamburger" },
+          { text: "_LuxLibraryContactInfo", link: "_LuxLibraryContactInfo" },
+          { text: "_LuxLibraryContactInfoOld", link: "_LuxLibraryContactInfoOld" },
+          { text: "_LuxMenuBarLabel", link: "_LuxMenuBarLabel" },
+          { text: "_LuxRangeCalendar", link: "_LuxRangeCalendar" },
+          { text: "_LuxSubscribeNewsletter", link: "_LuxSubscribeNewsletter" },
+          { text: "_LuxUniversityAccessibility", link: "_LuxUniversityAccessibility" },
+          { text: "_LuxUniversityAccessibilityOld", link: "_LuxUniversityAccessibilityOld" },
+          { text: "_LuxUniversityCopyright", link: "_LuxUniversityCopyright" },
+          { text: "_LuxUniversityCopyrightOld", link: "_LuxUniversityCopyrightOld" },
+          { text: "_LuxUniversityPrivacyNotice", link: "_LuxUniversityPrivacyNotice" },
+          { text: "LuxAlert", link: "LuxAlert" },
+          { text: "LuxAutocompleteInput", link: "LuxAutocompleteInput" },
+          { text: "LuxBadge", link: "LuxBadge" },
+          { text: "LuxBanner", link: "LuxBanner" },
+          { text: "LuxCard", link: "LuxCard" },
+          { text: "LuxCopyToClipboard", link: "LuxCopyToClipboard" },
+          { text: "LuxDataTable", link: "LuxDataTable" },
+          { text: "LuxDatePicker", link: "LuxDatePicker" },
+          { text: "LuxDialog", link: "LuxDialog" },
+          { text: "LuxDropdownMenu", link: "LuxDropdownMenu" },
+          { text: "LuxGridContainer", link: "LuxGridContainer" },
+          { text: "LuxGridItem", link: "LuxGridItem" },
+          { text: "LuxHeading", link: "LuxHeading" },
+          { text: "LuxHyperlink", link: "LuxHyperlink" },
+          { text: "LuxInputAsyncSelect", link: "LuxInputAsyncSelect" },
+          { text: "LuxInputButton", link: "LuxInputButton" },
+          { text: "LuxInputCheckbox", link: "LuxInputCheckbox" },
+          { text: "LuxInputMultiselect", link: "LuxInputMultiselect" },
+          { text: "LuxInputRadio", link: "LuxInputRadio" },
+          { text: "LuxInputSelect", link: "LuxInputSelect" },
+          { text: "LuxInputText", link: "LuxInputText" },
+          { text: "LuxLibraryFooter", link: "LuxLibraryFooter" },
+          { text: "LuxLibraryHeader", link: "LuxLibraryHeader" },
+          { text: "LuxLibraryLogo", link: "LuxLibraryLogo" },
+          { text: "LuxLoader", link: "LuxLoader" },
+          { text: "LuxMediaImage", link: "LuxMediaImage" },
+          { text: "LuxMenuBar", link: "LuxMenuBar" },
+          { text: "LuxSearchBox", link: "LuxSearchBox" },
+          { text: "LuxShowMore", link: "LuxShowMore" },
+          { text: "LuxSpacer", link: "LuxSpacer" },
+          { text: "LuxSpecialCollectionsFooter", link: "LuxSpecialCollectionsFooter" },
+          { text: "LuxTab", link: "LuxTab" },
+          { text: "LuxTabWrapper", link: "LuxTabWrapper" },
+          { text: "LuxTag", link: "LuxTag" },
+          { text: "LuxTextStyle", link: "LuxTextStyle" },
+          { text: "LuxUniversityFooter", link: "LuxUniversityFooter" },
+          {
+            text: "LuxUniversityFooterCreativeCommons",
+            link: "LuxUniversityFooterCreativeCommons",
+          },
+          { text: "LuxWrapper", link: "LuxWrapper" },
+          { text: "NewLuxDatePicker", link: "NewLuxDatePicker" },
+        ],
       },
       {
         text: "Icons",
         base: "/src/components/icons/",
-        items: getComponentItems("icons"),
+        items: [
+          { text: "LuxIconAdd", link: "LuxIconAdd" },
+          { text: "LuxIconAlert", link: "LuxIconAlert" },
+          { text: "LuxIconApproved", link: "LuxIconApproved" },
+          { text: "LuxIconArrowDown", link: "LuxIconArrowDown" },
+          { text: "LuxIconArrowRight", link: "LuxIconArrowRight" },
+          { text: "LuxIconArrowUp", link: "LuxIconArrowUp" },
+          { text: "LuxIconAscending", link: "LuxIconAscending" },
+          { text: "LuxIconBase", link: "LuxIconBase" },
+          { text: "LuxIconBookmark", link: "LuxIconBookmark" },
+          { text: "LuxIconCalendar", link: "LuxIconCalendar" },
+          { text: "LuxIconCheck", link: "LuxIconCheck" },
+          { text: "LuxIconClock", link: "LuxIconClock" },
+          { text: "LuxIconClose", link: "LuxIconClose" },
+          { text: "LuxIconConsulting", link: "LuxIconConsulting" },
+          { text: "LuxIconCopy", link: "LuxIconCopy" },
+          { text: "LuxIconCreativeCommons", link: "LuxIconCreativeCommons" },
+          { text: "LuxIconCreativeCommonsBy", link: "LuxIconCreativeCommonsBy" },
+          { text: "LuxIconDelivery", link: "LuxIconDelivery" },
+          { text: "LuxIconDenied", link: "LuxIconDenied" },
+          { text: "LuxIconDerivativesHealthy", link: "LuxIconDerivativesHealthy" },
+          { text: "LuxIconDerivativesUnhealthy", link: "LuxIconDerivativesUnhealthy" },
+          { text: "LuxIconDescending", link: "LuxIconDescending" },
+          { text: "LuxIconEdit", link: "LuxIconEdit" },
+          { text: "LuxIconExclamation", link: "LuxIconExclamation" },
+          { text: "LuxIconFile", link: "LuxIconFile" },
+          { text: "LuxIconFileHealthy", link: "LuxIconFileHealthy" },
+          { text: "LuxIconFileUnhealthy", link: "LuxIconFileUnhealthy" },
+          { text: "LuxIconFilter", link: "LuxIconFilter" },
+          { text: "LuxIconFlower", link: "LuxIconFlower" },
+          { text: "LuxIconGlobe", link: "LuxIconGlobe" },
+          { text: "LuxIconHospital", link: "LuxIconHospital" },
+          { text: "LuxIconInfo", link: "LuxIconInfo" },
+          { text: "LuxIconLockClose", link: "LuxIconLockClose" },
+          { text: "LuxIconLockOpen", link: "LuxIconLockOpen" },
+          { text: "LuxIconNewTab", link: "LuxIconNewTab" },
+          { text: "LuxIconNote", link: "LuxIconNote" },
+          { text: "LuxIconPerson", link: "LuxIconPerson" },
+          { text: "LuxIconPicture", link: "LuxIconPicture" },
+          { text: "LuxIconQuestion", link: "LuxIconQuestion" },
+          { text: "LuxIconQuestionFilled", link: "LuxIconQuestionFilled" },
+          { text: "LuxIconRefresh", link: "LuxIconRefresh" },
+          { text: "LuxIconRelax", link: "LuxIconRelax" },
+          { text: "LuxIconReported", link: "LuxIconReported" },
+          { text: "LuxIconReportHealthy", link: "LuxIconReportHealthy" },
+          { text: "LuxIconReportRemove", link: "LuxIconReportRemove" },
+          { text: "LuxIconReportUnhealthy", link: "LuxIconReportUnhealthy" },
+          { text: "LuxIconResearch", link: "LuxIconResearch" },
+          { text: "LuxIconScales", link: "LuxIconScales" },
+          { text: "LuxIconSearch", link: "LuxIconSearch" },
+          { text: "LuxIconUnsorted", link: "LuxIconUnsorted" },
+          { text: "LuxIconUserHome", link: "LuxIconUserHome" },
+          { text: "LuxIconVacation", link: "LuxIconVacation" },
+          { text: "LuxIconView", link: "LuxIconView" },
+        ],
       },
       {
         text: "Logos",
         base: "/src/components/logos/",
-        items: getComponentItems("logos"),
+        items: [
+          { text: "LuxLogoFacebook", link: "LuxLogoFacebook" },
+          { text: "LuxLogoFriends", link: "LuxLogoFriends" },
+          { text: "LuxLogoGovDocs", link: "LuxLogoGovDocs" },
+          { text: "LuxLogoInstagram", link: "LuxLogoInstagram" },
+          { text: "LuxLogoLibrary", link: "LuxLogoLibrary" },
+          { text: "LuxLogoLibraryIcon", link: "LuxLogoLibraryIcon" },
+          { text: "LuxLogoUniversity", link: "LuxLogoUniversity" },
+          { text: "LuxLogoUniversityWhite", link: "LuxLogoUniversityWhite" },
+          { text: "LuxLogoX", link: "LuxLogoX" },
+        ],
       },
     ],
   },
-})
+}
