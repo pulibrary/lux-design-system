@@ -159,7 +159,14 @@ export class DocsGenerator {
       .join("\n")
 
     const table = rows || "| - | No props documented for this component. | - | - |"
-    const usage = docsContent ? `\n## Usage\n\n${this.unwrapCodeBlocks(docsContent).trim()}\n` : ""
+    let usage = ""
+    if (docsContent) {
+      usage =
+        `\n## Preview\n\n` +
+        `${this.unwrapCodeBlocks(docsContent).trim()}\n\n` +
+        `### Code\n\n` +
+        `${this.preserveCodeBlocks(docsContent).trim()}\n`
+    }
 
     return `# ${componentName}\n\n## Props\n\n| Prop Name | Description | Type | Default |\n| :--- | :--- | :--- | :--- |\n${table}\n${usage}`
   }
@@ -181,5 +188,8 @@ export class DocsGenerator {
       (match, indent, language, code) =>
         language.trim().toLowerCase() === "vue" ? match : this.dedent(code)
     )
+  }
+  preserveCodeBlocks(content) {
+    return this.dedent(content)
   }
 }
