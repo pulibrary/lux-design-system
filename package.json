@@ -22,6 +22,7 @@
   },
   "version": "7.14.0",
   "scripts": {
+    "serve": "vue-cli-service serve",
     "build": "vite build",
     "test": "TZ=UTC vitest",
     "lint": "eslint --ext .mjs,.js,.vue . --fix",
