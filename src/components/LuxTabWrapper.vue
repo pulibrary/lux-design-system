@@ -51,7 +51,7 @@ provide("registerTab", registerTab)
 const activeIndex = activeIndexRef
 </script>
 
-<style lang="scss">
+<style lang="css">
 .tabs-header {
   display: flex;
   list-style-type: none;
