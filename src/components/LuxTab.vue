@@ -31,11 +31,7 @@ const myIndex = registerTab ? registerTab(props.title) : 0
 const isActive = computed(() => myIndex === activeIndex?.value)
 </script>
 
-<style lang="scss">
-@use "sass:color";
-@use "/src/assets/styles/spacing.scss" as *;
-@use "/src/assets/styles/system.scss" as *;
-
+<style lang="css">
 .lux-tab-panel {
   padding: 1rem;
   border: 1px solid var(--color-grayscale-light);

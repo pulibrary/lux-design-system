@@ -36,7 +36,6 @@ const props = defineProps({
 </script>
 
 <style lang="scss" scoped>
-@use "/src/assets/styles/spacing.scss" as *;
 @use "/src/assets/styles/mixins.scss" as *;
 @use "/src/assets/styles/focus.scss" as *;
 
