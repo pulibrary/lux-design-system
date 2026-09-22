@@ -22,7 +22,7 @@
 </template>
 
 <script setup>
-import { computed, defineOptions, onUpdated, toRef, useTemplateRef, watch } from "vue"
+import { computed, defineOptions, onUpdated, useTemplateRef } from "vue"
 import LuxIconBase from "./icons/LuxIconBase.vue"
 
 /**
