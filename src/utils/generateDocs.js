@@ -186,7 +186,7 @@ export class DocsGenerator {
   unwrapCodeBlocks(content) {
     return content.replace(
       /^([ \t]*)```([^\r\n]*)\r?\n([\s\S]*?)^\1```[ \t]*$/gm,
-      (match, indent, language, code) =>
+      (match, language, code) =>
         language.trim().toLowerCase() === "vue" ? match : this.dedent(code)
     )
   }
