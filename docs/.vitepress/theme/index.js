@@ -5,18 +5,13 @@ import "../../../src/assets/styles/system.scss"
 import "../../../src/assets/styles/mixins.scss"
 import "../../../src/assets/styles/variables.css"
 
-const components = import.meta.glob("../../../src/components/**/*.vue", { eager: true })
+import * as components from "../../../src/components/index.js"
 
 export default {
   extends: DefaultTheme,
   enhanceApp({ app }) {
-    for (const path in components) {
-      const module = components[path]
-
-      const fileName = path.split("/").pop().replace(".vue", "")
-      const componentName = module.default?.name || fileName
-
-      app.component(componentName, module.default)
-    }
+    Object.keys(components).forEach(componentName => {
+      app.component(componentName, components[componentName])
+    })
   },
 }
