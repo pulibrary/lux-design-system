@@ -183,12 +183,21 @@ export class DocsGenerator {
     return lines.map(line => (line.trim() ? line.slice(indentation) : "")).join("\n")
   }
 
+  /**
+   * This function takes the code out of a ``` block.
+   * It needs to handle several scenarios:
+   *   * ```vue (indented or not) -- we leave the code as is
+   *   * ``` (indented or not)
+   *   * ```jsx (indented or not)
+   */
   unwrapCodeBlocks(content) {
-    return content.replace(
-      /^([ \t]*)```([^\r\n]*)\r?\n([\s\S]*?)^\1```[ \t]*$/gm,
-      (match, language, code) =>
-        language.trim().toLowerCase() === "vue" ? match : this.dedent(code)
-    )
+    const regularExpression = /\s*```(\w*)\n([\s\S]*)\s*```/m
+    const [_, language, code] = content.match(regularExpression)
+    if (language.trim().toLowerCase() === "vue") {
+      return content
+    } else {
+      return code
+    }
   }
   preserveCodeBlocks(content) {
     return this.dedent(content)
