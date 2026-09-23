@@ -8,6 +8,17 @@ describe("DocsGenerator", () => {
     expect(generator.dedent(`<div><lux-alert /></div>`).trim()).toBe(`<div><lux-alert /></div>`)
   })
 
+  it("unwraps jsx code fences", () => {
+    const content = `
+      \`\`\`jsx
+      alert('hello my friend!!!')
+      \`\`\`
+    `
+
+    expect(generator.unwrapCodeBlocks(content)).not.toContain("```jsx")
+    expect(generator.unwrapCodeBlocks(content)).toContain("alert('hello my friend!!!')")
+  })
+
   it("preserves Vue code fences", () => {
     const content = `
       \`\`\`vue
