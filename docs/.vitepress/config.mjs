@@ -11,7 +11,7 @@ function getComponentItems(subDir = "") {
 
   return fs
     .readdirSync(targetDir, { withFileTypes: true })
-    .filter(entry => entry.isFile() && entry.name.toLowerCase().endsWith(".vue"))
+    .filter(entry => entry.isFile() && entry.name.toLowerCase().endsWith(".vue") && !entry.name.startsWith("_"))
     .map(entry => {
       const name = path.basename(entry.name, ".vue")
       return { text: name, link: name }
