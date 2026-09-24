@@ -14,7 +14,7 @@ import "./assets/styles/variables.css"
 export default {
   // Vue plugins must expose an install() method, see
   // https://vuejs.org/guide/reusability/plugins.html
-  install(app, options) {
+  install(app) {
     installThirdPartyPlugins(app)
     installLuxComponents(app)
   },
