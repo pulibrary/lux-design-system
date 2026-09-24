@@ -30,3 +30,9 @@ tmp
 /blob-report/
 /playwright/.cache/
 /playwright/.auth/
+
+# vitepress
+docs/.vitepress/cache
+docs/.vitepress/dist
+docs/src/
+
