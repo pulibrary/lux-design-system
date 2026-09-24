@@ -28,6 +28,7 @@ export const vueDocsPlugin = {
 }
 
 export default defineConfig({
+  appearance: false,
   title: "LUX Design System",
   description: "PUL design system",
   vite: {
