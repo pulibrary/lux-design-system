@@ -6,6 +6,7 @@ import "../../../src/assets/styles/mixins.scss"
 import "../../../src/assets/styles/variables.css"
 import VCalendar from "v-calendar"
 import "v-calendar/style.css"
+import NewLuxDatePicker from "../../../src/components/NewLuxDatePicker.vue"
 
 import * as components from "../../../src/components/index.js"
 
@@ -16,5 +17,6 @@ export default {
     Object.keys(components).forEach(componentName => {
       app.component(componentName, components[componentName])
     })
+    app.component("NewLuxDatePicker", NewLuxDatePicker)
   },
 }
