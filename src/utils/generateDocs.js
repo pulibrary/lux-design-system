@@ -166,7 +166,7 @@ export class DocsGenerator {
         `${this.unwrapCodeBlocks(docsContent).trim()}\n\n` +
         `###\n\n` +
         `::: details View Source Code\n` +
-        `${this.preserveCodeBlocks(docsContent).trim()}\n`
+        `${this.dedent(docsContent).trim()}\n`
     }
 
     return `# ${componentName}\n\n## Props\n\n| Prop Name | Description | Type | Default |\n| :--- | :--- | :--- | :--- |\n${table}\n${usage}`
@@ -194,12 +194,15 @@ export class DocsGenerator {
     const regularExpression = /\s*```(\w*)\n([\s\S]*)\s*```/m
     const [_, language, code] = content.match(regularExpression)
     if (language.trim().toLowerCase() === "vue") {
-      return content
+      return this.removeEmptyLine(content)
     } else {
-      return code
+      return this.removeEmptyLine(code)
     }
   }
-  preserveCodeBlocks(content) {
-    return this.dedent(content)
+  removeEmptyLine(block) {
+    return block
+      .split("\n")
+      .filter(line => line.trim().length > 0)
+      .join("\n")
   }
 }
