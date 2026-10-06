@@ -14,9 +14,6 @@
         <a href="http://www.facebook.com/PULibrary"><lux-logo-facebook width="24" height="24" /></a>
       </li>
       <li>
-        <a href="https://x.com/PULibrary"><lux-logo-x width="24" height="24" /></a>
-      </li>
-      <li>
         <a href="https://libguides.princeton.edu/usgovdocs"
           ><lux-logo-gov-docs width="24" height="24"
         /></a>
@@ -31,7 +28,6 @@
 <script setup>
 import { defineOptions } from "vue"
 import LuxLogoFacebook from "./logos/LuxLogoFacebook.vue"
-import LuxLogoX from "./logos/LuxLogoX.vue"
 import LuxLogoGovDocs from "./logos/LuxLogoGovDocs.vue"
 import LuxLogoFriends from "./logos/LuxLogoFriends.vue"
 

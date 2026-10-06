@@ -12,7 +12,6 @@
           <h2>Subscribe to our Newsletter</h2>
           <lux-subscribe-newsletter type="div" />
           <div class="social-pul-icons">
-            <a href="https://x.com/PULibrary"><lux-logo-x width="24" height="24" /></a>
             <a href="http://www.facebook.com/PULibrary"
               ><lux-logo-facebook width="24" height="24"
             /></a>
@@ -52,7 +51,6 @@ import LuxLogoFacebook from "./logos/LuxLogoFacebook.vue"
 import LuxLogoFriends from "./logos/LuxLogoFriends.vue"
 import LuxLogoGovDocs from "./logos/LuxLogoGovDocs.vue"
 import LuxLogoInstagram from "./logos/LuxLogoInstagram.vue"
-import LuxLogoX from "./logos/LuxLogoX.vue"
 import LuxSubscribeNewsletter from "./_LuxSubscribeNewsletter.vue"
 import LuxWrapper from "./LuxWrapper.vue"
 import LuxUniversityFooter from "./LuxUniversityFooter.vue"
@@ -154,10 +152,6 @@ const theme = computed(() => {
 
 .bottom-layout {
   border-top: 1px solid rgba(255, 255, 255, 0.3);
-}
-
-.lux-logo-x {
-  margin: 0.5rem 0.1rem 0rem 0.2rem;
 }
 
 .lux-logo-facebook {
