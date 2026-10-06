@@ -14,6 +14,11 @@
         <a href="http://www.facebook.com/PULibrary"><lux-logo-facebook width="24" height="24" /></a>
       </li>
       <li>
+        <a href="https://www.youtube.com/@PrincetonUniversityLibrary"
+          ><lux-logo-you-tube width="32" height="32"
+        /></a>
+      </li>
+      <li>
         <a href="https://libguides.princeton.edu/usgovdocs"
           ><lux-logo-gov-docs width="24" height="24"
         /></a>
@@ -55,6 +60,10 @@ const props = defineProps({
 
 <style lang="scss" scoped>
 @use "/src/assets/styles/mixins.scss" as *;
+
+.lux-logo-you-tube {
+  transform: translate(0, 3px);
+}
 
 .lux-library-contact {
   @include reset;
