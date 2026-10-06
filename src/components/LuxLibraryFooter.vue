@@ -18,6 +18,9 @@
             <a href="https://www.instagram.com/PULibrary/"
               ><lux-logo-instagram width="24" height="24"
             /></a>
+            <a href="https://www.youtube.com/@PrincetonUniversityLibrary"
+              ><lux-logo-you-tube width="32" height="32"
+            /></a>
             <a href="https://libguides.princeton.edu/usgovdocs"
               ><lux-logo-gov-docs width="30" height="30"
             /></a>
@@ -48,6 +51,7 @@ import { computed, defineOptions } from "vue"
 import LuxLibraryContactInfo from "./_LuxLibraryContactInfo.vue"
 import LuxLibraryLogo from "./LuxLibraryLogo.vue"
 import LuxLogoFacebook from "./logos/LuxLogoFacebook.vue"
+import LuxLogoYouTube from "./logos/LuxLogoYouTube.vue"
 import LuxLogoFriends from "./logos/LuxLogoFriends.vue"
 import LuxLogoGovDocs from "./logos/LuxLogoGovDocs.vue"
 import LuxLogoInstagram from "./logos/LuxLogoInstagram.vue"
@@ -106,6 +110,10 @@ const theme = computed(() => {
 @use "/src/assets/styles/mixins.scss" as *;
 @use "/src/assets/styles/focus.scss" as *;
 
+.lux-logo-you-tube {
+  transform: translate(0, 3px);
+}
+
 .contact-info-layout {
   @media (min-width: 900px) {
     border-right: 1px solid rgba(255, 255, 255, 0.3);
@@ -144,7 +152,7 @@ const theme = computed(() => {
   flex-flow: row nowrap;
   width: 300px;
   align-items: flex-end;
-  justify-content: space-between;
+  justify-content: space-around;
   @media (max-width: 899px) {
     width: 200px;
   }
@@ -167,7 +175,7 @@ const theme = computed(() => {
 }
 
 .lux-logo-friends {
-  margin: 0.5rem 0.2rem -0.2rem 0.2rem;
+  margin: 0.5rem 0.2rem -0.2rem 0;
 }
 .lux-library-footer {
   @include reset;
