@@ -45,7 +45,6 @@ import LuxLogoGovDocs from "./logos/LuxLogoGovDocs.vue"
 import LuxLogoInstagram from "./logos/LuxLogoInstagram.vue"
 import LuxLogoLibrary from "./logos/LuxLogoLibrary.vue"
 import LuxLogoLibraryIcon from "./logos/LuxLogoLibraryIcon.vue"
-import LuxLogoX from "./logos/LuxLogoX.vue"
 import LuxLogoUniversity from "./logos/LuxLogoUniversity.vue"
 import LuxLogoUniversityWhite from "./logos/LuxLogoUniversityWhite.vue"
 import LuxSearchBox from "./LuxSearchBox.vue"
@@ -107,7 +106,6 @@ export {
   LuxLogoInstagram,
   LuxLogoLibrary,
   LuxLogoLibraryIcon,
-  LuxLogoX,
   LuxLogoUniversity,
   LuxLogoUniversityWhite,
   LuxSearchBox,
