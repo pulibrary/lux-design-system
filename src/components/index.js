@@ -47,6 +47,7 @@ import LuxLogoLibrary from "./logos/LuxLogoLibrary.vue"
 import LuxLogoLibraryIcon from "./logos/LuxLogoLibraryIcon.vue"
 import LuxLogoUniversity from "./logos/LuxLogoUniversity.vue"
 import LuxLogoUniversityWhite from "./logos/LuxLogoUniversityWhite.vue"
+import LuxLogoYouTube from "./logos/LuxLogoYouTube.vue"
 import LuxSearchBox from "./LuxSearchBox.vue"
 import LuxAlert from "./LuxAlert.vue"
 import LuxBadge from "./LuxBadge.vue"
@@ -108,6 +109,7 @@ export {
   LuxLogoLibraryIcon,
   LuxLogoUniversity,
   LuxLogoUniversityWhite,
+  LuxLogoYouTube,
   LuxSearchBox,
   LuxAlert,
   LuxBadge,
