@@ -1,6 +1,7 @@
-import { defineConfig } from "vitepress"
+import { defineConfig, postcssIsolateStyles } from "vitepress"
 import fs from "fs"
 import path from "path"
+import postcss from "postcss"
 
 const projectRoot = process.cwd()
 const componentsDir = path.resolve(projectRoot, "src/components")
