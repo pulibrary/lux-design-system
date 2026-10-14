@@ -163,7 +163,9 @@ export class DocsGenerator {
     if (docsContent) {
       usage =
         `\n## Preview\n\n` +
+        `::: raw\n` +
         `${this.unwrapCodeBlocks(docsContent).trim()}\n\n` +
+        `:::\n\n` +
         `###\n\n` +
         `::: details View Source Code\n` +
         `${this.dedent(docsContent).trim()}\n`
