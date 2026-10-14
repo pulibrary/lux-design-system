@@ -31,6 +31,21 @@ describe("DocsGenerator", () => {
     expect(generator.unwrapCodeBlocks(content)).toContain("```vue")
   })
 
+  describe("generateMarkdown()", () => {
+    it("adds `::: raw`, so that vitepress styles don't overrided the lux styles", () => {
+      const results = generator.generateMarkdown(
+        "MyNiceComponent",
+        [],
+        `
+        \`\`\`jsx
+        <div><my-nice-component></my-nice-component></div>
+        \`\`\`
+        `
+      )
+      expect(results).toContain("::: raw")
+    })
+  })
+
   it("generates a props table", () => {
     const markdown = generator.generateMarkdown("LuxAlert", [
       {
