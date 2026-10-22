@@ -69,7 +69,7 @@
 </template>
 
 <script setup>
-import { computed, defineOptions, nextTick, onMounted, useTemplateRef } from "vue"
+import { computed, nextTick, onMounted, useTemplateRef } from "vue"
 import LuxIconAlert from "./icons/LuxIconAlert.vue"
 import LuxIconApproved from "./icons/LuxIconApproved.vue"
 import LuxIconBase from "./icons/LuxIconBase.vue"

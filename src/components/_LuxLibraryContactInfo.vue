@@ -14,8 +14,6 @@
 </template>
 
 <script setup>
-import { defineOptions } from "vue"
-
 /**
  * Used to show Library's contact information, including address and phone, is
  * clear and in the footer.

@@ -32,7 +32,7 @@
 </template>
 
 <script setup>
-import { computed, defineOptions, defineEmits, onMounted, ref } from "vue"
+import { computed, onMounted, ref } from "vue"
 
 const props = defineProps({
   /**

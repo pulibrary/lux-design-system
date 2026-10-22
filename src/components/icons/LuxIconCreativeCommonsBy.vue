@@ -35,12 +35,24 @@
 </template>
 
 <script setup>
-import { defineOptions } from "vue"
-const props = defineProps({
-  theme: {
-    type: String,
-    default: "dark",
+import { themeIsValid } from "@/utils/luxTheme"
+
+defineProps({
+  /**
+   * The width of the logo.
+   */
+  width: {
+    type: [Number, String],
+    default: 30,
   },
+  /**
+   * The height of the logo.
+   */
+  height: {
+    type: [Number, String],
+    default: 30,
+  },
+  theme: { default: "dark", validator: themeIsValid },
 })
 /**
  * Icons are used to visually communicate core parts of the product and

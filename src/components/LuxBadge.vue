@@ -2,7 +2,7 @@
   <span :class="badgeClass"><slot></slot></span>
 </template>
 <script setup>
-import { computed, defineOptions } from "vue"
+import { computed } from "vue"
 
 /**
  * Badge is a basic informational component with various color options.

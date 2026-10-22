@@ -23,7 +23,7 @@
 </template>
 
 <script setup>
-import { computed, defineOptions } from "vue"
+import { computed } from "vue"
 import LuxLibraryLogo from "./LuxLibraryLogo.vue"
 import LuxSpacer from "./LuxSpacer.vue"
 import LuxWrapper from "./LuxWrapper.vue"

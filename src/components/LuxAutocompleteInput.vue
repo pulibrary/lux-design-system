@@ -45,19 +45,7 @@
 </template>
 
 <script setup>
-import {
-  computed,
-  defineEmits,
-  defineExpose,
-  defineOptions,
-  ref,
-  useId,
-  useTemplateRef,
-  watch,
-  nextTick,
-  onMounted,
-  onUnmounted,
-} from "vue"
+import { computed, ref, useId, useTemplateRef, watch, nextTick, onMounted, onUnmounted } from "vue"
 
 /**
  * InputAutocomplete is a cross between a text input and select input.

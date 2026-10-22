@@ -61,7 +61,7 @@ import { computed, ref, useTemplateRef } from "vue"
 
 defineOptions({ name: "LuxInputMultiselect" })
 
-const emit = defineEmits("selected")
+const emit = defineEmits(["selected"])
 
 const props = defineProps({
   /**

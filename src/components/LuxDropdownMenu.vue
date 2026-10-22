@@ -18,7 +18,7 @@
 </template>
 
 <script setup>
-import { defineOptions, ref } from "vue"
+import { ref } from "vue"
 
 /**
  * Dropdowns allows a user to select a value from a series of options. Note that a simple,

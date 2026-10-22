@@ -5,8 +5,6 @@
 </template>
 
 <script setup>
-import { defineOptions } from "vue"
-
 /**
  * Used in conjunction with LuxMenuBar to display a menu on narrow screens.
  */

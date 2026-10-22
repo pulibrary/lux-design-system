@@ -17,7 +17,6 @@
 </template>
 
 <script setup>
-import { defineOptions } from "vue"
 /**
  * Cards are used to apply a container around a related grouping of information.
  */

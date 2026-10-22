@@ -47,7 +47,7 @@
 </template>
 
 <script setup>
-import { computed, defineOptions } from "vue"
+import { computed } from "vue"
 import LuxLibraryContactInfo from "./_LuxLibraryContactInfo.vue"
 import LuxLibraryLogo from "./LuxLibraryLogo.vue"
 import LuxLogoFacebook from "./logos/LuxLogoFacebook.vue"

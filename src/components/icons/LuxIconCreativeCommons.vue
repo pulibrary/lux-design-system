@@ -41,7 +41,8 @@
 </template>
 
 <script setup>
-import { defineOptions } from "vue"
+import { themeIsValid } from "@/utils/luxTheme"
+
 /**
  * Icons are used to visually communicate core parts of the product and
  * available actions. Please be aware that all elements must have closing tags (not "self-closing").
@@ -52,6 +53,24 @@ defineOptions({
   status: "ready",
   release: "1.0.0",
   type: "Element",
+})
+
+defineProps({
+  /**
+   * The width of the logo.
+   */
+  width: {
+    type: [Number, String],
+    default: 30,
+  },
+  /**
+   * The height of the logo.
+   */
+  height: {
+    type: [Number, String],
+    default: 30,
+  },
+  theme: { default: "dark", validator: themeIsValid },
 })
 </script>
 

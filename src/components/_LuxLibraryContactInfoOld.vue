@@ -31,7 +31,6 @@
 </template>
 
 <script setup>
-import { defineOptions } from "vue"
 import LuxLogoFacebook from "./logos/LuxLogoFacebook.vue"
 import LuxLogoGovDocs from "./logos/LuxLogoGovDocs.vue"
 import LuxLogoFriends from "./logos/LuxLogoFriends.vue"

@@ -21,7 +21,7 @@
 
 <script setup>
 import { useCookies } from "vue3-cookies"
-import { defineOptions, ref } from "vue"
+import { ref } from "vue"
 
 /**
  * Banners are used to provide timely, general information to users of a website or app.

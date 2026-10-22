@@ -6,8 +6,6 @@
 </template>
 
 <script setup>
-import { defineOptions } from "vue"
-
 /**
  * Text style enhances text with additional visual meaning. For example, using
  * disabled text to de-emphasize it from its surrounding text. Don’t use text

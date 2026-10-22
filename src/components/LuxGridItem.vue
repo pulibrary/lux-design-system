@@ -9,7 +9,6 @@
 </template>
 
 <script setup>
-import { defineOptions } from "vue"
 /**
  * Used to build the containers to layout a page. Grid items need to be nested inside a `GridContainer`
  * component. Do not nest grid items inside other grid items.
