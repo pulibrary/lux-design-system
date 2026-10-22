@@ -84,7 +84,7 @@
 </template>
 
 <script setup>
-import { defineOptions, ref, computed } from "vue"
+import { ref, computed } from "vue"
 /**
  * Used to display data to end users.
  */

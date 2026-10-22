@@ -7,7 +7,6 @@
 </template>
 
 <script setup>
-import { defineOptions } from "vue"
 /**
  * Icons are used to visually communicate core parts of the product and
  * available actions. Please be aware that all elements must have closing tags (not "self-closing").

@@ -32,10 +32,15 @@ export default defineConfig({
     }),
   ],
   define: { "process.env.NODE_ENV": '"production"' },
+  resolve: {
+    alias: {
+      "@": resolve(import.meta.dirname, "./src"),
+    },
+  },
   build: {
     lib: {
       // Could also be a dictionary or array of multiple entry points
-      entry: resolve(__dirname, "src/index.js"),
+      entry: resolve(import.meta.dirname, "src/index.js"),
       name: "Lux",
       // the proper extensions will be added
       fileName: "lux-styleguidist",

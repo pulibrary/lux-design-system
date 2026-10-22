@@ -34,7 +34,7 @@
 </template>
 
 <script setup>
-import { computed, defineEmits, defineOptions, nextTick, useTemplateRef } from "vue"
+import { computed, nextTick, useTemplateRef } from "vue"
 /**
  * Input Selects are used to allow users to choose among a number of options.
  */

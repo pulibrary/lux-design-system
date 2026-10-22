@@ -24,7 +24,7 @@
 </template>
 
 <script setup>
-import { computed, defineOptions } from "vue"
+import { computed } from "vue"
 /**
  * Icons are used to visually communicate core parts of the product and
  * available actions. Please be aware that all elements must have closing tags (not "self-closing").

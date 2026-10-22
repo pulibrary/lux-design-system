@@ -24,7 +24,6 @@
 </template>
 
 <script setup>
-import { defineOptions } from "vue"
 import LuxInputButton from "./LuxInputButton.vue"
 import LuxInputText from "./LuxInputText.vue"
 

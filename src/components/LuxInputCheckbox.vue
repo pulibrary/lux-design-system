@@ -25,7 +25,7 @@
 </template>
 
 <script setup>
-import { computed, defineOptions } from "vue"
+import { computed } from "vue"
 
 /**
  * Form Inputs are used to allow users to provide text input when the expected

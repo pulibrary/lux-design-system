@@ -40,7 +40,7 @@ import { computed, ref, useTemplateRef } from "vue"
   */
 defineOptions({ name: "LuxInputAsyncSelect" })
 
-const emit = defineEmits("selected")
+const emit = defineEmits(["selected"])
 
 const props = defineProps({
   /**

@@ -5,8 +5,6 @@
 </template>
 
 <script setup>
-import { defineOptions } from "vue"
-
 /**
  * Used to show the University’s Accessibility site in the footer.
  */

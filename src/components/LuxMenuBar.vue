@@ -131,7 +131,7 @@
 </template>
 
 <script setup>
-import { computed, defineOptions, ref } from "vue"
+import { computed, ref } from "vue"
 
 import LuxHamburger from "./_LuxHamburger.vue"
 import LuxMenuBarLabel from "./_LuxMenuBarLabel.vue"

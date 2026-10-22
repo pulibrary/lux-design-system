@@ -20,7 +20,7 @@
 </template>
 
 <script setup>
-import { defineOptions, ref } from "vue"
+import { ref } from "vue"
 import LuxIconBase from "./icons/LuxIconBase.vue"
 import LuxIconFile from "./icons/LuxIconFile.vue"
 

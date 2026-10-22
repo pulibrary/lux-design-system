@@ -13,7 +13,6 @@
 </template>
 
 <script setup>
-import { defineOptions } from "vue"
 import LuxIconBase from "./icons/LuxIconBase.vue"
 import LuxIconNewTab from "./icons/LuxIconNewTab.vue"
 

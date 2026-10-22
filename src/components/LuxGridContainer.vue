@@ -6,7 +6,6 @@
 </template>
 
 <script setup>
-import { defineOptions } from "vue"
 /**
  * Used to build the container of GridItems.
  */

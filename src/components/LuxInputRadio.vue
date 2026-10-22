@@ -26,7 +26,7 @@
 </template>
 
 <script setup>
-import { computed, defineOptions } from "vue"
+import { computed } from "vue"
 
 /**
  * Radio buttons should only be used when a user can select one option.

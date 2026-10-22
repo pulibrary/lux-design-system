@@ -8,7 +8,6 @@
 </template>
 
 <script setup>
-import { defineOptions } from "vue"
 import LuxLogoLibrary from "./logos/LuxLogoLibrary.vue"
 
 /**

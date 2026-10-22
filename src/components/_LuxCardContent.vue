@@ -6,8 +6,6 @@
 </template>
 
 <script setup>
-import { defineOptions } from "vue"
-
 /**
  * Used to establish a section of a card for supplementary content.
  */

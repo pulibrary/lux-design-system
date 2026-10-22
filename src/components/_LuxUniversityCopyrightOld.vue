@@ -5,8 +5,6 @@
 </template>
 
 <script setup>
-import { defineOptions } from "vue"
-
 /**
  * Used to show the University’s copyright notice, including the current year
  * (“© 20xx The Trustees of Princeton University”) in the footer.
