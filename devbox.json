@@ -1,0 +1,42 @@
+{
+  "$schema": "https://raw.githubusercontent.com/jetify-com/devbox/0.18.0/.schema/devbox.schema.json",
+  "packages": [
+    "nodejs@latest",
+    "git@latest",
+    "nodePackages.yalc@latest",
+    "nodePackages.np@latest"
+  ],
+  "shell": {
+    "init_hook": [
+      "devbox run setup",
+      "echo 'Welcome to devbox!' > /dev/null"
+    ],
+    "scripts": {
+      "setup": [
+        "npm install",
+        "npm run prepare"
+      ],
+      "test": [
+        "devbox run test:unit",
+        "devbox run test:playwright"
+      ],
+      "test:unit": [
+        "devbox run setup",
+        "npm run test run"
+      ],
+      "test:playwright": [
+        "devbox run setup",
+        "npx playwright install",
+        "npx playwright install firefox",
+        "npx playwright install webkit",
+        "npx playwright test"
+      ],
+      "release": [
+        "npm login",
+        "git checkout main",
+        "git pull",
+        "npm run release || echo 'np failed.  You can continue manually with `npm publish` and `git push origin main` and `git push origin TAG_NAME`'"
+      ]
+    }
+  }
+}
