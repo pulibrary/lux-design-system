@@ -14,6 +14,8 @@ npm install
 npm run prepare
 ```
 
+Or: `devbox shell`
+
 ### Serve the styleguide documentation locally
 
 ```
