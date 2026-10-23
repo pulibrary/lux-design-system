@@ -63,6 +63,8 @@ defineOptions({ name: "LuxInputMultiselect" })
 
 const emit = defineEmits(["selected"])
 
+const model = defineModel()
+
 const props = defineProps({
   /**
    * An array of items.  Each item should be an object with (at minimum) an id and label property.
@@ -124,6 +126,8 @@ const props = defineProps({
 
   /**
    * The default selected items. It should be an array in the format [{id: "", label: ""}]
+   * You can use this, or (if you have a parent vue component), you can bind a value using
+   * v-model.  You should only use one or the other.
    */
   defaultValues: {
     type: Array,
@@ -139,6 +143,7 @@ const props = defineProps({
     default: false,
   },
 })
+
 const autocompleteRef = useTemplateRef("autocomplete")
 const allCurrentItems = ref(props.items)
 const unselectedItems = computed(() =>
@@ -147,11 +152,20 @@ const unselectedItems = computed(() =>
 const isAsync = computed(
   () => !(props.asyncLoadItemsFunction === undefined) && !(props.asyncLoadItemsFunction === null)
 )
-const selectedItems = ref(props.defaultValues)
+
+const selectedItems = computed(() => model.value || props.defaultValues)
+
+function pushItem(item) {
+  if (model.value) {
+    model.value = model.value.concat([item])
+  } else {
+    model.value = props.defaultValues.concat([item])
+  }
+}
 
 function addSelected(id) {
   const fullItem = allCurrentItems.value.find(item => item.id === id)
-  selectedItems.value.push(fullItem)
+  pushItem(fullItem)
   emit("selected", fullItem)
   autocompleteRef.value.setResult("")
   if (props.isAsync) allCurrentItems.value = []
@@ -160,7 +174,9 @@ function addSelected(id) {
 function removeItem(item) {
   const indexToRemove = selectedItems.value.indexOf(item)
   if (indexToRemove > -1) {
-    selectedItems.value.splice(indexToRemove, 1)
+    const before = selectedItems.value.slice(0, indexToRemove)
+    const after = selectedItems.value.slice(indexToRemove + 1)
+    model.value = before.concat(after)
   }
 }
 

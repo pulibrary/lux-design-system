@@ -1,6 +1,7 @@
 import { flushPromises, mount } from "@vue/test-utils"
 import LuxInputMultiselect from "@/components/LuxInputMultiselect.vue"
-import { nextTick } from "vue"
+import { nextTick, defineComponent, ref } from "vue"
+import { describe, beforeEach } from "vitest"
 
 async function addMangoItemByMouse(wrapper) {
   const input = wrapper.find("input.displayInput")
@@ -22,6 +23,19 @@ const fruits = [
   { id: 3, label: "Banana split" },
   { id: 4, label: "Mango" },
 ]
+
+const TestParentComponent = defineComponent({
+  name: "TestParentComponent",
+  template:
+    '<div><LuxInputMultiselect :items="items" v-model="myItems" label="My fruits"></LuxInputMultiselect> >>{{myItems.length}} fruit(s) selected<<</div>',
+  setup: () => {
+    return {
+      myItems: ref([{ id: 1, label: "Apple" }]),
+      items: fruits,
+    }
+  },
+  components: { LuxInputMultiselect },
+})
 
 let wrapper
 
@@ -75,6 +89,40 @@ describe("MultiSelect.vue", () => {
     wrapper.find(".remove-item").trigger("click")
     await nextTick()
     expect(wrapper.find(".selected-items").text()).not.toContain("Mango")
+  })
+
+  it("can handle multiple defaultValues", async () => {
+    wrapper = mount(LuxInputMultiselect, {
+      props: {
+        items: fruits,
+        label: "Fruits",
+        defaultValues: [
+          { label: "Banana split", id: 3 },
+          { label: "Banana", id: 4 },
+          { label: "Apple", id: 1 },
+        ],
+      },
+    })
+
+    expect(wrapper.find(".selected-items").text()).toContain("Banana split")
+    expect(wrapper.find(".selected-items").text()).toContain("Banana")
+    expect(wrapper.find(".selected-items").text()).toContain("Apple")
+
+    wrapper.find(".remove-item").trigger("click")
+    await nextTick()
+    expect(wrapper.find(".selected-items").text()).not.toContain("Banana split")
+    expect(wrapper.find(".selected-items").text()).toContain("Banana")
+    expect(wrapper.find(".selected-items").text()).toContain("Apple")
+
+    wrapper.find(".remove-item").trigger("click")
+    await nextTick()
+    expect(wrapper.find(".selected-items").text()).not.toContain("Banana split")
+    expect(wrapper.find(".selected-items").text()).not.toContain("Banana")
+    expect(wrapper.find(".selected-items").text()).toContain("Apple")
+
+    wrapper.find(".remove-item").trigger("click")
+    await nextTick()
+    expect(wrapper.find(".selected-items").text()).toContain("None selected")
   })
 
   it("does not let the user select the same item twice", async () => {
@@ -160,5 +208,32 @@ describe("MultiSelect.vue", () => {
     const items = wrapper.findAll(".lux-autocomplete-result")
     expect(items[0].text()).toEqual("my query #1")
     expect(items[1].text()).toEqual("my query #2")
+  })
+
+  describe("v-model", () => {
+    it("selects the values that the parent components wants", () => {
+      wrapper = mount(TestParentComponent)
+      expect(wrapper.text()).toContain(">>1 fruit(s) selected<<")
+      expect(wrapper.find(".selected-items").text()).toContain("Apple")
+    })
+
+    it("updates the parent component when a new item is selected", async () => {
+      wrapper = mount(TestParentComponent)
+      await addMangoItemByMouse(wrapper)
+      expect(wrapper.text()).toContain(">>2 fruit(s) selected<<")
+      expect(wrapper.find(".selected-items").text()).toContain("Apple")
+      expect(wrapper.find(".selected-items").text()).toContain("Mango")
+    })
+
+    it("updates the parent component when an item is removed", async () => {
+      wrapper = mount(TestParentComponent)
+      expect(wrapper.text()).toContain(">>1 fruit(s) selected<<")
+
+      wrapper.find(".remove-item").trigger("click")
+      await nextTick()
+
+      expect(wrapper.text()).toContain(">>0 fruit(s) selected<<")
+      expect(wrapper.find(".selected-items").text()).not.toContain("Apple")
+    })
   })
 })
