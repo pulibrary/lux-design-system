@@ -231,4 +231,18 @@ describe("LuxMenuBar.vue", () => {
       expect(menuItem.attributes("target")).toEqual("_blank")
     })
   })
+  describe("when type prop is buttons", () => {
+    it('uses <button type="button">, rather than default submit buttons', async () => {
+      wrapper.setProps({ type: "buttons" })
+      await nextTick()
+
+      const buttons = wrapper.findAll(["button"])
+
+      expect(buttons[0].attributes().type).toEqual("button")
+      expect(buttons[0].text()).toEqual("Foo")
+
+      expect(buttons[1].attributes().type).toEqual("button")
+      expect(buttons[1].text()).toEqual("Foo1")
+    })
+  })
 })

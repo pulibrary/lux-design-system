@@ -1,8 +1,6 @@
-import { nextTick } from "vue"
 import { mount } from "@vue/test-utils"
 import LuxDropdownMenu from "@/components/LuxDropdownMenu.vue"
 import LuxInputButton from "@/components/LuxInputButton.vue"
-import LuxMenuBar from "@/components/LuxMenuBar.vue"
 
 // create an extended `Vue` constructor
 
