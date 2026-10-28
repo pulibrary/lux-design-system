@@ -46,6 +46,7 @@
           ]"
           :disabled="item.disabled"
           @click="menuItemClicked($event, item)"
+          type="button"
         >
           <lux-menu-bar-label :item="item"></lux-menu-bar-label>
         </button>
