@@ -1,13 +1,13 @@
 <template>
   <component :is="element" :class="['lux-dropdown-menu', size]" v-click-outside="hide">
-    <lux-input-button
+    <LuxInputButton
       v-on:button-clicked="buttonClicked($event)"
       class="lux-dropdown-button"
       variation="dropdown"
       :size="size"
-      >{{ buttonLabel }}</lux-input-button
+      >{{ buttonLabel }}</LuxInputButton
     >
-    <lux-menu-bar
+    <LuxMenuBar
       v-bind:class="{ 'lux-show': isVisible }"
       v-on:menu-item-clicked="menuItemClicked($event)"
       :type="type"
@@ -19,6 +19,8 @@
 
 <script setup>
 import { ref } from "vue"
+import LuxInputButton from "./LuxInputButton.vue"
+import LuxMenuBar from "./LuxMenuBar.vue"
 
 /**
  * Dropdowns allows a user to select a value from a series of options. Note that a simple,

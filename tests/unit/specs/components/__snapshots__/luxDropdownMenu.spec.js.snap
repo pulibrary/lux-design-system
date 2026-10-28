@@ -22,7 +22,8 @@ exports[`LuxDropdownMenu.vue > has the expected html structure 1`] = `
     active="All"
     class=""
     data-v-4dce0a16=""
-    menu-items="[object Object],[object Object],[object Object],[object Object]"
+    menuitems="[object Object],[object Object],[object Object],[object Object]"
+    theme="dark"
     type="buttons"
   />
 </div>
