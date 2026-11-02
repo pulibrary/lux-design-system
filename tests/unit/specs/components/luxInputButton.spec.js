@@ -1,17 +1,12 @@
 import { mount } from "@vue/test-utils"
 import { nextTick } from "vue"
 import LuxInputButton from "@/components/LuxInputButton.vue"
-import LuxIconBase from "@/components/icons/LuxIconBase.vue"
 
 describe("LuxInputButton.vue", () => {
   let wrapper
 
   beforeEach(() => {
-    wrapper = mount(LuxInputButton, {
-      global: {
-        components: { LuxIconBase },
-      },
-    })
+    wrapper = mount(LuxInputButton)
   })
 
   describe("ButtonSize", () => {
@@ -26,14 +21,19 @@ describe("LuxInputButton.vue", () => {
     })
   })
   describe("Icon", () => {
-    it("displays an icon", async () => {
+    it("displays an icon when prop is set", async () => {
       wrapper.setProps({ variation: "icon", icon: "search" })
       await nextTick()
       expect(wrapper.get("button").classes()).toContain("icon")
       const icon = wrapper.find("lux-icon-search")
       expect(icon).toBe
     })
-    it("does not display an icon", () => {
+    it("includes the svg for the icon when prop is set", async () => {
+      wrapper.setProps({ variation: "icon", icon: "search" })
+      await nextTick()
+      expect(wrapper.find("button svg path").exists()).toBe(true)
+    })
+    it("does not display an icon when prop is not set", () => {
       expect(wrapper.get("button").classes()).not.toContain("icon")
     })
   })

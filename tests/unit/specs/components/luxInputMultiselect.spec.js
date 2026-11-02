@@ -236,4 +236,10 @@ describe("MultiSelect.vue", () => {
       expect(wrapper.find(".selected-items").text()).not.toContain("Apple")
     })
   })
+  it("displays a close icon on a selected item", () => {
+    const selectedItem = wrapper.find(".selected-item")
+    expect(selectedItem.text()).toContain("Banana split")
+
+    expect(selectedItem.find("button.remove-item svg path").exists()).toBe(true)
+  })
 })

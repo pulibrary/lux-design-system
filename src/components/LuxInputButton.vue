@@ -24,6 +24,7 @@
 <script setup>
 import { computed, onUpdated, useTemplateRef } from "vue"
 import LuxIconBase from "./icons/LuxIconBase.vue"
+import * as icons from "./icons/index.js"
 
 /**
  * Buttons are used to toggle something in the interface or trigger new
@@ -34,6 +35,7 @@ defineOptions({
   status: "ready",
   release: "1.0.0",
   type: "Element",
+  components: icons,
 })
 
 const props = defineProps({
