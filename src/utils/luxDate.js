@@ -79,7 +79,7 @@ export function firstDayOfWeek(date) {
  */
 export function lastDayOfWeek(date) {
   const later = clone(date)
-  later.setDate(later.getDate + (SATURDAY - later.getDay()))
+  later.setDate(later.getDate() + (SATURDAY - later.getDay()))
   return later
 }
 

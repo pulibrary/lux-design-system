@@ -1,4 +1,4 @@
-import { dayName, weeks } from "@/utils/luxDate"
+import { dayName, firstDayOfWeek, lastDayOfWeek, weeks } from "@/utils/luxDate"
 import { describe, it, expect } from "vitest"
 
 describe("dayName()", () => {
@@ -36,5 +36,19 @@ describe("weeks()", () => {
       [17, 18, 19, 20, 21, 22, 23],
       [24, 25, 26, 27, 28, 29, 30],
     ])
+  })
+  describe("firstDayOfWeek()", () => {
+    it("gives the first day (Sunday) in a given week", () => {
+      const original = new Date(1990, 2, 15) // Thursday, March 15, 1990
+      const expected = new Date(1990, 2, 11)
+      expect(firstDayOfWeek(original)).toEqual(expected)
+    })
+  })
+  describe("lastDayOfWeek()", () => {
+    it("gives the last day (Saturday) in a given week", () => {
+      const original = new Date(1990, 2, 15) // Thursday, March 15, 1990
+      const expected = new Date(1990, 2, 17)
+      expect(lastDayOfWeek(original)).toEqual(expected)
+    })
   })
 })
