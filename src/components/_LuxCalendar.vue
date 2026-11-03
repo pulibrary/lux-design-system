@@ -80,6 +80,7 @@ const monthLabel = computed(() => monthName(currentMonth.value, props.locale))
 // The day selected with keyboard focus
 const focusedDay = ref(selectedDate.value || new Date().getDate())
 const keydownBehavior = event => {
+  event.preventDefault()
   switch (event.key) {
     case "ArrowDown":
       focusedDay.value += 7
