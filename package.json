@@ -56,7 +56,7 @@
     "eslint-plugin-prettier": "^5.5.5",
     "eslint-plugin-vue": "^10.9.1",
     "gh-pages": "^6.3.0",
-    "happy-dom": "^20.9.0",
+    "happy-dom": "^21.0.4",
     "http-server": "^14.1.1",
     "lint-staged": "^17.0.2",
     "prettier": "^3.8.3",
@@ -67,7 +67,7 @@
     "simple-git-hooks": "^2.14.0",
     "stylelint": "^16.8.2",
     "stylelint-config-standard-scss": "^14.0.0",
-    "vitest": "^4.1.5",
+    "vitest": "^4.1.12",
     "vue": "^3.5",
     "vue-cli-plugin-styleguidist": "~4.72.4"
   },
