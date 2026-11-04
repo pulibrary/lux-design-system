@@ -54,6 +54,8 @@ import {
   lastDayOfMonth,
   firstDayOfWeek,
   lastDayOfWeek,
+  plusOneMonth,
+  minusOneMonth,
 } from "@/utils/luxDate"
 import { computed, onDeactivated, onMounted, ref, watch, useTemplateRef, useId } from "vue"
 import LuxInputButton from "./LuxInputButton.vue"
@@ -107,6 +109,12 @@ const keydownBehavior = event => {
       break
     case "End":
       selectByDate(lastDayOfWeek(focusedAsDate()))
+      break
+    case "PageDown":
+      selectByDate(plusOneMonth(focusedAsDate()))
+      break
+    case "PageUp":
+      selectByDate(minusOneMonth(focusedAsDate()))
       break
   }
 }
