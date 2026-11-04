@@ -83,26 +83,6 @@ export function lastDayOfWeek(date) {
   return later
 }
 
-/**
- * The date that is one month after the provided date.
- *
- * @param {Date} date
- * @returns another Date.
- */
-export function plusOneMonth(date) {
-  return changeMonthWithRounding(date, 1)
-}
-
-/**
- * The date that is one month before the provided date.
- *
- * @param {Date} date
- * @returns another Date.
- */
-export function minusOneMonth(date) {
-  return changeMonthWithRounding(date, -1)
-}
-
 function week(year, monthIndex, weekIndex) {
   return integerRange(7).map(dayOfWeek => {
     const date = weekIndex * 7 + dayOfWeek - monthStartsOnDay(year, monthIndex) + 1
@@ -132,24 +112,4 @@ function validDate(year, monthIndex, date) {
 
 function clone(date) {
   return new Date(date.getTime())
-}
-
-/**
- * Add or subtract the desired number of months to the provided date.  If the desired month does not
- * have as many days as the provided date's month, round down to the last day of the month
- *
- * @param {Date} date
- * @param {Integer} number of months (can be positive for a future month or negative for a past month)
- * @returns another Date.
- */
-function changeMonthWithRounding(date, numberOfMonths) {
-  const desiredMonth = date.getMonth() + numberOfMonths
-  const lastDateInDesiredMonth = new Date(
-    date.getFullYear(),
-    desiredMonth,
-    lastDayOfMonth(date.getFullYear(), desiredMonth)
-  )
-  const withoutRounding = clone(date)
-  withoutRounding.setMonth(desiredMonth)
-  return lastDateInDesiredMonth < withoutRounding ? lastDateInDesiredMonth : withoutRounding
 }
