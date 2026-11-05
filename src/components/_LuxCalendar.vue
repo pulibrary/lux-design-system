@@ -20,7 +20,7 @@
       <tr v-for="week in calendarWeeks" :key="week">
         <td
           v-for="day in week"
-          @click="emitDay(day)"
+          @click="selectDay(day)"
           :key="day"
           :class="{
             'lux-day': true,
@@ -51,11 +51,7 @@ import {
   THURSDAY,
   FRIDAY,
   SATURDAY,
-  lastDayOfMonth,
-  firstDayOfWeek,
-  lastDayOfWeek,
-  plusOneMonth,
-  minusOneMonth,
+  keyboardNav,
 } from "@/utils/luxDate"
 import { computed, onDeactivated, onMounted, ref, watch, useTemplateRef, useId } from "vue"
 import LuxInputButton from "./LuxInputButton.vue"
@@ -81,43 +77,8 @@ const monthLabel = computed(() => monthName(currentMonth.value, props.locale))
 
 // The day selected with keyboard focus
 const focusedDay = ref(selectedDate.value || new Date().getDate())
-const keydownBehavior = event => {
-  event.preventDefault()
-  switch (event.key) {
-    case "ArrowDown":
-      focusedDay.value += 7
-      validateFocusedDay()
-      break
-    case "ArrowUp":
-      focusedDay.value -= 7
-      validateFocusedDay()
-      break
-    case "ArrowRight":
-      focusedDay.value += 1
-      validateFocusedDay()
-      break
-    case "ArrowLeft":
-      focusedDay.value -= 1
-      validateFocusedDay()
-      break
-    case "Enter":
-    case " ":
-      emitDay(focusedDay.value)
-      break
-    case "Home":
-      selectByDate(firstDayOfWeek(focusedAsDate()))
-      break
-    case "End":
-      selectByDate(lastDayOfWeek(focusedAsDate()))
-      break
-    case "PageDown":
-      selectByDate(plusOneMonth(focusedAsDate()))
-      break
-    case "PageUp":
-      selectByDate(minusOneMonth(focusedAsDate()))
-      break
-  }
-}
+const keydownBehavior = keyboardNav(focusedAsDate, moveToDate, () => emitDay(focusedDay.value))
+
 onMounted(() => {
   document.addEventListener("keydown", keydownBehavior)
   setTimeout(() => dayRefs[focusedDay.value].value[0].focus())
@@ -129,25 +90,6 @@ const dayRefs = [...Array(32).keys()].map(day => useTemplateRef(`day-${day}`))
 watch(focusedDay, value => {
   setTimeout(() => dayRefs[value].value[0].focus())
 })
-
-function validateFocusedDay() {
-  const daysInMonth = lastDayOfMonth(currentYear.value, currentMonth.value)
-  if (focusedDay.value < 1) {
-    currentMonth.value = currentMonth.value - 1
-    if (currentMonth.value < JANUARY) {
-      currentMonth.value = DECEMBER
-      currentYear.value--
-    }
-    focusedDay.value = lastDayOfMonth(currentYear.value, currentMonth.value) + focusedDay.value
-  } else if (focusedDay.value > daysInMonth) {
-    currentMonth.value = currentMonth.value + 1
-    if (currentMonth.value > DECEMBER) {
-      currentMonth.value = JANUARY
-      currentYear.value++
-    }
-    focusedDay.value = focusedDay.value - daysInMonth
-  }
-}
 
 function previousMonth() {
   if (currentMonth.value == JANUARY) {
@@ -167,17 +109,19 @@ function nextMonth() {
   }
 }
 
-function emitDay(day) {
+function selectDay(day) {
   selectedDate.value = day
+  emitDay(day)
+}
+
+function emitDay(day) {
   emit("selected", new Date(currentYear.value, currentMonth.value, day))
 }
 
-function selectByDate(date) {
+function moveToDate(date) {
   currentYear.value = date.getFullYear()
   currentMonth.value = date.getMonth()
   focusedDay.value = date.getDate()
-  selectedDate.value = date.getDate()
-  emit("selected", date)
 }
 
 function focusedAsDate() {

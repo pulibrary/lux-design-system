@@ -21,6 +21,8 @@ export const OCTOBER = 9
 export const NOVEMBER = 10
 export const DECEMBER = 11
 
+export const ONE_WEEK = 7
+
 // This is a Sunday that we can use for localization
 const PLACEHOLDER_SUNDAY = () => new Date(2026, 10, 1)
 const PLACEHOLDER_YEAR = 2026
@@ -84,6 +86,17 @@ export function lastDayOfWeek(date) {
 }
 
 /**
+ * @param {Date} date
+ * @param {integer} number of days in future (positive) or past (negative) relative to the date provided
+ * @returns another Date.
+ */
+function plusDays(date, days) {
+  const newDate = clone(date)
+  newDate.setDate(newDate.getDate() + days)
+  return newDate
+}
+
+/**
  * The date that is one month after the provided date.
  *
  * @param {Date} date
@@ -103,15 +116,73 @@ export function minusOneMonth(date) {
   return changeMonthWithRounding(date, -1)
 }
 
+/**
+ * Handle the typical keyboard interactions that a user might make with a calendar widget
+ *
+ * @param {Function} currentDate - a function to retrieve the current date
+ * @param {Function} moveToDateBehavior - what should happen if the user moves to a different date without selecting it
+ * @param {Function} selectDateBehavior - what should happen if the user selects the current date
+ * @returns an event handler for Keydown behavior
+ */
+export function keyboardNav(currentDate, moveToDateBehavior, selectDateBehavior) {
+  return event => {
+    event.preventDefault()
+    switch (event.key) {
+      case "ArrowDown":
+        moveToDateBehavior(plusDays(currentDate(), ONE_WEEK))
+        break
+      case "ArrowUp":
+        moveToDateBehavior(plusDays(currentDate(), -ONE_WEEK))
+        break
+      case "ArrowRight":
+        moveToDateBehavior(plusDays(currentDate(), 1))
+        break
+      case "ArrowLeft":
+        moveToDateBehavior(plusDays(currentDate(), -1))
+        break
+      case "Enter":
+      case " ":
+        selectDateBehavior()
+        break
+      case "Home":
+        moveToDateBehavior(firstDayOfWeek(currentDate()))
+        selectDateBehavior()
+        break
+      case "End":
+        moveToDateBehavior(lastDayOfWeek(currentDate()))
+        selectDateBehavior()
+        break
+      case "PageDown":
+        if (event.getModifierState("Shift")) {
+          moveToDateBehavior(plusOneYear(currentDate()))
+        } else {
+          moveToDateBehavior(plusOneMonth(currentDate()))
+        }
+        selectDateBehavior()
+        break
+      case "PageUp":
+        if (event.getModifierState("Shift")) {
+          moveToDateBehavior(minusOneYear(currentDate()))
+        } else {
+          moveToDateBehavior(minusOneMonth(currentDate()))
+        }
+        selectDateBehavior()
+        break
+    }
+  }
+}
+
 function week(year, monthIndex, weekIndex) {
-  return integerRange(7).map(dayOfWeek => {
-    const date = weekIndex * 7 + dayOfWeek - monthStartsOnDay(year, monthIndex) + 1
+  return integerRange(ONE_WEEK).map(dayOfWeek => {
+    const date = weekIndex * ONE_WEEK + dayOfWeek - monthStartsOnDay(year, monthIndex) + 1
     return validDate(year, monthIndex, date) ? date : null
   })
 }
 
 function numberOfWeeksInMonth(year, monthIndex) {
-  return Math.ceil((monthStartsOnDay(year, monthIndex) + lastDayOfMonth(year, monthIndex)) / 7)
+  return Math.ceil(
+    (monthStartsOnDay(year, monthIndex) + lastDayOfMonth(year, monthIndex)) / ONE_WEEK
+  )
 }
 
 function monthStartsOnDay(year, monthIndex) {
@@ -120,6 +191,26 @@ function monthStartsOnDay(year, monthIndex) {
 
 export function lastDayOfMonth(year, monthIndex) {
   return new Date(year, monthIndex + 1, 0).getDate()
+}
+
+/**
+ * The date that is 12 months after the provided date.
+ *
+ * @param {Date} date
+ * @returns another Date.
+ */
+function plusOneYear(date) {
+  return changeMonthWithRounding(date, 12)
+}
+
+/**
+ * The date that is 12 months before the provided date.
+ *
+ * @param {Date} date
+ * @returns another Date.
+ */
+function minusOneYear(date) {
+  return changeMonthWithRounding(date, -12)
 }
 
 function integerRange(size) {
