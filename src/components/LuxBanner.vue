@@ -159,10 +159,12 @@ const bannerMessage = "This is the announcement description."
 <docs>
   ```jsx
   <div>
+  <ClientOnly>
     <lux-banner dismissible>
       <h2>Fall Semester Announcements</h2>
       <p>We’re currently in beta for students and will be introducing faculty, advisor and staff functionality in the coming months.</p>
     </lux-banner>
+  </ClientOnly>
   </div>
   ```
 </docs>
