@@ -54,24 +54,9 @@ import {
   SATURDAY,
   JANUARY,
   DECEMBER,
-<<<<<<< HEAD
   keyboardNav,
-} from "@/utils/luxDate"
-import { computed, onDeactivated, onMounted, ref, watch, useTemplateRef, useId } from "vue"
-=======
-  lastDayOfMonth,
 } from "../utils/luxDate"
-import {
-  computed,
-  defineModel,
-  onDeactivated,
-  onMounted,
-  ref,
-  watch,
-  useTemplateRef,
-  useId,
-} from "vue"
->>>>>>> f7204f84 (Update all components to use relative path in scss and imports)
+import { computed, onDeactivated, onMounted, ref, watch, useTemplateRef, useId } from "vue"
 import LuxInputButton from "./LuxInputButton.vue"
 
 const props = defineProps({
