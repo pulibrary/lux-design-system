@@ -2,7 +2,7 @@ import _LuxCalendar from "@/components/_LuxCalendar.vue"
 import { mount } from "@vue/test-utils"
 import { describe, expect, it, vi } from "vitest"
 import { nextTick } from "vue"
-import { MARCH, APRIL } from "@/utils/luxDate"
+import { MARCH, APRIL, JANUARY } from "@/utils/luxDate"
 
 function findDay(component, day) {
   return component.findAll("td").find(td => td.text() === String(day))
@@ -137,6 +137,21 @@ describe("_LuxCalendar", () => {
     await nextTick()
     vi.runAllTimers()
     expect(newYearsDay.element).toEqual(document.activeElement)
+  })
+  it("can select a date on Enter", async () => {
+    const component = mount(_LuxCalendar, { props: { month: JANUARY, year: 2026, modelValue: 1 } })
+
+    const newYearsDay = findDay(component, 1)
+    const january8th = findDay(component, 8)
+
+    expect(newYearsDay.classes()).toContain("lux-highlight-selected")
+    expect(january8th.classes()).not.toContain("lux-highlight-selected")
+
+    await pressKey("ArrowDown")
+    await pressKey("Enter")
+
+    expect(january8th.classes()).toContain("lux-highlight-selected")
+    expect(newYearsDay.classes()).not.toContain("lux-highlight-selected")
   })
   it("can move focus to the first day of the month when the month changes", async () => {
     const component = mount(_LuxCalendar, {

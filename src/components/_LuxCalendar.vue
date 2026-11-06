@@ -77,7 +77,7 @@ const monthLabel = computed(() => monthName(currentMonth.value, props.locale))
 
 // The day selected with keyboard focus
 const focusedDay = ref(selectedDate.value || new Date().getDate())
-const keydownBehavior = keyboardNav(focusedAsDate, moveToDate, () => emitDay(focusedDay.value))
+const keydownBehavior = keyboardNav(focusedAsDate, moveToDate, () => selectDay(focusedDay.value))
 
 onMounted(() => {
   document.addEventListener("keydown", keydownBehavior)
@@ -111,10 +111,6 @@ function nextMonth() {
 
 function selectDay(day) {
   selectedDate.value = day
-  emitDay(day)
-}
-
-function emitDay(day) {
   emit("selected", new Date(currentYear.value, currentMonth.value, day))
 }
 
