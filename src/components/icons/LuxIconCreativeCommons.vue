@@ -41,7 +41,7 @@
 </template>
 
 <script setup>
-import { themeIsValid } from "@/utils/luxTheme"
+import { themeIsValid } from "../../utils/luxTheme"
 
 /**
  * Icons are used to visually communicate core parts of the product and
