@@ -33,7 +33,7 @@
     "design_tokens:docs:build": "node src/utils/generateDesignTokenDocs.mjs",
     "start": "npm run build; npx http-server --port 5002",
     "start:dev": "npm run build; npx http-server --port 5000",
-    "prepare": "simple-git-hooks"
+    "prepare": "simple-git-hooks && node scripts/patch-wds3-middleware.js"
   },
   "dependencies": {
     "core-js": "^3.8.3",
@@ -75,6 +75,7 @@
     "pre-commit": "npm run design_tokens:docs:build && npx lint-staged"
   },
   "overrides": {
-    "ip": "npm:neoip@3.1.0"
+    "ip": "npm:neoip@3.1.0",
+    "webpack-dev-middleware": "5.3.4"
   }
 }
