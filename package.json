@@ -73,5 +73,8 @@
   },
   "simple-git-hooks": {
     "pre-commit": "npm run design_tokens:docs:build && npx lint-staged"
+  },
+  "overrides": {
+    "ip": "npm:neoip@3.1.0"
   }
 }
