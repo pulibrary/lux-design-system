@@ -76,6 +76,7 @@
   },
   "overrides": {
     "ip": "npm:neoip@3.1.0",
+    "braces": "3.0.3",
     "webpack-dev-middleware": "5.3.4"
   }
 }
