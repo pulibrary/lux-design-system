@@ -18,7 +18,7 @@
 */
 @mixin responsive-font($responsive, $min, $max: false, $fallback: false) {
   $responsive-unitless: strip-unit($responsive);
-  $dimension: if(math.unit($responsive) == "vh", "height", "width");
+  $dimension: if(sass(math.unit($responsive) == "vh"): "height"; else: "width");
   $min-breakpoint: calc($min / $responsive-unitless * 100);
   font-size: $responsive;
 

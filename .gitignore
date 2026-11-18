@@ -2,6 +2,7 @@
 node_modules
 /dist
 /styleguide
+/vendor
 
 # local env files
 .env.local
