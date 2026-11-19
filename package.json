@@ -62,7 +62,7 @@
     "prettier": "^3.10.1",
     "resize-observer-polyfill": "^1.5.1",
     "rollup-plugin-copy": "^3.5.0",
-    "sass": "^1.84.0",
+    "sass": "^1.108.2",
     "sass-loader": "^16.0.0",
     "simple-git-hooks": "^2.14.0",
     "stylelint": "^16.8.2",
