@@ -2,7 +2,7 @@ import _LuxCalendar from "@/components/_LuxCalendar.vue"
 import { mount } from "@vue/test-utils"
 import { describe, expect, it, vi } from "vitest"
 import { nextTick } from "vue"
-import { MARCH, APRIL, JANUARY } from "@/utils/luxDate"
+import { MARCH, APRIL, JANUARY, JUNE } from "@/utils/luxDate"
 
 function findDay(component, day) {
   return component.findAll("td").find(td => td.text() === String(day))
@@ -15,7 +15,7 @@ async function pressKey(key) {
 
 describe("_LuxCalendar", () => {
   it("displays the calendar for the specified month", () => {
-    const component = mount(_LuxCalendar, { props: { month: 3, year: 2026 } })
+    const component = mount(_LuxCalendar, { props: { month: APRIL, year: 2026 } })
     const weeks = component
       .findAll("tr")
       .slice(1)
@@ -36,29 +36,29 @@ describe("_LuxCalendar", () => {
 
     april_8th.trigger("click")
 
-    expect(component.emitted().selected).toEqual([[new Date(2026, 3, 8)]])
+    expect(component.emitted().selected).toEqual([[new Date(2026, APRIL, 8)]])
   })
   it("emits an event on Enter", async () => {
     vi.useFakeTimers()
-    const component = mount(_LuxCalendar, { props: { month: 3, year: 2026, modelValue: 1 } })
+    const component = mount(_LuxCalendar, { props: { month: APRIL, year: 2026, modelValue: 1 } })
     await nextTick()
     vi.runAllTimers()
 
     await pressKey("ArrowDown")
     await pressKey("Enter")
 
-    expect(component.emitted().selected).toEqual([[new Date(2026, 3, 8)]])
+    expect(component.emitted().selected).toEqual([[new Date(2026, APRIL, 8)]])
   })
   it("emits an event on Space", async () => {
     vi.useFakeTimers()
-    const component = mount(_LuxCalendar, { props: { month: 3, year: 2026, modelValue: 1 } })
+    const component = mount(_LuxCalendar, { props: { month: APRIL, year: 2026, modelValue: 1 } })
     await nextTick()
     vi.runAllTimers()
 
     await pressKey("ArrowDown")
     await pressKey(" ")
 
-    expect(component.emitted().selected).toEqual([[new Date(2026, 3, 8)]])
+    expect(component.emitted().selected).toEqual([[new Date(2026, APRIL, 8)]])
   })
   it("emits an event on Home", async () => {
     vi.useFakeTimers()
@@ -82,7 +82,7 @@ describe("_LuxCalendar", () => {
   it("implements v-model", async () => {
     const component = mount(_LuxCalendar, {
       props: {
-        month: 0,
+        month: JANUARY,
         year: 1,
         modelValue: 1,
         "onUpdate:modelValue": e => component.setProps({ modelValue: e }),
@@ -102,7 +102,7 @@ describe("_LuxCalendar", () => {
     vi.useFakeTimers()
     const component = mount(_LuxCalendar, {
       props: {
-        month: 0,
+        month: JANUARY,
         year: 1,
         modelValue: 1,
         "onUpdate:modelValue": e => component.setProps({ modelValue: e }),
@@ -156,7 +156,7 @@ describe("_LuxCalendar", () => {
   it("can move focus to the first day of the month when the month changes", async () => {
     const component = mount(_LuxCalendar, {
       props: {
-        month: 0,
+        month: JANUARY,
         year: 2026,
         modelValue: 31,
         "onUpdate:modelValue": e => component.setProps({ modelValue: e }),
@@ -177,5 +177,37 @@ describe("_LuxCalendar", () => {
     vi.runAllTimers()
     expect(component.text()).toContain("February")
     expect(february1st.element).toEqual(document.activeElement)
+  })
+
+  it("gives role button to all dates in the calendar grid", () => {
+    const component = mount(_LuxCalendar, {
+      props: {
+        month: JUNE,
+        year: 2026,
+      },
+      attachTo: document.body,
+    })
+    for (let day = 1; day <= 30; day++) {
+      expect(findDay(component, day).attributes("role")).toEqual("button")
+    }
+  })
+
+  it("does not give role button to grid spaces that are not days", () => {
+    const component = mount(_LuxCalendar, {
+      props: {
+        month: JUNE,
+        year: 2026,
+      },
+      attachTo: document.body,
+    })
+    const gridSpaces = component.findAll("td")
+    // The Sunday before June starts
+    expect(gridSpaces[0].attributes("role")).toBeFalsy()
+
+    // The Wednesday-Saturday after June ends
+    expect(gridSpaces[31].attributes("role")).toBeFalsy()
+    expect(gridSpaces[32].attributes("role")).toBeFalsy()
+    expect(gridSpaces[33].attributes("role")).toBeFalsy()
+    expect(gridSpaces[34].attributes("role")).toBeFalsy()
   })
 })

@@ -1,4 +1,5 @@
 import _LuxRangeCalendar from "@/components/_LuxRangeCalendar.vue"
+import { APRIL, JANUARY, JUNE } from "@/utils/luxDate"
 import { mount } from "@vue/test-utils"
 import { describe, expect, it, vi } from "vitest"
 import { nextTick } from "vue"
@@ -12,9 +13,9 @@ async function pressKey(key) {
   await nextTick()
 }
 
-describe("_LuxCalendar", () => {
+describe("_LuxRangeCalendar", () => {
   it("displays the calendar for the specified month", () => {
-    const component = mount(_LuxRangeCalendar, { props: { month: 3, year: 2026 } })
+    const component = mount(_LuxRangeCalendar, { props: { month: APRIL, year: 2026 } })
     const weeks = component
       .findAll("tr")
       .slice(1)
@@ -30,7 +31,7 @@ describe("_LuxCalendar", () => {
     ])
   })
   it("emits an event when the user has selected a range", () => {
-    const component = mount(_LuxRangeCalendar, { props: { month: 3, year: 2026 } })
+    const component = mount(_LuxRangeCalendar, { props: { month: APRIL, year: 2026 } })
     const april_8th = findDay(component, 8)
     const april_20th = findDay(component, 20)
 
@@ -38,14 +39,14 @@ describe("_LuxCalendar", () => {
     april_20th.trigger("click")
 
     expect(component.emitted().selectedRange).toEqual([
-      [[new Date(2026, 3, 8), new Date(2026, 3, 20)]],
+      [[new Date(2026, APRIL, 8), new Date(2026, APRIL, 20)]],
     ])
   })
   it("emits an event when the user has selected a range with Enter", async () => {
     vi.useFakeTimers()
 
     const component = mount(_LuxRangeCalendar, {
-      props: { month: 3, year: 2026, modelValue: [new Date(2026, 3, 1)] },
+      props: { month: APRIL, year: 2026, modelValue: [new Date(2026, APRIL, 1)] },
     })
     await nextTick()
     vi.runAllTimers()
@@ -54,14 +55,14 @@ describe("_LuxCalendar", () => {
     await pressKey("Enter")
 
     expect(component.emitted().selectedRange).toEqual([
-      [[new Date(2026, 3, 1), new Date(2026, 3, 8)]],
+      [[new Date(2026, APRIL, 1), new Date(2026, APRIL, 8)]],
     ])
   })
   it("emits an event when the user has selected a range with Space", async () => {
     vi.useFakeTimers()
 
     const component = mount(_LuxRangeCalendar, {
-      props: { month: 3, year: 2026, modelValue: [new Date(2026, 3, 1)] },
+      props: { month: APRIL, year: 2026, modelValue: [new Date(2026, APRIL, 1)] },
     })
     await nextTick()
     vi.runAllTimers()
@@ -70,7 +71,7 @@ describe("_LuxCalendar", () => {
     await pressKey(" ")
 
     expect(component.emitted().selectedRange).toEqual([
-      [[new Date(2026, 3, 1), new Date(2026, 3, 8)]],
+      [[new Date(2026, APRIL, 1), new Date(2026, APRIL, 8)]],
     ])
   })
   it("highlights today's date", () => {
@@ -84,9 +85,9 @@ describe("_LuxCalendar", () => {
   it("implements v-model", async () => {
     const component = mount(_LuxRangeCalendar, {
       props: {
-        month: 0,
+        month: JANUARY,
         year: 2001,
-        modelValue: [new Date(2001, 0, 1)],
+        modelValue: [new Date(2001, JANUARY, 1)],
         "onUpdate:modelValue": e => component.setProps({ modelValue: e }),
       },
     })
@@ -98,15 +99,18 @@ describe("_LuxCalendar", () => {
 
     await nextTick()
 
-    expect(component.props("modelValue")).toEqual([new Date(2001, 0, 1), new Date(2001, 0, 5)])
+    expect(component.props("modelValue")).toEqual([
+      new Date(2001, JANUARY, 1),
+      new Date(2001, JANUARY, 5),
+    ])
   })
   it("can be navigated by arrow keys", async () => {
     vi.useFakeTimers()
     const component = mount(_LuxRangeCalendar, {
       props: {
-        month: 0,
+        month: JANUARY,
         year: 2018,
-        modelValue: [new Date(2018, 0, 1)],
+        modelValue: [new Date(2018, JANUARY, 1)],
         "onUpdate:modelValue": e => component.setProps({ modelValue: e }),
       },
       attachTo: document.body,
@@ -143,9 +147,9 @@ describe("_LuxCalendar", () => {
   it("can move focus to the first day of the month when the month changes", async () => {
     const component = mount(_LuxRangeCalendar, {
       props: {
-        month: 0,
+        month: JANUARY,
         year: 2026,
-        modelValue: [new Date(2026, 0, 31)],
+        modelValue: [new Date(2026, JANUARY, 31)],
         "onUpdate:modelValue": e => component.setProps({ modelValue: e }),
       },
       attachTo: document.body,
@@ -164,5 +168,37 @@ describe("_LuxCalendar", () => {
     vi.runAllTimers()
     expect(component.text()).toContain("February")
     expect(february1st.element).toEqual(document.activeElement)
+  })
+
+  it("gives role button to all dates in the calendar grid", () => {
+    const component = mount(_LuxRangeCalendar, {
+      props: {
+        month: JUNE,
+        year: 2026,
+      },
+      attachTo: document.body,
+    })
+    for (let day = 1; day <= 30; day++) {
+      expect(findDay(component, day).attributes("role")).toEqual("button")
+    }
+  })
+
+  it("does not give role button to grid spaces that are not days", () => {
+    const component = mount(_LuxRangeCalendar, {
+      props: {
+        month: JUNE,
+        year: 2026,
+      },
+      attachTo: document.body,
+    })
+    const gridSpaces = component.findAll("td")
+    // The Sunday before June starts
+    expect(gridSpaces[0].attributes("role")).toBeFalsy()
+
+    // The Wednesday-Saturday after June ends
+    expect(gridSpaces[31].attributes("role")).toBeFalsy()
+    expect(gridSpaces[32].attributes("role")).toBeFalsy()
+    expect(gridSpaces[33].attributes("role")).toBeFalsy()
+    expect(gridSpaces[34].attributes("role")).toBeFalsy()
   })
 })
