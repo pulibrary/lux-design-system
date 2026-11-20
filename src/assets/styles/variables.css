@@ -99,7 +99,7 @@
   --media-query-xxx-large: (min-width: 2300px);
   --box-shadow-small: 0 0 0 1px rgba(92, 106, 196, 0.1);
   --box-shadow-small-inset: inset 0 0 0 1px rgba(0, 0, 0, 0.05);
-  --box-shadow-selected: 0px 0px 5px 3px #e77500;
+  --box-shadow-selected: 0px 0px 5px 3px var(--color-princeton-orange-on-white);
   --box-shadow-large: 0 10px 30px 0 rgba(0, 0, 0, 0.1);
   --card-width-small: 200px;
   --card-width-medium: 300px;
