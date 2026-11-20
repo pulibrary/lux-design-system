@@ -27,7 +27,7 @@
             'lux-highlight-today': isToday(day),
             'lux-highlight-selected': isSelected(day),
           }"
-          role="button"
+          :role="day ? 'button' : null"
           :aria-label="day"
           :aria-describedby="monthId"
           tabindex="-1"
