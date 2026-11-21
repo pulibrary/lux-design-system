@@ -55,7 +55,7 @@ import {
   JANUARY,
   DECEMBER,
   keyboardNav,
-} from "@/utils/luxDate"
+} from "../utils/luxDate"
 import { computed, onDeactivated, onMounted, ref, watch, useTemplateRef, useId } from "vue"
 import LuxInputButton from "./LuxInputButton.vue"
 

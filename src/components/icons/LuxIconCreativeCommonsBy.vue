@@ -35,7 +35,7 @@
 </template>
 
 <script setup>
-import { themeIsValid } from "@/utils/luxTheme"
+import { themeIsValid } from "../../utils/luxTheme"
 
 defineProps({
   /**
