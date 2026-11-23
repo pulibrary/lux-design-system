@@ -4,6 +4,7 @@
       ref="dialog"
       :class="{ 'lux-dialog': true, 'lux-dialog-inline': props.position == 'inline' }"
       :id="id"
+      @keydown.esc="close()"
     >
       <div class="dialog-content" tabindex="-1" ref="dialogContent">
         <div class="dialog-title">

@@ -57,4 +57,22 @@ describe("LuxDialog", () => {
     const component = mount(LuxDialog, { props: { id: "my-id-123" } })
     expect(component.find("dialog").attributes("id")).toEqual("my-id-123")
   })
+
+  it("closes on Esc when positioned centered", () => {
+    const component = mount(LuxDialog, { props: { position: "centered" } })
+    component.vm.open()
+    expect(component.find("dialog[open]").exists()).toBe(true)
+
+    component.find("dialog").trigger("keydown.esc")
+    expect(component.find("dialog[open]").exists()).toBe(false)
+  })
+
+  it("closes on Esc when positioned inline", () => {
+    const component = mount(LuxDialog, { props: { position: "inline" } })
+    component.vm.open()
+    expect(component.find("dialog[open]").exists()).toBe(true)
+
+    component.find("dialog").trigger("keydown.esc")
+    expect(component.find("dialog[open]").exists()).toBe(false)
+  })
 })
