@@ -48,7 +48,6 @@
 |<div class="swatch" style="background-color: rgb(255, 255, 255);"></div>|<pre>--color-white</pre>|rgb(255, 255, 255);|
 |<div class="swatch" style="background-color: rgb(245, 245, 245);"></div>|<pre>--color-grayscale-lighter</pre>|rgb(245, 245, 245);|
 |<div class="swatch" style="background-color: rgb(210, 202, 173);"></div>|<pre>--color-grayscale-warm-light</pre>|rgb(210, 202, 173);|
-|<div class="swatch" style="background-color: rgb(255, 186, 10);"></div>|<pre>--color-yellow</pre>|rgb(255, 186, 10);|
 |<div class="swatch" style="background-color: rgb(44, 110, 175);"></div>|<pre>--color-bleu-de-france</pre>|rgb(44, 110, 175);|
 |<div class="swatch" style="background-color: rgb(158, 113, 61);"></div>|<pre>--color-tan-dark</pre>|rgb(158, 113, 61);|
 |<div class="swatch" style="background-color: rgb(35, 87, 139);"></div>|<pre>--color-bleu-de-france-darker</pre>|rgb(35, 87, 139);|
@@ -89,6 +88,7 @@
 |<div class="swatch" style="background-color: rgb(124, 68, 5);"></div>|<pre>--color-dark-yellow</pre>|rgb(124, 68, 5);|
 |<div class="swatch" style="background-color: #DBCBE6;"></div>|<pre>--color-light-purple</pre>|#DBCBE6;|
 |<div class="swatch" style="background-color: #2d1f36;"></div>|<pre>--color-dark-purple</pre>|#2d1f36;|
+|<div class="swatch" style="background-color: 0px 0px 5px 3px var(--color-princeton-orange-on-white);"></div>|<pre>--box-shadow-selected</pre>|0px 0px 5px 3px var(--color-princeton-orange-on-white);|
 
 ## Font sizes
 
