@@ -51,6 +51,7 @@ import LuxLogoYouTube from "./logos/LuxLogoYouTube.vue"
 import LuxSearchBox from "./LuxSearchBox.vue"
 import LuxAlert from "./LuxAlert.vue"
 import LuxBadge from "./LuxBadge.vue"
+import LuxDialog from "./LuxDialog.vue"
 import LuxDropdownMenu from "./LuxDropdownMenu.vue"
 import LuxAutocompleteInput from "./LuxAutocompleteInput.vue"
 import LuxShowMore from "./LuxShowMore.vue"
@@ -87,6 +88,7 @@ export {
   LuxCopyToClipboard,
   LuxDataTable,
   LuxDatePicker,
+  LuxDialog,
   LuxGridContainer,
   LuxGridItem,
   LuxHeading,
