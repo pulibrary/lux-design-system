@@ -16,6 +16,7 @@
             variation="text"
             currentColor="black"
             @buttonClicked="close()"
+            class="lux-close-button"
           >
             <LuxIconBase height="14" width="14" iconName="close">
               <LuxIconClose></LuxIconClose>
@@ -23,9 +24,11 @@
           </LuxInputButton>
         </div>
         <slot></slot>
-        <slot name="footer">
-          <LuxInputButton @buttonClicked="close()">Close</LuxInputButton>
-        </slot>
+        <div class="lux-dialog-footer">
+          <slot name="footer">
+            <LuxInputButton @buttonClicked="close()">Close</LuxInputButton>
+          </slot>
+        </div>
       </div>
     </dialog>
   </div>
@@ -87,6 +90,17 @@ dialog.lux-dialog {
   .dialog-title {
     display: flex;
     justify-content: space-between;
+    align-items: center;
+
+    .lux-heading {
+      margin: var(--space-small) 0;
+      font-size: var(--font-size-large);
+    }
+
+    .lux-close-button {
+      margin: var(--space-x-small) 0 var(--space-x-small) auto;
+      padding: 0;
+    }
   }
 
   .dialog-content {
@@ -106,6 +120,14 @@ dialog.lux-dialog {
 
 .lux-dialog-container {
   position: relative;
+}
+
+.lux-dialog-footer {
+  margin: var(--space-small) 0;
+
+  .lux-button {
+    margin: 0;
+  }
 }
 
 .lux-dialog-inline {
