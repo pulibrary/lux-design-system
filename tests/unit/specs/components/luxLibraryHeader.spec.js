@@ -42,9 +42,9 @@ describe("LuxLibraryHeader.vue", () => {
     expect(wrapper.find(".dark").exists()).toBe(true)
   })
   it("has a long and short name", () => {
-    let full_name = wrapper.find(".full-name")
+    const full_name = wrapper.find(".full-name")
     expect(full_name.text()).toEqual("My Application")
-    let short_name = wrapper.find(".abbr-name")
+    const short_name = wrapper.find(".abbr-name")
     expect(short_name.text()).toEqual("My App")
   })
   // See https://github.com/pulibrary/lux-design-system/issues/243
@@ -57,7 +57,7 @@ describe("LuxLibraryHeader.vue", () => {
     // expect(short_name.isVisible()).toBe(true)
   )
   it("links to the appUrl", () => {
-    let appLink = wrapper.find(".lux-app-name")
+    const appLink = wrapper.find(".lux-app-name")
     expect(appLink.attributes("href")).toBe("http://example.com/")
     expect(appLink.text()).toBe("My ApplicationMy App")
   })
