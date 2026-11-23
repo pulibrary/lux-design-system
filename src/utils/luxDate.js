@@ -126,18 +126,21 @@ export function minusOneMonth(date) {
  */
 export function keyboardNav(currentDate, moveToDateBehavior, selectDateBehavior) {
   return event => {
-    event.preventDefault()
     switch (event.key) {
       case "ArrowDown":
+        event.preventDefault()
         moveToDateBehavior(plusDays(currentDate(), ONE_WEEK))
         break
       case "ArrowUp":
+        event.preventDefault()
         moveToDateBehavior(plusDays(currentDate(), -ONE_WEEK))
         break
       case "ArrowRight":
+        event.preventDefault()
         moveToDateBehavior(plusDays(currentDate(), 1))
         break
       case "ArrowLeft":
+        event.preventDefault()
         moveToDateBehavior(plusDays(currentDate(), -1))
         break
       case "Enter":
@@ -145,14 +148,17 @@ export function keyboardNav(currentDate, moveToDateBehavior, selectDateBehavior)
         selectDateBehavior()
         break
       case "Home":
+        event.preventDefault()
         moveToDateBehavior(firstDayOfWeek(currentDate()))
         selectDateBehavior()
         break
       case "End":
+        event.preventDefault()
         moveToDateBehavior(lastDayOfWeek(currentDate()))
         selectDateBehavior()
         break
       case "PageDown":
+        event.preventDefault()
         if (event.getModifierState("Shift")) {
           moveToDateBehavior(plusOneYear(currentDate()))
         } else {
@@ -161,6 +167,7 @@ export function keyboardNav(currentDate, moveToDateBehavior, selectDateBehavior)
         selectDateBehavior()
         break
       case "PageUp":
+        event.preventDefault()
         if (event.getModifierState("Shift")) {
           moveToDateBehavior(minusOneYear(currentDate()))
         } else {
