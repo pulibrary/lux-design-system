@@ -210,7 +210,7 @@ function setResult(result, onSelectCallback = id => {}) {
   if (props.items.length && typeof props.items[0] === "object") {
     // we need to search the input list for a matching label and return
     // an id if it's found
-    let item = props.items.find(obj => {
+    const item = props.items.find(obj => {
       return obj.label === result
     })
     if (typeof item !== "undefined") {

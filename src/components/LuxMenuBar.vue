@@ -202,6 +202,7 @@ function menuItemClicked(value) {
 
 const isVisible = ref(false)
 
+// eslint-disable-next-line vue/no-dupe-keys
 const activeModel = defineModel("active")
 const localActive = computed({
   get() {

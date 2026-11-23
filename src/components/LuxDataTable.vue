@@ -96,14 +96,14 @@ defineOptions({
 
   computed: {
     footerColumns() {
-      let fCols = this.columns
+      const fCols = this.columns
       fCols.shift()
       return fCols
     },
   },
   methods: {
     getAriaLabel(lineItems) {
-      let lines = []
+      const lines = []
       for (const [key, item] of Object.entries(lineItems)) {
         lines.push(`${key}: ${item.value}`)
       }
@@ -195,7 +195,7 @@ function isRight(value) {
 
 // Normalize the column data by converting any simple string field
 // names into objects with a name property
-let pCols = props.columns.map(col => {
+const pCols = props.columns.map(col => {
   if (!isObject(col)) {
     return { name: col.toLowerCase(), ascending: null }
   } else {
@@ -210,8 +210,8 @@ const parsedColumns = ref(pCols)
 
 const rows = computed(() =>
   props.jsonData.map(row => {
-    let newRow = {}
-    for (let key in row) {
+    const newRow = {}
+    for (const key in row) {
       if (row.hasOwnProperty(key)) {
         if (isObject(row[key])) {
           newRow[key] = row[key]
@@ -232,8 +232,8 @@ function sortTable(col) {
       rows.value.sort((a, b) => new Date(a[col.name].value) - new Date(b[col.name].value))
     } else {
       rows.value.sort(function (a, b) {
-        let textA = a[col.name.toLowerCase()].value.toString().toLowerCase()
-        let textB = b[col.name.toLowerCase()].value.toString().toLowerCase()
+        const textA = a[col.name.toLowerCase()].value.toString().toLowerCase()
+        const textB = b[col.name.toLowerCase()].value.toString().toLowerCase()
         return textA < textB ? -1 : textA > textB ? 1 : 0
       })
     }
@@ -244,8 +244,8 @@ function sortTable(col) {
       rows.value.sort((a, b) => new Date(b[col.name].value) - new Date(a[col.name].value))
     } else {
       rows.value.sort(function (a, b) {
-        let textA = a[col.name.toLowerCase()].value.toString().toLowerCase()
-        let textB = b[col.name.toLowerCase()].value.toString().toLowerCase()
+        const textA = a[col.name.toLowerCase()].value.toString().toLowerCase()
+        const textB = b[col.name.toLowerCase()].value.toString().toLowerCase()
         return textA < textB ? 1 : textA > textB ? -1 : 0
       })
     }

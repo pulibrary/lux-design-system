@@ -216,7 +216,7 @@ const formattedRange = computed({
 
 function calendarClosedSingle(value) {
   if (date.value && isValidFormat(date.value.toLocaleDateString("en-US"))) {
-    let dateAsText = date.value.toLocaleDateString("en-US")
+    const dateAsText = date.value.toLocaleDateString("en-US")
     emit("updateInput", dateAsText)
   }
 }
@@ -227,7 +227,7 @@ function calendarClosedRange(value) {
     isValidFormat(range.value.start.toLocaleDateString("en-US")) &&
     isValidFormat(range.value.end.toLocaleDateString("en-US"))
   ) {
-    let rangeAsText = formatStart() + " - " + formatEnd()
+    const rangeAsText = formatStart() + " - " + formatEnd()
     emit("updateRangeInput", rangeAsText)
   }
 }
@@ -247,7 +247,7 @@ function formatStart() {
 function parseDate(value) {
   // expects value string in MM/DD/YYYY format
   if (value.includes("/")) {
-    let d = value.split("/")
+    const d = value.split("/")
     return new Date(d[2] + "-" + d[0] + "-" + d[1])
   }
 }
@@ -263,7 +263,7 @@ function updateInput(value) {
 }
 function updateRangeInput(value) {
   if (stringSeemsLikeDateRange(value)) {
-    let r = value.split(" - ")
+    const r = value.split(" - ")
     if (isValidFormat(r[0]) && isValidFormat(r[1])) {
       if (!range.value) {
         range.value = {}
@@ -282,7 +282,7 @@ function isValidFormat(d) {
   if (d.trim().length === 0) {
     return true
   }
-  let date_regex = /^\d{1,2}\/\d{1,2}\/\d{4}$/
+  const date_regex = /^\d{1,2}\/\d{1,2}\/\d{4}$/
   return date_regex.test(d)
 }
 
